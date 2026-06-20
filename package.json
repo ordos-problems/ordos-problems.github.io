@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "compile": "python3 build/compile_v2.py",
+    "render": "node build/render_math.js",
+    "build": "python3 build/compile_v2.py && node build/render_math.js && python3 build/build_site_v3.py",
+    "serve": "python3 -m http.server 4173"
+  },
+  "dependencies": {
+    "katex": "^0.17.0"
+  }
+}

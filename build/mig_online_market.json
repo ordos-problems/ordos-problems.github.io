@@ -1,0 +1,1298 @@
+[
+  {
+    "id": "matroid-secretary-conjecture",
+    "title": "Matroid Secretary Conjecture",
+    "collection": "Online Algorithms & Learning",
+    "area": "Online Algorithms",
+    "tags": [
+      "secretary problem",
+      "matroids",
+      "competitive analysis",
+      "online selection"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "Weighted elements of a matroid arrive in uniformly random order and must be irrevocably accepted or rejected while keeping the accepted set independent. Does some algorithm always capture at least a constant fraction of the maximum-weight independent set, for every matroid?",
+    "full_statement": "Let $M=(E,\\mathcal{I})$ be a matroid on ground set $E$ with independent sets $\\mathcal{I}$, equipped with weights $w:E\\to\\mathbb{R}_{\\ge 0}$. The elements of $E$ are presented to an online algorithm one at a time in uniformly random order. Upon each arrival, the algorithm must irrevocably accept or reject the element, subject to the constraint that the set of accepted elements always remains in $\\mathcal{I}$ (independent in the matroid). Let $\\mathrm{OPT}$ denote the maximum-weight independent set of $M$, and let $\\mathrm{ALG}$ denote the set the algorithm accepts. The Matroid Secretary Conjecture asks: does there exist a universal constant $c$ and an online algorithm such that $\\mathbb{E}[w(\\mathrm{ALG})]\\ge \\frac{1}{c}\\,w(\\mathrm{OPT})$ for every matroid $M$ and every weighting $w$? The strong form of the conjecture posits that the optimal constant is $c\\to e$. Determine whether such a constant-competitive algorithm exists.",
+    "known_results": "The best known guarantee for arbitrary matroids is $O(\\log\\log \\operatorname{rank})$-competitive, due independently to Lachish and to Feldman, Svensson, and Zenklusen, and this general bound has not improved since 2014. Constant-competitive algorithms are known for many important matroid classes, including graphic, transversal, laminar, and regular matroids, and for several relaxed arrival models. The central open question is whether all matroids admit a universal constant-competitive algorithm; the strongest hoped-for form would match the classical secretary constant $e$.",
+    "where_posed": {
+      "text": "Stated/originated in Babaioff, Immorlica, Kleinberg, 'Matroids, Secretary Problems, and Online Mechanisms', 2007, SODA.",
+      "url": "https://www.cs.cornell.edu/~rdk/papers/matsec.pdf"
+    },
+    "source": {
+      "authors": "Moshe Babaioff, Nicole Immorlica, Robert Kleinberg",
+      "title": "Matroids, Secretary Problems, and Online Mechanisms",
+      "year": 2007,
+      "venue": "SODA",
+      "url": "https://www.cs.cornell.edu/~rdk/papers/matsec.pdf"
+    },
+    "additional_refs": [
+      {
+        "authors": "Oded Lachish",
+        "title": "O(log log Rank) Competitive-Ratio for the Matroid Secretary Problem",
+        "year": 2014,
+        "venue": "FOCS",
+        "url": "https://arxiv.org/abs/1403.7343"
+      },
+      {
+        "authors": "Moran Feldman, Ola Svensson, Rico Zenklusen",
+        "title": "A Simple O(log log(rank))-Competitive Algorithm for the Matroid Secretary Problem",
+        "year": 2015,
+        "venue": "SODA",
+        "url": "https://arxiv.org/abs/1404.4473"
+      }
+    ]
+  },
+  {
+    "id": "free-order-prophet-inequality",
+    "title": "Optimal ratio for the free-order (order-selection) prophet inequality",
+    "collection": "Online Algorithms & Learning",
+    "area": "Online Algorithms",
+    "tags": [
+      "prophet inequality",
+      "order selection",
+      "stopping theory",
+      "competitive analysis"
+    ],
+    "status": "partially resolved",
+    "confidence": "high",
+    "short_statement": "A gambler facing $n$ items with known distributions may choose the order in which to inspect them, then observes values online and stops irrevocably, keeping one. What is the exact optimal competitive ratio against the expected maximum in this free-order (order-selection) model?",
+    "full_statement": "There are $n$ items with values drawn independently from known distributions $D_1,\\dots,D_n$. In the free-order (order-selection) prophet inequality, the gambler first selects an inspection order $\\sigma$ (a permutation committing to the sequence in which items will be observed), then observes the realized values online one at a time and applies a stopping rule, irrevocably keeping exactly one value. The benchmark is the prophet's expected maximum $\\mathbb{E}[\\max_i X_i]$. Define the optimal order-selection ratio $$\\alpha^*_{\\mathrm{OS}} = \\sup_{(\\sigma,\\text{stop})}\\inf_{\\{D_i\\}} \\frac{\\mathbb{E}[X_{\\text{alg}}]}{\\mathbb{E}[\\max_i X_i]},$$ where the supremum is over all order-and-stopping-rule strategies and the infimum is over all instances. It is known that order selection achieves $\\ge 0.7258$, while no strategy in the random-order model exceeds $0.7254$, so order selection strictly beats random order. Determine the exact value of $\\alpha^*_{\\mathrm{OS}}$.",
+    "known_results": "Order-selection guarantee 0.7258 and random-order hardness 0.7254 (Bubna-Chiplunkar, EC 2023), establishing a strict separation. Essentially settled to about 0.7258 but no exact tight constant proven, so technically open.",
+    "where_posed": {
+      "text": "Stated in Bubna, Chiplunkar, 'Prophet Inequality: Order Selection Beats Random Order', 2023, EC.",
+      "url": "https://arxiv.org/abs/2211.04145"
+    },
+    "source": {
+      "authors": "Archit Bubna, Ashish Chiplunkar",
+      "title": "Prophet Inequality: Order Selection Beats Random Order",
+      "year": 2023,
+      "venue": "EC",
+      "url": "https://arxiv.org/abs/2211.04145"
+    },
+    "additional_refs": [
+      {
+        "authors": "Bo Peng, Zhihao Gavin Tang",
+        "title": "Order Selection Prophet Inequality: From Threshold Optimization to Arrival Time Design",
+        "year": 2022,
+        "venue": "FOCS",
+        "url": "https://arxiv.org/abs/2204.01425"
+      }
+    ]
+  },
+  {
+    "id": "single-sample-matroid-prophet",
+    "title": "Single-sample prophet inequality for general matroids",
+    "collection": "Online Algorithms & Learning",
+    "area": "Online Algorithms",
+    "tags": [
+      "prophet inequality",
+      "matroids",
+      "single sample",
+      "limited information"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "In the single-sample model the algorithm does not know the distributions but sees exactly one prior sample from each random variable before the online sequence. Does a single sample yield a constant-fraction-of-optimum guarantee for every matroid?",
+    "full_statement": "Let $M=(E,\\mathcal{I})$ be a matroid on ground set $E$ with independent sets $\\mathcal{I}$. Each element $e\\in E$ has a value $X_e\\sim D_e$ drawn independently, but the distributions $D_e$ are unknown to the algorithm. In the single-sample model, before the online phase the algorithm observes exactly one sample $\\tilde X_e\\sim D_e$ for each element $e$. Then the actual values $X_e$ arrive online, and the algorithm irrevocably builds an independent set (the accepted set must remain in $\\mathcal{I}$). The question is whether there exists a universal constant $c$ such that $\\mathbb{E}[w(\\mathrm{ALG})]\\ge \\frac{1}{c}\\,\\mathbb{E}[\\max_{S\\in\\mathcal{I}} w(S)]$ using a single sample per element, for every matroid, where $w(\\mathrm{ALG})$ is the total value of the accepted independent set. For the single-choice case (rank-1 / uniform matroid of rank 1) the tight answer is known to be $1/2$. Determine whether a single sample suffices to obtain a constant-competitive guarantee for every matroid.",
+    "known_results": "Single-choice single-sample is tight at $1/2$ (Rubinstein-Wang-Weinberg 2020). For general matroids the best is ($1/4$ - $\\epsilon$)-competitive using $O(\\operatorname{polylog} n)$ samples (EC 2024); whether a single sample gives a constant for general matroids is open and tied to the matroid secretary conjecture.",
+    "where_posed": {
+      "text": "Stated/originated in Azar, Kleinberg, Weinberg, 'Prophet Inequalities with Limited Information', 2014, SODA.",
+      "url": "https://arxiv.org/abs/1307.3736"
+    },
+    "source": {
+      "authors": "Pablo Azar, Robert Kleinberg, S. Matthew Weinberg",
+      "title": "Prophet Inequalities with Limited Information",
+      "year": 2014,
+      "venue": "SODA",
+      "url": "https://arxiv.org/abs/1307.3736"
+    },
+    "additional_refs": [
+      {
+        "authors": "Aviad Rubinstein, Jack Z. Wang, S. Matthew Weinberg",
+        "title": "Optimal Single-Choice Prophet Inequalities from Samples",
+        "year": 2020,
+        "venue": "ITCS",
+        "url": "https://arxiv.org/abs/1911.07945"
+      },
+      {
+        "authors": "Hu Fu, Pinyan Lu, Zhihao Gavin Tang, Hongxun Wu, Jinzhao Wu, Qianfan Zhang",
+        "title": "Sample-Based Matroid Prophet Inequalities",
+        "year": 2024,
+        "venue": "EC",
+        "url": "https://arxiv.org/abs/2406.12799"
+      }
+    ]
+  },
+  {
+    "id": "online-matching-general-vertex-arrivals",
+    "title": "Competitive ratio for online bipartite matching with general vertex arrivals",
+    "collection": "Online Algorithms & Learning",
+    "area": "Online Algorithms",
+    "tags": [
+      "online matching",
+      "competitive analysis",
+      "RANKING",
+      "vertex arrivals"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "In the general-vertex-arrival model, vertices on both sides of a bipartite graph arrive online (each revealing its already-arrived neighbors) and must be matched irrevocably. What is the optimal competitive ratio for maximum cardinality matching?",
+    "full_statement": "Consider a bipartite graph in which all vertices (on both sides) arrive online in adversarial order. Each arriving vertex reveals its edges to previously arrived vertices, and must be matched irrevocably either upon arrival or at the moment it can no longer be matched. The goal is to maximize the cardinality of the matching, compared against the maximum cardinality matching of the full graph. This is the general-vertex-arrival model, which strictly generalizes the classical Karp-Vazirani-Vazirani one-sided arrival model (where offline vertices are fixed and only online vertices arrive, for which the optimal ratio is $1-1/e$). Determine the optimal competitive ratio $\\rho$ for maximum cardinality matching in this model. Known: the best integral algorithm achieves $\\tfrac12 + \\Omega(1)$, the best fractional algorithm achieves $0.526$, and no algorithm exceeds $0.583$.",
+    "known_results": "Gamlath, Kapralov, Maggiori, Svensson, and Wajc gave the first integral algorithm beating the trivial $1/2$ barrier by a constant amount. Wang and Wong obtained a $0.526$ fractional guarantee, while the best known upper bound rules out ratios above $0.583$. This leaves a substantial gap, especially compared with the edge-arrival model, where the optimal ratio is essentially understood at $1/2$. The open problem is to determine the optimal competitive ratio for general vertex arrivals, or at least to close the interval between the current lower and upper bounds.",
+    "where_posed": {
+      "text": "Stated in Wang, Wong, 'Two-sided Online Bipartite Matching and Vertex Cover: Beating the Greedy Algorithm', 2015, ICALP.",
+      "url": "https://link.springer.com/chapter/10.1007/978-3-662-47672-7_85"
+    },
+    "source": {
+      "authors": "Yajun Wang, Sam Chiu-wai Wong",
+      "title": "Two-sided Online Bipartite Matching and Vertex Cover: Beating the Greedy Algorithm",
+      "year": 2015,
+      "venue": "ICALP",
+      "url": "https://link.springer.com/chapter/10.1007/978-3-662-47672-7_85"
+    },
+    "additional_refs": [
+      {
+        "authors": "Buddhima Gamlath, Michael Kapralov, Andreas Maggiori, Ola Svensson, David Wajc",
+        "title": "Online Matching with General Arrivals",
+        "year": 2019,
+        "venue": "FOCS",
+        "url": "https://arxiv.org/abs/1904.08255"
+      },
+      {
+        "authors": "Zhiyi Huang, Zhihao Gavin Tang, David Wajc",
+        "title": "Online Matching: A Brief Survey",
+        "year": 2024,
+        "venue": "SIGecom Exchanges",
+        "url": "https://www.sigecom.org/exchanges/volume_22/1/HUANG.pdf"
+      }
+    ]
+  },
+  {
+    "id": "fully-online-matching",
+    "title": "Competitive ratio for fully online matching",
+    "collection": "Online Algorithms & Learning",
+    "area": "Online Algorithms",
+    "tags": [
+      "online matching",
+      "fully online",
+      "RANKING",
+      "general graphs"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "In fully online matching, all vertices of a (possibly non-bipartite) graph arrive online with deadlines, and an unmatched vertex must be matched or dropped by its deadline. What is the optimal competitive ratio?",
+    "full_statement": "In the fully online matching model, the vertices of a (possibly non-bipartite) graph arrive online one at a time. Each vertex has a deadline that occurs after all of its neighbors have arrived. An algorithm may match a vertex to any currently available neighbor at any time up to its deadline, and all matching decisions are irrevocable; at its deadline, an unmatched vertex must be either matched or permanently dropped. This generalizes the classical online bipartite matching model by allowing vertices on both sides (and non-bipartite graphs) to arrive online with deadlines. The benchmark is the maximum matching of the full graph. Determine the optimal competitive ratio. For bipartite graphs, the best integral algorithm is $0.569$-competitive, the best fractional algorithm is $0.6$-competitive, and no algorithm exceeds $0.613$.",
+    "known_results": "For bipartite fully online matching, the best integral algorithm currently achieves ratio $0.569$, due to Huang, Tang, Wu, and Zhang. Tang and Zhang improved the fractional guarantee to $0.6$, while Eckl and coauthors proved an impossibility result at $0.613$. The known upper and lower bounds are close enough to suggest a sharp constant may be accessible, but the exact competitive ratio is still open.",
+    "where_posed": {
+      "text": "Stated/originated in Huang, Kang, Tang, Wu, Zhang, Zhu, 'Fully Online Matching', 2020, JACM.",
+      "url": "https://dl.acm.org/doi/10.1145/3390890"
+    },
+    "source": {
+      "authors": "Zhiyi Huang, Ning Kang, Zhihao Gavin Tang, Xiaowei Wu, Yuhao Zhang, Xue Zhu",
+      "title": "Fully Online Matching",
+      "year": 2020,
+      "venue": "JACM",
+      "url": "https://dl.acm.org/doi/10.1145/3390890"
+    },
+    "additional_refs": [
+      {
+        "authors": "Zhiyi Huang, Zhihao Gavin Tang, Xiaowei Wu, Yuhao Zhang",
+        "title": "Fully Online Matching II: Beating Ranking and Water-filling",
+        "year": 2020,
+        "venue": "FOCS",
+        "url": "https://arxiv.org/abs/2005.06311"
+      },
+      {
+        "authors": "Alexander Eckl, Anja Kirschbaum, Marilena Leichter, Kevin Schewior",
+        "title": "A Stronger Impossibility for Fully Online Matching",
+        "year": 2021,
+        "venue": "Operations Research Letters",
+        "url": "https://arxiv.org/abs/2102.09432"
+      }
+    ]
+  },
+  {
+    "id": "vertex-weighted-random-order-matching",
+    "title": "Optimal ratio for vertex-weighted online matching in random order",
+    "collection": "Online Algorithms & Learning",
+    "area": "Online Algorithms",
+    "tags": [
+      "online matching",
+      "vertex-weighted",
+      "random order",
+      "competitive analysis"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "For vertex-weighted online bipartite matching with weighted offline vertices and online vertices arriving in uniformly random order, one can beat the adversarial-optimal $1-1/e$. What is the exact best-possible competitive ratio?",
+    "full_statement": "Consider online bipartite matching in which the offline vertices carry weights and the online vertices arrive in uniformly random order, each being matched irrevocably upon arrival to an available offline neighbor (or left unmatched). The objective is the total weight of matched offline vertices, compared against the offline optimum (maximum-weight matching). For adversarial one-sided arrivals the optimal competitive ratio for this vertex-weighted setting is exactly $1-1/e$; with uniformly random arrival order one can do strictly better. Determine the optimal competitive ratio $\\rho$ (the ratio of expected matched weight to the offline optimum) in the random-order vertex-weighted setting. Known: $\\rho \\ge 0.662 > 1 - 1/e$, with no matching upper bound currently established.",
+    "known_results": "In the adversarial one-sided arrival model, the vertex-weighted problem is tight at $1-1/e$, by Aggarwal, Goel, Karande, and Mehta. Uniformly random arrival order makes the problem easier: algorithms of Huang, Tang, Wu, and Zhang and the later analysis of Jin and Williamson achieve ratio about $0.662$, strictly above $1-1/e$. No matching upper bound is known. The open problem is to identify the exact random-order competitive ratio and determine how much random order can improve over the adversarial threshold.",
+    "where_posed": {
+      "text": "Stated in Huang, Tang, Wu, Zhang, 'Online Vertex-Weighted Bipartite Matching: Beating 1-1/e with Random Arrivals', 2018, ICALP / ACM TALG.",
+      "url": "https://arxiv.org/abs/1804.07458"
+    },
+    "source": {
+      "authors": "Zhiyi Huang, Zhihao Gavin Tang, Xiaowei Wu, Yuhao Zhang",
+      "title": "Online Vertex-Weighted Bipartite Matching: Beating 1-1/e with Random Arrivals",
+      "year": 2018,
+      "venue": "ICALP / ACM TALG",
+      "url": "https://arxiv.org/abs/1804.07458"
+    },
+    "additional_refs": [
+      {
+        "authors": "Gagan Aggarwal, Gagan Goel, Chinmay Karande, Aranyak Mehta",
+        "title": "Online Vertex-Weighted Bipartite Matching and Single-bid Budgeted Allocations",
+        "year": 2011,
+        "venue": "SODA",
+        "url": "https://dl.acm.org/doi/10.5555/2133036.2133131"
+      },
+      {
+        "authors": "Billy Jin, David P. Williamson",
+        "title": "Improved Analysis of RANKING for Online Vertex-Weighted Bipartite Matching in the Random Order Model",
+        "year": 2021,
+        "venue": "WINE",
+        "url": "https://arxiv.org/abs/2107.03077"
+      }
+    ]
+  },
+  {
+    "id": "edge-weighted-matching-free-disposal",
+    "title": "Tight ratio for edge-weighted online matching with free disposal",
+    "collection": "Online Algorithms & Learning",
+    "area": "Online Algorithms",
+    "tags": [
+      "online matching",
+      "edge-weighted",
+      "free disposal",
+      "display ads",
+      "OCS"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "In edge-weighted online bipartite matching with free disposal ('display ads'), each offline vertex holds one item but may discard a prior match for free if a better one arrives. What is the best-possible competitive ratio?",
+    "full_statement": "Consider edge-weighted online bipartite matching, motivated by display advertising. Online vertices arrive in adversarial order. Matching an online vertex $v$ to an offline vertex $u$ yields edge weight $w_{uv}$. Each offline vertex $u$ may hold at most one item, but is allowed free disposal: if a better-weight online vertex arrives, $u$ may discard its previously matched item at no cost and keep only its highest-weight match. The objective is to maximize the total weight retained, compared against the offline optimum. Greedy guarantees $1/2$; beating $1/2$ was a major open problem until 2020. Determine the optimal competitive ratio $\\rho$. Known: $0.536 \\le \\rho \\le 1 - 1/e$ in the integral case.",
+    "known_results": "The greedy algorithm is $1/2$-competitive. Fahrbach, Huang, Tao, and Zadimoghaddam were the first to beat the $1/2$ barrier, obtaining ratio $0.5086$ via online correlated selection, and Blanc and Charikar later improved the guarantee to $0.536$. On the impossibility side, no upper bound below $1-1/e$ is known. The open problem is to determine the tight competitive ratio for edge-weighted online matching with free disposal.",
+    "where_posed": {
+      "text": "Stated in Fahrbach, Huang, Tao, Zadimoghaddam, 'Edge-Weighted Online Bipartite Matching', 2020, FOCS / JACM.",
+      "url": "https://arxiv.org/abs/2005.01929"
+    },
+    "source": {
+      "authors": "Matthew Fahrbach, Zhiyi Huang, Runzhou Tao, Morteza Zadimoghaddam",
+      "title": "Edge-Weighted Online Bipartite Matching",
+      "year": 2020,
+      "venue": "FOCS / JACM",
+      "url": "https://arxiv.org/abs/2005.01929"
+    },
+    "additional_refs": [
+      {
+        "authors": "Guy Blanc, Moses Charikar",
+        "title": "Multiway Online Correlated Selection",
+        "year": 2021,
+        "venue": "FOCS",
+        "url": "https://arxiv.org/abs/2106.05579"
+      },
+      {
+        "authors": "Jon Feldman, Nitish Korula, Vahab Mirrokni, S. Muthukrishnan, Martin Pal",
+        "title": "Online Ad Assignment with Free Disposal",
+        "year": 2009,
+        "venue": "WINE",
+        "url": "https://link.springer.com/chapter/10.1007/978-3-642-10841-9_34"
+      }
+    ]
+  },
+  {
+    "id": "adwords-general-bids",
+    "title": "AdWords with general bids: is 1-1/e achievable?",
+    "collection": "Online Algorithms & Learning",
+    "area": "Online Algorithms",
+    "tags": [
+      "AdWords",
+      "online matching",
+      "budgeted allocation",
+      "OCS",
+      "competitive analysis"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "In AdWords, advertisers with budgets receive online queries and spend a bid (capped by remaining budget) per assignment. Without the small-bid assumption, is the optimal $1-1/e$ revenue ratio (or anything close) achievable?",
+    "full_statement": "In the AdWords problem, each advertiser $i$ has a budget $B_i$, and queries $j$ arrive online. Assigning query $j$ to advertiser $i$ spends $\\min(b_{ij}, \\text{remaining } B_i)$, where $b_{ij}$ is the bid; in the general-bids setting these bids may be comparable to $B_i$ (i.e., there is no small-bid / tiny-bid assumption). Each query is assigned irrevocably upon arrival, and the goal is to maximize total spend (revenue). The optimal $1-1/e$ ratio of Mehta-Saberi-Vazirani-Vazirani holds only under the small-bid assumption (each bid tiny relative to the budget). Without it, greedy gives only $1/2$. Determine the optimal competitive ratio for general bids; in particular, is it $1-1/e$? Known: $0.5016 \\le \\rho \\le 1 - 1/e$.",
+    "known_results": "When all bids are small relative to budgets, the MSVV algorithm gives the optimal $1-1/e$ guarantee. With arbitrary bid sizes, the simple greedy guarantee is only $1/2$, and Huang, Zhang, and Zhang were the first to beat this barrier, obtaining a ratio of $0.5016$ using panoramic online correlated selection. There is still no upper bound below $1-1/e$ for general bids. The open problem is to determine the true optimal competitive ratio in this large-bid regime, and in particular whether the small-bids constant $1-1/e$ can be recovered.",
+    "where_posed": {
+      "text": "Stated/originated in Mehta, Saberi, Vazirani, Vazirani, 'AdWords and Generalized Online Matching', 2007, JACM (FOCS 2005).",
+      "url": "https://people.eecs.berkeley.edu/~vazirani/pubs/adwords.pdf"
+    },
+    "source": {
+      "authors": "Aranyak Mehta, Amin Saberi, Umesh Vazirani, Vijay Vazirani",
+      "title": "AdWords and Generalized Online Matching",
+      "year": 2007,
+      "venue": "JACM (FOCS 2005)",
+      "url": "https://people.eecs.berkeley.edu/~vazirani/pubs/adwords.pdf"
+    },
+    "additional_refs": [
+      {
+        "authors": "Zhiyi Huang, Qiankun Zhang, Yuhao Zhang",
+        "title": "AdWords in a Panorama",
+        "year": 2020,
+        "venue": "FOCS",
+        "url": "https://arxiv.org/abs/2009.04114"
+      }
+    ]
+  },
+  {
+    "id": "k-server-conjecture-deterministic",
+    "title": "The (deterministic) k-server conjecture",
+    "collection": "Online Algorithms & Learning",
+    "area": "Online Algorithms",
+    "tags": [
+      "k-server",
+      "competitive analysis",
+      "metric spaces",
+      "work function algorithm"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "With $k$ mobile servers in a metric space serving requested points by moving a server to each request, is there for every metric space a deterministic online algorithm whose cost is at most $k$ times the optimal offline cost?",
+    "full_statement": "In the $k$-server problem, an algorithm controls $k$ mobile servers located in a metric space $M$ and must serve a sequence of requested points: each request must be served by moving some server to the requested point, and the cost is the total distance moved by all servers. The deterministic $k$-server conjecture asks: for every metric space $M$ with $|M|\\ge k+1$, does there exist a deterministic online $k$-server algorithm $A$ and a constant $c_M$ (depending only on $M$) such that $\\mathrm{cost}_A(\\sigma)\\le k\\cdot \\mathrm{OPT}(\\sigma)+c_M$ for all request sequences $\\sigma$, where $\\mathrm{OPT}(\\sigma)$ is the optimal offline cost? Equivalently, is the deterministic competitive ratio exactly $k$? The matching lower bound of $k$ is already known, so the question is whether this lower bound is achievable. The best general upper bound is $2k-1$. Determine whether the deterministic competitive ratio equals $k$ for every metric space.",
+    "known_results": "The lower bound of $k$ is classical, so the conjecture asks whether this bound is always achievable. The best general deterministic upper bound is $2k-1$, obtained by Koutsoupias and Papadimitriou through the Work Function Algorithm. The conjectured ratio $k$ is known in several special cases, including $k=2$, line metrics, tree metrics, and metrics with only $k+1$ or $k+2$ points. The full metric-space case remains open.",
+    "where_posed": {
+      "text": "Stated/originated in Manasse, McGeoch, Sleator, 'Competitive Algorithms for Server Problems', STOC 1988 / J. Algorithms 1990.",
+      "url": "https://dl.acm.org/doi/10.1145/62212.62243"
+    },
+    "source": {
+      "authors": "Mark S. Manasse, Lyle A. McGeoch, Daniel D. Sleator",
+      "title": "Competitive Algorithms for Server Problems",
+      "year": 1990,
+      "venue": "STOC 1988 / J. Algorithms 1990",
+      "url": "https://dl.acm.org/doi/10.1145/62212.62243"
+    },
+    "additional_refs": [
+      {
+        "authors": "Elias Koutsoupias, Christos H. Papadimitriou",
+        "title": "On the k-Server Conjecture",
+        "year": 1995,
+        "venue": "JACM",
+        "url": "https://www.cs.ox.ac.uk/people/elias.koutsoupias/Personal/Papers/paper-kp95.pdf"
+      }
+    ]
+  },
+  {
+    "id": "randomized-k-server-polylog-power",
+    "title": "The right competitive ratio for randomized k-server (conjecture refuted)",
+    "collection": "Online Algorithms & Learning",
+    "area": "Online Algorithms",
+    "tags": [
+      "k-server",
+      "randomized",
+      "metrical task systems",
+      "competitive analysis"
+    ],
+    "status": "partially resolved",
+    "confidence": "high",
+    "short_statement": "The randomized $k$-server conjecture (an $O(\\log k)$-competitive algorithm on every metric) was refuted in 2023 by an $\\Omega(\\log^2 k)$ lower bound. What is the true polylogarithmic dependence on $k$ (and the number of points $n$)?",
+    "full_statement": "Consider the $k$-server problem with a randomized online algorithm playing against an oblivious adversary, where the algorithm controls $k$ servers in a metric space, serves a sequence of requested points by moving servers, and pays total distance moved. The long-standing randomized $k$-server conjecture predicted that an $O(\\log k)$-competitive randomized algorithm exists on every metric. This was refuted: Bubeck-Coester-Rabani proved an $\\Omega(\\log^2 k)$ lower bound on certain $(k+1)$-point metrics (with a universal $\\Omega(\\log k)$). The best upper bounds are $O(\\log^2 k)$ on hierarchically separated trees (HSTs) and $\\tilde O(\\log^3 n\\,\\log^2 k)$ on general $n$-point metrics, where $n$ is the number of points. Determine the optimal randomized competitive ratio as a function of $k$ (and $n$); in particular, is the truth $\\Theta(\\log^2 k)$?",
+    "known_results": "Bubeck, Coester, and Rabani refuted the original $O(\\log k)$ conjecture by proving an $\\Omega(\\log^2 k)$ lower bound on certain metrics, together with a universal $\\Omega(\\log k)$ lower bound. On the positive side, $O(\\log^2 k)$ algorithms are known for hierarchically separated trees, and polylogarithmic guarantees are known for general metrics. The problem has therefore shifted from the old logarithmic conjecture to determining the correct polylogarithmic exponent.",
+    "where_posed": {
+      "text": "Refutation and reframing in Bubeck, Coester, Rabani, 'The Randomized k-Server Conjecture is False!', 2023, STOC.",
+      "url": "https://arxiv.org/abs/2211.05753"
+    },
+    "source": {
+      "authors": "Sebastien Bubeck, Christian Coester, Yuval Rabani",
+      "title": "The Randomized k-Server Conjecture is False!",
+      "year": 2023,
+      "venue": "STOC",
+      "url": "https://arxiv.org/abs/2211.05753"
+    },
+    "additional_refs": [
+      {
+        "authors": "Sebastien Bubeck, Michael B. Cohen, Yin Tat Lee, James R. Lee, Aleksander Madry",
+        "title": "k-server via Multiscale Entropic Regularization",
+        "year": 2018,
+        "venue": "STOC",
+        "url": "https://arxiv.org/abs/1711.01085"
+      }
+    ]
+  },
+  {
+    "id": "bin-packing-additive-integrality-gap",
+    "title": "Additive integrality gap of the bin packing (Gilmore-Gomory) LP",
+    "collection": "Online Algorithms & Learning",
+    "area": "Online Algorithms",
+    "tags": [
+      "bin packing",
+      "integrality gap",
+      "approximation",
+      "MIRUP",
+      "cutting stock"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "For bin packing, how far can the integer optimum be from the value of the Gilmore-Gomory configuration LP relaxation in absolute (additive) terms? Is the gap always $O(1)$ extra bins, or can it grow?",
+    "full_statement": "In the bin packing problem, items of given sizes must be packed into unit-capacity bins, minimizing the number of bins used. The standard strong LP relaxation is the Gilmore-Gomory configuration LP. For a bin packing instance $I$, let $\\mathrm{OPT}_f(I)$ be the value of the Gilmore-Gomory LP relaxation and $\\mathrm{OPT}(I)$ the integer optimum. Define the additive integrality gap $$\\mathrm{gap}=\\sup_I\\big(\\mathrm{OPT}(I)-\\mathrm{OPT}_f(I)\\big).$$ The question is whether $\\mathrm{gap}=O(1)$ (a constant number of extra bins regardless of instance). The related Modified Integer Round-Up Property (MIRUP) conjecture posits $\\mathrm{OPT}(I)\\le\\lceil \\mathrm{OPT}_f(I)\\rceil+1$. The best known upper bound is $\\mathrm{gap}=O(\\log \\mathrm{OPT}_f)$. Determine whether the additive integrality gap is $O(1)$ or $\\Theta(\\log)$.",
+    "known_results": "Hoberg and Rothvoss proved that the integer optimum is at most $\\mathrm{OPT}_f+O(\\log \\mathrm{OPT}_f)$, improving the earlier $O(\\log^2 \\mathrm{OPT}_f)$ additive bound of Karmarkar and Karp. On the lower-bound side, no family is known with additive gap growing beyond a constant, and the stronger MIRUP conjecture predicts an extremely small constant gap. The main open question is whether the true additive gap is bounded by $O(1)$ or whether the logarithmic upper bound is qualitatively necessary.",
+    "where_posed": {
+      "text": "Stated in Hoberg, Rothvoss, 'A Logarithmic Additive Integrality Gap for Bin Packing', 2017, SODA.",
+      "url": "https://arxiv.org/abs/1503.08796"
+    },
+    "source": {
+      "authors": "Rebecca Hoberg, Thomas Rothvoss",
+      "title": "A Logarithmic Additive Integrality Gap for Bin Packing",
+      "year": 2017,
+      "venue": "SODA",
+      "url": "https://arxiv.org/abs/1503.08796"
+    },
+    "additional_refs": [
+      {
+        "authors": "Narendra Karmarkar, Richard M. Karp",
+        "title": "An Efficient Approximation Scheme for the One-Dimensional Bin-Packing Problem",
+        "year": 1982,
+        "venue": "FOCS",
+        "url": "https://ieeexplore.ieee.org/document/4568405"
+      }
+    ]
+  },
+  {
+    "id": "online-makespan-scheduling-gap",
+    "title": "Optimal competitive ratio for online makespan scheduling",
+    "collection": "Online Algorithms & Learning",
+    "area": "Online Algorithms",
+    "tags": [
+      "scheduling",
+      "makespan",
+      "list scheduling",
+      "competitive analysis",
+      "identical machines"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "Jobs arrive one at a time and each must be placed irrevocably on one of $m$ identical machines, minimizing the makespan. What is the optimal competitive ratio of a deterministic online algorithm as $m$ grows large?",
+    "full_statement": "In online makespan scheduling on identical machines ($P\\,|\\,online\\text{-}list\\,|\\,C_{\\max}$), jobs arrive one at a time and each must be assigned irrevocably to one of $m$ identical machines upon arrival. The objective is to minimize the makespan, i.e., the load (total processing time) of the busiest machine, compared against the optimal offline assignment. Graham's 1966 greedy (list scheduling) rule is $(2-1/m)$-competitive. Let $\\rho^*(m)$ be the optimal competitive ratio of a deterministic online algorithm on $m$ machines, and let $\\rho^*=\\lim_{m\\to\\infty}\\rho^*(m)$ be its asymptotic value. Determine $\\rho^*$. Known: $1.88\\le \\rho^* \\le 1.9201$.",
+    "known_results": "Graham's list-scheduling algorithm is $(2-1/m)$-competitive, and this is optimal only for $m=2$ and $m=3$. For large $m$, Fleischer and Wahl gave the best known deterministic upper bound, about $1.9201$, while Rudin's lower-bound construction gives about $1.88$. The asymptotic interval $[1.88,1.9201]$ has been stable for many years. The open problem is to determine the exact asymptotic deterministic competitive ratio for online makespan scheduling on identical machines.",
+    "where_posed": {
+      "text": "Greedy rule and model originated in Graham, 'Bounds for Certain Multiprocessing Anomalies', 1966, Bell System Technical Journal.",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1002/j.1538-7305.1966.tb01709.x"
+    },
+    "source": {
+      "authors": "Ronald L. Graham",
+      "title": "Bounds for Certain Multiprocessing Anomalies",
+      "year": 1966,
+      "venue": "Bell System Technical Journal",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1002/j.1538-7305.1966.tb01709.x"
+    },
+    "additional_refs": [
+      {
+        "authors": "Rudolf Fleischer, Michaela Wahl",
+        "title": "On-line Scheduling Revisited",
+        "year": 2000,
+        "venue": "J. Scheduling / ESA",
+        "url": ""
+      },
+      {
+        "authors": "John F. Rudin III, R. Chandrasekaran",
+        "title": "Improved Bounds for the Online Scheduling Problem",
+        "year": 2003,
+        "venue": "SIAM J. Computing",
+        "url": "https://epubs.siam.org/doi/10.1137/S0097539702403438"
+      }
+    ]
+  },
+  {
+    "id": "randomized-list-update",
+    "title": "Optimal competitive ratio for randomized list update",
+    "collection": "Online Algorithms & Learning",
+    "area": "Online Algorithms",
+    "tags": [
+      "list update",
+      "competitive analysis",
+      "randomized",
+      "data structures"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "Maintaining an unsorted linked list under access requests (access cost = position, accessed item may move toward the front for free), what is the optimal competitive ratio of a randomized algorithm against an oblivious adversary?",
+    "full_statement": "In the list update problem, an algorithm maintains an unsorted linked list of items under a sequence of access requests. Accessing the item currently in position $i$ costs $i$; immediately after an access, the accessed item may be moved toward the front of the list for free (free transpositions of the accessed item), while other rearrangements cost per transposition (partial cost model). For deterministic algorithms the optimal competitive ratio is exactly $2$ (settled). Let $r^*$ be the optimal competitive ratio of a randomized online list-update algorithm against an oblivious adversary in the partial cost model. Determine $r^*$. Known: $1.50084 \\le r^* \\le 1.6$. Moreover, every 'projective' algorithm has ratio $\\ge 1.6$.",
+    "known_results": "The deterministic version is completely understood: Sleator and Tarjan proved the tight competitive ratio is exactly $2$. For randomized algorithms against an oblivious adversary, the best upper bound remains the COMB algorithm of Albers, von Stengel, and Werchner with ratio $1.6$, while the best lower bound is $1.50084$. Known high-performing algorithms are projective, and projective algorithms cannot beat $1.6$. The open problem is to determine whether a non-projective randomized algorithm can improve on $1.6$, or whether the optimal randomized ratio is closer to the current lower bound.",
+    "where_posed": {
+      "text": "Best known randomized algorithm (COMB) from Albers, von Stengel, Werchner, 'A Combined BIT and TIMESTAMP Algorithm for the List Update Problem', 1995, Information Processing Letters.",
+      "url": "https://dblp.org/rec/journals/ipl/AlbersSW95.html"
+    },
+    "source": {
+      "authors": "Susanne Albers, Bernhard von Stengel, Ralph Werchner",
+      "title": "A Combined BIT and TIMESTAMP Algorithm for the List Update Problem",
+      "year": 1995,
+      "venue": "Information Processing Letters",
+      "url": "https://dblp.org/rec/journals/ipl/AlbersSW95.html"
+    },
+    "additional_refs": [
+      {
+        "authors": "Daniel D. Sleator, Robert E. Tarjan",
+        "title": "Amortized Efficiency of List Update and Paging Rules",
+        "year": 1985,
+        "venue": "Communications of the ACM",
+        "url": "https://dl.acm.org/doi/10.1145/2786.2793"
+      },
+      {
+        "authors": "Christoph Ambuhl, Bernd Gartner, Bernhard von Stengel",
+        "title": "Optimal Lower Bounds for Projective List Update Algorithms",
+        "year": 2013,
+        "venue": "ACM Transactions on Algorithms",
+        "url": "https://arxiv.org/abs/1002.2440"
+      }
+    ]
+  },
+  {
+    "id": "k-taxi-deterministic-finiteness",
+    "title": "Deterministic competitive ratio for the hard k-taxi problem",
+    "collection": "Online Algorithms & Learning",
+    "area": "Online Algorithms",
+    "tags": [
+      "k-taxi",
+      "k-server",
+      "competitive analysis",
+      "metric spaces"
+    ],
+    "status": "open",
+    "confidence": "medium",
+    "short_statement": "In the hard $k$-taxi problem, $k$ taxis serve pickup-dropoff requests and only empty (passenger-free) driving is charged. Does any finite deterministic competitive ratio exist for general $k$ on every metric space?",
+    "full_statement": "The $k$-taxi problem generalizes $k$-server: $k$ taxis are located in a metric space, and each request is a pair $(s,t)$ of points; to serve it, some taxi must travel to the pickup point $s$ and then carry the passenger to the dropoff point $t$. In the hard version of the problem, the cost counts only the distance a taxi travels without a passenger (the 'empty' driving); the distance traveled while carrying a passenger (from $s$ to $t$) is free. This generalizes $k$-server, which is recovered by taking $s=t$. The question is whether there exists any finite deterministic competitive ratio (for instance, of the form $2^{O(k)}$) for every fixed $k$ on every metric space. The known lower bound is $\\Omega(2^k)$, and finiteness of the deterministic competitive ratio is established only for $k\\le 3$. Determine whether any finite deterministic competitive ratio exists for general $k$ on arbitrary metrics.",
+    "known_results": "Deterministic hard k-taxi: lower bound $\\Omega(2^k)$; a finite competitive ratio is known only for small k. Whether any finite deterministic ratio exists for general k on general metrics is open. The randomized version was largely settled to poly-log.",
+    "where_posed": {
+      "text": "Stated/originated in Coester, Koutsoupias, 'The Online k-Taxi Problem', 2019, STOC.",
+      "url": "https://arxiv.org/abs/1807.06645"
+    },
+    "source": {
+      "authors": "Christian Coester, Elias Koutsoupias",
+      "title": "The Online k-Taxi Problem",
+      "year": 2019,
+      "venue": "STOC",
+      "url": "https://arxiv.org/abs/1807.06645"
+    },
+    "additional_refs": [
+      {
+        "authors": "Anupam Gupta, Amit Kumar, Debmalya Panigrahi",
+        "title": "Caching with Time Windows and Delays / k-Taxi progress",
+        "year": 2024,
+        "venue": "SODA",
+        "url": "https://arxiv.org/abs/2111.04657"
+      }
+    ]
+  },
+  {
+    "id": "general-convex-body-chasing",
+    "title": "Optimal competitive ratio for general convex body chasing",
+    "collection": "Online Algorithms & Learning",
+    "area": "Online Algorithms",
+    "tags": [
+      "convex body chasing",
+      "competitive analysis",
+      "online convex optimization"
+    ],
+    "status": "partially resolved",
+    "confidence": "high",
+    "short_statement": "Convex bodies in $\\mathbb{R}^d$ arrive online and after each you must move your point into the current body, paying distance moved. For general (arbitrary) convex bodies, is the optimal competitive ratio $\\Theta(\\sqrt{d})$?",
+    "full_statement": "In convex body chasing, convex bodies $K_1,K_2,\\dots\\subseteq\\mathbb{R}^d$ are revealed online one at a time. After each body $K_n$ is revealed, the algorithm must choose a point $x_n\\in K_n$, paying movement cost $\\|x_n-x_{n-1}\\|$. The competitive ratio is $$\\sup \\frac{\\sum_n\\|x_n-x_{n-1}\\|}{\\mathrm{OPT}},$$ where $\\mathrm{OPT}$ is the optimal offline cost. The nested case (each body contained in the previous, $K_1\\supseteq K_2\\supseteq\\cdots$) is essentially settled at $\\Theta(\\sqrt{d})$. For general (arbitrary) convex bodies in Euclidean space, the best upper bound is $O(\\min(d,\\sqrt{d\\log N}))$ (where $N$ is the number of bodies) and the lower bound is $\\Omega(\\sqrt d)$. Determine the optimal competitive ratio for general convex body chasing; in particular, is it $\\Theta(\\sqrt d)$?",
+    "known_results": "The Friedman-Linial conjecture (a finite ratio depending only on d exists) is resolved: Sellke and Argue-Gupta-Guruganesh-Tang achieve $O(d)$. Nested chasing is essentially tight at $\\Theta(\\sqrt{d})$. For general convex body chasing in Euclidean space, the best upper bound is O(min(d, sqrt(d log N))) versus $\\Omega(\\sqrt{d})$; the exact ratio remains open.",
+    "where_posed": {
+      "text": "Stated/originated in Friedman, Linial, 'On Convex Body Chasing', 1993, Discrete & Computational Geometry.",
+      "url": "https://link.springer.com/article/10.1007/BF02189324"
+    },
+    "source": {
+      "authors": "Joel Friedman, Nathan Linial",
+      "title": "On Convex Body Chasing",
+      "year": 1993,
+      "venue": "Discrete & Computational Geometry",
+      "url": "https://link.springer.com/article/10.1007/BF02189324"
+    },
+    "additional_refs": [
+      {
+        "authors": "C.J. Argue, Anupam Gupta, Guru Guruganesh, Ziye Tang",
+        "title": "Chasing Convex Bodies with Linear Competitive Ratio",
+        "year": 2020,
+        "venue": "SODA / JACM",
+        "url": "https://arxiv.org/abs/1905.11877"
+      },
+      {
+        "authors": "Mark Sellke",
+        "title": "Chasing Convex Bodies Optimally",
+        "year": 2020,
+        "venue": "SODA",
+        "url": "https://arxiv.org/abs/1905.11968"
+      }
+    ]
+  },
+  {
+    "id": "submodular-bandit-cardinality-dependence",
+    "title": "Cardinality dependence in submodular maximization with bandit feedback",
+    "collection": "Online Algorithms & Learning",
+    "area": "Online Learning",
+    "tags": [
+      "bandits",
+      "submodular maximization",
+      "minimax regret",
+      "full-bandit feedback"
+    ],
+    "status": "open",
+    "confidence": "medium",
+    "short_statement": "Repeatedly picking a subset of at most $k$ of $n$ items and observing only a noisy value of an unknown monotone submodular function, competing against the $(1-1/e)$ greedy benchmark, what is the exact dependence of the minimax regret on the cardinality budget $k$?",
+    "full_statement": "Consider repeated subset selection with full-bandit feedback against a monotone submodular function. There is a monotone submodular function $f:2^{[n]}\\to[0,1]$ over $n$ items, unknown to the learner. In each round the learner selects a subset of at most $k$ items (a cardinality-$k$ constraint) and observes only a noisy (sub-Gaussian) value of $f$ on the chosen set (full-bandit feedback). Performance is measured by minimax regret against the $(1-1/e)$ greedy benchmark over a horizon $T$. The dependence of the regret on the horizon $T$ ($T^{2/3}$) and on the number of items $n$ ($n^{1/3}$) is essentially settled. The dependence on the cardinality budget $k$ is not: the proven lower bound carries an $L^{1/3}$ factor while the best algorithm (Sub-UCB) carries an $L$ factor, minimizing over a split parameter $L\\le k$. Determine the exact cardinality ($k$) dependence of the minimax regret for general algorithms; i.e., close the $L^{1/3}$ (lower bound) versus $L$ (upper bound) gap.",
+    "known_results": "The minimax dependence on the time horizon and ground-set size is essentially understood: the regret scales as $T^{2/3}$ in time and has the known $n^{1/3}$ dependence. The unresolved part is the dependence on the cardinality constraint $L$. Current lower bounds give an $L^{1/3}$ dependence, while the best general upper bounds are linear in $L$; Tajdini, Jain, and Jamieson match the linear dependence only for a restricted algorithm class. The open problem is to close this cardinality gap for unrestricted algorithms.",
+    "where_posed": {
+      "text": "Stated in Tajdini, Jain, Jamieson, 'Nearly Minimax Optimal Submodular Maximization with Bandit Feedback', 2024, NeurIPS.",
+      "url": "https://openreview.net/forum?id=Vn0FWRImra"
+    },
+    "source": {
+      "authors": "Artin Tajdini, Lalit Jain, Kevin Jamieson",
+      "title": "Nearly Minimax Optimal Submodular Maximization with Bandit Feedback",
+      "year": 2024,
+      "venue": "NeurIPS",
+      "url": "https://openreview.net/forum?id=Vn0FWRImra"
+    },
+    "additional_refs": [
+      {
+        "authors": "Jean-Yves Audibert, Sebastien Bubeck, Gabor Lugosi",
+        "title": "Regret in Online Combinatorial Optimization",
+        "year": 2014,
+        "venue": "Math. of Operations Research",
+        "url": "https://arxiv.org/abs/1204.4710"
+      }
+    ]
+  },
+  {
+    "id": "efx-existence-goods",
+    "title": "Existence of EFX allocations (four or more agents)",
+    "collection": "Market & Mechanism Design",
+    "area": "Fair Division",
+    "tags": [
+      "fair division",
+      "envy-freeness",
+      "EFX",
+      "indivisible goods"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "An EFX allocation of indivisible goods is one where any envy agent $i$ feels toward agent $j$ vanishes after removing any single good from $j$'s bundle. Does a complete EFX allocation always exist for four or more agents, even with additive valuations?",
+    "full_statement": "Let $N=\\{1,\\dots,n\\}$ be a set of agents and $M$ a set of indivisible goods, with each agent $i$ having an additive valuation $v_i$. An allocation $(X_1,\\dots,X_n)$ partitioning $M$ among the agents is EFX (envy-free up to any good) if for all agents $i,j$ and every good $g\\in X_j$ with $v_i(\\{g\\})>0$: $v_i(X_i)\\ge v_i(X_j\\setminus\\{g\\})$. In words, any envy that agent $i$ feels toward agent $j$ would vanish upon removing any single (positively valued) good from $j$'s bundle. Exact complete EFX allocations are known to always exist for up to 3 agents with additive valuations. Question: does a complete EFX allocation exist for every instance with $n\\ge 4$ additive agents?",
+    "known_results": "For additive goods, exact EFX allocations are known to exist for at most three agents, by Chaudhury, Garg, and Mehlhorn. For four agents, Berger and coauthors prove an almost-complete EFX allocation in which at most one good is left unallocated. For general $n$, EFX with charity is known, meaning that fewer than $n$ goods may be donated, and a $0.618$-EFX allocation always exists. The open problem is whether a complete exact EFX allocation always exists for additive goods when $n\\ge 4$.",
+    "where_posed": {
+      "text": "Notion introduced in Caragiannis, Kurokawa, Moulin, Procaccia, Shah, Wang, 'The Unreasonable Fairness of Maximum Nash Welfare', 2016, EC (TEAC 2019).",
+      "url": "https://www.cs.toronto.edu/~nisarg/papers/mnw.ec16.pdf"
+    },
+    "source": {
+      "authors": "Ioannis Caragiannis, David Kurokawa, Herve Moulin, Ariel D. Procaccia, Nisarg Shah, Junxing Wang",
+      "title": "The Unreasonable Fairness of Maximum Nash Welfare",
+      "year": 2016,
+      "venue": "EC (TEAC 2019)",
+      "url": "https://www.cs.toronto.edu/~nisarg/papers/mnw.ec16.pdf"
+    },
+    "additional_refs": [
+      {
+        "authors": "Bhaskar Ray Chaudhury, Jugal Garg, Kurt Mehlhorn",
+        "title": "EFX Exists for Three Agents",
+        "year": 2020,
+        "venue": "EC (JACM 2024)",
+        "url": "https://arxiv.org/abs/2002.05119"
+      },
+      {
+        "authors": "Bhaskar Ray Chaudhury, Telikepalli Kavitha, Kurt Mehlhorn, Alkmini Sgouritsa",
+        "title": "A Little Charity Guarantees Almost Envy-Freeness",
+        "year": 2020,
+        "venue": "SODA (SICOMP 2021)",
+        "url": "https://arxiv.org/abs/1907.04596"
+      }
+    ]
+  },
+  {
+    "id": "efx-chores",
+    "title": "Existence of EFX allocations for chores (three agents)",
+    "collection": "Market & Mechanism Design",
+    "area": "Fair Division",
+    "tags": [
+      "fair division",
+      "chores",
+      "EFX",
+      "envy-freeness",
+      "disutilities"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "For indivisible chores (which impose costs), an EFX allocation is one where any envy agent $i$ feels toward $j$ vanishes after dropping any single chore from $i$'s own bundle. Does an EFX allocation always exist for additive chores with three agents?",
+    "full_statement": "Let $N=\\{1,\\dots,n\\}$ be a set of agents and $M$ a set of indivisible chores, with each agent $i$ having an additive cost function $c_i$ (chores impose costs / disutilities). An allocation $(X_1,\\dots,X_n)$ partitioning $M$ is EFX (for chores) if for all agents $i,j$ and every chore $e\\in X_i$ with $c_i(\\{e\\})>0$: $c_i(X_i\\setminus\\{e\\})\\le c_i(X_j)$. In words, any envy agent $i$ feels toward agent $j$ vanishes upon dropping any single (positively costly) chore from $i$'s own bundle. Unlike the goods setting, the situation for chores is harsher: with additive costs and four or more agents, EFX allocations can provably fail to exist. Question: does an EFX allocation always exist for chores with additive costs and $n=3$ agents?",
+    "known_results": "For superadditive cost functions, EFX allocations can fail to exist even with three agents. For additive costs, nonexistence examples are known for some number of agents $n\\ge 4$, so the general chores analogue of the goods conjecture is false. The remaining small case of additive chores with exactly three agents is still open. Positive results are known when the number of chores is at most $n+2$, for identical-ordering costs, and for bi-valued costs; in general, a $2$-EFX allocation always exists for additive chores.",
+    "where_posed": {
+      "text": "Stated in Christoforidis, Santorinaios, 'On the Pursuit of EFX for Chores: Non-Existence and Approximations', 2024, IJCAI.",
+      "url": "https://arxiv.org/abs/2406.10752"
+    },
+    "source": {
+      "authors": "Vasilis Christoforidis, Christodoulos Santorinaios",
+      "title": "On the Pursuit of EFX for Chores: Non-Existence and Approximations",
+      "year": 2024,
+      "venue": "IJCAI",
+      "url": "https://arxiv.org/abs/2406.10752"
+    },
+    "additional_refs": [
+      {
+        "authors": "Shengwei Zhou, Xiaowei Wu",
+        "title": "Approximately EFX Allocations for Indivisible Chores",
+        "year": 2022,
+        "venue": "IJCAI (Artif. Intell. 2024)",
+        "url": "https://arxiv.org/abs/2109.07313"
+      }
+    ]
+  },
+  {
+    "id": "nash-social-welfare-approximation",
+    "title": "Optimal approximation factor for Nash Social Welfare",
+    "collection": "Market & Mechanism Design",
+    "area": "Fair Division",
+    "tags": [
+      "fair division",
+      "Nash social welfare",
+      "approximation algorithms",
+      "mechanism design"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "Nash Social Welfare is the geometric mean of agents' utilities; maximizing it over indivisible goods is NP-hard. What is the best constant-factor polynomial-time approximation, for additive, submodular, and subadditive valuations?",
+    "full_statement": "There is a set of agents $N$ and a set of indivisible goods $M$, with each agent $i$ having a valuation $v_i$. For an allocation $A=(A_1,\\dots,A_n)$ the Nash Social Welfare is the geometric mean of the agents' utilities, $$\\mathrm{NSW}(A)=\\left(\\prod_{i\\in N} v_i(A_i)\\right)^{1/n}.$$ A polynomial-time algorithm is an $\\alpha$-approximation (for $\\alpha\\ge 1$) if $\\mathrm{NSW}(A)\\ge \\mathrm{OPT}/\\alpha$ on all instances, where $\\mathrm{OPT}$ is the maximum Nash Social Welfare. Maximizing NSW exactly is NP-hard. Determine $\\inf\\{\\alpha:$ a poly-time $\\alpha$-approximation exists$\\}$ for each valuation class in the hierarchy additive $\\subset$ submodular $\\subset$ XOS $\\subset$ subadditive. For additive valuations the best algorithm achieves $\\approx 1.45$ while hardness is only $\\approx 1.07$.",
+    "known_results": "Additive: best algorithm $e^{1/e}$~1.445; APX-hardness ~1.069; the configuration LP has integrality gap exactly $e^{1/e}$, so the true constant lies in [1.069, 1.445] and is open. Submodular: a constant factor is known (~3.56); hardness $e/(e-1)$~1.582. Subadditive: a constant factor exists (large/unoptimized). No conjectured exact constant in any class.",
+    "where_posed": {
+      "text": "Stated in Cole, Gkatzelis, 'Approximating the Nash Social Welfare with Indivisible Items', 2015, STOC (SICOMP 2018).",
+      "url": "https://arxiv.org/abs/1507.06457"
+    },
+    "source": {
+      "authors": "Richard Cole, Vasilis Gkatzelis",
+      "title": "Approximating the Nash Social Welfare with Indivisible Items",
+      "year": 2015,
+      "venue": "STOC (SICOMP 2018)",
+      "url": "https://arxiv.org/abs/1507.06457"
+    },
+    "additional_refs": [
+      {
+        "authors": "Siddharth Barman, Sanath Kumar Krishnamurthy, Rohit Vaish",
+        "title": "Finding Fair and Efficient Allocations",
+        "year": 2018,
+        "venue": "EC",
+        "url": "https://arxiv.org/abs/1707.04731"
+      },
+      {
+        "authors": "Shahar Dobzinski, Wenzheng Li, Aviad Rubinstein, Jan Vondrak",
+        "title": "A Constant-Factor Approximation for Nash Social Welfare with Subadditive Valuations",
+        "year": 2024,
+        "venue": "STOC",
+        "url": "https://arxiv.org/abs/2309.04656"
+      }
+    ]
+  },
+  {
+    "id": "maximin-share-approximation",
+    "title": "Best approximation factor for Maximin Share (MMS) fair division",
+    "collection": "Market & Mechanism Design",
+    "area": "Fair Division",
+    "tags": [
+      "fair division",
+      "maximin share",
+      "MMS",
+      "approximation",
+      "indivisible goods"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "An agent's maximin share is the value of the worst bundle when she partitions all goods into $n$ bundles. Since exact MMS allocations need not exist, what is the largest constant $\\alpha$ for which $\\alpha$-MMS allocations are always guaranteed?",
+    "full_statement": "There is a set of agents $N=\\{1,\\dots,n\\}$ and a set of goods $M$, with each agent $i$ having an additive valuation $v_i$. Let $\\Pi_n(M)$ be the set of all partitions of $M$ into $n$ bundles. Agent $i$'s maximin share is $$\\mathrm{MMS}_i=\\max_{(B_1,\\dots,B_n)\\in\\Pi_n(M)}\\min_j v_i(B_j),$$ i.e., the best value she can guarantee herself if she partitions all goods into $n$ bundles and is then forced to take the worst (lowest-value) bundle. An allocation $A=(A_1,\\dots,A_n)$ is $\\alpha$-MMS if $v_i(A_i)\\ge\\alpha\\cdot\\mathrm{MMS}_i$ for all agents $i$. Exact ($\\alpha=1$) MMS allocations provably do not always exist, even with additive valuations. Determine $\\alpha^*=\\sup\\{\\alpha:$ an $\\alpha$-MMS allocation exists for every additive instance$\\}$.",
+    "known_results": "The best universal guarantee has improved from $2/3$ to $3/4$, then to $3/4+1/(12n)$, and more recently to $3/4+3/3836$ by Akrami and Garg, with further improvements moving the constant toward about $0.77$. On the impossibility side, Feige, Sapir, and Tauber show that no guarantee better than $1-1/n^4$ is always achievable for $n\\ge 4$, and give a $39/40$ upper bound for three agents. The open problem is to determine the exact largest constant $\\alpha$ for which every additive instance admits an $\\alpha$-MMS allocation.",
+    "where_posed": {
+      "text": "Approximate-MMS guarantee studied in Kurokawa, Procaccia, Wang, 'Fair Enough: Guaranteeing Approximate Maximin Shares', AAAI 2016 / JACM 2018.",
+      "url": "https://procaccia.info/wp-content/uploads/2020/03/mms2.pdf"
+    },
+    "source": {
+      "authors": "David Kurokawa, Ariel D. Procaccia, Junxing Wang",
+      "title": "Fair Enough: Guaranteeing Approximate Maximin Shares",
+      "year": 2018,
+      "venue": "JACM (AAAI 2016)",
+      "url": "https://procaccia.info/wp-content/uploads/2020/03/mms2.pdf"
+    },
+    "additional_refs": [
+      {
+        "authors": "Uriel Feige, Ariel Sapir, Laliv Tauber",
+        "title": "A Tight Negative Example for MMS Fair Allocations",
+        "year": 2021,
+        "venue": "WINE",
+        "url": "https://arxiv.org/abs/2104.04977"
+      },
+      {
+        "authors": "Hannaneh Akrami, Jugal Garg",
+        "title": "Breaking the 3/4 Barrier for Approximate Maximin Share",
+        "year": 2024,
+        "venue": "SODA",
+        "url": "https://arxiv.org/abs/2307.07304"
+      }
+    ]
+  },
+  {
+    "id": "competition-complexity-multi-item",
+    "title": "Competition complexity of multi-item auctions (general regime)",
+    "collection": "Market & Mechanism Design",
+    "area": "Mechanism Design",
+    "tags": [
+      "auctions",
+      "revenue",
+      "Bulow-Klemperer",
+      "competition complexity",
+      "multi-item"
+    ],
+    "status": "partially resolved",
+    "confidence": "high",
+    "short_statement": "How many extra i.i.d. bidders does a simple mechanism (sell items separately, or VCG) need to match the optimal revenue of the original bidders, in the multi-item setting? The additive case with fewer items than bidders is settled; other regimes are open.",
+    "full_statement": "Fix a distribution $D$ over $m$ items. For $n$ bidders drawn i.i.d. from $D$, the competition complexity $C(n,m)$ is the smallest integer $c$ such that the revenue of a simple mechanism with $n+c$ bidders matches the optimal revenue with the original $n$ bidders; concretely, $\\mathrm{SRev}_{n+c}(D^m)\\ge \\mathrm{Rev}_n(D^m)$, where $\\mathrm{SRev}$ is the revenue from selling items separately (and VCG is the analogue) and $\\mathrm{Rev}$ is the optimal revenue. This is the multi-item generalization of the Bulow-Klemperer result, which for a single item shows that recruiting one extra bidder lets a simple second-price auction match the optimal auction on the original bidders. The additive/independent case is tight: $C(n,m)=\\Theta(\\sqrt{nm})$ for $m<n$ and $\\Theta(n\\ln(1+m/n))$ for $n\\le m$. Open: exact bounds (including constants) in the regime $m\\ge n$, for non-additive valuations (XOS / subadditive / unit-demand), and for correlated items. Determine the competition complexity in these regimes.",
+    "known_results": "For additive buyers with independent item values, the order of competition complexity is known: it is $\\Theta(\\sqrt{nm})$ when $m<n$ and $\\Theta(n\\ln(1+m/n))$ when $n\\le m$. These results are tight up to constant factors. The open problems are to determine the exact constants, sharpen the $m\\ge n$ regime, and extend the theory beyond independent additive values to non-additive valuation classes and correlated item values.",
+    "where_posed": {
+      "text": "Stated/originated in Eden, Feldman, Friedler, Talgam-Cohen, Weinberg, 'The Competition Complexity of Auctions: A Bulow-Klemperer Result for Multi-Dimensional Bidders', 2017, EC.",
+      "url": "https://arxiv.org/abs/1612.08821"
+    },
+    "source": {
+      "authors": "Alon Eden, Michal Feldman, Ophir Friedler, Inbal Talgam-Cohen, S. Matthew Weinberg",
+      "title": "The Competition Complexity of Auctions: A Bulow-Klemperer Result for Multi-Dimensional Bidders",
+      "year": 2017,
+      "venue": "EC",
+      "url": "https://arxiv.org/abs/1612.08821"
+    },
+    "additional_refs": [
+      {
+        "authors": "Mahsa Derakhshan, Emily Ryu, S. Matthew Weinberg, Eric Xue",
+        "title": "Settling the Competition Complexity of Additive Buyers over Independent Items",
+        "year": 2024,
+        "venue": "EC",
+        "url": "https://arxiv.org/abs/2403.03937"
+      },
+      {
+        "authors": "Jeremy Bulow, Paul Klemperer",
+        "title": "Auctions versus Negotiations",
+        "year": 1996,
+        "venue": "American Economic Review",
+        "url": "https://www.jstor.org/stable/2118262"
+      }
+    ]
+  },
+  {
+    "id": "menu-complexity-multi-item",
+    "title": "Menu complexity of approximately revenue-optimal multi-item auctions",
+    "collection": "Market & Mechanism Design",
+    "area": "Mechanism Design",
+    "tags": [
+      "auctions",
+      "revenue",
+      "menu complexity",
+      "simple vs optimal",
+      "multi-item"
+    ],
+    "status": "partially resolved",
+    "confidence": "high",
+    "short_statement": "When selling several items to one additive buyer, how many distinct menu (lottery) options are needed to capture a $(1-\\epsilon)$ fraction of the optimal revenue, as a function of the number of items $n$ (and the exact two-item exponent)?",
+    "full_statement": "Consider a single additive buyer whose item values are drawn from independent distributions $F_1,\\dots,F_n$ over $n$ items. A mechanism can be described as a menu of (possibly randomized) options. Let $C(n,\\varepsilon)$ be the minimum menu size such that some mechanism with at most $C(n,\\varepsilon)$ entries achieves expected revenue $\\ge(1-\\varepsilon)\\mathrm{Rev}(F)$ for every such product distribution $F$, where $\\mathrm{Rev}(F)$ is the optimal revenue. Even with two items the revenue-optimal menu can require a continuum of options. Known: $C(n,1/n)\\ge 2^{\\Omega(n)}$; for two items the menu size is between $\\Omega(\\varepsilon^{-1/4})$ and $O(\\varepsilon^{-2})$. Open: the tight growth of $C(n,\\varepsilon)$ in $n$ for fixed $\\varepsilon$ (in particular whether $\\mathrm{poly}(n)$ suffices), and the exact two-item menu-size exponent. Determine these.",
+    "known_results": "Several qualitative questions are resolved: finite menus can approximate optimal revenue to within a $(1-\\epsilon)$ factor, and the better of selling items separately and selling the grand bundle gives a constant-factor approximation. For two items, the communication complexity is $\\Theta(\\log(1/\\epsilon))$. The open problem is quantitative menu-size growth: for fixed $\\epsilon$, it is unknown whether a polynomial-size menu in $n$ always suffices, since exponential lower bounds are known only when $\\epsilon=1/n$. Even for two items, the exact exponent in the dependence on $1/\\epsilon$ remains open.",
+    "where_posed": {
+      "text": "Studied in Hart, Nisan, 'Selling Multiple Correlated Goods: Revenue Maximization and Menu-Size Complexity', 2019, Journal of Economic Theory.",
+      "url": "https://arxiv.org/abs/1304.6116"
+    },
+    "source": {
+      "authors": "Sergiu Hart, Noam Nisan",
+      "title": "Selling Multiple Correlated Goods: Revenue Maximization and Menu-Size Complexity",
+      "year": 2019,
+      "venue": "Journal of Economic Theory",
+      "url": "https://arxiv.org/abs/1304.6116"
+    },
+    "additional_refs": [
+      {
+        "authors": "Moshe Babaioff, Yannai A. Gonczarowski, Noam Nisan",
+        "title": "The Menu-Size Complexity of Revenue Approximation",
+        "year": 2017,
+        "venue": "STOC (GEB 2022)",
+        "url": "https://arxiv.org/abs/1604.06580"
+      },
+      {
+        "authors": "Yannai A. Gonczarowski",
+        "title": "Bounding the Menu-Size of Approximately Optimal Auctions via Optimal-Transport Duality",
+        "year": 2018,
+        "venue": "STOC",
+        "url": "https://arxiv.org/abs/1708.08907"
+      }
+    ]
+  },
+  {
+    "id": "price-of-anonymity-multi-unit",
+    "title": "Price of anonymity in multi-unit auctions",
+    "collection": "Market & Mechanism Design",
+    "area": "Mechanism Design",
+    "tags": [
+      "auctions",
+      "revenue",
+      "anonymous pricing",
+      "price of anonymity",
+      "multi-unit"
+    ],
+    "status": "partially resolved",
+    "confidence": "high",
+    "short_statement": "An anonymous mechanism must offer every buyer the same price; how much revenue does that cost versus the optimal (Myerson) mechanism? For a single item the tight gap is $\\approx 2.62$; for selling multiple identical units the exact gap is not fully pinned down.",
+    "full_statement": "Consider revenue maximization with $n$ buyers whose value distributions differ. The optimal (Myerson) mechanism may charge different buyers different prices, whereas an anonymous mechanism must offer everyone the same price. For $k$ identical units and $n$ independent, non-identical regular value distributions, the price of anonymity is $$\\rho_k=\\sup_F \\frac{\\mathrm{OPT}(F)}{\\mathrm{AP}(F)},$$ where $\\mathrm{OPT}(F)$ is the optimal (Myerson) revenue and $\\mathrm{AP}(F)$ is the best anonymous posted-price revenue, and the supremum is over all valid instances $F$. For a single item ($k=1$) the tight value is $\\rho_1\\approx 2.62$. Open: the exact constants $\\rho_k$ for finite $k>1$ beyond the regular / large-market regime, and the multi-item analogues. Determine these.",
+    "known_results": "For one item, the price of anonymity is known exactly up to numerical evaluation: $\\rho_1\\approx 2.6202$. In multi-unit settings with general regular distributions, the cross-group gap has order $\\Theta(\\log k)$, while in large regular markets the ratio is $2+O(1/\\sqrt{k})$ and converges to $2$. The open problem is to determine the exact constants for finite $k$ outside the large-market regime and to understand the corresponding anonymity loss for multi-item mechanisms.",
+    "where_posed": {
+      "text": "Stated in Alaei, Hartline, Niazadeh, Pountourakis, Yan, 'Optimal Auctions vs. Anonymous Pricing', 2015, FOCS (GEB 2019).",
+      "url": "https://arxiv.org/abs/1507.02615"
+    },
+    "source": {
+      "authors": "Saeed Alaei, Jason D. Hartline, Rad Niazadeh, Emmanouil Pountourakis, Yang Yan",
+      "title": "Optimal Auctions vs. Anonymous Pricing",
+      "year": 2015,
+      "venue": "FOCS (GEB 2019)",
+      "url": "https://arxiv.org/abs/1507.02615"
+    },
+    "additional_refs": [
+      {
+        "authors": "Yaonan Jin, Pinyan Lu, Qi Qi, Zhihao Gavin Tang, Tao Xiao",
+        "title": "Tight Approximation Ratio of Anonymous Pricing",
+        "year": 2019,
+        "venue": "STOC",
+        "url": "https://arxiv.org/abs/1811.00763"
+      },
+      {
+        "authors": "Yaonan Jin, Shunhua Jiang, Pinyan Lu, Hengjie Zhang",
+        "title": "Tight Revenue Gaps among Multi-Unit Mechanisms",
+        "year": 2021,
+        "venue": "EC/arXiv",
+        "url": "https://arxiv.org/abs/2102.07454"
+      }
+    ]
+  },
+  {
+    "id": "max-stable-matchings",
+    "title": "Maximum number of stable matchings in an n x n instance",
+    "collection": "Market & Mechanism Design",
+    "area": "Matching Markets",
+    "tags": [
+      "stable matching",
+      "stable marriage",
+      "counting",
+      "combinatorics",
+      "Knuth"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "Let $f(n)$ be the largest possible number of stable matchings over all $n\\times n$ stable-marriage instances. It grows exponentially, but the exact base is unknown, with bounds between about $2.28^n$ and $3.55^n$.",
+    "full_statement": "Consider the stable-marriage problem with $n$ men and $n$ women, each having a strict preference ordering over the members of the opposite side; a matching is stable if no man-woman pair both prefer each other to their assigned partners. A single instance can admit many stable matchings simultaneously. Let $f(n)$ be the maximum, over all $n\\times n$ stable-marriage instances $I$, of the number of stable matchings $|S(I)|$. It is known that $f(n)=2^{\\Theta(n)}$. Determine $\\lim_{n\\to\\infty} f(n)^{1/n}$, the growth base of this exponential. Currently it is known that $\\Omega(2.28^n)\\le f(n)\\le O(3.55^n)$. This problem was first posed by Knuth in the 1970s.",
+    "known_results": "Lower bound $\\Omega(2.28^n)$ (Irving-Leather; extended by Thurber). Upper bound $O(3.55^n)$ (Palmer-Palvolgyi 2021), improving the first simply-exponential bound of Karlin-Oveis Gharan-Weber 2018. Exact base open; gap [2.28, 3.55].",
+    "where_posed": {
+      "text": "First posed by Knuth (1970s); simply-exponential upper bound in Karlin, Oveis Gharan, Weber, 'A Simply Exponential Upper Bound on the Maximum Number of Stable Matchings', 2018, STOC.",
+      "url": "https://arxiv.org/abs/1711.01032"
+    },
+    "source": {
+      "authors": "Anna R. Karlin, Shayan Oveis Gharan, Robbie Weber",
+      "title": "A Simply Exponential Upper Bound on the Maximum Number of Stable Matchings",
+      "year": 2018,
+      "venue": "STOC",
+      "url": "https://arxiv.org/abs/1711.01032"
+    },
+    "additional_refs": [
+      {
+        "authors": "Cory Palmer, Domotor Palvolgyi",
+        "title": "At most 3.55^n stable matchings",
+        "year": 2021,
+        "venue": "FOCS",
+        "url": "https://arxiv.org/abs/2011.00915"
+      },
+      {
+        "authors": "Robert W. Irving, Paul Leather",
+        "title": "The Complexity of Counting Stable Marriages",
+        "year": 1986,
+        "venue": "SIAM J. Computing",
+        "url": "https://epubs.siam.org/doi/10.1137/0215048"
+      }
+    ]
+  },
+  {
+    "id": "stable-matching-couples-threshold",
+    "title": "Existence threshold for stable matching with couples",
+    "collection": "Market & Mechanism Design",
+    "area": "Matching Markets",
+    "tags": [
+      "stable matching",
+      "couples",
+      "complementarities",
+      "large markets",
+      "existence"
+    ],
+    "status": "open",
+    "confidence": "medium",
+    "short_statement": "In hospitals/residents with couples (who submit joint preferences over pairs of positions), a stable matching can fail to exist and deciding existence is NP-complete. What is the precise rate at which the number of couples can grow with market size while a stable matching still exists w.h.p.?",
+    "full_statement": "In the Hospitals/Residents problem with Couples, couples rank ordered pairs of hospitals (joint preferences over pairs of positions), introducing complementarities absent from the classical problem. Unlike the classic stable-matching problem, a stable matching need not exist (Roth 1984), and deciding existence is NP-complete (Ronn 1990). Yet in large real markets such as the medical residency match, stable outcomes are almost always found. Consider random large markets of size $n$: it is known that if the number of couples is $o(\\sqrt{n})$ a stable matching exists with high probability, whereas if the number of couples grows linearly in $n$ (i.e., $\\Theta(n)$), with constant probability no stable matching exists. Determine the tight scaling threshold (and constants) for the number of couples, as a function of market size $n$, separating the regime where a stable matching exists w.h.p. from the regime where none exists with constant probability; and identify the sharp preference-domain conditions.",
+    "known_results": "The qualitative landscape is well established: stable matchings can fail to exist with couples, and deciding existence is NP-complete. In large random markets, stable matchings exist with high probability under sufficiently sparse couples, including the $o(\\sqrt n)$ regime, while with a linear number of couples nonexistence occurs with constant probability. The open problem is to identify the sharp threshold between these regimes, including constants and the precise preference-domain assumptions under which stability is likely.",
+    "where_posed": {
+      "text": "Large-market analysis in Kojima, Pathak, Roth, 'Matching with Couples: Stability and Incentives in Large Markets', 2013, Quarterly Journal of Economics.",
+      "url": "https://www.nber.org/papers/w16028"
+    },
+    "source": {
+      "authors": "Fuhito Kojima, Parag A. Pathak, Alvin E. Roth",
+      "title": "Matching with Couples: Stability and Incentives in Large Markets",
+      "year": 2013,
+      "venue": "Quarterly Journal of Economics",
+      "url": "https://www.nber.org/papers/w16028"
+    },
+    "additional_refs": [
+      {
+        "authors": "Itai Ashlagi, Mark Braverman, Avinatan Hassidim",
+        "title": "Stability in Large Matching Markets with Complementarities",
+        "year": 2014,
+        "venue": "Operations Research",
+        "url": "https://web.stanford.edu/~iashlagi/papers/couplesFinal1.pdf"
+      }
+    ]
+  },
+  {
+    "id": "prophet-secretary-tight-ratio",
+    "title": "Tight competitive ratio of the prophet secretary problem",
+    "collection": "Market & Mechanism Design",
+    "area": "Online Algorithms",
+    "tags": [
+      "prophet inequality",
+      "prophet secretary",
+      "optimal stopping",
+      "random order",
+      "competitive ratio"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "A gambler faces $n$ independent rewards from known but different distributions arriving in uniformly random order, accepting or irrevocably rejecting each and keeping at most one. What is the exact best-possible competitive ratio against the expected maximum?",
+    "full_statement": "Let $X_1,\\dots,X_n$ be independent random rewards with known but possibly different distributions $X_i\\sim F_i$. They are revealed to the gambler one at a time in uniformly random order; upon seeing each value the gambler must irrevocably accept it (stopping) or reject it, keeping at most one value. The benchmark is the prophet's expected maximum $\\mathbb{E}[\\max_i X_i]$. Define the optimal prophet-secretary competitive ratio $$\\alpha^*=\\inf_{\\{F_i\\}}\\sup_{\\text{online rules}}\\frac{\\mathbb{E}[X_{\\text{selected}}]}{\\mathbb{E}[\\max_i X_i]}.$$ With adversarial order the best guarantee is exactly $1/2$; uniformly random order provably helps. Determine $\\alpha^*$. Known: $0.688\\le\\alpha^*\\le 0.7235$. (This is distinct from the i.i.d. case, which is tight at $\\approx 0.745$, and from the order-selection model, $\\approx 0.7258$.)",
+    "known_results": "The best current algorithmic lower bound is $0.688$, improving on the original $1-1/e$ guarantee of Esfandiari and coauthors. The best analytically proven upper bound in the random-order model is $0.7235$, with a tighter computer-assisted bound around $0.7254$ also known in related formulations. None of these bounds is believed to be tight. The open problem is to determine the exact prophet-secretary constant.",
+    "where_posed": {
+      "text": "Stated/originated in Esfandiari, Hajiaghayi, Liaghat, Monemizadeh, 'Prophet Secretary', 2015, ESA (SIDMA 2017).",
+      "url": "https://arxiv.org/abs/1507.01155"
+    },
+    "source": {
+      "authors": "Hossein Esfandiari, MohammadTaghi Hajiaghayi, Vahid Liaghat, Morteza Monemizadeh",
+      "title": "Prophet Secretary",
+      "year": 2015,
+      "venue": "ESA (SIDMA 2017)",
+      "url": "https://arxiv.org/abs/1507.01155"
+    },
+    "additional_refs": [
+      {
+        "authors": "Jose Correa, Raimundo Saona, Bruno Ziliotto",
+        "title": "Prophet Secretary Through Blind Strategies",
+        "year": 2019,
+        "venue": "SODA (Math. Programming 2021)",
+        "url": "https://arxiv.org/abs/1807.07483"
+      },
+      {
+        "authors": "Giordano Giambartolomei, Frederik Mallmann-Trenn, Raimundo Saona",
+        "title": "Prophet Inequalities: Separating Random Order from Order Selection",
+        "year": 2024,
+        "venue": "arXiv",
+        "url": "https://arxiv.org/abs/2304.04024"
+      }
+    ]
+  },
+  {
+    "id": "online-bipartite-matching-random-order",
+    "title": "Tight competitive ratio of online bipartite matching under random arrival",
+    "collection": "Market & Mechanism Design",
+    "area": "Matching Markets",
+    "tags": [
+      "online matching",
+      "bipartite matching",
+      "random order",
+      "RANKING",
+      "competitive ratio"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "With offline vertices known in advance and online vertices arriving in uniformly random order (matched immediately and irrevocably), what is the exact best-possible competitive ratio, and what is the exact ratio of the canonical RANKING algorithm?",
+    "full_statement": "Let $G=(L,R,E)$ be a bipartite graph in which the vertices $L$ are offline (known in advance) and the vertices of $R$ arrive online one at a time in uniformly random order. Upon arrival, each online vertex reveals its edges to $L$ and must be matched immediately and irrevocably to an available offline neighbor (or left unmatched). The objective is to maximize the cardinality of the matching, compared against the maximum matching $\\mathrm{OPT}(G)$. In the worst-case (adversarial) arrival model the optimal competitive ratio is exactly $1-1/e$; with uniformly random arrival order, randomness provably helps. Define $$\\rho^*=\\inf_G\\sup_{\\text{online algs}}\\frac{\\mathbb{E}[|\\text{ALG}|]}{|\\text{OPT}(G)|}.$$ Determine $\\rho^*$ (and the sub-question: the exact competitive ratio of the canonical RANKING algorithm in this random-order model). Known: $0.696\\le\\rho^*\\le 0.8206$.",
+    "known_results": "Lower bound: RANKING achieves >= 0.696 in random order (Mahdian-Yan 2011). Upper bound: ~0.8206 (Chierichetti et al., ICALP 2025, improving 0.823 of Manshadi-Oveis Gharan-Saberi). Exact optimal ratio open with a large gap.",
+    "where_posed": {
+      "text": "Model and adversarial-optimal result from Karp, Vazirani, Vazirani, 'An Optimal Algorithm for On-line Bipartite Matching', 1990, STOC.",
+      "url": "https://dl.acm.org/doi/10.1145/100216.100262"
+    },
+    "source": {
+      "authors": "Richard M. Karp, Umesh V. Vazirani, Vijay V. Vazirani",
+      "title": "An Optimal Algorithm for On-line Bipartite Matching",
+      "year": 1990,
+      "venue": "STOC",
+      "url": "https://dl.acm.org/doi/10.1145/100216.100262"
+    },
+    "additional_refs": [
+      {
+        "authors": "Mohammad Mahdian, Qiqi Yan",
+        "title": "Online Bipartite Matching with Random Arrivals: Strongly Factor-Revealing LPs",
+        "year": 2011,
+        "venue": "STOC",
+        "url": "https://dl.acm.org/doi/10.1145/1993636.1993716"
+      },
+      {
+        "authors": "Vahideh H. Manshadi, Shayan Oveis Gharan, Amin Saberi",
+        "title": "Online Stochastic Matching: Online Actions Based on Offline Statistics",
+        "year": 2011,
+        "venue": "SODA (Math. Oper. Res. 2012)",
+        "url": "https://arxiv.org/abs/1007.1673"
+      }
+    ]
+  },
+  {
+    "id": "ef1-po-polynomial-time",
+    "title": "Computing EF1 and Pareto-optimal allocations in polynomial time",
+    "collection": "Market & Mechanism Design",
+    "area": "Fair Division",
+    "tags": [
+      "fair division",
+      "EF1",
+      "Pareto optimality",
+      "computational complexity",
+      "indivisible goods"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "For indivisible goods with additive valuations, an allocation that is both EF1 (envy-free up to one good) and Pareto-optimal always exists, but the known algorithm is only pseudo-polynomial. Can such an allocation be computed in truly polynomial time?",
+    "full_statement": "There are $n$ agents with additive valuations $v_i:2^M\\to\\mathbb{Z}_{\\ge0}$ over a set $M$ of $m$ indivisible goods, with the valuations given in binary. An allocation is EF1 (envy-free up to one good) if any agent's envy toward another vanishes after removing some single good from the envied bundle, and (fractionally) Pareto-optimal if no other (fractional) allocation makes some agent better off without making another worse off. Such an allocation always exists (the maximum-Nash-welfare allocation is one), so the question is purely computational: is there an algorithm running in time $\\mathrm{poly}(n,m,\\log V_{\\max})$ (where $V_{\\max}$ is the largest value) that outputs an allocation that is simultaneously EF1 and fractionally Pareto-optimal? The known algorithm runs in only pseudo-polynomial time (polynomial in the magnitude of values, not their bit-length). The problem is in PLS and is not known to be PLS-hard, NP-hard, or in P. Determine whether a truly polynomial-time algorithm exists.",
+    "known_results": "Upper bound: pseudo-polynomial (Barman-Krishnamurthy-Vaish 2018); truly polynomial for a constant number of agents or a constant number of distinct values. No lower bound known (not known NP-hard or PLS-hard). Listed as an open problem in the Aziz-Li-Moulin-Wu survey.",
+    "where_posed": {
+      "text": "Pseudo-polynomial algorithm and the open computational question from Barman, Krishnamurthy, Vaish, 'Finding Fair and Efficient Allocations', 2018, EC; listed open in the Aziz-Li-Moulin-Wu survey.",
+      "url": "https://arxiv.org/abs/1707.04731"
+    },
+    "source": {
+      "authors": "Siddharth Barman, Sanath Kumar Krishnamurthy, Rohit Vaish",
+      "title": "Finding Fair and Efficient Allocations",
+      "year": 2018,
+      "venue": "EC",
+      "url": "https://arxiv.org/abs/1707.04731"
+    },
+    "additional_refs": [
+      {
+        "authors": "Haris Aziz, Bo Li, Herve Moulin, Xiaowei Wu",
+        "title": "Algorithmic Fair Allocation of Indivisible Items: A Survey and New Questions",
+        "year": 2022,
+        "venue": "ACM SIGecom Exchanges",
+        "url": "https://www.sigecom.org/exchanges/volume_20/1/AZIZ.pdf"
+      }
+    ]
+  },
+  {
+    "id": "envy-free-cake-cutting-query-complexity",
+    "title": "Query complexity of envy-free cake cutting",
+    "collection": "Market & Mechanism Design",
+    "area": "Fair Division",
+    "tags": [
+      "cake cutting",
+      "envy-freeness",
+      "query complexity",
+      "Robertson-Webb",
+      "divisible goods"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "In the Robertson-Webb query model for envy-free cake cutting, a bounded protocol exists but uses a tower of six exponentials in $n$ queries, while the best lower bound is only quadratic. What is the true query complexity?",
+    "full_statement": "In cake cutting, a divisible good (the cake, modeled as $[0,1]$) is to be divided among $n$ agents with general nonatomic additive valuations. In the Robertson-Webb query model, a protocol learns agents' valuations only through 'cut' queries (asking an agent to mark a point giving a specified value) and 'evaluate' queries (asking an agent the value of a specified interval). An allocation is envy-free if no agent prefers another agent's piece to her own. Let $\\mathrm{RW}(n)$ be the worst-case number of Robertson-Webb queries required by any deterministic protocol that returns an envy-free allocation of $[0,1]$ among $n$ agents. A finite, bounded envy-free protocol exists for every $n$ (Aziz-Mackenzie), but its query bound is a tower of six exponentials in $n$; the best lower bound is only quadratic. Known: $\\mathrm{RW}(n)=\\Omega(n^2)$ and $\\mathrm{RW}(n)\\le n^{n^{n^{n^{n^{n}}}}}$. Determine the true asymptotic growth of $\\mathrm{RW}(n)$; even an elementary (tower-free) upper bound or a super-quadratic lower bound is open.",
+    "known_results": "Procaccia proved the best general lower bound, $\\Omega(n^2)$ Robertson-Webb queries. Aziz and Mackenzie gave the first finite bounded protocol for every number of agents, but the upper bound is a tower of six exponentials in $n$. This is one of the largest known gaps in fair division; substantial progress is known only for special cases such as four agents. The open problem is to determine the true asymptotic query complexity, or even to obtain either a tower-free upper bound or a super-quadratic lower bound.",
+    "where_posed": {
+      "text": "Bounded protocol with tower-of-exponentials query bound in Aziz, Mackenzie, 'A Discrete and Bounded Envy-Free Cake Cutting Protocol for Any Number of Agents', 2016, FOCS (CACM 2020).",
+      "url": "https://arxiv.org/abs/1604.03655"
+    },
+    "source": {
+      "authors": "Haris Aziz, Simon Mackenzie",
+      "title": "A Discrete and Bounded Envy-Free Cake Cutting Protocol for Any Number of Agents",
+      "year": 2016,
+      "venue": "FOCS (CACM 2020)",
+      "url": "https://arxiv.org/abs/1604.03655"
+    },
+    "additional_refs": [
+      {
+        "authors": "Ariel D. Procaccia",
+        "title": "Thou Shalt Covet Thy Neighbor's Cake",
+        "year": 2009,
+        "venue": "IJCAI",
+        "url": ""
+      },
+      {
+        "authors": "Simina Branzei, Noam Nisan",
+        "title": "The Query Complexity of Cake Cutting",
+        "year": 2022,
+        "venue": "NeurIPS",
+        "url": "https://arxiv.org/abs/1705.02946"
+      }
+    ]
+  },
+  {
+    "id": "max-smti-approximation",
+    "title": "Best approximation ratio for maximum stable matching with ties",
+    "collection": "Market & Mechanism Design",
+    "area": "Matching Markets",
+    "tags": [
+      "stable matching",
+      "ties",
+      "incomplete lists",
+      "approximation",
+      "inapproximability"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "In stable marriage with ties and incomplete lists (SMTI), finding a maximum-cardinality weakly stable matching is NP-hard. What is the optimal polynomial-time approximation ratio?",
+    "full_statement": "In the stable marriage problem with ties and incomplete lists (SMTI), agents rank only some potential partners (incomplete lists) and may be indifferent among several (ties). A matching is weakly stable if there is no pair who both strictly prefer each other to their assigned partners. Because of ties and incompleteness, weakly stable matchings can have different sizes, and finding a maximum-cardinality one (MAX-SMTI) is NP-hard (indeed APX-hard). Determine the optimal polynomial-time approximation ratio $\\alpha^*$ for MAX-SMTI. Known: $\\tfrac{4}{3}\\le\\alpha^*\\le\\tfrac{3}{2}$ assuming the Unique Games Conjecture (UGC), and $\\tfrac{33}{29}\\le\\alpha^*\\le\\tfrac{3}{2}$ unconditionally.",
+    "known_results": "The best general approximation algorithm has ratio $3/2$, with analyses due to McDermid and related work of Paluch and Kiraly. On the hardness side, no $(4/3-\\epsilon)$-approximation exists under the Unique Games Conjecture, and an unconditional NP-hardness bound of $33/29\\approx 1.138$ is known. The open problem is to determine the exact approximation threshold for MAX-SMTI, which currently lies between $4/3$ and $3/2$ under UGC and between $33/29$ and $3/2$ unconditionally.",
+    "where_posed": {
+      "text": "3/2-approximation in McDermid, 'A 3/2-Approximation Algorithm for General Stable Marriage', 2009, ICALP.",
+      "url": "https://link.springer.com/chapter/10.1007/978-3-642-02927-1_57"
+    },
+    "source": {
+      "authors": "Eric McDermid",
+      "title": "A 3/2-Approximation Algorithm for General Stable Marriage",
+      "year": 2009,
+      "venue": "ICALP",
+      "url": "https://link.springer.com/chapter/10.1007/978-3-642-02927-1_57"
+    },
+    "additional_refs": [
+      {
+        "authors": "Magnus M. Halldorsson, Kazuo Iwama, Shuichi Miyazaki, Hiroki Yanagisawa",
+        "title": "Improved Approximation Results for the Stable Marriage Problem",
+        "year": 2007,
+        "venue": "ACM Trans. Algorithms",
+        "url": "https://dl.acm.org/doi/10.1145/1273340.1273346"
+      }
+    ]
+  },
+  {
+    "id": "subsidy-envy-freeness-monotone",
+    "title": "Minimum subsidy for envy-freeness with monotone valuations",
+    "collection": "Market & Mechanism Design",
+    "area": "Fair Division",
+    "tags": [
+      "fair division",
+      "subsidy",
+      "envy-freeness",
+      "indivisible goods",
+      "money"
+    ],
+    "status": "open",
+    "confidence": "medium",
+    "short_statement": "Indivisible goods plus cash subsidies can eliminate envy. For additive valuations with item values in $[0,1]$, one dollar per agent suffices and is tight. What is the minimum per-agent subsidy for general monotone valuations?",
+    "full_statement": "When indivisible goods cannot be divided fairly, monetary subsidies can eliminate envy: some agents are given cash so that nobody prefers another agent's bundle-plus-cash to their own. Consider $n$ agents with monotone valuations $v_i:2^M\\to\\mathbb{R}_{\\ge0}$ satisfying the marginal bound $v_i(S\\cup\\{e\\})-v_i(S)\\le 1$ for all $S$ and $e$ (each item adds at most $1$). Let $s^*(n)$ be the smallest value such that every instance admits an allocation $(X_1,\\dots,X_n)$ together with per-agent subsidies $p_i\\ge0$ satisfying $\\max_i p_i\\le s^*(n)$ that is envy-free: $v_i(X_i)+p_i\\ge v_i(X_j)+p_j$ for all agents $i,j$. For additive valuations the tight total subsidy is $n-1$ (i.e., one dollar per agent on average suffices and is tight). Determine $s^*(n)$ for general monotone valuations.",
+    "known_results": "Additive: total subsidy n-1 suffices and is tight (Brustle et al. 2020). Monotone (general): per-agent upper bound improved to < n-1.5 (total ~ ($n^2$-n-1)/2); lower bound only n-1 total. The factor gap for monotone valuations is open; conjectured target is the additive bound.",
+    "where_posed": {
+      "text": "Additive tight bound and the monotone question from Brustle, Dippel, Narayan, Suzuki, Vetta, 'One Dollar Each Eliminates Envy', 2020, EC.",
+      "url": "https://arxiv.org/abs/1912.02797"
+    },
+    "source": {
+      "authors": "Johannes Brustle, Jack Dippel, Vishnu V. Narayan, Mashbat Suzuki, Adrian Vetta",
+      "title": "One Dollar Each Eliminates Envy",
+      "year": 2020,
+      "venue": "EC",
+      "url": "https://arxiv.org/abs/1912.02797"
+    },
+    "additional_refs": [
+      {
+        "authors": "Daniel Halpern, Nisarg Shah",
+        "title": "Fair Division with Subsidy",
+        "year": 2019,
+        "venue": "SAGT",
+        "url": "https://link.springer.com/chapter/10.1007/978-3-030-30473-7_25"
+      }
+    ]
+  }
+]

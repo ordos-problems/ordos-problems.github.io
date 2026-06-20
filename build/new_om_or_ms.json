@@ -1,0 +1,898 @@
+[
+  {
+    "id": "strongly-polynomial-lp",
+    "title": "A strongly polynomial algorithm for linear programming (Smale's 9th problem)",
+    "collection": "Operations Research",
+    "area": "Linear Programming",
+    "tags": [
+      "linear programming",
+      "computational complexity",
+      "strongly polynomial",
+      "Smale"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "Is there an algorithm that solves every linear program using a number of arithmetic operations bounded by a polynomial in the number of variables and constraints alone — independent of the bit-length of the data?",
+    "full_statement": "Consider a linear program $\\max\\{c^\\top x : Ax \\le b\\}$ with rational data $A \\in \\mathbb{Q}^{m\\times n}$, $b\\in\\mathbb{Q}^m$, $c\\in\\mathbb{Q}^n$. An algorithm is \\emph{strongly polynomial} if (i) it uses a number of elementary arithmetic operations $(+,-,\\times,\\div,\\le)$ bounded by a polynomial in $m$ and $n$ only, and (ii) the numbers occurring in the computation have bit-size bounded by a polynomial in the input size. Khachiyan's ellipsoid method (1979) and Karmarkar's interior-point method (1984) are \\emph{weakly} polynomial: their operation count depends on the bit-length $L$ of the data. Question (Smale's 9th problem): does a strongly polynomial algorithm for general linear programming exist?",
+    "known_results": "Strongly polynomial algorithms are known for important special cases: combinatorial LPs where entries of $A$ are bounded (Tardos 1986, depending only on $A$), LPs with at most two nonzeros per row or column, and fixed dimension (Megiddo). Recent layered/interior-point advances (e.g., Dadush–Huiberts–Natura–Végh) give bounds depending on the constraint-matrix condition number. The general case is open.",
+    "where_posed": {
+      "text": "Posed as Problem 9 in S. Smale, 'Mathematical problems for the next century' (1998); long studied since Tardos (1986).",
+      "url": "https://link.springer.com/article/10.1007/BF03025291"
+    },
+    "source": {
+      "authors": "Steve Smale",
+      "title": "Mathematical Problems for the Next Century",
+      "year": 1998,
+      "venue": "The Mathematical Intelligencer",
+      "url": "https://link.springer.com/article/10.1007/BF03025291"
+    },
+    "additional_refs": [
+      {
+        "authors": "Éva Tardos",
+        "title": "A Strongly Polynomial Algorithm to Solve Combinatorial Linear Programs",
+        "year": 1986,
+        "venue": "Operations Research",
+        "url": "https://doi.org/10.1287/opre.34.2.250"
+      },
+      {
+        "authors": "Daniel Dadush, Sophie Huiberts, Bento Natura, László A. Végh",
+        "title": "A scaling-invariant algorithm for linear programming whose running time depends only on the constraint matrix",
+        "year": 2020,
+        "venue": "STOC",
+        "url": "https://arxiv.org/abs/1912.06252"
+      }
+    ]
+  },
+  {
+    "id": "simplex-polynomial-pivot-rule",
+    "title": "A polynomial pivot rule for the simplex method",
+    "collection": "Operations Research",
+    "area": "Linear Programming",
+    "tags": [
+      "simplex method",
+      "pivot rule",
+      "linear programming",
+      "Klee-Minty"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "Is there a pivot rule under which the simplex method always solves a linear program in a number of pivot steps bounded by a polynomial in the number of variables and constraints?",
+    "full_statement": "The simplex method solves $\\max\\{c^\\top x : Ax\\le b,\\ x\\ge 0\\}$ by walking along edges of the feasible polyhedron from vertex to adjacent improving vertex; a \\emph{pivot rule} chooses, at each vertex, which improving edge to follow. Klee and Minty (1972) showed Dantzig's most-negative-reduced-cost rule can take $2^n-1$ steps on a deformed cube, and analogous exponential lower bounds are known for essentially every classical deterministic rule (Bland, steepest edge, greatest improvement, etc.). Question: does there exist a (deterministic or randomized) pivot rule for which the number of pivot steps is bounded by a polynomial in $m$ and $n$ for every linear program?",
+    "known_results": "Best known are subexponential randomized rules: Random-Facet achieves $\\exp(O(\\sqrt{n\\log n}))$ pivots (Kalai 1992; Matoušek–Sharir–Welzl), later shown essentially tight for such rules (Friedmann–Hansen–Zwick). No polynomial pivot rule is known. The question is intimately tied to the polynomial Hirsch conjecture (a polynomial diameter bound is necessary for any polynomial pivot rule).",
+    "where_posed": {
+      "text": "A central open problem of linear optimization since Klee–Minty (1972); see Kalai (1992) and Todd's surveys.",
+      "url": "https://www.sciencedirect.com/science/article/pii/B9780125104302500190"
+    },
+    "source": {
+      "authors": "Victor Klee, George J. Minty",
+      "title": "How Good is the Simplex Algorithm?",
+      "year": 1972,
+      "venue": "Inequalities III (Academic Press)",
+      "url": "https://www.sciencedirect.com/science/article/pii/B9780125104302500190"
+    },
+    "additional_refs": [
+      {
+        "authors": "Gil Kalai",
+        "title": "A subexponential randomized simplex algorithm",
+        "year": 1992,
+        "venue": "STOC",
+        "url": "https://doi.org/10.1145/129712.129759"
+      },
+      {
+        "authors": "Oliver Friedmann, Thomas Dueholm Hansen, Uri Zwick",
+        "title": "Subexponential lower bounds for randomized pivoting rules for the simplex algorithm",
+        "year": 2011,
+        "venue": "STOC",
+        "url": "https://doi.org/10.1145/1993636.1993675"
+      }
+    ]
+  },
+  {
+    "id": "polynomial-hirsch-conjecture",
+    "title": "The Polynomial Hirsch Conjecture",
+    "collection": "Operations Research",
+    "area": "Polyhedral Combinatorics",
+    "tags": [
+      "polytope diameter",
+      "Hirsch conjecture",
+      "linear programming",
+      "simplex method"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "Is the combinatorial diameter of the graph of a $d$-dimensional polytope with $n$ facets bounded by a polynomial in $n$ and $d$?",
+    "full_statement": "Let $P\\subseteq\\mathbb{R}^d$ be a convex polytope defined by $n$ facet inequalities. Its \\emph{graph} has the vertices of $P$ as nodes, with an edge between two vertices if they share an edge (1-dimensional face) of $P$. The \\emph{combinatorial diameter} of $P$ is the maximum, over all pairs of vertices, of the graph distance between them. The Hirsch conjecture (1957) asserted this diameter is at most $n-d$; Santos (2012) constructed a counterexample. The \\emph{polynomial Hirsch conjecture} asks: is there a polynomial $p$ such that the diameter is at most $p(n,d)$ for every polytope? A positive answer is a prerequisite for any polynomial-time pivot rule for the simplex method.",
+    "known_results": "Upper bounds are only quasi-polynomial: the Kalai–Kleitman bound $n^{\\log_2 d + O(1)}$ (1992), refined by Todd to $(n-d)^{\\log_2 d}$ and by Sukegawa. Linear-in-$n$ bounds are known for special classes. Lower bounds are linear. Whether any polynomial upper bound holds is open.",
+    "where_posed": {
+      "text": "The Hirsch conjecture (Dantzig 1957) was disproved by Santos (2012); the polynomial version is the surviving central question (popularized via Polymath3, Kalai).",
+      "url": "https://arxiv.org/abs/1006.2814"
+    },
+    "source": {
+      "authors": "Francisco Santos",
+      "title": "A counterexample to the Hirsch conjecture",
+      "year": 2012,
+      "venue": "Annals of Mathematics",
+      "url": "https://arxiv.org/abs/1006.2814"
+    },
+    "additional_refs": [
+      {
+        "authors": "Gil Kalai, Daniel J. Kleitman",
+        "title": "A quasi-polynomial bound for the diameter of graphs of polyhedra",
+        "year": 1992,
+        "venue": "Bulletin of the AMS",
+        "url": "https://www.ams.org/journals/bull/1992-26-02/S0273-0979-1992-00285-9/"
+      },
+      {
+        "authors": "Michael J. Todd",
+        "title": "An improved Kalai–Kleitman bound for the diameter of a polyhedron",
+        "year": 2014,
+        "venue": "SIAM J. Discrete Mathematics",
+        "url": "https://arxiv.org/abs/1402.3579"
+      }
+    ]
+  },
+  {
+    "id": "strongly-polynomial-mdp",
+    "title": "A strongly polynomial algorithm for Markov decision processes",
+    "collection": "Operations Research",
+    "area": "Dynamic Programming",
+    "tags": [
+      "Markov decision process",
+      "policy iteration",
+      "strongly polynomial",
+      "dynamic programming"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "Is there a strongly polynomial algorithm for discounted Markov decision processes when the discount factor is part of the input (equivalently, is policy iteration polynomial for input discount)?",
+    "full_statement": "A discounted MDP has a finite state set $S$, finite action sets $A_s$, transition probabilities $p(s'\\,|\\,s,a)$, rewards $r(s,a)$, and discount factor $\\gamma\\in(0,1)$; the goal is a stationary policy maximizing expected discounted reward $\\mathbb{E}[\\sum_{t\\ge0}\\gamma^t r(s_t,a_t)]$. This is a linear program with $|S|$ variables. Ye (2011) proved that Howard's policy-iteration method and the simplex method (Dantzig rule) are strongly polynomial when $\\gamma$ is a fixed constant, with complexity bounded by a polynomial in $|S|$ and $\\sum_s|A_s|$ but blowing up as $\\gamma\\to1$. Question: when $\\gamma$ is part of the input, is policy iteration polynomial — and more broadly, does any strongly polynomial algorithm exist for MDPs (a natural special case on the road to strongly polynomial LP)?",
+    "known_results": "Ye (2011) gives strong polynomiality for fixed $\\gamma$ (bound $\\sim \\frac{|S|^2\\,|A|}{1-\\gamma}\\log\\frac{|S|}{1-\\gamma}$). Post–Ye showed the simplex method is strongly polynomial for deterministic MDPs regardless of $\\gamma$. For general MDPs with input $\\gamma$ (or average-reward), strong polynomiality is open; Ye explicitly notes it remains open whether policy iteration is polynomial in this regime, or whether a strongly polynomial algorithm exists for MDPs or LP in general.",
+    "where_posed": {
+      "text": "Stated as an open question in Y. Ye, 'The Simplex and Policy-Iteration Methods Are Strongly Polynomial for the MDP with a Fixed Discount Rate' (Math. of OR 2011).",
+      "url": "https://web.stanford.edu/~yyye/SimplexMDP4.pdf"
+    },
+    "source": {
+      "authors": "Yinyu Ye",
+      "title": "The Simplex and Policy-Iteration Methods Are Strongly Polynomial for the Markov Decision Problem with a Fixed Discount Rate",
+      "year": 2011,
+      "venue": "Mathematics of Operations Research",
+      "url": "https://web.stanford.edu/~yyye/SimplexMDP4.pdf"
+    },
+    "additional_refs": [
+      {
+        "authors": "Ian Post, Yinyu Ye",
+        "title": "The Simplex Method is Strongly Polynomial for Deterministic Markov Decision Processes",
+        "year": 2015,
+        "venue": "Mathematics of Operations Research",
+        "url": "https://arxiv.org/abs/1208.5083"
+      }
+    ]
+  },
+  {
+    "id": "bhh-tsp-constant",
+    "title": "The exact value of the Beardwood–Halton–Hammersley TSP constant",
+    "collection": "Operations Research",
+    "area": "Probabilistic Combinatorial Optimization",
+    "tags": [
+      "traveling salesman problem",
+      "BHH constant",
+      "random Euclidean",
+      "asymptotics"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "For $n$ points drawn uniformly at random in the unit square, the shortest tour length divided by $\\sqrt{n}$ converges to a universal constant $\\beta$. What is the exact value of $\\beta$?",
+    "full_statement": "Let $X_1,\\dots,X_n$ be independent and uniformly distributed in the unit square $[0,1]^2$, and let $L_n$ denote the length of the shortest closed tour (the optimal Euclidean Traveling Salesman tour) visiting all of them. Beardwood, Halton, and Hammersley (1959) proved that there is a constant $\\beta>0$ with $L_n/\\sqrt{n}\\to\\beta$ almost surely as $n\\to\\infty$. Determine the exact value of $\\beta$ (or give matching rigorous upper and lower bounds).",
+    "known_results": "Monte-Carlo estimates give $\\beta\\approx 0.7124$. The best rigorous bounds are roughly $0.6277 \\le \\beta \\le 0.9038$ (lower bound via Gaudio–Jaillet 2019 / Steele-type arguments; upper bound Carlsson–Yu 2023), with arguments suggesting the current upper-bound technique cannot go below $\\approx 0.88$. The exact value is unknown.",
+    "where_posed": {
+      "text": "Originates in Beardwood–Halton–Hammersley (1959); a long-standing open problem highlighted in Steele, 'Probability Theory and Combinatorial Optimization' (1997).",
+      "url": "https://doi.org/10.1017/S0305004100034095"
+    },
+    "source": {
+      "authors": "Jillian Beardwood, J. H. Halton, J. M. Hammersley",
+      "title": "The shortest path through many points",
+      "year": 1959,
+      "venue": "Proc. Cambridge Philosophical Society",
+      "url": "https://doi.org/10.1017/S0305004100034095"
+    },
+    "additional_refs": [
+      {
+        "authors": "John Gunnar Carlsson, Yiwei Yu",
+        "title": "A New Upper Bound for the Euclidean TSP Constant",
+        "year": 2023,
+        "venue": "INFORMS Journal on Computing",
+        "url": "https://optimization-online.org/2023/06/a-new-upper-bound-of-the-euclidean-tsp-constant/"
+      },
+      {
+        "authors": "Julia Gaudio, Patrick Jaillet",
+        "title": "An improved lower bound for the Traveling Salesman constant",
+        "year": 2020,
+        "venue": "Operations Research Letters",
+        "url": "https://arxiv.org/abs/1909.06078"
+      }
+    ]
+  },
+  {
+    "id": "two-stage-stochastic-programming-complexity",
+    "title": "Complexity and approximability of two-stage stochastic programming",
+    "collection": "Operations Research",
+    "area": "Stochastic Programming",
+    "tags": [
+      "stochastic programming",
+      "computational complexity",
+      "sample average approximation",
+      "#P-hardness"
+    ],
+    "status": "open",
+    "confidence": "medium",
+    "short_statement": "What is the exact computational complexity of evaluating/optimizing a two-stage stochastic linear program, and does it admit an efficient (e.g. fully polynomial randomized) approximation scheme?",
+    "full_statement": "A two-stage stochastic linear program is $\\min_{x\\in X}\\; c^\\top x + \\mathbb{E}_{\\xi}\\,[\\,Q(x,\\xi)\\,]$, where the recourse cost is $Q(x,\\xi)=\\min\\{q^\\top y : Wy \\ge h(\\xi)-T(\\xi)x,\\ y\\ge 0\\}$ and $\\xi$ is a random vector with a known distribution (e.g. independent components). The difficulty is evaluating the expectation $\\mathbb{E}_\\xi[Q(x,\\xi)]$, a high-dimensional integral. Question: pin down the exact complexity of approximating the optimal value — in particular, does the problem admit a fully polynomial randomized approximation scheme (FPRAS), or is approximation itself #P-hard? Relatedly, characterize the tight sample size needed by Sample Average Approximation (SAA) to guarantee an $\\epsilon$-optimal solution with high probability.",
+    "known_results": "Dyer–Stougie (2006) argued two-stage stochastic programming is #P-hard and multistage is PSPACE-hard under explicit independent distributions (a subsequent note by Hanasusanto–Kuhn–Wiesemann (2016) corrected/clarified parts of the two-stage argument). SAA enjoys exponential convergence of the probability of a bad solution in the sample size, with sample complexity polynomial in dimension and $1/\\epsilon^2$ for fixed classes (Kleywegt–Shapiro–Homem-de-Mello; Shapiro–Nemirovski). The precise complexity/approximability and tight sample bounds for general two-stage problems remain unsettled.",
+    "where_posed": {
+      "text": "Complexity questions posed in Dyer & Stougie, 'Computational complexity of stochastic programming problems' (Math. Programming 2006); see also the comment of Hanasusanto–Kuhn–Wiesemann (2016).",
+      "url": "https://link.springer.com/article/10.1007/s10107-005-0597-0"
+    },
+    "source": {
+      "authors": "Martin Dyer, Leen Stougie",
+      "title": "Computational complexity of stochastic programming problems",
+      "year": 2006,
+      "venue": "Mathematical Programming",
+      "url": "https://link.springer.com/article/10.1007/s10107-005-0597-0"
+    },
+    "additional_refs": [
+      {
+        "authors": "Grani A. Hanasusanto, Daniel Kuhn, Wolfram Wiesemann",
+        "title": "A comment on 'computational complexity of stochastic programming problems'",
+        "year": 2016,
+        "venue": "Mathematical Programming",
+        "url": "https://link.springer.com/article/10.1007/s10107-015-0958-2"
+      },
+      {
+        "authors": "Anton J. Kleywegt, Alexander Shapiro, Tito Homem-de-Mello",
+        "title": "The Sample Average Approximation Method for Stochastic Discrete Optimization",
+        "year": 2002,
+        "venue": "SIAM J. Optimization",
+        "url": "https://doi.org/10.1137/S1052623499363220"
+      }
+    ]
+  },
+  {
+    "id": "generalized-cmu-exact-optimality",
+    "title": "Exact optimality of the generalized cμ rule for convex delay costs",
+    "collection": "Operations Research",
+    "area": "Queueing",
+    "tags": [
+      "queueing",
+      "scheduling",
+      "generalized cmu rule",
+      "convex delay cost",
+      "stochastic control"
+    ],
+    "status": "partially resolved",
+    "confidence": "medium",
+    "short_statement": "For scheduling a multiclass queue with convex delay costs, the generalized $c\\mu$ rule is optimal in heavy traffic; is it (or some clean index policy) exactly optimal outside the heavy-traffic limit?",
+    "full_statement": "Consider a multiclass queue: customer classes $i=1,\\dots,K$ with queue lengths $Q_i(t)$, service rates $\\mu_i$ (or rates $\\mu_{ij}$ on flexible servers $j$), and class-$i$ delay cost given by a nondecreasing convex function $C_i(\\cdot)$. The objective is to choose a (possibly preemptive) scheduling policy minimizing the expected cumulative cost $\\mathbb{E}\\int_0^T \\sum_i C_i(Q_i(t))\\,dt$ (or its long-run average). The generalized $c\\mu$ rule serves, whenever a server is free, a class in $\\arg\\max_i C_i'(Q_i(t))\\,\\mu_i$. Van Mieghem (1995) proved this rule is asymptotically optimal in heavy traffic. Question: is the generalized $c\\mu$ rule (or another explicit index policy) exactly optimal for the original (non-asymptotic) stochastic control problem, and if not, characterize the exact optimal policy?",
+    "known_results": "Heavy-traffic (diffusion-scale) asymptotic optimality is established for single flexible server (Van Mieghem 1995) and multi-server (Mandelbaum–Stolyar 2004). For linear costs $C_i(x)=c_i x$ the rule reduces to the classical $c\\mu$ rule, which is exactly optimal (Klimov / Cox–Smith). For strictly convex costs, exact optimality is known only in special cases; the general exact-optimal policy is open.",
+    "where_posed": {
+      "text": "The exact- vs asymptotic-optimality gap is discussed in Van Mieghem, 'Dynamic Scheduling with Convex Delay Costs: The Generalized c-mu Rule' (Annals of Applied Probability 1995).",
+      "url": "https://projecteuclid.org/euclid.aoap/1177004706"
+    },
+    "source": {
+      "authors": "Jan A. Van Mieghem",
+      "title": "Dynamic Scheduling with Convex Delay Costs: The Generalized c-mu Rule",
+      "year": 1995,
+      "venue": "Annals of Applied Probability",
+      "url": "https://projecteuclid.org/euclid.aoap/1177004706"
+    },
+    "additional_refs": [
+      {
+        "authors": "Avi Mandelbaum, Alexander L. Stolyar",
+        "title": "Scheduling Flexible Servers with Convex Delay Costs: Heavy-Traffic Optimality of the Generalized c-mu Rule",
+        "year": 2004,
+        "venue": "Operations Research",
+        "url": "https://doi.org/10.1287/opre.1040.0125"
+      }
+    ]
+  },
+  {
+    "id": "svf-appointment-sequencing",
+    "title": "Optimality of smallest-variance-first sequencing in appointment scheduling",
+    "collection": "Operations Management",
+    "area": "Healthcare Operations",
+    "tags": [
+      "appointment scheduling",
+      "sequencing",
+      "stochastic service times",
+      "healthcare operations",
+      "conjecture"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "When sequencing customers with stochastic service times at a single server, is it optimal to order them by increasing variance (smallest-variance-first)?",
+    "full_statement": "A single server must serve $n$ customers (e.g. patients, surgeries) whose service times $S_1,\\dots,S_n$ are independent with known distributions. The customers are placed in a sequence and given appointment times; the cost is the expected weighted sum of customer waiting times and server idle time (and possibly overtime). For exponentially distributed service times, Wang (1999) proved that sequencing customers in increasing order of variance — equivalently increasing mean for exponentials — minimizes expected total cost for $n=2$, and conjectured optimality of this 'smallest-variance-first' (SVF) rule for all $n$. Question: is SVF sequencing optimal for general $n$ (for exponential service times, and more generally under a suitable variability/dispersion ordering)?",
+    "known_results": "Weiss (1990) introduced a dispersion measure, proved an ordering optimal for $n=2$, and disproved his measure's optimality at $n=3$. Wang (1999) established SVF optimality for $n=2$ with exponential service times and conjectured it for all $n$. Partial and asymptotic results and counterexamples in variants exist; the general-$n$ optimality of SVF remains open.",
+    "where_posed": {
+      "text": "Conjectured in P. P. Wang, 'Sequencing and scheduling N customers for a stochastic server' (EJOR 1999); foundations in Weiss (1990).",
+      "url": ""
+    },
+    "source": {
+      "authors": "Pao-Ping Wang",
+      "title": "Sequencing and scheduling N customers for a stochastic server",
+      "year": 1999,
+      "venue": "European Journal of Operational Research",
+      "url": ""
+    },
+    "additional_refs": [
+      {
+        "authors": "Elliott N. Weiss",
+        "title": "Models for Determining Estimated Start Times and Case Orderings in Hospital Operating Rooms",
+        "year": 1990,
+        "venue": "IIE Transactions",
+        "url": "https://doi.org/10.1080/07408179008964166"
+      },
+      {
+        "authors": "Authors per arXiv:1812.01467",
+        "title": "Performance of the smallest-variance-first rule in appointment sequencing",
+        "year": 2019,
+        "venue": "arXiv",
+        "url": "https://arxiv.org/abs/1812.01467"
+      }
+    ]
+  },
+  {
+    "id": "constrained-assortment-markov-chain",
+    "title": "Best approximation ratio for constrained assortment under the Markov-chain choice model",
+    "collection": "Operations Management",
+    "area": "Assortment Optimization",
+    "tags": [
+      "assortment optimization",
+      "Markov chain choice model",
+      "approximation algorithms",
+      "revenue management"
+    ],
+    "status": "open",
+    "confidence": "medium",
+    "short_statement": "What is the best possible polynomial-time approximation ratio for cardinality- or capacity-constrained assortment optimization under the Markov-chain choice model?",
+    "full_statement": "In the Markov-chain choice model (Blanchet–Gallego–Goyal 2016), there are $n$ substitutable products with prices $p_i$. An arriving customer initially considers product $i$ with probability $\\lambda_i$ (with $\\sum_i \\lambda_i + \\lambda_0 = 1$, where $0$ is the no-purchase option); if the considered product is not offered, the customer transitions to product $j$ with probability $\\rho_{ij}$, repeating until reaching an offered product (a purchase) or the no-purchase state. Given a feasibility constraint on the offered set $S$ — a cardinality bound $|S|\\le k$, or knapsack/capacity weights $\\sum_{i\\in S} w_i \\le W$ — choose $S$ to maximize expected revenue. The unconstrained problem is polynomial-time solvable; the constrained problem is APX-hard. Question: determine the best achievable polynomial-time approximation ratio for the constrained problem.",
+    "known_results": "Désir–Goyal–Segev–Ye (2020) prove the capacity-constrained problem is APX-hard (so no PTAS unless P=NP) and give constant-factor approximation algorithms for the cardinality- and capacity-constrained versions. The exact best-possible ratio — closing the gap between the achievable constant and the APX-hardness threshold — is open.",
+    "where_posed": {
+      "text": "Open gap left by Désir, Goyal, Segev, Ye, 'Constrained Assortment Optimization Under the Markov Chain-based Choice Model' (Management Science 2020).",
+      "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2018.3230"
+    },
+    "source": {
+      "authors": "Antoine Désir, Vineet Goyal, Danny Segev, Chun Ye",
+      "title": "Constrained Assortment Optimization Under the Markov Chain-based Choice Model",
+      "year": 2020,
+      "venue": "Management Science",
+      "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2018.3230"
+    },
+    "additional_refs": [
+      {
+        "authors": "Jose Blanchet, Guillermo Gallego, Vineet Goyal",
+        "title": "A Markov Chain Approximation to Choice Modeling",
+        "year": 2016,
+        "venue": "Operations Research",
+        "url": "https://pubsonline.informs.org/doi/abs/10.1287/opre.2016.1505"
+      }
+    ]
+  },
+  {
+    "id": "perishable-inventory-optimal-policy",
+    "title": "A simple optimal policy for perishable inventory with fixed lifetime ≥ 3",
+    "collection": "Operations Management",
+    "area": "Inventory",
+    "tags": [
+      "perishable inventory",
+      "fixed lifetime",
+      "optimal policy",
+      "asymptotic optimality",
+      "dynamic programming"
+    ],
+    "status": "partially resolved",
+    "confidence": "medium",
+    "short_statement": "For periodic-review inventory of a product that expires after a fixed number of periods ($\\ge 3$), is any simple ordering policy exactly or asymptotically optimal?",
+    "full_statement": "Consider a single item under periodic review whose units perish exactly $m$ periods after arrival (fixed shelf life), with i.i.d. demand, FIFO issuance, and linear holding, outdating (expiry), and shortage (or lost-sales) costs. The state needed for the dynamic program is the age profile of on-hand stock — the vector $(x_1,\\dots,x_{m-1})$ of quantities with $1,\\dots,m-1$ periods of remaining life — so the optimal order quantity is a function of this whole vector. For $m\\ge 3$ the optimal policy is not of base-stock/order-up-to form and is computationally intractable (curse of dimensionality). Question: does there exist a simple, tractable policy (e.g. an order-up-to rule in total inventory, or a critical-number policy) that is exactly optimal for $m\\ge 3$, or that is provably asymptotically optimal with explicit performance guarantees?",
+    "known_results": "The two-period case $m=2$ is well understood (Nahmias–Pierskalla 1973). For $m\\ge 3$ no simple optimal policy is known; Nahmias (1976) gives an effective approximate critical-number heuristic. Recent work proves asymptotic optimality of base-stock policies (as the outdating/penalty cost structure or lifetime grows) and of constant-order policies in certain regimes, but a simple policy that is exactly optimal, or asymptotically optimal with tight finite-horizon guarantees in general, remains open.",
+    "where_posed": {
+      "text": "Open problems highlighted in S. Nahmias, 'Perishable Inventory Theory: A Review' (Operations Research 1982).",
+      "url": "https://pubsonline.informs.org/doi/10.1287/opre.30.4.680"
+    },
+    "source": {
+      "authors": "Steven Nahmias",
+      "title": "Perishable Inventory Theory: A Review",
+      "year": 1982,
+      "venue": "Operations Research",
+      "url": "https://pubsonline.informs.org/doi/10.1287/opre.30.4.680"
+    },
+    "additional_refs": [
+      {
+        "authors": "Steven Nahmias, William P. Pierskalla",
+        "title": "Optimal ordering policies for a product that perishes in two periods subject to stochastic demand",
+        "year": 1973,
+        "venue": "Naval Research Logistics Quarterly",
+        "url": "https://scholar.google.com/scholar?q=Nahmias+Pierskalla+1973+product+perishes+two+periods+stochastic+demand"
+      },
+      {
+        "authors": "Recent work on asymptotic optimality (e.g., Bu, Gong, Chao; Chen et al.)",
+        "title": "Asymptotic optimality of base-stock and constant-order policies for perishable inventory",
+        "year": 2023,
+        "venue": "Operations Research / Management Science",
+        "url": "https://scholar.google.com/scholar?q=asymptotic+optimality+perishable+inventory+base-stock+constant-order"
+      }
+    ]
+  },
+  {
+    "id": "dynamic-matching-thickness-optimal-policy",
+    "title": "Optimal policy in dynamic matching markets with stochastic arrivals and departures",
+    "collection": "Management Science",
+    "area": "Dynamic Matching",
+    "tags": [
+      "dynamic matching",
+      "market design",
+      "thickness",
+      "optimal stopping",
+      "networks"
+    ],
+    "status": "open",
+    "confidence": "medium",
+    "short_statement": "In a market where agents arrive and depart over time and can only be matched to compatible partners present at the same time, what is the optimal matching policy — and exactly how valuable is waiting to 'thicken' the market?",
+    "full_statement": "Agents arrive to a market as a Poisson process of rate $m$; each ordered/unordered pair of present agents is compatible independently with a small probability (yielding a sparse random compatibility graph with average degree $d$); each agent, if not yet matched, departs after an independent $\\mathrm{Exp}(1)$ lifetime. A planner observes the compatibility graph over time (in the informed variant, also learns when an agent is about to depart) and decides when and whom to match (a match removes two compatible present agents). The objective is to minimize the long-run fraction of agents who perish unmatched (or expected waiting plus loss). Akbarpour–Li–Oveis Gharan (2020) show greedy matching is near-optimal without departure information, while a 'patient' waiting policy is much better with it, and characterize the optimal waiting threshold within a restricted policy class. Question: characterize the optimal dynamic matching policy and the exact achievable loss in the general model — beyond the restricted class and beyond the specific sparsity regime.",
+    "known_results": "Greedy loses an $O(1/d)$ fraction without departure info; with departure info, waiting reduces loss to $O(e^{-d}/d)$-type rates; the optimal policy is characterized only within a restricted class and a specific random-graph regime (Akbarpour–Li–Oveis Gharan, JPE 2020). The general optimal policy, exact loss, and behavior on structured (non-random) compatibility graphs are open and actively studied.",
+    "where_posed": {
+      "text": "Restricted-class optimality and the general open question are in Akbarpour, Li, Oveis Gharan, 'Thickness and Information in Dynamic Matching Markets' (J. Political Economy 2020).",
+      "url": "https://scholar.harvard.edu/shengwu_li/publications/thickness-and-information-dynamic-matching-markets"
+    },
+    "source": {
+      "authors": "Mohammad Akbarpour, Shengwu Li, Shayan Oveis Gharan",
+      "title": "Thickness and Information in Dynamic Matching Markets",
+      "year": 2020,
+      "venue": "Journal of Political Economy",
+      "url": "https://scholar.harvard.edu/shengwu_li/publications/thickness-and-information-dynamic-matching-markets"
+    },
+    "additional_refs": [
+      {
+        "authors": "Itai Ashlagi, Afshin Nikzad, Philipp Strack and others",
+        "title": "When to Match (cost-balancing principle for dynamic markets)",
+        "year": 2026,
+        "venue": "arXiv",
+        "url": "https://arxiv.org/abs/2601.21858"
+      }
+    ]
+  },
+  {
+    "id": "greedy-dynamic-matching-heterogeneous-departures",
+    "title": "Greedy dynamic matching with heterogeneous departure rates",
+    "collection": "Management Science",
+    "area": "Dynamic Matching",
+    "tags": [
+      "dynamic matching",
+      "greedy policies",
+      "abandonment",
+      "competitive analysis",
+      "online matching"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "In dynamic matching with Poisson arrivals, exponential abandonment and rewards, does the LP-selected greedy policy of Arnosti and Simon always achieve the tight $1/2$ ratio against the omniscient benchmark without any homogeneous-departure-rate assumption?",
+    "full_statement": "There is a finite set of types $T$. Type $i$ agents arrive according to an independent Poisson process with rate $\\lambda_i$, abandon if unmatched after an independent exponential time with rate $\\mu_i$, and matching an earlier type-$i$ agent to an arriving type-$j$ agent earns reward $r_{ij}$. The objective is the long-run steady-state reward rate. The benchmark $\\mathrm{OMN}(I)$ is an omniscient policy that knows the full arrival and departure sequence. A greedy policy fixes, for each arriving type, an ordered list of acceptable waiting types and immediately matches to the best present acceptable type if one exists. Arnosti and Simon define an LP-based procedure that selects a greedy policy $\\mathrm{ALG}(I)$. They prove $V(\\mathrm{ALG}(I),I) \\ge \\frac12\\mathrm{OMN}(I)$ when all departure rates are equal, and in bipartite instances when departure rates are equal within each side; they also prove the two-type heterogeneous case. The open problem is to prove or disprove the same guarantee for arbitrary heterogeneous departure rates $\\mu_i$ and rewards $r_{ij}$: $$ V(\\mathrm{ALG}(I),I) \\ge \\frac12\\mathrm{OMN}(I) \\quad \\text{for every instance } I. $$ Equivalently, determine whether a well-chosen deterministic greedy policy always obtains the best possible $1/2$ competitive ratio against the omniscient benchmark in the general dynamic matching-with-abandonment model.",
+    "known_results": "Collina et al. (2020) gave a $1/8$ guarantee against the omniscient benchmark in the general heterogeneous-arrival/departure model. Arnosti and Simon prove a tight $1/2$ guarantee for their LP-selected greedy policy under homogeneous departures, and for bipartite instances with same-side homogeneous departures; no online policy can guarantee more than $1/2$ even in homogeneous-departure instances. Their simulations find no counterexample in heterogeneous instances, and they prove the conjecture for two types.",
+    "where_posed": {
+      "text": "Conjecture 1 and the discussion section of Arnosti and Simon, 'Greedy Dynamic Matching': extend the $1/2$ omniscient-benchmark guarantee for the LP-selected greedy policy to general departure rates $\\mu_i$.",
+      "url": "https://arxiv.org/abs/2507.04551"
+    },
+    "source": {
+      "authors": "Nick Arnosti, Felipe Simon",
+      "title": "Greedy Dynamic Matching",
+      "year": 2025,
+      "venue": "arXiv:2507.04551",
+      "url": "https://arxiv.org/abs/2507.04551"
+    },
+    "additional_refs": [
+      {
+        "authors": "Nicholas Collina, Nicole Immorlica, Kevin Leyton-Brown, Brendan Lucier, Neil Newman",
+        "title": "Dynamic weighted matching with heterogeneous arrival and departure rates",
+        "year": 2020,
+        "venue": "WINE 2020",
+        "url": "https://doi.org/10.1007/978-3-030-64946-3_2"
+      },
+      {
+        "authors": "Ali Aouad, Ozgur Saritac",
+        "title": "Dynamic Stochastic Matching Under Limited Time",
+        "year": 2022,
+        "venue": "Operations Research",
+        "url": "https://doi.org/10.1287/opre.2021.2164"
+      }
+    ]
+  },
+  {
+    "id": "dynamic-barter-kidney-exchange-optimal-policy",
+    "title": "Optimal dynamic policy for kidney exchange with long cycles and chains",
+    "collection": "Operations Management",
+    "area": "Dynamic Matching",
+    "tags": [
+      "kidney exchange",
+      "dynamic barter",
+      "matching",
+      "greedy",
+      "operations"
+    ],
+    "status": "open",
+    "confidence": "medium",
+    "short_statement": "In a dynamically arriving kidney-exchange pool, is matching immediately (greedily) optimal once exchanges via cycles of length $\\ge 3$ or altruistic-donor chains are allowed - and if not, what is the optimal or best competitive policy?",
+    "full_statement": "Incompatible patient–donor pairs arrive over time to an exchange pool; a directed compatibility graph forms among present pairs. A transplant is realized by clearing a directed cycle of length at most $L$ (e.g. $L=2$ pairwise swaps or $L=3$ three-way exchanges) or a chain initiated by a non-directed (altruistic) donor; cleared pairs leave. Pairs may also depart/perish if unmatched. The planner chooses when to match and which cycles/chains to clear, to maximize the number (or weighted value) of transplants, or minimize average waiting. Anderson–Ashlagi–Gamarnik–Kanoria (2017) show in a random-graph dynamic model that, for $L=2$, greedy (immediate) matching minimizes average waiting, and for $L=3$ greedy is optimal within a broad class. Question: determine the optimal (or best competitive) dynamic policy when cycles of length $\\ge 3$ and/or chains are allowed in general graphs, and quantify when batching/waiting strictly beats greedy.",
+    "known_results": "For 2-way exchange, greedy minimizes waiting (Ünver 2010; Anderson et al. 2017). For 3-way, greedy is optimal within a broad policy class. With longer cycles, chains, heterogeneous types, or general compatibility structure, the optimal policy and its competitive ratio are open; recent work studies cost-balancing and 'when to match' principles.",
+    "where_posed": {
+      "text": "Open beyond the cases settled in Anderson, Ashlagi, Gamarnik, Kanoria, 'Efficient Dynamic Barter Exchange' (Operations Research 2017; SODA 2015).",
+      "url": "https://pubsonline.informs.org/doi/10.1287/opre.2017.1644"
+    },
+    "source": {
+      "authors": "Ross Anderson, Itai Ashlagi, David Gamarnik, Yash Kanoria",
+      "title": "Efficient Dynamic Barter Exchange",
+      "year": 2017,
+      "venue": "Operations Research",
+      "url": "https://pubsonline.informs.org/doi/10.1287/opre.2017.1644"
+    },
+    "additional_refs": [
+      {
+        "authors": "M. Utku Ünver",
+        "title": "Dynamic Kidney Exchange",
+        "year": 2010,
+        "venue": "Review of Economic Studies",
+        "url": "https://doi.org/10.1111/j.1467-937X.2009.00575.x"
+      }
+    ]
+  },
+  {
+    "id": "dynamic-spatial-matching-greedy",
+    "title": "Cost of the greedy algorithm for dynamic spatial matching",
+    "collection": "Operations Management",
+    "area": "Spatial Matching",
+    "tags": [
+      "dynamic matching",
+      "spatial matching",
+      "greedy algorithm",
+      "applied probability",
+      "online platforms"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "Demand and supply points arrive i.i.d. uniform in $[0,1]^d$ and each demand is matched online to an available supply, minimizing expected average matched distance. The minimum achievable cost is known across dimensions; what is the expected cost of the natural greedy rule (match each arrival to its nearest available counterpart)?",
+    "full_statement": "Supply and demand units are located i.i.d. uniformly in $[0,1]^d$. Consider two online models: the \\emph{semi-dynamic} model (a pool of $N$ supply units is in place and $N$ demand units arrive sequentially, each matched on arrival to a still-available supply unit), and the \\emph{fully dynamic} model (both supply and demand units arrive over time and unmatched units wait in the system). The cost is the expected average Euclidean distance between matched pairs as a function of system size $N$ (and any excess supply $M$). The nearest-neighbor distance $\\Theta(N^{-1/d})$ is a lower bound. Kanoria (2021) determines the \\emph{minimum achievable} cost in essentially all regimes: $\\Theta(N^{-1/2})$ for $d=1$, $\\Theta(\\sqrt{\\log N}\\,/\\sqrt{N})$ for $d=2$, and $\\Theta(N^{-1/d})$ for $d\\ge 3$ (static / semi-dynamic), achieved by a Hierarchical Greedy algorithm. \\textbf{Open problem:} characterize the expected average matching cost of the \\emph{standard greedy} algorithm - match each arriving demand unit to the nearest currently available supply unit (and vice versa in the fully dynamic model) - in the semi-dynamic and fully dynamic models, for each dimension $d$. Is standard greedy within a constant (or polylogarithmic) factor of the minimum achievable cost, or is it strictly (polynomially) worse?",
+    "known_results": "Kanoria (2021) gives tight bounds on the minimum achievable cost in essentially all regimes (via Hierarchical Greedy), and notes that 'a sharp analysis of the standard greedy algorithm is challenging even in the semi-dynamic setting, and analyzing greedy in the fully dynamic setting may be even harder.' For $d=1$ with excess supply $M=\\epsilon N$, an $O(\\log^3 N / N)$ upper bound on greedy's cost is known (Akbarpour, Alimohammadi, Li, Saberi 2021). The general behavior of standard greedy, especially in the fully dynamic model and for $d=2$, is open.",
+    "where_posed": {
+      "text": "Kanoria, 'Dynamic Spatial Matching' - the difficulty of analyzing standard greedy is stated in the model/results discussion (Sections 3-4) and the open directions (Section 7).",
+      "url": "https://arxiv.org/abs/2105.07329"
+    },
+    "source": {
+      "authors": "Yash Kanoria",
+      "title": "Dynamic Spatial Matching",
+      "year": 2022,
+      "venue": "arXiv:2105.07329 (math.PR); EC 2022",
+      "url": "https://arxiv.org/abs/2105.07329"
+    },
+    "additional_refs": [
+      {
+        "authors": "Mohammad Akbarpour, Yeganeh Alimohammadi, Shengwu Li, Amin Saberi",
+        "title": "The Value of Excess Supply in Spatial Matching Markets",
+        "year": 2021,
+        "venue": "EC",
+        "url": "https://arxiv.org/abs/2104.03219"
+      },
+      {
+        "authors": "Miklós Ajtai, János Komlós, Gábor Tusnády",
+        "title": "On optimal matchings",
+        "year": 1984,
+        "venue": "Combinatorica",
+        "url": "https://doi.org/10.1007/BF02579135"
+      }
+    ]
+  },
+  {
+    "id": "throughput-scheduling-release-pmax",
+    "title": "Parameterized complexity of single-machine throughput scheduling with release dates",
+    "collection": "Operations Research",
+    "area": "Scheduling",
+    "tags": [
+      "machine scheduling",
+      "throughput scheduling",
+      "release dates",
+      "parameterized complexity",
+      "tardy jobs"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "For single-machine throughput scheduling with release dates, are the unweighted and weighted tardy-job objectives W[1]-hard when parameterized by the maximum processing time?",
+    "full_statement": "In $1|r_j|\\sum U_j$ and $1|r_j|\\sum w_jU_j$, each job $j$ has processing time $p_j$, release date $r_j$, due date $d_j$, and in the weighted case weight $w_j$. A nonpreemptive single-machine schedule chooses start times $S_j\\ge r_j$ with no overlap; $U_j=1$ iff $C_j=S_j+p_j>d_j$. The objective is to minimize the number, or total weight, of tardy jobs. Let $p_{\\max}=\\max_j p_j$. The open problem asks whether these problems are W[1]-hard parameterized by $p_{\\max}$, or instead fixed-parameter tractable (or even in XP) for this parameter. A positive FPT result would move toward polynomial-time algorithms for bounded-processing-time throughput scheduling; a hardness result would explain why this regime resists classical algorithms.",
+    "known_results": "The special case without release dates, $1||\\sum U_j$, is polynomial-time solvable, and $1||\\sum w_jU_j$ is weakly NP-hard but pseudo-polynomial. Sgall asked whether $1|r_j,p_j\\le c|\\sum U_j$ is polynomial-time solvable for constant $c$ and whether the weighted case is NP-hard for constant $c$. Mnich and van Bevern formulate the parameterized question and note that even membership in XP was open at publication.",
+    "where_posed": {
+      "text": "Open Problem 3 in Mnich and van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems' (Computers & Operations Research 2018).",
+      "url": "https://arxiv.org/abs/1709.01670"
+    },
+    "source": {
+      "authors": "Matthias Mnich, René van Bevern",
+      "title": "Parameterized complexity of machine scheduling: 15 open problems",
+      "year": 2018,
+      "venue": "Computers & Operations Research",
+      "url": "https://arxiv.org/abs/1709.01670"
+    },
+    "additional_refs": [
+      {
+        "authors": "Jiří Sgall",
+        "title": "Open problems in throughput scheduling",
+        "year": 2012,
+        "venue": "ESA",
+        "url": "https://doi.org/10.1007/978-3-642-33090-2_2"
+      },
+      {
+        "authors": "Matthias Mnich, René van Bevern",
+        "title": "Parameterized complexity of machine scheduling: 15 open problems",
+        "year": 2018,
+        "venue": "Computers & Operations Research",
+        "url": "https://doi.org/10.1016/j.cor.2018.07.020"
+      }
+    ]
+  },
+  {
+    "id": "job-shop-makespan-fpt-as-machines",
+    "title": "FPT approximation scheme for job-shop makespan parameterized only by machines",
+    "collection": "Operations Research",
+    "area": "Scheduling",
+    "tags": [
+      "job shop",
+      "makespan",
+      "approximation scheme",
+      "parameterized algorithms",
+      "scheduling"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "Does job-shop makespan minimization admit a $(1+\\epsilon)$-approximation running in $f(m,\\epsilon)\\operatorname{poly}(n)$ time, with dependence exponential only in the number of machines and accuracy?",
+    "full_statement": "In $J||C_{\\max}$, each job consists of an ordered list of operations, where each operation must be processed nonpreemptively on a specified machine for a specified duration; each machine processes at most one operation at a time and operations of a job must respect their order. The objective is to minimize the makespan $C_{\\max}$. For a fixed number $m$ of machines, job-shop scheduling admits PTAS/FPT-AS-type results when additional structural parameters are used, for example the maximum number $n_{\\max}$ of operations per job. The open problem asks whether there is an algorithm that, for every $\\epsilon>0$, returns a $(1+\\epsilon)$-approximation for $J||C_{\\max}$ in time $f(m,\\epsilon)\\cdot \\operatorname{poly}(n)$, without dependence on $n_{\\max}$ or other job-structure parameters outside the polynomial factor.",
+    "known_results": "Open-shop and flow-shop makespan have fixed-parameter approximation schemes parameterized by $m$ and $\\epsilon$ in classical work. For job shop, Jansen, Solis-Oba, and Sviridenko obtain a $(1+\\epsilon)$-approximation with dependence on $m$, $n_{\\max}$, and $\\epsilon$. Mnich and van Bevern list removing $n_{\\max}$ from the parameter dependence as Open Problem 13.",
+    "where_posed": {
+      "text": "Open Problem 13 in Mnich and van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems' (Computers & Operations Research 2018).",
+      "url": "https://arxiv.org/abs/1709.01670"
+    },
+    "source": {
+      "authors": "Matthias Mnich, René van Bevern",
+      "title": "Parameterized complexity of machine scheduling: 15 open problems",
+      "year": 2018,
+      "venue": "Computers & Operations Research",
+      "url": "https://arxiv.org/abs/1709.01670"
+    },
+    "additional_refs": [
+      {
+        "authors": "Klaus Jansen, Roberto Solis-Oba, Maxim Sviridenko",
+        "title": "Makespan minimization in job shops: a linear time approximation scheme",
+        "year": 2003,
+        "venue": "SIAM Journal on Discrete Mathematics",
+        "url": "https://doi.org/10.1137/S0895480199363908"
+      },
+      {
+        "authors": "Matthias Mnich, René van Bevern",
+        "title": "Parameterized complexity of machine scheduling: 15 open problems",
+        "year": 2018,
+        "venue": "Computers & Operations Research",
+        "url": "https://doi.org/10.1016/j.cor.2018.07.020"
+      }
+    ]
+  },
+  {
+    "id": "open-shop-setup-times-fpt-batches",
+    "title": "Open-shop scheduling with sequence-dependent batch setup times",
+    "collection": "Operations Research",
+    "area": "Scheduling",
+    "tags": [
+      "open shop",
+      "setup times",
+      "batch scheduling",
+      "parameterized complexity",
+      "makespan"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "Is unit-time open-shop makespan scheduling with sequence-dependent batch setup times fixed-parameter tractable in the number of batches?",
+    "full_statement": "In $O|p_{ij}=1,ST_{sd,b}|C_{\\max}$, each job has one unit-time operation on each machine, jobs are partitioned into $g$ batches, and a machine incurs a sequence-dependent setup time $s_{pq}$ when it switches from processing a job of batch $p$ to a job of batch $q$. The processing order of a job's operations is unconstrained, each machine handles at most one operation at a time, and each job is processed by at most one machine at a time. The objective is to minimize makespan. The open problem asks whether this problem is fixed-parameter tractable parameterized by the number of batches $g$, ideally also under high-multiplicity encoding where the number of jobs in each batch is given compactly.",
+    "known_results": "The problem generalizes the traveling salesperson problem and is NP-hard already for one machine. Van Bevern and Pyatkin give algorithms for cases where every batch contains more jobs than machines, and polynomial algorithms when both the number of machines and number of batches are constants. Mnich and van Bevern list FPT in the number of batches alone as Open Problem 14.",
+    "where_posed": {
+      "text": "Open Problem 14 in Mnich and van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems' (Computers & Operations Research 2018).",
+      "url": "https://arxiv.org/abs/1709.01670"
+    },
+    "source": {
+      "authors": "Matthias Mnich, René van Bevern",
+      "title": "Parameterized complexity of machine scheduling: 15 open problems",
+      "year": 2018,
+      "venue": "Computers & Operations Research",
+      "url": "https://arxiv.org/abs/1709.01670"
+    },
+    "additional_refs": [
+      {
+        "authors": "René van Bevern, Artem V. Pyatkin",
+        "title": "Completing partial schedules for Open Shop with unit processing times and routing",
+        "year": 2016,
+        "venue": "CSR",
+        "url": "https://doi.org/10.1007/978-3-319-34171-2_6"
+      },
+      {
+        "authors": "Matthias Mnich, René van Bevern",
+        "title": "Parameterized complexity of machine scheduling: 15 open problems",
+        "year": 2018,
+        "venue": "Computers & Operations Research",
+        "url": "https://doi.org/10.1016/j.cor.2018.07.020"
+      }
+    ]
+  },
+  {
+    "id": "fixed-budget-best-arm-identification-complexity",
+    "title": "Instance-dependent complexity of fixed-budget best-arm identification",
+    "collection": "Operations Research",
+    "area": "Bandits",
+    "tags": [
+      "best arm identification",
+      "fixed budget",
+      "pure exploration",
+      "ranking and selection",
+      "bandits"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "For pure-exploration multi-armed bandits with a fixed sampling budget, characterize the instance-dependent exponential error rate and identify an algorithm class that achieves it.",
+    "full_statement": "Consider a finite-armed bandit instance $\\mu=(\\mu_1,\\dots,\\mu_k)$ with a unique best arm $I^*(\\mu)=\\arg\\max_i \\theta_i$, where $\\theta_i$ is the mean of arm $i$. In the fixed-budget best-arm identification setting, an algorithm adaptively chooses arms for exactly $n$ samples and then outputs an estimate $\\hat I_n$ of $I^*(\\mu)$. Let $p_{\\mu,n}=\\mathbb{P}_{\\mu}(\\hat I_n\\ne I^*(\\mu))$. The fixed-confidence setting has a sharp asymptotic complexity characterized by a max-min KL expression and Track-and-Stop algorithms. The open problem is to find the corresponding fixed-budget theory: does there exist a natural algorithm class $\\mathcal{A}$ and a function $\\Gamma^*_{fb}(\\mu)$ such that every algorithm in $\\mathcal{A}$ satisfies $$\\liminf_{n\\to\\infty}\\frac{n}{\\log(1/p_{\\mu,n})}\\ge \\Gamma^*_{fb}(\\mu),$$ and some algorithm in $\\mathcal{A}$ satisfies the matching upper bound for every instance $\\mu$? Relatedly, is there an adaptive algorithm other than uniform sampling that is uniformly no worse than uniform sampling in this fixed-budget error-exponent sense?",
+    "known_results": "The fixed-confidence setting is characterized by Chernoff-style lower bounds and Garivier-Kaufmann Track-and-Stop algorithms. For fixed-budget best-arm identification, non-adaptive allocation has a Glynn-Juneja large-deviations characterization, but the optimal adaptive instance-dependent complexity is not known. Two natural conjectures equating the fixed-budget complexity with fixed-confidence or non-adaptive complexities fail in general, though special two-arm Gaussian cases are understood. The open problem is to identify the correct adaptive instance-dependent complexity for fixed-budget BAI, or to prove that no clean analogue of the fixed-confidence characterization exists.",
+    "where_posed": {
+      "text": "Open Problems 1 and 2 in Qin, 'Open Problem: Optimal Best Arm Identification with Fixed Budget' (COLT open problem note).",
+      "url": "https://arxiv.org/abs/2303.00950"
+    },
+    "source": {
+      "authors": "Chao Qin",
+      "title": "Open Problem: Optimal Best Arm Identification with Fixed Budget",
+      "year": 2023,
+      "venue": "COLT open problem note / arXiv:2303.00950",
+      "url": "https://arxiv.org/abs/2303.00950"
+    },
+    "additional_refs": [
+      {
+        "authors": "Aurélien Garivier, Emilie Kaufmann",
+        "title": "Optimal Best Arm Identification with Fixed Confidence",
+        "year": 2016,
+        "venue": "COLT",
+        "url": "https://arxiv.org/abs/1602.04589"
+      },
+      {
+        "authors": "Emilie Kaufmann, Olivier Cappé, Aurélien Garivier",
+        "title": "On the Complexity of Best-Arm Identification in Multi-Armed Bandit Models",
+        "year": 2016,
+        "venue": "Journal of Machine Learning Research",
+        "url": "https://arxiv.org/abs/1407.4443"
+      }
+    ]
+  },
+  {
+    "id": "adwords-unknown-budgets-optimal-ratio",
+    "title": "Best competitive ratio for Adwords with unknown budgets",
+    "collection": "Operations Research",
+    "area": "Online Resource Allocation",
+    "tags": [
+      "adwords",
+      "online allocation",
+      "unknown budgets",
+      "competitive analysis",
+      "budget oblivious"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "In the Adwords problem where advertiser budgets are unknown until exceeded, what is the optimal randomized competitive ratio?",
+    "full_statement": "In the Adwords problem, queries arrive online. Each query $t$ has bids $b_{it}$ from advertisers $i$, and assigning $t$ to $i$ earns $b_{it}$ up to advertiser $i$'s remaining budget $B_i$. In the classical model, all budgets $B_i$ are known to the algorithm. In the unknown-budget model, bids are known on arrival but $B_i$ is not known in advance; the algorithm only learns that an advertiser's budget has been exceeded when an attempted allocation fails or exhausts it. Decisions are irrevocable, and the benchmark is the offline optimum that knows the entire arrival sequence and all budgets. Greedy is $1/2$-competitive and no deterministic algorithm can do better. Udwani gives a randomized budget-oblivious generalized perturbed-greedy algorithm with competitive ratio at least $0.522$ and shows this algorithm is strictly below $1-1/e$. The open problem is to determine the best possible randomized competitive ratio for Adwords with unknown budgets, and whether a budget-oblivious or different randomized algorithm achieves it.",
+    "known_results": "Known-budget Adwords admits the classic $1-1/e$ guarantee under small bids. With unknown budgets, deterministic algorithms are capped at $1/2$. Udwani's randomized GPG-style algorithm improves this to at least $0.522$, with an upper bound below $1-1/e$ for that algorithm. The exact optimal randomized ratio remains open.",
+    "where_posed": {
+      "text": "Conclusion of Udwani, 'Adwords with Unknown Budgets and Beyond', states the immediate open question of finding the best possible competitive ratio guarantee for Adwords with unknown budgets.",
+      "url": "https://arxiv.org/abs/2110.00504"
+    },
+    "source": {
+      "authors": "Rajan Udwani",
+      "title": "Adwords with Unknown Budgets and Beyond",
+      "year": 2024,
+      "venue": "Operations Research",
+      "url": "https://arxiv.org/abs/2110.00504"
+    },
+    "additional_refs": [
+      {
+        "authors": "Aranyak Mehta, Amin Saberi, Umesh Vazirani, Vijay Vazirani",
+        "title": "AdWords and generalized online matching",
+        "year": 2007,
+        "venue": "Journal of the ACM",
+        "url": "https://doi.org/10.1145/1206035.1206036"
+      },
+      {
+        "authors": "Vijay V. Vazirani",
+        "title": "Towards a Practical, Budget-Oblivious Algorithm for the Adwords Problem under Small Bids",
+        "year": 2021,
+        "venue": "arXiv:2107.10777",
+        "url": "https://arxiv.org/abs/2107.10777"
+      }
+    ]
+  },
+  {
+    "id": "heterogeneous-data-driven-decision-efficient-robust-policies",
+    "title": "Efficient robust policies for heterogeneous data-driven decisions",
+    "collection": "Management Science",
+    "area": "Data-Driven Decisions",
+    "tags": [
+      "data-driven optimization",
+      "heterogeneous data",
+      "distributionally robust optimization",
+      "newsvendor",
+      "pricing"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "In the heterogeneity-ball framework for data-driven decisions, can one efficiently compute or approximate general robust policies that retain the known rate-optimal worst-case regret guarantees?",
+    "full_statement": "Consider the framework of Besbes, Ma, and Mouchtaki: a decision $x\\in\\mathcal{X}$ is evaluated on a future distribution $\\mu$, while historical observations are independent but may come from different unknown distributions $\\nu_1,\\dots,\\nu_n$ lying in a radius-$\\epsilon$ heterogeneity ball around $\\mu$ under a specified metric such as Kolmogorov, Wasserstein, total variation, or a divergence. A data-driven policy maps historical samples into a decision, and performance is measured by asymptotic worst-case expected regret relative to the oracle decision optimal for $\\mu$. SAA is rate-optimal for some problem/metric pairs but fails badly for others, such as pricing under Wasserstein heterogeneity and ski-rental variants. The paper proposes robust alternatives such as RDRO and DRO policies and proves rate-optimality in several settings. The open problem is algorithmic: can these general robust policies be computed efficiently, or approximated in a way that preserves their rate-optimal regret guarantees, for broad classes of OR/MS problems beyond the worked examples?",
+    "known_results": "Besbes, Ma, and Mouchtaki give a formal heterogeneity-ball model, upper/lower bounds for SAA, and problem-dependent rate-optimal robust policies for examples including newsvendor, pricing, and ski rental. They explicitly leave open efficient computation of the RDRO/DRO policies, approximations that still perform well, and broader finite-sample/adaptive-to-heterogeneity guarantees.",
+    "where_posed": {
+      "text": "Section 6 of Besbes, Ma, and Mouchtaki, 'Beyond IID: data-driven decision-making in heterogeneous environments', leaves open efficient computation/approximation of robust policies that perform well under heterogeneity.",
+      "url": "https://arxiv.org/abs/2206.09642"
+    },
+    "source": {
+      "authors": "Omar Besbes, Will Ma, Omar Mouchtaki",
+      "title": "Beyond IID: data-driven decision-making in heterogeneous environments",
+      "year": 2022,
+      "venue": "arXiv:2206.09642",
+      "url": "https://arxiv.org/abs/2206.09642"
+    },
+    "additional_refs": [
+      {
+        "authors": "Omar Besbes, Will Ma, Omar Mouchtaki",
+        "title": "From Contextual Data to Newsvendor Decisions: On the Actual Performance of Data-Driven Algorithms",
+        "year": 2023,
+        "venue": "arXiv:2302.08424",
+        "url": "https://arxiv.org/abs/2302.08424"
+      }
+    ]
+  },
+  {
+    "id": "talagrand-empirical-process-decomposition",
+    "title": "Talagrand's decomposition conjecture for empirical processes",
+    "collection": "Applied Probability",
+    "area": "Empirical Processes",
+    "tags": [
+      "Talagrand",
+      "empirical processes",
+      "generic chaining",
+      "selector processes",
+      "probability"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "Does every bounded empirical process decompose into a non-cancellation part plus a generic-chaining part, as predicted by Talagrand's program?",
+    "full_statement": "Let $(X_i)_{i\\le N}$ be i.i.d. random variables on a measurable space and let $\\mathcal{F}$ be a countable class of measurable functions. Define the empirical-process supremum $$S_N(\\mathcal{F})=\\mathbb{E}\\sup_{f\\in\\mathcal{F}}\\left|\\frac{1}{\\sqrt N}\\sum_{i\\le N}(f(X_i)-\\mathbb{E}f(X_i))\\right|.$$ There are two basic mechanisms for controlling $S_N(\\mathcal{F})$: a pointwise/no-cancellation bound through $\\sum_i |f(X_i)|$, and a cancellation/chaining bound involving $\\gamma_2(\\mathcal{F},d_2)$ and $\\gamma_1(\\mathcal{F},d_\\infty)$, where $d_p(f,g)=\\|f-g\\|_p$. Talagrand's conjecture asks whether these are the only mechanisms: can one always find a decomposition $\\mathcal{F}\\subset \\mathcal{F}_1+\\mathcal{F}_2$ such that $$\\mathbb{E}\\sup_{f_1\\in\\mathcal{F}_1}\\sum_{i\\le N}|f_1(X_i)|\\le \\sqrt N\\,S_N(\\mathcal{F}),$$ $$\\gamma_2(\\mathcal{F}_2,d_2)\\le L S_N(\\mathcal{F}),\\qquad \\gamma_1(\\mathcal{F}_2,d_\\infty)\\le L\\sqrt N\\,S_N(\\mathcal{F})$$ for a universal constant $L$? A related selector-process version asks for an analogous decomposition for Bernoulli selectors $\\delta_i$.",
+    "known_results": "Talagrand's majorizing-measure theorem fully characterizes Gaussian process suprema via generic chaining. Bednorz and Latała solved the Bernoulli conjecture, showing that a Bernoulli process decomposes into an $\\ell^1$ no-cancellation part and a Gaussian/chaining part. They identify this as one step in Talagrand's broader program and record the selector-process and empirical-process decomposition conjectures as open.",
+    "where_posed": {
+      "text": "Conjectures 9.1 and 9.2 in Bednorz and Latała, 'On the boundedness of Bernoulli processes', attributed to Talagrand's program and book.",
+      "url": "https://arxiv.org/abs/1305.4292"
+    },
+    "source": {
+      "authors": "Witold Bednorz, Rafał Latała",
+      "title": "On the boundedness of Bernoulli processes",
+      "year": 2014,
+      "venue": "Annals of Mathematics",
+      "url": "https://arxiv.org/abs/1305.4292"
+    },
+    "additional_refs": [
+      {
+        "authors": "Michel Talagrand",
+        "title": "Upper and Lower Bounds for Stochastic Processes: Modern Methods and Classical Problems",
+        "year": 2014,
+        "venue": "Springer",
+        "url": "https://doi.org/10.1007/978-3-642-54075-2"
+      },
+      {
+        "authors": "Michel Talagrand",
+        "title": "Are many small sets explicitly small?",
+        "year": 2010,
+        "venue": "STOC",
+        "url": "https://doi.org/10.1145/1806689.1806716"
+      }
+    ]
+  }
+]
