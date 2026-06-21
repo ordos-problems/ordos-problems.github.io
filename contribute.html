@@ -151,6 +151,9 @@
   .field textarea{min-height:118px;resize:vertical;}
   .field input:focus,.field textarea:focus{outline:3px solid #d8ece7;border-color:#74aaa1;}
   .field-note{font-size:.82rem;color:var(--faint);line-height:1.5;}
+  .form-warning{display:none;margin:14px 0 0;padding:10px 12px;border:1px solid #d88a3d;border-radius:10px;background:#fff3df;color:#5f3411;
+    font-size:.9rem;line-height:1.55;}
+  .form-warning.show{display:block;}
   .submit-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;}
   .submit-btn{font-size:.84rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
     border-radius:10px;padding:9px 14px;cursor:pointer;font-family:var(--ui);font-weight:800;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
@@ -213,7 +216,7 @@
     <section class="form-card">
       <h2>Contribute a Problem</h2>
       <p>Send a candidate open problem for review. Submissions go to <strong>ordos.problems@gmail.com</strong> with the subject tag <strong>[Problem submission]</strong>.</p>
-      <form action="https://formsubmit.co/ordos.problems@gmail.com" method="POST">
+      <form id="contribution-form" action="https://formsubmit.co/ordos.problems@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="[Problem submission] ORdős Problems">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_next" value="https://ordos-problems.github.io/thanks.html">
@@ -255,6 +258,7 @@
             <textarea id="why_belongs" name="Why this belongs here"></textarea>
           </div>
         </div>
+        <p class="form-warning" id="contribution-warning"></p>
         <div class="submit-row">
           <button class="submit-btn" type="submit">Send contribution</button>
           <span class="field-note">The first submission may ask you to confirm the destination email address through FormSubmit.</span>
@@ -264,5 +268,23 @@
   </main>
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
+<script>
+(function(){
+  var form=document.getElementById('contribution-form');
+  var warning=document.getElementById('contribution-warning');
+  if(!form||!warning)return;
+  function showWarning(){
+    warning.classList.add('show');
+    warning.textContent='This form cannot be submitted from a file:// preview. Open the live GitHub Pages site, or run python3 -m http.server 4173 and use http://localhost:4173/.';
+  }
+  if(window.location.protocol==='file:')showWarning();
+  form.addEventListener('submit',function(e){
+    if(window.location.protocol==='file:'){
+      e.preventDefault();
+      showWarning();
+    }
+  });
+})();
+</script>
 </body>
 </html>

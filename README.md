@@ -47,6 +47,8 @@ Then open `http://localhost:4173`.
 
 Using a local server is better than double-clicking `index.html`, because root-relative assets such as `/favicon.svg` behave the same way they will on GitHub Pages.
 
+The contribution and correction forms must be opened through `http://localhost:4173` or the live GitHub Pages site. FormSubmit will reject submissions from `file://` pages opened directly from Finder.
+
 ## Rebuild
 
 You only need npm if you are editing the source data or templates and want to regenerate the static site.

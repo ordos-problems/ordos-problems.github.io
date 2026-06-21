@@ -252,6 +252,9 @@ COMMON_HEAD = r"""
   .field textarea{min-height:118px;resize:vertical;}
   .field input:focus,.field textarea:focus{outline:3px solid #d8ece7;border-color:#74aaa1;}
   .field-note{font-size:.82rem;color:var(--faint);line-height:1.5;}
+  .form-warning{display:none;margin:14px 0 0;padding:10px 12px;border:1px solid #d88a3d;border-radius:10px;background:#fff3df;color:#5f3411;
+    font-size:.9rem;line-height:1.55;}
+  .form-warning.show{display:block;}
   .submit-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;}
   .submit-btn{font-size:.84rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
     border-radius:10px;padding:9px 14px;cursor:pointer;font-family:var(--ui);font-weight:800;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
@@ -564,6 +567,27 @@ def source_link(source, text="source"):
     return f'<a href="{esc(url)}" target="_blank" rel="noopener">{esc(text)}</a>' if url else esc(text)
 
 
+def form_file_guard(form_id, warning_id):
+    return f"""<script>
+(function(){{
+  var form=document.getElementById('{form_id}');
+  var warning=document.getElementById('{warning_id}');
+  if(!form||!warning)return;
+  function showWarning(){{
+    warning.classList.add('show');
+    warning.textContent='This form cannot be submitted from a file:// preview. Open the live GitHub Pages site, or run python3 -m http.server 4173 and use http://localhost:4173/.';
+  }}
+  if(window.location.protocol==='file:')showWarning();
+  form.addEventListener('submit',function(e){{
+    if(window.location.protocol==='file:'){{
+      e.preventDefault();
+      showWarning();
+    }}
+  }});
+}})();
+</script>"""
+
+
 def contribution_form_html():
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -578,7 +602,7 @@ def contribution_form_html():
     <section class="form-card">
       <h2>Contribute a Problem</h2>
       <p>Send a candidate open problem for review. Submissions go to <strong>{CONTACT_EMAIL}</strong> with the subject tag <strong>[Problem submission]</strong>.</p>
-      <form action="{FORM_ENDPOINT}" method="POST">
+      <form id="contribution-form" action="{FORM_ENDPOINT}" method="POST">
         <input type="hidden" name="_subject" value="[Problem submission] ORdős Problems">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_next" value="{SITE_URL}/thanks.html">
@@ -620,6 +644,7 @@ def contribution_form_html():
             <textarea id="why_belongs" name="Why this belongs here"></textarea>
           </div>
         </div>
+        <p class="form-warning" id="contribution-warning"></p>
         <div class="submit-row">
           <button class="submit-btn" type="submit">Send contribution</button>
           <span class="field-note">The first submission may ask you to confirm the destination email address through FormSubmit.</span>
@@ -629,6 +654,7 @@ def contribution_form_html():
   </main>
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
+{form_file_guard("contribution-form", "contribution-warning")}
 </body>
 </html>
 """
@@ -648,7 +674,7 @@ def correction_form_html():
     <section class="form-card">
       <h2>Suggest an Edit</h2>
       <p>Send a correction, better citation, clearer exposition, or source note. Suggestions go to <strong>{CONTACT_EMAIL}</strong> with the subject tag <strong>[Correction]</strong>.</p>
-      <form action="{FORM_ENDPOINT}" method="POST">
+      <form id="correction-form" action="{FORM_ENDPOINT}" method="POST">
         <input id="subject" type="hidden" name="_subject" value="[Correction] ORdős Problems">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_next" value="{SITE_URL}/thanks.html">
@@ -682,6 +708,7 @@ def correction_form_html():
             <textarea id="sources" name="Sources" placeholder="Links or bibliographic details supporting the change"></textarea>
           </div>
         </div>
+        <p class="form-warning" id="correction-warning"></p>
         <div class="submit-row">
           <button class="submit-btn" type="submit">Send suggestion</button>
           <a class="back-link" href="index.html">Back to all problems</a>
@@ -703,6 +730,7 @@ def correction_form_html():
   if(label)document.getElementById('subject').value='[Correction] '+label;
 }})();
 </script>
+{form_file_guard("correction-form", "correction-warning")}
 </body>
 </html>
 """
