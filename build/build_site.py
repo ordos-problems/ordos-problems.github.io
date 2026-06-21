@@ -1,10 +1,13 @@
 import html
 import json
 import re
+from urllib.parse import urlencode
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PAGES = ROOT / "problems"
+REPO_URL = "https://github.com/ordos-problems/ordos-problems.github.io"
+NEW_PROBLEM_URL = f"{REPO_URL}/issues/new?template=problem_submission.md&title=%5BProblem%20submission%5D%20"
 
 data = json.load(open(ROOT / "problems_render.json"))
 meta = data["metadata"]
@@ -26,6 +29,21 @@ def page_name(problem):
 
 def problem_url(problem):
     return f"problems/{page_name(problem)}"
+
+
+def suggest_edit_url(problem):
+    body = (
+        f"Problem: {problem['ref']} - {problem['title']}\n"
+        f"Page: https://ordos-problems.github.io/problems/{page_name(problem)}\n\n"
+        "What should be changed?\n\n"
+        "Why is this correction useful?\n\n"
+        "Suggested sources or references:\n"
+    )
+    return f"{REPO_URL}/issues/new?" + urlencode({
+        "template": "problem_correction.md",
+        "title": f"[Correction] {problem['ref']} - {problem['title']}",
+        "body": body,
+    })
 
 
 def full_problem_text(problem):
@@ -123,7 +141,7 @@ COMMON_HEAD = r"""
   h1{font-family:var(--display);font-weight:600;font-size:3rem;letter-spacing:0;margin:0;line-height:1;color:var(--ink);}
   h1 .or{color:var(--accent);}
   .aboutbtn{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;}
+    border-radius:10px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;}
   .aboutbtn:hover{background:#f5e5ff;}
   .sub{color:var(--soft);font-size:1.03rem;margin:16px 0 0;max-width:78ch;font-weight:450;}
   .headsearch{display:flex;justify-content:flex-end;align-items:center;gap:10px;}
@@ -202,6 +220,7 @@ COMMON_HEAD = r"""
   .pagegap,.pageinfo{font-size:.76rem;color:var(--faint);font-weight:750;padding:0 3px;white-space:nowrap;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
+  .detail-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
   .detail-meta{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0;}
   .problem-nav{display:flex;gap:10px;align-items:stretch;justify-content:space-between;margin:22px 0 24px;max-width:var(--measure);}
@@ -253,6 +272,7 @@ COMMON_HEAD = r"""
     .copy,.open-link{width:100%;text-align:center;}
     .detail-title{font-size:2.2rem;}
     .detail-top{align-items:flex-start;flex-direction:column;}
+    .detail-actions{width:100%;justify-content:flex-start;}
     .problem-nav{flex-direction:column;}
     .problem-nav .navlink{width:100%;}
     .problem-nav .navlink.next{text-align:left;}
@@ -293,6 +313,7 @@ __COMMON_HEAD__
       </div>
       <div class="headsearch">
         <button class="aboutbtn" id="aboutbtn" type="button">About</button>
+        <a class="aboutbtn" href="__NEW_PROBLEM_URL__" target="_blank" rel="noopener">Contribute</a>
         <input id="q" type="search" placeholder="Search statement, author, tag, area, number…" autocomplete="off">
       </div>
     </div>
@@ -334,7 +355,7 @@ __COMMON_HEAD__
     <h3>What This Is Not</h3>
     <p>This is not primarily a collection of open-ended modelling questions. Modelling problems are important, but it is often unclear what the “right” model should be. The goal here is narrower: concrete hard questions whose resolution could plausibly appear in strong conferences or journals. More open-ended research problems may be added in the future.</p>
     <h3>Contributions</h3>
-    <p>Contributions are welcome: new problems, corrections, better citations, more context, clearer exposition, improved known-results summaries, and suggestions about scope or organization. Contributions and corrections can be sent to <strong>ordos.problems@gmail.com</strong>.</p>
+    <p>Contributions are welcome: new problems, corrections, better citations, more context, clearer exposition, improved known-results summaries, and suggestions about scope or organization. Use the Contribute button to submit through GitHub, or send email to <strong>ordos.problems@gmail.com</strong>.</p>
   </div>
 </div>
 
@@ -412,7 +433,7 @@ __COMMON_HEAD__
     if(p.confidence==='medium'||p.confidence==='low')tags.appendChild(tag('check source','med'));
     top.appendChild(tags);
     top.appendChild(el('span','spacer'));
-    var cp=txt('button','copy','Copy for solver');cp.addEventListener('click',function(){copySolver(p,cp);});top.appendChild(cp);
+    var cp=txt('button','copy','Copy');cp.addEventListener('click',function(){copySolver(p,cp);});top.appendChild(cp);
     a.appendChild(top);
 
     var title=el('h2','problem-title');var link=el('a');link.href=page(p);link.textContent=p.title;title.appendChild(link);a.appendChild(title);
@@ -435,7 +456,7 @@ __COMMON_HEAD__
       +'SOURCE: '+(p.source.authors||'')+', '+(p.source.title||'')+' ('+[p.source.year,p.source.venue].filter(Boolean).join(', ')+')'+(p.source.url?(' '+p.source.url):'')+'\n'
       +(refs?('RELATED:\n'+refs+'\n'):'')
       +'\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX.';
-    navigator.clipboard.writeText(t).then(function(){btn.classList.add('ok');btn.textContent='Copied';toast('Full problem copied');setTimeout(function(){btn.classList.remove('ok');btn.textContent='Copy for solver';},1500);});
+    navigator.clipboard.writeText(t).then(function(){btn.classList.add('ok');btn.textContent='Copied';toast('Full problem copied');setTimeout(function(){btn.classList.remove('ok');btn.textContent='Copy';},1500);});
   }
   var te=document.getElementById('toast'),tt;
   function toast(m){te.textContent=m;te.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){te.classList.remove('show');},1500);}
@@ -579,7 +600,10 @@ def detail_html(problem, prev_problem=None, next_problem=None):
       <h1 class="detail-title">{esc(problem['title'])}</h1>
       <div class="detail-meta"><span class="num">{problem['number']}</span><span class="tag">Problem {problem['number']} of {meta['count']}</span><span class="tag">#{esc(problem['ref'].lower())}</span></div>
     </div>
-    <a class="back-link" href="../index.html">Back to all problems</a>
+    <div class="detail-actions">
+      <a class="back-link" href="{esc(suggest_edit_url(problem))}" target="_blank" rel="noopener">Suggest edit</a>
+      <a class="back-link" href="../index.html">Back to all problems</a>
+    </div>
   </div>
 
   <nav class="problem-nav" aria-label="Problem navigation">
@@ -617,9 +641,9 @@ def detail_html(problem, prev_problem=None, next_problem=None):
   </section>
 
   <section class="detail-card">
-    <h2>Copy for Solver</h2>
+    <h2>Copy</h2>
     <p class="known-prose">Copy the full statement, known results, and source information as plain text.</p>
-    <button class="copy" id="copybtn">Copy full problem</button>
+    <button class="copy" id="copybtn">Copy</button>
   </section>
 
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
@@ -633,7 +657,7 @@ def detail_html(problem, prev_problem=None, next_problem=None):
   btn.addEventListener('click',function(){{
     navigator.clipboard.writeText(JSON.parse(document.getElementById('copy-data').textContent)).then(function(){{
       btn.textContent='Copied';btn.classList.add('ok');show('Full problem copied');
-      setTimeout(function(){{btn.textContent='Copy full problem';btn.classList.remove('ok');}},1500);
+      setTimeout(function(){{btn.textContent='Copy';btn.classList.remove('ok');}},1500);
     }});
   }});
 }})();
@@ -647,6 +671,7 @@ HTML = (
     index_html()
     .replace("__COMMON_HEAD__", COMMON_HEAD)
     .replace("__LOGO__", logo_link("index.html"))
+    .replace("__NEW_PROBLEM_URL__", NEW_PROBLEM_URL)
     .replace("__DATA__", embedded)
     .replace("__GEN__", meta["generated"])
     .replace("__N__", str(meta["count"]))

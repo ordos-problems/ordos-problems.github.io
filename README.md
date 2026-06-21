@@ -69,7 +69,18 @@ npm run build
 
 Contributions are welcome: new problems, better citations, source corrections, clearer exposition, additional context, or suggestions about scope and organization.
 
-Send contributions or corrections to `ordos.problems@gmail.com`, or open a pull request once this repository is on GitHub.
+Use the `Contribute` button on the website to open a structured GitHub issue for a new problem. Each problem page also has a `Suggest edit` button that opens a prefilled GitHub issue for corrections.
+
+GitHub-only workflow:
+
+- New problems come in through `.github/ISSUE_TEMPLATE/problem_submission.md`.
+- Corrections come in through `.github/ISSUE_TEMPLATE/problem_correction.md`.
+- Set the GitHub account notification email to `ordos.problems@gmail.com` and watch this repository to receive submissions in Gmail.
+- In Gmail, filter subjects containing `[Problem submission]` or `[Correction]` to label contribution emails automatically.
+
+Email fallback: `ordos.problems@gmail.com`.
+
+Future community notes, authenticated voting, and reputation features will need either a GitHub-based comments system such as Discussions/giscus or an external backend/database. Static GitHub Pages alone cannot securely store votes, reputation, or arbitrary comments.
 
 ## Notes
 

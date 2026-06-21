@@ -35,7 +35,7 @@
   h1{font-family:var(--display);font-weight:600;font-size:3rem;letter-spacing:0;margin:0;line-height:1;color:var(--ink);}
   h1 .or{color:var(--accent);}
   .aboutbtn{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;}
+    border-radius:10px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;}
   .aboutbtn:hover{background:#f5e5ff;}
   .sub{color:var(--soft);font-size:1.03rem;margin:16px 0 0;max-width:78ch;font-weight:450;}
   .headsearch{display:flex;justify-content:flex-end;align-items:center;gap:10px;}
@@ -114,6 +114,7 @@
   .pagegap,.pageinfo{font-size:.76rem;color:var(--faint);font-weight:750;padding:0 3px;white-space:nowrap;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
+  .detail-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
   .detail-meta{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0;}
   .problem-nav{display:flex;gap:10px;align-items:stretch;justify-content:space-between;margin:22px 0 24px;max-width:var(--measure);}
@@ -165,6 +166,7 @@
     .copy,.open-link{width:100%;text-align:center;}
     .detail-title{font-size:2.2rem;}
     .detail-top{align-items:flex-start;flex-direction:column;}
+    .detail-actions{width:100%;justify-content:flex-start;}
     .problem-nav{flex-direction:column;}
     .problem-nav .navlink{width:100%;}
     .problem-nav .navlink.next{text-align:left;}
@@ -189,6 +191,7 @@
       </div>
       <div class="headsearch">
         <button class="aboutbtn" id="aboutbtn" type="button">About</button>
+        <a class="aboutbtn" href="https://github.com/ordos-problems/ordos-problems.github.io/issues/new?template=problem_submission.md&title=%5BProblem%20submission%5D%20" target="_blank" rel="noopener">Contribute</a>
         <input id="q" type="search" placeholder="Search statement, author, tag, area, number…" autocomplete="off">
       </div>
     </div>
@@ -230,7 +233,7 @@
     <h3>What This Is Not</h3>
     <p>This is not primarily a collection of open-ended modelling questions. Modelling problems are important, but it is often unclear what the “right” model should be. The goal here is narrower: concrete hard questions whose resolution could plausibly appear in strong conferences or journals. More open-ended research problems may be added in the future.</p>
     <h3>Contributions</h3>
-    <p>Contributions are welcome: new problems, corrections, better citations, more context, clearer exposition, improved known-results summaries, and suggestions about scope or organization. Contributions and corrections can be sent to <strong>ordos.problems@gmail.com</strong>.</p>
+    <p>Contributions are welcome: new problems, corrections, better citations, more context, clearer exposition, improved known-results summaries, and suggestions about scope or organization. Use the Contribute button to submit through GitHub, or send email to <strong>ordos.problems@gmail.com</strong>.</p>
   </div>
 </div>
 
@@ -308,7 +311,7 @@
     if(p.confidence==='medium'||p.confidence==='low')tags.appendChild(tag('check source','med'));
     top.appendChild(tags);
     top.appendChild(el('span','spacer'));
-    var cp=txt('button','copy','Copy for solver');cp.addEventListener('click',function(){copySolver(p,cp);});top.appendChild(cp);
+    var cp=txt('button','copy','Copy');cp.addEventListener('click',function(){copySolver(p,cp);});top.appendChild(cp);
     a.appendChild(top);
 
     var title=el('h2','problem-title');var link=el('a');link.href=page(p);link.textContent=p.title;title.appendChild(link);a.appendChild(title);
@@ -331,7 +334,7 @@
       +'SOURCE: '+(p.source.authors||'')+', '+(p.source.title||'')+' ('+[p.source.year,p.source.venue].filter(Boolean).join(', ')+')'+(p.source.url?(' '+p.source.url):'')+'\n'
       +(refs?('RELATED:\n'+refs+'\n'):'')
       +'\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX.';
-    navigator.clipboard.writeText(t).then(function(){btn.classList.add('ok');btn.textContent='Copied';toast('Full problem copied');setTimeout(function(){btn.classList.remove('ok');btn.textContent='Copy for solver';},1500);});
+    navigator.clipboard.writeText(t).then(function(){btn.classList.add('ok');btn.textContent='Copied';toast('Full problem copied');setTimeout(function(){btn.classList.remove('ok');btn.textContent='Copy';},1500);});
   }
   var te=document.getElementById('toast'),tt;
   function toast(m){te.textContent=m;te.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){te.classList.remove('show');},1500);}

@@ -35,7 +35,7 @@
   h1{font-family:var(--display);font-weight:600;font-size:3rem;letter-spacing:0;margin:0;line-height:1;color:var(--ink);}
   h1 .or{color:var(--accent);}
   .aboutbtn{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;}
+    border-radius:10px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;}
   .aboutbtn:hover{background:#f5e5ff;}
   .sub{color:var(--soft);font-size:1.03rem;margin:16px 0 0;max-width:78ch;font-weight:450;}
   .headsearch{display:flex;justify-content:flex-end;align-items:center;gap:10px;}
@@ -114,6 +114,7 @@
   .pagegap,.pageinfo{font-size:.76rem;color:var(--faint);font-weight:750;padding:0 3px;white-space:nowrap;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
+  .detail-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
   .detail-meta{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0;}
   .problem-nav{display:flex;gap:10px;align-items:stretch;justify-content:space-between;margin:22px 0 24px;max-width:var(--measure);}
@@ -165,6 +166,7 @@
     .copy,.open-link{width:100%;text-align:center;}
     .detail-title{font-size:2.2rem;}
     .detail-top{align-items:flex-start;flex-direction:column;}
+    .detail-actions{width:100%;justify-content:flex-start;}
     .problem-nav{flex-direction:column;}
     .problem-nav .navlink{width:100%;}
     .problem-nav .navlink.next{text-align:left;}
@@ -200,7 +202,10 @@
       <h1 class="detail-title">Competitive ratio for fully online matching</h1>
       <div class="detail-meta"><span class="num">5</span><span class="tag">Problem 5 of 84</span><span class="tag">#ordos-005</span></div>
     </div>
-    <a class="back-link" href="../index.html">Back to all problems</a>
+    <div class="detail-actions">
+      <a class="back-link" href="https://github.com/ordos-problems/ordos-problems.github.io/issues/new?template=problem_correction.md&amp;title=%5BCorrection%5D+ORDOS-005+-+Competitive+ratio+for+fully+online+matching&amp;body=Problem%3A+ORDOS-005+-+Competitive+ratio+for+fully+online+matching%0APage%3A+https%3A%2F%2Fordos-problems.github.io%2Fproblems%2Ffully-online-matching.html%0A%0AWhat+should+be+changed%3F%0A%0AWhy+is+this+correction+useful%3F%0A%0ASuggested+sources+or+references%3A%0A" target="_blank" rel="noopener">Suggest edit</a>
+      <a class="back-link" href="../index.html">Back to all problems</a>
+    </div>
   </div>
 
   <nav class="problem-nav" aria-label="Problem navigation">
@@ -238,9 +243,9 @@
   </section>
 
   <section class="detail-card">
-    <h2>Copy for Solver</h2>
+    <h2>Copy</h2>
     <p class="known-prose">Copy the full statement, known results, and source information as plain text.</p>
-    <button class="copy" id="copybtn">Copy full problem</button>
+    <button class="copy" id="copybtn">Copy</button>
   </section>
 
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
@@ -254,7 +259,7 @@
   btn.addEventListener('click',function(){
     navigator.clipboard.writeText(JSON.parse(document.getElementById('copy-data').textContent)).then(function(){
       btn.textContent='Copied';btn.classList.add('ok');show('Full problem copied');
-      setTimeout(function(){btn.textContent='Copy full problem';btn.classList.remove('ok');},1500);
+      setTimeout(function(){btn.textContent='Copy';btn.classList.remove('ok');},1500);
     });
   });
 })();
