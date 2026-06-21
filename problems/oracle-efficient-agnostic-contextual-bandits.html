@@ -156,7 +156,7 @@
     .brand{align-items:flex-start;}
     .brand h1{min-width:0;overflow-wrap:anywhere;}
     h1{font-size:2.15rem}
-    .sub,.about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
+    .about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
     .statbar{gap:6px;}
     .statbtn{padding:5px 8px;}
     .moretags{align-items:flex-start;flex-direction:column;}
@@ -186,7 +186,6 @@
       </svg></a>
       <h1><a href="../index.html" style="color:inherit;text-decoration:none"><span class="or">OR</span>dős Problems</a></h1>
     </div>
-    <p class="sub">A collection of Open Problems in Computer Science, Operations Research, Operations Management and Applied Probability.</p>
   </header>
 
   <div class="detail-top">
@@ -200,14 +199,14 @@
 <span class="tag">#regret</span>
 <span class="tag">#check-source</span></div>
       <h1 class="detail-title">Oracle-efficient agnostic contextual bandits</h1>
-      <div class="detail-meta"><span class="num">96</span><span class="tag">Problem 96 of 97</span><span class="tag">#ordos-096</span></div>
+      <div class="detail-meta"><span class="num">83</span><span class="tag">Problem 83 of 84</span><span class="tag">#ordos-083</span></div>
     </div>
     <a class="back-link" href="../index.html">Back to all problems</a>
   </div>
 
   <nav class="problem-nav" aria-label="Problem navigation">
-    <a class="navlink prev" href="random-growing-balls-cover-time.html"><span class="navlabel">Previous problem</span>#95 · Sharp cover times for random growing balls</a>
-    <a class="navlink next" href="limited-switch-contextual-bandits-with-knapsacks.html"><span class="navlabel">Next problem</span>#97 · Limited-switch contextual bandits with knapsacks</a>
+    <a class="navlink prev" href="random-growing-balls-cover-time.html"><span class="navlabel">Previous problem</span>#82 · Sharp cover times for random growing balls</a>
+    <a class="navlink next" href="limited-switch-contextual-bandits-with-knapsacks.html"><span class="navlabel">Next problem</span>#84 · Limited-switch contextual bandits with knapsacks</a>
   </nav>
 
   <section class="detail-card statement">
@@ -248,7 +247,7 @@
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
-<script type="application/json" id="copy-data">"ORdős Problems #96 — Oracle-efficient agnostic contextual bandits\n\nSHORT STATEMENT\nCan the optimal oracle-efficient contextual bandit reduction be extended from realizable models to agnostic or misspecified models?\n\nOPEN PROBLEM\nDesign an oracle-efficient contextual bandit algorithm for general agnostic or misspecified function classes that matches the best possible regret guarantees using only a small number of calls to standard offline learning or regression oracles.\n\nPROBLEM (full statement with model)\nIn stochastic contextual bandits, a learner observes a context, chooses an action, and receives only the reward of the chosen action. Under realizability, the conditional mean reward belongs to a known function class $\\mathcal{F}$, and Simchi-Levi and Xu give a statistically optimal reduction to offline regression using only logarithmically many oracle calls. The open problem is to obtain an equally clean and practical reduction when the model is agnostic or misspecified: the best function in $\\mathcal{F}$ may only approximate the true conditional rewards. The target is an algorithm whose regret scales with the right approximation and complexity terms, remains computationally efficient for general classes, and avoids substantially stronger oracle assumptions.\n\nKNOWN RESULTS\nSimchi-Levi and Xu solve the realizable version, giving an optimal and oracle-efficient contextual bandit algorithm. Follow-up work develops instance-dependent complexity measures for contextual bandits and reinforcement learning. The remaining open part is the agnostic reduction: once realizability is removed, the known clean oracle-efficient guarantee does not directly apply, and the optimal computational/statistical tradeoff is still not as settled as in the realizable case.\n\nREMAINING OPEN PROBLEM\nDesign an oracle-efficient contextual bandit algorithm for general agnostic or misspecified function classes that matches the best possible regret guarantees using only a small number of calls to standard offline learning or regression oracles.\n\nWHERE POSED: This entry is the natural agnostic extension of the open problem solved by Simchi-Levi and Xu for the realizable setting. (https://arxiv.org/abs/2003.12699)\nSOURCE: David Simchi-Levi, Yunzong Xu, Bypassing the Monster: A Faster and Simpler Optimal Algorithm for Contextual Bandits under Realizability (2021, Mathematics of Operations Research / arXiv:2003.12699) https://arxiv.org/abs/2003.12699\nRELATED:\n- Dylan J. Foster, Alexander Rakhlin, David Simchi-Levi, Yunzong Xu, Instance-Dependent Complexity of Contextual Bandits and Reinforcement Learning: A Disagreement-Based Perspective (2020, arXiv:2010.03104) https://arxiv.org/abs/2010.03104\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
+<script type="application/json" id="copy-data">"ORdős Problems #83 — Oracle-efficient agnostic contextual bandits\n\nSHORT STATEMENT\nCan the optimal oracle-efficient contextual bandit reduction be extended from realizable models to agnostic or misspecified models?\n\nOPEN PROBLEM\nDesign an oracle-efficient contextual bandit algorithm for general agnostic or misspecified function classes that matches the best possible regret guarantees using only a small number of calls to standard offline learning or regression oracles.\n\nPROBLEM (full statement with model)\nIn stochastic contextual bandits, a learner observes a context, chooses an action, and receives only the reward of the chosen action. Under realizability, the conditional mean reward belongs to a known function class $\\mathcal{F}$, and Simchi-Levi and Xu give a statistically optimal reduction to offline regression using only logarithmically many oracle calls. The open problem is to obtain an equally clean and practical reduction when the model is agnostic or misspecified: the best function in $\\mathcal{F}$ may only approximate the true conditional rewards. The target is an algorithm whose regret scales with the right approximation and complexity terms, remains computationally efficient for general classes, and avoids substantially stronger oracle assumptions.\n\nKNOWN RESULTS\nSimchi-Levi and Xu solve the realizable version, giving an optimal and oracle-efficient contextual bandit algorithm. Follow-up work develops instance-dependent complexity measures for contextual bandits and reinforcement learning. The remaining open part is the agnostic reduction: once realizability is removed, the known clean oracle-efficient guarantee does not directly apply, and the optimal computational/statistical tradeoff is still not as settled as in the realizable case.\n\nREMAINING OPEN PROBLEM\nDesign an oracle-efficient contextual bandit algorithm for general agnostic or misspecified function classes that matches the best possible regret guarantees using only a small number of calls to standard offline learning or regression oracles.\n\nWHERE POSED: This entry is the natural agnostic extension of the open problem solved by Simchi-Levi and Xu for the realizable setting. (https://arxiv.org/abs/2003.12699)\nSOURCE: David Simchi-Levi, Yunzong Xu, Bypassing the Monster: A Faster and Simpler Optimal Algorithm for Contextual Bandits under Realizability (2021, Mathematics of Operations Research / arXiv:2003.12699) https://arxiv.org/abs/2003.12699\nRELATED:\n- Dylan J. Foster, Alexander Rakhlin, David Simchi-Levi, Yunzong Xu, Instance-Dependent Complexity of Contextual Bandits and Reinforcement Learning: A Disagreement-Based Perspective (2020, arXiv:2010.03104) https://arxiv.org/abs/2010.03104\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
 <script>
 (function(){
   var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;

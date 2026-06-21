@@ -3,13 +3,13 @@
     "title": "ORdős Problems",
     "description": "Crowdsourced open problems in Operations Research, Operations Management, and Management Science (with related market design and online algorithms). Modeled on erdosproblems.com. Each problem has a short statement and a complete, model-level statement suitable for handing to a solver.",
     "generated": "2026-06-21",
-    "count": 97,
+    "count": 84,
+    "inactive_count": 13,
     "collections": {
       "Operations Research": 19,
       "Online Algorithms & Learning": 16,
       "Market & Mechanism Design": 15,
       "Approximation & Discrepancy": 15,
-      "Online Resource Allocation (Ma notes)": 13,
       "Operations Management": 10,
       "Management Science": 3,
       "Applied Probability": 3,
@@ -33,12 +33,10 @@
       "Matching Markets": 4,
       "Mechanism Design": 3,
       "Online Algorithms": 16,
-      "Online Contention Resolution": 3,
       "Online Learning": 2,
-      "Online Resource Allocation": 6,
+      "Online Resource Allocation": 2,
       "Polyhedral Combinatorics": 1,
       "Probabilistic Combinatorial Optimization": 1,
-      "Prophet Inequalities": 6,
       "Queueing": 3,
       "Random Coverage": 1,
       "Random Trees": 1,
@@ -50,17 +48,17 @@
       "Vehicle Routing": 1
     },
     "status_breakdown": {
-      "open": 86,
+      "open": 73,
       "partially resolved": 11
     },
     "confidence_breakdown": {
-      "high": 77,
-      "medium": 20
+      "high": 69,
+      "medium": 15
     },
     "discipline_rollup": {
       "Algorithms / EC / Market Design": 49,
       "Operations Management": 10,
-      "Operations Research": 32,
+      "Operations Research": 19,
       "Management Science": 3,
       "Applied Probability": 3
     },
@@ -2785,559 +2783,6 @@
     {
       "number": 58,
       "ref": "ORDOS-058",
-      "id": "kunit-prophet-iid-monotonicity-in-T",
-      "title": "Monotonicity in T of the tight k-unit IID prophet ratio",
-      "collection": "Online Resource Allocation (Ma notes)",
-      "area": "Prophet Inequalities",
-      "status": "open",
-      "confidence": "high",
-      "tags": [
-        "prophet inequality",
-        "k-unit",
-        "IID",
-        "optimal stopping",
-        "correlation gap"
-      ],
-      "short_statement": "For the i.i.d. prophet inequality accepting up to $k$ of $T$ values, an LP captures the tight online-to-offline ratio. Numerically the ratio decreases in $T$; the conjecture is to prove this monotonicity for general $k$, which would fully characterize the tight $k$-unit IID prophet guarantee.",
-      "open_problem": "Show that for each fixed $k$, $\\mathrm{val}(k,T)$ is decreasing in $T$ (more arrivals make the gambler's task relatively harder). For $k=1$ this monotonicity was established by Correa et al.",
-      "full_statement": "Consider the IID prophet inequality with $T$ values and capacity $k$: T values arrive i.i.d. from a distribution $\\mathbf F$, and the gambler may accept up to $k$ of them online, comparing against the offline optimum. Let $\\mathrm{val}(k,T)=\\inf_{\\mathbf F}\\mathrm{ONL}/\\mathrm{OFF}$ be the tight competitive ratio (online versus offline) for given $k$ and $T$, captured by a known LP (the LP of the notes without the normalization constraint). \\textbf{Open:} Show that for each fixed $k$, $\\mathrm{val}(k,T)$ is decreasing in $T$ (more arrivals make the gambler's task relatively harder). For $k=1$ this monotonicity was established by Correa et al. (2017); the general $k$ case is open. Proving it would fully characterize the tight $k$-unit IID prophet guarantee.",
-      "known_results": "Established for $k = 1$ (Correa-Foncea-Hoeksma-Oosterwijk-Vredeveld 2017; the tight single-item IID constant is ~0.745, problem known since Hill-Kertz 1982). Proving monotonicity in T for general k is open and would fully characterize the tight k-unit IID prophet inequality.",
-      "where_posed": {
-        "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #1).",
-        "url": ""
-      },
-      "source": {
-        "authors": "Will Ma",
-        "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #1)",
-        "year": 2024,
-        "venue": "Lecture notes (uploaded)",
-        "url": ""
-      },
-      "additional_refs": [
-        {
-          "authors": "Jose Correa, Patricio Foncea, Ruben Hoeksma, Tim Oosterwijk, Tjark Vredeveld",
-          "title": "Posted Price Mechanisms for a Random Stream of Customers",
-          "year": 2017,
-          "venue": "EC",
-          "url": "https://dl.acm.org/doi/10.1145/3033274.3085137"
-        },
-        {
-          "authors": "Theodore P. Hill, Robert P. Kertz",
-          "title": "Comparisons of stop rule and supremum expectations of i.i.d. random variables",
-          "year": 1982,
-          "venue": "Annals of Probability",
-          "url": "https://www.jstor.org/stable/2243440"
-        }
-      ]
-    },
-    {
-      "number": 59,
-      "ref": "ORDOS-059",
-      "id": "kunit-prophet-onl-off-adversarial",
-      "title": "Online-vs-offline ratio for k-unit prophet under adversarial order (k>1)",
-      "collection": "Online Resource Allocation (Ma notes)",
-      "area": "Prophet Inequalities",
-      "status": "open",
-      "confidence": "medium",
-      "tags": [
-        "prophet inequality",
-        "k-unit",
-        "adversarial order",
-        "competitive ratio",
-        "Bernoulli"
-      ],
-      "short_statement": "For the $k$-unit prophet inequality under adversarial order, the online-to-fluid ratio is understood, but the online-to-offline ratio appears different and is not understood for $k>1$. The open problem asks for any nontrivial bound, even restricting to weighted-Bernoulli distributions.",
-      "open_problem": "Determine (or bound) $\\inf_{T,\\mathbf F}\\mathrm{ONL}/\\mathrm{OFF}$ for $k>1$, even restricting each value distribution to be weighted Bernoulli (a two-point distribution with one point at 0).",
-      "full_statement": "Consider the $k$-unit prophet inequality under adversarial arrival order: values from distributions $\\mathbf F$ arrive in an adversarial order over $T$ steps, and an online algorithm may accept up to $k$. Let $\\mathrm{ONL}$ be the online value, $\\mathrm{FLU}$ the fluid/LP benchmark, and $\\mathrm{OFF}$ the true offline optimum. Under adversarial order, $\\inf_{T,\\mathbf F}\\mathrm{ONL}/\\mathrm{FLU}$ is known for $k$-unit prophet inequalities, but $\\inf_{T,\\mathbf F}\\mathrm{ONL}/\\mathrm{OFF}$ is not, and the two appear to differ (Jiang-Ma-Zhang 2022). \\textbf{Open:} Determine (or bound) $\\inf_{T,\\mathbf F}\\mathrm{ONL}/\\mathrm{OFF}$ for $k>1$, even restricting each value distribution to be weighted Bernoulli (a two-point distribution with one point at 0).",
-      "known_results": "The online-to-fluid ratio inf ONL/FLU is tight/understood for k-unit prophet; the online-to-offline ratio inf ONL/OFF is open for $k > 1$ and appears different (Jiang-Ma-Zhang 2022, Prop. 1 of arXiv version). Even the weighted-Bernoulli special case is open.",
-      "where_posed": {
-        "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #2).",
-        "url": ""
-      },
-      "source": {
-        "authors": "Will Ma",
-        "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #2)",
-        "year": 2024,
-        "venue": "Lecture notes (uploaded)",
-        "url": ""
-      },
-      "additional_refs": [
-        {
-          "authors": "Jiashuo Jiang, Will Ma, Jiawei Zhang",
-          "title": "Tight Guarantees for Multi-unit Prophet Inequalities and Online Stochastic Knapsack",
-          "year": 2022,
-          "venue": "SODA",
-          "url": "https://arxiv.org/abs/2107.02058"
-        }
-      ]
-    },
-    {
-      "number": 60,
-      "ref": "ORDOS-060",
-      "id": "kunit-prophet-correlation-gap-random-order",
-      "title": "Overcoming the correlation gap for k-unit prophet under random order (k>1)",
-      "collection": "Online Resource Allocation (Ma notes)",
-      "area": "Prophet Inequalities",
-      "status": "open",
-      "confidence": "medium",
-      "tags": [
-        "prophet inequality",
-        "k-unit",
-        "random order",
-        "correlation gap"
-      ],
-      "short_statement": "For $k$-unit prophet inequalities, the correlation-gap constant $c_k$ can be beaten when the algorithm freely chooses the arrival order. Under random order the best known bound is stuck exactly at $c_k$ for $k>1$ (only $k=1$ is beatable). The open problem is to extend the free-order techniques to random order for $k>1$.",
-      "open_problem": "Can the order-selection techniques be extended to overcome the correlation gap under random order for $k>1$? Any improvement would establish a separation for $\\inf \\mathrm{ONL}/\\mathrm{OFF}$ previously unknown.",
-      "full_statement": "For $k$-unit prophet inequalities, let $c_k^{\\mathrm{CG}} = 1 - e^{-k}k^k/k!$ be the correlation-gap constant, and let $\\mathrm{ONL}/\\mathrm{OFF}$ denote the online-to-offline ratio. This constant can be overcome (beaten) when the arrival order can be freely chosen by the algorithm. Under the slightly harder random arrival order, the best-known $\\inf_{T,\\mathbf F}\\mathrm{ONL}/\\mathrm{OFF}$ for $k$-unit prophet is stuck at $c_k^{\\mathrm{CG}}$ for $k>1$ (Arnosti-Ma 2022), while it is beaten for $k=1$ (Correa et al. 2021). \\textbf{Open:} Can the order-selection techniques be extended to overcome the correlation gap under random order for $k>1$? Any improvement would establish a separation for $\\inf \\mathrm{ONL}/\\mathrm{OFF}$ previously unknown.",
-      "known_results": "For $k=1$, Correa and coauthors show that the correlation-gap constant can be beaten. For $k>1$ under random arrival order, the best known online-to-offline guarantees remain stuck at the correlation-gap value $c_k^{\\mathrm{CG}}$, as in the Arnosti-Ma analysis of static thresholds. The open problem is to beat $c_k^{\\mathrm{CG}}$ for any fixed $k>1$ under random order; even an arbitrarily small improvement would establish a new separation between random order and the correlation-gap barrier.",
-      "where_posed": {
-        "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #3).",
-        "url": ""
-      },
-      "source": {
-        "authors": "Will Ma",
-        "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #3)",
-        "year": 2024,
-        "venue": "Lecture notes (uploaded)",
-        "url": ""
-      },
-      "additional_refs": [
-        {
-          "authors": "Nick Arnosti, Will Ma",
-          "title": "Tight Guarantees for Static Threshold Policies in the Prophet Secretary Problem",
-          "year": 2023,
-          "venue": "Operations Research",
-          "url": "https://arxiv.org/abs/2108.12893"
-        },
-        {
-          "authors": "Jose Correa, Andres Cristi, Boris Epstein, Jose Soto",
-          "title": "The Two-Sided Game of Googol / Sample-driven optimal stopping",
-          "year": 2021,
-          "venue": "SODA",
-          "url": "https://arxiv.org/abs/2009.11885"
-        }
-      ]
-    },
-    {
-      "number": 61,
-      "ref": "ORDOS-061",
-      "id": "arnosti-ma-stockout-threshold-conjecture",
-      "title": "The stockout-probability static-threshold conjecture",
-      "collection": "Online Resource Allocation (Ma notes)",
-      "area": "Prophet Inequalities",
-      "status": "open",
-      "confidence": "high",
-      "tags": [
-        "prophet inequality",
-        "static threshold",
-        "k-unit",
-        "revenue management"
-      ],
-      "short_statement": "For the $k$-unit IID prophet problem, Arnosti and Ma conjecture (and verify numerically) that setting a single static threshold so the stockout probability $\\Pr[D \\ge k]$ equals $\\Pr[\\mathrm{Pois}(k) \\ge k]$ achieves the tight correlation-gap guarantee. The open problem is to prove this or find a counterexample.",
-      "open_problem": "Prove this (e.g. via Bernoulli optimization) or find a counterexample.",
-      "full_statement": "In the $k$-unit IID setting (T values arrive i.i.d.; accept up to $k$), consider static-threshold policies indexed by the threshold's induced demand distribution $D$ (the number of values above the threshold). \\textbf{Conjecture (Arnosti-Ma):} setting the threshold so that $\\Pr[D \\ge k] = \\Pr[\\mathrm{Pois}(k) \\ge k]$ achieves the tight guarantee $c_k^{\\mathrm{CG}} = 1 - e^{-k}k^k/k!$ under random order. \\textbf{Open:} Prove this (e.g. via Bernoulli optimization) or find a counterexample.",
-      "known_results": "Arnosti and Ma formulate this threshold rule and verify it numerically for the relevant Bernoulli-optimization problem. Their evidence supports the conjecture that the stockout-probability threshold achieves the tight correlation-gap guarantee $c_k^{\\mathrm{CG}}$ for every $k$. What is missing is a proof that this particular threshold is always worst-case optimal, or a counterexample showing that the numerical pattern eventually breaks.",
-      "where_posed": {
-        "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #4).",
-        "url": ""
-      },
-      "source": {
-        "authors": "Will Ma",
-        "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #4)",
-        "year": 2024,
-        "venue": "Lecture notes (uploaded)",
-        "url": ""
-      },
-      "additional_refs": [
-        {
-          "authors": "Nick Arnosti, Will Ma",
-          "title": "Tight Guarantees for Static Threshold Policies in the Prophet Secretary Problem",
-          "year": 2023,
-          "venue": "Operations Research",
-          "url": "https://arxiv.org/abs/2108.12893"
-        }
-      ]
-    },
-    {
-      "number": 62,
-      "ref": "ORDOS-062",
-      "id": "static-threshold-half-without-randomization-or-cardinal",
-      "title": "Guarantee 1/2 with a static threshold without randomization or cardinal values",
-      "collection": "Online Resource Allocation (Ma notes)",
-      "area": "Prophet Inequalities",
-      "status": "open",
-      "confidence": "high",
-      "tags": [
-        "prophet inequality",
-        "static threshold",
-        "ordinal information",
-        "single item"
-      ],
-      "short_statement": "In the single-item prophet inequality, the $1/2$ guarantee is achievable by a deterministic static threshold, and separately knowing only ordinal (median) information. Open: can both restrictions hold at once - a static threshold guaranteeing $1/2$ using neither randomization nor cardinal values?",
-      "open_problem": "Is there a static-threshold policy guaranteeing $\\mathbb{E}[\\mathrm{ALG}] \\ge \\tfrac12\\,\\mathbb{E}[\\max_i X_i]$ that uses neither randomization nor knowledge of cardinal values? Formally, the algorithm is told only $\\boldsymbol\\Lambda \\in \\Delta([n])^T$ with $r_1 \\ge \\cdots \\ge r_n \\ge 0$, must commit to a threshold defined by an index $J \\in [n]$ (and possibly a deterministic tie-break), and then $r_1,\\dots,r_n$ are set adversarially.",
-      "full_statement": "In the classic single-item (single-choice, $k=1$) prophet inequality, the $1/2$ guarantee can be achieved by a deterministic static threshold, and separately can be achieved knowing only ordinal (median) information rather than exact cardinal values. \\textbf{Open:} Is there a static-threshold policy guaranteeing $\\mathbb{E}[\\mathrm{ALG}] \\ge \\tfrac12\\,\\mathbb{E}[\\max_i X_i]$ that uses neither randomization nor knowledge of cardinal values? Formally, the algorithm is told only $\\boldsymbol\\Lambda \\in \\Delta([n])^T$ with $r_1 \\ge \\cdots \\ge r_n \\ge 0$, must commit to a threshold defined by an index $J \\in [n]$ (and possibly a deterministic tie-break), and then $r_1,\\dots,r_n$ are set adversarially.",
-      "known_results": "$1/2$ is achievable by a deterministic static threshold (knowing cardinal values) and, separately, knowing only the median (Samuel-Cahn 1984). Whether $1/2$ is achievable simultaneously without randomization and without cardinal values is open.",
-      "where_posed": {
-        "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #5).",
-        "url": ""
-      },
-      "source": {
-        "authors": "Will Ma",
-        "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #5)",
-        "year": 2024,
-        "venue": "Lecture notes (uploaded)",
-        "url": ""
-      },
-      "additional_refs": [
-        {
-          "authors": "Ester Samuel-Cahn",
-          "title": "Comparison of Threshold Stop Rules and Maximum for Independent Nonnegative Random Variables",
-          "year": 1984,
-          "venue": "Annals of Probability",
-          "url": "https://www.jstor.org/stable/2243359"
-        }
-      ]
-    },
-    {
-      "number": 63,
-      "ref": "ORDOS-063",
-      "id": "random-order-vs-worst-case-known-order",
-      "title": "Is unknown uniformly random order ever worse than worst-case known order?",
-      "collection": "Online Resource Allocation (Ma notes)",
-      "area": "Prophet Inequalities",
-      "status": "open",
-      "confidence": "medium",
-      "tags": [
-        "prophet inequality",
-        "random order",
-        "arrival order",
-        "free order"
-      ],
-      "short_statement": "Intuitively, an algorithm facing values in unknown uniformly random order should do at least as well as facing an adversary's worst order that it is told in advance. The open question: can this ever fail for some product distribution? Resolving that it never does would derive random-order prophet inequalities from fixed-order analysis.",
-      "open_problem": "does there exist a product distribution $\\mathbf F \\in \\Delta(\\mathbb{R}_{\\ge 0})^T$ for which $\\sup_{\\pi \\in \\Pi^T} \\mathbb{E}_\\sigma \\mathbb{E}_{\\mathbf V \\sim \\mathbf F}\\,\\mathrm{ALG}^\\pi(\\sigma(\\mathbf V)) < \\min_\\sigma \\sup_{\\pi \\in \\Pi^T} \\mathbb{E}_{\\mathbf V \\sim \\mathbf F}\\,\\mathrm{ALG}^\\pi(\\sigma(\\mathbf V))$? (Equation (C.1) of the notes.) Equivalently: can unknown random order be strictly worse than the worst-case known order?",
-      "full_statement": "When values arrive in an unknown uniformly random order, intuitively the algorithm should do at least as well as if an adversary picked the worst order but told the algorithm what it was. For the single-choice ($k=1$) accept/reject problem, \\textbf{Open:} does there exist a product distribution $\\mathbf F \\in \\Delta(\\mathbb{R}_{\\ge 0})^T$ for which $\\sup_{\\pi \\in \\Pi^T} \\mathbb{E}_\\sigma \\mathbb{E}_{\\mathbf V \\sim \\mathbf F}\\,\\mathrm{ALG}^\\pi(\\sigma(\\mathbf V)) < \\min_\\sigma \\sup_{\\pi \\in \\Pi^T} \\mathbb{E}_{\\mathbf V \\sim \\mathbf F}\\,\\mathrm{ALG}^\\pi(\\sigma(\\mathbf V))$? (Equation (C.1) of the notes.) Equivalently: can unknown random order be strictly worse than the worst-case known order? Resolving that it never happens would let one derive random-order prophet inequalities from the simpler fixed-order analysis.",
-      "known_results": "No counterexample is known, and the prevailing intuition is that unknown uniformly random order should not be worse than the adversary's worst order when that order is revealed in advance. Proving this would be useful because fixed-order prophet-inequality analyses could then transfer directly to random-order models. The difficulty is that the algorithm in the known-order benchmark can tailor its stopping rule to the revealed permutation, while the random-order algorithm must average over all permutations without seeing which one will occur.",
-      "where_posed": {
-        "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #6); see Equation (C.1) of the notes.",
-        "url": ""
-      },
-      "source": {
-        "authors": "Will Ma",
-        "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #6)",
-        "year": 2024,
-        "venue": "Lecture notes (uploaded)",
-        "url": ""
-      },
-      "additional_refs": [
-        {
-          "authors": "Tomer Ezra, Michal Feldman, Nick Gravin, Zhihao Gavin Tang",
-          "title": "On the Significance of Knowing the Arrival Order in Prophet Inequalities",
-          "year": 2022,
-          "venue": "arXiv",
-          "url": "https://arxiv.org/abs/2202.09215"
-        }
-      ]
-    },
-    {
-      "number": 64,
-      "ref": "ORDOS-064",
-      "id": "ocrs-ex-ante-equivalence-oblivious-adversary",
-      "title": "Are ex-ante prophet inequalities and OCRS equivalent under oblivious adversarial order?",
-      "collection": "Online Resource Allocation (Ma notes)",
-      "area": "Online Contention Resolution",
-      "status": "open",
-      "confidence": "high",
-      "tags": [
-        "OCRS",
-        "prophet inequality",
-        "ex-ante",
-        "oblivious adversary"
-      ],
-      "short_statement": "Online contention resolution schemes (OCRS) and ex-ante prophet inequalities give equivalent guarantees under random and fixed order. The open question is whether the same equivalence holds under oblivious adversarial order: prove it for a general feasibility family and polytope relaxation, or give a counterexample.",
-      "open_problem": "For a feasibility family $\\mathcal F$, a standard polytope relaxation $\\mathcal P$, and $\\mathbf x \\in \\mathcal P$, are the best ex-ante prophet inequality guarantee and the best OCRS selectability equal under oblivious adversarial arrival order (as they are under random and fixed order)? Prove the equivalence for a general feasibility family and polytope relaxation, or exhibit a counterexample showing the two notions diverge.",
-      "full_statement": "Online contention resolution schemes (OCRS) and ex-ante prophet inequalities are known to give equivalent guarantees under random order and under fixed order. \\textbf{Open:} For a feasibility family $\\mathcal F$, a standard polytope relaxation $\\mathcal P$, and $\\mathbf x \\in \\mathcal P$, are the best ex-ante prophet inequality guarantee and the best OCRS selectability equal under oblivious adversarial arrival order (as they are under random and fixed order)? Prove the equivalence for a general feasibility family and polytope relaxation, or exhibit a counterexample showing the two notions diverge.",
-      "known_results": "Lee and Singla established the equivalence between ex-ante prophet inequalities and online contention resolution schemes under random order and under fixed order. The oblivious-adversarial-order model sits between these regimes: the order is not adaptive to the realizations, but it is not random either. It is open whether the same reduction still goes through in this setting or whether the two notions separate.",
-      "where_posed": {
-        "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #1).",
-        "url": ""
-      },
-      "source": {
-        "authors": "Will Ma",
-        "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #1)",
-        "year": 2024,
-        "venue": "Lecture notes (uploaded)",
-        "url": ""
-      },
-      "additional_refs": [
-        {
-          "authors": "Euiwoong Lee, Sahil Singla",
-          "title": "Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities",
-          "year": 2018,
-          "venue": "ESA",
-          "url": "https://arxiv.org/abs/1806.09251"
-        }
-      ]
-    },
-    {
-      "number": 65,
-      "ref": "ORDOS-065",
-      "id": "ocrs-rank1-almighty-adversary",
-      "title": "A 1/2-selectable OCRS for rank-1 matroids against the almighty adversary",
-      "collection": "Online Resource Allocation (Ma notes)",
-      "area": "Online Contention Resolution",
-      "status": "open",
-      "confidence": "high",
-      "tags": [
-        "OCRS",
-        "matroid",
-        "almighty adversary",
-        "selectability"
-      ],
-      "short_statement": "A simple $1/2$-selectable OCRS is known for the rank-1 matroid against the standard online adversary. Open: whether a $1/2$-selectable OCRS exists against the much stronger almighty adversary (which sees all realizations); the best known is only $1/4$, and even beating $1/4$ is open.",
-      "open_problem": "For the rank-1 matroid, does there exist a $\\tfrac12$-selectable OCRS against the almighty adversary (which knows all realized values in advance)? An ex-ante prophet inequality guarantees $\\tfrac12$ against the almighty adversary on rank-1 matroids, but the best-known OCRS against the almighty adversary is only $\\tfrac14$ (Feldman et al.",
-      "full_statement": "A simple $\\tfrac12$-selectable online contention resolution scheme is known for the rank-1 matroid (single-choice) against the standard online adversary. \\textbf{Open:} For the rank-1 matroid, does there exist a $\\tfrac12$-selectable OCRS against the almighty adversary (which knows all realized values in advance)? An ex-ante prophet inequality guarantees $\\tfrac12$ against the almighty adversary on rank-1 matroids, but the best-known OCRS against the almighty adversary is only $\\tfrac14$ (Feldman et al. 2021). Either show a 1/2-selectable OCRS exists, find a modified one, or prove impossibility; even beating 1/4 is open.",
-      "known_results": "For rank-1 matroids, Feldman, Svensson, and Zenklusen give a $1/4$-selectable OCRS against the almighty adversary. In contrast, the corresponding ex-ante prophet-inequality guarantee is $1/2$, so the OCRS and prophet views do not currently match quantitatively in this adversarial model. It is open whether one can close the gap all the way to $1/2$, or even improve the OCRS constant beyond $1/4$.",
-      "where_posed": {
-        "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #2).",
-        "url": ""
-      },
-      "source": {
-        "authors": "Will Ma",
-        "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #2)",
-        "year": 2024,
-        "venue": "Lecture notes (uploaded)",
-        "url": ""
-      },
-      "additional_refs": [
-        {
-          "authors": "Moran Feldman, Ola Svensson, Rico Zenklusen",
-          "title": "Online Contention Resolution Schemes with Applications to Bayesian Selection Problems",
-          "year": 2021,
-          "venue": "SIAM J. Computing",
-          "url": "https://arxiv.org/abs/1606.06819"
-        }
-      ]
-    },
-    {
-      "number": 66,
-      "ref": "ORDOS-066",
-      "id": "explicit-kunit-ocrs-random-order",
-      "title": "An explicit k-unit OCRS achieving the correlation-gap guarantee under random order",
-      "collection": "Online Resource Allocation (Ma notes)",
-      "area": "Online Contention Resolution",
-      "status": "open",
-      "confidence": "high",
-      "tags": [
-        "OCRS",
-        "k-unit",
-        "random order",
-        "correlation gap",
-        "explicit construction"
-      ],
-      "short_statement": "For $k$-unit constraints under random order, a $c_k$-selectable OCRS is known to exist but only via a non-explicit existence proof (through ex-ante prophet inequalities). The open problem is to construct an explicit $c_k$-selectable OCRS for $k>1$; an explicit scheme is known only for $k=1$.",
-      "open_problem": "Under random order with a $k$-unit constraint, construct an explicit $c_k^{\\mathrm{CG}}$-selectable OCRS, where $c_k^{\\mathrm{CG}} = 1 - e^{-k}k^k/k!$. Such an OCRS is known to exist only via an existential argument; an explicit description is known only for $k=1$ (Lee-Singla 2018, Apx.",
-      "full_statement": "For $k$-unit constraints under random arrival order, a $c_k$-selectable OCRS is known to exist, but only via a non-explicit existence proof (going through ex-ante prophet inequalities). \\textbf{Open:} Under random order with a $k$-unit constraint, construct an explicit $c_k^{\\mathrm{CG}}$-selectable OCRS, where $c_k^{\\mathrm{CG}} = 1 - e^{-k}k^k/k!$. Such an OCRS is known to exist only via an existential argument; an explicit description is known only for $k=1$ (Lee-Singla 2018, Apx. A.2 of arXiv version).",
-      "known_results": "A $c_k^{\\mathrm{CG}}$-selectable OCRS is known to exist under random order because one can pass through the ex-ante prophet-inequality equivalence. That argument is not an explicit online rule, however. Lee and Singla give an explicit construction for the single-unit case $k=1$, but no comparable construction is known for $k>1$. The open problem is to turn the existential guarantee into a usable OCRS that achieves the same correlation-gap constant.",
-      "where_posed": {
-        "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #3).",
-        "url": ""
-      },
-      "source": {
-        "authors": "Will Ma",
-        "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #3)",
-        "year": 2024,
-        "venue": "Lecture notes (uploaded)",
-        "url": ""
-      },
-      "additional_refs": [
-        {
-          "authors": "Euiwoong Lee, Sahil Singla",
-          "title": "Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities",
-          "year": 2018,
-          "venue": "ESA",
-          "url": "https://arxiv.org/abs/1806.09251"
-        }
-      ]
-    },
-    {
-      "number": 67,
-      "ref": "ORDOS-067",
-      "id": "online-knapsack-unit-density-tight-guarantee",
-      "title": "Tight guarantee for online knapsack (unit-density / IID): is it (1-e^{-2})/2?",
-      "collection": "Online Resource Allocation (Ma notes)",
-      "area": "Online Resource Allocation",
-      "status": "open",
-      "confidence": "high",
-      "tags": [
-        "online knapsack",
-        "unit density",
-        "IID",
-        "fluid relaxation",
-        "competitive ratio"
-      ],
-      "short_statement": "In online knapsack, items must be irrevocably accepted or rejected. For the unit-density (reward = size) and IID special cases, the best known guarantee relative to the fluid benchmark is $\\approx 0.355$ and no policy beats $\\approx 0.432$. The conjecture is that the tight guarantee equals $(1 - e^{-2})/2 \\approx 0.432$.",
-      "open_problem": "Determine the tight competitive ratio for unit-density online stochastic knapsack; in particular, prove or refute the conjectured value $(1-e^{-2})/2$.",
-      "full_statement": "In the online knapsack problem, items with sizes and rewards arrive and must be irrevocably accepted (consuming capacity) or rejected. For online knapsack with the fluid relaxation as benchmark, in the unit-density case ($r_j = s_j$, reward equals size) or the IID case, the best known guarantee is $0.355$ (Jiang-Ma-Zhang 2022) improving $0.321$ (Stein et al. 2020), with an upper bound of $(1-e^{-2})/2 \\approx 0.432$. \\textbf{Conjecture:} the tight guarantee equals $(1-e^{-2})/2$. Determine it.",
-      "known_results": "For unit-density online knapsack, Stein, Truong, and Wang proved a $0.321$ guarantee, later improved to $0.355$ by Jiang, Ma, and Zhang. The known upper bound is $(1-e^{-2})/2\\approx 0.432$, and this value is the natural conjectured tight constant. For general rewards, no guarantee better than $1/(3+e^{-2})\\approx 0.319$ is known even under random order or IID assumptions. The open problem is to close the gap for unit-density knapsack, ideally proving or refuting the conjectured $(1-e^{-2})/2$ constant.",
-      "where_posed": {
-        "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Remarks 7.3-7.4.",
-        "url": ""
-      },
-      "source": {
-        "authors": "Will Ma",
-        "title": "Online Resource Allocation — Course Notes, Remarks 7.3–7.4",
-        "year": 2024,
-        "venue": "Lecture notes (uploaded)",
-        "url": ""
-      },
-      "additional_refs": [
-        {
-          "authors": "Clifford Stein, Van-Anh Truong, Xinshang Wang",
-          "title": "Advance Service Reservations with Heterogeneous Customers",
-          "year": 2020,
-          "venue": "Management Science",
-          "url": "https://arxiv.org/abs/1805.05554"
-        },
-        {
-          "authors": "Jiashuo Jiang, Will Ma, Jiawei Zhang",
-          "title": "Tight Guarantees for Multi-unit Prophet Inequalities and Online Stochastic Knapsack",
-          "year": 2022,
-          "venue": "SODA",
-          "url": "https://arxiv.org/abs/2107.02058"
-        }
-      ]
-    },
-    {
-      "number": 68,
-      "ref": "ORDOS-068",
-      "id": "L-sparse-nrm-interpolating-guarantee",
-      "title": "An L-sparse network revenue management guarantee interpolating in starting capacity",
-      "collection": "Online Resource Allocation (Ma notes)",
-      "area": "Online Resource Allocation",
-      "status": "open",
-      "confidence": "medium",
-      "tags": [
-        "network revenue management",
-        "L-sparse",
-        "fluid relaxation",
-        "competitive ratio"
-      ],
-      "short_statement": "In $L$-sparse network revenue management, each product consumes one unit of up to $L$ resources. A simple scheme guarantees $1/(1+L)$ of the fluid benchmark, and a recent bound gives asymptotic optimality as the minimum starting capacity $k$ grows. The open problem is a single guarantee interpolating between the two regimes.",
-      "open_problem": "Find a guarantee that equals $1/(1+L)$ at $k=1$ and approaches $1$ as $k \\to \\infty$ (i.e. smoothly interpolating between the two regimes).",
-      "full_statement": "In $L$-sparse network revenue management, each product consumes one unit of up to $L$ different resources. For $L$-sparse NRM, $\\mathbb{E}[\\mathrm{ALG}] \\ge \\mathrm{FLU}/(1+L)$ holds under adversarial order, and $\\mathbb{E}[\\mathrm{ALG}] \\ge (1 - L/\\sqrt{k+3})\\,\\mathrm{FLU}$ (Amil-Makhdoumi-Wei 2022) gives asymptotic optimality (approaching 1) as $k = \\min_i k_i \\to \\infty$ for fixed $L$, but is vacuous when $k=1, L>1$. \\textbf{Open:} Find a guarantee that equals $1/(1+L)$ at $k=1$ and approaches $1$ as $k \\to \\infty$ (i.e. smoothly interpolating between the two regimes).",
-      "known_results": "Under adversarial order, a $1/(1+L)$ guarantee is known, and a folklore upper bound of $2/(1+L)$ shows that some linear dependence on $L$ is unavoidable when capacities are small. In the large-capacity regime, Amil, Makhdoumi, and Wei prove asymptotic optimality as the minimum starting capacity $k$ grows. The open problem is to find a single guarantee that recovers the small-capacity $1/(1+L)$ behavior and also approaches $1$ as $k$ grows.",
-      "where_posed": {
-        "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Remark 7.6.",
-        "url": ""
-      },
-      "source": {
-        "authors": "Will Ma",
-        "title": "Online Resource Allocation — Course Notes, Remark 7.6",
-        "year": 2024,
-        "venue": "Lecture notes (uploaded)",
-        "url": ""
-      },
-      "additional_refs": [
-        {
-          "authors": "Amil, Makhdoumi, Wei",
-          "title": "Multi-item Order Fulfillment Revisited: LP Formulation and Prophet Inequality",
-          "year": 2022,
-          "venue": "SSRN 4176274",
-          "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4176274"
-        }
-      ]
-    },
-    {
-      "number": 69,
-      "ref": "ORDOS-069",
-      "id": "general-L-sparse-knapsack-guarantee",
-      "title": "Any nonzero guarantee for the most general L-sparse knapsack",
-      "collection": "Online Resource Allocation (Ma notes)",
-      "area": "Online Resource Allocation",
-      "status": "open",
-      "confidence": "medium",
-      "tags": [
-        "L-sparse knapsack",
-        "online resource allocation",
-        "fluid relaxation",
-        "competitive ratio"
-      ],
-      "short_statement": "The most general structure here is $L$-sparse knapsack: each product consumes a positive amount of up to $L$ resources. Nothing is known about online guarantees in this setting. The open problem asks for an adversarial-order guarantee that is $\\approx 0.319$ when $L=1$ and remains nonzero for all $L$.",
-      "open_problem": "is it possible to derive an adversarial-order guarantee that is $1/(3+e^{-2}) \\approx 0.319$ when $L=1$ and nonzero for all $L$? Currently nothing is known in this most general setting.",
-      "full_statement": "The most general constraint structure in this framework is $L$-sparse knapsack: each product consumes a positive amount of up to $L$ different resources. For $L$-sparse knapsack (each product consumes a positive amount $s_{ij}\\in[0,1]$ of up to $L$ resources, i.e. $|\\{i: s_{ij}>0\\}| \\le L$), with the fluid relaxation as benchmark, \\textbf{Open:} is it possible to derive an adversarial-order guarantee that is $1/(3+e^{-2}) \\approx 0.319$ when $L=1$ and nonzero for all $L$? Currently nothing is known in this most general setting.",
-      "known_results": "For $L=1$, which is the single-resource online stochastic knapsack setting, the best-fit policy gives the tight adversarial-order guarantee $1/(3+e^{-2})\\approx 0.319$ relative to the fluid benchmark. For general $L$-sparse knapsack, where each product can consume positive amounts of several resources, no nonzero guarantee is currently known in this level of generality. The open problem is to obtain any meaningful adversarial-order guarantee for all $L$, ideally one that reduces to the tight $L=1$ constant.",
-      "where_posed": {
-        "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Remark 7.8.",
-        "url": ""
-      },
-      "source": {
-        "authors": "Will Ma",
-        "title": "Online Resource Allocation — Course Notes, Remark 7.8",
-        "year": 2024,
-        "venue": "Lecture notes (uploaded)",
-        "url": ""
-      },
-      "additional_refs": [
-        {
-          "authors": "Jiashuo Jiang, Will Ma, Jiawei Zhang",
-          "title": "Tight Guarantees for Multi-unit Prophet Inequalities and Online Stochastic Knapsack",
-          "year": 2022,
-          "venue": "SODA",
-          "url": "https://arxiv.org/abs/2107.02058"
-        }
-      ]
-    },
-    {
-      "number": 70,
-      "ref": "ORDOS-070",
-      "id": "matroid-random-order-extends-to-resource-allocation",
-      "title": "Does the 1-1/e matroid random-order guarantee extend to abstract online resource allocation?",
-      "collection": "Online Resource Allocation (Ma notes)",
-      "area": "Online Resource Allocation",
-      "status": "open",
-      "confidence": "high",
-      "tags": [
-        "matroid",
-        "random order",
-        "prophet inequality",
-        "1-1/e",
-        "online resource allocation"
-      ],
-      "short_statement": "For matroid constraints under random (IID) order, the matroid prophet inequality gives a $1-1/e$ guarantee relative to the fluid benchmark, best possible even for a single resource. The open question is whether this $1-1/e$ guarantee extends to the abstract online resource allocation model under IID arrivals.",
-      "open_problem": "Does the same $1-1/e$ guarantee hold for the abstract online resource allocation model (Definition 6.6 of the notes) under the IID special case?",
-      "full_statement": "For matroid constraints under random (IID) arrival order, the matroid prophet inequality gives a $1-1/e$ guarantee relative to the fluid benchmark, which is best possible even for a single resource. Under random/IID arrival order, the matroid (ex-ante) prophet inequality yields $\\mathbb{E}[\\mathrm{ALG}] \\ge (1-1/e)\\,\\mathrm{FLU}$, tight even for a rank-1 matroid. \\textbf{Open:} Does the same $1-1/e$ guarantee hold for the abstract online resource allocation model (Definition 6.6 of the notes) under the IID special case?",
-      "known_results": "$1-1/e$ holds for matroids under random order (Kleinberg-Weinberg 2012; ex-ante version Lee-Singla 2018) and is best possible even for rank-1. Whether it extends to the abstract online resource allocation model under IID is open.",
-      "where_posed": {
-        "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Remark 7.9 (refers to the abstract online resource allocation model of Definition 6.6 of the notes).",
-        "url": ""
-      },
-      "source": {
-        "authors": "Will Ma",
-        "title": "Online Resource Allocation — Course Notes, Remark 7.9",
-        "year": 2024,
-        "venue": "Lecture notes (uploaded)",
-        "url": ""
-      },
-      "additional_refs": [
-        {
-          "authors": "Robert Kleinberg, S. Matthew Weinberg",
-          "title": "Matroid Prophet Inequalities",
-          "year": 2012,
-          "venue": "STOC",
-          "url": "https://dl.acm.org/doi/10.1145/2213977.2213991"
-        },
-        {
-          "authors": "Euiwoong Lee, Sahil Singla",
-          "title": "Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities",
-          "year": 2018,
-          "venue": "ESA",
-          "url": "https://arxiv.org/abs/1806.09251"
-        }
-      ]
-    },
-    {
-      "number": 71,
-      "ref": "ORDOS-071",
       "id": "strongly-polynomial-lp",
       "title": "A strongly polynomial algorithm for linear programming (Smale's 9th problem)",
       "collection": "Operations Research",
@@ -3383,8 +2828,8 @@
       ]
     },
     {
-      "number": 72,
-      "ref": "ORDOS-072",
+      "number": 59,
+      "ref": "ORDOS-059",
       "id": "simplex-polynomial-pivot-rule",
       "title": "A polynomial pivot rule for the simplex method",
       "collection": "Operations Research",
@@ -3430,8 +2875,8 @@
       ]
     },
     {
-      "number": 73,
-      "ref": "ORDOS-073",
+      "number": 60,
+      "ref": "ORDOS-060",
       "id": "polynomial-hirsch-conjecture",
       "title": "The Polynomial Hirsch Conjecture",
       "collection": "Operations Research",
@@ -3477,8 +2922,8 @@
       ]
     },
     {
-      "number": 74,
-      "ref": "ORDOS-074",
+      "number": 61,
+      "ref": "ORDOS-061",
       "id": "strongly-polynomial-mdp",
       "title": "A strongly polynomial algorithm for Markov decision processes",
       "collection": "Operations Research",
@@ -3517,8 +2962,8 @@
       ]
     },
     {
-      "number": 75,
-      "ref": "ORDOS-075",
+      "number": 62,
+      "ref": "ORDOS-062",
       "id": "bhh-tsp-constant",
       "title": "The exact value of the Beardwood–Halton–Hammersley TSP constant",
       "collection": "Operations Research",
@@ -3564,8 +3009,8 @@
       ]
     },
     {
-      "number": 76,
-      "ref": "ORDOS-076",
+      "number": 63,
+      "ref": "ORDOS-063",
       "id": "two-stage-stochastic-programming-complexity",
       "title": "Complexity and approximability of two-stage stochastic programming",
       "collection": "Operations Research",
@@ -3611,8 +3056,8 @@
       ]
     },
     {
-      "number": 77,
-      "ref": "ORDOS-077",
+      "number": 64,
+      "ref": "ORDOS-064",
       "id": "generalized-cmu-exact-optimality",
       "title": "Exact optimality of the generalized cμ rule for convex delay costs",
       "collection": "Operations Research",
@@ -3652,8 +3097,8 @@
       ]
     },
     {
-      "number": 78,
-      "ref": "ORDOS-078",
+      "number": 65,
+      "ref": "ORDOS-065",
       "id": "svf-appointment-sequencing",
       "title": "Optimality of smallest-variance-first sequencing in appointment scheduling",
       "collection": "Operations Management",
@@ -3700,8 +3145,8 @@
       ]
     },
     {
-      "number": 79,
-      "ref": "ORDOS-079",
+      "number": 66,
+      "ref": "ORDOS-066",
       "id": "constrained-assortment-markov-chain",
       "title": "Best approximation ratio for constrained assortment under the Markov-chain choice model",
       "collection": "Operations Management",
@@ -3740,8 +3185,8 @@
       ]
     },
     {
-      "number": 80,
-      "ref": "ORDOS-080",
+      "number": 67,
+      "ref": "ORDOS-067",
       "id": "perishable-inventory-optimal-policy",
       "title": "A simple optimal policy for perishable inventory with fixed lifetime ≥ 3",
       "collection": "Operations Management",
@@ -3788,8 +3233,8 @@
       ]
     },
     {
-      "number": 81,
-      "ref": "ORDOS-081",
+      "number": 68,
+      "ref": "ORDOS-068",
       "id": "dynamic-matching-thickness-optimal-policy",
       "title": "Optimal policy in dynamic matching markets with stochastic arrivals and departures",
       "collection": "Management Science",
@@ -3829,8 +3274,8 @@
       ]
     },
     {
-      "number": 82,
-      "ref": "ORDOS-082",
+      "number": 69,
+      "ref": "ORDOS-069",
       "id": "greedy-dynamic-matching-heterogeneous-departures",
       "title": "Greedy dynamic matching with heterogeneous departure rates",
       "collection": "Management Science",
@@ -3877,8 +3322,8 @@
       ]
     },
     {
-      "number": 83,
-      "ref": "ORDOS-083",
+      "number": 70,
+      "ref": "ORDOS-070",
       "id": "dynamic-barter-kidney-exchange-optimal-policy",
       "title": "Optimal dynamic policy for kidney exchange with long cycles and chains",
       "collection": "Operations Management",
@@ -3918,8 +3363,8 @@
       ]
     },
     {
-      "number": 84,
-      "ref": "ORDOS-084",
+      "number": 71,
+      "ref": "ORDOS-071",
       "id": "dynamic-spatial-matching-greedy",
       "title": "Cost of the greedy algorithm for dynamic spatial matching",
       "collection": "Operations Management",
@@ -3966,8 +3411,8 @@
       ]
     },
     {
-      "number": 85,
-      "ref": "ORDOS-085",
+      "number": 72,
+      "ref": "ORDOS-072",
       "id": "throughput-scheduling-release-pmax",
       "title": "Parameterized complexity of single-machine throughput scheduling with release dates",
       "collection": "Operations Research",
@@ -4014,8 +3459,8 @@
       ]
     },
     {
-      "number": 86,
-      "ref": "ORDOS-086",
+      "number": 73,
+      "ref": "ORDOS-073",
       "id": "job-shop-makespan-fpt-as-machines",
       "title": "FPT approximation scheme for job-shop makespan parameterized only by machines",
       "collection": "Operations Research",
@@ -4062,8 +3507,8 @@
       ]
     },
     {
-      "number": 87,
-      "ref": "ORDOS-087",
+      "number": 74,
+      "ref": "ORDOS-074",
       "id": "open-shop-setup-times-fpt-batches",
       "title": "Open-shop scheduling with sequence-dependent batch setup times",
       "collection": "Operations Research",
@@ -4110,8 +3555,8 @@
       ]
     },
     {
-      "number": 88,
-      "ref": "ORDOS-088",
+      "number": 75,
+      "ref": "ORDOS-075",
       "id": "fixed-budget-best-arm-identification-complexity",
       "title": "Instance-dependent complexity of fixed-budget best-arm identification",
       "collection": "Operations Research",
@@ -4158,8 +3603,8 @@
       ]
     },
     {
-      "number": 89,
-      "ref": "ORDOS-089",
+      "number": 76,
+      "ref": "ORDOS-076",
       "id": "adwords-unknown-budgets-optimal-ratio",
       "title": "Best competitive ratio for Adwords with unknown budgets",
       "collection": "Operations Research",
@@ -4206,8 +3651,8 @@
       ]
     },
     {
-      "number": 90,
-      "ref": "ORDOS-090",
+      "number": 77,
+      "ref": "ORDOS-077",
       "id": "heterogeneous-data-driven-decision-efficient-robust-policies",
       "title": "Efficient robust policies for heterogeneous data-driven decisions",
       "collection": "Management Science",
@@ -4247,8 +3692,8 @@
       ]
     },
     {
-      "number": 91,
-      "ref": "ORDOS-091",
+      "number": 78,
+      "ref": "ORDOS-078",
       "id": "talagrand-empirical-process-decomposition",
       "title": "Talagrand's decomposition conjecture for empirical processes",
       "collection": "Applied Probability",
@@ -4295,8 +3740,8 @@
       ]
     },
     {
-      "number": 92,
-      "ref": "ORDOS-092",
+      "number": 79,
+      "ref": "ORDOS-079",
       "id": "correlated-random-graph-matching-efficient-threshold",
       "title": "Efficient recovery at the random graph matching threshold",
       "collection": "Computer Science",
@@ -4336,8 +3781,8 @@
       ]
     },
     {
-      "number": 93,
-      "ref": "ORDOS-093",
+      "number": 80,
+      "ref": "ORDOS-080",
       "id": "planted-structure-computational-thresholds",
       "title": "Sharp computational thresholds for planted structures",
       "collection": "Computer Science",
@@ -4384,8 +3829,8 @@
       ]
     },
     {
-      "number": 94,
-      "ref": "ORDOS-094",
+      "number": 81,
+      "ref": "ORDOS-081",
       "id": "critical-beta-splitting-ctcs-coalescent",
       "title": "The CTCS(infinity) limit and the beta(2,1) coalescent",
       "collection": "Applied Probability",
@@ -4417,8 +3862,8 @@
       "additional_refs": []
     },
     {
-      "number": 95,
-      "ref": "ORDOS-095",
+      "number": 82,
+      "ref": "ORDOS-082",
       "id": "random-growing-balls-cover-time",
       "title": "Sharp cover times for random growing balls",
       "collection": "Applied Probability",
@@ -4450,8 +3895,8 @@
       "additional_refs": []
     },
     {
-      "number": 96,
-      "ref": "ORDOS-096",
+      "number": 83,
+      "ref": "ORDOS-083",
       "id": "oracle-efficient-agnostic-contextual-bandits",
       "title": "Oracle-efficient agnostic contextual bandits",
       "collection": "Computer Science",
@@ -4491,8 +3936,8 @@
       ]
     },
     {
-      "number": 97,
-      "ref": "ORDOS-097",
+      "number": 84,
+      "ref": "ORDOS-084",
       "id": "limited-switch-contextual-bandits-with-knapsacks",
       "title": "Limited-switch contextual bandits with knapsacks",
       "collection": "Operations Research",

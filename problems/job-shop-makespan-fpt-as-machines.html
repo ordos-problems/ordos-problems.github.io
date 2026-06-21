@@ -156,7 +156,7 @@
     .brand{align-items:flex-start;}
     .brand h1{min-width:0;overflow-wrap:anywhere;}
     h1{font-size:2.15rem}
-    .sub,.about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
+    .about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
     .statbar{gap:6px;}
     .statbtn{padding:5px 8px;}
     .moretags{align-items:flex-start;flex-direction:column;}
@@ -186,7 +186,6 @@
       </svg></a>
       <h1><a href="../index.html" style="color:inherit;text-decoration:none"><span class="or">OR</span>dős Problems</a></h1>
     </div>
-    <p class="sub">A collection of Open Problems in Computer Science, Operations Research, Operations Management and Applied Probability.</p>
   </header>
 
   <div class="detail-top">
@@ -199,14 +198,14 @@
 <span class="tag">#approximation-scheme</span>
 <span class="tag">#parameterized-algorithms</span></div>
       <h1 class="detail-title">FPT approximation scheme for job-shop makespan parameterized only by machines</h1>
-      <div class="detail-meta"><span class="num">86</span><span class="tag">Problem 86 of 97</span><span class="tag">#ordos-086</span></div>
+      <div class="detail-meta"><span class="num">73</span><span class="tag">Problem 73 of 84</span><span class="tag">#ordos-073</span></div>
     </div>
     <a class="back-link" href="../index.html">Back to all problems</a>
   </div>
 
   <nav class="problem-nav" aria-label="Problem navigation">
-    <a class="navlink prev" href="throughput-scheduling-release-pmax.html"><span class="navlabel">Previous problem</span>#85 · Parameterized complexity of single-machine throughput scheduling with release dates</a>
-    <a class="navlink next" href="open-shop-setup-times-fpt-batches.html"><span class="navlabel">Next problem</span>#87 · Open-shop scheduling with sequence-dependent batch setup times</a>
+    <a class="navlink prev" href="throughput-scheduling-release-pmax.html"><span class="navlabel">Previous problem</span>#72 · Parameterized complexity of single-machine throughput scheduling with release dates</a>
+    <a class="navlink next" href="open-shop-setup-times-fpt-batches.html"><span class="navlabel">Next problem</span>#74 · Open-shop scheduling with sequence-dependent batch setup times</a>
   </nav>
 
   <section class="detail-card statement">
@@ -247,7 +246,7 @@
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
-<script type="application/json" id="copy-data">"ORdős Problems #86 — FPT approximation scheme for job-shop makespan parameterized only by machines\n\nSHORT STATEMENT\nDoes job-shop makespan minimization admit a $(1+\\epsilon)$-approximation running in $f(m,\\epsilon)\\operatorname{poly}(n)$ time, with dependence exponential only in the number of machines and accuracy?\n\nOPEN PROBLEM\nDetermine whether job-shop makespan admits an FPT approximation scheme parameterized only by the number of machines and $\\epsilon$, without dependence on maximum operations per job.\n\nPROBLEM (full statement with model)\nIn $J||C_{\\max}$, each job consists of an ordered list of operations, where each operation must be processed nonpreemptively on a specified machine for a specified duration; each machine processes at most one operation at a time and operations of a job must respect their order. The objective is to minimize the makespan $C_{\\max}$. For a fixed number $m$ of machines, job-shop scheduling admits PTAS/FPT-AS-type results when additional structural parameters are used, for example the maximum number $n_{\\max}$ of operations per job. The open problem asks whether there is an algorithm that, for every $\\epsilon>0$, returns a $(1+\\epsilon)$-approximation for $J||C_{\\max}$ in time $f(m,\\epsilon)\\cdot \\operatorname{poly}(n)$, without dependence on $n_{\\max}$ or other job-structure parameters outside the polynomial factor.\n\nKNOWN RESULTS\nOpen-shop and flow-shop makespan have fixed-parameter approximation schemes parameterized by $m$ and $\\epsilon$ in classical work. For job shop, Jansen, Solis-Oba, and Sviridenko obtain a $(1+\\epsilon)$-approximation with dependence on $m$, $n_{\\max}$, and $\\epsilon$. Mnich and van Bevern list removing $n_{\\max}$ from the parameter dependence as Open Problem 13.\n\nREMAINING OPEN PROBLEM\nDetermine whether job-shop makespan admits an FPT approximation scheme parameterized only by the number of machines and $\\epsilon$, without dependence on maximum operations per job.\n\nWHERE POSED: Open Problem 13 in Mnich and van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems' (Computers & Operations Research 2018). (https://arxiv.org/abs/1709.01670)\nSOURCE: Matthias Mnich, René van Bevern, Parameterized complexity of machine scheduling: 15 open problems (2018, Computers & Operations Research) https://arxiv.org/abs/1709.01670\nRELATED:\n- Klaus Jansen, Roberto Solis-Oba, Maxim Sviridenko, Makespan minimization in job shops: a linear time approximation scheme (2003, SIAM Journal on Discrete Mathematics) https://doi.org/10.1137/S0895480199363908\n- Matthias Mnich, René van Bevern, Parameterized complexity of machine scheduling: 15 open problems (2018, Computers & Operations Research) https://doi.org/10.1016/j.cor.2018.07.020\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
+<script type="application/json" id="copy-data">"ORdős Problems #73 — FPT approximation scheme for job-shop makespan parameterized only by machines\n\nSHORT STATEMENT\nDoes job-shop makespan minimization admit a $(1+\\epsilon)$-approximation running in $f(m,\\epsilon)\\operatorname{poly}(n)$ time, with dependence exponential only in the number of machines and accuracy?\n\nOPEN PROBLEM\nDetermine whether job-shop makespan admits an FPT approximation scheme parameterized only by the number of machines and $\\epsilon$, without dependence on maximum operations per job.\n\nPROBLEM (full statement with model)\nIn $J||C_{\\max}$, each job consists of an ordered list of operations, where each operation must be processed nonpreemptively on a specified machine for a specified duration; each machine processes at most one operation at a time and operations of a job must respect their order. The objective is to minimize the makespan $C_{\\max}$. For a fixed number $m$ of machines, job-shop scheduling admits PTAS/FPT-AS-type results when additional structural parameters are used, for example the maximum number $n_{\\max}$ of operations per job. The open problem asks whether there is an algorithm that, for every $\\epsilon>0$, returns a $(1+\\epsilon)$-approximation for $J||C_{\\max}$ in time $f(m,\\epsilon)\\cdot \\operatorname{poly}(n)$, without dependence on $n_{\\max}$ or other job-structure parameters outside the polynomial factor.\n\nKNOWN RESULTS\nOpen-shop and flow-shop makespan have fixed-parameter approximation schemes parameterized by $m$ and $\\epsilon$ in classical work. For job shop, Jansen, Solis-Oba, and Sviridenko obtain a $(1+\\epsilon)$-approximation with dependence on $m$, $n_{\\max}$, and $\\epsilon$. Mnich and van Bevern list removing $n_{\\max}$ from the parameter dependence as Open Problem 13.\n\nREMAINING OPEN PROBLEM\nDetermine whether job-shop makespan admits an FPT approximation scheme parameterized only by the number of machines and $\\epsilon$, without dependence on maximum operations per job.\n\nWHERE POSED: Open Problem 13 in Mnich and van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems' (Computers & Operations Research 2018). (https://arxiv.org/abs/1709.01670)\nSOURCE: Matthias Mnich, René van Bevern, Parameterized complexity of machine scheduling: 15 open problems (2018, Computers & Operations Research) https://arxiv.org/abs/1709.01670\nRELATED:\n- Klaus Jansen, Roberto Solis-Oba, Maxim Sviridenko, Makespan minimization in job shops: a linear time approximation scheme (2003, SIAM Journal on Discrete Mathematics) https://doi.org/10.1137/S0895480199363908\n- Matthias Mnich, René van Bevern, Parameterized complexity of machine scheduling: 15 open problems (2018, Computers & Operations Research) https://doi.org/10.1016/j.cor.2018.07.020\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
 <script>
 (function(){
   var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;

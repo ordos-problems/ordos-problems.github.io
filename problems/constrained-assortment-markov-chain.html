@@ -156,7 +156,7 @@
     .brand{align-items:flex-start;}
     .brand h1{min-width:0;overflow-wrap:anywhere;}
     h1{font-size:2.15rem}
-    .sub,.about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
+    .about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
     .statbar{gap:6px;}
     .statbtn{padding:5px 8px;}
     .moretags{align-items:flex-start;flex-direction:column;}
@@ -186,7 +186,6 @@
       </svg></a>
       <h1><a href="../index.html" style="color:inherit;text-decoration:none"><span class="or">OR</span>dős Problems</a></h1>
     </div>
-    <p class="sub">A collection of Open Problems in Computer Science, Operations Research, Operations Management and Applied Probability.</p>
   </header>
 
   <div class="detail-top">
@@ -199,14 +198,14 @@
 <span class="tag">#revenue-management</span>
 <span class="tag">#check-source</span></div>
       <h1 class="detail-title">Best approximation ratio for constrained assortment under the Markov-chain choice model</h1>
-      <div class="detail-meta"><span class="num">79</span><span class="tag">Problem 79 of 97</span><span class="tag">#ordos-079</span></div>
+      <div class="detail-meta"><span class="num">66</span><span class="tag">Problem 66 of 84</span><span class="tag">#ordos-066</span></div>
     </div>
     <a class="back-link" href="../index.html">Back to all problems</a>
   </div>
 
   <nav class="problem-nav" aria-label="Problem navigation">
-    <a class="navlink prev" href="svf-appointment-sequencing.html"><span class="navlabel">Previous problem</span>#78 · Optimality of smallest-variance-first sequencing in appointment scheduling</a>
-    <a class="navlink next" href="perishable-inventory-optimal-policy.html"><span class="navlabel">Next problem</span>#80 · A simple optimal policy for perishable inventory with fixed lifetime ≥ 3</a>
+    <a class="navlink prev" href="svf-appointment-sequencing.html"><span class="navlabel">Previous problem</span>#65 · Optimality of smallest-variance-first sequencing in appointment scheduling</a>
+    <a class="navlink next" href="perishable-inventory-optimal-policy.html"><span class="navlabel">Next problem</span>#67 · A simple optimal policy for perishable inventory with fixed lifetime ≥ 3</a>
   </nav>
 
   <section class="detail-card statement">
@@ -247,7 +246,7 @@
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
-<script type="application/json" id="copy-data">"ORdős Problems #79 — Best approximation ratio for constrained assortment under the Markov-chain choice model\n\nSHORT STATEMENT\nWhat is the best possible polynomial-time approximation ratio for cardinality- or capacity-constrained assortment optimization under the Markov-chain choice model?\n\nOPEN PROBLEM\ndetermine the best achievable polynomial-time approximation ratio for the constrained problem.\n\nPROBLEM (full statement with model)\nIn the Markov-chain choice model (Blanchet–Gallego–Goyal 2016), there are $n$ substitutable products with prices $p_i$. An arriving customer initially considers product $i$ with probability $\\lambda_i$ (with $\\sum_i \\lambda_i + \\lambda_0 = 1$, where $0$ is the no-purchase option); if the considered product is not offered, the customer transitions to product $j$ with probability $\\rho_{ij}$, repeating until reaching an offered product (a purchase) or the no-purchase state. Given a feasibility constraint on the offered set $S$ — a cardinality bound $|S|\\le k$, or knapsack/capacity weights $\\sum_{i\\in S} w_i \\le W$ — choose $S$ to maximize expected revenue. The unconstrained problem is polynomial-time solvable; the constrained problem is APX-hard. Question: determine the best achievable polynomial-time approximation ratio for the constrained problem.\n\nKNOWN RESULTS\nDésir–Goyal–Segev–Ye (2020) prove the capacity-constrained problem is APX-hard (so no PTAS unless P=NP) and give constant-factor approximation algorithms for the cardinality- and capacity-constrained versions. The exact best-possible ratio — closing the gap between the achievable constant and the APX-hardness threshold — is open.\n\nREMAINING OPEN PROBLEM\ndetermine the best achievable polynomial-time approximation ratio for the constrained problem.\n\nWHERE POSED: Open gap left by Désir, Goyal, Segev, Ye, 'Constrained Assortment Optimization Under the Markov Chain-based Choice Model' (Management Science 2020). (https://pubsonline.informs.org/doi/10.1287/mnsc.2018.3230)\nSOURCE: Antoine Désir, Vineet Goyal, Danny Segev, Chun Ye, Constrained Assortment Optimization Under the Markov Chain-based Choice Model (2020, Management Science) https://pubsonline.informs.org/doi/10.1287/mnsc.2018.3230\nRELATED:\n- Jose Blanchet, Guillermo Gallego, Vineet Goyal, A Markov Chain Approximation to Choice Modeling (2016, Operations Research) https://pubsonline.informs.org/doi/abs/10.1287/opre.2016.1505\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
+<script type="application/json" id="copy-data">"ORdős Problems #66 — Best approximation ratio for constrained assortment under the Markov-chain choice model\n\nSHORT STATEMENT\nWhat is the best possible polynomial-time approximation ratio for cardinality- or capacity-constrained assortment optimization under the Markov-chain choice model?\n\nOPEN PROBLEM\ndetermine the best achievable polynomial-time approximation ratio for the constrained problem.\n\nPROBLEM (full statement with model)\nIn the Markov-chain choice model (Blanchet–Gallego–Goyal 2016), there are $n$ substitutable products with prices $p_i$. An arriving customer initially considers product $i$ with probability $\\lambda_i$ (with $\\sum_i \\lambda_i + \\lambda_0 = 1$, where $0$ is the no-purchase option); if the considered product is not offered, the customer transitions to product $j$ with probability $\\rho_{ij}$, repeating until reaching an offered product (a purchase) or the no-purchase state. Given a feasibility constraint on the offered set $S$ — a cardinality bound $|S|\\le k$, or knapsack/capacity weights $\\sum_{i\\in S} w_i \\le W$ — choose $S$ to maximize expected revenue. The unconstrained problem is polynomial-time solvable; the constrained problem is APX-hard. Question: determine the best achievable polynomial-time approximation ratio for the constrained problem.\n\nKNOWN RESULTS\nDésir–Goyal–Segev–Ye (2020) prove the capacity-constrained problem is APX-hard (so no PTAS unless P=NP) and give constant-factor approximation algorithms for the cardinality- and capacity-constrained versions. The exact best-possible ratio — closing the gap between the achievable constant and the APX-hardness threshold — is open.\n\nREMAINING OPEN PROBLEM\ndetermine the best achievable polynomial-time approximation ratio for the constrained problem.\n\nWHERE POSED: Open gap left by Désir, Goyal, Segev, Ye, 'Constrained Assortment Optimization Under the Markov Chain-based Choice Model' (Management Science 2020). (https://pubsonline.informs.org/doi/10.1287/mnsc.2018.3230)\nSOURCE: Antoine Désir, Vineet Goyal, Danny Segev, Chun Ye, Constrained Assortment Optimization Under the Markov Chain-based Choice Model (2020, Management Science) https://pubsonline.informs.org/doi/10.1287/mnsc.2018.3230\nRELATED:\n- Jose Blanchet, Guillermo Gallego, Vineet Goyal, A Markov Chain Approximation to Choice Modeling (2016, Operations Research) https://pubsonline.informs.org/doi/abs/10.1287/opre.2016.1505\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
 <script>
 (function(){
   var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;

@@ -244,7 +244,7 @@ COMMON_HEAD = r"""
     .brand{align-items:flex-start;}
     .brand h1{min-width:0;overflow-wrap:anywhere;}
     h1{font-size:2.15rem}
-    .sub,.about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
+    .about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
     .statbar{gap:6px;}
     .statbtn{padding:5px 8px;}
     .moretags{align-items:flex-start;flex-direction:column;}
@@ -296,7 +296,6 @@ __COMMON_HEAD__
         <input id="q" type="search" placeholder="Search statement, author, tag, area, number…" autocomplete="off">
       </div>
     </div>
-    <p class="sub">A collection of Open Problems in Computer Science, Operations Research, Operations Management and Applied Probability.</p>
     <div class="tagfilters">
       <div class="statbar" id="statbar"></div>
       <div class="moretags">
@@ -572,7 +571,6 @@ def detail_html(problem, prev_problem=None, next_problem=None):
       {logo_link("../index.html")}
       <h1><a href="../index.html" style="color:inherit;text-decoration:none"><span class="or">OR</span>dős Problems</a></h1>
     </div>
-    <p class="sub">A collection of Open Problems in Computer Science, Operations Research, Operations Management and Applied Probability.</p>
   </header>
 
   <div class="detail-top">

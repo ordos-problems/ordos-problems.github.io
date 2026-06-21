@@ -156,7 +156,7 @@
     .brand{align-items:flex-start;}
     .brand h1{min-width:0;overflow-wrap:anywhere;}
     h1{font-size:2.15rem}
-    .sub,.about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
+    .about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
     .statbar{gap:6px;}
     .statbtn{padding:5px 8px;}
     .moretags{align-items:flex-start;flex-direction:column;}
@@ -186,7 +186,6 @@
       </svg></a>
       <h1><a href="../index.html" style="color:inherit;text-decoration:none"><span class="or">OR</span>dős Problems</a></h1>
     </div>
-    <p class="sub">A collection of Open Problems in Computer Science, Operations Research, Operations Management and Applied Probability.</p>
   </header>
 
   <div class="detail-top">
@@ -201,14 +200,14 @@
 <span class="tag">#planted-structures</span>
 <span class="tag">#check-source</span></div>
       <h1 class="detail-title">Efficient recovery at the random graph matching threshold</h1>
-      <div class="detail-meta"><span class="num">92</span><span class="tag">Problem 92 of 97</span><span class="tag">#ordos-092</span></div>
+      <div class="detail-meta"><span class="num">79</span><span class="tag">Problem 79 of 84</span><span class="tag">#ordos-079</span></div>
     </div>
     <a class="back-link" href="../index.html">Back to all problems</a>
   </div>
 
   <nav class="problem-nav" aria-label="Problem navigation">
-    <a class="navlink prev" href="talagrand-empirical-process-decomposition.html"><span class="navlabel">Previous problem</span>#91 · Talagrand&#x27;s decomposition conjecture for empirical processes</a>
-    <a class="navlink next" href="planted-structure-computational-thresholds.html"><span class="navlabel">Next problem</span>#93 · Sharp computational thresholds for planted structures</a>
+    <a class="navlink prev" href="talagrand-empirical-process-decomposition.html"><span class="navlabel">Previous problem</span>#78 · Talagrand&#x27;s decomposition conjecture for empirical processes</a>
+    <a class="navlink next" href="planted-structure-computational-thresholds.html"><span class="navlabel">Next problem</span>#80 · Sharp computational thresholds for planted structures</a>
   </nav>
 
   <section class="detail-card statement">
@@ -249,7 +248,7 @@
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
-<script type="application/json" id="copy-data">"ORdős Problems #92 — Efficient recovery at the random graph matching threshold\n\nSHORT STATEMENT\nFor correlated Erdos-Renyi graph matching, can polynomial-time algorithms reach the information-theoretic recovery thresholds?\n\nOPEN PROBLEM\nDetermine whether there is a polynomial-time algorithm for unseeded correlated Erdos-Renyi graph matching whose exact-recovery or almost-exact-recovery threshold matches the information-theoretic threshold, including the sparse regimes where current sharp results are only partly algorithmic.\n\nPROBLEM (full statement with model)\nTwo observed graphs $G_1$ and $G_2$ are generated from a common parent Erdos-Renyi graph on $n$ vertices, followed by independent edge subsampling or an equivalent edge-correlation mechanism, and then the vertices of one graph are permuted by an unknown permutation $\\pi$. The statistical task is to recover $\\pi$ exactly, or to correctly match a positive or $1-o(1)$ fraction of vertices. Maximum likelihood gives the relevant information-theoretic benchmark but is not a polynomial-time algorithm. The open problem is to close the algorithmic gap: find a polynomial-time estimator that succeeds down to the information-theoretic threshold, or prove a rigorous computational barrier, especially for sparse graphs where local graph structure rather than dense spectral information drives the transition.\n\nKNOWN RESULTS\nWu, Xu, and Yu determine sharp reconstruction thresholds for dense correlated random graph matching and determine sparse Erdos-Renyi thresholds up to constant factors; their positive results use a refined analysis of maximum likelihood. Seeded variants are much better understood algorithmically, but the remaining open part is the unseeded polynomial-time threshold: the information-theoretic characterization does not by itself give an efficient matching algorithm.\n\nREMAINING OPEN PROBLEM\nDetermine whether there is a polynomial-time algorithm for unseeded correlated Erdos-Renyi graph matching whose exact-recovery or almost-exact-recovery threshold matches the information-theoretic threshold, including the sparse regimes where current sharp results are only partly algorithmic.\n\nWHERE POSED: This entry formulates the algorithmic gap suggested by the information-theoretic thresholds of Wu, Xu, and Yu and by the contrast with seeded graph-matching algorithms. (https://arxiv.org/abs/2102.00082)\nSOURCE: Yihong Wu, Jiaming Xu, Sophie H. Yu, Settling the Sharp Reconstruction Thresholds of Random Graph Matching (2022, arXiv:2102.00082) https://arxiv.org/abs/2102.00082\nRELATED:\n- Elchanan Mossel, Jiaming Xu, Seeded Graph Matching via Large Neighborhood Statistics (2018, arXiv:1807.10262) https://arxiv.org/abs/1807.10262\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
+<script type="application/json" id="copy-data">"ORdős Problems #79 — Efficient recovery at the random graph matching threshold\n\nSHORT STATEMENT\nFor correlated Erdos-Renyi graph matching, can polynomial-time algorithms reach the information-theoretic recovery thresholds?\n\nOPEN PROBLEM\nDetermine whether there is a polynomial-time algorithm for unseeded correlated Erdos-Renyi graph matching whose exact-recovery or almost-exact-recovery threshold matches the information-theoretic threshold, including the sparse regimes where current sharp results are only partly algorithmic.\n\nPROBLEM (full statement with model)\nTwo observed graphs $G_1$ and $G_2$ are generated from a common parent Erdos-Renyi graph on $n$ vertices, followed by independent edge subsampling or an equivalent edge-correlation mechanism, and then the vertices of one graph are permuted by an unknown permutation $\\pi$. The statistical task is to recover $\\pi$ exactly, or to correctly match a positive or $1-o(1)$ fraction of vertices. Maximum likelihood gives the relevant information-theoretic benchmark but is not a polynomial-time algorithm. The open problem is to close the algorithmic gap: find a polynomial-time estimator that succeeds down to the information-theoretic threshold, or prove a rigorous computational barrier, especially for sparse graphs where local graph structure rather than dense spectral information drives the transition.\n\nKNOWN RESULTS\nWu, Xu, and Yu determine sharp reconstruction thresholds for dense correlated random graph matching and determine sparse Erdos-Renyi thresholds up to constant factors; their positive results use a refined analysis of maximum likelihood. Seeded variants are much better understood algorithmically, but the remaining open part is the unseeded polynomial-time threshold: the information-theoretic characterization does not by itself give an efficient matching algorithm.\n\nREMAINING OPEN PROBLEM\nDetermine whether there is a polynomial-time algorithm for unseeded correlated Erdos-Renyi graph matching whose exact-recovery or almost-exact-recovery threshold matches the information-theoretic threshold, including the sparse regimes where current sharp results are only partly algorithmic.\n\nWHERE POSED: This entry formulates the algorithmic gap suggested by the information-theoretic thresholds of Wu, Xu, and Yu and by the contrast with seeded graph-matching algorithms. (https://arxiv.org/abs/2102.00082)\nSOURCE: Yihong Wu, Jiaming Xu, Sophie H. Yu, Settling the Sharp Reconstruction Thresholds of Random Graph Matching (2022, arXiv:2102.00082) https://arxiv.org/abs/2102.00082\nRELATED:\n- Elchanan Mossel, Jiaming Xu, Seeded Graph Matching via Large Neighborhood Statistics (2018, arXiv:1807.10262) https://arxiv.org/abs/1807.10262\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
 <script>
 (function(){
   var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;

@@ -21,11 +21,11 @@ GitHub Pages setup:
 
 ## Source Files
 
-The editable problem sources are:
+The editable problem source is:
 
-- `build/mig_online_market.json`
-- `build/mig_stoch_approx_notes.json`
-- `build/new_om_or_ms.json`
+- `build/problems_source.json`
+
+Entries with `"enabled": false` are preserved in source but excluded from the generated website.
 
 The current build scripts are:
 

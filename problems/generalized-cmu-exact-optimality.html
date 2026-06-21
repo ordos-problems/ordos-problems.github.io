@@ -156,7 +156,7 @@
     .brand{align-items:flex-start;}
     .brand h1{min-width:0;overflow-wrap:anywhere;}
     h1{font-size:2.15rem}
-    .sub,.about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
+    .about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
     .statbar{gap:6px;}
     .statbtn{padding:5px 8px;}
     .moretags{align-items:flex-start;flex-direction:column;}
@@ -186,7 +186,6 @@
       </svg></a>
       <h1><a href="../index.html" style="color:inherit;text-decoration:none"><span class="or">OR</span>dős Problems</a></h1>
     </div>
-    <p class="sub">A collection of Open Problems in Computer Science, Operations Research, Operations Management and Applied Probability.</p>
   </header>
 
   <div class="detail-top">
@@ -200,14 +199,14 @@
 <span class="tag">#stochastic-control</span>
 <span class="tag">#check-source</span></div>
       <h1 class="detail-title">Exact optimality of the generalized cμ rule for convex delay costs</h1>
-      <div class="detail-meta"><span class="num">77</span><span class="tag">Problem 77 of 97</span><span class="tag">#ordos-077</span></div>
+      <div class="detail-meta"><span class="num">64</span><span class="tag">Problem 64 of 84</span><span class="tag">#ordos-064</span></div>
     </div>
     <a class="back-link" href="../index.html">Back to all problems</a>
   </div>
 
   <nav class="problem-nav" aria-label="Problem navigation">
-    <a class="navlink prev" href="two-stage-stochastic-programming-complexity.html"><span class="navlabel">Previous problem</span>#76 · Complexity and approximability of two-stage stochastic programming</a>
-    <a class="navlink next" href="svf-appointment-sequencing.html"><span class="navlabel">Next problem</span>#78 · Optimality of smallest-variance-first sequencing in appointment scheduling</a>
+    <a class="navlink prev" href="two-stage-stochastic-programming-complexity.html"><span class="navlabel">Previous problem</span>#63 · Complexity and approximability of two-stage stochastic programming</a>
+    <a class="navlink next" href="svf-appointment-sequencing.html"><span class="navlabel">Next problem</span>#65 · Optimality of smallest-variance-first sequencing in appointment scheduling</a>
   </nav>
 
   <section class="detail-card statement">
@@ -248,7 +247,7 @@
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
-<script type="application/json" id="copy-data">"ORdős Problems #77 — Exact optimality of the generalized cμ rule for convex delay costs\n\nSHORT STATEMENT\nFor scheduling a multiclass queue with convex delay costs, the generalized $c\\mu$ rule is optimal in heavy traffic; is it (or some clean index policy) exactly optimal outside the heavy-traffic limit?\n\nOPEN PROBLEM\nis the generalized $c\\mu$ rule (or another explicit index policy) exactly optimal for the original (non-asymptotic) stochastic control problem, and if not, characterize the exact optimal policy?\n\nPROBLEM (full statement with model)\nConsider a multiclass queue: customer classes $i=1,\\dots,K$ with queue lengths $Q_i(t)$, service rates $\\mu_i$ (or rates $\\mu_{ij}$ on flexible servers $j$), and class-$i$ delay cost given by a nondecreasing convex function $C_i(\\cdot)$. The objective is to choose a (possibly preemptive) scheduling policy minimizing the expected cumulative cost $\\mathbb{E}\\int_0^T \\sum_i C_i(Q_i(t))\\,dt$ (or its long-run average). The generalized $c\\mu$ rule serves, whenever a server is free, a class in $\\arg\\max_i C_i'(Q_i(t))\\,\\mu_i$. Van Mieghem (1995) proved this rule is asymptotically optimal in heavy traffic. Question: is the generalized $c\\mu$ rule (or another explicit index policy) exactly optimal for the original (non-asymptotic) stochastic control problem, and if not, characterize the exact optimal policy?\n\nKNOWN RESULTS\nHeavy-traffic (diffusion-scale) asymptotic optimality is established for single flexible server (Van Mieghem 1995) and multi-server (Mandelbaum–Stolyar 2004). For linear costs $C_i(x)=c_i x$ the rule reduces to the classical $c\\mu$ rule, which is exactly optimal (Klimov / Cox–Smith). For strictly convex costs, exact optimality is known only in special cases; the general exact-optimal policy is open.\n\nREMAINING OPEN PROBLEM\nis the generalized $c\\mu$ rule (or another explicit index policy) exactly optimal for the original (non-asymptotic) stochastic control problem, and if not, characterize the exact optimal policy?\n\nWHERE POSED: The exact- vs asymptotic-optimality gap is discussed in Van Mieghem, 'Dynamic Scheduling with Convex Delay Costs: The Generalized c-mu Rule' (Annals of Applied Probability 1995). (https://projecteuclid.org/euclid.aoap/1177004706)\nSOURCE: Jan A. Van Mieghem, Dynamic Scheduling with Convex Delay Costs: The Generalized c-mu Rule (1995, Annals of Applied Probability) https://projecteuclid.org/euclid.aoap/1177004706\nRELATED:\n- Avi Mandelbaum, Alexander L. Stolyar, Scheduling Flexible Servers with Convex Delay Costs: Heavy-Traffic Optimality of the Generalized c-mu Rule (2004, Operations Research) https://doi.org/10.1287/opre.1040.0125\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
+<script type="application/json" id="copy-data">"ORdős Problems #64 — Exact optimality of the generalized cμ rule for convex delay costs\n\nSHORT STATEMENT\nFor scheduling a multiclass queue with convex delay costs, the generalized $c\\mu$ rule is optimal in heavy traffic; is it (or some clean index policy) exactly optimal outside the heavy-traffic limit?\n\nOPEN PROBLEM\nis the generalized $c\\mu$ rule (or another explicit index policy) exactly optimal for the original (non-asymptotic) stochastic control problem, and if not, characterize the exact optimal policy?\n\nPROBLEM (full statement with model)\nConsider a multiclass queue: customer classes $i=1,\\dots,K$ with queue lengths $Q_i(t)$, service rates $\\mu_i$ (or rates $\\mu_{ij}$ on flexible servers $j$), and class-$i$ delay cost given by a nondecreasing convex function $C_i(\\cdot)$. The objective is to choose a (possibly preemptive) scheduling policy minimizing the expected cumulative cost $\\mathbb{E}\\int_0^T \\sum_i C_i(Q_i(t))\\,dt$ (or its long-run average). The generalized $c\\mu$ rule serves, whenever a server is free, a class in $\\arg\\max_i C_i'(Q_i(t))\\,\\mu_i$. Van Mieghem (1995) proved this rule is asymptotically optimal in heavy traffic. Question: is the generalized $c\\mu$ rule (or another explicit index policy) exactly optimal for the original (non-asymptotic) stochastic control problem, and if not, characterize the exact optimal policy?\n\nKNOWN RESULTS\nHeavy-traffic (diffusion-scale) asymptotic optimality is established for single flexible server (Van Mieghem 1995) and multi-server (Mandelbaum–Stolyar 2004). For linear costs $C_i(x)=c_i x$ the rule reduces to the classical $c\\mu$ rule, which is exactly optimal (Klimov / Cox–Smith). For strictly convex costs, exact optimality is known only in special cases; the general exact-optimal policy is open.\n\nREMAINING OPEN PROBLEM\nis the generalized $c\\mu$ rule (or another explicit index policy) exactly optimal for the original (non-asymptotic) stochastic control problem, and if not, characterize the exact optimal policy?\n\nWHERE POSED: The exact- vs asymptotic-optimality gap is discussed in Van Mieghem, 'Dynamic Scheduling with Convex Delay Costs: The Generalized c-mu Rule' (Annals of Applied Probability 1995). (https://projecteuclid.org/euclid.aoap/1177004706)\nSOURCE: Jan A. Van Mieghem, Dynamic Scheduling with Convex Delay Costs: The Generalized c-mu Rule (1995, Annals of Applied Probability) https://projecteuclid.org/euclid.aoap/1177004706\nRELATED:\n- Avi Mandelbaum, Alexander L. Stolyar, Scheduling Flexible Servers with Convex Delay Costs: Heavy-Traffic Optimality of the Generalized c-mu Rule (2004, Operations Research) https://doi.org/10.1287/opre.1040.0125\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
 <script>
 (function(){
   var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;

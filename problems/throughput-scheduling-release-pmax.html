@@ -156,7 +156,7 @@
     .brand{align-items:flex-start;}
     .brand h1{min-width:0;overflow-wrap:anywhere;}
     h1{font-size:2.15rem}
-    .sub,.about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
+    .about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
     .statbar{gap:6px;}
     .statbtn{padding:5px 8px;}
     .moretags{align-items:flex-start;flex-direction:column;}
@@ -186,7 +186,6 @@
       </svg></a>
       <h1><a href="../index.html" style="color:inherit;text-decoration:none"><span class="or">OR</span>dős Problems</a></h1>
     </div>
-    <p class="sub">A collection of Open Problems in Computer Science, Operations Research, Operations Management and Applied Probability.</p>
   </header>
 
   <div class="detail-top">
@@ -200,14 +199,14 @@
 <span class="tag">#parameterized-complexity</span>
 <span class="tag">#tardy-jobs</span></div>
       <h1 class="detail-title">Parameterized complexity of single-machine throughput scheduling with release dates</h1>
-      <div class="detail-meta"><span class="num">85</span><span class="tag">Problem 85 of 97</span><span class="tag">#ordos-085</span></div>
+      <div class="detail-meta"><span class="num">72</span><span class="tag">Problem 72 of 84</span><span class="tag">#ordos-072</span></div>
     </div>
     <a class="back-link" href="../index.html">Back to all problems</a>
   </div>
 
   <nav class="problem-nav" aria-label="Problem navigation">
-    <a class="navlink prev" href="dynamic-spatial-matching-greedy.html"><span class="navlabel">Previous problem</span>#84 · Cost of the greedy algorithm for dynamic spatial matching</a>
-    <a class="navlink next" href="job-shop-makespan-fpt-as-machines.html"><span class="navlabel">Next problem</span>#86 · FPT approximation scheme for job-shop makespan parameterized only by machines</a>
+    <a class="navlink prev" href="dynamic-spatial-matching-greedy.html"><span class="navlabel">Previous problem</span>#71 · Cost of the greedy algorithm for dynamic spatial matching</a>
+    <a class="navlink next" href="job-shop-makespan-fpt-as-machines.html"><span class="navlabel">Next problem</span>#73 · FPT approximation scheme for job-shop makespan parameterized only by machines</a>
   </nav>
 
   <section class="detail-card statement">
@@ -248,7 +247,7 @@
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
-<script type="application/json" id="copy-data">"ORdős Problems #85 — Parameterized complexity of single-machine throughput scheduling with release dates\n\nSHORT STATEMENT\nFor single-machine throughput scheduling with release dates, are the unweighted and weighted tardy-job objectives W[1]-hard when parameterized by the maximum processing time?\n\nOPEN PROBLEM\nDetermine whether $1|r_j,p_j\\le c|\\sum U_j$ is polynomial-time solvable for each fixed processing-time bound $c$, and settle the weighted constant-$c$ case.\n\nPROBLEM (full statement with model)\nIn $1|r_j|\\sum U_j$ and $1|r_j|\\sum w_jU_j$, each job $j$ has processing time $p_j$, release date $r_j$, due date $d_j$, and in the weighted case weight $w_j$. A nonpreemptive single-machine schedule chooses start times $S_j\\ge r_j$ with no overlap; $U_j=1$ iff $C_j=S_j+p_j>d_j$. The objective is to minimize the number, or total weight, of tardy jobs. Let $p_{\\max}=\\max_j p_j$. The open problem asks whether these problems are W[1]-hard parameterized by $p_{\\max}$, or instead fixed-parameter tractable (or even in XP) for this parameter. A positive FPT result would move toward polynomial-time algorithms for bounded-processing-time throughput scheduling; a hardness result would explain why this regime resists classical algorithms.\n\nKNOWN RESULTS\nThe special case without release dates, $1||\\sum U_j$, is polynomial-time solvable, and $1||\\sum w_jU_j$ is weakly NP-hard but pseudo-polynomial. Sgall asked whether $1|r_j,p_j\\le c|\\sum U_j$ is polynomial-time solvable for constant $c$ and whether the weighted case is NP-hard for constant $c$. Mnich and van Bevern formulate the parameterized question and note that even membership in XP was open at publication.\n\nREMAINING OPEN PROBLEM\nDetermine whether $1|r_j,p_j\\le c|\\sum U_j$ is polynomial-time solvable for each fixed processing-time bound $c$, and settle the weighted constant-$c$ case.\n\nWHERE POSED: Open Problem 3 in Mnich and van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems' (Computers & Operations Research 2018). (https://arxiv.org/abs/1709.01670)\nSOURCE: Matthias Mnich, René van Bevern, Parameterized complexity of machine scheduling: 15 open problems (2018, Computers & Operations Research) https://arxiv.org/abs/1709.01670\nRELATED:\n- Jiří Sgall, Open problems in throughput scheduling (2012, ESA) https://doi.org/10.1007/978-3-642-33090-2_2\n- Matthias Mnich, René van Bevern, Parameterized complexity of machine scheduling: 15 open problems (2018, Computers & Operations Research) https://doi.org/10.1016/j.cor.2018.07.020\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
+<script type="application/json" id="copy-data">"ORdős Problems #72 — Parameterized complexity of single-machine throughput scheduling with release dates\n\nSHORT STATEMENT\nFor single-machine throughput scheduling with release dates, are the unweighted and weighted tardy-job objectives W[1]-hard when parameterized by the maximum processing time?\n\nOPEN PROBLEM\nDetermine whether $1|r_j,p_j\\le c|\\sum U_j$ is polynomial-time solvable for each fixed processing-time bound $c$, and settle the weighted constant-$c$ case.\n\nPROBLEM (full statement with model)\nIn $1|r_j|\\sum U_j$ and $1|r_j|\\sum w_jU_j$, each job $j$ has processing time $p_j$, release date $r_j$, due date $d_j$, and in the weighted case weight $w_j$. A nonpreemptive single-machine schedule chooses start times $S_j\\ge r_j$ with no overlap; $U_j=1$ iff $C_j=S_j+p_j>d_j$. The objective is to minimize the number, or total weight, of tardy jobs. Let $p_{\\max}=\\max_j p_j$. The open problem asks whether these problems are W[1]-hard parameterized by $p_{\\max}$, or instead fixed-parameter tractable (or even in XP) for this parameter. A positive FPT result would move toward polynomial-time algorithms for bounded-processing-time throughput scheduling; a hardness result would explain why this regime resists classical algorithms.\n\nKNOWN RESULTS\nThe special case without release dates, $1||\\sum U_j$, is polynomial-time solvable, and $1||\\sum w_jU_j$ is weakly NP-hard but pseudo-polynomial. Sgall asked whether $1|r_j,p_j\\le c|\\sum U_j$ is polynomial-time solvable for constant $c$ and whether the weighted case is NP-hard for constant $c$. Mnich and van Bevern formulate the parameterized question and note that even membership in XP was open at publication.\n\nREMAINING OPEN PROBLEM\nDetermine whether $1|r_j,p_j\\le c|\\sum U_j$ is polynomial-time solvable for each fixed processing-time bound $c$, and settle the weighted constant-$c$ case.\n\nWHERE POSED: Open Problem 3 in Mnich and van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems' (Computers & Operations Research 2018). (https://arxiv.org/abs/1709.01670)\nSOURCE: Matthias Mnich, René van Bevern, Parameterized complexity of machine scheduling: 15 open problems (2018, Computers & Operations Research) https://arxiv.org/abs/1709.01670\nRELATED:\n- Jiří Sgall, Open problems in throughput scheduling (2012, ESA) https://doi.org/10.1007/978-3-642-33090-2_2\n- Matthias Mnich, René van Bevern, Parameterized complexity of machine scheduling: 15 open problems (2018, Computers & Operations Research) https://doi.org/10.1016/j.cor.2018.07.020\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
 <script>
 (function(){
   var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;

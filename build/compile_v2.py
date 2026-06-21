@@ -5,11 +5,7 @@ from collections import Counter
 BASE = Path(__file__).resolve().parent
 ROOT = BASE.parent
 
-SRC = [
-  ("mig_online_market.json", None),
-  ("mig_stoch_approx_notes.json", None),
-  ("new_om_or_ms.json", None),
-]
+SRC = BASE / "problems_source.json"
 REQ = ["id","title","collection","area","status","short_statement","full_statement","source"]
 
 OPEN_OVERRIDES = {
@@ -80,20 +76,22 @@ def derive_open_problem(p):
             return sent
     return "Resolve the open question stated in the model above."
 
-problems, seen, errors = [], {}, []
-for fn,_ in SRC:
-    arr = json.load(open(BASE / fn))
-    for p in arr:
-        miss=[k for k in REQ if not p.get(k)]
-        if miss: errors.append(f"{fn}:{p.get('id','?')} missing {miss}")
-        wp=p.get("where_posed")
-        if not (isinstance(wp,dict) and wp.get("text")): errors.append(f"{fn}:{p.get('id','?')} weak where_posed")
-        pid=p.get("id","")
-        if pid in seen: errors.append(f"DUP {pid} ({fn} & {seen[pid]}) skipped"); continue
-        seen[pid]=fn
-        p.setdefault("tags",[]); p.setdefault("additional_refs",[])
-        p.setdefault("known_results",""); p.setdefault("confidence","medium")
-        problems.append(p)
+source_records = json.load(open(SRC))
+problems, seen, errors, disabled = [], {}, [], []
+for p in source_records:
+    if p.get("enabled") is False:
+        disabled.append(p)
+        continue
+    miss=[k for k in REQ if not p.get(k)]
+    if miss: errors.append(f"{SRC.name}:{p.get('id','?')} missing {miss}")
+    wp=p.get("where_posed")
+    if not (isinstance(wp,dict) and wp.get("text")): errors.append(f"{SRC.name}:{p.get('id','?')} weak where_posed")
+    pid=p.get("id","")
+    if pid in seen: errors.append(f"DUP {pid} ({SRC.name} & {seen[pid]}) skipped"); continue
+    seen[pid]=SRC.name
+    p.setdefault("tags",[]); p.setdefault("additional_refs",[])
+    p.setdefault("known_results",""); p.setdefault("confidence","medium")
+    problems.append(p)
 
 for i,p in enumerate(problems,1):
     p["number"]=i; p["ref"]=f"ORDOS-{i:03d}"
@@ -121,6 +119,7 @@ out={"metadata":{
    "description":"Crowdsourced open problems in Operations Research, Operations Management, and Management Science (with related market design and online algorithms). Modeled on erdosproblems.com. Each problem has a short statement and a complete, model-level statement suitable for handing to a solver.",
    "generated":datetime.date.today().isoformat(),
    "count":len(problems),
+   "inactive_count":len(disabled),
    "collections":dict(col.most_common()),
    "areas":dict(sorted(area.items())),
    "status_breakdown":dict(st),
@@ -130,7 +129,7 @@ out={"metadata":{
   },"problems":problems}
 json.dump(out,open(ROOT / "problems.json","w"),indent=2,ensure_ascii=False)
 
-print("\nTOTAL:",len(problems))
+print("\nTOTAL:",len(problems),f"({len(disabled)} inactive)")
 print("\nBy collection:")
 for c,n in col.most_common(): print(f"  {n:3d}  {c}")
 print("\nDiscipline rollup:")

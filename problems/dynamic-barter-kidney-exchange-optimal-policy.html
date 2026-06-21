@@ -156,7 +156,7 @@
     .brand{align-items:flex-start;}
     .brand h1{min-width:0;overflow-wrap:anywhere;}
     h1{font-size:2.15rem}
-    .sub,.about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
+    .about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
     .statbar{gap:6px;}
     .statbtn{padding:5px 8px;}
     .moretags{align-items:flex-start;flex-direction:column;}
@@ -186,7 +186,6 @@
       </svg></a>
       <h1><a href="../index.html" style="color:inherit;text-decoration:none"><span class="or">OR</span>dős Problems</a></h1>
     </div>
-    <p class="sub">A collection of Open Problems in Computer Science, Operations Research, Operations Management and Applied Probability.</p>
   </header>
 
   <div class="detail-top">
@@ -201,14 +200,14 @@
 <span class="tag">#operations</span>
 <span class="tag">#check-source</span></div>
       <h1 class="detail-title">Optimal dynamic policy for kidney exchange with long cycles and chains</h1>
-      <div class="detail-meta"><span class="num">83</span><span class="tag">Problem 83 of 97</span><span class="tag">#ordos-083</span></div>
+      <div class="detail-meta"><span class="num">70</span><span class="tag">Problem 70 of 84</span><span class="tag">#ordos-070</span></div>
     </div>
     <a class="back-link" href="../index.html">Back to all problems</a>
   </div>
 
   <nav class="problem-nav" aria-label="Problem navigation">
-    <a class="navlink prev" href="greedy-dynamic-matching-heterogeneous-departures.html"><span class="navlabel">Previous problem</span>#82 · Greedy dynamic matching with heterogeneous departure rates</a>
-    <a class="navlink next" href="dynamic-spatial-matching-greedy.html"><span class="navlabel">Next problem</span>#84 · Cost of the greedy algorithm for dynamic spatial matching</a>
+    <a class="navlink prev" href="greedy-dynamic-matching-heterogeneous-departures.html"><span class="navlabel">Previous problem</span>#69 · Greedy dynamic matching with heterogeneous departure rates</a>
+    <a class="navlink next" href="dynamic-spatial-matching-greedy.html"><span class="navlabel">Next problem</span>#71 · Cost of the greedy algorithm for dynamic spatial matching</a>
   </nav>
 
   <section class="detail-card statement">
@@ -249,7 +248,7 @@
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
-<script type="application/json" id="copy-data">"ORdős Problems #83 — Optimal dynamic policy for kidney exchange with long cycles and chains\n\nSHORT STATEMENT\nIn a dynamically arriving kidney-exchange pool, is matching immediately (greedily) optimal once exchanges via cycles of length $\\ge 3$ or altruistic-donor chains are allowed - and if not, what is the optimal or best competitive policy?\n\nOPEN PROBLEM\ndetermine the optimal (or best competitive) dynamic policy when cycles of length $\\ge 3$ and/or chains are allowed in general graphs, and quantify when batching/waiting strictly beats greedy.\n\nPROBLEM (full statement with model)\nIncompatible patient–donor pairs arrive over time to an exchange pool; a directed compatibility graph forms among present pairs. A transplant is realized by clearing a directed cycle of length at most $L$ (e.g. $L=2$ pairwise swaps or $L=3$ three-way exchanges) or a chain initiated by a non-directed (altruistic) donor; cleared pairs leave. Pairs may also depart/perish if unmatched. The planner chooses when to match and which cycles/chains to clear, to maximize the number (or weighted value) of transplants, or minimize average waiting. Anderson–Ashlagi–Gamarnik–Kanoria (2017) show in a random-graph dynamic model that, for $L=2$, greedy (immediate) matching minimizes average waiting, and for $L=3$ greedy is optimal within a broad class. Question: determine the optimal (or best competitive) dynamic policy when cycles of length $\\ge 3$ and/or chains are allowed in general graphs, and quantify when batching/waiting strictly beats greedy.\n\nKNOWN RESULTS\nFor 2-way exchange, greedy minimizes waiting (Ünver 2010; Anderson et al. 2017). For 3-way, greedy is optimal within a broad policy class. With longer cycles, chains, heterogeneous types, or general compatibility structure, the optimal policy and its competitive ratio are open; recent work studies cost-balancing and 'when to match' principles.\n\nREMAINING OPEN PROBLEM\ndetermine the optimal (or best competitive) dynamic policy when cycles of length $\\ge 3$ and/or chains are allowed in general graphs, and quantify when batching/waiting strictly beats greedy.\n\nWHERE POSED: Open beyond the cases settled in Anderson, Ashlagi, Gamarnik, Kanoria, 'Efficient Dynamic Barter Exchange' (Operations Research 2017; SODA 2015). (https://pubsonline.informs.org/doi/10.1287/opre.2017.1644)\nSOURCE: Ross Anderson, Itai Ashlagi, David Gamarnik, Yash Kanoria, Efficient Dynamic Barter Exchange (2017, Operations Research) https://pubsonline.informs.org/doi/10.1287/opre.2017.1644\nRELATED:\n- M. Utku Ünver, Dynamic Kidney Exchange (2010, Review of Economic Studies) https://doi.org/10.1111/j.1467-937X.2009.00575.x\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
+<script type="application/json" id="copy-data">"ORdős Problems #70 — Optimal dynamic policy for kidney exchange with long cycles and chains\n\nSHORT STATEMENT\nIn a dynamically arriving kidney-exchange pool, is matching immediately (greedily) optimal once exchanges via cycles of length $\\ge 3$ or altruistic-donor chains are allowed - and if not, what is the optimal or best competitive policy?\n\nOPEN PROBLEM\ndetermine the optimal (or best competitive) dynamic policy when cycles of length $\\ge 3$ and/or chains are allowed in general graphs, and quantify when batching/waiting strictly beats greedy.\n\nPROBLEM (full statement with model)\nIncompatible patient–donor pairs arrive over time to an exchange pool; a directed compatibility graph forms among present pairs. A transplant is realized by clearing a directed cycle of length at most $L$ (e.g. $L=2$ pairwise swaps or $L=3$ three-way exchanges) or a chain initiated by a non-directed (altruistic) donor; cleared pairs leave. Pairs may also depart/perish if unmatched. The planner chooses when to match and which cycles/chains to clear, to maximize the number (or weighted value) of transplants, or minimize average waiting. Anderson–Ashlagi–Gamarnik–Kanoria (2017) show in a random-graph dynamic model that, for $L=2$, greedy (immediate) matching minimizes average waiting, and for $L=3$ greedy is optimal within a broad class. Question: determine the optimal (or best competitive) dynamic policy when cycles of length $\\ge 3$ and/or chains are allowed in general graphs, and quantify when batching/waiting strictly beats greedy.\n\nKNOWN RESULTS\nFor 2-way exchange, greedy minimizes waiting (Ünver 2010; Anderson et al. 2017). For 3-way, greedy is optimal within a broad policy class. With longer cycles, chains, heterogeneous types, or general compatibility structure, the optimal policy and its competitive ratio are open; recent work studies cost-balancing and 'when to match' principles.\n\nREMAINING OPEN PROBLEM\ndetermine the optimal (or best competitive) dynamic policy when cycles of length $\\ge 3$ and/or chains are allowed in general graphs, and quantify when batching/waiting strictly beats greedy.\n\nWHERE POSED: Open beyond the cases settled in Anderson, Ashlagi, Gamarnik, Kanoria, 'Efficient Dynamic Barter Exchange' (Operations Research 2017; SODA 2015). (https://pubsonline.informs.org/doi/10.1287/opre.2017.1644)\nSOURCE: Ross Anderson, Itai Ashlagi, David Gamarnik, Yash Kanoria, Efficient Dynamic Barter Exchange (2017, Operations Research) https://pubsonline.informs.org/doi/10.1287/opre.2017.1644\nRELATED:\n- M. Utku Ünver, Dynamic Kidney Exchange (2010, Review of Economic Studies) https://doi.org/10.1111/j.1467-937X.2009.00575.x\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
 <script>
 (function(){
   var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;

@@ -156,7 +156,7 @@
     .brand{align-items:flex-start;}
     .brand h1{min-width:0;overflow-wrap:anywhere;}
     h1{font-size:2.15rem}
-    .sub,.about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
+    .about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
     .statbar{gap:6px;}
     .statbtn{padding:5px 8px;}
     .moretags{align-items:flex-start;flex-direction:column;}
@@ -186,7 +186,6 @@
       </svg></a>
       <h1><a href="../index.html" style="color:inherit;text-decoration:none"><span class="or">OR</span>dős Problems</a></h1>
     </div>
-    <p class="sub">A collection of Open Problems in Computer Science, Operations Research, Operations Management and Applied Probability.</p>
   </header>
 
   <div class="detail-top">
@@ -200,14 +199,14 @@
 <span class="tag">#competitive-analysis</span>
 <span class="tag">#budget-oblivious</span></div>
       <h1 class="detail-title">Best competitive ratio for Adwords with unknown budgets</h1>
-      <div class="detail-meta"><span class="num">89</span><span class="tag">Problem 89 of 97</span><span class="tag">#ordos-089</span></div>
+      <div class="detail-meta"><span class="num">76</span><span class="tag">Problem 76 of 84</span><span class="tag">#ordos-076</span></div>
     </div>
     <a class="back-link" href="../index.html">Back to all problems</a>
   </div>
 
   <nav class="problem-nav" aria-label="Problem navigation">
-    <a class="navlink prev" href="fixed-budget-best-arm-identification-complexity.html"><span class="navlabel">Previous problem</span>#88 · Instance-dependent complexity of fixed-budget best-arm identification</a>
-    <a class="navlink next" href="heterogeneous-data-driven-decision-efficient-robust-policies.html"><span class="navlabel">Next problem</span>#90 · Efficient robust policies for heterogeneous data-driven decisions</a>
+    <a class="navlink prev" href="fixed-budget-best-arm-identification-complexity.html"><span class="navlabel">Previous problem</span>#75 · Instance-dependent complexity of fixed-budget best-arm identification</a>
+    <a class="navlink next" href="heterogeneous-data-driven-decision-efficient-robust-policies.html"><span class="navlabel">Next problem</span>#77 · Efficient robust policies for heterogeneous data-driven decisions</a>
   </nav>
 
   <section class="detail-card statement">
@@ -248,7 +247,7 @@
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
-<script type="application/json" id="copy-data">"ORdős Problems #89 — Best competitive ratio for Adwords with unknown budgets\n\nSHORT STATEMENT\nIn the Adwords problem where advertiser budgets are unknown until exceeded, what is the optimal randomized competitive ratio?\n\nOPEN PROBLEM\nThe open problem is to determine the best possible randomized competitive ratio for Adwords with unknown budgets, and whether a budget-oblivious or different randomized algorithm achieves it.\n\nPROBLEM (full statement with model)\nIn the Adwords problem, queries arrive online. Each query $t$ has bids $b_{it}$ from advertisers $i$, and assigning $t$ to $i$ earns $b_{it}$ up to advertiser $i$'s remaining budget $B_i$. In the classical model, all budgets $B_i$ are known to the algorithm. In the unknown-budget model, bids are known on arrival but $B_i$ is not known in advance; the algorithm only learns that an advertiser's budget has been exceeded when an attempted allocation fails or exhausts it. Decisions are irrevocable, and the benchmark is the offline optimum that knows the entire arrival sequence and all budgets. Greedy is $1/2$-competitive and no deterministic algorithm can do better. Udwani gives a randomized budget-oblivious generalized perturbed-greedy algorithm with competitive ratio at least $0.522$ and shows this algorithm is strictly below $1-1/e$. The open problem is to determine the best possible randomized competitive ratio for Adwords with unknown budgets, and whether a budget-oblivious or different randomized algorithm achieves it.\n\nKNOWN RESULTS\nKnown-budget Adwords admits the classic $1-1/e$ guarantee under small bids. With unknown budgets, deterministic algorithms are capped at $1/2$. Udwani's randomized GPG-style algorithm improves this to at least $0.522$, with an upper bound below $1-1/e$ for that algorithm. The exact optimal randomized ratio remains open.\n\nREMAINING OPEN PROBLEM\nThe open problem is to determine the best possible randomized competitive ratio for Adwords with unknown budgets, and whether a budget-oblivious or different randomized algorithm achieves it.\n\nWHERE POSED: Conclusion of Udwani, 'Adwords with Unknown Budgets and Beyond', states the immediate open question of finding the best possible competitive ratio guarantee for Adwords with unknown budgets. (https://arxiv.org/abs/2110.00504)\nSOURCE: Rajan Udwani, Adwords with Unknown Budgets and Beyond (2024, Operations Research) https://arxiv.org/abs/2110.00504\nRELATED:\n- Aranyak Mehta, Amin Saberi, Umesh Vazirani, Vijay Vazirani, AdWords and generalized online matching (2007, Journal of the ACM) https://doi.org/10.1145/1206035.1206036\n- Vijay V. Vazirani, Towards a Practical, Budget-Oblivious Algorithm for the Adwords Problem under Small Bids (2021, arXiv:2107.10777) https://arxiv.org/abs/2107.10777\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
+<script type="application/json" id="copy-data">"ORdős Problems #76 — Best competitive ratio for Adwords with unknown budgets\n\nSHORT STATEMENT\nIn the Adwords problem where advertiser budgets are unknown until exceeded, what is the optimal randomized competitive ratio?\n\nOPEN PROBLEM\nThe open problem is to determine the best possible randomized competitive ratio for Adwords with unknown budgets, and whether a budget-oblivious or different randomized algorithm achieves it.\n\nPROBLEM (full statement with model)\nIn the Adwords problem, queries arrive online. Each query $t$ has bids $b_{it}$ from advertisers $i$, and assigning $t$ to $i$ earns $b_{it}$ up to advertiser $i$'s remaining budget $B_i$. In the classical model, all budgets $B_i$ are known to the algorithm. In the unknown-budget model, bids are known on arrival but $B_i$ is not known in advance; the algorithm only learns that an advertiser's budget has been exceeded when an attempted allocation fails or exhausts it. Decisions are irrevocable, and the benchmark is the offline optimum that knows the entire arrival sequence and all budgets. Greedy is $1/2$-competitive and no deterministic algorithm can do better. Udwani gives a randomized budget-oblivious generalized perturbed-greedy algorithm with competitive ratio at least $0.522$ and shows this algorithm is strictly below $1-1/e$. The open problem is to determine the best possible randomized competitive ratio for Adwords with unknown budgets, and whether a budget-oblivious or different randomized algorithm achieves it.\n\nKNOWN RESULTS\nKnown-budget Adwords admits the classic $1-1/e$ guarantee under small bids. With unknown budgets, deterministic algorithms are capped at $1/2$. Udwani's randomized GPG-style algorithm improves this to at least $0.522$, with an upper bound below $1-1/e$ for that algorithm. The exact optimal randomized ratio remains open.\n\nREMAINING OPEN PROBLEM\nThe open problem is to determine the best possible randomized competitive ratio for Adwords with unknown budgets, and whether a budget-oblivious or different randomized algorithm achieves it.\n\nWHERE POSED: Conclusion of Udwani, 'Adwords with Unknown Budgets and Beyond', states the immediate open question of finding the best possible competitive ratio guarantee for Adwords with unknown budgets. (https://arxiv.org/abs/2110.00504)\nSOURCE: Rajan Udwani, Adwords with Unknown Budgets and Beyond (2024, Operations Research) https://arxiv.org/abs/2110.00504\nRELATED:\n- Aranyak Mehta, Amin Saberi, Umesh Vazirani, Vijay Vazirani, AdWords and generalized online matching (2007, Journal of the ACM) https://doi.org/10.1145/1206035.1206036\n- Vijay V. Vazirani, Towards a Practical, Budget-Oblivious Algorithm for the Adwords Problem under Small Bids (2021, arXiv:2107.10777) https://arxiv.org/abs/2107.10777\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
 <script>
 (function(){
   var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;

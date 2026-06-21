@@ -156,7 +156,7 @@
     .brand{align-items:flex-start;}
     .brand h1{min-width:0;overflow-wrap:anywhere;}
     h1{font-size:2.15rem}
-    .sub,.about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
+    .about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
     .statbar{gap:6px;}
     .statbtn{padding:5px 8px;}
     .moretags{align-items:flex-start;flex-direction:column;}
@@ -186,7 +186,6 @@
       </svg></a>
       <h1><a href="../index.html" style="color:inherit;text-decoration:none"><span class="or">OR</span>dős Problems</a></h1>
     </div>
-    <p class="sub">A collection of Open Problems in Computer Science, Operations Research, Operations Management and Applied Probability.</p>
   </header>
 
   <div class="detail-top">
@@ -198,14 +197,14 @@
 <span class="tag">#pivot-rule</span>
 <span class="tag">#klee-minty</span></div>
       <h1 class="detail-title">A polynomial pivot rule for the simplex method</h1>
-      <div class="detail-meta"><span class="num">72</span><span class="tag">Problem 72 of 97</span><span class="tag">#ordos-072</span></div>
+      <div class="detail-meta"><span class="num">59</span><span class="tag">Problem 59 of 84</span><span class="tag">#ordos-059</span></div>
     </div>
     <a class="back-link" href="../index.html">Back to all problems</a>
   </div>
 
   <nav class="problem-nav" aria-label="Problem navigation">
-    <a class="navlink prev" href="strongly-polynomial-lp.html"><span class="navlabel">Previous problem</span>#71 · A strongly polynomial algorithm for linear programming (Smale&#x27;s 9th problem)</a>
-    <a class="navlink next" href="polynomial-hirsch-conjecture.html"><span class="navlabel">Next problem</span>#73 · The Polynomial Hirsch Conjecture</a>
+    <a class="navlink prev" href="strongly-polynomial-lp.html"><span class="navlabel">Previous problem</span>#58 · A strongly polynomial algorithm for linear programming (Smale&#x27;s 9th problem)</a>
+    <a class="navlink next" href="polynomial-hirsch-conjecture.html"><span class="navlabel">Next problem</span>#60 · The Polynomial Hirsch Conjecture</a>
   </nav>
 
   <section class="detail-card statement">
@@ -257,7 +256,7 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
-<script type="application/json" id="copy-data">"ORdős Problems #72 — A polynomial pivot rule for the simplex method\n\nSHORT STATEMENT\nIs there a pivot rule under which the simplex method always solves a linear program in a number of pivot steps bounded by a polynomial in the number of variables and constraints?\n\nOPEN PROBLEM\ndoes there exist a (deterministic or randomized) pivot rule for which the number of pivot steps is bounded by a polynomial in $m$ and $n$ for every linear program?\n\nPROBLEM (full statement with model)\nThe simplex method solves $\\max\\{c^\\top x : Ax\\le b,\\ x\\ge 0\\}$ by walking along edges of the feasible polyhedron from vertex to adjacent improving vertex; a \\emph{pivot rule} chooses, at each vertex, which improving edge to follow. Klee and Minty (1972) showed Dantzig's most-negative-reduced-cost rule can take $2^n-1$ steps on a deformed cube, and analogous exponential lower bounds are known for essentially every classical deterministic rule (Bland, steepest edge, greatest improvement, etc.). Question: does there exist a (deterministic or randomized) pivot rule for which the number of pivot steps is bounded by a polynomial in $m$ and $n$ for every linear program?\n\nKNOWN RESULTS\nBest known are subexponential randomized rules: Random-Facet achieves $\\exp(O(\\sqrt{n\\log n}))$ pivots (Kalai 1992; Matoušek–Sharir–Welzl), later shown essentially tight for such rules (Friedmann–Hansen–Zwick). No polynomial pivot rule is known. The question is intimately tied to the polynomial Hirsch conjecture (a polynomial diameter bound is necessary for any polynomial pivot rule).\n\nREMAINING OPEN PROBLEM\ndoes there exist a (deterministic or randomized) pivot rule for which the number of pivot steps is bounded by a polynomial in $m$ and $n$ for every linear program?\n\nWHERE POSED: A central open problem of linear optimization since Klee–Minty (1972); see Kalai (1992) and Todd's surveys. (https://www.sciencedirect.com/science/article/pii/B9780125104302500190)\nSOURCE: Victor Klee, George J. Minty, How Good is the Simplex Algorithm? (1972, Inequalities III (Academic Press)) https://www.sciencedirect.com/science/article/pii/B9780125104302500190\nRELATED:\n- Gil Kalai, A subexponential randomized simplex algorithm (1992, STOC) https://doi.org/10.1145/129712.129759\n- Oliver Friedmann, Thomas Dueholm Hansen, Uri Zwick, Subexponential lower bounds for randomized pivoting rules for the simplex algorithm (2011, STOC) https://doi.org/10.1145/1993636.1993675\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
+<script type="application/json" id="copy-data">"ORdős Problems #59 — A polynomial pivot rule for the simplex method\n\nSHORT STATEMENT\nIs there a pivot rule under which the simplex method always solves a linear program in a number of pivot steps bounded by a polynomial in the number of variables and constraints?\n\nOPEN PROBLEM\ndoes there exist a (deterministic or randomized) pivot rule for which the number of pivot steps is bounded by a polynomial in $m$ and $n$ for every linear program?\n\nPROBLEM (full statement with model)\nThe simplex method solves $\\max\\{c^\\top x : Ax\\le b,\\ x\\ge 0\\}$ by walking along edges of the feasible polyhedron from vertex to adjacent improving vertex; a \\emph{pivot rule} chooses, at each vertex, which improving edge to follow. Klee and Minty (1972) showed Dantzig's most-negative-reduced-cost rule can take $2^n-1$ steps on a deformed cube, and analogous exponential lower bounds are known for essentially every classical deterministic rule (Bland, steepest edge, greatest improvement, etc.). Question: does there exist a (deterministic or randomized) pivot rule for which the number of pivot steps is bounded by a polynomial in $m$ and $n$ for every linear program?\n\nKNOWN RESULTS\nBest known are subexponential randomized rules: Random-Facet achieves $\\exp(O(\\sqrt{n\\log n}))$ pivots (Kalai 1992; Matoušek–Sharir–Welzl), later shown essentially tight for such rules (Friedmann–Hansen–Zwick). No polynomial pivot rule is known. The question is intimately tied to the polynomial Hirsch conjecture (a polynomial diameter bound is necessary for any polynomial pivot rule).\n\nREMAINING OPEN PROBLEM\ndoes there exist a (deterministic or randomized) pivot rule for which the number of pivot steps is bounded by a polynomial in $m$ and $n$ for every linear program?\n\nWHERE POSED: A central open problem of linear optimization since Klee–Minty (1972); see Kalai (1992) and Todd's surveys. (https://www.sciencedirect.com/science/article/pii/B9780125104302500190)\nSOURCE: Victor Klee, George J. Minty, How Good is the Simplex Algorithm? (1972, Inequalities III (Academic Press)) https://www.sciencedirect.com/science/article/pii/B9780125104302500190\nRELATED:\n- Gil Kalai, A subexponential randomized simplex algorithm (1992, STOC) https://doi.org/10.1145/129712.129759\n- Oliver Friedmann, Thomas Dueholm Hansen, Uri Zwick, Subexponential lower bounds for randomized pivoting rules for the simplex algorithm (2011, STOC) https://doi.org/10.1145/1993636.1993675\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
 <script>
 (function(){
   var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;

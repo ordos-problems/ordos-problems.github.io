@@ -156,7 +156,7 @@
     .brand{align-items:flex-start;}
     .brand h1{min-width:0;overflow-wrap:anywhere;}
     h1{font-size:2.15rem}
-    .sub,.about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
+    .about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
     .statbar{gap:6px;}
     .statbtn{padding:5px 8px;}
     .moretags{align-items:flex-start;flex-direction:column;}
@@ -186,7 +186,6 @@
       </svg></a>
       <h1><a href="../index.html" style="color:inherit;text-decoration:none"><span class="or">OR</span>dős Problems</a></h1>
     </div>
-    <p class="sub">A collection of Open Problems in Computer Science, Operations Research, Operations Management and Applied Probability.</p>
   </header>
 
   <div class="detail-top">
@@ -199,14 +198,14 @@
 <span class="tag">#linear-programming</span>
 <span class="tag">#simplex-method</span></div>
       <h1 class="detail-title">The Polynomial Hirsch Conjecture</h1>
-      <div class="detail-meta"><span class="num">73</span><span class="tag">Problem 73 of 97</span><span class="tag">#ordos-073</span></div>
+      <div class="detail-meta"><span class="num">60</span><span class="tag">Problem 60 of 84</span><span class="tag">#ordos-060</span></div>
     </div>
     <a class="back-link" href="../index.html">Back to all problems</a>
   </div>
 
   <nav class="problem-nav" aria-label="Problem navigation">
-    <a class="navlink prev" href="simplex-polynomial-pivot-rule.html"><span class="navlabel">Previous problem</span>#72 · A polynomial pivot rule for the simplex method</a>
-    <a class="navlink next" href="strongly-polynomial-mdp.html"><span class="navlabel">Next problem</span>#74 · A strongly polynomial algorithm for Markov decision processes</a>
+    <a class="navlink prev" href="simplex-polynomial-pivot-rule.html"><span class="navlabel">Previous problem</span>#59 · A polynomial pivot rule for the simplex method</a>
+    <a class="navlink next" href="strongly-polynomial-mdp.html"><span class="navlabel">Next problem</span>#61 · A strongly polynomial algorithm for Markov decision processes</a>
   </nav>
 
   <section class="detail-card statement">
@@ -247,7 +246,7 @@
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
-<script type="application/json" id="copy-data">"ORdős Problems #73 — The Polynomial Hirsch Conjecture\n\nSHORT STATEMENT\nIs the combinatorial diameter of the graph of a $d$-dimensional polytope with $n$ facets bounded by a polynomial in $n$ and $d$?\n\nOPEN PROBLEM\nThe \\emph{polynomial Hirsch conjecture} asks: is there a polynomial $p$ such that the diameter is at most $p(n,d)$ for every polytope?\n\nPROBLEM (full statement with model)\nLet $P\\subseteq\\mathbb{R}^d$ be a convex polytope defined by $n$ facet inequalities. Its \\emph{graph} has the vertices of $P$ as nodes, with an edge between two vertices if they share an edge (1-dimensional face) of $P$. The \\emph{combinatorial diameter} of $P$ is the maximum, over all pairs of vertices, of the graph distance between them. The Hirsch conjecture (1957) asserted this diameter is at most $n-d$; Santos (2012) constructed a counterexample. The \\emph{polynomial Hirsch conjecture} asks: is there a polynomial $p$ such that the diameter is at most $p(n,d)$ for every polytope? A positive answer is a prerequisite for any polynomial-time pivot rule for the simplex method.\n\nKNOWN RESULTS\nUpper bounds are only quasi-polynomial: the Kalai–Kleitman bound $n^{\\log_2 d + O(1)}$ (1992), refined by Todd to $(n-d)^{\\log_2 d}$ and by Sukegawa. Linear-in-$n$ bounds are known for special classes. Lower bounds are linear. Whether any polynomial upper bound holds is open.\n\nREMAINING OPEN PROBLEM\nThe \\emph{polynomial Hirsch conjecture} asks: is there a polynomial $p$ such that the diameter is at most $p(n,d)$ for every polytope?\n\nWHERE POSED: The Hirsch conjecture (Dantzig 1957) was disproved by Santos (2012); the polynomial version is the surviving central question (popularized via Polymath3, Kalai). (https://arxiv.org/abs/1006.2814)\nSOURCE: Francisco Santos, A counterexample to the Hirsch conjecture (2012, Annals of Mathematics) https://arxiv.org/abs/1006.2814\nRELATED:\n- Gil Kalai, Daniel J. Kleitman, A quasi-polynomial bound for the diameter of graphs of polyhedra (1992, Bulletin of the AMS) https://www.ams.org/journals/bull/1992-26-02/S0273-0979-1992-00285-9/\n- Michael J. Todd, An improved Kalai–Kleitman bound for the diameter of a polyhedron (2014, SIAM J. Discrete Mathematics) https://arxiv.org/abs/1402.3579\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
+<script type="application/json" id="copy-data">"ORdős Problems #60 — The Polynomial Hirsch Conjecture\n\nSHORT STATEMENT\nIs the combinatorial diameter of the graph of a $d$-dimensional polytope with $n$ facets bounded by a polynomial in $n$ and $d$?\n\nOPEN PROBLEM\nThe \\emph{polynomial Hirsch conjecture} asks: is there a polynomial $p$ such that the diameter is at most $p(n,d)$ for every polytope?\n\nPROBLEM (full statement with model)\nLet $P\\subseteq\\mathbb{R}^d$ be a convex polytope defined by $n$ facet inequalities. Its \\emph{graph} has the vertices of $P$ as nodes, with an edge between two vertices if they share an edge (1-dimensional face) of $P$. The \\emph{combinatorial diameter} of $P$ is the maximum, over all pairs of vertices, of the graph distance between them. The Hirsch conjecture (1957) asserted this diameter is at most $n-d$; Santos (2012) constructed a counterexample. The \\emph{polynomial Hirsch conjecture} asks: is there a polynomial $p$ such that the diameter is at most $p(n,d)$ for every polytope? A positive answer is a prerequisite for any polynomial-time pivot rule for the simplex method.\n\nKNOWN RESULTS\nUpper bounds are only quasi-polynomial: the Kalai–Kleitman bound $n^{\\log_2 d + O(1)}$ (1992), refined by Todd to $(n-d)^{\\log_2 d}$ and by Sukegawa. Linear-in-$n$ bounds are known for special classes. Lower bounds are linear. Whether any polynomial upper bound holds is open.\n\nREMAINING OPEN PROBLEM\nThe \\emph{polynomial Hirsch conjecture} asks: is there a polynomial $p$ such that the diameter is at most $p(n,d)$ for every polytope?\n\nWHERE POSED: The Hirsch conjecture (Dantzig 1957) was disproved by Santos (2012); the polynomial version is the surviving central question (popularized via Polymath3, Kalai). (https://arxiv.org/abs/1006.2814)\nSOURCE: Francisco Santos, A counterexample to the Hirsch conjecture (2012, Annals of Mathematics) https://arxiv.org/abs/1006.2814\nRELATED:\n- Gil Kalai, Daniel J. Kleitman, A quasi-polynomial bound for the diameter of graphs of polyhedra (1992, Bulletin of the AMS) https://www.ams.org/journals/bull/1992-26-02/S0273-0979-1992-00285-9/\n- Michael J. Todd, An improved Kalai–Kleitman bound for the diameter of a polyhedron (2014, SIAM J. Discrete Mathematics) https://arxiv.org/abs/1402.3579\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
 <script>
 (function(){
   var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;
