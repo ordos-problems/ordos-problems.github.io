@@ -894,5 +894,228 @@
         "url": "https://doi.org/10.1145/1806689.1806716"
       }
     ]
+  },
+  {
+    "id": "correlated-random-graph-matching-efficient-threshold",
+    "title": "Efficient recovery at the random graph matching threshold",
+    "collection": "Computer Science",
+    "area": "Average-Case Inference",
+    "tags": [
+      "graph matching",
+      "random graphs",
+      "average-case complexity",
+      "statistical-computational gaps",
+      "planted structures"
+    ],
+    "status": "open",
+    "confidence": "medium",
+    "short_statement": "For correlated Erdos-Renyi graph matching, can polynomial-time algorithms reach the information-theoretic recovery thresholds?",
+    "open_problem": "Determine whether there is a polynomial-time algorithm for unseeded correlated Erdos-Renyi graph matching whose exact-recovery or almost-exact-recovery threshold matches the information-theoretic threshold, including the sparse regimes where current sharp results are only partly algorithmic.",
+    "full_statement": "Two observed graphs $G_1$ and $G_2$ are generated from a common parent Erdos-Renyi graph on $n$ vertices, followed by independent edge subsampling or an equivalent edge-correlation mechanism, and then the vertices of one graph are permuted by an unknown permutation $\\pi$. The statistical task is to recover $\\pi$ exactly, or to correctly match a positive or $1-o(1)$ fraction of vertices. Maximum likelihood gives the relevant information-theoretic benchmark but is not a polynomial-time algorithm. The open problem is to close the algorithmic gap: find a polynomial-time estimator that succeeds down to the information-theoretic threshold, or prove a rigorous computational barrier, especially for sparse graphs where local graph structure rather than dense spectral information drives the transition.",
+    "known_results": "Wu, Xu, and Yu determine sharp reconstruction thresholds for dense correlated random graph matching and determine sparse Erdos-Renyi thresholds up to constant factors; their positive results use a refined analysis of maximum likelihood. Seeded variants are much better understood algorithmically, but the remaining open part is the unseeded polynomial-time threshold: the information-theoretic characterization does not by itself give an efficient matching algorithm.",
+    "where_posed": {
+      "text": "This entry formulates the algorithmic gap suggested by the information-theoretic thresholds of Wu, Xu, and Yu and by the contrast with seeded graph-matching algorithms.",
+      "url": "https://arxiv.org/abs/2102.00082"
+    },
+    "source": {
+      "authors": "Yihong Wu, Jiaming Xu, Sophie H. Yu",
+      "title": "Settling the Sharp Reconstruction Thresholds of Random Graph Matching",
+      "year": 2022,
+      "venue": "arXiv:2102.00082",
+      "url": "https://arxiv.org/abs/2102.00082"
+    },
+    "additional_refs": [
+      {
+        "authors": "Elchanan Mossel, Jiaming Xu",
+        "title": "Seeded Graph Matching via Large Neighborhood Statistics",
+        "year": 2018,
+        "venue": "arXiv:1807.10262",
+        "url": "https://arxiv.org/abs/1807.10262"
+      }
+    ]
+  },
+  {
+    "id": "planted-structure-computational-thresholds",
+    "title": "Sharp computational thresholds for planted structures",
+    "collection": "Computer Science",
+    "area": "Average-Case Complexity",
+    "tags": [
+      "planted clique",
+      "planted dense subgraph",
+      "submatrix detection",
+      "average-case reductions",
+      "statistical-computational gaps"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "Can the conjectured computational thresholds for planted dense subgraph and submatrix problems be made sharp under clean average-case assumptions?",
+    "open_problem": "Give sharp polynomial-time thresholds, or matching conditional lower bounds, for planted dense subgraph and submatrix localization across the sparse and growing-structure regimes where information-theoretic recovery is possible but no efficient algorithm is known.",
+    "full_statement": "A planted-structure problem starts with a random background object, such as an Erdos-Renyi graph or a noisy matrix, and then plants a structured signal, such as a denser vertex subset, a community, or an elevated submatrix. The information-theoretic threshold asks when the planted object can be detected or localized by any estimator, while the computational threshold asks when this can be done in polynomial time. The open problem is to turn the broad statistical-computational gap picture into sharp theorems for canonical planted dense subgraph and submatrix models: identify the exact efficient boundary, prove algorithms up to that boundary, and prove lower bounds beyond it under transparent assumptions such as planted clique hardness.",
+    "known_results": "Wu and Xu survey a general recipe for information-theoretic limits and planted-clique reductions, and earlier work by Hajek, Wu, and Xu gives computational lower bounds for community detection in random graphs. These results explain why an intermediate regime can exist. What remains open is the sharp boundary: in many planted dense subgraph and submatrix regimes the information-theoretic limit, best known efficient algorithm, and conditional lower bound still do not coincide.",
+    "where_posed": {
+      "text": "Wu and Xu frame planted-structure inference around separate information-theoretic and computational thresholds and describe planted-clique reductions as the standard route to conditional computational limits.",
+      "url": "https://arxiv.org/abs/1806.00118"
+    },
+    "source": {
+      "authors": "Yihong Wu, Jiaming Xu",
+      "title": "Statistical Problems with Planted Structures: Information-Theoretical and Computational Limits",
+      "year": 2018,
+      "venue": "arXiv:1806.00118",
+      "url": "https://arxiv.org/abs/1806.00118"
+    },
+    "additional_refs": [
+      {
+        "authors": "Bruce Hajek, Yihong Wu, Jiaming Xu",
+        "title": "Computational Lower Bounds for Community Detection on Random Graphs",
+        "year": 2014,
+        "venue": "arXiv:1406.6625",
+        "url": "https://arxiv.org/abs/1406.6625"
+      },
+      {
+        "authors": "Yudong Chen, Jiaming Xu",
+        "title": "Statistical-Computational Tradeoffs in Planted Problems and Submatrix Localization with a Growing Number of Clusters and Submatrices",
+        "year": 2014,
+        "venue": "arXiv:1402.1267",
+        "url": "https://arxiv.org/abs/1402.1267"
+      }
+    ]
+  },
+  {
+    "id": "critical-beta-splitting-ctcs-coalescent",
+    "title": "The CTCS(infinity) limit and the beta(2,1) coalescent",
+    "collection": "Applied Probability",
+    "area": "Random Trees",
+    "tags": [
+      "random trees",
+      "coalescents",
+      "exchangeability",
+      "critical beta-splitting",
+      "Aldous"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "What is the precise relationship between the infinite critical beta-splitting tree and the beta(2,1) coalescent?",
+    "open_problem": "Characterize the limiting continuous-time critical beta-splitting tree CTCS($\\infty$), and determine whether and how its exchangeable partition dynamics are represented by the beta(2,1) coalescent.",
+    "full_statement": "In the critical beta-splitting model, a clade of size $m$ is split into subclades of sizes $i$ and $m-i$ with probabilities proportional to $1/(i(m-i))$. Aldous and Janson construct a consistent family of continuous-time trees CTCS($n$), $n\\ge 2$, under the operation of deleting a random leaf and pruning. Consistency suggests an infinite exchangeable limit CTCS($\\infty$). The open problem is to give a complete probabilistic description of this infinite object and to explain its relation to the beta(2,1) coalescent: whether the same merger structure appears exactly, after a time change, in a marginal projection, or only through an asymptotic correspondence.",
+    "known_results": "Aldous and Janson give an overview of the critical beta-splitting model, including a central limit theorem for leaf heights, a description of the fringe distribution seen from a random leaf, and a canonical embedding into the CTCS($n$) continuous-time model. The remaining open part is structural: the infinite exchangeable limit is only partly understood, and the connection to the beta(2,1) coalescent is explicitly identified as a major unresolved issue.",
+    "where_posed": {
+      "text": "The abstract and overview of Aldous and Janson, 'The Critical Beta-splitting Random Tree II: Overview and Open Problems', state that many open problems remain, especially the relation between CTCS(infinity) and the beta(2,1) coalescent.",
+      "url": "https://arxiv.org/abs/2303.02529"
+    },
+    "source": {
+      "authors": "David J. Aldous, Svante Janson",
+      "title": "The Critical Beta-splitting Random Tree II: Overview and Open Problems",
+      "year": 2025,
+      "venue": "arXiv:2303.02529",
+      "url": "https://arxiv.org/abs/2303.02529"
+    }
+  },
+  {
+    "id": "random-growing-balls-cover-time",
+    "title": "Sharp cover times for random growing balls",
+    "collection": "Applied Probability",
+    "area": "Random Coverage",
+    "tags": [
+      "random coverage",
+      "cover times",
+      "metric spaces",
+      "applied probability",
+      "Aldous"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "For random growing balls on compact metric spaces, can one obtain sharp cover-time asymptotics beyond weak concentration?",
+    "open_problem": "Characterize the cover-time distribution for sequentially arriving randomly centered growing balls on broad classes of compact metric spaces, including sharp asymptotics, constants, and geometric conditions for concentration or limiting laws.",
+    "full_statement": "Let $(S,d)$ be a compact metric space with a probability measure $\\mu$. Centers $X_1,X_2,\\dots$ are sampled from $\\mu$, and the ball born at time $i$ grows deterministically with age, so at time $t$ it covers a set of the form $B(X_i,r(t-i))$. The cover time is the first $t$ at which the union of all active growing balls covers $S$. Aldous proves general weak-concentration bounds and records basic results for this model. The open problem is to go beyond existence-type bounds: identify the leading term, second-order correction, limiting distribution, and dependence on metric entropy, local dimension, boundary effects, and irregular geometry.",
+    "known_results": "Aldous gives weak-concentration results for coverage by fixed-radius random sets and for randomly centered growing balls, using general bounds for arbitrary random sets and monotone hitting times. The remaining open part is the sharp probabilistic theory of the growing-ball model: weak concentration does not determine the exact cover-time scale, constants, or limiting laws for natural compact spaces.",
+    "where_posed": {
+      "text": "Aldous, 'Covering a compact space by fixed-radius or growing random balls', records basic results and open problems for the growing-ball random coverage model.",
+      "url": "https://arxiv.org/abs/2101.12671"
+    },
+    "source": {
+      "authors": "David J. Aldous",
+      "title": "Covering a compact space by fixed-radius or growing random balls",
+      "year": 2021,
+      "venue": "arXiv:2101.12671",
+      "url": "https://arxiv.org/abs/2101.12671"
+    }
+  },
+  {
+    "id": "oracle-efficient-agnostic-contextual-bandits",
+    "title": "Oracle-efficient agnostic contextual bandits",
+    "collection": "Computer Science",
+    "area": "Online Learning",
+    "tags": [
+      "contextual bandits",
+      "oracle efficiency",
+      "online learning",
+      "misspecification",
+      "regret"
+    ],
+    "status": "open",
+    "confidence": "medium",
+    "short_statement": "Can the optimal oracle-efficient contextual bandit reduction be extended from realizable models to agnostic or misspecified models?",
+    "open_problem": "Design an oracle-efficient contextual bandit algorithm for general agnostic or misspecified function classes that matches the best possible regret guarantees using only a small number of calls to standard offline learning or regression oracles.",
+    "full_statement": "In stochastic contextual bandits, a learner observes a context, chooses an action, and receives only the reward of the chosen action. Under realizability, the conditional mean reward belongs to a known function class $\\mathcal{F}$, and Simchi-Levi and Xu give a statistically optimal reduction to offline regression using only logarithmically many oracle calls. The open problem is to obtain an equally clean and practical reduction when the model is agnostic or misspecified: the best function in $\\mathcal{F}$ may only approximate the true conditional rewards. The target is an algorithm whose regret scales with the right approximation and complexity terms, remains computationally efficient for general classes, and avoids substantially stronger oracle assumptions.",
+    "known_results": "Simchi-Levi and Xu solve the realizable version, giving an optimal and oracle-efficient contextual bandit algorithm. Follow-up work develops instance-dependent complexity measures for contextual bandits and reinforcement learning. The remaining open part is the agnostic reduction: once realizability is removed, the known clean oracle-efficient guarantee does not directly apply, and the optimal computational/statistical tradeoff is still not as settled as in the realizable case.",
+    "where_posed": {
+      "text": "This entry is the natural agnostic extension of the open problem solved by Simchi-Levi and Xu for the realizable setting.",
+      "url": "https://arxiv.org/abs/2003.12699"
+    },
+    "source": {
+      "authors": "David Simchi-Levi, Yunzong Xu",
+      "title": "Bypassing the Monster: A Faster and Simpler Optimal Algorithm for Contextual Bandits under Realizability",
+      "year": 2021,
+      "venue": "Mathematics of Operations Research / arXiv:2003.12699",
+      "url": "https://arxiv.org/abs/2003.12699"
+    },
+    "additional_refs": [
+      {
+        "authors": "Dylan J. Foster, Alexander Rakhlin, David Simchi-Levi, Yunzong Xu",
+        "title": "Instance-Dependent Complexity of Contextual Bandits and Reinforcement Learning: A Disagreement-Based Perspective",
+        "year": 2020,
+        "venue": "arXiv:2010.03104",
+        "url": "https://arxiv.org/abs/2010.03104"
+      }
+    ]
+  },
+  {
+    "id": "limited-switch-contextual-bandits-with-knapsacks",
+    "title": "Limited-switch contextual bandits with knapsacks",
+    "collection": "Operations Research",
+    "area": "Online Resource Allocation",
+    "tags": [
+      "bandits with knapsacks",
+      "contextual bandits",
+      "limited switching",
+      "network revenue management",
+      "dynamic pricing"
+    ],
+    "status": "open",
+    "confidence": "medium",
+    "short_statement": "What are the optimal regret rates for contextual bandits with knapsack constraints when the policy is allowed only a limited number of switches?",
+    "open_problem": "Characterize the minimax regret of contextual bandits with knapsacks under a switching budget, and design efficient algorithms whose regret has the correct dependence on horizon, resource budgets, number of resources, policy complexity, and number of allowed switches.",
+    "full_statement": "Bandits with knapsacks model online decisions that earn stochastic rewards while consuming limited resources. Contextual versions allow the reward and consumption distributions to depend on observed covariates and compete with a class of context-dependent policies. Limited-switch models add a practical constraint: the decision rule can be changed only a bounded number of times. Simchi-Levi, Xu, and Zhao solve a noncontextual limited-switch version for blind network revenue management and extend it to bandits with knapsacks. The open problem is to combine the two directions: obtain a sharp regret theory for contextual bandits with knapsacks under switching constraints, including whether the piecewise-constant dependence on the switch budget survives once policy classes and contexts enter the model.",
+    "known_results": "Simchi-Levi, Xu, and Zhao give matching upper and lower bounds for blind network revenue management and bandits with knapsacks under limited switches, showing that regret is governed by a piecewise-constant function of the switching budget and number of resources. Earlier work gives efficient algorithms for contextual bandits with knapsacks without limited switching. The remaining open part is the simultaneous contextual, resource-constrained, limited-switch model.",
+    "where_posed": {
+      "text": "This entry combines the limited-switch BwK question resolved by Simchi-Levi, Xu, and Zhao with the contextual BwK model of Agrawal, Devanur, and Li.",
+      "url": "https://arxiv.org/abs/1911.01067"
+    },
+    "source": {
+      "authors": "David Simchi-Levi, Yunzong Xu, Jinglong Zhao",
+      "title": "Blind Network Revenue Management and Bandits with Knapsacks under Limited Switches",
+      "year": 2025,
+      "venue": "arXiv:1911.01067",
+      "url": "https://arxiv.org/abs/1911.01067"
+    },
+    "additional_refs": [
+      {
+        "authors": "Shipra Agrawal, Nikhil R. Devanur, Lihong Li",
+        "title": "An efficient algorithm for contextual bandits with knapsacks, and an extension to concave objectives",
+        "year": 2016,
+        "venue": "COLT / arXiv:1506.03374",
+        "url": "https://arxiv.org/abs/1506.03374"
+      }
+    ]
   }
 ]
