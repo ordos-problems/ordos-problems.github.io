@@ -132,6 +132,8 @@
   .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
 
   footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
+  footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid rgba(3,79,70,.28);}
+  footer a:hover{border-bottom-color:var(--accent);}
   .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;font-size:.85rem;padding:10px 18px;border-radius:10px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
   @media (max-width:900px){
@@ -233,7 +235,7 @@
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #61 — The stockout-probability static-threshold conjecture\n\nSHORT STATEMENT\nFor the $k$-unit IID prophet problem, Arnosti and Ma conjecture (and verify numerically) that setting a single static threshold so the stockout probability $\\Pr[D \\ge k]$ equals $\\Pr[\\mathrm{Pois}(k) \\ge k]$ achieves the tight correlation-gap guarantee. The open problem is to prove this or find a counterexample.\n\nOPEN PROBLEM\nProve this (e.g. via Bernoulli optimization) or find a counterexample.\n\nPROBLEM (full statement with model)\nIn the $k$-unit IID setting (T values arrive i.i.d.; accept up to $k$), consider static-threshold policies indexed by the threshold's induced demand distribution $D$ (the number of values above the threshold). \\textbf{Conjecture (Arnosti-Ma):} setting the threshold so that $\\Pr[D \\ge k] = \\Pr[\\mathrm{Pois}(k) \\ge k]$ achieves the tight guarantee $c_k^{\\mathrm{CG}} = 1 - e^{-k}k^k/k!$ under random order. \\textbf{Open:} Prove this (e.g. via Bernoulli optimization) or find a counterexample.\n\nKNOWN RESULTS\nArnosti and Ma formulate this threshold rule and verify it numerically for the relevant Bernoulli-optimization problem. Their evidence supports the conjecture that the stockout-probability threshold achieves the tight correlation-gap guarantee $c_k^{\\mathrm{CG}}$ for every $k$. What is missing is a proof that this particular threshold is always worst-case optimal, or a counterexample showing that the numerical pattern eventually breaks.\n\nREMAINING OPEN PROBLEM\nProve this (e.g. via Bernoulli optimization) or find a counterexample.\n\nWHERE POSED: Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #4).\nSOURCE: Will Ma, Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #4) (2024, Lecture notes (uploaded))\nRELATED:\n- Nick Arnosti, Will Ma, Tight Guarantees for Static Threshold Policies in the Prophet Secretary Problem (2023, Operations Research) https://arxiv.org/abs/2108.12893\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>

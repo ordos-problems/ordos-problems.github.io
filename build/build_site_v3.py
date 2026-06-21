@@ -220,6 +220,8 @@ COMMON_HEAD = r"""
   .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
 
   footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
+  footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid rgba(3,79,70,.28);}
+  footer a:hover{border-bottom-color:var(--accent);}
   .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;font-size:.85rem;padding:10px 18px;border-radius:10px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
   @media (max-width:900px){
@@ -304,7 +306,7 @@ __COMMON_HEAD__
   </div>
 
   <main id="list"></main>
-  <footer><p>Ordős Problems · generated __GEN__ · __N__ problems. Math pre-rendered with KaTeX. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated __GEN__ · __N__ problems. Math pre-rendered with KaTeX. Citations are best-effort; verify before use.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <div class="modal" id="aboutmodal" role="dialog" aria-modal="true" aria-labelledby="abouttitle">
@@ -319,7 +321,7 @@ __COMMON_HEAD__
     <h3>What This Is Not</h3>
     <p>This is not primarily a collection of open-ended modelling questions. Modelling problems are important, but it is often unclear what the “right” model should be. The goal here is narrower: concrete hard questions whose resolution could plausibly appear in strong conferences or journals. More open-ended research problems may be added in the future.</p>
     <h3>Contributions</h3>
-    <p>Contributions are welcome: new problems, corrections, better citations, more context, clearer exposition, improved known-results summaries, and suggestions about scope or organization. Contributions and corrections can be sent to <strong>akshitkumar100@gmail.com</strong>.</p>
+    <p>Contributions are welcome: new problems, corrections, better citations, more context, clearer exposition, improved known-results summaries, and suggestions about scope or organization. Contributions and corrections can be sent to <strong>ordos.problems@gmail.com</strong>.</p>
   </div>
 </div>
 
@@ -573,7 +575,7 @@ def detail_html(problem, prev_problem=None, next_problem=None):
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Ordős Problems · generated {esc(meta['generated'])}. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated {esc(meta['generated'])}. Citations are best-effort; verify before use.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">{script_json(full_problem_text(problem))}</script>

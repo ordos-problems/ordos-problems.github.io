@@ -59,7 +59,7 @@ Then open `http://localhost:4173`.
 
 Contributions are welcome: new problems, better citations, source corrections, clearer exposition, additional context, or suggestions about scope and organization.
 
-Send contributions or corrections to `akshitkumar100@gmail.com`, or open a pull request once this repository is on GitHub.
+Send contributions or corrections to `ordos.problems@gmail.com`, or open a pull request once this repository is on GitHub.
 
 ## Notes
 

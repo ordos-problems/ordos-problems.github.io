@@ -132,6 +132,8 @@
   .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
 
   footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
+  footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid rgba(3,79,70,.28);}
+  footer a:hover{border-bottom-color:var(--accent);}
   .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;font-size:.85rem;padding:10px 18px;border-radius:10px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
   @media (max-width:900px){
@@ -234,7 +236,7 @@
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #24 — Maximum number of stable matchings in an n x n instance\n\nSHORT STATEMENT\nLet $f(n)$ be the largest possible number of stable matchings over all $n\\times n$ stable-marriage instances. It grows exponentially, but the exact base is unknown, with bounds between about $2.28^n$ and $3.55^n$.\n\nOPEN PROBLEM\nDetermine $\\lim_{n\\to\\infty} f(n)^{1/n}$, the growth base of this exponential.\n\nPROBLEM (full statement with model)\nConsider the stable-marriage problem with $n$ men and $n$ women, each having a strict preference ordering over the members of the opposite side; a matching is stable if no man-woman pair both prefer each other to their assigned partners. A single instance can admit many stable matchings simultaneously. Let $f(n)$ be the maximum, over all $n\\times n$ stable-marriage instances $I$, of the number of stable matchings $|S(I)|$. It is known that $f(n)=2^{\\Theta(n)}$. Determine $\\lim_{n\\to\\infty} f(n)^{1/n}$, the growth base of this exponential. Currently it is known that $\\Omega(2.28^n)\\le f(n)\\le O(3.55^n)$. This problem was first posed by Knuth in the 1970s.\n\nKNOWN RESULTS\nLower bound $\\Omega(2.28^n)$ (Irving-Leather; extended by Thurber). Upper bound $O(3.55^n)$ (Palmer-Palvolgyi 2021), improving the first simply-exponential bound of Karlin-Oveis Gharan-Weber 2018. Exact base open; gap [2.28, 3.55].\n\nREMAINING OPEN PROBLEM\nDetermine $\\lim_{n\\to\\infty} f(n)^{1/n}$, the growth base of this exponential.\n\nWHERE POSED: First posed by Knuth (1970s); simply-exponential upper bound in Karlin, Oveis Gharan, Weber, 'A Simply Exponential Upper Bound on the Maximum Number of Stable Matchings', 2018, STOC. (https://arxiv.org/abs/1711.01032)\nSOURCE: Anna R. Karlin, Shayan Oveis Gharan, Robbie Weber, A Simply Exponential Upper Bound on the Maximum Number of Stable Matchings (2018, STOC) https://arxiv.org/abs/1711.01032\nRELATED:\n- Cory Palmer, Domotor Palvolgyi, At most 3.55^n stable matchings (2021, FOCS) https://arxiv.org/abs/2011.00915\n- Robert W. Irving, Paul Leather, The Complexity of Counting Stable Marriages (1986, SIAM J. Computing) https://epubs.siam.org/doi/10.1137/0215048\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>

@@ -132,6 +132,8 @@
   .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
 
   footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
+  footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid rgba(3,79,70,.28);}
+  footer a:hover{border-bottom-color:var(--accent);}
   .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;font-size:.85rem;padding:10px 18px;border-radius:10px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
   @media (max-width:900px){
@@ -234,7 +236,7 @@
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #31 — Minimum subsidy for envy-freeness with monotone valuations\n\nSHORT STATEMENT\nIndivisible goods plus cash subsidies can eliminate envy. For additive valuations with item values in $[0,1]$, one dollar per agent suffices and is tight. What is the minimum per-agent subsidy for general monotone valuations?\n\nOPEN PROBLEM\nDetermine $s^*(n)$ for general monotone valuations.\n\nPROBLEM (full statement with model)\nWhen indivisible goods cannot be divided fairly, monetary subsidies can eliminate envy: some agents are given cash so that nobody prefers another agent's bundle-plus-cash to their own. Consider $n$ agents with monotone valuations $v_i:2^M\\to\\mathbb{R}_{\\ge0}$ satisfying the marginal bound $v_i(S\\cup\\{e\\})-v_i(S)\\le 1$ for all $S$ and $e$ (each item adds at most $1$). Let $s^*(n)$ be the smallest value such that every instance admits an allocation $(X_1,\\dots,X_n)$ together with per-agent subsidies $p_i\\ge0$ satisfying $\\max_i p_i\\le s^*(n)$ that is envy-free: $v_i(X_i)+p_i\\ge v_i(X_j)+p_j$ for all agents $i,j$. For additive valuations the tight total subsidy is $n-1$ (i.e., one dollar per agent on average suffices and is tight). Determine $s^*(n)$ for general monotone valuations.\n\nKNOWN RESULTS\nAdditive: total subsidy n-1 suffices and is tight (Brustle et al. 2020). Monotone (general): per-agent upper bound improved to < n-1.5 (total ~ ($n^2$-n-1)/2); lower bound only n-1 total. The factor gap for monotone valuations is open; conjectured target is the additive bound.\n\nREMAINING OPEN PROBLEM\nDetermine $s^*(n)$ for general monotone valuations.\n\nWHERE POSED: Additive tight bound and the monotone question from Brustle, Dippel, Narayan, Suzuki, Vetta, 'One Dollar Each Eliminates Envy', 2020, EC. (https://arxiv.org/abs/1912.02797)\nSOURCE: Johannes Brustle, Jack Dippel, Vishnu V. Narayan, Mashbat Suzuki, Adrian Vetta, One Dollar Each Eliminates Envy (2020, EC) https://arxiv.org/abs/1912.02797\nRELATED:\n- Daniel Halpern, Nisarg Shah, Fair Division with Subsidy (2019, SAGT) https://link.springer.com/chapter/10.1007/978-3-030-30473-7_25\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>

@@ -132,6 +132,8 @@
   .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
 
   footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
+  footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid rgba(3,79,70,.28);}
+  footer a:hover{border-bottom-color:var(--accent);}
   .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;font-size:.85rem;padding:10px 18px;border-radius:10px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
   @media (max-width:900px){
@@ -233,7 +235,7 @@
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #70 — Does the 1-1/e matroid random-order guarantee extend to abstract online resource allocation?\n\nSHORT STATEMENT\nFor matroid constraints under random (IID) order, the matroid prophet inequality gives a $1-1/e$ guarantee relative to the fluid benchmark, best possible even for a single resource. The open question is whether this $1-1/e$ guarantee extends to the abstract online resource allocation model under IID arrivals.\n\nOPEN PROBLEM\nDoes the same $1-1/e$ guarantee hold for the abstract online resource allocation model (Definition 6.6 of the notes) under the IID special case?\n\nPROBLEM (full statement with model)\nFor matroid constraints under random (IID) arrival order, the matroid prophet inequality gives a $1-1/e$ guarantee relative to the fluid benchmark, which is best possible even for a single resource. Under random/IID arrival order, the matroid (ex-ante) prophet inequality yields $\\mathbb{E}[\\mathrm{ALG}] \\ge (1-1/e)\\,\\mathrm{FLU}$, tight even for a rank-1 matroid. \\textbf{Open:} Does the same $1-1/e$ guarantee hold for the abstract online resource allocation model (Definition 6.6 of the notes) under the IID special case?\n\nKNOWN RESULTS\n$1-1/e$ holds for matroids under random order (Kleinberg-Weinberg 2012; ex-ante version Lee-Singla 2018) and is best possible even for rank-1. Whether it extends to the abstract online resource allocation model under IID is open.\n\nREMAINING OPEN PROBLEM\nDoes the same $1-1/e$ guarantee hold for the abstract online resource allocation model (Definition 6.6 of the notes) under the IID special case?\n\nWHERE POSED: Posed in Will Ma's 'Online Resource Allocation' course notes, Remark 7.9 (refers to the abstract online resource allocation model of Definition 6.6 of the notes).\nSOURCE: Will Ma, Online Resource Allocation — Course Notes, Remark 7.9 (2024, Lecture notes (uploaded))\nRELATED:\n- Robert Kleinberg, S. Matthew Weinberg, Matroid Prophet Inequalities (2012, STOC) https://dl.acm.org/doi/10.1145/2213977.2213991\n- Euiwoong Lee, Sahil Singla, Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities (2018, ESA) https://arxiv.org/abs/1806.09251\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
