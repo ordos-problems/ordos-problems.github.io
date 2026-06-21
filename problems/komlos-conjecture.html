@@ -103,6 +103,12 @@
   .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
   .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:#27302c;max-width:88ch;letter-spacing:0;}
   .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:26px 0 0;}
+  .pagebtn{font-size:.84rem;color:var(--ink);background:#fffdf2;border:2px solid var(--strong);border-radius:9px;
+    padding:7px 11px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:38px;box-shadow:0 1px 0 var(--strong);}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pageinfo{font-size:.8rem;color:var(--faint);font-weight:750;padding:0 4px;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
@@ -255,7 +261,7 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #50 — Komlos Conjecture (O(1) Discrepancy of Unit-Norm Vectors)\n\nSHORT STATEMENT\nGiven any vectors of Euclidean length at most $1$, the Komlos conjecture says one can sign them so every coordinate of the signed sum stays bounded by a universal constant, independent of dimension or count. It generalizes the Beck-Fiala conjecture.\n\nOPEN PROBLEM\nProve or refute the Komlos conjecture that unit Euclidean norm vectors can always be signed to have $O(1)$ discrepancy in every coordinate.\n\nPROBLEM (full statement with model)\nGiven any collection of vectors each of Euclidean length at most 1, the Komlos conjecture says you can attach a $+$ or $-$ sign to each so that every coordinate of the signed sum stays bounded by a universal constant — no matter how many vectors there are or what dimension they live in. \\textbf{Conjecture (Komlos):} there is a universal constant $K$ such that for any vectors $v_1,\\dots,v_n \\in \\mathbb{R}^m$ with $\\|v_i\\|_2 \\le 1$, there exist signs $\\varepsilon_i \\in \\{\\pm 1\\}$ with $\\big\\|\\sum_i \\varepsilon_i v_i\\big\\|_\\infty \\le K = O(1)$, independent of $m$ and $n$. This generalizes the Beck-Fiala conjecture.\n\nKNOWN RESULTS\nThe conjecture predicts a universal $O(1)$ bound, independent of both the dimension and the number of vectors. Banaszczyk's theorem gives the best classical general bound, $O(\\sqrt{\\log n})$, and Bansal, Dadush, and Garg made this algorithmic. Bansal and Jiang recently improved the dependence to $O((\\log n)^{1/4})$. The best known lower bound on the universal constant is about $2.414$, and a proof of Komlos would imply the Beck-Fiala conjecture.\n\nREMAINING OPEN PROBLEM\nProve or refute the Komlos conjecture that unit Euclidean norm vectors can always be signed to have $O(1)$ discrepancy in every coordinate.\n\nWHERE POSED: A classical conjecture in discrepancy theory; stated in Nikolov's Prague Summer School lecture notes on Discrepancy Theory (2018). (https://www.cs.toronto.edu/~anikolov/Prague18/Lectures/lect3.pdf)\nSOURCE: Aleksandar Nikolov, Prague Summer School: Discrepancy Theory (Lecture notes) (2018, Lecture notes (survey)) https://www.cs.toronto.edu/~anikolov/Prague18/Lectures/lect3.pdf\nRELATED:\n- Nikhil Bansal, Daniel Dadush, Shashwat Garg, An Algorithm for Komlos Conjecture Matching Banaszczyk's Bound (2019, SIAM J. Computing (FOCS 2016)) https://arxiv.org/abs/1605.02882\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>

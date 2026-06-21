@@ -103,6 +103,12 @@
   .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
   .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:#27302c;max-width:88ch;letter-spacing:0;}
   .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:26px 0 0;}
+  .pagebtn{font-size:.84rem;color:var(--ink);background:#fffdf2;border:2px solid var(--strong);border-radius:9px;
+    padding:7px 11px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:38px;box-shadow:0 1px 0 var(--strong);}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pageinfo{font-size:.8rem;color:var(--faint);font-weight:750;padding:0 4px;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
@@ -235,7 +241,7 @@
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #94 — The CTCS(infinity) limit and the beta(2,1) coalescent\n\nSHORT STATEMENT\nWhat is the precise relationship between the infinite critical beta-splitting tree and the beta(2,1) coalescent?\n\nOPEN PROBLEM\nCharacterize the limiting continuous-time critical beta-splitting tree CTCS($\\infty$), and determine whether and how its exchangeable partition dynamics are represented by the beta(2,1) coalescent.\n\nPROBLEM (full statement with model)\nIn the critical beta-splitting model, a clade of size $m$ is split into subclades of sizes $i$ and $m-i$ with probabilities proportional to $1/(i(m-i))$. Aldous and Janson construct a consistent family of continuous-time trees CTCS($n$), $n\\ge 2$, under the operation of deleting a random leaf and pruning. Consistency suggests an infinite exchangeable limit CTCS($\\infty$). The open problem is to give a complete probabilistic description of this infinite object and to explain its relation to the beta(2,1) coalescent: whether the same merger structure appears exactly, after a time change, in a marginal projection, or only through an asymptotic correspondence.\n\nKNOWN RESULTS\nAldous and Janson give an overview of the critical beta-splitting model, including a central limit theorem for leaf heights, a description of the fringe distribution seen from a random leaf, and a canonical embedding into the CTCS($n$) continuous-time model. The remaining open part is structural: the infinite exchangeable limit is only partly understood, and the connection to the beta(2,1) coalescent is explicitly identified as a major unresolved issue.\n\nREMAINING OPEN PROBLEM\nCharacterize the limiting continuous-time critical beta-splitting tree CTCS($\\infty$), and determine whether and how its exchangeable partition dynamics are represented by the beta(2,1) coalescent.\n\nWHERE POSED: The abstract and overview of Aldous and Janson, 'The Critical Beta-splitting Random Tree II: Overview and Open Problems', state that many open problems remain, especially the relation between CTCS(infinity) and the beta(2,1) coalescent. (https://arxiv.org/abs/2303.02529)\nSOURCE: David J. Aldous, Svante Janson, The Critical Beta-splitting Random Tree II: Overview and Open Problems (2025, arXiv:2303.02529) https://arxiv.org/abs/2303.02529\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>

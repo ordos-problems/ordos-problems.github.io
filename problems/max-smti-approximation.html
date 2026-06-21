@@ -103,6 +103,12 @@
   .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
   .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:#27302c;max-width:88ch;letter-spacing:0;}
   .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:26px 0 0;}
+  .pagebtn{font-size:.84rem;color:var(--ink);background:#fffdf2;border:2px solid var(--strong);border-radius:9px;
+    padding:7px 11px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:38px;box-shadow:0 1px 0 var(--strong);}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pageinfo{font-size:.8rem;color:var(--faint);font-weight:750;padding:0 4px;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
@@ -236,7 +242,7 @@
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #30 — Best approximation ratio for maximum stable matching with ties\n\nSHORT STATEMENT\nIn stable marriage with ties and incomplete lists (SMTI), finding a maximum-cardinality weakly stable matching is NP-hard. What is the optimal polynomial-time approximation ratio?\n\nOPEN PROBLEM\nDetermine the optimal polynomial-time approximation ratio $\\alpha^*$ for MAX-SMTI.\n\nPROBLEM (full statement with model)\nIn the stable marriage problem with ties and incomplete lists (SMTI), agents rank only some potential partners (incomplete lists) and may be indifferent among several (ties). A matching is weakly stable if there is no pair who both strictly prefer each other to their assigned partners. Because of ties and incompleteness, weakly stable matchings can have different sizes, and finding a maximum-cardinality one (MAX-SMTI) is NP-hard (indeed APX-hard). Determine the optimal polynomial-time approximation ratio $\\alpha^*$ for MAX-SMTI. Known: $\\tfrac{4}{3}\\le\\alpha^*\\le\\tfrac{3}{2}$ assuming the Unique Games Conjecture (UGC), and $\\tfrac{33}{29}\\le\\alpha^*\\le\\tfrac{3}{2}$ unconditionally.\n\nKNOWN RESULTS\nThe best general approximation algorithm has ratio $3/2$, with analyses due to McDermid and related work of Paluch and Kiraly. On the hardness side, no $(4/3-\\epsilon)$-approximation exists under the Unique Games Conjecture, and an unconditional NP-hardness bound of $33/29\\approx 1.138$ is known. The open problem is to determine the exact approximation threshold for MAX-SMTI, which currently lies between $4/3$ and $3/2$ under UGC and between $33/29$ and $3/2$ unconditionally.\n\nREMAINING OPEN PROBLEM\nDetermine the optimal polynomial-time approximation ratio $\\alpha^*$ for MAX-SMTI.\n\nWHERE POSED: 3/2-approximation in McDermid, 'A 3/2-Approximation Algorithm for General Stable Marriage', 2009, ICALP. (https://link.springer.com/chapter/10.1007/978-3-642-02927-1_57)\nSOURCE: Eric McDermid, A 3/2-Approximation Algorithm for General Stable Marriage (2009, ICALP) https://link.springer.com/chapter/10.1007/978-3-642-02927-1_57\nRELATED:\n- Magnus M. Halldorsson, Kazuo Iwama, Shuichi Miyazaki, Hiroki Yanagisawa, Improved Approximation Results for the Stable Marriage Problem (2007, ACM Trans. Algorithms) https://dl.acm.org/doi/10.1145/1273340.1273346\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>

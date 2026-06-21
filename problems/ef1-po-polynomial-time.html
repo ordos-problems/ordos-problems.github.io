@@ -103,6 +103,12 @@
   .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
   .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:#27302c;max-width:88ch;letter-spacing:0;}
   .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:26px 0 0;}
+  .pagebtn{font-size:.84rem;color:var(--ink);background:#fffdf2;border:2px solid var(--strong);border-radius:9px;
+    padding:7px 11px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:38px;box-shadow:0 1px 0 var(--strong);}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pageinfo{font-size:.8rem;color:var(--faint);font-weight:750;padding:0 4px;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
@@ -235,7 +241,7 @@
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #28 — Computing EF1 and Pareto-optimal allocations in polynomial time\n\nSHORT STATEMENT\nFor indivisible goods with additive valuations, an allocation that is both EF1 (envy-free up to one good) and Pareto-optimal always exists, but the known algorithm is only pseudo-polynomial. Can such an allocation be computed in truly polynomial time?\n\nOPEN PROBLEM\nDetermine whether a truly polynomial-time algorithm exists.\n\nPROBLEM (full statement with model)\nThere are $n$ agents with additive valuations $v_i:2^M\\to\\mathbb{Z}_{\\ge0}$ over a set $M$ of $m$ indivisible goods, with the valuations given in binary. An allocation is EF1 (envy-free up to one good) if any agent's envy toward another vanishes after removing some single good from the envied bundle, and (fractionally) Pareto-optimal if no other (fractional) allocation makes some agent better off without making another worse off. Such an allocation always exists (the maximum-Nash-welfare allocation is one), so the question is purely computational: is there an algorithm running in time $\\mathrm{poly}(n,m,\\log V_{\\max})$ (where $V_{\\max}$ is the largest value) that outputs an allocation that is simultaneously EF1 and fractionally Pareto-optimal? The known algorithm runs in only pseudo-polynomial time (polynomial in the magnitude of values, not their bit-length). The problem is in PLS and is not known to be PLS-hard, NP-hard, or in P. Determine whether a truly polynomial-time algorithm exists.\n\nKNOWN RESULTS\nUpper bound: pseudo-polynomial (Barman-Krishnamurthy-Vaish 2018); truly polynomial for a constant number of agents or a constant number of distinct values. No lower bound known (not known NP-hard or PLS-hard). Listed as an open problem in the Aziz-Li-Moulin-Wu survey.\n\nREMAINING OPEN PROBLEM\nDetermine whether a truly polynomial-time algorithm exists.\n\nWHERE POSED: Pseudo-polynomial algorithm and the open computational question from Barman, Krishnamurthy, Vaish, 'Finding Fair and Efficient Allocations', 2018, EC; listed open in the Aziz-Li-Moulin-Wu survey. (https://arxiv.org/abs/1707.04731)\nSOURCE: Siddharth Barman, Sanath Kumar Krishnamurthy, Rohit Vaish, Finding Fair and Efficient Allocations (2018, EC) https://arxiv.org/abs/1707.04731\nRELATED:\n- Haris Aziz, Bo Li, Herve Moulin, Xiaowei Wu, Algorithmic Fair Allocation of Indivisible Items: A Survey and New Questions (2022, ACM SIGecom Exchanges) https://www.sigecom.org/exchanges/volume_20/1/AZIZ.pdf\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>

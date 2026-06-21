@@ -103,6 +103,12 @@
   .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
   .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:#27302c;max-width:88ch;letter-spacing:0;}
   .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:26px 0 0;}
+  .pagebtn{font-size:.84rem;color:var(--ink);background:#fffdf2;border:2px solid var(--strong);border-radius:9px;
+    padding:7px 11px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:38px;box-shadow:0 1px 0 var(--strong);}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pageinfo{font-size:.8rem;color:var(--faint);font-weight:750;padding:0 4px;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
@@ -206,7 +212,8 @@
   </div>
 
   <main id="list"></main>
-  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20 · 97 problems. Math pre-rendered with KaTeX. Citations are best-effort; verify before use.</p></footer>
+  <nav class="pagination" id="pager" aria-label="Problem list pages"></nav>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <div class="modal" id="aboutmodal" role="dialog" aria-modal="true" aria-labelledby="abouttitle">
@@ -281,7 +288,7 @@
     apply();
   });
 
-  var list=document.getElementById('list'), items=[];
+  var list=document.getElementById('list'), items=[], pageSize=5, currentPage=1;
   P.slice().sort(function(a,b){return a.number-b.number;}).forEach(function(p){list.appendChild(card(p));});
 
   function tag(text, cls){
@@ -335,9 +342,25 @@
   aboutModal.addEventListener('click',function(e){if(e.target===aboutModal)closeAboutModal();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&aboutModal.classList.contains('open'))closeAboutModal();});
 
-  var q=document.getElementById('q'),cnt=document.getElementById('count'),selectedBox=document.getElementById('selectedtags'),clear=document.getElementById('clearfilter');
-  function apply(){
-    var t=q.value.trim().toLowerCase().replace(/#/g,'').split(/\s+/).filter(Boolean),shown=0;
+  var q=document.getElementById('q'),cnt=document.getElementById('count'),selectedBox=document.getElementById('selectedtags'),clear=document.getElementById('clearfilter'),pager=document.getElementById('pager');
+  function renderPager(totalPages,totalMatches){
+    pager.innerHTML='';
+    if(totalMatches===0)return;
+    function button(label,page,cls,disabled){
+      var b=txt('button','pagebtn '+(cls||''),label);
+      b.type='button';
+      b.disabled=!!disabled;
+      b.addEventListener('click',function(){currentPage=page;apply(false,true);});
+      pager.appendChild(b);
+    }
+    button('Previous',Math.max(1,currentPage-1),'',currentPage===1);
+    for(var i=1;i<=totalPages;i++)button(String(i),i,i===currentPage?'active':'',false);
+    button('Next',Math.min(totalPages,currentPage+1),'',currentPage===totalPages);
+    pager.appendChild(txt('span','pageinfo','Page '+currentPage+' of '+totalPages));
+  }
+  function apply(resetPage,scrollList){
+    if(resetPage!==false)currentPage=1;
+    var t=q.value.trim().toLowerCase().replace(/#/g,'').split(/\s+/).filter(Boolean),matched=[];
     document.querySelectorAll('.statbtn').forEach(function(b){b.classList.toggle('active',(selectedTags.length===0&&b.dataset.tag==='all')||hasSelected(b.dataset.tag));});
     selectedBox.innerHTML='';
     selectedTags.forEach(function(tag){
@@ -351,13 +374,20 @@
       var ok=true;
       if(selectedTags.length)ok=selectedTags.some(function(tag){return it.tags.indexOf(tag)>=0;});
       if(ok&&t.length)ok=t.every(function(w){return it.hay.indexOf(w)>=0;});
-      it.el.style.display=ok?'':'none';
-      if(ok)shown++;
+      it.el.style.display='none';
+      if(ok)matched.push(it);
     });
-    cnt.textContent='Showing '+shown+' of '+items.length+' problems'+(selectedTags.length?' tagged '+selectedTags.map(function(t){return '#'+t;}).join(' or '):'');
+    var totalPages=Math.max(1,Math.ceil(matched.length/pageSize));
+    if(currentPage>totalPages)currentPage=totalPages;
+    var start=(currentPage-1)*pageSize,end=Math.min(start+pageSize,matched.length);
+    matched.slice(start,end).forEach(function(it){it.el.style.display='';});
+    var range=matched.length?((start+1)+'-'+end):'0';
+    cnt.textContent='Showing '+range+' of '+matched.length+' matching problems'+(matched.length!==items.length?' ('+items.length+' total)':'')+(selectedTags.length?' tagged '+selectedTags.map(function(t){return '#'+t;}).join(' or '):'');
+    renderPager(totalPages,matched.length);
+    if(scrollList)window.scrollTo({top:Math.max(0,list.getBoundingClientRect().top+window.pageYOffset-18),behavior:'smooth'});
   }
-  q.addEventListener('input',apply);
-  clear.addEventListener('click',function(){selectedTags=[];q.value='';tagselect.value='';apply();});
+  q.addEventListener('input',function(){apply(true,false);});
+  clear.addEventListener('click',function(){selectedTags=[];q.value='';tagselect.value='';apply(true,false);});
   apply();
 })();
 </script>

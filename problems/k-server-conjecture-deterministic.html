@@ -103,6 +103,12 @@
   .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
   .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:#27302c;max-width:88ch;letter-spacing:0;}
   .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:26px 0 0;}
+  .pagebtn{font-size:.84rem;color:var(--ink);background:#fffdf2;border:2px solid var(--strong);border-radius:9px;
+    padding:7px 11px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:38px;box-shadow:0 1px 0 var(--strong);}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pageinfo{font-size:.8rem;color:var(--faint);font-weight:750;padding:0 4px;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
@@ -235,7 +241,7 @@
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #9 — The (deterministic) k-server conjecture\n\nSHORT STATEMENT\nWith $k$ mobile servers in a metric space serving requested points by moving a server to each request, is there for every metric space a deterministic online algorithm whose cost is at most $k$ times the optimal offline cost?\n\nOPEN PROBLEM\nDetermine whether the deterministic competitive ratio equals $k$ for every metric space.\n\nPROBLEM (full statement with model)\nIn the $k$-server problem, an algorithm controls $k$ mobile servers located in a metric space $M$ and must serve a sequence of requested points: each request must be served by moving some server to the requested point, and the cost is the total distance moved by all servers. The deterministic $k$-server conjecture asks: for every metric space $M$ with $|M|\\ge k+1$, does there exist a deterministic online $k$-server algorithm $A$ and a constant $c_M$ (depending only on $M$) such that $\\mathrm{cost}_A(\\sigma)\\le k\\cdot \\mathrm{OPT}(\\sigma)+c_M$ for all request sequences $\\sigma$, where $\\mathrm{OPT}(\\sigma)$ is the optimal offline cost? Equivalently, is the deterministic competitive ratio exactly $k$? The matching lower bound of $k$ is already known, so the question is whether this lower bound is achievable. The best general upper bound is $2k-1$. Determine whether the deterministic competitive ratio equals $k$ for every metric space.\n\nKNOWN RESULTS\nThe lower bound of $k$ is classical, so the conjecture asks whether this bound is always achievable. The best general deterministic upper bound is $2k-1$, obtained by Koutsoupias and Papadimitriou through the Work Function Algorithm. The conjectured ratio $k$ is known in several special cases, including $k=2$, line metrics, tree metrics, and metrics with only $k+1$ or $k+2$ points. The full metric-space case remains open.\n\nREMAINING OPEN PROBLEM\nDetermine whether the deterministic competitive ratio equals $k$ for every metric space.\n\nWHERE POSED: Stated/originated in Manasse, McGeoch, Sleator, 'Competitive Algorithms for Server Problems', STOC 1988 / J. Algorithms 1990. (https://dl.acm.org/doi/10.1145/62212.62243)\nSOURCE: Mark S. Manasse, Lyle A. McGeoch, Daniel D. Sleator, Competitive Algorithms for Server Problems (1990, STOC 1988 / J. Algorithms 1990) https://dl.acm.org/doi/10.1145/62212.62243\nRELATED:\n- Elias Koutsoupias, Christos H. Papadimitriou, On the k-Server Conjecture (1995, JACM) https://www.cs.ox.ac.uk/people/elias.koutsoupias/Personal/Papers/paper-kp95.pdf\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>

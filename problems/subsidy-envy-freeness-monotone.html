@@ -103,6 +103,12 @@
   .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
   .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:#27302c;max-width:88ch;letter-spacing:0;}
   .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:26px 0 0;}
+  .pagebtn{font-size:.84rem;color:var(--ink);background:#fffdf2;border:2px solid var(--strong);border-radius:9px;
+    padding:7px 11px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:38px;box-shadow:0 1px 0 var(--strong);}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pageinfo{font-size:.8rem;color:var(--faint);font-weight:750;padding:0 4px;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
@@ -236,7 +242,7 @@
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #31 — Minimum subsidy for envy-freeness with monotone valuations\n\nSHORT STATEMENT\nIndivisible goods plus cash subsidies can eliminate envy. For additive valuations with item values in $[0,1]$, one dollar per agent suffices and is tight. What is the minimum per-agent subsidy for general monotone valuations?\n\nOPEN PROBLEM\nDetermine $s^*(n)$ for general monotone valuations.\n\nPROBLEM (full statement with model)\nWhen indivisible goods cannot be divided fairly, monetary subsidies can eliminate envy: some agents are given cash so that nobody prefers another agent's bundle-plus-cash to their own. Consider $n$ agents with monotone valuations $v_i:2^M\\to\\mathbb{R}_{\\ge0}$ satisfying the marginal bound $v_i(S\\cup\\{e\\})-v_i(S)\\le 1$ for all $S$ and $e$ (each item adds at most $1$). Let $s^*(n)$ be the smallest value such that every instance admits an allocation $(X_1,\\dots,X_n)$ together with per-agent subsidies $p_i\\ge0$ satisfying $\\max_i p_i\\le s^*(n)$ that is envy-free: $v_i(X_i)+p_i\\ge v_i(X_j)+p_j$ for all agents $i,j$. For additive valuations the tight total subsidy is $n-1$ (i.e., one dollar per agent on average suffices and is tight). Determine $s^*(n)$ for general monotone valuations.\n\nKNOWN RESULTS\nAdditive: total subsidy n-1 suffices and is tight (Brustle et al. 2020). Monotone (general): per-agent upper bound improved to < n-1.5 (total ~ ($n^2$-n-1)/2); lower bound only n-1 total. The factor gap for monotone valuations is open; conjectured target is the additive bound.\n\nREMAINING OPEN PROBLEM\nDetermine $s^*(n)$ for general monotone valuations.\n\nWHERE POSED: Additive tight bound and the monotone question from Brustle, Dippel, Narayan, Suzuki, Vetta, 'One Dollar Each Eliminates Envy', 2020, EC. (https://arxiv.org/abs/1912.02797)\nSOURCE: Johannes Brustle, Jack Dippel, Vishnu V. Narayan, Mashbat Suzuki, Adrian Vetta, One Dollar Each Eliminates Envy (2020, EC) https://arxiv.org/abs/1912.02797\nRELATED:\n- Daniel Halpern, Nisarg Shah, Fair Division with Subsidy (2019, SAGT) https://link.springer.com/chapter/10.1007/978-3-030-30473-7_25\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>

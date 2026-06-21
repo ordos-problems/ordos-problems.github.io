@@ -103,6 +103,12 @@
   .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
   .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:#27302c;max-width:88ch;letter-spacing:0;}
   .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:26px 0 0;}
+  .pagebtn{font-size:.84rem;color:var(--ink);background:#fffdf2;border:2px solid var(--strong);border-radius:9px;
+    padding:7px 11px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:38px;box-shadow:0 1px 0 var(--strong);}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pageinfo{font-size:.8rem;color:var(--faint);font-weight:750;padding:0 4px;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
@@ -235,7 +241,7 @@
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #2 — Optimal ratio for the free-order (order-selection) prophet inequality\n\nSHORT STATEMENT\nA gambler facing $n$ items with known distributions may choose the order in which to inspect them, then observes values online and stops irrevocably, keeping one. What is the exact optimal competitive ratio against the expected maximum in this free-order (order-selection) model?\n\nOPEN PROBLEM\nDetermine the exact value of $\\alpha^*_{\\mathrm{OS}}$.\n\nPROBLEM (full statement with model)\nThere are $n$ items with values drawn independently from known distributions $D_1,\\dots,D_n$. In the free-order (order-selection) prophet inequality, the gambler first selects an inspection order $\\sigma$ (a permutation committing to the sequence in which items will be observed), then observes the realized values online one at a time and applies a stopping rule, irrevocably keeping exactly one value. The benchmark is the prophet's expected maximum $\\mathbb{E}[\\max_i X_i]$. Define the optimal order-selection ratio $$\\alpha^*_{\\mathrm{OS}} = \\sup_{(\\sigma,\\text{stop})}\\inf_{\\{D_i\\}} \\frac{\\mathbb{E}[X_{\\text{alg}}]}{\\mathbb{E}[\\max_i X_i]},$$ where the supremum is over all order-and-stopping-rule strategies and the infimum is over all instances. It is known that order selection achieves $\\ge 0.7258$, while no strategy in the random-order model exceeds $0.7254$, so order selection strictly beats random order. Determine the exact value of $\\alpha^*_{\\mathrm{OS}}$.\n\nKNOWN RESULTS\nOrder-selection guarantee 0.7258 and random-order hardness 0.7254 (Bubna-Chiplunkar, EC 2023), establishing a strict separation. Essentially settled to about 0.7258 but no exact tight constant proven, so technically open.\n\nREMAINING OPEN PROBLEM\nDetermine the exact value of $\\alpha^*_{\\mathrm{OS}}$.\n\nWHERE POSED: Stated in Bubna, Chiplunkar, 'Prophet Inequality: Order Selection Beats Random Order', 2023, EC. (https://arxiv.org/abs/2211.04145)\nSOURCE: Archit Bubna, Ashish Chiplunkar, Prophet Inequality: Order Selection Beats Random Order (2023, EC) https://arxiv.org/abs/2211.04145\nRELATED:\n- Bo Peng, Zhihao Gavin Tang, Order Selection Prophet Inequality: From Threshold Optimization to Arrival Time Design (2022, FOCS) https://arxiv.org/abs/2204.01425\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>

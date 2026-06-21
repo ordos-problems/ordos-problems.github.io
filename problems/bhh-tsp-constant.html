@@ -103,6 +103,12 @@
   .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
   .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:#27302c;max-width:88ch;letter-spacing:0;}
   .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:26px 0 0;}
+  .pagebtn{font-size:.84rem;color:var(--ink);background:#fffdf2;border:2px solid var(--strong);border-radius:9px;
+    padding:7px 11px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:38px;box-shadow:0 1px 0 var(--strong);}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pageinfo{font-size:.8rem;color:var(--faint);font-weight:750;padding:0 4px;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
@@ -257,7 +263,7 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #75 — The exact value of the Beardwood–Halton–Hammersley TSP constant\n\nSHORT STATEMENT\nFor $n$ points drawn uniformly at random in the unit square, the shortest tour length divided by $\\sqrt{n}$ converges to a universal constant $\\beta$. What is the exact value of $\\beta$?\n\nOPEN PROBLEM\nDetermine the exact value of $\\beta$ (or give matching rigorous upper and lower bounds).\n\nPROBLEM (full statement with model)\nLet $X_1,\\dots,X_n$ be independent and uniformly distributed in the unit square $[0,1]^2$, and let $L_n$ denote the length of the shortest closed tour (the optimal Euclidean Traveling Salesman tour) visiting all of them. Beardwood, Halton, and Hammersley (1959) proved that there is a constant $\\beta>0$ with $L_n/\\sqrt{n}\\to\\beta$ almost surely as $n\\to\\infty$. Determine the exact value of $\\beta$ (or give matching rigorous upper and lower bounds).\n\nKNOWN RESULTS\nMonte-Carlo estimates give $\\beta\\approx 0.7124$. The best rigorous bounds are roughly $0.6277 \\le \\beta \\le 0.9038$ (lower bound via Gaudio–Jaillet 2019 / Steele-type arguments; upper bound Carlsson–Yu 2023), with arguments suggesting the current upper-bound technique cannot go below $\\approx 0.88$. The exact value is unknown.\n\nREMAINING OPEN PROBLEM\nDetermine the exact value of $\\beta$ (or give matching rigorous upper and lower bounds).\n\nWHERE POSED: Originates in Beardwood–Halton–Hammersley (1959); a long-standing open problem highlighted in Steele, 'Probability Theory and Combinatorial Optimization' (1997). (https://doi.org/10.1017/S0305004100034095)\nSOURCE: Jillian Beardwood, J. H. Halton, J. M. Hammersley, The shortest path through many points (1959, Proc. Cambridge Philosophical Society) https://doi.org/10.1017/S0305004100034095\nRELATED:\n- John Gunnar Carlsson, Yiwei Yu, A New Upper Bound for the Euclidean TSP Constant (2023, INFORMS Journal on Computing) https://optimization-online.org/2023/06/a-new-upper-bound-of-the-euclidean-tsp-constant/\n- Julia Gaudio, Patrick Jaillet, An improved lower bound for the Traveling Salesman constant (2020, Operations Research Letters) https://arxiv.org/abs/1909.06078\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>

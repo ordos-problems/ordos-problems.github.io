@@ -103,6 +103,12 @@
   .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
   .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:#27302c;max-width:88ch;letter-spacing:0;}
   .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:26px 0 0;}
+  .pagebtn{font-size:.84rem;color:var(--ink);background:#fffdf2;border:2px solid var(--strong);border-radius:9px;
+    padding:7px 11px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:38px;box-shadow:0 1px 0 var(--strong);}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pageinfo{font-size:.8rem;color:var(--faint);font-weight:750;padding:0 4px;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
@@ -235,7 +241,7 @@
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #18 — Existence of EFX allocations for chores (three agents)\n\nSHORT STATEMENT\nFor indivisible chores (which impose costs), an EFX allocation is one where any envy agent $i$ feels toward $j$ vanishes after dropping any single chore from $i$'s own bundle. Does an EFX allocation always exist for additive chores with three agents?\n\nOPEN PROBLEM\ndoes an EFX allocation always exist for chores with additive costs and $n=3$ agents?\n\nPROBLEM (full statement with model)\nLet $N=\\{1,\\dots,n\\}$ be a set of agents and $M$ a set of indivisible chores, with each agent $i$ having an additive cost function $c_i$ (chores impose costs / disutilities). An allocation $(X_1,\\dots,X_n)$ partitioning $M$ is EFX (for chores) if for all agents $i,j$ and every chore $e\\in X_i$ with $c_i(\\{e\\})>0$: $c_i(X_i\\setminus\\{e\\})\\le c_i(X_j)$. In words, any envy agent $i$ feels toward agent $j$ vanishes upon dropping any single (positively costly) chore from $i$'s own bundle. Unlike the goods setting, the situation for chores is harsher: with additive costs and four or more agents, EFX allocations can provably fail to exist. Question: does an EFX allocation always exist for chores with additive costs and $n=3$ agents?\n\nKNOWN RESULTS\nFor superadditive cost functions, EFX allocations can fail to exist even with three agents. For additive costs, nonexistence examples are known for some number of agents $n\\ge 4$, so the general chores analogue of the goods conjecture is false. The remaining small case of additive chores with exactly three agents is still open. Positive results are known when the number of chores is at most $n+2$, for identical-ordering costs, and for bi-valued costs; in general, a $2$-EFX allocation always exists for additive chores.\n\nREMAINING OPEN PROBLEM\ndoes an EFX allocation always exist for chores with additive costs and $n=3$ agents?\n\nWHERE POSED: Stated in Christoforidis, Santorinaios, 'On the Pursuit of EFX for Chores: Non-Existence and Approximations', 2024, IJCAI. (https://arxiv.org/abs/2406.10752)\nSOURCE: Vasilis Christoforidis, Christodoulos Santorinaios, On the Pursuit of EFX for Chores: Non-Existence and Approximations (2024, IJCAI) https://arxiv.org/abs/2406.10752\nRELATED:\n- Shengwei Zhou, Xiaowei Wu, Approximately EFX Allocations for Indivisible Chores (2022, IJCAI (Artif. Intell. 2024)) https://arxiv.org/abs/2109.07313\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>

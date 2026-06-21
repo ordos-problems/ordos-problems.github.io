@@ -103,6 +103,12 @@
   .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
   .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:#27302c;max-width:88ch;letter-spacing:0;}
   .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:26px 0 0;}
+  .pagebtn{font-size:.84rem;color:var(--ink);background:#fffdf2;border:2px solid var(--strong);border-radius:9px;
+    padding:7px 11px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:38px;box-shadow:0 1px 0 var(--strong);}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pageinfo{font-size:.8rem;color:var(--faint);font-weight:750;padding:0 4px;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
@@ -236,7 +242,7 @@
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #87 — Open-shop scheduling with sequence-dependent batch setup times\n\nSHORT STATEMENT\nIs unit-time open-shop makespan scheduling with sequence-dependent batch setup times fixed-parameter tractable in the number of batches?\n\nOPEN PROBLEM\nDetermine whether batch/open-shop scheduling with setup times is fixed-parameter tractable in the number of batches alone.\n\nPROBLEM (full statement with model)\nIn $O|p_{ij}=1,ST_{sd,b}|C_{\\max}$, each job has one unit-time operation on each machine, jobs are partitioned into $g$ batches, and a machine incurs a sequence-dependent setup time $s_{pq}$ when it switches from processing a job of batch $p$ to a job of batch $q$. The processing order of a job's operations is unconstrained, each machine handles at most one operation at a time, and each job is processed by at most one machine at a time. The objective is to minimize makespan. The open problem asks whether this problem is fixed-parameter tractable parameterized by the number of batches $g$, ideally also under high-multiplicity encoding where the number of jobs in each batch is given compactly.\n\nKNOWN RESULTS\nThe problem generalizes the traveling salesperson problem and is NP-hard already for one machine. Van Bevern and Pyatkin give algorithms for cases where every batch contains more jobs than machines, and polynomial algorithms when both the number of machines and number of batches are constants. Mnich and van Bevern list FPT in the number of batches alone as Open Problem 14.\n\nREMAINING OPEN PROBLEM\nDetermine whether batch/open-shop scheduling with setup times is fixed-parameter tractable in the number of batches alone.\n\nWHERE POSED: Open Problem 14 in Mnich and van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems' (Computers & Operations Research 2018). (https://arxiv.org/abs/1709.01670)\nSOURCE: Matthias Mnich, René van Bevern, Parameterized complexity of machine scheduling: 15 open problems (2018, Computers & Operations Research) https://arxiv.org/abs/1709.01670\nRELATED:\n- René van Bevern, Artem V. Pyatkin, Completing partial schedules for Open Shop with unit processing times and routing (2016, CSR) https://doi.org/10.1007/978-3-319-34171-2_6\n- Matthias Mnich, René van Bevern, Parameterized complexity of machine scheduling: 15 open problems (2018, Computers & Operations Research) https://doi.org/10.1016/j.cor.2018.07.020\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>

@@ -103,6 +103,12 @@
   .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
   .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:#27302c;max-width:88ch;letter-spacing:0;}
   .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:26px 0 0;}
+  .pagebtn{font-size:.84rem;color:var(--ink);background:#fffdf2;border:2px solid var(--strong);border-radius:9px;
+    padding:7px 11px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:38px;box-shadow:0 1px 0 var(--strong);}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pageinfo{font-size:.8rem;color:var(--faint);font-weight:750;padding:0 4px;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
@@ -234,7 +240,7 @@
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #71 — A strongly polynomial algorithm for linear programming (Smale's 9th problem)\n\nSHORT STATEMENT\nIs there an algorithm that solves every linear program using a number of arithmetic operations bounded by a polynomial in the number of variables and constraints alone — independent of the bit-length of the data?\n\nOPEN PROBLEM\nQuestion (Smale's 9th problem): does a strongly polynomial algorithm for general linear programming exist?\n\nPROBLEM (full statement with model)\nConsider a linear program $\\max\\{c^\\top x : Ax \\le b\\}$ with rational data $A \\in \\mathbb{Q}^{m\\times n}$, $b\\in\\mathbb{Q}^m$, $c\\in\\mathbb{Q}^n$. An algorithm is \\emph{strongly polynomial} if (i) it uses a number of elementary arithmetic operations $(+,-,\\times,\\div,\\le)$ bounded by a polynomial in $m$ and $n$ only, and (ii) the numbers occurring in the computation have bit-size bounded by a polynomial in the input size. Khachiyan's ellipsoid method (1979) and Karmarkar's interior-point method (1984) are \\emph{weakly} polynomial: their operation count depends on the bit-length $L$ of the data. Question (Smale's 9th problem): does a strongly polynomial algorithm for general linear programming exist?\n\nKNOWN RESULTS\nStrongly polynomial algorithms are known for important special cases: combinatorial LPs where entries of $A$ are bounded (Tardos 1986, depending only on $A$), LPs with at most two nonzeros per row or column, and fixed dimension (Megiddo). Recent layered/interior-point advances (e.g., Dadush–Huiberts–Natura–Végh) give bounds depending on the constraint-matrix condition number. The general case is open.\n\nREMAINING OPEN PROBLEM\nQuestion (Smale's 9th problem): does a strongly polynomial algorithm for general linear programming exist?\n\nWHERE POSED: Posed as Problem 9 in S. Smale, 'Mathematical problems for the next century' (1998); long studied since Tardos (1986). (https://link.springer.com/article/10.1007/BF03025291)\nSOURCE: Steve Smale, Mathematical Problems for the Next Century (1998, The Mathematical Intelligencer) https://link.springer.com/article/10.1007/BF03025291\nRELATED:\n- Éva Tardos, A Strongly Polynomial Algorithm to Solve Combinatorial Linear Programs (1986, Operations Research) https://doi.org/10.1287/opre.34.2.250\n- Daniel Dadush, Sophie Huiberts, Bento Natura, László A. Végh, A scaling-invariant algorithm for linear programming whose running time depends only on the constraint matrix (2020, STOC) https://arxiv.org/abs/1912.06252\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>

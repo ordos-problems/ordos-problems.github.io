@@ -103,6 +103,12 @@
   .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
   .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:#27302c;max-width:88ch;letter-spacing:0;}
   .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:26px 0 0;}
+  .pagebtn{font-size:.84rem;color:var(--ink);background:#fffdf2;border:2px solid var(--strong);border-radius:9px;
+    padding:7px 11px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:38px;box-shadow:0 1px 0 var(--strong);}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pageinfo{font-size:.8rem;color:var(--faint);font-weight:750;padding:0 4px;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
@@ -247,7 +253,7 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #68 — An L-sparse network revenue management guarantee interpolating in starting capacity\n\nSHORT STATEMENT\nIn $L$-sparse network revenue management, each product consumes one unit of up to $L$ resources. A simple scheme guarantees $1/(1+L)$ of the fluid benchmark, and a recent bound gives asymptotic optimality as the minimum starting capacity $k$ grows. The open problem is a single guarantee interpolating between the two regimes.\n\nOPEN PROBLEM\nFind a guarantee that equals $1/(1+L)$ at $k=1$ and approaches $1$ as $k \\to \\infty$ (i.e. smoothly interpolating between the two regimes).\n\nPROBLEM (full statement with model)\nIn $L$-sparse network revenue management, each product consumes one unit of up to $L$ different resources. For $L$-sparse NRM, $\\mathbb{E}[\\mathrm{ALG}] \\ge \\mathrm{FLU}/(1+L)$ holds under adversarial order, and $\\mathbb{E}[\\mathrm{ALG}] \\ge (1 - L/\\sqrt{k+3})\\,\\mathrm{FLU}$ (Amil-Makhdoumi-Wei 2022) gives asymptotic optimality (approaching 1) as $k = \\min_i k_i \\to \\infty$ for fixed $L$, but is vacuous when $k=1, L>1$. \\textbf{Open:} Find a guarantee that equals $1/(1+L)$ at $k=1$ and approaches $1$ as $k \\to \\infty$ (i.e. smoothly interpolating between the two regimes).\n\nKNOWN RESULTS\nUnder adversarial order, a $1/(1+L)$ guarantee is known, and a folklore upper bound of $2/(1+L)$ shows that some linear dependence on $L$ is unavoidable when capacities are small. In the large-capacity regime, Amil, Makhdoumi, and Wei prove asymptotic optimality as the minimum starting capacity $k$ grows. The open problem is to find a single guarantee that recovers the small-capacity $1/(1+L)$ behavior and also approaches $1$ as $k$ grows.\n\nREMAINING OPEN PROBLEM\nFind a guarantee that equals $1/(1+L)$ at $k=1$ and approaches $1$ as $k \\to \\infty$ (i.e. smoothly interpolating between the two regimes).\n\nWHERE POSED: Posed in Will Ma's 'Online Resource Allocation' course notes, Remark 7.6.\nSOURCE: Will Ma, Online Resource Allocation — Course Notes, Remark 7.6 (2024, Lecture notes (uploaded))\nRELATED:\n- Amil, Makhdoumi, Wei, Multi-item Order Fulfillment Revisited: LP Formulation and Prophet Inequality (2022, SSRN 4176274) https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4176274\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>

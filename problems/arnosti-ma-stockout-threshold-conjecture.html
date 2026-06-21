@@ -103,6 +103,12 @@
   .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
   .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:#27302c;max-width:88ch;letter-spacing:0;}
   .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:26px 0 0;}
+  .pagebtn{font-size:.84rem;color:var(--ink);background:#fffdf2;border:2px solid var(--strong);border-radius:9px;
+    padding:7px 11px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:38px;box-shadow:0 1px 0 var(--strong);}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pageinfo{font-size:.8rem;color:var(--faint);font-weight:750;padding:0 4px;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
@@ -235,7 +241,7 @@
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #61 — The stockout-probability static-threshold conjecture\n\nSHORT STATEMENT\nFor the $k$-unit IID prophet problem, Arnosti and Ma conjecture (and verify numerically) that setting a single static threshold so the stockout probability $\\Pr[D \\ge k]$ equals $\\Pr[\\mathrm{Pois}(k) \\ge k]$ achieves the tight correlation-gap guarantee. The open problem is to prove this or find a counterexample.\n\nOPEN PROBLEM\nProve this (e.g. via Bernoulli optimization) or find a counterexample.\n\nPROBLEM (full statement with model)\nIn the $k$-unit IID setting (T values arrive i.i.d.; accept up to $k$), consider static-threshold policies indexed by the threshold's induced demand distribution $D$ (the number of values above the threshold). \\textbf{Conjecture (Arnosti-Ma):} setting the threshold so that $\\Pr[D \\ge k] = \\Pr[\\mathrm{Pois}(k) \\ge k]$ achieves the tight guarantee $c_k^{\\mathrm{CG}} = 1 - e^{-k}k^k/k!$ under random order. \\textbf{Open:} Prove this (e.g. via Bernoulli optimization) or find a counterexample.\n\nKNOWN RESULTS\nArnosti and Ma formulate this threshold rule and verify it numerically for the relevant Bernoulli-optimization problem. Their evidence supports the conjecture that the stockout-probability threshold achieves the tight correlation-gap guarantee $c_k^{\\mathrm{CG}}$ for every $k$. What is missing is a proof that this particular threshold is always worst-case optimal, or a counterexample showing that the numerical pattern eventually breaks.\n\nREMAINING OPEN PROBLEM\nProve this (e.g. via Bernoulli optimization) or find a counterexample.\n\nWHERE POSED: Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #4).\nSOURCE: Will Ma, Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #4) (2024, Lecture notes (uploaded))\nRELATED:\n- Nick Arnosti, Will Ma, Tight Guarantees for Static Threshold Policies in the Prophet Secretary Problem (2023, Operations Research) https://arxiv.org/abs/2108.12893\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>

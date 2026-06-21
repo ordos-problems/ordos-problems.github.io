@@ -103,6 +103,12 @@
   .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
   .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:#27302c;max-width:88ch;letter-spacing:0;}
   .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:26px 0 0;}
+  .pagebtn{font-size:.84rem;color:var(--ink);background:#fffdf2;border:2px solid var(--strong);border-radius:9px;
+    padding:7px 11px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:38px;box-shadow:0 1px 0 var(--strong);}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pageinfo{font-size:.8rem;color:var(--faint);font-weight:750;padding:0 4px;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
@@ -235,7 +241,7 @@
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #78 — Optimality of smallest-variance-first sequencing in appointment scheduling\n\nSHORT STATEMENT\nWhen sequencing customers with stochastic service times at a single server, is it optimal to order them by increasing variance (smallest-variance-first)?\n\nOPEN PROBLEM\nis SVF sequencing optimal for general $n$ (for exponential service times, and more generally under a suitable variability/dispersion ordering)?\n\nPROBLEM (full statement with model)\nA single server must serve $n$ customers (e.g. patients, surgeries) whose service times $S_1,\\dots,S_n$ are independent with known distributions. The customers are placed in a sequence and given appointment times; the cost is the expected weighted sum of customer waiting times and server idle time (and possibly overtime). For exponentially distributed service times, Wang (1999) proved that sequencing customers in increasing order of variance — equivalently increasing mean for exponentials — minimizes expected total cost for $n=2$, and conjectured optimality of this 'smallest-variance-first' (SVF) rule for all $n$. Question: is SVF sequencing optimal for general $n$ (for exponential service times, and more generally under a suitable variability/dispersion ordering)?\n\nKNOWN RESULTS\nWeiss (1990) introduced a dispersion measure, proved an ordering optimal for $n=2$, and disproved his measure's optimality at $n=3$. Wang (1999) established SVF optimality for $n=2$ with exponential service times and conjectured it for all $n$. Partial and asymptotic results and counterexamples in variants exist; the general-$n$ optimality of SVF remains open.\n\nREMAINING OPEN PROBLEM\nis SVF sequencing optimal for general $n$ (for exponential service times, and more generally under a suitable variability/dispersion ordering)?\n\nWHERE POSED: Conjectured in P. P. Wang, 'Sequencing and scheduling N customers for a stochastic server' (EJOR 1999); foundations in Weiss (1990).\nSOURCE: Pao-Ping Wang, Sequencing and scheduling N customers for a stochastic server (1999, European Journal of Operational Research)\nRELATED:\n- Elliott N. Weiss, Models for Determining Estimated Start Times and Case Orderings in Hospital Operating Rooms (1990, IIE Transactions) https://doi.org/10.1080/07408179008964166\n- Authors per arXiv:1812.01467, Performance of the smallest-variance-first rule in appointment sequencing (2019, arXiv) https://arxiv.org/abs/1812.01467\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>

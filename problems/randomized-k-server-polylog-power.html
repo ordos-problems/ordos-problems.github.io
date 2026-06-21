@@ -103,6 +103,12 @@
   .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
   .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:#27302c;max-width:88ch;letter-spacing:0;}
   .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:26px 0 0;}
+  .pagebtn{font-size:.84rem;color:var(--ink);background:#fffdf2;border:2px solid var(--strong);border-radius:9px;
+    padding:7px 11px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:38px;box-shadow:0 1px 0 var(--strong);}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pageinfo{font-size:.8rem;color:var(--faint);font-weight:750;padding:0 4px;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
@@ -235,7 +241,7 @@
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #10 — The right competitive ratio for randomized k-server (conjecture refuted)\n\nSHORT STATEMENT\nThe randomized $k$-server conjecture (an $O(\\log k)$-competitive algorithm on every metric) was refuted in 2023 by an $\\Omega(\\log^2 k)$ lower bound. What is the true polylogarithmic dependence on $k$ (and the number of points $n$)?\n\nOPEN PROBLEM\nDetermine the optimal randomized competitive ratio as a function of $k$ (and $n$); in particular, is the truth $\\Theta(\\log^2 k)$?\n\nPROBLEM (full statement with model)\nConsider the $k$-server problem with a randomized online algorithm playing against an oblivious adversary, where the algorithm controls $k$ servers in a metric space, serves a sequence of requested points by moving servers, and pays total distance moved. The long-standing randomized $k$-server conjecture predicted that an $O(\\log k)$-competitive randomized algorithm exists on every metric. This was refuted: Bubeck-Coester-Rabani proved an $\\Omega(\\log^2 k)$ lower bound on certain $(k+1)$-point metrics (with a universal $\\Omega(\\log k)$). The best upper bounds are $O(\\log^2 k)$ on hierarchically separated trees (HSTs) and $\\tilde O(\\log^3 n\\,\\log^2 k)$ on general $n$-point metrics, where $n$ is the number of points. Determine the optimal randomized competitive ratio as a function of $k$ (and $n$); in particular, is the truth $\\Theta(\\log^2 k)$?\n\nKNOWN RESULTS\nBubeck, Coester, and Rabani refuted the original $O(\\log k)$ conjecture by proving an $\\Omega(\\log^2 k)$ lower bound on certain metrics, together with a universal $\\Omega(\\log k)$ lower bound. On the positive side, $O(\\log^2 k)$ algorithms are known for hierarchically separated trees, and polylogarithmic guarantees are known for general metrics. The problem has therefore shifted from the old logarithmic conjecture to determining the correct polylogarithmic exponent.\n\nREMAINING OPEN PROBLEM\nDetermine the optimal randomized competitive ratio as a function of $k$ (and $n$); in particular, is the truth $\\Theta(\\log^2 k)$?\n\nWHERE POSED: Refutation and reframing in Bubeck, Coester, Rabani, 'The Randomized k-Server Conjecture is False!', 2023, STOC. (https://arxiv.org/abs/2211.05753)\nSOURCE: Sebastien Bubeck, Christian Coester, Yuval Rabani, The Randomized k-Server Conjecture is False! (2023, STOC) https://arxiv.org/abs/2211.05753\nRELATED:\n- Sebastien Bubeck, Michael B. Cohen, Yin Tat Lee, James R. Lee, Aleksander Madry, k-server via Multiscale Entropic Regularization (2018, STOC) https://arxiv.org/abs/1711.01085\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>

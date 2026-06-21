@@ -103,6 +103,12 @@
   .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
   .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:#27302c;max-width:88ch;letter-spacing:0;}
   .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:26px 0 0;}
+  .pagebtn{font-size:.84rem;color:var(--ink);background:#fffdf2;border:2px solid var(--strong);border-radius:9px;
+    padding:7px 11px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:38px;box-shadow:0 1px 0 var(--strong);}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pageinfo{font-size:.8rem;color:var(--faint);font-weight:750;padding:0 4px;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
@@ -236,7 +242,7 @@
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #8 — AdWords with general bids: is 1-1/e achievable?\n\nSHORT STATEMENT\nIn AdWords, advertisers with budgets receive online queries and spend a bid (capped by remaining budget) per assignment. Without the small-bid assumption, is the optimal $1-1/e$ revenue ratio (or anything close) achievable?\n\nOPEN PROBLEM\nDetermine the optimal competitive ratio for general bids; in particular, is it $1-1/e$?\n\nPROBLEM (full statement with model)\nIn the AdWords problem, each advertiser $i$ has a budget $B_i$, and queries $j$ arrive online. Assigning query $j$ to advertiser $i$ spends $\\min(b_{ij}, \\text{remaining } B_i)$, where $b_{ij}$ is the bid; in the general-bids setting these bids may be comparable to $B_i$ (i.e., there is no small-bid / tiny-bid assumption). Each query is assigned irrevocably upon arrival, and the goal is to maximize total spend (revenue). The optimal $1-1/e$ ratio of Mehta-Saberi-Vazirani-Vazirani holds only under the small-bid assumption (each bid tiny relative to the budget). Without it, greedy gives only $1/2$. Determine the optimal competitive ratio for general bids; in particular, is it $1-1/e$? Known: $0.5016 \\le \\rho \\le 1 - 1/e$.\n\nKNOWN RESULTS\nWhen all bids are small relative to budgets, the MSVV algorithm gives the optimal $1-1/e$ guarantee. With arbitrary bid sizes, the simple greedy guarantee is only $1/2$, and Huang, Zhang, and Zhang were the first to beat this barrier, obtaining a ratio of $0.5016$ using panoramic online correlated selection. There is still no upper bound below $1-1/e$ for general bids. The open problem is to determine the true optimal competitive ratio in this large-bid regime, and in particular whether the small-bids constant $1-1/e$ can be recovered.\n\nREMAINING OPEN PROBLEM\nDetermine the optimal competitive ratio for general bids; in particular, is it $1-1/e$?\n\nWHERE POSED: Stated/originated in Mehta, Saberi, Vazirani, Vazirani, 'AdWords and Generalized Online Matching', 2007, JACM (FOCS 2005). (https://people.eecs.berkeley.edu/~vazirani/pubs/adwords.pdf)\nSOURCE: Aranyak Mehta, Amin Saberi, Umesh Vazirani, Vijay Vazirani, AdWords and Generalized Online Matching (2007, JACM (FOCS 2005)) https://people.eecs.berkeley.edu/~vazirani/pubs/adwords.pdf\nRELATED:\n- Zhiyi Huang, Qiankun Zhang, Yuhao Zhang, AdWords in a Panorama (2020, FOCS) https://arxiv.org/abs/2009.04114\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>

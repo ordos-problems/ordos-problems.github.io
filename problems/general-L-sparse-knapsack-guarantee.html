@@ -103,6 +103,12 @@
   .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
   .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:#27302c;max-width:88ch;letter-spacing:0;}
   .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:26px 0 0;}
+  .pagebtn{font-size:.84rem;color:var(--ink);background:#fffdf2;border:2px solid var(--strong);border-radius:9px;
+    padding:7px 11px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:38px;box-shadow:0 1px 0 var(--strong);}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pageinfo{font-size:.8rem;color:var(--faint);font-weight:750;padding:0 4px;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
@@ -235,7 +241,7 @@
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #69 — Any nonzero guarantee for the most general L-sparse knapsack\n\nSHORT STATEMENT\nThe most general structure here is $L$-sparse knapsack: each product consumes a positive amount of up to $L$ resources. Nothing is known about online guarantees in this setting. The open problem asks for an adversarial-order guarantee that is $\\approx 0.319$ when $L=1$ and remains nonzero for all $L$.\n\nOPEN PROBLEM\nis it possible to derive an adversarial-order guarantee that is $1/(3+e^{-2}) \\approx 0.319$ when $L=1$ and nonzero for all $L$? Currently nothing is known in this most general setting.\n\nPROBLEM (full statement with model)\nThe most general constraint structure in this framework is $L$-sparse knapsack: each product consumes a positive amount of up to $L$ different resources. For $L$-sparse knapsack (each product consumes a positive amount $s_{ij}\\in[0,1]$ of up to $L$ resources, i.e. $|\\{i: s_{ij}>0\\}| \\le L$), with the fluid relaxation as benchmark, \\textbf{Open:} is it possible to derive an adversarial-order guarantee that is $1/(3+e^{-2}) \\approx 0.319$ when $L=1$ and nonzero for all $L$? Currently nothing is known in this most general setting.\n\nKNOWN RESULTS\nFor $L=1$, which is the single-resource online stochastic knapsack setting, the best-fit policy gives the tight adversarial-order guarantee $1/(3+e^{-2})\\approx 0.319$ relative to the fluid benchmark. For general $L$-sparse knapsack, where each product can consume positive amounts of several resources, no nonzero guarantee is currently known in this level of generality. The open problem is to obtain any meaningful adversarial-order guarantee for all $L$, ideally one that reduces to the tight $L=1$ constant.\n\nREMAINING OPEN PROBLEM\nis it possible to derive an adversarial-order guarantee that is $1/(3+e^{-2}) \\approx 0.319$ when $L=1$ and nonzero for all $L$? Currently nothing is known in this most general setting.\n\nWHERE POSED: Posed in Will Ma's 'Online Resource Allocation' course notes, Remark 7.8.\nSOURCE: Will Ma, Online Resource Allocation — Course Notes, Remark 7.8 (2024, Lecture notes (uploaded))\nRELATED:\n- Jiashuo Jiang, Will Ma, Jiawei Zhang, Tight Guarantees for Multi-unit Prophet Inequalities and Online Stochastic Knapsack (2022, SODA) https://arxiv.org/abs/2107.02058\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>

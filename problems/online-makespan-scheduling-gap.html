@@ -103,6 +103,12 @@
   .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
   .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:#27302c;max-width:88ch;letter-spacing:0;}
   .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:26px 0 0;}
+  .pagebtn{font-size:.84rem;color:var(--ink);background:#fffdf2;border:2px solid var(--strong);border-radius:9px;
+    padding:7px 11px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:38px;box-shadow:0 1px 0 var(--strong);}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pageinfo{font-size:.8rem;color:var(--faint);font-weight:750;padding:0 4px;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
@@ -236,7 +242,7 @@
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #12 — Optimal competitive ratio for online makespan scheduling\n\nSHORT STATEMENT\nJobs arrive one at a time and each must be placed irrevocably on one of $m$ identical machines, minimizing the makespan. What is the optimal competitive ratio of a deterministic online algorithm as $m$ grows large?\n\nOPEN PROBLEM\nDetermine the exact asymptotic deterministic competitive ratio for online makespan scheduling on identical machines.\n\nPROBLEM (full statement with model)\nIn online makespan scheduling on identical machines ($P\\,|\\,online\\text{-}list\\,|\\,C_{\\max}$), jobs arrive one at a time and each must be assigned irrevocably to one of $m$ identical machines upon arrival. The objective is to minimize the makespan, i.e., the load (total processing time) of the busiest machine, compared against the optimal offline assignment. Graham's 1966 greedy (list scheduling) rule is $(2-1/m)$-competitive. Let $\\rho^*(m)$ be the optimal competitive ratio of a deterministic online algorithm on $m$ machines, and let $\\rho^*=\\lim_{m\\to\\infty}\\rho^*(m)$ be its asymptotic value. Determine $\\rho^*$. Known: $1.88\\le \\rho^* \\le 1.9201$.\n\nKNOWN RESULTS\nGraham's list-scheduling algorithm is $(2-1/m)$-competitive, and this is optimal only for $m=2$ and $m=3$. For large $m$, Fleischer and Wahl gave the best known deterministic upper bound, about $1.9201$, while Rudin's lower-bound construction gives about $1.88$. The asymptotic interval $[1.88,1.9201]$ has been stable for many years. The open problem is to determine the exact asymptotic deterministic competitive ratio for online makespan scheduling on identical machines.\n\nREMAINING OPEN PROBLEM\nDetermine the exact asymptotic deterministic competitive ratio for online makespan scheduling on identical machines.\n\nWHERE POSED: Greedy rule and model originated in Graham, 'Bounds for Certain Multiprocessing Anomalies', 1966, Bell System Technical Journal. (https://onlinelibrary.wiley.com/doi/10.1002/j.1538-7305.1966.tb01709.x)\nSOURCE: Ronald L. Graham, Bounds for Certain Multiprocessing Anomalies (1966, Bell System Technical Journal) https://onlinelibrary.wiley.com/doi/10.1002/j.1538-7305.1966.tb01709.x\nRELATED:\n- Rudolf Fleischer, Michaela Wahl, On-line Scheduling Revisited (2000, J. Scheduling / ESA)\n- John F. Rudin III, R. Chandrasekaran, Improved Bounds for the Online Scheduling Problem (2003, SIAM J. Computing) https://epubs.siam.org/doi/10.1137/S0097539702403438\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>

@@ -103,6 +103,12 @@
   .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
   .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:#27302c;max-width:88ch;letter-spacing:0;}
   .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:26px 0 0;}
+  .pagebtn{font-size:.84rem;color:var(--ink);background:#fffdf2;border:2px solid var(--strong);border-radius:9px;
+    padding:7px 11px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:38px;box-shadow:0 1px 0 var(--strong);}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pageinfo{font-size:.8rem;color:var(--faint);font-weight:750;padding:0 4px;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
@@ -236,7 +242,7 @@
     <button class="copy" id="copybtn">Copy full problem</button>
   </section>
 
-  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Ordős Problems · generated 2026-06-20. Citations are best-effort; verify before use.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script type="application/json" id="copy-data">"Ordős Problems #66 — An explicit k-unit OCRS achieving the correlation-gap guarantee under random order\n\nSHORT STATEMENT\nFor $k$-unit constraints under random order, a $c_k$-selectable OCRS is known to exist but only via a non-explicit existence proof (through ex-ante prophet inequalities). The open problem is to construct an explicit $c_k$-selectable OCRS for $k>1$; an explicit scheme is known only for $k=1$.\n\nOPEN PROBLEM\nUnder random order with a $k$-unit constraint, construct an explicit $c_k^{\\mathrm{CG}}$-selectable OCRS, where $c_k^{\\mathrm{CG}} = 1 - e^{-k}k^k/k!$. Such an OCRS is known to exist only via an existential argument; an explicit description is known only for $k=1$ (Lee-Singla 2018, Apx.\n\nPROBLEM (full statement with model)\nFor $k$-unit constraints under random arrival order, a $c_k$-selectable OCRS is known to exist, but only via a non-explicit existence proof (going through ex-ante prophet inequalities). \\textbf{Open:} Under random order with a $k$-unit constraint, construct an explicit $c_k^{\\mathrm{CG}}$-selectable OCRS, where $c_k^{\\mathrm{CG}} = 1 - e^{-k}k^k/k!$. Such an OCRS is known to exist only via an existential argument; an explicit description is known only for $k=1$ (Lee-Singla 2018, Apx. A.2 of arXiv version).\n\nKNOWN RESULTS\nA $c_k^{\\mathrm{CG}}$-selectable OCRS is known to exist under random order because one can pass through the ex-ante prophet-inequality equivalence. That argument is not an explicit online rule, however. Lee and Singla give an explicit construction for the single-unit case $k=1$, but no comparable construction is known for $k>1$. The open problem is to turn the existential guarantee into a usable OCRS that achieves the same correlation-gap constant.\n\nREMAINING OPEN PROBLEM\nUnder random order with a $k$-unit constraint, construct an explicit $c_k^{\\mathrm{CG}}$-selectable OCRS, where $c_k^{\\mathrm{CG}} = 1 - e^{-k}k^k/k!$. Such an OCRS is known to exist only via an existential argument; an explicit description is known only for $k=1$ (Lee-Singla 2018, Apx.\n\nWHERE POSED: Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #3).\nSOURCE: Will Ma, Online Resource Allocation — Course Notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #3) (2024, Lecture notes (uploaded))\nRELATED:\n- Euiwoong Lee, Sahil Singla, Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities (2018, ESA) https://arxiv.org/abs/1806.09251\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
