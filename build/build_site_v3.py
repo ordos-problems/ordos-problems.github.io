@@ -40,7 +40,7 @@ def full_problem_text(problem):
         for r in problem.get("additional_refs", [])
     )
     return (
-        f"Ordős Problems #{problem['number']} — {problem['title']}\n\n"
+        f"ORdős Problems #{problem['number']} — {problem['title']}\n\n"
         f"SHORT STATEMENT\n{problem['short_statement']}\n\n"
         f"OPEN PROBLEM\n{open_problem}\n\n"
         f"PROBLEM (full statement with model)\n{problem['full_statement']}\n\n"
@@ -273,7 +273,7 @@ def index_html():
     return r"""<!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Ordős Problems — Open Problems in CS, OR, OM & Applied Probability</title>
+<title>ORdős Problems — Open Problems in CS, OR, OM & Applied Probability</title>
 __COMMON_HEAD__
 </head>
 <body>
@@ -322,7 +322,7 @@ __COMMON_HEAD__
       <h2 id="abouttitle">What This Repository Is For</h2>
       <button class="closemodal" id="closeabout" type="button" aria-label="Close about dialog">Close</button>
     </div>
-    <p>Ordős Problems is intended to be a repository of hard, unsolved, research-level problems in Operations Research, Computer Science, Economics, and Applied Probability.</p>
+    <p>ORdős Problems is intended to be a repository of hard, unsolved, research-level problems in Operations Research, Computer Science, Economics, and Applied Probability.</p>
     <h3>Ideal Problems</h3>
     <p>The ideal problem here has a relatively clean and parsimonious model, but something fundamental is still missing: the guarantees are not tight, a well-formed conjecture remains open, an algorithm is missing, or the right structural characterization is unknown.</p>
     <h3>What This Is Not</h3>
@@ -423,7 +423,7 @@ __COMMON_HEAD__
 
   function copySolver(p,btn){
     var refs=(p.additional_refs||[]).map(function(r){return '- '+(r.authors||'')+', '+(r.title||'')+' ('+[r.year,r.venue].filter(Boolean).join(', ')+')'+(r.url?' '+r.url:'');}).join('\n');
-    var t='Ordős Problems #'+p.number+' — '+p.title+'\n\nSHORT STATEMENT\n'+p.short_statement+'\n\nPROBLEM (full statement with model)\n'+p.full_statement+'\n\n'
+    var t='ORdős Problems #'+p.number+' — '+p.title+'\n\nSHORT STATEMENT\n'+p.short_statement+'\n\nPROBLEM (full statement with model)\n'+p.full_statement+'\n\n'
       +(p.known_results?('KNOWN RESULTS\n'+p.known_results+'\n\n'):'')
       +'WHERE POSED: '+((p.where_posed&&p.where_posed.text)||'')+(p.where_posed&&p.where_posed.url?(' ('+p.where_posed.url+')'):'')+'\n'
       +'SOURCE: '+(p.source.authors||'')+', '+(p.source.title||'')+' ('+[p.source.year,p.source.venue].filter(Boolean).join(', ')+')'+(p.source.url?(' '+p.source.url):'')+'\n'
@@ -555,7 +555,7 @@ def detail_html(problem, prev_problem=None, next_problem=None):
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
-<title>{esc(problem['title'])} | Ordős Problems</title>
+<title>{esc(problem['title'])} | ORdős Problems</title>
 {COMMON_HEAD}
 </head>
 <body>

@@ -117,7 +117,7 @@ for p in problems:
     else: disc["Algorithms / EC / Market Design"]+=1
 
 out={"metadata":{
-   "title":"ORDOS Problems",
+   "title":"ORdős Problems",
    "description":"Crowdsourced open problems in Operations Research, Operations Management, and Management Science (with related market design and online algorithms). Modeled on erdosproblems.com. Each problem has a short statement and a complete, model-level statement suitable for handing to a solver.",
    "generated":datetime.date.today().isoformat(),
    "count":len(problems),
