@@ -97,6 +97,7 @@ COMMON_HEAD = r"""
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
   :root{
     --bg:#ffffeb; --paper:#fffef6; --paper2:#fff9fd; --ink:#1a1a1a; --soft:#4b514d; --faint:#7b7d6f;
@@ -116,6 +117,8 @@ COMMON_HEAD = r"""
   header.site{padding:42px 0 22px;border-bottom:1px solid var(--line);}
   .headbar{display:grid;grid-template-columns:minmax(320px,max-content) minmax(280px,1fr);gap:22px;align-items:center;}
   .brand{display:flex;align-items:center;gap:14px;min-width:0;}
+  .logo-link{display:block;width:42px;height:42px;flex:0 0 auto;border-radius:10px;line-height:0;}
+  .logo-link:focus-visible{outline:3px solid var(--orange);outline-offset:3px;}
   .mono{width:42px;height:42px;flex:0 0 auto;}
   h1{font-family:var(--display);font-weight:600;font-size:3rem;letter-spacing:0;margin:0;line-height:1;color:var(--ink);}
   h1 .or{color:var(--accent);}
@@ -267,6 +270,10 @@ def logo_svg():
         <rect x="3" y="3" width="94" height="94" rx="18" fill="#eef6f5" stroke="#034f46" stroke-width="5"/>
         <text x="50" y="63" text-anchor="middle" font-family="Figtree, Arial, sans-serif" font-size="36" font-weight="800" fill="#034f46">OP</text>
       </svg>"""
+
+
+def logo_link(href):
+    return f'<a class="logo-link" href="{esc(href)}" aria-label="ORdős Problems home">{logo_svg()}</a>'
 
 
 def index_html():
@@ -562,7 +569,7 @@ def detail_html(problem, prev_problem=None, next_problem=None):
 <div class="wrap">
   <header class="site">
     <div class="brand">
-      {logo_svg()}
+      {logo_link("../index.html")}
       <h1><a href="../index.html" style="color:inherit;text-decoration:none"><span class="or">OR</span>dős Problems</a></h1>
     </div>
     <p class="sub">A collection of Open Problems in Computer Science, Operations Research, Operations Management and Applied Probability.</p>
@@ -641,7 +648,7 @@ def detail_html(problem, prev_problem=None, next_problem=None):
 HTML = (
     index_html()
     .replace("__COMMON_HEAD__", COMMON_HEAD)
-    .replace("__LOGO__", logo_svg())
+    .replace("__LOGO__", logo_link("index.html"))
     .replace("__DATA__", embedded)
     .replace("__GEN__", meta["generated"])
     .replace("__N__", str(meta["count"]))
