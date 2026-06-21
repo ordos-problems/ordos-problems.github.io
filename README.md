@@ -69,13 +69,13 @@ npm run build
 
 Contributions are welcome: new problems, better citations, source corrections, clearer exposition, additional context, or suggestions about scope and organization.
 
-Use the `Contribute` button on the website to open a structured GitHub issue for a new problem. Each problem page also has a `Suggest edit` button that opens a prefilled GitHub issue for corrections.
+Use the `Contribute` button on the website to open a structured submission form for a new problem. Each problem page also has a `Suggest edit` button that opens a prefilled correction form.
 
-GitHub-only workflow:
+The forms are static HTML forms that post to FormSubmit and send email to `ordos.problems@gmail.com`.
 
-- New problems come in through `.github/ISSUE_TEMPLATE/problem_submission.md`.
-- Corrections come in through `.github/ISSUE_TEMPLATE/problem_correction.md`.
-- Set the GitHub account notification email to `ordos.problems@gmail.com` and watch this repository to receive submissions in Gmail.
+- New problem submissions use the subject tag `[Problem submission]`.
+- Problem corrections use the subject tag `[Correction]`.
+- The first live submission may require a one-time confirmation email from FormSubmit before messages are delivered.
 - In Gmail, filter subjects containing `[Problem submission]` or `[Correction]` to label contribution emails automatically.
 
 Email fallback: `ordos.problems@gmail.com`.

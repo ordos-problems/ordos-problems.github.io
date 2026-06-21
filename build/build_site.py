@@ -1,13 +1,14 @@
 import html
 import json
 import re
-from urllib.parse import urlencode
+from urllib.parse import quote
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PAGES = ROOT / "problems"
-REPO_URL = "https://github.com/ordos-problems/ordos-problems.github.io"
-NEW_PROBLEM_URL = f"{REPO_URL}/issues/new?template=problem_submission.md&title=%5BProblem%20submission%5D%20"
+CONTACT_EMAIL = "ordos.problems@gmail.com"
+FORM_ENDPOINT = f"https://formsubmit.co/{CONTACT_EMAIL}"
+SITE_URL = "https://ordos-problems.github.io"
 
 data = json.load(open(ROOT / "problems_render.json"))
 meta = data["metadata"]
@@ -32,18 +33,12 @@ def problem_url(problem):
 
 
 def suggest_edit_url(problem):
-    body = (
-        f"Problem: {problem['ref']} - {problem['title']}\n"
-        f"Page: https://ordos-problems.github.io/problems/{page_name(problem)}\n\n"
-        "What should be changed?\n\n"
-        "Why is this correction useful?\n\n"
-        "Suggested sources or references:\n"
+    return (
+        "../correction.html"
+        f"?ref={quote(problem['ref'])}"
+        f"&title={quote(problem['title'])}"
+        f"&page={quote(SITE_URL + '/problems/' + page_name(problem))}"
     )
-    return f"{REPO_URL}/issues/new?" + urlencode({
-        "template": "problem_correction.md",
-        "title": f"[Correction] {problem['ref']} - {problem['title']}",
-        "body": body,
-    })
 
 
 def full_problem_text(problem):
@@ -141,7 +136,7 @@ COMMON_HEAD = r"""
   h1{font-family:var(--display);font-weight:600;font-size:3rem;letter-spacing:0;margin:0;line-height:1;color:var(--ink);}
   h1 .or{color:var(--accent);}
   .aboutbtn{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;}
+    border-radius:10px;padding:7px 12px;min-width:98px;min-height:38px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;}
   .aboutbtn:hover{background:#f5e5ff;}
   .sub{color:var(--soft);font-size:1.03rem;margin:16px 0 0;max-width:78ch;font-weight:450;}
   .headsearch{display:flex;justify-content:flex-end;align-items:center;gap:10px;}
@@ -244,6 +239,24 @@ COMMON_HEAD = r"""
   .refs{margin:8px 0 0;padding-left:21px;}
   .refs li{margin:.55em 0;color:var(--soft);}
 
+  .form-shell{max-width:var(--measure);margin:28px 0 0;}
+  .form-card{background:#fffdf2;border:2px solid var(--strong);border-radius:var(--radius);padding:28px 32px;margin:20px 0;}
+  .form-card h2{font-family:var(--display);font-size:2.35rem;line-height:1.06;font-weight:600;margin:0 0 8px;color:var(--ink);}
+  .form-card p{font-size:1rem;line-height:1.7;color:#303633;margin:.7em 0 1.2em;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .field{display:flex;flex-direction:column;gap:6px;margin:14px 0;}
+  .field.full{grid-column:1/-1;}
+  .field label{font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);}
+  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);
+    font-family:var(--ui);font-size:.96rem;line-height:1.45;padding:11px 12px;}
+  .field textarea{min-height:118px;resize:vertical;}
+  .field input:focus,.field textarea:focus{outline:3px solid #d8ece7;border-color:#74aaa1;}
+  .field-note{font-size:.82rem;color:var(--faint);line-height:1.5;}
+  .submit-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;}
+  .submit-btn{font-size:.84rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
+    border-radius:10px;padding:9px 14px;cursor:pointer;font-family:var(--ui);font-weight:800;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+  .submit-btn:hover{background:#f5e5ff;}
+
   .katex{font-size:1.04em;}
   .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
 
@@ -277,6 +290,8 @@ COMMON_HEAD = r"""
     .problem-nav .navlink{width:100%;}
     .problem-nav .navlink.next{text-align:left;}
     .detail-card{padding:22px 18px;}
+    .form-grid{grid-template-columns:1fr;}
+    .form-card{padding:22px 18px;}
     .modal{padding:14px;}
     .modal-card{padding:22px 18px;}
     .modal-card h2{font-size:1.7rem;}
@@ -296,6 +311,15 @@ def logo_link(href):
     return f'<a class="logo-link" href="{esc(href)}" aria-label="ORdős Problems home">{logo_svg()}</a>'
 
 
+def simple_header(home_href="index.html"):
+    return f"""<header class="site">
+    <div class="brand">
+      {logo_link(home_href)}
+      <h1><a href="{esc(home_href)}" style="color:inherit;text-decoration:none"><span class="or">OR</span>dős Problems</a></h1>
+    </div>
+  </header>"""
+
+
 def index_html():
     return r"""<!DOCTYPE html>
 <html lang="en">
@@ -313,7 +337,7 @@ __COMMON_HEAD__
       </div>
       <div class="headsearch">
         <button class="aboutbtn" id="aboutbtn" type="button">About</button>
-        <a class="aboutbtn" href="__NEW_PROBLEM_URL__" target="_blank" rel="noopener">Contribute</a>
+        <a class="aboutbtn" href="contribute.html">Contribute</a>
         <input id="q" type="search" placeholder="Search statement, author, tag, area, number…" autocomplete="off">
       </div>
     </div>
@@ -355,7 +379,7 @@ __COMMON_HEAD__
     <h3>What This Is Not</h3>
     <p>This is not primarily a collection of open-ended modelling questions. Modelling problems are important, but it is often unclear what the “right” model should be. The goal here is narrower: concrete hard questions whose resolution could plausibly appear in strong conferences or journals. More open-ended research problems may be added in the future.</p>
     <h3>Contributions</h3>
-    <p>Contributions are welcome: new problems, corrections, better citations, more context, clearer exposition, improved known-results summaries, and suggestions about scope or organization. Use the Contribute button to submit through GitHub, or send email to <strong>ordos.problems@gmail.com</strong>.</p>
+    <p>Contributions are welcome: new problems, corrections, better citations, more context, clearer exposition, improved known-results summaries, and suggestions about scope or organization. Use the Contribute button to send a structured submission, or email <strong>ordos.problems@gmail.com</strong>.</p>
   </div>
 </div>
 
@@ -540,6 +564,173 @@ def source_link(source, text="source"):
     return f'<a href="{esc(url)}" target="_blank" rel="noopener">{esc(text)}</a>' if url else esc(text)
 
 
+def contribution_form_html():
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Contribute | ORdős Problems</title>
+{COMMON_HEAD}
+</head>
+<body>
+<div class="wrap">
+  {simple_header("index.html")}
+  <main class="form-shell">
+    <section class="form-card">
+      <h2>Contribute a Problem</h2>
+      <p>Send a candidate open problem for review. Submissions go to <strong>{CONTACT_EMAIL}</strong> with the subject tag <strong>[Problem submission]</strong>.</p>
+      <form action="{FORM_ENDPOINT}" method="POST">
+        <input type="hidden" name="_subject" value="[Problem submission] ORdős Problems">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="{SITE_URL}/thanks.html">
+        <div class="form-grid">
+          <div class="field">
+            <label for="contributor_name">Your name</label>
+            <input id="contributor_name" name="Contributor name" type="text" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="email">Your email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field full">
+            <label for="problem_title">Problem title</label>
+            <input id="problem_title" name="Problem title" type="text" required>
+          </div>
+          <div class="field full">
+            <label for="field_tags">Field / tags</label>
+            <input id="field_tags" name="Field and tags" type="text" placeholder="online matching, bandits, inventory, approximation algorithms" required>
+          </div>
+          <div class="field full">
+            <label for="short_statement">Short statement</label>
+            <textarea id="short_statement" name="Short statement" required></textarea>
+          </div>
+          <div class="field full">
+            <label for="model_open_question">Model and open question</label>
+            <textarea id="model_open_question" name="Model and open question" required></textarea>
+          </div>
+          <div class="field full">
+            <label for="known_results">What is known</label>
+            <textarea id="known_results" name="What is known" required></textarea>
+          </div>
+          <div class="field full">
+            <label for="sources">Sources</label>
+            <textarea id="sources" name="Sources" placeholder="Papers, lecture notes, author pages, arXiv links, DOI links" required></textarea>
+          </div>
+          <div class="field full">
+            <label for="why_belongs">Why this belongs here</label>
+            <textarea id="why_belongs" name="Why this belongs here"></textarea>
+          </div>
+        </div>
+        <div class="submit-row">
+          <button class="submit-btn" type="submit">Send contribution</button>
+          <span class="field-note">The first submission may ask you to confirm the destination email address through FormSubmit.</span>
+        </div>
+      </form>
+    </section>
+  </main>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
+</div>
+</body>
+</html>
+"""
+
+
+def correction_form_html():
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Suggest Edit | ORdős Problems</title>
+{COMMON_HEAD}
+</head>
+<body>
+<div class="wrap">
+  {simple_header("index.html")}
+  <main class="form-shell">
+    <section class="form-card">
+      <h2>Suggest an Edit</h2>
+      <p>Send a correction, better citation, clearer exposition, or source note. Suggestions go to <strong>{CONTACT_EMAIL}</strong> with the subject tag <strong>[Correction]</strong>.</p>
+      <form action="{FORM_ENDPOINT}" method="POST">
+        <input id="subject" type="hidden" name="_subject" value="[Correction] ORdős Problems">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="{SITE_URL}/thanks.html">
+        <div class="form-grid">
+          <div class="field">
+            <label for="contributor_name">Your name</label>
+            <input id="contributor_name" name="Contributor name" type="text" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="email">Your email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field full">
+            <label for="problem_ref">Problem</label>
+            <input id="problem_ref" name="Problem" type="text" required>
+          </div>
+          <div class="field full">
+            <label for="problem_page">Problem page</label>
+            <input id="problem_page" name="Problem page" type="url">
+          </div>
+          <div class="field full">
+            <label for="proposed_change">Proposed change</label>
+            <textarea id="proposed_change" name="Proposed change" required></textarea>
+          </div>
+          <div class="field full">
+            <label for="reason">Reason for the change</label>
+            <textarea id="reason" name="Reason for the change" required></textarea>
+          </div>
+          <div class="field full">
+            <label for="sources">Sources</label>
+            <textarea id="sources" name="Sources" placeholder="Links or bibliographic details supporting the change"></textarea>
+          </div>
+        </div>
+        <div class="submit-row">
+          <button class="submit-btn" type="submit">Send suggestion</button>
+          <a class="back-link" href="index.html">Back to all problems</a>
+        </div>
+      </form>
+    </section>
+  </main>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
+</div>
+<script>
+(function(){{
+  var q=new URLSearchParams(window.location.search);
+  var ref=q.get('ref')||'';
+  var title=q.get('title')||'';
+  var page=q.get('page')||'';
+  var label=[ref,title].filter(Boolean).join(' - ');
+  if(label)document.getElementById('problem_ref').value=label;
+  if(page)document.getElementById('problem_page').value=page;
+  if(label)document.getElementById('subject').value='[Correction] '+label;
+}})();
+</script>
+</body>
+</html>
+"""
+
+
+def thanks_html():
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Submission Sent | ORdős Problems</title>
+{COMMON_HEAD}
+</head>
+<body>
+<div class="wrap">
+  {simple_header("index.html")}
+  <main class="form-shell">
+    <section class="form-card">
+      <h2>Submission Sent</h2>
+      <p>Thank you. The submission has been sent to <strong>{CONTACT_EMAIL}</strong>. If this is the first live submission, FormSubmit may require a one-time email confirmation before delivery is activated.</p>
+      <p><a class="back-link" href="index.html">Back to all problems</a></p>
+    </section>
+  </main>
+</div>
+</body>
+</html>
+"""
+
+
 def nav_item(problem, label, cls):
     if not problem:
         return '<span class="navlink empty" aria-hidden="true"></span>'
@@ -671,13 +862,15 @@ HTML = (
     index_html()
     .replace("__COMMON_HEAD__", COMMON_HEAD)
     .replace("__LOGO__", logo_link("index.html"))
-    .replace("__NEW_PROBLEM_URL__", NEW_PROBLEM_URL)
     .replace("__DATA__", embedded)
     .replace("__GEN__", meta["generated"])
     .replace("__N__", str(meta["count"]))
 )
 
 (ROOT / "index.html").write_text(HTML)
+(ROOT / "contribute.html").write_text(contribution_form_html())
+(ROOT / "correction.html").write_text(correction_form_html())
+(ROOT / "thanks.html").write_text(thanks_html())
 
 PAGES.mkdir(exist_ok=True)
 for stale in PAGES.glob("*.html"):
@@ -689,4 +882,5 @@ for index, problem in enumerate(ordered_problems):
     (PAGES / page_name(problem)).write_text(detail_html(problem, prev_problem, next_problem))
 
 print("wrote index.html", len(HTML), "bytes")
+print("wrote contribution pages")
 print("wrote problem pages", len(data["problems"]))
