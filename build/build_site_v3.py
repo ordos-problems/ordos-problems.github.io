@@ -191,12 +191,12 @@ COMMON_HEAD = r"""
   .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
   .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:#27302c;max-width:88ch;letter-spacing:0;}
   .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
-  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:26px 0 0;}
-  .pagebtn{font-size:.84rem;color:var(--ink);background:#fffdf2;border:2px solid var(--strong);border-radius:9px;
-    padding:7px 11px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:38px;box-shadow:0 1px 0 var(--strong);}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:nowrap;margin:24px 0 0;overflow-x:auto;padding-bottom:3px;}
+  .pagebtn{font-size:.76rem;color:var(--ink);background:#fffdf2;border:2px solid var(--strong);border-radius:8px;
+    padding:5px 8px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:30px;box-shadow:0 1px 0 var(--strong);white-space:nowrap;}
   .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
   .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
-  .pageinfo{font-size:.8rem;color:var(--faint);font-weight:750;padding:0 4px;}
+  .pagegap,.pageinfo{font-size:.76rem;color:var(--faint);font-weight:750;padding:0 3px;white-space:nowrap;}
 
   .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
   .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
@@ -453,8 +453,20 @@ __COMMON_HEAD__
       b.addEventListener('click',function(){currentPage=page;apply(false,true);});
       pager.appendChild(b);
     }
+    function gap(){pager.appendChild(txt('span','pagegap','...'));}
+    function pageNumbers(){
+      var pages=[], seen={};
+      [1,currentPage-1,currentPage,currentPage+1,totalPages].forEach(function(p){
+        if(p>=1&&p<=totalPages&&!seen[p]){seen[p]=1;pages.push(p);}
+      });
+      pages.sort(function(a,b){return a-b;});
+      pages.forEach(function(p,i){
+        if(i&&p-pages[i-1]>1)gap();
+        button(String(p),p,p===currentPage?'active':'',false);
+      });
+    }
     button('Previous',Math.max(1,currentPage-1),'',currentPage===1);
-    for(var i=1;i<=totalPages;i++)button(String(i),i,i===currentPage?'active':'',false);
+    pageNumbers();
     button('Next',Math.min(totalPages,currentPage+1),'',currentPage===totalPages);
     pager.appendChild(txt('span','pageinfo','Page '+currentPage+' of '+totalPages));
   }
