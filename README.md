@@ -1,4 +1,4 @@
-# Ordos Problems
+# ORdős Problems
 
 A static website collecting hard, unsolved, research-level problems in Operations Research, Computer Science, Economics, and Applied Probability.
 
@@ -25,15 +25,33 @@ The editable problem source is:
 
 - `build/problems_source.json`
 
-Entries with `"enabled": false` are preserved in source but excluded from the generated website.
+Entries with `"enabled": false` are preserved in source but excluded from the generated website. The Will Ma course-notes problems are currently disabled this way pending permission; setting them back to `"enabled": true` will include them in the next rebuild.
 
 The current build scripts are:
 
-- `build/compile_v2.py`
+- `build/compile.py`
 - `build/render_math.js`
-- `build/build_site_v3.py`
+- `build/build_site.py`
+
+## Local Preview
+
+You do not need npm to view the website locally. The checked-in files are already static HTML.
+
+Run a simple local server from the repository root:
+
+```bash
+python3 -m http.server 4173
+```
+
+Then open `http://localhost:4173`.
+
+Using a local server is better than double-clicking `index.html`, because root-relative assets such as `/favicon.svg` behave the same way they will on GitHub Pages.
 
 ## Rebuild
+
+You only need npm if you are editing the source data or templates and want to regenerate the static site.
+
+The build uses Node only for KaTeX math pre-rendering in `build/render_math.js`. GitHub Pages and local preview do not run Node.
 
 Install dependencies once:
 
@@ -46,14 +64,6 @@ Rebuild the full static site:
 ```bash
 npm run build
 ```
-
-Preview locally:
-
-```bash
-npm run serve
-```
-
-Then open `http://localhost:4173`.
 
 ## Contributing
 
