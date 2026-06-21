@@ -164,8 +164,8 @@ COMMON_HEAD = r"""
   .aboutbtn{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
     border-radius:10px;padding:7px 12px;min-width:98px;min-height:38px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;}
   .aboutbtn:hover{background:var(--pinkhover);}
-  .theme-toggle{gap:7px;min-width:92px;}
-  .theme-mark{font-size:.95rem;line-height:1;}
+  .theme-toggle{width:38px;height:38px;min-width:38px;min-height:38px;padding:0;border-radius:999px;line-height:1;}
+  .theme-mark{font-size:1.05rem;line-height:1;}
   .simple-headbar{display:flex;align-items:center;justify-content:space-between;gap:18px;}
   .sub{color:var(--soft);font-size:1.03rem;margin:16px 0 0;max-width:78ch;font-weight:450;}
   .headsearch{display:flex;justify-content:flex-end;align-items:center;gap:10px;flex-wrap:wrap;}
@@ -345,7 +345,7 @@ def logo_link(href):
 
 
 def theme_toggle_html():
-    return '<button class="aboutbtn theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme"><span class="theme-mark" aria-hidden="true">☾</span><span class="theme-label">Dark</span></button>'
+    return '<button class="aboutbtn theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme" title="Switch color theme"><span class="theme-mark" aria-hidden="true">☾</span></button>'
 
 
 def theme_script():
@@ -357,9 +357,7 @@ def theme_script():
     document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
       var dark=theme==='dark';
       var mark=btn.querySelector('.theme-mark');
-      var label=btn.querySelector('.theme-label');
       if(mark)mark.textContent=dark?'☀':'☾';
-      if(label)label.textContent=dark?'Light':'Dark';
       btn.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');
       btn.setAttribute('title',dark?'Switch to light mode':'Switch to dark mode');
     });
