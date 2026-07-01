@@ -4311,5 +4311,497 @@
       }
     ],
     "enabled": true
+  },
+  {
+    "id": "two-sided-flexibility-random-graph-matching",
+    "title": "Optimal two-sided flexibility allocation for random bipartite matching",
+    "collection": "Operations Research",
+    "area": "Matching Markets",
+    "tags": [
+      "random graphs",
+      "bipartite matching",
+      "platform design",
+      "process flexibility",
+      "matching markets"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "In a two-sided platform where a fixed flexibility budget can be split between the two sides of a random bipartite graph, is the expected maximum matching always optimized by either the fully one-sided or the balanced allocation?",
+    "open_problem": "Prove or refute that the expected maximum matching size is always maximized by one of the two extremal flexibility allocations: placing all flexibility on one side, or splitting it evenly across the two sides. If true, characterize the parameter regimes in which each allocation is optimal.",
+    "full_statement": "Consider the heterogeneous random bipartite-graph model of Freund, Martin, and Zhao. There are two sides of a matching market, a fixed budget $B$ of flexible agents, and an allocation decision specifying how much flexibility is placed on each side. Flexible nodes have a higher probability of being compatible with nodes on the opposite side, while the model normalizes edge probabilities so that changes in performance come from how compatibility is distributed rather than simply from adding more expected edges. The main performance metric $\\mu$ is the asymptotic expected size of a maximum matching. Numerical evidence using the Karp-Sipser-based approximation $\\mu_{KS}$ and empirical simulations $\\mu_{EMP}$ suggests that $\\mu$ is always maximized either by the one-sided allocation or by the balanced allocation. The open problem is to prove this extremal principle, or find a counterexample, and then give an analytical boundary in $(B,p_n,p_f)$ space separating the one-sided-optimal and balanced-optimal regimes.",
+    "known_results": "Freund, Martin, and Zhao give a complete analytical characterization for a simpler isolation-based metric $\\phi$, and they prove partial analytical comparisons for $\\mu$ in edge cases where flexibility cannibalization or flexibility asymmetry dominates. For the actual maximum-matching metric, their computational evidence strongly points to the one-sided-versus-balanced dichotomy, but no proof is known even for a parameter regime. The remaining open problem is therefore not to choose a model of platform flexibility, but to prove the optimal allocation structure inside their already specified random-graph model.",
+    "where_posed": {
+      "text": "Conclusion of Freund, Martin, and Zhao, 'Two-Sided Flexibility in Platforms', lists the extremal optimality of one-sided or balanced allocations for the maximum-matching metric as a natural open question.",
+      "url": "https://arxiv.org/abs/2404.04709"
+    },
+    "source": {
+      "authors": "Daniel Freund, Sebastien Martin, Jiayu Kamessi Zhao",
+      "title": "Two-Sided Flexibility in Platforms",
+      "year": 2026,
+      "venue": "arXiv:2404.04709",
+      "url": "https://arxiv.org/abs/2404.04709"
+    },
+    "additional_refs": [
+      {
+        "authors": "William C. Jordan, Stephen C. Graves",
+        "title": "Principles on the Benefits of Manufacturing Process Flexibility",
+        "year": 1995,
+        "venue": "Management Science",
+        "url": "https://doi.org/10.1287/mnsc.41.4.577"
+      }
+    ],
+    "enabled": true
+  },
+  {
+    "id": "contextual-dynamic-pricing-heterogeneous-buyers-k-dependence",
+    "title": "Optimal type-dependence in contextual dynamic pricing with heterogeneous buyers",
+    "collection": "Operations Research",
+    "area": "Dynamic Pricing",
+    "tags": [
+      "dynamic pricing",
+      "contextual bandits",
+      "heterogeneous buyers",
+      "regret",
+      "online learning"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "For contextual dynamic pricing with an unknown finite mixture of buyer types, what is the optimal regret dependence on the number of latent types, and can it be achieved by a computationally efficient algorithm?",
+    "open_problem": "Close the dependence on the latent support size $K_\\star$ in contextual dynamic pricing with heterogeneous buyers, and determine whether the existing exponential-time discretized-model approach can be replaced by a polynomial-time algorithm with comparable regret.",
+    "full_statement": "A seller repeatedly observes a $d$-dimensional context, posts a price, and observes only a binary purchase decision. The buyer's valuation type is drawn from an unknown distribution $D_\\star$ with finite support size $K_\\star$, so heterogeneity creates a context-dependent, non-i.i.d. demand curve even when the type distribution is fixed. Lykouris, Nietert, Okoroafor, Podimata, and Zimmert give an optimistic posterior sampling approach whose regret scales as $\\widetilde O(K_\\star d\\sqrt T)$ in the general contextual setting, with a lower bound of $\\Omega(\\sqrt{K_\\star dT})$ for sufficiently large horizons. In the non-contextual case they improve the type dependence to $\\widetilde O(\\sqrt{K_\\star T})$ using a variance-aware zooming algorithm. The open problem is to obtain the right $K_\\star$ dependence in the full contextual model, and to do so with an efficient algorithm rather than one whose runtime is exponential in $K_\\star$ and $d$.",
+    "known_results": "The contextual regret dependence on $d$ and $T$ is essentially sharp, but the dependence on $K_\\star$ has a gap between the $\\widetilde O(K_\\star d\\sqrt T)$ upper bound and the $\\Omega(\\sqrt{K_\\star dT})$ lower bound. The non-contextual $d=1$ case shows that the linear dependence on $K_\\star$ is not inherent there. The paper explicitly leaves open both the optimal $K_\\star$ dependence in the contextual case and whether the exponential dependence of POPS on the discretized model class can be removed while preserving similar regret.",
+    "where_posed": {
+      "text": "Open questions section of Lykouris, Nietert, Okoroafor, Podimata, and Zimmert, 'Contextual Dynamic Pricing with Heterogeneous Buyers'.",
+      "url": "https://arxiv.org/abs/2512.09513"
+    },
+    "source": {
+      "authors": "Thodoris Lykouris, Sloan Nietert, Princewill Okoroafor, Chara Podimata, Julian Zimmert",
+      "title": "Contextual Dynamic Pricing with Heterogeneous Buyers",
+      "year": 2025,
+      "venue": "arXiv:2512.09513",
+      "url": "https://arxiv.org/abs/2512.09513"
+    },
+    "additional_refs": [
+      {
+        "authors": "Nicolò Cesa-Bianchi, Tommaso Cesari, Vianney Perchet",
+        "title": "Dynamic Pricing with Finitely Many Unknown Valuations",
+        "year": 2019,
+        "venue": "ALT",
+        "url": "https://proceedings.mlr.press/v98/cesa-bianchi19a.html"
+      },
+      {
+        "authors": "Robert Kleinberg, Aleksandrs Slivkins, Eli Upfal",
+        "title": "Multi-armed bandits in metric spaces",
+        "year": 2008,
+        "venue": "STOC",
+        "url": "https://doi.org/10.1145/1374376.1374455"
+      }
+    ],
+    "enabled": true
+  },
+  {
+    "id": "new-product-exploration-heterogeneous-priors-assortment",
+    "title": "Optimal exploration of new products with heterogeneous priors",
+    "collection": "Operations Research",
+    "area": "Assortment Optimization",
+    "tags": [
+      "assortment optimization",
+      "online learning",
+      "social learning",
+      "mnl choice",
+      "platform design"
+    ],
+    "status": "open",
+    "confidence": "medium",
+    "short_statement": "In assortment-based exploration of new products, can one characterize the optimal policy when entrant products have heterogeneous priors, rather than a common prior?",
+    "open_problem": "Give a full characterization of the optimal exploration policy for capacity-constrained assortment decisions with multiple new products whose quality priors are heterogeneous.",
+    "full_statement": "Baek, Dinev, and Lykouris study an online platform that repeatedly chooses a capacity-constrained assortment. Incumbent product qualities are known, while a new product's quality is learned through purchase behavior and reviews; under their main model, a purchase of an entrant reveals its attraction parameter. For homogeneous entrant priors under the MNL choice model, they characterize an optimal exploration policy, EFA, that keeps the best incumbents in the assortment and uses a threshold rule to decide how many entrants to explore simultaneously. The clean open problem is to extend this characterization to heterogeneous entrant priors: when new products have different prior distributions, how should the platform rank, group, and time exploration, and does an EFA-like threshold structure survive?",
+    "known_results": "The homogeneous-prior infinite-horizon MNL model is solved by the EFA policy, and the paper shows that standard bandit policies such as UCB and Thompson sampling can be arbitrarily worse because they choose exploration intensities that are too extreme. The authors take an initial step for heterogeneous priors in a simplified two-entrant setting, but a full characterization remains open. This is a structured gap inside the existing assortment-learning model rather than a request to invent a new modelling framework.",
+    "where_posed": {
+      "text": "Conclusion of Baek, Dinev, and Lykouris, 'Optimal Exploration of New Products under Assortment Decisions'.",
+      "url": "https://arxiv.org/abs/2604.18800"
+    },
+    "source": {
+      "authors": "Jackie Baek, Atanas Dinev, Thodoris Lykouris",
+      "title": "Optimal Exploration of New Products under Assortment Decisions",
+      "year": 2026,
+      "venue": "arXiv:2604.18800",
+      "url": "https://arxiv.org/abs/2604.18800"
+    },
+    "additional_refs": [
+      {
+        "authors": "Shipra Agrawal, Vashist Avadhanula, Vineet Goyal, Assaf Zeevi",
+        "title": "MNL-Bandit: A Dynamic Learning Approach to Assortment Selection",
+        "year": 2019,
+        "venue": "Operations Research",
+        "url": "https://doi.org/10.1287/opre.2018.1832"
+      }
+    ],
+    "enabled": true
+  },
+  {
+    "id": "battery-market-power-poa-correlated-demand",
+    "title": "Price of anarchy for strategic battery operations with multi-period correlated demand",
+    "collection": "Operations Research",
+    "area": "Energy Markets",
+    "tags": [
+      "energy markets",
+      "price of anarchy",
+      "strategic behavior",
+      "storage",
+      "operations management"
+    ],
+    "status": "conjecture",
+    "confidence": "medium",
+    "short_statement": "In the strategic battery model, the sharp $9/8$ to $4/3$ price-of-anarchy interval is known for the two-period joint-normal model and for multi-period independent normal demand. For multi-period correlated demand, what covariance conditions preserve the same bound?",
+    "open_problem": "Characterize the covariance structures under which the multi-period strategic-battery price of anarchy remains between $9/8$ and $4/3$, and determine the sharp bound when those conditions fail.",
+    "full_statement": "Anunrojwong, Balseiro, Besbes, and Xu model battery operations in electricity markets and compare centralized system-cost-minimizing dispatch with decentralized profit-maximizing dispatch. Their parsimonious model captures quantity withholding, shifting participation from day-ahead to real-time markets, and reduced real-time responsiveness. In the two-period model, with jointly normal peak/off-peak demand and arbitrary correlation $\\rho$, they prove that the relative cost-reduction price of anarchy lies in the sharp interval $9/8 \\le \\mathrm{PoA} \\le 4/3$. They also extend the model to $T$ periods and prove the same interval for independent normal demands. The unresolved question is the multi-period correlated-demand case: find clean, economically meaningful assumptions on the covariance matrix, such as positive dependence or related total-positivity conditions, under which the $9/8$ to $4/3$ interval still holds; and characterize the worst-case PoA when the covariance matrix is allowed to have negative or otherwise pathological correlations.",
+    "known_results": "Known results are stronger than the phrase 'correlated demand' suggests. The two-period jointly normal model already allows arbitrary correlation and has the sharp $9/8 \\le \\mathrm{PoA} \\le 4/3$ theorem. For any number of periods, the paper proves the same interval under independent normal demands. In Appendix E, the authors work out the $T=3$ multivariate-normal case and show that nonnegative pairwise correlations imply the upper bound $\\mathrm{PoA}\\le 4/3$ for that case; they also report numerical evidence that arbitrary covariance matrices can push the PoA close to $2$ under pathological negative-correlation examples. The remaining open problem is therefore to identify the right positive-dependence/covariance conditions for general $T$, and to determine the sharp PoA outside those conditions.",
+    "where_posed": {
+      "text": "Remark and Appendix E discussion following the multi-period independent-normal demand theorem in Anunrojwong, Balseiro, Besbes, and Xu, 'Battery Operations in Electricity Markets: Strategic Behavior and Distortions'.",
+      "url": "https://arxiv.org/abs/2406.18685"
+    },
+    "source": {
+      "authors": "Jerry Anunrojwong, Santiago R. Balseiro, Omar Besbes, Bolun Xu",
+      "title": "Battery Operations in Electricity Markets: Strategic Behavior and Distortions",
+      "year": 2025,
+      "venue": "arXiv:2406.18685",
+      "url": "https://arxiv.org/abs/2406.18685"
+    },
+    "additional_refs": [],
+    "enabled": false
+  },
+  {
+    "id": "optimal-contest-design-gradient-patterns",
+    "title": "Optimal contest design beyond quasiconvex gradient structure",
+    "collection": "Market & Mechanism Design",
+    "area": "Mechanism Design",
+    "tags": [
+      "contest design",
+      "mechanism design",
+      "strategic behavior",
+      "nonconvex optimization",
+      "recommender systems"
+    ],
+    "status": "open",
+    "confidence": "medium",
+    "short_statement": "In rank-based contest design, can the structure of the optimal prize vector be characterized for objectives whose gradient sequence has a more complicated pattern than the quasiconvex cases currently covered?",
+    "open_problem": "Characterize the optimal rank-based contest policy for objective functions whose gradient sequence lies outside the quasiconvex or posynomial regimes where the current structural theorem applies.",
+    "full_statement": "In contest design, $n$ strategic contestants choose costly effort levels, which induce qualities, and a designer allocates a fixed prize budget across ranks to optimize an objective of the resulting quality vector. Golrezaei, Hajiaghayi, and Shin show that for broad nonconvex objectives, including convex combinations of user welfare and average quality and arbitrary posynomials over quality, the optimal rank-based policy has a sharp structure: possibly higher prize to the first rank, zero prize to the last rank, and equal prizes to all intermediate ranks. Their proof connects the shape of the objective's gradient sequence to transition points in the optimal prize vector. The open problem is to understand what replaces this structure when the gradient sequence has a more complicated pattern beyond the regimes currently handled.",
+    "known_results": "For linear costs and the covered nonconvex objective classes, the paper gives a structural characterization and an FPTAS using a reduction from a high-dimensional nonconvex problem to one-dimensional optimization. Classical special cases include the UniformButLast and HardMax structures. The remaining open problem is a structural one: determine whether comparable low-dimensional descriptions exist for more general gradient patterns, or whether fundamentally more complex optimal prize vectors are unavoidable.",
+    "where_posed": {
+      "text": "Conclusion of Golrezaei, Hajiaghayi, and Shin, 'Optimal Contest Beyond Convexity'.",
+      "url": "https://arxiv.org/abs/2604.04844"
+    },
+    "source": {
+      "authors": "Negin Golrezaei, MohammadTaghi Hajiaghayi, Suho Shin",
+      "title": "Optimal Contest Beyond Convexity",
+      "year": 2026,
+      "venue": "STOC 2026 / arXiv:2604.04844",
+      "url": "https://arxiv.org/abs/2604.04844"
+    },
+    "additional_refs": [
+      {
+        "authors": "Shuchi Chawla, Jason D. Hartline, Balasubramanian Sivan",
+        "title": "Optimal Crowdsourcing Contests",
+        "year": 2019,
+        "venue": "Games and Economic Behavior",
+        "url": "https://doi.org/10.1016/j.geb.2018.11.006"
+      }
+    ],
+    "enabled": true
+  },
+  {
+    "id": "online-monotone-subsequence-second-order-gap",
+    "title": "Second-order gap for online selection of a monotone subsequence",
+    "collection": "Applied Probability",
+    "area": "Sequential Selection",
+    "tags": [
+      "online selection",
+      "applied probability",
+      "dynamic programming",
+      "monotone subsequence",
+      "prophet-style selection"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "For online selection of an increasing subsequence from $n$ i.i.d. continuous observations, the optimal expected length is $\\sqrt{2n}-O(\\log n)$. Does the second-order gap $g(n)=\\sqrt{2n}-\\mathbb{E}L_n^*$ diverge, or is it bounded?",
+    "open_problem": "Determine the asymptotic behavior of $g(n)=\\sqrt{2n}-\\mathbb{E}L_n^*$ for the optimal online increasing-subsequence policy; in particular, decide whether $g(n)\\to\\infty$ or $g(n)=O(1)$.",
+    "full_statement": "Let $X_1,\\ldots,X_n$ be independent observations from a common continuous distribution, revealed one at a time. An online policy must irrevocably accept or reject each $X_t$, and the accepted values must form an increasing subsequence. Let $L_n^*$ be the length selected by an optimal online policy. Distribution-freeness reduces the model to $X_t\\sim\\mathrm{Unif}[0,1]$. The classical first-order asymptotic is $\\mathbb{E}L_n^*\\sim \\sqrt{2n}$, and the best general bounds give $\\sqrt{2n}-O(\\log n)\\le \\mathbb{E}L_n^*\\le \\sqrt{2n}$. Arlotto, Wei, and Xie give a simple adaptive policy within $2(\\log n+1)$ of optimal and ask for a sharper understanding of the second-order correction. The core open problem is whether the deficit $g(n)=\\sqrt{2n}-\\mathbb{E}L_n^*$ diverges with $n$, as the logarithmic upper bound allows, or remains bounded.",
+    "known_results": "Samuels and Steele established the $\\sqrt{2n}$ first-order law. Bruss and Robertson gave the upper bound $\\mathbb{E}L_n^*\\le \\sqrt{2n}$, and Bruss-Delbaen/Arlotto-Nguyen-Steele developed the matching lower bound up to $O(\\log n)$ and central-limit behavior in related Poissonized/discrete settings. Arlotto, Wei, and Xie construct an explicit adaptive policy with expected length at least $\\sqrt{2n}-2(\\log n+1)$. They also report numerical evidence suggesting that their policy may be within a constant of optimal, but the simplest stated open question remains whether $g(n)$ diverges.",
+    "where_posed": {
+      "text": "Concluding remarks of Arlotto, Wei, and Xie, 'An adaptive O(log n)-optimal policy for the online selection of a monotone subsequence from a random sample'.",
+      "url": "https://arxiv.org/abs/1605.03998"
+    },
+    "source": {
+      "authors": "Alessandro Arlotto, Yehua Wei, Xinchang Xie",
+      "title": "An adaptive O(log n)-optimal policy for the online selection of a monotone subsequence from a random sample",
+      "year": 2018,
+      "venue": "Random Structures & Algorithms",
+      "url": "https://arxiv.org/abs/1605.03998"
+    },
+    "additional_refs": [
+      {
+        "authors": "Stephen M. Samuels, J. Michael Steele",
+        "title": "Optimal sequential selection of a monotone sequence from a random sample",
+        "year": 1981,
+        "venue": "Annals of Probability",
+        "url": "https://doi.org/10.1214/aop/1176994291"
+      },
+      {
+        "authors": "F. Thomas Bruss, Freddy Delbaen",
+        "title": "Optimal rules for the sequential selection of monotone subsequences of maximum expected length",
+        "year": 2001,
+        "venue": "Stochastic Processes and their Applications",
+        "url": "https://doi.org/10.1016/S0304-4149(01)00124-7"
+      }
+    ],
+    "enabled": true
+  },
+  {
+    "id": "known-iid-online-stochastic-matching-ratio",
+    "title": "Tight ratio for known-i.i.d. online stochastic matching",
+    "collection": "Online Algorithms & Learning",
+    "area": "Online Algorithms",
+    "tags": [
+      "online matching",
+      "stochastic matching",
+      "known iid arrivals",
+      "competitive analysis",
+      "ad allocation"
+    ],
+    "status": "open",
+    "confidence": "medium",
+    "short_statement": "In the known-i.i.d. online stochastic matching model, offline vertices and the type distribution are known, online types arrive independently, and matches are irrevocable. What is the exact optimal competitive ratio against the offline optimum?",
+    "open_problem": "Determine the optimal competitive ratio for known-i.i.d. online stochastic bipartite matching, including whether the gap between the best algorithms and the known upper bound can be closed for the original unweighted model and its weighted variants.",
+    "full_statement": "In the known-i.i.d. online stochastic matching model, there is a fixed set of offline vertices and a known distribution over online vertex types. At each period, an online type is sampled independently from this distribution; after seeing its incident offline neighbors, the algorithm must either match it immediately to an unmatched compatible offline vertex or discard it. The benchmark is the expected size or weight of the offline optimum that knows the entire arrival sequence. Manshadi, Oveis Gharan, and Saberi gave a $0.702$-competitive algorithm for the original model, $0.705$ under integral rates, and an upper bound of $0.823$ for every online algorithm. Later work improved several weighted and integral-rate variants, but the exact optimal ratio in the basic known-i.i.d. model remains unknown. The open problem is to close this constant-factor gap and identify the structural algorithm or hard instance that determines the true ratio.",
+    "known_results": "The adversarial online bipartite matching ratio is exactly $1-1/e$, while the known-i.i.d. model can beat this barrier. Feldman-Mehta-Mirrokni-Muthukrishnan initiated the model and obtained improvements under integral expected arrivals. Manshadi, Oveis Gharan, and Saberi removed the integrality need for beating $1-1/e$ and proved a universal upper bound of $0.823$. Brubach, Sankararaman, Srinivasan, and Xu later improved ratios for important variants, including weighted-edge and vertex-weighted integral-rate settings. The broad constant gap between lower and upper bounds in the original known-i.i.d. model is still the clean unresolved part.",
+    "where_posed": {
+      "text": "Gap left by Manshadi, Oveis Gharan, and Saberi, 'Online Stochastic Matching: Online Actions Based on Offline Statistics', and subsequent known-i.i.d. online stochastic matching work.",
+      "url": "https://arxiv.org/abs/1007.1673"
+    },
+    "source": {
+      "authors": "Vahideh H. Manshadi, Shayan Oveis Gharan, Amin Saberi",
+      "title": "Online Stochastic Matching: Online Actions Based on Offline Statistics",
+      "year": 2012,
+      "venue": "Mathematics of Operations Research",
+      "url": "https://arxiv.org/abs/1007.1673"
+    },
+    "additional_refs": [
+      {
+        "authors": "Jon Feldman, Aranyak Mehta, Vahab Mirrokni, S. Muthukrishnan",
+        "title": "Online Stochastic Matching: Beating 1-1/e",
+        "year": 2009,
+        "venue": "FOCS",
+        "url": "https://doi.org/10.1109/FOCS.2009.72"
+      },
+      {
+        "authors": "Brian Brubach, Karthik Abinav Sankararaman, Aravind Srinivasan, Pan Xu",
+        "title": "Online Stochastic Matching: New Algorithms and Bounds",
+        "year": 2019,
+        "venue": "Algorithmica",
+        "url": "https://arxiv.org/abs/1606.06395"
+      }
+    ],
+    "enabled": true
+  },
+  {
+    "id": "polling-gated-one-limited-pgf",
+    "title": "Joint queue-length transform for gated/one-limited polling",
+    "collection": "Applied Probability",
+    "area": "Queueing Theory",
+    "tags": [
+      "queueing",
+      "polling systems",
+      "generating functions",
+      "applied probability",
+      "stochastic networks"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "In the two-queue polling system where one queue has gated service and the other has one-limited service, determine the joint queue-length probability generating function at polling instants.",
+    "open_problem": "Determine the joint queue-length PGF at polling instants in the two-queue polling system with one gated queue and one one-limited queue.",
+    "full_statement": "A polling system has multiple queues served by a single server that visits queues cyclically, with switch-over times between visits. In the two-queue $G/1\\text{-}L$ model, queue 1 uses gated service: all customers present when the server arrives are served during that visit, while later arrivals wait for the next cycle. Queue 2 uses one-limited service: at most one customer is served per visit. Let $F_i(z_1,z_2)$ denote the joint probability generating function of the queue lengths at polling instants. Many standard two-queue polling disciplines are solvable by branching-process or boundary-value methods, but this mixed gated/one-limited case has resisted the usual functional-equation substitutions. The open problem is to determine the joint queue-length PGF, or an equivalent exact characterization, for this basic mixed-service polling model.",
+    "known_results": "Two-queue exhaustive/one-limited and many branching-type polling systems have exact transform characterizations. Boon, Boxma, and Winands explain that gated and exhaustive disciplines usually have comparable analytic complexity, making the unresolved $G/1\\text{-}L$ case striking. The functional equation for the joint PGF is known, but direct substitutions introduce iterated shifts and do not close the system. The remaining open problem is not to propose a new model, but to solve this already specified polling model exactly.",
+    "where_posed": {
+      "text": "Open Problem 1 in Boon, Boxma, and Winands, 'On open problems in polling systems'.",
+      "url": "https://arxiv.org/abs/1408.0142"
+    },
+    "source": {
+      "authors": "Marko Boon, Onno Boxma, Erik Winands",
+      "title": "On open problems in polling systems",
+      "year": 2011,
+      "venue": "Queueing Systems",
+      "url": "https://arxiv.org/abs/1408.0142"
+    },
+    "additional_refs": [
+      {
+        "authors": "Onno J. Boxma, J. W. Cohen, N. Huffels",
+        "title": "Approximations of the mean waiting time in an M/G/s queueing system",
+        "year": 1979,
+        "venue": "Operations Research",
+        "url": "https://doi.org/10.1287/opre.27.6.1115"
+      }
+    ],
+    "enabled": true
+  },
+  {
+    "id": "polling-renewal-large-switchover-limit",
+    "title": "Large switch-over limit for polling with renewal arrivals",
+    "collection": "Applied Probability",
+    "area": "Queueing Theory",
+    "tags": [
+      "queueing",
+      "polling systems",
+      "renewal arrivals",
+      "heavy traffic",
+      "applied probability"
+    ],
+    "status": "open",
+    "confidence": "high",
+    "short_statement": "For cyclic polling systems with general renewal arrivals, prove or disprove the conjecture that the system converges to a deterministic cyclic limit as deterministic switch-over times grow large.",
+    "open_problem": "Prove the deterministic-cycle limit for branching-type polling systems with general renewal arrivals as deterministic switch-over times tend to infinity, or construct a counterexample.",
+    "full_statement": "Consider an $N$-queue cyclic polling system in which a single server visits queues in a fixed order. Service disciplines are of branching type, service times are random, and switch-over times between queues are deterministic. For Poisson arrivals, the large switch-over regime is understood: after scaling by the total switch-over time, waiting times and queue lengths converge to deterministic-cycle behavior, with a uniform residual-cycle component for a tagged customer. The open problem is whether the same phenomenon holds when each queue has a general renewal arrival process. Equivalently, as all deterministic switch-over times grow while their ratios stay fixed, does the scaled polling system lose stochastic fluctuation and converge to the deterministic cyclic fluid system predicted by the law-of-large-numbers heuristic?",
+    "known_results": "Winands obtained exact large switch-over asymptotics for branching-type polling systems with Poisson arrivals, and related heavy-traffic results show that some higher-moment details of switch-over times vanish in the limit. Boon, Boxma, and Winands argue that the Poisson assumption should not be essential and provide simulation evidence for renewal arrivals, but the existing proof techniques rely on Poisson branching and immigration identities. The remaining open problem is a rigorous proof of the renewal-arrival conjecture, or a demonstration that renewal variability can survive the scaling in some admissible model.",
+    "where_posed": {
+      "text": "Open Problem 2 and Conjecture 4.2 in Boon, Boxma, and Winands, 'On open problems in polling systems'.",
+      "url": "https://arxiv.org/abs/1408.0142"
+    },
+    "source": {
+      "authors": "Marko Boon, Onno Boxma, Erik Winands",
+      "title": "On open problems in polling systems",
+      "year": 2011,
+      "venue": "Queueing Systems",
+      "url": "https://arxiv.org/abs/1408.0142"
+    },
+    "additional_refs": [
+      {
+        "authors": "Erik M. M. Winands",
+        "title": "Branching-type polling systems with large switch-over times",
+        "year": 2011,
+        "venue": "Queueing Systems",
+        "url": "https://doi.org/10.1007/s11134-011-9247-9"
+      }
+    ],
+    "enabled": true
+  },
+  {
+    "id": "adaptive-polling-limited-service-stability-region",
+    "title": "Exact stability region for adaptive limited-service polling",
+    "collection": "Applied Probability",
+    "area": "Queueing Theory",
+    "tags": [
+      "queueing",
+      "polling systems",
+      "stability",
+      "fluid limits",
+      "stochastic networks"
+    ],
+    "status": "open",
+    "confidence": "medium",
+    "short_statement": "In adaptive cyclic polling with limited service, characterize the exact stability region, including whether it can depend on the full primitive distributions rather than any finite set of moments.",
+    "open_problem": "Characterize the exact stability region of adaptive polling systems with general limited-service disciplines, and determine whether finite-moment data can ever be sufficient.",
+    "full_statement": "Consider a single-server cyclic polling system with three queues. The server follows an adaptive mechanism: if it finds a queue empty in one cycle, it may skip that queue in the next cycle. Under limited service, each visit serves at most a fixed number of customers before the server switches. For some special limited-service cases, fluid equations give sharp stability and instability conditions, but for general limited service they leave a nontrivial gap. Chernova, Foss, and Kim conjecture that this gap reflects a genuine phenomenon: stability may depend on the entire distributions of interarrival, service, and switch-over times, not merely on traffic intensities or finitely many moments. The open problem is to characterize the exact stability region and decide how distributional information enters it.",
+    "known_results": "For the adaptive polling model with a one-limited second queue, tight fluid equations can be derived. For more general limited-service disciplines, existing fluid bounds provide separate sufficient conditions for stability and instability but do not meet. The authors give examples showing that changing higher distributional features while keeping low moments fixed can change the limiting fractions that control stability. The remaining open problem is to turn this evidence into a complete stability criterion, or to identify a finite-dimensional summary that actually determines stability.",
+    "where_posed": {
+      "text": "Discussion and conjectures in Chernova, Foss, and Kim, 'On the Stability of a Polling System with an Adaptive Service Mechanism'.",
+      "url": "https://arxiv.org/abs/1105.2069"
+    },
+    "source": {
+      "authors": "Natalia Chernova, Sergey Foss, Bara Kim",
+      "title": "On the Stability of a Polling System with an Adaptive Service Mechanism",
+      "year": 2012,
+      "venue": "Annals of Operations Research",
+      "url": "https://arxiv.org/abs/1105.2069"
+    },
+    "additional_refs": [],
+    "enabled": true
+  },
+  {
+    "id": "random-ksat-satisfiability-threshold",
+    "title": "Exact threshold for random k-SAT",
+    "collection": "Computer Science",
+    "area": "Random Structures",
+    "tags": [
+      "random structures",
+      "random satisfiability",
+      "optimization",
+      "phase transitions",
+      "applied probability"
+    ],
+    "status": "open",
+    "confidence": "medium",
+    "short_statement": "For random $k$-SAT with $m=\\lfloor cn\\rfloor$ random clauses, determine the exact satisfiability threshold $c_k$, especially for small fixed $k$ such as $k=3$.",
+    "open_problem": "Determine the exact satisfiability threshold $c_k$ for random $k$-SAT, including the small fixed values of $k$ not covered by large-$k$ threshold theorems.",
+    "full_statement": "Let $F_{n,m}^{(k)}$ be a uniformly random $k$-SAT formula on $n$ variables with $m=\\lfloor cn\\rfloor$ clauses. The satisfiability-threshold conjecture asserts that there is a critical density $c_k$ such that $F_{n,\\lfloor cn\\rfloor}^{(k)}$ is satisfiable with high probability for $c<c_k$ and unsatisfiable with high probability for $c>c_k$. Friedgut proved sharp-threshold behavior in a non-explicit sense, and later work determined the threshold for all sufficiently large $k$. The clean open problem is to determine the exact threshold values, or exact limiting characterization, for the remaining fixed small $k$ cases, most notably random 3-SAT.",
+    "known_results": "For $k=2$, the threshold is exactly $1$. Friedgut proved that random $k$-SAT has a sharp threshold, but his theorem does not identify a single explicit limiting value for every fixed $k$. Ding, Sly, and Sun determined the threshold for all sufficiently large $k$, matching the physics prediction in that regime. The remaining open problem is the classical small-$k$ threshold problem: give exact thresholds or a rigorous exact characterization for fixed $k$ such as $3$ and $4$.",
+    "where_posed": {
+      "text": "Satisfiability-threshold discussion in Coppersmith, Gamarnik, Hajiaghayi, and Sorkin, and in Bayati, Gamarnik, and Tetali's sparse-random-graph interpolation paper.",
+      "url": "https://arxiv.org/abs/0912.2444"
+    },
+    "source": {
+      "authors": "Mohsen Bayati, David Gamarnik, Prasad Tetali",
+      "title": "Combinatorial approach to the interpolation method and scaling limits in sparse random graphs",
+      "year": 2013,
+      "venue": "Annals of Probability",
+      "url": "https://arxiv.org/abs/0912.2444"
+    },
+    "additional_refs": [
+      {
+        "authors": "Don Coppersmith, David Gamarnik, Mohammad Hajiaghayi, Gregory B. Sorkin",
+        "title": "Random MAX SAT, Random MAX CUT, and Their Phase Transitions",
+        "year": 2004,
+        "venue": "Random Structures & Algorithms",
+        "url": "https://arxiv.org/abs/math/0306047"
+      },
+      {
+        "authors": "Jian Ding, Allan Sly, Nike Sun",
+        "title": "Proof of the satisfiability conjecture for large k",
+        "year": 2015,
+        "venue": "Annals of Mathematics",
+        "url": "https://arxiv.org/abs/1411.0650"
+      }
+    ],
+    "enabled": true
+  },
+  {
+    "id": "deletion-channel-small-deletion-capacity-expansion",
+    "title": "Higher-order capacity expansion for the deletion channel",
+    "collection": "Computer Science",
+    "area": "Information Theory",
+    "tags": [
+      "information theory",
+      "deletion channel",
+      "capacity",
+      "coding",
+      "asymptotics"
+    ],
+    "status": "open",
+    "confidence": "medium",
+    "short_statement": "For the binary deletion channel with small deletion probability $d$, determine sharper higher-order terms in the capacity expansion and characterize input processes that achieve them.",
+    "open_problem": "Determine the higher-order small-$d$ expansion of binary deletion-channel capacity and the structure of capacity-achieving input processes beyond the known leading terms.",
+    "full_statement": "In the binary deletion channel, each transmitted bit is independently deleted with probability $d$, and undeleted bits are received noiselessly but without position markers. Let $C(d)$ be the Shannon capacity. Even this elementary synchronization channel has no closed-form capacity. For small deletion probability, Kanoria and Montanari developed a systematic expansion and showed that near-optimal inputs can be obtained by modifying iid Bernoulli inputs to reduce long runs. Their concluding questions ask for sharper terms in the expansion and for a better structural understanding of the dependence patterns that improve capacity. The open problem is to determine the higher-order asymptotics of $C(d)$ as $d\\downarrow0$ and characterize the optimal or near-optimal input process at that order.",
+    "known_results": "Earlier work established the first-order behavior $C(d)=1+d\\log d+O(d)$. Kanoria and Montanari computed sharper small-$d$ bounds and showed that forbidding or penalizing long runs gives input processes that are within $O(d^{3-\\epsilon})$ of capacity. They conjecture stronger approximation behavior, including an $O(d^4)$-scale loss for a particular modified input process. The remaining open problem is to convert these partial expansions and structural heuristics into exact higher-order capacity terms and a principled description of optimal coding distributions.",
+    "where_posed": {
+      "text": "Open questions and Conjecture 6.4 in Kanoria and Montanari, 'Optimal coding for the deletion channel with small deletion probability'.",
+      "url": "https://arxiv.org/abs/1104.5546"
+    },
+    "source": {
+      "authors": "Yashodhan Kanoria, Andrea Montanari",
+      "title": "Optimal coding for the deletion channel with small deletion probability",
+      "year": 2011,
+      "venue": "IEEE Transactions on Information Theory",
+      "url": "https://arxiv.org/abs/1104.5546"
+    },
+    "additional_refs": [
+      {
+        "authors": "Michael Mitzenmacher, Elchanan Drinea",
+        "title": "A simple lower bound for the capacity of the deletion channel",
+        "year": 2006,
+        "venue": "IEEE Transactions on Information Theory",
+        "url": "https://doi.org/10.1109/TIT.2006.876241"
+      }
+    ],
+    "enabled": true
   }
 ]
