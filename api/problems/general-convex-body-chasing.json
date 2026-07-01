@@ -1,0 +1,57 @@
+{
+ "number": 15,
+ "ref": "ORDOS-015",
+ "id": "general-convex-body-chasing",
+ "title": "Optimal competitive ratio for general convex body chasing",
+ "collection": "Online Algorithms & Learning",
+ "area": "Online Algorithms",
+ "status": "partially resolved",
+ "confidence": "high",
+ "tags": [
+  "convex body chasing",
+  "competitive analysis",
+  "online convex optimization"
+ ],
+ "short_statement": "Convex bodies in $\\mathbb{R}^d$ arrive online and after each you must move your point into the current body, paying distance moved. For general (arbitrary) convex bodies, is the optimal competitive ratio $\\Theta(\\sqrt{d})$?",
+ "open_problem": "Determine the optimal competitive ratio for general convex body chasing; in particular, is it $\\Theta(\\sqrt d)$?",
+ "full_statement": "In convex body chasing, convex bodies $K_1,K_2,\\dots\\subseteq\\mathbb{R}^d$ are revealed online one at a time. After each body $K_n$ is revealed, the algorithm must choose a point $x_n\\in K_n$, paying movement cost $\\|x_n-x_{n-1}\\|$. The competitive ratio is $$\\sup \\frac{\\sum_n\\|x_n-x_{n-1}\\|}{\\mathrm{OPT}},$$ where $\\mathrm{OPT}$ is the optimal offline cost. The nested case (each body contained in the previous, $K_1\\supseteq K_2\\supseteq\\cdots$) is essentially settled at $\\Theta(\\sqrt{d})$. For general (arbitrary) convex bodies in Euclidean space, the best upper bound is $O(\\min(d,\\sqrt{d\\log N}))$ (where $N$ is the number of bodies) and the lower bound is $\\Omega(\\sqrt d)$. Determine the optimal competitive ratio for general convex body chasing; in particular, is it $\\Theta(\\sqrt d)$?",
+ "known_results": "The Friedman-Linial conjecture (a finite ratio depending only on d exists) is resolved: Sellke and Argue-Gupta-Guruganesh-Tang achieve $O(d)$. Nested chasing is essentially tight at $\\Theta(\\sqrt{d})$. For general convex body chasing in Euclidean space, the best upper bound is O(min(d, sqrt(d log N))) versus $\\Omega(\\sqrt{d})$; the exact ratio remains open.",
+ "where_posed": {
+  "text": "Stated/originated in Friedman, Linial, 'On Convex Body Chasing', 1993, Discrete & Computational Geometry.",
+  "url": "https://link.springer.com/article/10.1007/BF02189324"
+ },
+ "source": {
+  "authors": "Joel Friedman, Nathan Linial",
+  "title": "On Convex Body Chasing",
+  "year": 1993,
+  "venue": "Discrete & Computational Geometry",
+  "url": "https://link.springer.com/article/10.1007/BF02189324"
+ },
+ "additional_refs": [
+  {
+   "authors": "C.J. Argue, Anupam Gupta, Guru Guruganesh, Ziye Tang",
+   "title": "Chasing Convex Bodies with Linear Competitive Ratio",
+   "year": 2020,
+   "venue": "SODA / JACM",
+   "url": "https://arxiv.org/abs/1905.11877"
+  },
+  {
+   "authors": "Mark Sellke",
+   "title": "Chasing Convex Bodies Optimally",
+   "year": 2020,
+   "venue": "SODA",
+   "url": "https://arxiv.org/abs/1905.11968"
+  }
+ ],
+ "bibtex": "@misc{Friedman1993,\n  author = {Joel Friedman and Nathan Linial},\n  title = {On Convex Body Chasing},\n  year = {1993},\n  howpublished = {Discrete & Computational Geometry},\n  url = {https://link.springer.com/article/10.1007/BF02189324},\n  note = {Source of ORdős Problem ORDOS-015}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/general-convex-body-chasing.html",
+  "api": "https://ordos-problems.github.io/api/problems/general-convex-body-chasing.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

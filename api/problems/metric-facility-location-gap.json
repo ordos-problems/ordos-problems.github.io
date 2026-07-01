@@ -1,0 +1,51 @@
+{
+ "number": 53,
+ "ref": "ORDOS-053",
+ "id": "metric-facility-location-gap",
+ "title": "Metric Uncapacitated Facility Location: 1.463 vs. 1.488",
+ "collection": "Approximation & Discrepancy",
+ "area": "Approximation Algorithms",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "facility location",
+  "approximation ratio",
+  "hardness",
+  "metric"
+ ],
+ "short_statement": "For metric uncapacitated facility location, the best known algorithm achieves $1.488$ while it is NP-hard to beat $1.463$. This $\\approx 0.025$ gap has stood for over a decade and is one of the cleanest open problems in approximation.",
+ "open_problem": "Determine the exact polynomial-time approximability threshold for metric uncapacitated facility location between the $1.463$ hardness and the $1.488$ algorithm.",
+ "full_statement": "Open some facilities (paying an opening cost) and connect each client to an open facility (paying the distance), minimizing the total. For metric uncapacitated facility location, \\textbf{determine the best polynomial-time approximation ratio $\\rho$ (assuming $\\mathrm{P} \\ne \\mathrm{NP}$).} Known: $1.463 \\le \\rho \\le 1.488$. The folklore belief is $\\rho = 1.463$.",
+ "known_results": "Guha and Khuller constructed hardness examples near $1.463$, later strengthened to a standard $\\mathrm{P}\\ne\\mathrm{NP}$ hardness statement by Sviridenko. Shi Li's 2013 algorithm achieves approximation ratio $1.488$, and no better general ratio is currently known. The open problem is to close this narrow $0.025$ window and determine the exact approximability threshold for metric uncapacitated facility location.",
+ "where_posed": {
+  "text": "The 1.488 algorithm is from Shi Li, 'A 1.488 Approximation Algorithm for the Uncapacitated Facility Location Problem,' Information and Computation (ICALP 2011); the 1.463 hardness from Guha-Khuller (strengthened by Sviridenko). The gap is a recognized open problem.",
+  "url": "https://doi.org/10.1016/j.ic.2012.01.007"
+ },
+ "source": {
+  "authors": "Shi Li",
+  "title": "A 1.488 Approximation Algorithm for the Uncapacitated Facility Location Problem",
+  "year": 2013,
+  "venue": "Information and Computation (ICALP 2011)",
+  "url": "https://doi.org/10.1016/j.ic.2012.01.007"
+ },
+ "additional_refs": [
+  {
+   "authors": "Sudipto Guha, Samir Khuller",
+   "title": "Greedy Strikes Back: Improved Facility Location Algorithms",
+   "year": 1999,
+   "venue": "Journal of Algorithms (SODA 1998)",
+   "url": "https://doi.org/10.1006/jagm.1998.0993"
+  }
+ ],
+ "bibtex": "@misc{Li2013,\n  author = {Shi Li},\n  title = {A 1.488 Approximation Algorithm for the Uncapacitated Facility Location Problem},\n  year = {2013},\n  howpublished = {Information and Computation (ICALP 2011)},\n  url = {https://doi.org/10.1016/j.ic.2012.01.007},\n  note = {Source of ORdős Problem ORDOS-053}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/metric-facility-location-gap.html",
+  "api": "https://ordos-problems.github.io/api/problems/metric-facility-location-gap.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

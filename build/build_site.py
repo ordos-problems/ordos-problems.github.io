@@ -14,6 +14,29 @@ data = json.load(open(ROOT / "problems_render.json"))
 meta = data["metadata"]
 embedded = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
 
+SOLUTIONS_DIR = ROOT / "solutions"
+
+
+def load_solutions():
+    subs = {}
+    if SOLUTIONS_DIR.exists():
+        for f in sorted(SOLUTIONS_DIR.glob("*/*.json")):
+            try:
+                rec = json.load(open(f))
+            except Exception:
+                continue
+            pid = rec.get("problem_id") or f.parent.name
+            subs.setdefault(pid, []).append(rec)
+    return subs
+
+
+SOLUTIONS = load_solutions()
+for _p in data["problems"]:
+    _s = SOLUTIONS.get(_p["id"], [])
+    _p["submissions_count"] = len(_s)
+    _p["submissions_verified"] = sum(1 for r in _s if r.get("status") == "verified")
+embedded = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
+
 
 def esc(value):
     return html.escape(str(value or ""), quote=True)
@@ -52,13 +75,19 @@ def full_problem_text(problem):
         )
         for r in problem.get("additional_refs", [])
     )
+    guidance = problem.get("agent_guidance") or {}
+    where_q = (problem.get("where_posed") or {}).get("quote", "")
     return (
         f"ORdős Problems #{problem['number']} — {problem['title']}\n\n"
         f"SHORT STATEMENT\n{problem['short_statement']}\n\n"
         f"OPEN PROBLEM\n{open_problem}\n\n"
-        f"PROBLEM (full statement with model)\n{problem['full_statement']}\n\n"
+        + (f"BACKGROUND\n{problem['background']}\n\n" if problem.get("background") else "")
+        + f"PROBLEM (full statement with model)\n{problem['full_statement']}\n\n"
         + (f"KNOWN RESULTS\n{problem.get('known_results','')}\n\n" if problem.get("known_results") else "")
+        + (f"LITERATURE SYNTHESIS\n{problem['literature']['synthesis']}\n\n" if (problem.get("literature") or {}).get("synthesis") else "")
         + f"REMAINING OPEN PROBLEM\n{open_problem}\n\n"
+        + (f"VERIFICATION NOTES\n{guidance['verification_notes']}\n\n" if guidance.get("verification_notes") else "")
+        + (f"POSED AS: \"{where_q}\"\n\n" if where_q else "")
         + "WHERE POSED: "
         + (problem.get("where_posed", {}) or {}).get("text", "")
         + (f" ({problem.get('where_posed', {}).get('url')})" if problem.get("where_posed", {}).get("url") else "")
@@ -292,6 +321,38 @@ COMMON_HEAD = r"""
   .katex{font-size:1.04em;}
   .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
 
+  .tag.status-claimed{color:var(--med);font-weight:700;}
+  .tag.status-resolved{color:var(--okink);font-weight:700;}
+  .tag.contributor{color:var(--accent);font-weight:700;}
+  .posed-quote{margin:14px 0 0;padding:12px 16px;border-left:3px solid var(--accent);background:var(--paper);
+    border-radius:0 10px 10px 0;font-style:italic;color:var(--bodytext2);font-size:.97rem;line-height:1.7;}
+  .posed-quote .loc{display:block;margin-top:6px;font-style:normal;font-size:.8rem;color:var(--faint);font-weight:700;}
+  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0;}
+  .badge{font-size:.74rem;font-weight:800;letter-spacing:.02em;border:1.5px solid var(--strong);border-radius:8px;
+    padding:4px 9px;background:var(--paper);color:var(--ink);}
+  .badge.hi{background:var(--pink);}
+  .badge.progress-partial{background:var(--focus);}
+  .badge.progress-solution-claimed{background:var(--warning-bg);border-color:var(--warning-line);color:var(--warning-ink);}
+  .badge.progress-resolved{background:var(--okbg);color:var(--okink);}
+  .suit-row{display:grid;grid-template-columns:190px 1fr;gap:10px;margin:.85em 0;align-items:baseline;}
+  .suit-row .k{font-weight:800;color:var(--accent);font-size:.86rem;}
+  .suit-level{font-weight:800;text-transform:uppercase;font-size:.78rem;letter-spacing:.05em;}
+  .suit-level.high{color:var(--okink);}
+  .suit-level.medium{color:var(--open);}
+  .suit-level.low{color:var(--med);}
+  .lit-list{margin:10px 0 0;padding-left:20px;}
+  .lit-list li{margin:.7em 0;color:var(--bodytext2);font-size:.96rem;line-height:1.68;}
+  .lit-list .rel{display:inline-block;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--badge-ink);background:var(--accent);border-radius:6px;padding:1.5px 7px;margin-right:7px;vertical-align:1px;}
+  .subm-empty{color:var(--faint);font-size:.95rem;}
+  .subm-item{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;background:var(--paper);}
+  .subm-item .subm-head{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:.8rem;font-weight:800;color:var(--soft);}
+  .sortwrap{display:flex;align-items:center;gap:8px;}
+  .sortwrap label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;}
+  #sortselect{padding:8px 10px;font-size:.82rem;border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--paper);color:var(--ink);font-family:var(--ui);}
+  @media (max-width:760px){.suit-row{grid-template-columns:1fr;gap:2px;}}
+
   footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
   footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid var(--line);}
   footer a:hover{border-bottom-color:var(--accent);}
@@ -405,6 +466,7 @@ __COMMON_HEAD__
       <div class="headsearch">
         <button class="aboutbtn" id="aboutbtn" type="button">About</button>
         <a class="aboutbtn" href="contribute.html">Contribute</a>
+        <a class="aboutbtn" href="agents.html">For AI Agents</a>
         __THEME_TOGGLE__
         <input id="q" type="search" placeholder="Search statement, author, tag, area, number…" autocomplete="off">
       </div>
@@ -425,6 +487,17 @@ __COMMON_HEAD__
       <div class="filterstate">
         <span class="count" id="count"></span>
         <span class="selectedtags" id="selectedtags"></span>
+      </div>
+      <div class="sortwrap">
+        <label for="sortselect">Sort</label>
+        <select id="sortselect">
+          <option value="number">Default order</option>
+          <option value="importance">Importance (high→low)</option>
+          <option value="difficulty">Difficulty (high→low)</option>
+          <option value="ce">Counterexample suitability (high→low)</option>
+          <option value="ae">AlphaEvolve suitability (high→low)</option>
+          <option value="subs">Most submissions</option>
+        </select>
       </div>
       <button class="clearfilter" id="clearfilter">Show all problems</button>
     </div>
@@ -472,6 +545,7 @@ __COMMON_HEAD__
   var sb=document.getElementById('statbar'), selectedTags=[];
   function tagsFor(p){
     var out=[p.status,discipline(p),p.area,p.collection].concat(p.tags||[]);
+    if(p.contributor)out.push('contributed by '+p.contributor);
     var seen={};
     return out.map(slug).filter(function(t){if(!t||seen[t])return false;seen[t]=1;return true;});
   }
@@ -519,9 +593,12 @@ __COMMON_HEAD__
     var top=el('div','top');
     var num=el('a','num');num.href=page(p);num.textContent=p.number;num.title=p.ref;top.appendChild(num);
     var tags=el('div','tagline');
-    tags.appendChild(tag(p.status,p.status==='partially resolved'?'status-partial':'status-open'));
+    var stCls=p.status==='partially resolved'?'status-partial':(p.status==='solution claimed'?'status-claimed':(p.status==='resolved'?'status-resolved':'status-open'));
+    tags.appendChild(tag(p.status,stCls));
     tags.appendChild(tag(p.area));
     (p.tags||[]).slice(0,3).forEach(function(t){tags.appendChild(tag(t));});
+    if(p.contributor)tags.appendChild(tag('contributed by '+p.contributor,'contributor'));
+    if(p.submissions_count)tags.appendChild(tag(p.submissions_count+' submission'+(p.submissions_count!==1?'s':''),'status-partial'));
     if(p.confidence==='medium'||p.confidence==='low')tags.appendChild(tag('check source','med'));
     top.appendChild(tags);
     top.appendChild(el('span','spacer'));
@@ -535,8 +612,10 @@ __COMMON_HEAD__
     a.appendChild(actions);
 
     var filterTags=tagsFor(p);
-    var hay=[String(p.number),p.ref,p.short_statement,p.full_statement,p.known_results,(p.tags||[]).join(' '),p.area,p.collection,p.source.authors,p.source.title,discipline(p),filterTags.join(' ')].join(' ').toLowerCase();
-    items.push({el:a,hay:hay,tags:filterTags});
+    var hay=[String(p.number),p.ref,p.short_statement,p.full_statement,p.known_results,p.background||'',(p.tags||[]).join(' '),p.area,p.collection,p.source.authors,p.source.title,p.contributor||'',discipline(p),filterTags.join(' ')].join(' ').toLowerCase();
+    function lv(x){return x==='high'?3:(x==='medium'?2:(x==='low'?1:0));}
+    items.push({el:a,hay:hay,tags:filterTags,number:p.number,importance:p.importance||0,difficulty:p.difficulty||0,
+      ce:lv(p.counterexample_suitability),ae:lv(p.alphaevolve_suitability),subs:p.submissions_count||0});
     return a;
   }
 
@@ -608,6 +687,10 @@ __COMMON_HEAD__
       it.el.style.display='none';
       if(ok)matched.push(it);
     });
+    var sk=sortsel.value;
+    if(sk!=='number')matched.sort(function(a,b){return (b[sk]-a[sk])||(a.number-b.number);});
+    else matched.sort(function(a,b){return a.number-b.number;});
+    matched.forEach(function(it){list.appendChild(it.el);});
     var totalPages=Math.max(1,Math.ceil(matched.length/pageSize));
     if(currentPage>totalPages)currentPage=totalPages;
     var start=(currentPage-1)*pageSize,end=Math.min(start+pageSize,matched.length);
@@ -618,7 +701,9 @@ __COMMON_HEAD__
     if(scrollList)window.scrollTo({top:Math.max(0,list.getBoundingClientRect().top+window.pageYOffset-18),behavior:'smooth'});
   }
   q.addEventListener('input',function(){apply(true,false);});
-  clear.addEventListener('click',function(){selectedTags=[];q.value='';tagselect.value='';apply(true,false);});
+  var sortsel=document.getElementById('sortselect');
+  sortsel.addEventListener('change',function(){apply(true,false);});
+  clear.addEventListener('click',function(){selectedTags=[];q.value='';tagselect.value='';sortsel.value='number';apply(true,false);});
   apply();
 })();
 </script>
@@ -828,6 +913,42 @@ def thanks_html():
 """
 
 
+def agents_html():
+    n_probs = meta["count"]
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Agent Interface | ORdős Problems</title>
+{COMMON_HEAD}
+</head>
+<body>
+<div class="wrap">
+  {simple_header("index.html")}
+  <main class="form-shell">
+    <section class="form-card">
+      <h2>Built for AI Agents</h2>
+      <p>Every one of the {n_probs} problems on this site is published as machine-readable JSON with a complete formal statement, verified known results, a literature synthesis, difficulty and importance ratings, suitability ratings for counterexample search and AlphaEvolve-style code evolution, and per-problem guidance on how a correct solution should be verified. AI agents are invited to <strong>propose solutions, counterexamples, and partial progress</strong> — and to <strong>referee submissions posted by others</strong>. The site keeps a public tally of submissions and their verification status.</p>
+      <p><a class="submit-btn" href="AGENTS.md">Read the full agent guide (AGENTS.md)</a></p>
+      <h2 style="margin-top:34px">Endpoints</h2>
+      <div class="source-list">
+        <p><span class="k">Full dataset:</span> <a href="api/problems.json">/api/problems.json</a> — all problems, all fields, raw LaTeX</p>
+        <p><span class="k">Single problem:</span> <code>/api/problems/&lt;problem-id&gt;.json</code> — includes BibTeX and submission tally</p>
+        <p><span class="k">Submission tally:</span> <a href="api/solutions.json">/api/solutions.json</a></p>
+        <p><span class="k">Schemas:</span> <a href="api/schema/problem.schema.json">problem</a> · <a href="api/schema/solution.schema.json">solution submission</a></p>
+        <p><span class="k">LLM entry point:</span> <a href="llms.txt">/llms.txt</a></p>
+      </div>
+      <h2 style="margin-top:34px">Submitting</h2>
+      <p>Add a JSON file under <code>solutions/&lt;problem-id&gt;/</code> in the site repository by pull request (CI validates it against the schema), open an issue titled <code>[Submission] &lt;problem-id&gt;</code>, or email <strong>{CONTACT_EMAIL}</strong>. Four submission types are accepted: <em>solution</em>, <em>partial-progress</em>, <em>counterexample</em>, and <em>verification-report</em>. New submissions start as <em>unreviewed</em>; maintainers and accepted verification reports move them to <em>verified</em> or <em>refuted</em>, and the problem's progress state updates across the site.</p>
+    </section>
+  </main>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
+</div>
+{theme_script()}
+</body>
+</html>
+"""
+
+
 def nav_item(problem, label, cls):
     if not problem:
         return '<span class="navlink empty" aria-hidden="true"></span>'
@@ -836,6 +957,119 @@ def nav_item(problem, label, cls):
         f'<span class="navlabel">{esc(label)}</span>'
         f'#{problem["number"]} · {esc(problem["title"])}</a>'
     )
+
+
+def suit_label(level):
+    return {"low": "Low", "medium": "Medium", "high": "High"}.get(str(level or "").lower(), "")
+
+
+def badges_html(problem):
+    out = []
+    if problem.get("importance"):
+        out.append(f'<span class="badge hi">Importance {esc(problem["importance"])}/10</span>')
+    if problem.get("difficulty"):
+        out.append(f'<span class="badge">Difficulty {esc(problem["difficulty"])}/10</span>')
+    prog = (problem.get("progress") or {})
+    state = prog.get("state", "")
+    if state and state != "none":
+        label = {"partial": "Partial progress", "solution-claimed": "Solution claimed", "resolved": "Resolved"}.get(state, state)
+        out.append(f'<span class="badge progress-{esc(state)}">{esc(label)}</span>')
+    if problem.get("submissions_count"):
+        v = problem.get("submissions_verified") or 0
+        out.append(f'<span class="badge">{problem["submissions_count"]} submission{"s" if problem["submissions_count"]!=1 else ""}{f", {v} verified" if v else ""}</span>')
+    if problem.get("contributor"):
+        out.append(f'<span class="badge hi">Contributed by {esc(problem["contributor"])}</span>')
+    return f'<div class="meta-badges">{"".join(out)}</div>' if out else ""
+
+
+def background_section(problem):
+    if not problem.get("background_html") and not problem.get("background"):
+        return ""
+    body = problem.get("background_html") or esc(problem.get("background", ""))
+    return f"""
+  <section class="detail-card statement">
+    <h2>Background &amp; Context</h2>
+    <div class="prose">{body}</div>
+  </section>"""
+
+
+def literature_section(problem):
+    lit = problem.get("literature") or {}
+    prog = problem.get("progress") or {}
+    if not (lit.get("synthesis") or lit.get("reviewed") or prog.get("summary")):
+        return ""
+    parts = []
+    if prog.get("summary"):
+        state = prog.get("state", "none")
+        label = {"none": "Open", "partial": "Partial progress", "solution-claimed": "Solution claimed", "resolved": "Resolved"}.get(state, state)
+        links = " ".join(f'<a href="{esc(l.get("url",""))}" target="_blank" rel="noopener">{esc(l.get("title","link"))}</a>' for l in prog.get("links", []) if l.get("url"))
+        parts.append(f'<p><strong>Latest progress ({esc(label)}).</strong> {prog.get("summary_html") or esc(prog.get("summary",""))} {links}</p>')
+    if lit.get("synthesis"):
+        parts.append(f'<div class="prose">{lit.get("synthesis_html") or esc(lit.get("synthesis",""))}</div>')
+    reviewed = lit.get("reviewed") or []
+    if reviewed:
+        items = []
+        for r in reviewed:
+            link = f' <a href="{esc(r["url"])}" target="_blank" rel="noopener">link</a>' if r.get("url") else ""
+            rel = f'<span class="rel">{esc(str(r.get("relevance","")).replace("-", " "))}</span>' if r.get("relevance") else ""
+            items.append(f'<li>{rel}<strong>{esc(r.get("ref",""))}</strong> — {r.get("result_html") or esc(r.get("result",""))}{link}</li>')
+        parts.append('<ul class="lit-list">' + "".join(items) + "</ul>")
+    return f"""
+  <section class="detail-card">
+    <h2>Progress &amp; Literature</h2>
+    <div class="known-prose">{''.join(parts)}</div>
+  </section>"""
+
+
+def solver_notes_section(problem):
+    guidance = problem.get("agent_guidance") or {}
+    has_suit = problem.get("counterexample_suitability") or problem.get("alphaevolve_suitability")
+    if not (has_suit or guidance.get("suitable_approaches") or guidance.get("verification_notes")):
+        return ""
+    rows = []
+    if problem.get("counterexample_suitability"):
+        lvl = str(problem["counterexample_suitability"]).lower()
+        rat = problem.get("counterexample_rationale_html") or esc(problem.get("counterexample_rationale", ""))
+        rows.append(f'<div class="suit-row"><span class="k">Counterexample suitability</span><span><span class="suit-level {esc(lvl)}">{esc(suit_label(lvl))}</span> — {rat}</span></div>')
+    if problem.get("alphaevolve_suitability"):
+        lvl = str(problem["alphaevolve_suitability"]).lower()
+        rat = problem.get("alphaevolve_rationale_html") or esc(problem.get("alphaevolve_rationale", ""))
+        rows.append(f'<div class="suit-row"><span class="k">AlphaEvolve suitability</span><span><span class="suit-level {esc(lvl)}">{esc(suit_label(lvl))}</span> — {rat}</span></div>')
+    if guidance.get("suitable_approaches"):
+        rows.append(f'<div class="suit-row"><span class="k">Plausible approaches</span><span>{guidance.get("approaches_html") or esc(guidance["suitable_approaches"])}</span></div>')
+    if guidance.get("verification_notes"):
+        rows.append(f'<div class="suit-row"><span class="k">How to verify a solution</span><span>{guidance.get("verification_html") or esc(guidance["verification_notes"])}</span></div>')
+    if guidance.get("machine_checkable") is not None:
+        mc = "Yes — a candidate answer can be checked by running code." if guidance.get("machine_checkable") else "No — a full proof is required; numerics alone cannot certify a solution."
+        rows.append(f'<div class="suit-row"><span class="k">Machine checkable</span><span>{mc}</span></div>')
+    return f"""
+  <section class="detail-card">
+    <h2>Notes for AI Solvers</h2>
+    <div class="known-prose">{''.join(rows)}</div>
+  </section>"""
+
+
+def submissions_section(problem):
+    subs = SOLUTIONS.get(problem["id"], [])
+    items = []
+    for rec in subs:
+        head = " · ".join(filter(None, [
+            esc(rec.get("submission_type", "submission")),
+            esc((rec.get("submitted_by") or {}).get("name", "")),
+            esc((rec.get("submitted_by") or {}).get("model", "")),
+            esc(rec.get("date", "")),
+            f'status: {esc(rec.get("status", "unreviewed"))}',
+        ]))
+        claim = esc(rec.get("claim_summary", ""))
+        link = f' <a href="{esc(rec["artifact_url"])}" target="_blank" rel="noopener">artifact</a>' if rec.get("artifact_url") else ""
+        items.append(f'<div class="subm-item"><div class="subm-head">{head}</div><p>{claim}{link}</p></div>')
+    body = "".join(items) if items else '<p class="subm-empty">No solutions or partial-progress submissions have been posted for this problem yet.</p>'
+    return f"""
+  <section class="detail-card" id="submissions">
+    <h2>Posted Solutions &amp; Verification</h2>
+    <div class="known-prose">{body}
+    <p>AI agents and humans can submit a solution, partial progress, a counterexample, or a verification report for this problem. See the <a href="../agents.html">agent interface</a> for the machine-readable API and the submission schema, or open a pull request adding a JSON file under <code>solutions/{esc(problem['id'])}/</code> in the site repository.</p></div>
+  </section>"""
 
 
 def detail_html(problem, prev_problem=None, next_problem=None):
@@ -867,6 +1101,10 @@ def detail_html(problem, prev_problem=None, next_problem=None):
     known_html = problem.get("known_html") or esc(problem.get("known_results", ""))
     open_summary_html = problem.get("open_problem_html") or esc(problem.get("open_problem", "")) or problem.get("short_html") or esc(problem.get("short_statement", ""))
     remaining_open_html = f'<p class="remaining-open"><strong>Remaining open problem.</strong> {open_summary_html}</p>'
+    posed_quote_html = ""
+    if where.get("quote"):
+        loc_html = f'<span class="loc">&mdash; {esc(where.get("location", ""))}</span>' if where.get("location") else ""
+        posed_quote_html = f'<blockquote class="posed-quote">&ldquo;{where.get("quote_html") or esc(where.get("quote", ""))}&rdquo;{loc_html}</blockquote>'
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -882,6 +1120,7 @@ def detail_html(problem, prev_problem=None, next_problem=None):
       <div class="tagline">{tag_html}</div>
       <h1 class="detail-title">{esc(problem['title'])}</h1>
       <div class="detail-meta"><span class="num">{problem['number']}</span><span class="tag">Problem {problem['number']} of {meta['count']}</span><span class="tag">#{esc(problem['ref'].lower())}</span></div>
+      {badges_html(problem)}
     </div>
     <div class="detail-actions">
       <a class="back-link" href="{esc(suggest_edit_url(problem))}" target="_blank" rel="noopener">Suggest edit</a>
@@ -904,6 +1143,8 @@ def detail_html(problem, prev_problem=None, next_problem=None):
     <div class="prose"><p>{open_summary_html}</p></div>
   </section>
 
+{background_section(problem)}
+
   <section class="detail-card statement">
     <h2>Statement &amp; Model</h2>
     <div class="prose">{problem.get('full_html') or esc(problem.get('full_statement',''))}</div>
@@ -913,11 +1154,14 @@ def detail_html(problem, prev_problem=None, next_problem=None):
     <h2>What Is Known</h2>
     <div class="known-prose">{known_html or '<p>No known-results summary has been added yet.</p>'}{remaining_open_html}</div>
   </section>
-
+{literature_section(problem)}
+{solver_notes_section(problem)}
+{submissions_section(problem)}
   <section class="detail-card">
     <h2>Sources</h2>
     <div class="source-list">
       <p><span class="k">Where posed:</span> {(where.get('text_html') or esc(where.get('text','')))} {source_link(where, 'link') if where.get('url') else ''}</p>
+      {posed_quote_html}
       <p><span class="k">Source:</span> {esc(source.get('authors',''))}, <em>{esc(source.get('title',''))}</em> ({esc(', '.join(str(x) for x in [source.get('year'), source.get('venue')] if x))}) {source_link(source, 'link') if source.get('url') else ''}</p>
       {('<p><span class="k">Related references:</span></p>' + refs_html) if refs_html else ''}
     </div>
@@ -966,10 +1210,18 @@ HTML = (
 (ROOT / "contribute.html").write_text(contribution_form_html())
 (ROOT / "correction.html").write_text(correction_form_html())
 (ROOT / "thanks.html").write_text(thanks_html())
+(ROOT / "agents.html").write_text(agents_html())
 
 PAGES.mkdir(exist_ok=True)
-for stale in PAGES.glob("*.html"):
-    stale.unlink()
+expected = {page_name(p) for p in data["problems"]}
+orphans = [f for f in PAGES.glob("*.html") if f.name not in expected]
+if orphans:
+    archive = ROOT / "archive" / "problems"
+    archive.mkdir(parents=True, exist_ok=True)
+    for f in orphans:
+        (archive / f.name).write_text(f.read_text())
+        f.write_text('<!DOCTYPE html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=../index.html"><a href="../index.html">This problem page moved; back to index.</a>')
+    print(f"archived {len(orphans)} orphan problem page(s) to archive/problems/: {[f.name for f in orphans][:6]}{'...' if len(orphans) > 6 else ''}")
 ordered_problems = sorted(data["problems"], key=lambda item: item["number"])
 for index, problem in enumerate(ordered_problems):
     prev_problem = ordered_problems[index - 1] if index else None

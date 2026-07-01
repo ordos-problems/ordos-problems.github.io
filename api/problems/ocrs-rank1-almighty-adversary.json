@@ -1,0 +1,54 @@
+{
+ "number": 65,
+ "ref": "ORDOS-065",
+ "id": "ocrs-rank1-almighty-adversary",
+ "title": "A 1/2-selectable OCRS for rank-1 matroids against the almighty adversary",
+ "collection": "Online Resource Allocation (Ma notes)",
+ "area": "Online Contention Resolution",
+ "status": "open",
+ "confidence": "high",
+ "contributor": "Will Ma",
+ "tags": [
+  "OCRS",
+  "matroid",
+  "almighty adversary",
+  "selectability",
+  "will-ma-notes",
+  "permission-pending"
+ ],
+ "short_statement": "A simple $1/2$-selectable OCRS is known for the rank-1 matroid against the standard online adversary. Open: whether a $1/2$-selectable OCRS exists against the much stronger almighty adversary (which sees all realizations); the best known is only $1/4$, and even beating $1/4$ is open.",
+ "open_problem": "For the rank-1 matroid, does there exist a $\\tfrac12$-selectable OCRS against the almighty adversary (which knows all realized values in advance)? An ex-ante prophet inequality guarantees $\\tfrac12$ against the almighty adversary on rank-1 matroids, but the best-known OCRS against the almighty adversary is only $\\tfrac14$ (Feldman et al.",
+ "full_statement": "A simple $\\tfrac12$-selectable online contention resolution scheme is known for the rank-1 matroid (single-choice) against the standard online adversary. \\textbf{Open:} For the rank-1 matroid, does there exist a $\\tfrac12$-selectable OCRS against the almighty adversary (which knows all realized values in advance)? An ex-ante prophet inequality guarantees $\\tfrac12$ against the almighty adversary on rank-1 matroids, but the best-known OCRS against the almighty adversary is only $\\tfrac14$ (Feldman et al. 2021). Either show a 1/2-selectable OCRS exists, find a modified one, or prove impossibility; even beating 1/4 is open.",
+ "known_results": "For rank-1 matroids, Feldman, Svensson, and Zenklusen give a $1/4$-selectable OCRS against the almighty adversary. In contrast, the corresponding ex-ante prophet-inequality guarantee is $1/2$, so the OCRS and prophet views do not currently match quantitatively in this adversarial model. It is open whether one can close the gap all the way to $1/2$, or even improve the OCRS constant beyond $1/4$.",
+ "where_posed": {
+  "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #2).",
+  "url": ""
+ },
+ "source": {
+  "authors": "Will Ma",
+  "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #2)",
+  "year": 2024,
+  "venue": "Lecture notes (uploaded)",
+  "url": ""
+ },
+ "additional_refs": [
+  {
+   "authors": "Moran Feldman, Ola Svensson, Rico Zenklusen",
+   "title": "Online Contention Resolution Schemes with Applications to Bayesian Selection Problems",
+   "year": 2021,
+   "venue": "SIAM J. Computing",
+   "url": "https://arxiv.org/abs/1606.06819"
+  }
+ ],
+ "bibtex": "@misc{Ma2024,\n  author = {Will Ma},\n  title = {Online Resource Allocation — Course Notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #2)},\n  year = {2024},\n  howpublished = {Lecture notes (uploaded)},\n  note = {Source of ORdős Problem ORDOS-065}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/ocrs-rank1-almighty-adversary.html",
+  "api": "https://ordos-problems.github.io/api/problems/ocrs-rank1-almighty-adversary.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

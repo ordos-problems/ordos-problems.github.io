@@ -1,0 +1,51 @@
+{
+ "number": 79,
+ "ref": "ORDOS-079",
+ "id": "constrained-assortment-markov-chain",
+ "title": "Best approximation ratio for constrained assortment under the Markov-chain choice model",
+ "collection": "Operations Management",
+ "area": "Assortment Optimization",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "assortment optimization",
+  "Markov chain choice model",
+  "approximation algorithms",
+  "revenue management"
+ ],
+ "short_statement": "What is the best possible polynomial-time approximation ratio for cardinality- or capacity-constrained assortment optimization under the Markov-chain choice model?",
+ "open_problem": "determine the best achievable polynomial-time approximation ratio for the constrained problem.",
+ "full_statement": "In the Markov-chain choice model (Blanchet–Gallego–Goyal 2016), there are $n$ substitutable products with prices $p_i$. An arriving customer initially considers product $i$ with probability $\\lambda_i$ (with $\\sum_i \\lambda_i + \\lambda_0 = 1$, where $0$ is the no-purchase option); if the considered product is not offered, the customer transitions to product $j$ with probability $\\rho_{ij}$, repeating until reaching an offered product (a purchase) or the no-purchase state. Given a feasibility constraint on the offered set $S$ — a cardinality bound $|S|\\le k$, or knapsack/capacity weights $\\sum_{i\\in S} w_i \\le W$ — choose $S$ to maximize expected revenue. The unconstrained problem is polynomial-time solvable; the constrained problem is APX-hard. Question: determine the best achievable polynomial-time approximation ratio for the constrained problem.",
+ "known_results": "Désir–Goyal–Segev–Ye (2020) prove the capacity-constrained problem is APX-hard (so no PTAS unless P=NP) and give constant-factor approximation algorithms for the cardinality- and capacity-constrained versions. The exact best-possible ratio — closing the gap between the achievable constant and the APX-hardness threshold — is open.",
+ "where_posed": {
+  "text": "Open gap left by Désir, Goyal, Segev, Ye, 'Constrained Assortment Optimization Under the Markov Chain-based Choice Model' (Management Science 2020).",
+  "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2018.3230"
+ },
+ "source": {
+  "authors": "Antoine Désir, Vineet Goyal, Danny Segev, Chun Ye",
+  "title": "Constrained Assortment Optimization Under the Markov Chain-based Choice Model",
+  "year": 2020,
+  "venue": "Management Science",
+  "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2018.3230"
+ },
+ "additional_refs": [
+  {
+   "authors": "Jose Blanchet, Guillermo Gallego, Vineet Goyal",
+   "title": "A Markov Chain Approximation to Choice Modeling",
+   "year": 2016,
+   "venue": "Operations Research",
+   "url": "https://pubsonline.informs.org/doi/abs/10.1287/opre.2016.1505"
+  }
+ ],
+ "bibtex": "@misc{Dsir2020,\n  author = {Antoine Désir and Vineet Goyal and Danny Segev and Chun Ye},\n  title = {Constrained Assortment Optimization Under the Markov Chain-based Choice Model},\n  year = {2020},\n  howpublished = {Management Science},\n  url = {https://pubsonline.informs.org/doi/10.1287/mnsc.2018.3230},\n  note = {Source of ORdős Problem ORDOS-079}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/constrained-assortment-markov-chain.html",
+  "api": "https://ordos-problems.github.io/api/problems/constrained-assortment-markov-chain.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

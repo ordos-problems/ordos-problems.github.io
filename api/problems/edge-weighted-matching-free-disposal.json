@@ -1,0 +1,59 @@
+{
+ "number": 7,
+ "ref": "ORDOS-007",
+ "id": "edge-weighted-matching-free-disposal",
+ "title": "Tight ratio for edge-weighted online matching with free disposal",
+ "collection": "Online Algorithms & Learning",
+ "area": "Online Algorithms",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "online matching",
+  "edge-weighted",
+  "free disposal",
+  "display ads",
+  "OCS"
+ ],
+ "short_statement": "In edge-weighted online bipartite matching with free disposal ('display ads'), each offline vertex holds one item but may discard a prior match for free if a better one arrives. What is the best-possible competitive ratio?",
+ "open_problem": "Determine the optimal competitive ratio $\\rho$.",
+ "full_statement": "Consider edge-weighted online bipartite matching, motivated by display advertising. Online vertices arrive in adversarial order. Matching an online vertex $v$ to an offline vertex $u$ yields edge weight $w_{uv}$. Each offline vertex $u$ may hold at most one item, but is allowed free disposal: if a better-weight online vertex arrives, $u$ may discard its previously matched item at no cost and keep only its highest-weight match. The objective is to maximize the total weight retained, compared against the offline optimum. Greedy guarantees $1/2$; beating $1/2$ was a major open problem until 2020. Determine the optimal competitive ratio $\\rho$. Known: $0.536 \\le \\rho \\le 1 - 1/e$ in the integral case.",
+ "known_results": "The greedy algorithm is $1/2$-competitive. Fahrbach, Huang, Tao, and Zadimoghaddam were the first to beat the $1/2$ barrier, obtaining ratio $0.5086$ via online correlated selection, and Blanc and Charikar later improved the guarantee to $0.536$. On the impossibility side, no upper bound below $1-1/e$ is known. The open problem is to determine the tight competitive ratio for edge-weighted online matching with free disposal.",
+ "where_posed": {
+  "text": "Stated in Fahrbach, Huang, Tao, Zadimoghaddam, 'Edge-Weighted Online Bipartite Matching', 2020, FOCS / JACM.",
+  "url": "https://arxiv.org/abs/2005.01929"
+ },
+ "source": {
+  "authors": "Matthew Fahrbach, Zhiyi Huang, Runzhou Tao, Morteza Zadimoghaddam",
+  "title": "Edge-Weighted Online Bipartite Matching",
+  "year": 2020,
+  "venue": "FOCS / JACM",
+  "url": "https://arxiv.org/abs/2005.01929"
+ },
+ "additional_refs": [
+  {
+   "authors": "Guy Blanc, Moses Charikar",
+   "title": "Multiway Online Correlated Selection",
+   "year": 2021,
+   "venue": "FOCS",
+   "url": "https://arxiv.org/abs/2106.05579"
+  },
+  {
+   "authors": "Jon Feldman, Nitish Korula, Vahab Mirrokni, S. Muthukrishnan, Martin Pal",
+   "title": "Online Ad Assignment with Free Disposal",
+   "year": 2009,
+   "venue": "WINE",
+   "url": "https://link.springer.com/chapter/10.1007/978-3-642-10841-9_34"
+  }
+ ],
+ "bibtex": "@misc{Fahrbach2020,\n  author = {Matthew Fahrbach and Zhiyi Huang and Runzhou Tao and Morteza Zadimoghaddam},\n  title = {Edge-Weighted Online Bipartite Matching},\n  year = {2020},\n  howpublished = {FOCS / JACM},\n  url = {https://arxiv.org/abs/2005.01929},\n  note = {Source of ORdős Problem ORDOS-007}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/edge-weighted-matching-free-disposal.html",
+  "api": "https://ordos-problems.github.io/api/problems/edge-weighted-matching-free-disposal.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

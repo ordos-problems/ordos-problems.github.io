@@ -1,0 +1,59 @@
+{
+ "number": 102,
+ "ref": "ORDOS-102",
+ "id": "online-monotone-subsequence-second-order-gap",
+ "title": "Second-order gap for online selection of a monotone subsequence",
+ "collection": "Applied Probability",
+ "area": "Sequential Selection",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "online selection",
+  "applied probability",
+  "dynamic programming",
+  "monotone subsequence",
+  "prophet-style selection"
+ ],
+ "short_statement": "For online selection of an increasing subsequence from $n$ i.i.d. continuous observations, the optimal expected length is $\\sqrt{2n}-O(\\log n)$. Does the second-order gap $g(n)=\\sqrt{2n}-\\mathbb{E}L_n^*$ diverge, or is it bounded?",
+ "open_problem": "Determine the asymptotic behavior of $g(n)=\\sqrt{2n}-\\mathbb{E}L_n^*$ for the optimal online increasing-subsequence policy; in particular, decide whether $g(n)\\to\\infty$ or $g(n)=O(1)$.",
+ "full_statement": "Let $X_1,\\ldots,X_n$ be independent observations from a common continuous distribution, revealed one at a time. An online policy must irrevocably accept or reject each $X_t$, and the accepted values must form an increasing subsequence. Let $L_n^*$ be the length selected by an optimal online policy. Distribution-freeness reduces the model to $X_t\\sim\\mathrm{Unif}[0,1]$. The classical first-order asymptotic is $\\mathbb{E}L_n^*\\sim \\sqrt{2n}$, and the best general bounds give $\\sqrt{2n}-O(\\log n)\\le \\mathbb{E}L_n^*\\le \\sqrt{2n}$. Arlotto, Wei, and Xie give a simple adaptive policy within $2(\\log n+1)$ of optimal and ask for a sharper understanding of the second-order correction. The core open problem is whether the deficit $g(n)=\\sqrt{2n}-\\mathbb{E}L_n^*$ diverges with $n$, as the logarithmic upper bound allows, or remains bounded.",
+ "known_results": "Samuels and Steele established the $\\sqrt{2n}$ first-order law. Bruss and Robertson gave the upper bound $\\mathbb{E}L_n^*\\le \\sqrt{2n}$, and Bruss-Delbaen/Arlotto-Nguyen-Steele developed the matching lower bound up to $O(\\log n)$ and central-limit behavior in related Poissonized/discrete settings. Arlotto, Wei, and Xie construct an explicit adaptive policy with expected length at least $\\sqrt{2n}-2(\\log n+1)$. They also report numerical evidence suggesting that their policy may be within a constant of optimal, but the simplest stated open question remains whether $g(n)$ diverges.",
+ "where_posed": {
+  "text": "Concluding remarks of Arlotto, Wei, and Xie, 'An adaptive O(log n)-optimal policy for the online selection of a monotone subsequence from a random sample'.",
+  "url": "https://arxiv.org/abs/1605.03998"
+ },
+ "source": {
+  "authors": "Alessandro Arlotto, Yehua Wei, Xinchang Xie",
+  "title": "An adaptive O(log n)-optimal policy for the online selection of a monotone subsequence from a random sample",
+  "year": 2018,
+  "venue": "Random Structures & Algorithms",
+  "url": "https://arxiv.org/abs/1605.03998"
+ },
+ "additional_refs": [
+  {
+   "authors": "Stephen M. Samuels, J. Michael Steele",
+   "title": "Optimal sequential selection of a monotone sequence from a random sample",
+   "year": 1981,
+   "venue": "Annals of Probability",
+   "url": "https://doi.org/10.1214/aop/1176994291"
+  },
+  {
+   "authors": "F. Thomas Bruss, Freddy Delbaen",
+   "title": "Optimal rules for the sequential selection of monotone subsequences of maximum expected length",
+   "year": 2001,
+   "venue": "Stochastic Processes and their Applications",
+   "url": "https://doi.org/10.1016/S0304-4149(01)00124-7"
+  }
+ ],
+ "bibtex": "@misc{Arlotto2018,\n  author = {Alessandro Arlotto and Yehua Wei and Xinchang Xie},\n  title = {An adaptive O(log n)-optimal policy for the online selection of a monotone subsequence from a random sample},\n  year = {2018},\n  howpublished = {Random Structures & Algorithms},\n  url = {https://arxiv.org/abs/1605.03998},\n  note = {Source of ORdős Problem ORDOS-102}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/online-monotone-subsequence-second-order-gap.html",
+  "api": "https://ordos-problems.github.io/api/problems/online-monotone-subsequence-second-order-gap.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

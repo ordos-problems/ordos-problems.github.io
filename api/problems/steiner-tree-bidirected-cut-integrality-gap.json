@@ -1,0 +1,58 @@
+{
+ "number": 45,
+ "ref": "ORDOS-045",
+ "id": "steiner-tree-bidirected-cut-integrality-gap",
+ "title": "Integrality Gap of the Bidirected-Cut Relaxation for Steiner Tree",
+ "collection": "Approximation & Discrepancy",
+ "area": "Approximation Algorithms",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "Steiner tree",
+  "integrality gap",
+  "bidirected cut",
+  "LP relaxation"
+ ],
+ "short_statement": "For the Steiner tree problem, the integrality gap of the bidirected-cut relaxation is conjectured to be close to $1$; the best known lower bound is $6/5 = 1.2$ and the best upper bound is $1.9988$ (only shown below $2$ in 2024).",
+ "open_problem": "Determine the exact integrality gap of the bidirected-cut relaxation for Steiner tree.",
+ "full_statement": "In the Steiner tree problem you must connect a set of required terminals in a weighted graph as cheaply as possible, possibly using extra (Steiner) vertices. The bidirected-cut relaxation is a natural LP that points each edge in both directions. For the Steiner tree problem, let $\\gamma_{\\mathrm{BCR}}$ be the integrality gap of the bidirected-cut relaxation (the worst-case ratio of the optimal integral Steiner tree cost to the LP optimum). Known: $\\tfrac{6}{5} = 1.2 \\le \\gamma_{\\mathrm{BCR}} \\le 1.9988$. \\textbf{Determine $\\gamma_{\\mathrm{BCR}}$;} it is conjectured to be substantially below 2.",
+ "known_results": "Lower bound $6/5$ = 1.2 (Vicari 2020), improving the older $36/31$. Upper bound 1.9988 (Byrka-Grandoni-Traub, FOCS 2024); before 2024 it was unknown whether the gap beat the trivial 2. A 2026 preprint claims ~1.898. Conjectured value much smaller.",
+ "where_posed": {
+  "text": "The first sub-2 upper bound (and the open exact-value question) is in Byrka, Grandoni, Traub, 'The Bidirected Cut Relaxation for Steiner Tree has Integrality Gap Smaller than 2,' FOCS 2024; lower bound 6/5 from Vicari (2020).",
+  "url": "https://arxiv.org/abs/2407.19905"
+ },
+ "source": {
+  "authors": "Jaroslaw Byrka, Fabrizio Grandoni, Vera Traub",
+  "title": "The Bidirected Cut Relaxation for Steiner Tree has Integrality Gap Smaller than 2",
+  "year": 2024,
+  "venue": "FOCS",
+  "url": "https://arxiv.org/abs/2407.19905"
+ },
+ "additional_refs": [
+  {
+   "authors": "Jaroslaw Byrka, Fabrizio Grandoni, Thomas Rothvoss, Laura Sanita",
+   "title": "Steiner Tree Approximation via Iterative Randomized Rounding",
+   "year": 2013,
+   "venue": "Journal of the ACM (STOC 2010)",
+   "url": "https://arxiv.org/abs/1011.0048"
+  },
+  {
+   "authors": "Marcus Vicari",
+   "title": "Simple examples for lower bounds on the integrality gap of the bidirected cut relaxation",
+   "year": 2020,
+   "venue": "arXiv:2002.07912",
+   "url": "https://arxiv.org/abs/2002.07912"
+  }
+ ],
+ "bibtex": "@misc{Byrka2024,\n  author = {Jaroslaw Byrka and Fabrizio Grandoni and Vera Traub},\n  title = {The Bidirected Cut Relaxation for Steiner Tree has Integrality Gap Smaller than 2},\n  year = {2024},\n  howpublished = {FOCS},\n  url = {https://arxiv.org/abs/2407.19905},\n  note = {Source of ORdős Problem ORDOS-045}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/steiner-tree-bidirected-cut-integrality-gap.html",
+  "api": "https://ordos-problems.github.io/api/problems/steiner-tree-bidirected-cut-integrality-gap.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

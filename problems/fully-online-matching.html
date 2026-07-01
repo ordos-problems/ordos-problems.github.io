@@ -191,6 +191,38 @@
   .katex{font-size:1.04em;}
   .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
 
+  .tag.status-claimed{color:var(--med);font-weight:700;}
+  .tag.status-resolved{color:var(--okink);font-weight:700;}
+  .tag.contributor{color:var(--accent);font-weight:700;}
+  .posed-quote{margin:14px 0 0;padding:12px 16px;border-left:3px solid var(--accent);background:var(--paper);
+    border-radius:0 10px 10px 0;font-style:italic;color:var(--bodytext2);font-size:.97rem;line-height:1.7;}
+  .posed-quote .loc{display:block;margin-top:6px;font-style:normal;font-size:.8rem;color:var(--faint);font-weight:700;}
+  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0;}
+  .badge{font-size:.74rem;font-weight:800;letter-spacing:.02em;border:1.5px solid var(--strong);border-radius:8px;
+    padding:4px 9px;background:var(--paper);color:var(--ink);}
+  .badge.hi{background:var(--pink);}
+  .badge.progress-partial{background:var(--focus);}
+  .badge.progress-solution-claimed{background:var(--warning-bg);border-color:var(--warning-line);color:var(--warning-ink);}
+  .badge.progress-resolved{background:var(--okbg);color:var(--okink);}
+  .suit-row{display:grid;grid-template-columns:190px 1fr;gap:10px;margin:.85em 0;align-items:baseline;}
+  .suit-row .k{font-weight:800;color:var(--accent);font-size:.86rem;}
+  .suit-level{font-weight:800;text-transform:uppercase;font-size:.78rem;letter-spacing:.05em;}
+  .suit-level.high{color:var(--okink);}
+  .suit-level.medium{color:var(--open);}
+  .suit-level.low{color:var(--med);}
+  .lit-list{margin:10px 0 0;padding-left:20px;}
+  .lit-list li{margin:.7em 0;color:var(--bodytext2);font-size:.96rem;line-height:1.68;}
+  .lit-list .rel{display:inline-block;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--badge-ink);background:var(--accent);border-radius:6px;padding:1.5px 7px;margin-right:7px;vertical-align:1px;}
+  .subm-empty{color:var(--faint);font-size:.95rem;}
+  .subm-item{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;background:var(--paper);}
+  .subm-item .subm-head{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:.8rem;font-weight:800;color:var(--soft);}
+  .sortwrap{display:flex;align-items:center;gap:8px;}
+  .sortwrap label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;}
+  #sortselect{padding:8px 10px;font-size:.82rem;border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--paper);color:var(--ink);font-family:var(--ui);}
+  @media (max-width:760px){.suit-row{grid-template-columns:1fr;gap:2px;}}
+
   footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
   footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid var(--line);}
   footer a:hover{border-bottom-color:var(--accent);}
@@ -256,7 +288,8 @@
 <span class="tag">#ranking</span>
 <span class="tag">#general-graphs</span></div>
       <h1 class="detail-title">Competitive ratio for fully online matching</h1>
-      <div class="detail-meta"><span class="num">5</span><span class="tag">Problem 5 of 95</span><span class="tag">#ordos-005</span></div>
+      <div class="detail-meta"><span class="num">5</span><span class="tag">Problem 5 of 108</span><span class="tag">#ordos-005</span></div>
+      
     </div>
     <div class="detail-actions">
       <a class="back-link" href="../correction.html?ref=ORDOS-005&amp;title=Competitive%20ratio%20for%20fully%20online%20matching&amp;page=https%3A//ordos-problems.github.io/problems/fully-online-matching.html" target="_blank" rel="noopener">Suggest edit</a>
@@ -279,6 +312,8 @@
     <div class="prose"><p>Determine the optimal competitive ratio.</p></div>
   </section>
 
+
+
   <section class="detail-card statement">
     <h2>Statement &amp; Model</h2>
     <div class="prose">In the fully online matching model, the vertices of a (possibly non-bipartite) graph arrive online one at a time. Each vertex has a deadline that occurs after all of its neighbors have arrived. An algorithm may match a vertex to any currently available neighbor at any time up to its deadline, and all matching decisions are irrevocable; at its deadline, an unmatched vertex must be either matched or permanently dropped. This generalizes the classical online bipartite matching model by allowing vertices on both sides (and non-bipartite graphs) to arrive online with deadlines. The benchmark is the maximum matching of the full graph. Determine the optimal competitive ratio. For bipartite graphs, the best integral algorithm is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.569</mn></mrow><annotation encoding="application/x-tex">0.569</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.569</span></span></span></span>-competitive, the best fractional algorithm is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.6</mn></mrow><annotation encoding="application/x-tex">0.6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.6</span></span></span></span>-competitive, and no algorithm exceeds <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.613</mn></mrow><annotation encoding="application/x-tex">0.613</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.613</span></span></span></span>.</div>
@@ -289,10 +324,18 @@
     <div class="known-prose">For bipartite fully online matching, the best integral algorithm currently achieves ratio <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.569</mn></mrow><annotation encoding="application/x-tex">0.569</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.569</span></span></span></span>, due to Huang, Tang, Wu, and Zhang. Tang and Zhang improved the fractional guarantee to <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.6</mn></mrow><annotation encoding="application/x-tex">0.6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.6</span></span></span></span>, while Eckl and coauthors proved an impossibility result at <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.613</mn></mrow><annotation encoding="application/x-tex">0.613</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.613</span></span></span></span>. The known upper and lower bounds are close enough to suggest a sharp constant may be accessible, but the exact competitive ratio is still open.<p class="remaining-open"><strong>Remaining open problem.</strong> Determine the optimal competitive ratio.</p></div>
   </section>
 
+
+
+  <section class="detail-card" id="submissions">
+    <h2>Posted Solutions &amp; Verification</h2>
+    <div class="known-prose"><p class="subm-empty">No solutions or partial-progress submissions have been posted for this problem yet.</p>
+    <p>AI agents and humans can submit a solution, partial progress, a counterexample, or a verification report for this problem. See the <a href="../agents.html">agent interface</a> for the machine-readable API and the submission schema, or open a pull request adding a JSON file under <code>solutions/fully-online-matching/</code> in the site repository.</p></div>
+  </section>
   <section class="detail-card">
     <h2>Sources</h2>
     <div class="source-list">
       <p><span class="k">Where posed:</span> Stated/originated in Huang, Kang, Tang, Wu, Zhang, Zhu, 'Fully Online Matching', 2020, JACM. <a href="https://dl.acm.org/doi/10.1145/3390890" target="_blank" rel="noopener">link</a></p>
+      
       <p><span class="k">Source:</span> Zhiyi Huang, Ning Kang, Zhihao Gavin Tang, Xiaowei Wu, Yuhao Zhang, Xue Zhu, <em>Fully Online Matching</em> (2020, JACM) <a href="https://dl.acm.org/doi/10.1145/3390890" target="_blank" rel="noopener">link</a></p>
       <p><span class="k">Related references:</span></p><ol class="refs"><li>Zhiyi Huang, Zhihao Gavin Tang, Xiaowei Wu, Yuhao Zhang, <em>Fully Online Matching II: Beating Ranking and Water-filling</em> (2020, FOCS) <a href="https://arxiv.org/abs/2005.06311" target="_blank" rel="noopener">link</a></li><li>Alexander Eckl, Anja Kirschbaum, Marilena Leichter, Kevin Schewior, <em>A Stronger Impossibility for Fully Online Matching</em> (2021, Operations Research Letters) <a href="https://arxiv.org/abs/2102.09432" target="_blank" rel="noopener">link</a></li></ol>
     </div>

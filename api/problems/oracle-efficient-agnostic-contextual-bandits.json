@@ -1,0 +1,52 @@
+{
+ "number": 96,
+ "ref": "ORDOS-096",
+ "id": "oracle-efficient-agnostic-contextual-bandits",
+ "title": "Oracle-efficient agnostic contextual bandits",
+ "collection": "Computer Science",
+ "area": "Online Learning",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "contextual bandits",
+  "oracle efficiency",
+  "online learning",
+  "misspecification",
+  "regret"
+ ],
+ "short_statement": "Can the optimal oracle-efficient contextual bandit reduction be extended from realizable models to agnostic or misspecified models?",
+ "open_problem": "Design an oracle-efficient contextual bandit algorithm for general agnostic or misspecified function classes that matches the best possible regret guarantees using only a small number of calls to standard offline learning or regression oracles.",
+ "full_statement": "In stochastic contextual bandits, a learner observes a context, chooses an action, and receives only the reward of the chosen action. Under realizability, the conditional mean reward belongs to a known function class $\\mathcal{F}$, and Simchi-Levi and Xu give a statistically optimal reduction to offline regression using only logarithmically many oracle calls. The open problem is to obtain an equally clean and practical reduction when the model is agnostic or misspecified: the best function in $\\mathcal{F}$ may only approximate the true conditional rewards. The target is an algorithm whose regret scales with the right approximation and complexity terms, remains computationally efficient for general classes, and avoids substantially stronger oracle assumptions.",
+ "known_results": "Simchi-Levi and Xu solve the realizable version, giving an optimal and oracle-efficient contextual bandit algorithm. Follow-up work develops instance-dependent complexity measures for contextual bandits and reinforcement learning. The remaining open part is the agnostic reduction: once realizability is removed, the known clean oracle-efficient guarantee does not directly apply, and the optimal computational/statistical tradeoff is still not as settled as in the realizable case.",
+ "where_posed": {
+  "text": "This entry is the natural agnostic extension of the open problem solved by Simchi-Levi and Xu for the realizable setting.",
+  "url": "https://arxiv.org/abs/2003.12699"
+ },
+ "source": {
+  "authors": "David Simchi-Levi, Yunzong Xu",
+  "title": "Bypassing the Monster: A Faster and Simpler Optimal Algorithm for Contextual Bandits under Realizability",
+  "year": 2021,
+  "venue": "Mathematics of Operations Research / arXiv:2003.12699",
+  "url": "https://arxiv.org/abs/2003.12699"
+ },
+ "additional_refs": [
+  {
+   "authors": "Dylan J. Foster, Alexander Rakhlin, David Simchi-Levi, Yunzong Xu",
+   "title": "Instance-Dependent Complexity of Contextual Bandits and Reinforcement Learning: A Disagreement-Based Perspective",
+   "year": 2020,
+   "venue": "arXiv:2010.03104",
+   "url": "https://arxiv.org/abs/2010.03104"
+  }
+ ],
+ "bibtex": "@misc{SimchiLevi2021,\n  author = {David Simchi-Levi and Yunzong Xu},\n  title = {Bypassing the Monster: A Faster and Simpler Optimal Algorithm for Contextual Bandits under Realizability},\n  year = {2021},\n  howpublished = {Mathematics of Operations Research / arXiv:2003.12699},\n  url = {https://arxiv.org/abs/2003.12699},\n  note = {Source of ORdős Problem ORDOS-096}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/oracle-efficient-agnostic-contextual-bandits.html",
+  "api": "https://ordos-problems.github.io/api/problems/oracle-efficient-agnostic-contextual-bandits.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

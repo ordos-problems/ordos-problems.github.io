@@ -1,0 +1,408 @@
+[
+ {
+  "id": "nash-social-welfare-approximation",
+  "title": "Optimal approximation factor for Nash Social Welfare",
+  "collection": "Market & Mechanism Design",
+  "area": "Fair Division",
+  "tags": [
+   "fair division",
+   "Nash social welfare",
+   "approximation algorithms",
+   "mechanism design"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "Nash Social Welfare is the geometric mean of agents' utilities; maximizing it over indivisible goods is NP-hard. What is the best constant-factor polynomial-time approximation, for additive, submodular, and subadditive valuations?",
+  "full_statement": "There is a set of agents $N$ and a set of indivisible goods $M$, with each agent $i$ having a valuation $v_i$. For an allocation $A=(A_1,\\dots,A_n)$ the Nash Social Welfare is the geometric mean of the agents' utilities, $$\\mathrm{NSW}(A)=\\left(\\prod_{i\\in N} v_i(A_i)\\right)^{1/n}.$$ A polynomial-time algorithm is an $\\alpha$-approximation (for $\\alpha\\ge 1$) if $\\mathrm{NSW}(A)\\ge \\mathrm{OPT}/\\alpha$ on all instances, where $\\mathrm{OPT}$ is the maximum Nash Social Welfare. Maximizing NSW exactly is NP-hard. Determine $\\inf\\{\\alpha:$ a poly-time $\\alpha$-approximation exists$\\}$ for each valuation class in the hierarchy additive $\\subset$ submodular $\\subset$ XOS $\\subset$ subadditive. For additive valuations the best algorithm achieves $\\approx 1.45$ while hardness is only $\\approx 1.07$.",
+  "known_results": "Additive: best algorithm $e^{1/e}$~1.445; APX-hardness ~1.069; the configuration LP has integrality gap exactly $e^{1/e}$, so the true constant lies in [1.069, 1.445] and is open. Submodular: a constant factor is known (~3.56); hardness $e/(e-1)$~1.582. Subadditive: a constant factor exists (large/unoptimized). No conjectured exact constant in any class.",
+  "where_posed": {
+   "text": "Stated in Cole, Gkatzelis, 'Approximating the Nash Social Welfare with Indivisible Items', 2015, STOC (SICOMP 2018).",
+   "url": "https://arxiv.org/abs/1507.06457"
+  },
+  "source": {
+   "authors": "Richard Cole, Vasilis Gkatzelis",
+   "title": "Approximating the Nash Social Welfare with Indivisible Items",
+   "year": 2015,
+   "venue": "STOC (SICOMP 2018)",
+   "url": "https://arxiv.org/abs/1507.06457"
+  },
+  "additional_refs": [
+   {
+    "authors": "Siddharth Barman, Sanath Kumar Krishnamurthy, Rohit Vaish",
+    "title": "Finding Fair and Efficient Allocations",
+    "year": 2018,
+    "venue": "EC",
+    "url": "https://arxiv.org/abs/1707.04731"
+   },
+   {
+    "authors": "Shahar Dobzinski, Wenzheng Li, Aviad Rubinstein, Jan Vondrak",
+    "title": "A Constant-Factor Approximation for Nash Social Welfare with Subadditive Valuations",
+    "year": 2024,
+    "venue": "STOC",
+    "url": "https://arxiv.org/abs/2309.04656"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "maximin-share-approximation",
+  "title": "Best approximation factor for Maximin Share (MMS) fair division",
+  "collection": "Market & Mechanism Design",
+  "area": "Fair Division",
+  "tags": [
+   "fair division",
+   "maximin share",
+   "MMS",
+   "approximation",
+   "indivisible goods"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "An agent's maximin share is the value of the worst bundle when she partitions all goods into $n$ bundles. Since exact MMS allocations need not exist, what is the largest constant $\\alpha$ for which $\\alpha$-MMS allocations are always guaranteed?",
+  "full_statement": "There is a set of agents $N=\\{1,\\dots,n\\}$ and a set of goods $M$, with each agent $i$ having an additive valuation $v_i$. Let $\\Pi_n(M)$ be the set of all partitions of $M$ into $n$ bundles. Agent $i$'s maximin share is $$\\mathrm{MMS}_i=\\max_{(B_1,\\dots,B_n)\\in\\Pi_n(M)}\\min_j v_i(B_j),$$ i.e., the best value she can guarantee herself if she partitions all goods into $n$ bundles and is then forced to take the worst (lowest-value) bundle. An allocation $A=(A_1,\\dots,A_n)$ is $\\alpha$-MMS if $v_i(A_i)\\ge\\alpha\\cdot\\mathrm{MMS}_i$ for all agents $i$. Exact ($\\alpha=1$) MMS allocations provably do not always exist, even with additive valuations. Determine $\\alpha^*=\\sup\\{\\alpha:$ an $\\alpha$-MMS allocation exists for every additive instance$\\}$.",
+  "known_results": "The best universal guarantee has improved from $2/3$ to $3/4$, then to $3/4+1/(12n)$, and more recently to $3/4+3/3836$ by Akrami and Garg, with further improvements moving the constant toward about $0.77$. On the impossibility side, Feige, Sapir, and Tauber show that no guarantee better than $1-1/n^4$ is always achievable for $n\\ge 4$, and give a $39/40$ upper bound for three agents. The open problem is to determine the exact largest constant $\\alpha$ for which every additive instance admits an $\\alpha$-MMS allocation.",
+  "where_posed": {
+   "text": "Approximate-MMS guarantee studied in Kurokawa, Procaccia, Wang, 'Fair Enough: Guaranteeing Approximate Maximin Shares', AAAI 2016 / JACM 2018.",
+   "url": "https://procaccia.info/wp-content/uploads/2020/03/mms2.pdf"
+  },
+  "source": {
+   "authors": "David Kurokawa, Ariel D. Procaccia, Junxing Wang",
+   "title": "Fair Enough: Guaranteeing Approximate Maximin Shares",
+   "year": 2018,
+   "venue": "JACM (AAAI 2016)",
+   "url": "https://procaccia.info/wp-content/uploads/2020/03/mms2.pdf"
+  },
+  "additional_refs": [
+   {
+    "authors": "Uriel Feige, Ariel Sapir, Laliv Tauber",
+    "title": "A Tight Negative Example for MMS Fair Allocations",
+    "year": 2021,
+    "venue": "WINE",
+    "url": "https://arxiv.org/abs/2104.04977"
+   },
+   {
+    "authors": "Hannaneh Akrami, Jugal Garg",
+    "title": "Breaking the 3/4 Barrier for Approximate Maximin Share",
+    "year": 2024,
+    "venue": "SODA",
+    "url": "https://arxiv.org/abs/2307.07304"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "competition-complexity-multi-item",
+  "title": "Competition complexity of multi-item auctions (general regime)",
+  "collection": "Market & Mechanism Design",
+  "area": "Mechanism Design",
+  "tags": [
+   "auctions",
+   "revenue",
+   "Bulow-Klemperer",
+   "competition complexity",
+   "multi-item"
+  ],
+  "status": "partially resolved",
+  "confidence": "high",
+  "short_statement": "How many extra i.i.d. bidders does a simple mechanism (sell items separately, or VCG) need to match the optimal revenue of the original bidders, in the multi-item setting? The additive case with fewer items than bidders is settled; other regimes are open.",
+  "full_statement": "Fix a distribution $D$ over $m$ items. For $n$ bidders drawn i.i.d. from $D$, the competition complexity $C(n,m)$ is the smallest integer $c$ such that the revenue of a simple mechanism with $n+c$ bidders matches the optimal revenue with the original $n$ bidders; concretely, $\\mathrm{SRev}_{n+c}(D^m)\\ge \\mathrm{Rev}_n(D^m)$, where $\\mathrm{SRev}$ is the revenue from selling items separately (and VCG is the analogue) and $\\mathrm{Rev}$ is the optimal revenue. This is the multi-item generalization of the Bulow-Klemperer result, which for a single item shows that recruiting one extra bidder lets a simple second-price auction match the optimal auction on the original bidders. The additive/independent case is tight: $C(n,m)=\\Theta(\\sqrt{nm})$ for $m<n$ and $\\Theta(n\\ln(1+m/n))$ for $n\\le m$. Open: exact bounds (including constants) in the regime $m\\ge n$, for non-additive valuations (XOS / subadditive / unit-demand), and for correlated items. Determine the competition complexity in these regimes.",
+  "known_results": "For additive buyers with independent item values, the order of competition complexity is known: it is $\\Theta(\\sqrt{nm})$ when $m<n$ and $\\Theta(n\\ln(1+m/n))$ when $n\\le m$. These results are tight up to constant factors. The open problems are to determine the exact constants, sharpen the $m\\ge n$ regime, and extend the theory beyond independent additive values to non-additive valuation classes and correlated item values.",
+  "where_posed": {
+   "text": "Stated/originated in Eden, Feldman, Friedler, Talgam-Cohen, Weinberg, 'The Competition Complexity of Auctions: A Bulow-Klemperer Result for Multi-Dimensional Bidders', 2017, EC.",
+   "url": "https://arxiv.org/abs/1612.08821"
+  },
+  "source": {
+   "authors": "Alon Eden, Michal Feldman, Ophir Friedler, Inbal Talgam-Cohen, S. Matthew Weinberg",
+   "title": "The Competition Complexity of Auctions: A Bulow-Klemperer Result for Multi-Dimensional Bidders",
+   "year": 2017,
+   "venue": "EC",
+   "url": "https://arxiv.org/abs/1612.08821"
+  },
+  "additional_refs": [
+   {
+    "authors": "Mahsa Derakhshan, Emily Ryu, S. Matthew Weinberg, Eric Xue",
+    "title": "Settling the Competition Complexity of Additive Buyers over Independent Items",
+    "year": 2024,
+    "venue": "EC",
+    "url": "https://arxiv.org/abs/2403.03937"
+   },
+   {
+    "authors": "Jeremy Bulow, Paul Klemperer",
+    "title": "Auctions versus Negotiations",
+    "year": 1996,
+    "venue": "American Economic Review",
+    "url": "https://www.jstor.org/stable/2118262"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "menu-complexity-multi-item",
+  "title": "Menu complexity of approximately revenue-optimal multi-item auctions",
+  "collection": "Market & Mechanism Design",
+  "area": "Mechanism Design",
+  "tags": [
+   "auctions",
+   "revenue",
+   "menu complexity",
+   "simple vs optimal",
+   "multi-item"
+  ],
+  "status": "partially resolved",
+  "confidence": "high",
+  "short_statement": "When selling several items to one additive buyer, how many distinct menu (lottery) options are needed to capture a $(1-\\epsilon)$ fraction of the optimal revenue, as a function of the number of items $n$ (and the exact two-item exponent)?",
+  "full_statement": "Consider a single additive buyer whose item values are drawn from independent distributions $F_1,\\dots,F_n$ over $n$ items. A mechanism can be described as a menu of (possibly randomized) options. Let $C(n,\\varepsilon)$ be the minimum menu size such that some mechanism with at most $C(n,\\varepsilon)$ entries achieves expected revenue $\\ge(1-\\varepsilon)\\mathrm{Rev}(F)$ for every such product distribution $F$, where $\\mathrm{Rev}(F)$ is the optimal revenue. Even with two items the revenue-optimal menu can require a continuum of options. Known: $C(n,1/n)\\ge 2^{\\Omega(n)}$; for two items the menu size is between $\\Omega(\\varepsilon^{-1/4})$ and $O(\\varepsilon^{-2})$. Open: the tight growth of $C(n,\\varepsilon)$ in $n$ for fixed $\\varepsilon$ (in particular whether $\\mathrm{poly}(n)$ suffices), and the exact two-item menu-size exponent. Determine these.",
+  "known_results": "Several qualitative questions are resolved: finite menus can approximate optimal revenue to within a $(1-\\epsilon)$ factor, and the better of selling items separately and selling the grand bundle gives a constant-factor approximation. For two items, the communication complexity is $\\Theta(\\log(1/\\epsilon))$. The open problem is quantitative menu-size growth: for fixed $\\epsilon$, it is unknown whether a polynomial-size menu in $n$ always suffices, since exponential lower bounds are known only when $\\epsilon=1/n$. Even for two items, the exact exponent in the dependence on $1/\\epsilon$ remains open.",
+  "where_posed": {
+   "text": "Studied in Hart, Nisan, 'Selling Multiple Correlated Goods: Revenue Maximization and Menu-Size Complexity', 2019, Journal of Economic Theory.",
+   "url": "https://arxiv.org/abs/1304.6116"
+  },
+  "source": {
+   "authors": "Sergiu Hart, Noam Nisan",
+   "title": "Selling Multiple Correlated Goods: Revenue Maximization and Menu-Size Complexity",
+   "year": 2019,
+   "venue": "Journal of Economic Theory",
+   "url": "https://arxiv.org/abs/1304.6116"
+  },
+  "additional_refs": [
+   {
+    "authors": "Moshe Babaioff, Yannai A. Gonczarowski, Noam Nisan",
+    "title": "The Menu-Size Complexity of Revenue Approximation",
+    "year": 2017,
+    "venue": "STOC (GEB 2022)",
+    "url": "https://arxiv.org/abs/1604.06580"
+   },
+   {
+    "authors": "Yannai A. Gonczarowski",
+    "title": "Bounding the Menu-Size of Approximately Optimal Auctions via Optimal-Transport Duality",
+    "year": 2018,
+    "venue": "STOC",
+    "url": "https://arxiv.org/abs/1708.08907"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "price-of-anonymity-multi-unit",
+  "title": "Price of anonymity in multi-unit auctions",
+  "collection": "Market & Mechanism Design",
+  "area": "Mechanism Design",
+  "tags": [
+   "auctions",
+   "revenue",
+   "anonymous pricing",
+   "price of anonymity",
+   "multi-unit"
+  ],
+  "status": "partially resolved",
+  "confidence": "high",
+  "short_statement": "An anonymous mechanism must offer every buyer the same price; how much revenue does that cost versus the optimal (Myerson) mechanism? For a single item the tight gap is $\\approx 2.62$; for selling multiple identical units the exact gap is not fully pinned down.",
+  "full_statement": "Consider revenue maximization with $n$ buyers whose value distributions differ. The optimal (Myerson) mechanism may charge different buyers different prices, whereas an anonymous mechanism must offer everyone the same price. For $k$ identical units and $n$ independent, non-identical regular value distributions, the price of anonymity is $$\\rho_k=\\sup_F \\frac{\\mathrm{OPT}(F)}{\\mathrm{AP}(F)},$$ where $\\mathrm{OPT}(F)$ is the optimal (Myerson) revenue and $\\mathrm{AP}(F)$ is the best anonymous posted-price revenue, and the supremum is over all valid instances $F$. For a single item ($k=1$) the tight value is $\\rho_1\\approx 2.62$. Open: the exact constants $\\rho_k$ for finite $k>1$ beyond the regular / large-market regime, and the multi-item analogues. Determine these.",
+  "known_results": "For one item, the price of anonymity is known exactly up to numerical evaluation: $\\rho_1\\approx 2.6202$. In multi-unit settings with general regular distributions, the cross-group gap has order $\\Theta(\\log k)$, while in large regular markets the ratio is $2+O(1/\\sqrt{k})$ and converges to $2$. The open problem is to determine the exact constants for finite $k$ outside the large-market regime and to understand the corresponding anonymity loss for multi-item mechanisms.",
+  "where_posed": {
+   "text": "Stated in Alaei, Hartline, Niazadeh, Pountourakis, Yan, 'Optimal Auctions vs. Anonymous Pricing', 2015, FOCS (GEB 2019).",
+   "url": "https://arxiv.org/abs/1507.02615"
+  },
+  "source": {
+   "authors": "Saeed Alaei, Jason D. Hartline, Rad Niazadeh, Emmanouil Pountourakis, Yang Yan",
+   "title": "Optimal Auctions vs. Anonymous Pricing",
+   "year": 2015,
+   "venue": "FOCS (GEB 2019)",
+   "url": "https://arxiv.org/abs/1507.02615"
+  },
+  "additional_refs": [
+   {
+    "authors": "Yaonan Jin, Pinyan Lu, Qi Qi, Zhihao Gavin Tang, Tao Xiao",
+    "title": "Tight Approximation Ratio of Anonymous Pricing",
+    "year": 2019,
+    "venue": "STOC",
+    "url": "https://arxiv.org/abs/1811.00763"
+   },
+   {
+    "authors": "Yaonan Jin, Shunhua Jiang, Pinyan Lu, Hengjie Zhang",
+    "title": "Tight Revenue Gaps among Multi-Unit Mechanisms",
+    "year": 2021,
+    "venue": "EC/arXiv",
+    "url": "https://arxiv.org/abs/2102.07454"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "max-stable-matchings",
+  "title": "Maximum number of stable matchings in an n x n instance",
+  "collection": "Market & Mechanism Design",
+  "area": "Matching Markets",
+  "tags": [
+   "stable matching",
+   "stable marriage",
+   "counting",
+   "combinatorics",
+   "Knuth"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "Let $f(n)$ be the largest possible number of stable matchings over all $n\\times n$ stable-marriage instances. It grows exponentially, but the exact base is unknown, with bounds between about $2.28^n$ and $3.55^n$.",
+  "full_statement": "Consider the stable-marriage problem with $n$ men and $n$ women, each having a strict preference ordering over the members of the opposite side; a matching is stable if no man-woman pair both prefer each other to their assigned partners. A single instance can admit many stable matchings simultaneously. Let $f(n)$ be the maximum, over all $n\\times n$ stable-marriage instances $I$, of the number of stable matchings $|S(I)|$. It is known that $f(n)=2^{\\Theta(n)}$. Determine $\\lim_{n\\to\\infty} f(n)^{1/n}$, the growth base of this exponential. Currently it is known that $\\Omega(2.28^n)\\le f(n)\\le O(3.55^n)$. This problem was first posed by Knuth in the 1970s.",
+  "known_results": "Lower bound $\\Omega(2.28^n)$ (Irving-Leather; extended by Thurber). Upper bound $O(3.55^n)$ (Palmer-Palvolgyi 2021), improving the first simply-exponential bound of Karlin-Oveis Gharan-Weber 2018. Exact base open; gap [2.28, 3.55].",
+  "where_posed": {
+   "text": "First posed by Knuth (1970s); simply-exponential upper bound in Karlin, Oveis Gharan, Weber, 'A Simply Exponential Upper Bound on the Maximum Number of Stable Matchings', 2018, STOC.",
+   "url": "https://arxiv.org/abs/1711.01032"
+  },
+  "source": {
+   "authors": "Anna R. Karlin, Shayan Oveis Gharan, Robbie Weber",
+   "title": "A Simply Exponential Upper Bound on the Maximum Number of Stable Matchings",
+   "year": 2018,
+   "venue": "STOC",
+   "url": "https://arxiv.org/abs/1711.01032"
+  },
+  "additional_refs": [
+   {
+    "authors": "Cory Palmer, Domotor Palvolgyi",
+    "title": "At most 3.55^n stable matchings",
+    "year": 2021,
+    "venue": "FOCS",
+    "url": "https://arxiv.org/abs/2011.00915"
+   },
+   {
+    "authors": "Robert W. Irving, Paul Leather",
+    "title": "The Complexity of Counting Stable Marriages",
+    "year": 1986,
+    "venue": "SIAM J. Computing",
+    "url": "https://epubs.siam.org/doi/10.1137/0215048"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "stable-matching-couples-threshold",
+  "title": "Existence threshold for stable matching with couples",
+  "collection": "Market & Mechanism Design",
+  "area": "Matching Markets",
+  "tags": [
+   "stable matching",
+   "couples",
+   "complementarities",
+   "large markets",
+   "existence"
+  ],
+  "status": "open",
+  "confidence": "medium",
+  "short_statement": "In hospitals/residents with couples (who submit joint preferences over pairs of positions), a stable matching can fail to exist and deciding existence is NP-complete. What is the precise rate at which the number of couples can grow with market size while a stable matching still exists w.h.p.?",
+  "full_statement": "In the Hospitals/Residents problem with Couples, couples rank ordered pairs of hospitals (joint preferences over pairs of positions), introducing complementarities absent from the classical problem. Unlike the classic stable-matching problem, a stable matching need not exist (Roth 1984), and deciding existence is NP-complete (Ronn 1990). Yet in large real markets such as the medical residency match, stable outcomes are almost always found. Consider random large markets of size $n$: it is known that if the number of couples is $o(\\sqrt{n})$ a stable matching exists with high probability, whereas if the number of couples grows linearly in $n$ (i.e., $\\Theta(n)$), with constant probability no stable matching exists. Determine the tight scaling threshold (and constants) for the number of couples, as a function of market size $n$, separating the regime where a stable matching exists w.h.p. from the regime where none exists with constant probability; and identify the sharp preference-domain conditions.",
+  "known_results": "The qualitative landscape is well established: stable matchings can fail to exist with couples, and deciding existence is NP-complete. In large random markets, stable matchings exist with high probability under sufficiently sparse couples, including the $o(\\sqrt n)$ regime, while with a linear number of couples nonexistence occurs with constant probability. The open problem is to identify the sharp threshold between these regimes, including constants and the precise preference-domain assumptions under which stability is likely.",
+  "where_posed": {
+   "text": "Large-market analysis in Kojima, Pathak, Roth, 'Matching with Couples: Stability and Incentives in Large Markets', 2013, Quarterly Journal of Economics.",
+   "url": "https://www.nber.org/papers/w16028"
+  },
+  "source": {
+   "authors": "Fuhito Kojima, Parag A. Pathak, Alvin E. Roth",
+   "title": "Matching with Couples: Stability and Incentives in Large Markets",
+   "year": 2013,
+   "venue": "Quarterly Journal of Economics",
+   "url": "https://www.nber.org/papers/w16028"
+  },
+  "additional_refs": [
+   {
+    "authors": "Itai Ashlagi, Mark Braverman, Avinatan Hassidim",
+    "title": "Stability in Large Matching Markets with Complementarities",
+    "year": 2014,
+    "venue": "Operations Research",
+    "url": "https://web.stanford.edu/~iashlagi/papers/couplesFinal1.pdf"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "prophet-secretary-tight-ratio",
+  "title": "Tight competitive ratio of the prophet secretary problem",
+  "collection": "Market & Mechanism Design",
+  "area": "Online Algorithms",
+  "tags": [
+   "prophet inequality",
+   "prophet secretary",
+   "optimal stopping",
+   "random order",
+   "competitive ratio"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "A gambler faces $n$ independent rewards from known but different distributions arriving in uniformly random order, accepting or irrevocably rejecting each and keeping at most one. What is the exact best-possible competitive ratio against the expected maximum?",
+  "full_statement": "Let $X_1,\\dots,X_n$ be independent random rewards with known but possibly different distributions $X_i\\sim F_i$. They are revealed to the gambler one at a time in uniformly random order; upon seeing each value the gambler must irrevocably accept it (stopping) or reject it, keeping at most one value. The benchmark is the prophet's expected maximum $\\mathbb{E}[\\max_i X_i]$. Define the optimal prophet-secretary competitive ratio $$\\alpha^*=\\inf_{\\{F_i\\}}\\sup_{\\text{online rules}}\\frac{\\mathbb{E}[X_{\\text{selected}}]}{\\mathbb{E}[\\max_i X_i]}.$$ With adversarial order the best guarantee is exactly $1/2$; uniformly random order provably helps. Determine $\\alpha^*$. Known: $0.688\\le\\alpha^*\\le 0.7235$. (This is distinct from the i.i.d. case, which is tight at $\\approx 0.745$, and from the order-selection model, $\\approx 0.7258$.)",
+  "known_results": "The best current algorithmic lower bound is $0.688$, improving on the original $1-1/e$ guarantee of Esfandiari and coauthors. The best analytically proven upper bound in the random-order model is $0.7235$, with a tighter computer-assisted bound around $0.7254$ also known in related formulations. None of these bounds is believed to be tight. The open problem is to determine the exact prophet-secretary constant.",
+  "where_posed": {
+   "text": "Stated/originated in Esfandiari, Hajiaghayi, Liaghat, Monemizadeh, 'Prophet Secretary', 2015, ESA (SIDMA 2017).",
+   "url": "https://arxiv.org/abs/1507.01155"
+  },
+  "source": {
+   "authors": "Hossein Esfandiari, MohammadTaghi Hajiaghayi, Vahid Liaghat, Morteza Monemizadeh",
+   "title": "Prophet Secretary",
+   "year": 2015,
+   "venue": "ESA (SIDMA 2017)",
+   "url": "https://arxiv.org/abs/1507.01155"
+  },
+  "additional_refs": [
+   {
+    "authors": "Jose Correa, Raimundo Saona, Bruno Ziliotto",
+    "title": "Prophet Secretary Through Blind Strategies",
+    "year": 2019,
+    "venue": "SODA (Math. Programming 2021)",
+    "url": "https://arxiv.org/abs/1807.07483"
+   },
+   {
+    "authors": "Giordano Giambartolomei, Frederik Mallmann-Trenn, Raimundo Saona",
+    "title": "Prophet Inequalities: Separating Random Order from Order Selection",
+    "year": 2024,
+    "venue": "arXiv",
+    "url": "https://arxiv.org/abs/2304.04024"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "online-bipartite-matching-random-order",
+  "title": "Tight competitive ratio of online bipartite matching under random arrival",
+  "collection": "Market & Mechanism Design",
+  "area": "Matching Markets",
+  "tags": [
+   "online matching",
+   "bipartite matching",
+   "random order",
+   "RANKING",
+   "competitive ratio"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "With offline vertices known in advance and online vertices arriving in uniformly random order (matched immediately and irrevocably), what is the exact best-possible competitive ratio, and what is the exact ratio of the canonical RANKING algorithm?",
+  "full_statement": "Let $G=(L,R,E)$ be a bipartite graph in which the vertices $L$ are offline (known in advance) and the vertices of $R$ arrive online one at a time in uniformly random order. Upon arrival, each online vertex reveals its edges to $L$ and must be matched immediately and irrevocably to an available offline neighbor (or left unmatched). The objective is to maximize the cardinality of the matching, compared against the maximum matching $\\mathrm{OPT}(G)$. In the worst-case (adversarial) arrival model the optimal competitive ratio is exactly $1-1/e$; with uniformly random arrival order, randomness provably helps. Define $$\\rho^*=\\inf_G\\sup_{\\text{online algs}}\\frac{\\mathbb{E}[|\\text{ALG}|]}{|\\text{OPT}(G)|}.$$ Determine $\\rho^*$ (and the sub-question: the exact competitive ratio of the canonical RANKING algorithm in this random-order model). Known: $0.696\\le\\rho^*\\le 0.8206$.",
+  "known_results": "Lower bound: RANKING achieves >= 0.696 in random order (Mahdian-Yan 2011). Upper bound: ~0.8206 (Chierichetti et al., ICALP 2025, improving 0.823 of Manshadi-Oveis Gharan-Saberi). Exact optimal ratio open with a large gap.",
+  "where_posed": {
+   "text": "Model and adversarial-optimal result from Karp, Vazirani, Vazirani, 'An Optimal Algorithm for On-line Bipartite Matching', 1990, STOC.",
+   "url": "https://dl.acm.org/doi/10.1145/100216.100262"
+  },
+  "source": {
+   "authors": "Richard M. Karp, Umesh V. Vazirani, Vijay V. Vazirani",
+   "title": "An Optimal Algorithm for On-line Bipartite Matching",
+   "year": 1990,
+   "venue": "STOC",
+   "url": "https://dl.acm.org/doi/10.1145/100216.100262"
+  },
+  "additional_refs": [
+   {
+    "authors": "Mohammad Mahdian, Qiqi Yan",
+    "title": "Online Bipartite Matching with Random Arrivals: Strongly Factor-Revealing LPs",
+    "year": 2011,
+    "venue": "STOC",
+    "url": "https://dl.acm.org/doi/10.1145/1993636.1993716"
+   },
+   {
+    "authors": "Vahideh H. Manshadi, Shayan Oveis Gharan, Amin Saberi",
+    "title": "Online Stochastic Matching: Online Actions Based on Offline Statistics",
+    "year": 2011,
+    "venue": "SODA (Math. Oper. Res. 2012)",
+    "url": "https://arxiv.org/abs/1007.1673"
+   }
+  ],
+  "enabled": true
+ }
+]

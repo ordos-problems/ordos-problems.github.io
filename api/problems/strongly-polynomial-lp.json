@@ -1,0 +1,58 @@
+{
+ "number": 71,
+ "ref": "ORDOS-071",
+ "id": "strongly-polynomial-lp",
+ "title": "A strongly polynomial algorithm for linear programming (Smale's 9th problem)",
+ "collection": "Operations Research",
+ "area": "Linear Programming",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "linear programming",
+  "computational complexity",
+  "strongly polynomial",
+  "Smale"
+ ],
+ "short_statement": "Is there an algorithm that solves every linear program using a number of arithmetic operations bounded by a polynomial in the number of variables and constraints alone — independent of the bit-length of the data?",
+ "open_problem": "Question (Smale's 9th problem): does a strongly polynomial algorithm for general linear programming exist?",
+ "full_statement": "Consider a linear program $\\max\\{c^\\top x : Ax \\le b\\}$ with rational data $A \\in \\mathbb{Q}^{m\\times n}$, $b\\in\\mathbb{Q}^m$, $c\\in\\mathbb{Q}^n$. An algorithm is \\emph{strongly polynomial} if (i) it uses a number of elementary arithmetic operations $(+,-,\\times,\\div,\\le)$ bounded by a polynomial in $m$ and $n$ only, and (ii) the numbers occurring in the computation have bit-size bounded by a polynomial in the input size. Khachiyan's ellipsoid method (1979) and Karmarkar's interior-point method (1984) are \\emph{weakly} polynomial: their operation count depends on the bit-length $L$ of the data. Question (Smale's 9th problem): does a strongly polynomial algorithm for general linear programming exist?",
+ "known_results": "Strongly polynomial algorithms are known for important special cases: combinatorial LPs where entries of $A$ are bounded (Tardos 1986, depending only on $A$), LPs with at most two nonzeros per row or column, and fixed dimension (Megiddo). Recent layered/interior-point advances (e.g., Dadush–Huiberts–Natura–Végh) give bounds depending on the constraint-matrix condition number. The general case is open.",
+ "where_posed": {
+  "text": "Posed as Problem 9 in S. Smale, 'Mathematical problems for the next century' (1998); long studied since Tardos (1986).",
+  "url": "https://link.springer.com/article/10.1007/BF03025291"
+ },
+ "source": {
+  "authors": "Steve Smale",
+  "title": "Mathematical Problems for the Next Century",
+  "year": 1998,
+  "venue": "The Mathematical Intelligencer",
+  "url": "https://link.springer.com/article/10.1007/BF03025291"
+ },
+ "additional_refs": [
+  {
+   "authors": "Éva Tardos",
+   "title": "A Strongly Polynomial Algorithm to Solve Combinatorial Linear Programs",
+   "year": 1986,
+   "venue": "Operations Research",
+   "url": "https://doi.org/10.1287/opre.34.2.250"
+  },
+  {
+   "authors": "Daniel Dadush, Sophie Huiberts, Bento Natura, László A. Végh",
+   "title": "A scaling-invariant algorithm for linear programming whose running time depends only on the constraint matrix",
+   "year": 2020,
+   "venue": "STOC",
+   "url": "https://arxiv.org/abs/1912.06252"
+  }
+ ],
+ "bibtex": "@misc{Smale1998,\n  author = {Steve Smale},\n  title = {Mathematical Problems for the Next Century},\n  year = {1998},\n  howpublished = {The Mathematical Intelligencer},\n  url = {https://link.springer.com/article/10.1007/BF03025291},\n  note = {Source of ORdős Problem ORDOS-071}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/strongly-polynomial-lp.html",
+  "api": "https://ordos-problems.github.io/api/problems/strongly-polynomial-lp.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

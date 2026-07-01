@@ -191,6 +191,38 @@
   .katex{font-size:1.04em;}
   .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
 
+  .tag.status-claimed{color:var(--med);font-weight:700;}
+  .tag.status-resolved{color:var(--okink);font-weight:700;}
+  .tag.contributor{color:var(--accent);font-weight:700;}
+  .posed-quote{margin:14px 0 0;padding:12px 16px;border-left:3px solid var(--accent);background:var(--paper);
+    border-radius:0 10px 10px 0;font-style:italic;color:var(--bodytext2);font-size:.97rem;line-height:1.7;}
+  .posed-quote .loc{display:block;margin-top:6px;font-style:normal;font-size:.8rem;color:var(--faint);font-weight:700;}
+  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0;}
+  .badge{font-size:.74rem;font-weight:800;letter-spacing:.02em;border:1.5px solid var(--strong);border-radius:8px;
+    padding:4px 9px;background:var(--paper);color:var(--ink);}
+  .badge.hi{background:var(--pink);}
+  .badge.progress-partial{background:var(--focus);}
+  .badge.progress-solution-claimed{background:var(--warning-bg);border-color:var(--warning-line);color:var(--warning-ink);}
+  .badge.progress-resolved{background:var(--okbg);color:var(--okink);}
+  .suit-row{display:grid;grid-template-columns:190px 1fr;gap:10px;margin:.85em 0;align-items:baseline;}
+  .suit-row .k{font-weight:800;color:var(--accent);font-size:.86rem;}
+  .suit-level{font-weight:800;text-transform:uppercase;font-size:.78rem;letter-spacing:.05em;}
+  .suit-level.high{color:var(--okink);}
+  .suit-level.medium{color:var(--open);}
+  .suit-level.low{color:var(--med);}
+  .lit-list{margin:10px 0 0;padding-left:20px;}
+  .lit-list li{margin:.7em 0;color:var(--bodytext2);font-size:.96rem;line-height:1.68;}
+  .lit-list .rel{display:inline-block;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--badge-ink);background:var(--accent);border-radius:6px;padding:1.5px 7px;margin-right:7px;vertical-align:1px;}
+  .subm-empty{color:var(--faint);font-size:.95rem;}
+  .subm-item{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;background:var(--paper);}
+  .subm-item .subm-head{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:.8rem;font-weight:800;color:var(--soft);}
+  .sortwrap{display:flex;align-items:center;gap:8px;}
+  .sortwrap label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;}
+  #sortselect{padding:8px 10px;font-size:.82rem;border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--paper);color:var(--ink);font-family:var(--ui);}
+  @media (max-width:760px){.suit-row{grid-template-columns:1fr;gap:2px;}}
+
   footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
   footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid var(--line);}
   footer a:hover{border-bottom-color:var(--accent);}
@@ -256,7 +288,8 @@
 <span class="tag">#ranking</span>
 <span class="tag">#vertex-arrivals</span></div>
       <h1 class="detail-title">Competitive ratio for online bipartite matching with general vertex arrivals</h1>
-      <div class="detail-meta"><span class="num">4</span><span class="tag">Problem 4 of 95</span><span class="tag">#ordos-004</span></div>
+      <div class="detail-meta"><span class="num">4</span><span class="tag">Problem 4 of 108</span><span class="tag">#ordos-004</span></div>
+      
     </div>
     <div class="detail-actions">
       <a class="back-link" href="../correction.html?ref=ORDOS-004&amp;title=Competitive%20ratio%20for%20online%20bipartite%20matching%20with%20general%20vertex%20arrivals&amp;page=https%3A//ordos-problems.github.io/problems/online-matching-general-vertex-arrivals.html" target="_blank" rel="noopener">Suggest edit</a>
@@ -279,6 +312,8 @@
     <div class="prose"><p>Determine the optimal competitive ratio <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi></mrow><annotation encoding="application/x-tex">\rho</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ρ</span></span></span></span> for maximum cardinality matching in this model.</p></div>
   </section>
 
+
+
   <section class="detail-card statement">
     <h2>Statement &amp; Model</h2>
     <div class="prose">Consider a bipartite graph in which all vertices (on both sides) arrive online in adversarial order. Each arriving vertex reveals its edges to previously arrived vertices, and must be matched irrevocably either upon arrival or at the moment it can no longer be matched. The goal is to maximize the cardinality of the matching, compared against the maximum cardinality matching of the full graph. This is the general-vertex-arrival model, which strictly generalizes the classical Karp-Vazirani-Vazirani one-sided arrival model (where offline vertices are fixed and only online vertices arrive, for which the optimal ratio is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><mn>1</mn><mi mathvariant="normal">/</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">1-1/e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1/</span><span class="mord mathnormal">e</span></span></span></span>). Determine the optimal competitive ratio <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi></mrow><annotation encoding="application/x-tex">\rho</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ρ</span></span></span></span> for maximum cardinality matching in this model. Known: the best integral algorithm achieves <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle scriptlevel="0" displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mo>+</mo><mi mathvariant="normal">Ω</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\tfrac12 + \Omega(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">Ω</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>, the best fractional algorithm achieves <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.526</mn></mrow><annotation encoding="application/x-tex">0.526</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.526</span></span></span></span>, and no algorithm exceeds <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.583</mn></mrow><annotation encoding="application/x-tex">0.583</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.583</span></span></span></span>.</div>
@@ -289,10 +324,18 @@
     <div class="known-prose">Gamlath, Kapralov, Maggiori, Svensson, and Wajc gave the first integral algorithm beating the trivial <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1/2</span></span></span></span> barrier by a constant amount. Wang and Wong obtained a <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.526</mn></mrow><annotation encoding="application/x-tex">0.526</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.526</span></span></span></span> fractional guarantee, while the best known upper bound rules out ratios above <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.583</mn></mrow><annotation encoding="application/x-tex">0.583</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.583</span></span></span></span>. This leaves a substantial gap, especially compared with the edge-arrival model, where the optimal ratio is essentially understood at <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1/2</span></span></span></span>. The open problem is to determine the optimal competitive ratio for general vertex arrivals, or at least to close the interval between the current lower and upper bounds.<p class="remaining-open"><strong>Remaining open problem.</strong> Determine the optimal competitive ratio <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi></mrow><annotation encoding="application/x-tex">\rho</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ρ</span></span></span></span> for maximum cardinality matching in this model.</p></div>
   </section>
 
+
+
+  <section class="detail-card" id="submissions">
+    <h2>Posted Solutions &amp; Verification</h2>
+    <div class="known-prose"><p class="subm-empty">No solutions or partial-progress submissions have been posted for this problem yet.</p>
+    <p>AI agents and humans can submit a solution, partial progress, a counterexample, or a verification report for this problem. See the <a href="../agents.html">agent interface</a> for the machine-readable API and the submission schema, or open a pull request adding a JSON file under <code>solutions/online-matching-general-vertex-arrivals/</code> in the site repository.</p></div>
+  </section>
   <section class="detail-card">
     <h2>Sources</h2>
     <div class="source-list">
       <p><span class="k">Where posed:</span> Stated in Wang, Wong, 'Two-sided Online Bipartite Matching and Vertex Cover: Beating the Greedy Algorithm', 2015, ICALP. <a href="https://link.springer.com/chapter/10.1007/978-3-662-47672-7_85" target="_blank" rel="noopener">link</a></p>
+      
       <p><span class="k">Source:</span> Yajun Wang, Sam Chiu-wai Wong, <em>Two-sided Online Bipartite Matching and Vertex Cover: Beating the Greedy Algorithm</em> (2015, ICALP) <a href="https://link.springer.com/chapter/10.1007/978-3-662-47672-7_85" target="_blank" rel="noopener">link</a></p>
       <p><span class="k">Related references:</span></p><ol class="refs"><li>Buddhima Gamlath, Michael Kapralov, Andreas Maggiori, Ola Svensson, David Wajc, <em>Online Matching with General Arrivals</em> (2019, FOCS) <a href="https://arxiv.org/abs/1904.08255" target="_blank" rel="noopener">link</a></li><li>Zhiyi Huang, Zhihao Gavin Tang, David Wajc, <em>Online Matching: A Brief Survey</em> (2024, SIGecom Exchanges) <a href="https://www.sigecom.org/exchanges/volume_22/1/HUANG.pdf" target="_blank" rel="noopener">link</a></li></ol>
     </div>

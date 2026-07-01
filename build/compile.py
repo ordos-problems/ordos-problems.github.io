@@ -97,8 +97,12 @@ for i,p in enumerate(problems,1):
     p["number"]=i; p["ref"]=f"ORDOS-{i:03d}"
     p["open_problem"]=derive_open_problem(p)
 
-order=["number","ref","id","title","collection","area","status","confidence","tags",
-       "short_statement","open_problem","full_statement","known_results","where_posed","source","additional_refs"]
+order=["number","ref","id","title","collection","area","status","confidence","contributor","tags",
+       "short_statement","open_problem","background","full_statement","known_results",
+       "progress","importance","difficulty",
+       "counterexample_suitability","counterexample_rationale",
+       "alphaevolve_suitability","alphaevolve_rationale",
+       "literature","agent_guidance","where_posed","source","additional_refs"]
 problems=[{k:p[k] for k in order if k in p} for p in problems]
 
 col=Counter(p["collection"] for p in problems)

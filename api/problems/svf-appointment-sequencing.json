@@ -1,0 +1,59 @@
+{
+ "number": 78,
+ "ref": "ORDOS-078",
+ "id": "svf-appointment-sequencing",
+ "title": "Optimality of smallest-variance-first sequencing in appointment scheduling",
+ "collection": "Operations Management",
+ "area": "Healthcare Operations",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "appointment scheduling",
+  "sequencing",
+  "stochastic service times",
+  "healthcare operations",
+  "conjecture"
+ ],
+ "short_statement": "When sequencing customers with stochastic service times at a single server, is it optimal to order them by increasing variance (smallest-variance-first)?",
+ "open_problem": "is SVF sequencing optimal for general $n$ (for exponential service times, and more generally under a suitable variability/dispersion ordering)?",
+ "full_statement": "A single server must serve $n$ customers (e.g. patients, surgeries) whose service times $S_1,\\dots,S_n$ are independent with known distributions. The customers are placed in a sequence and given appointment times; the cost is the expected weighted sum of customer waiting times and server idle time (and possibly overtime). For exponentially distributed service times, Wang (1999) proved that sequencing customers in increasing order of variance — equivalently increasing mean for exponentials — minimizes expected total cost for $n=2$, and conjectured optimality of this 'smallest-variance-first' (SVF) rule for all $n$. Question: is SVF sequencing optimal for general $n$ (for exponential service times, and more generally under a suitable variability/dispersion ordering)?",
+ "known_results": "Weiss (1990) introduced a dispersion measure, proved an ordering optimal for $n=2$, and disproved his measure's optimality at $n=3$. Wang (1999) established SVF optimality for $n=2$ with exponential service times and conjectured it for all $n$. Partial and asymptotic results and counterexamples in variants exist; the general-$n$ optimality of SVF remains open.",
+ "where_posed": {
+  "text": "Conjectured in P. P. Wang, 'Sequencing and scheduling N customers for a stochastic server' (EJOR 1999); foundations in Weiss (1990).",
+  "url": ""
+ },
+ "source": {
+  "authors": "Pao-Ping Wang",
+  "title": "Sequencing and scheduling N customers for a stochastic server",
+  "year": 1999,
+  "venue": "European Journal of Operational Research",
+  "url": ""
+ },
+ "additional_refs": [
+  {
+   "authors": "Elliott N. Weiss",
+   "title": "Models for Determining Estimated Start Times and Case Orderings in Hospital Operating Rooms",
+   "year": 1990,
+   "venue": "IIE Transactions",
+   "url": "https://doi.org/10.1080/07408179008964166"
+  },
+  {
+   "authors": "Authors per arXiv:1812.01467",
+   "title": "Performance of the smallest-variance-first rule in appointment sequencing",
+   "year": 2019,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/1812.01467"
+  }
+ ],
+ "bibtex": "@misc{Wang1999,\n  author = {Pao-Ping Wang},\n  title = {Sequencing and scheduling N customers for a stochastic server},\n  year = {1999},\n  howpublished = {European Journal of Operational Research},\n  note = {Source of ORdős Problem ORDOS-078}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/svf-appointment-sequencing.html",
+  "api": "https://ordos-problems.github.io/api/problems/svf-appointment-sequencing.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

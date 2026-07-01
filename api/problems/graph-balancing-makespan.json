@@ -1,0 +1,51 @@
+{
+ "number": 55,
+ "ref": "ORDOS-055",
+ "id": "graph-balancing-makespan",
+ "title": "Graph Balancing (Restricted Two-Machine Makespan)",
+ "collection": "Approximation & Discrepancy",
+ "area": "Approximation Algorithms",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "scheduling",
+  "graph balancing",
+  "makespan",
+  "restricted assignment"
+ ],
+ "short_statement": "Graph balancing is unrelated-machine scheduling where each job can go on only two machines (same time on either). It is NP-hard to beat $3/2$ and the best ratio is below $1.75$, but the exact threshold is open.",
+ "open_problem": "Determine the best polynomial-time approximation ratio $\\rho$.",
+ "full_statement": "Graph balancing is the special case of unrelated-machine scheduling where each job can go on only two machines (and takes the same time on either); equivalently, orient the edges of a weighted multigraph to minimize the maximum weighted in-degree. In graph balancing, each job $j$ has a single size $p_j$ and may be assigned to one of (at most) two machines. \\textbf{Determine the best polynomial-time approximation ratio $\\rho$.} Known: $\\tfrac{3}{2} \\le \\rho < \\tfrac{7}{4}$.",
+ "known_results": "Ebenlendr, Krcal, and Sgall proved $3/2$ hardness and gave a $7/4$-approximation, establishing graph balancing as one of the cleanest restricted-assignment gaps. Jansen and Rohwedder later used local search to beat the $7/4$ barrier. The open problem is to determine the exact approximation threshold: the lower bound remains $3/2$, while the best algorithm is only known to be some constant strictly below $1.75$.",
+ "where_posed": {
+  "text": "The 3/2 hardness and 7/4 algorithm are from Ebenlendr, Krcal, Sgall, 'Graph Balancing: A Special Case of Scheduling Unrelated Parallel Machines,' Algorithmica (SODA 2008); local search below 1.75 from Jansen-Rohwedder (2019). The exact ratio is open.",
+  "url": "https://doi.org/10.1007/s00453-012-9668-9"
+ },
+ "source": {
+  "authors": "Tomas Ebenlendr, Marek Krcal, Jiri Sgall",
+  "title": "Graph Balancing: A Special Case of Scheduling Unrelated Parallel Machines",
+  "year": 2014,
+  "venue": "Algorithmica (SODA 2008)",
+  "url": "https://doi.org/10.1007/s00453-012-9668-9"
+ },
+ "additional_refs": [
+  {
+   "authors": "Klaus Jansen, Lars Rohwedder",
+   "title": "Local Search Breaks 1.75 for Graph Balancing",
+   "year": 2019,
+   "venue": "ICALP",
+   "url": "https://arxiv.org/abs/1811.00955"
+  }
+ ],
+ "bibtex": "@misc{Ebenlendr2014,\n  author = {Tomas Ebenlendr and Marek Krcal and Jiri Sgall},\n  title = {Graph Balancing: A Special Case of Scheduling Unrelated Parallel Machines},\n  year = {2014},\n  howpublished = {Algorithmica (SODA 2008)},\n  url = {https://doi.org/10.1007/s00453-012-9668-9},\n  note = {Source of ORdős Problem ORDOS-055}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/graph-balancing-makespan.html",
+  "api": "https://ordos-problems.github.io/api/problems/graph-balancing-makespan.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

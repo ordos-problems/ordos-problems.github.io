@@ -1,0 +1,59 @@
+{
+ "number": 107,
+ "ref": "ORDOS-107",
+ "id": "random-ksat-satisfiability-threshold",
+ "title": "Exact threshold for random k-SAT",
+ "collection": "Computer Science",
+ "area": "Random Structures",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "random structures",
+  "random satisfiability",
+  "optimization",
+  "phase transitions",
+  "applied probability"
+ ],
+ "short_statement": "For random $k$-SAT with $m=\\lfloor cn\\rfloor$ random clauses, determine the exact satisfiability threshold $c_k$, especially for small fixed $k$ such as $k=3$.",
+ "open_problem": "Determine the exact satisfiability threshold $c_k$ for random $k$-SAT, including the small fixed values of $k$ not covered by large-$k$ threshold theorems.",
+ "full_statement": "Let $F_{n,m}^{(k)}$ be a uniformly random $k$-SAT formula on $n$ variables with $m=\\lfloor cn\\rfloor$ clauses. The satisfiability-threshold conjecture asserts that there is a critical density $c_k$ such that $F_{n,\\lfloor cn\\rfloor}^{(k)}$ is satisfiable with high probability for $c<c_k$ and unsatisfiable with high probability for $c>c_k$. Friedgut proved sharp-threshold behavior in a non-explicit sense, and later work determined the threshold for all sufficiently large $k$. The clean open problem is to determine the exact threshold values, or exact limiting characterization, for the remaining fixed small $k$ cases, most notably random 3-SAT.",
+ "known_results": "For $k=2$, the threshold is exactly $1$. Friedgut proved that random $k$-SAT has a sharp threshold, but his theorem does not identify a single explicit limiting value for every fixed $k$. Ding, Sly, and Sun determined the threshold for all sufficiently large $k$, matching the physics prediction in that regime. The remaining open problem is the classical small-$k$ threshold problem: give exact thresholds or a rigorous exact characterization for fixed $k$ such as $3$ and $4$.",
+ "where_posed": {
+  "text": "Satisfiability-threshold discussion in Coppersmith, Gamarnik, Hajiaghayi, and Sorkin, and in Bayati, Gamarnik, and Tetali's sparse-random-graph interpolation paper.",
+  "url": "https://arxiv.org/abs/0912.2444"
+ },
+ "source": {
+  "authors": "Mohsen Bayati, David Gamarnik, Prasad Tetali",
+  "title": "Combinatorial approach to the interpolation method and scaling limits in sparse random graphs",
+  "year": 2013,
+  "venue": "Annals of Probability",
+  "url": "https://arxiv.org/abs/0912.2444"
+ },
+ "additional_refs": [
+  {
+   "authors": "Don Coppersmith, David Gamarnik, Mohammad Hajiaghayi, Gregory B. Sorkin",
+   "title": "Random MAX SAT, Random MAX CUT, and Their Phase Transitions",
+   "year": 2004,
+   "venue": "Random Structures & Algorithms",
+   "url": "https://arxiv.org/abs/math/0306047"
+  },
+  {
+   "authors": "Jian Ding, Allan Sly, Nike Sun",
+   "title": "Proof of the satisfiability conjecture for large k",
+   "year": 2015,
+   "venue": "Annals of Mathematics",
+   "url": "https://arxiv.org/abs/1411.0650"
+  }
+ ],
+ "bibtex": "@misc{Bayati2013,\n  author = {Mohsen Bayati and David Gamarnik and Prasad Tetali},\n  title = {Combinatorial approach to the interpolation method and scaling limits in sparse random graphs},\n  year = {2013},\n  howpublished = {Annals of Probability},\n  url = {https://arxiv.org/abs/0912.2444},\n  note = {Source of ORdős Problem ORDOS-107}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/random-ksat-satisfiability-threshold.html",
+  "api": "https://ordos-problems.github.io/api/problems/random-ksat-satisfiability-threshold.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

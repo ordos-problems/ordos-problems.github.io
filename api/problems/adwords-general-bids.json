@@ -1,0 +1,52 @@
+{
+ "number": 8,
+ "ref": "ORDOS-008",
+ "id": "adwords-general-bids",
+ "title": "AdWords with general bids: is 1-1/e achievable?",
+ "collection": "Online Algorithms & Learning",
+ "area": "Online Algorithms",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "AdWords",
+  "online matching",
+  "budgeted allocation",
+  "OCS",
+  "competitive analysis"
+ ],
+ "short_statement": "In AdWords, advertisers with budgets receive online queries and spend a bid (capped by remaining budget) per assignment. Without the small-bid assumption, is the optimal $1-1/e$ revenue ratio (or anything close) achievable?",
+ "open_problem": "Determine the optimal competitive ratio for general bids; in particular, is it $1-1/e$?",
+ "full_statement": "In the AdWords problem, each advertiser $i$ has a budget $B_i$, and queries $j$ arrive online. Assigning query $j$ to advertiser $i$ spends $\\min(b_{ij}, \\text{remaining } B_i)$, where $b_{ij}$ is the bid; in the general-bids setting these bids may be comparable to $B_i$ (i.e., there is no small-bid / tiny-bid assumption). Each query is assigned irrevocably upon arrival, and the goal is to maximize total spend (revenue). The optimal $1-1/e$ ratio of Mehta-Saberi-Vazirani-Vazirani holds only under the small-bid assumption (each bid tiny relative to the budget). Without it, greedy gives only $1/2$. Determine the optimal competitive ratio for general bids; in particular, is it $1-1/e$? Known: $0.5016 \\le \\rho \\le 1 - 1/e$.",
+ "known_results": "When all bids are small relative to budgets, the MSVV algorithm gives the optimal $1-1/e$ guarantee. With arbitrary bid sizes, the simple greedy guarantee is only $1/2$, and Huang, Zhang, and Zhang were the first to beat this barrier, obtaining a ratio of $0.5016$ using panoramic online correlated selection. There is still no upper bound below $1-1/e$ for general bids. The open problem is to determine the true optimal competitive ratio in this large-bid regime, and in particular whether the small-bids constant $1-1/e$ can be recovered.",
+ "where_posed": {
+  "text": "Stated/originated in Mehta, Saberi, Vazirani, Vazirani, 'AdWords and Generalized Online Matching', 2007, JACM (FOCS 2005).",
+  "url": "https://people.eecs.berkeley.edu/~vazirani/pubs/adwords.pdf"
+ },
+ "source": {
+  "authors": "Aranyak Mehta, Amin Saberi, Umesh Vazirani, Vijay Vazirani",
+  "title": "AdWords and Generalized Online Matching",
+  "year": 2007,
+  "venue": "JACM (FOCS 2005)",
+  "url": "https://people.eecs.berkeley.edu/~vazirani/pubs/adwords.pdf"
+ },
+ "additional_refs": [
+  {
+   "authors": "Zhiyi Huang, Qiankun Zhang, Yuhao Zhang",
+   "title": "AdWords in a Panorama",
+   "year": 2020,
+   "venue": "FOCS",
+   "url": "https://arxiv.org/abs/2009.04114"
+  }
+ ],
+ "bibtex": "@misc{Mehta2007,\n  author = {Aranyak Mehta and Amin Saberi and Umesh Vazirani and Vijay Vazirani},\n  title = {AdWords and Generalized Online Matching},\n  year = {2007},\n  howpublished = {JACM (FOCS 2005)},\n  url = {https://people.eecs.berkeley.edu/~vazirani/pubs/adwords.pdf},\n  note = {Source of ORdős Problem ORDOS-008}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/adwords-general-bids.html",
+  "api": "https://ordos-problems.github.io/api/problems/adwords-general-bids.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

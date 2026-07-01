@@ -1,0 +1,388 @@
+[
+ {
+  "id": "matroid-secretary-conjecture",
+  "title": "Matroid Secretary Conjecture",
+  "collection": "Online Algorithms & Learning",
+  "area": "Online Algorithms",
+  "tags": [
+   "secretary problem",
+   "matroids",
+   "competitive analysis",
+   "online selection"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "Weighted elements of a matroid arrive in uniformly random order and must be irrevocably accepted or rejected while keeping the accepted set independent. Does some algorithm always capture at least a constant fraction of the maximum-weight independent set, for every matroid?",
+  "full_statement": "Let $M=(E,\\mathcal{I})$ be a matroid on ground set $E$ with independent sets $\\mathcal{I}$, equipped with weights $w:E\\to\\mathbb{R}_{\\ge 0}$. The elements of $E$ are presented to an online algorithm one at a time in uniformly random order. Upon each arrival, the algorithm must irrevocably accept or reject the element, subject to the constraint that the set of accepted elements always remains in $\\mathcal{I}$ (independent in the matroid). Let $\\mathrm{OPT}$ denote the maximum-weight independent set of $M$, and let $\\mathrm{ALG}$ denote the set the algorithm accepts. The Matroid Secretary Conjecture asks: does there exist a universal constant $c$ and an online algorithm such that $\\mathbb{E}[w(\\mathrm{ALG})]\\ge \\frac{1}{c}\\,w(\\mathrm{OPT})$ for every matroid $M$ and every weighting $w$? The strong form of the conjecture posits that the optimal constant is $c\\to e$. Determine whether such a constant-competitive algorithm exists.",
+  "known_results": "The best known guarantee for arbitrary matroids is $O(\\log\\log \\operatorname{rank})$-competitive, due independently to Lachish and to Feldman, Svensson, and Zenklusen, and this general bound has not improved since 2014. Constant-competitive algorithms are known for many important matroid classes, including graphic, transversal, laminar, and regular matroids, and for several relaxed arrival models. The central open question is whether all matroids admit a universal constant-competitive algorithm; the strongest hoped-for form would match the classical secretary constant $e$.",
+  "where_posed": {
+   "text": "Stated/originated in Babaioff, Immorlica, Kleinberg, 'Matroids, Secretary Problems, and Online Mechanisms', 2007, SODA.",
+   "url": "https://www.cs.cornell.edu/~rdk/papers/matsec.pdf"
+  },
+  "source": {
+   "authors": "Moshe Babaioff, Nicole Immorlica, Robert Kleinberg",
+   "title": "Matroids, Secretary Problems, and Online Mechanisms",
+   "year": 2007,
+   "venue": "SODA",
+   "url": "https://www.cs.cornell.edu/~rdk/papers/matsec.pdf"
+  },
+  "additional_refs": [
+   {
+    "authors": "Oded Lachish",
+    "title": "O(log log Rank) Competitive-Ratio for the Matroid Secretary Problem",
+    "year": 2014,
+    "venue": "FOCS",
+    "url": "https://arxiv.org/abs/1403.7343"
+   },
+   {
+    "authors": "Moran Feldman, Ola Svensson, Rico Zenklusen",
+    "title": "A Simple O(log log(rank))-Competitive Algorithm for the Matroid Secretary Problem",
+    "year": 2015,
+    "venue": "SODA",
+    "url": "https://arxiv.org/abs/1404.4473"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "free-order-prophet-inequality",
+  "title": "Optimal ratio for the free-order (order-selection) prophet inequality",
+  "collection": "Online Algorithms & Learning",
+  "area": "Online Algorithms",
+  "tags": [
+   "prophet inequality",
+   "order selection",
+   "stopping theory",
+   "competitive analysis"
+  ],
+  "status": "partially resolved",
+  "confidence": "high",
+  "short_statement": "A gambler facing $n$ items with known distributions may choose the order in which to inspect them, then observes values online and stops irrevocably, keeping one. What is the exact optimal competitive ratio against the expected maximum in this free-order (order-selection) model?",
+  "full_statement": "There are $n$ items with values drawn independently from known distributions $D_1,\\dots,D_n$. In the free-order (order-selection) prophet inequality, the gambler first selects an inspection order $\\sigma$ (a permutation committing to the sequence in which items will be observed), then observes the realized values online one at a time and applies a stopping rule, irrevocably keeping exactly one value. The benchmark is the prophet's expected maximum $\\mathbb{E}[\\max_i X_i]$. Define the optimal order-selection ratio $$\\alpha^*_{\\mathrm{OS}} = \\sup_{(\\sigma,\\text{stop})}\\inf_{\\{D_i\\}} \\frac{\\mathbb{E}[X_{\\text{alg}}]}{\\mathbb{E}[\\max_i X_i]},$$ where the supremum is over all order-and-stopping-rule strategies and the infimum is over all instances. It is known that order selection achieves $\\ge 0.7258$, while no strategy in the random-order model exceeds $0.7254$, so order selection strictly beats random order. Determine the exact value of $\\alpha^*_{\\mathrm{OS}}$.",
+  "known_results": "Order-selection guarantee 0.7258 and random-order hardness 0.7254 (Bubna-Chiplunkar, EC 2023), establishing a strict separation. Essentially settled to about 0.7258 but no exact tight constant proven, so technically open.",
+  "where_posed": {
+   "text": "Stated in Bubna, Chiplunkar, 'Prophet Inequality: Order Selection Beats Random Order', 2023, EC.",
+   "url": "https://arxiv.org/abs/2211.04145"
+  },
+  "source": {
+   "authors": "Archit Bubna, Ashish Chiplunkar",
+   "title": "Prophet Inequality: Order Selection Beats Random Order",
+   "year": 2023,
+   "venue": "EC",
+   "url": "https://arxiv.org/abs/2211.04145"
+  },
+  "additional_refs": [
+   {
+    "authors": "Bo Peng, Zhihao Gavin Tang",
+    "title": "Order Selection Prophet Inequality: From Threshold Optimization to Arrival Time Design",
+    "year": 2022,
+    "venue": "FOCS",
+    "url": "https://arxiv.org/abs/2204.01425"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "single-sample-matroid-prophet",
+  "title": "Single-sample prophet inequality for general matroids",
+  "collection": "Online Algorithms & Learning",
+  "area": "Online Algorithms",
+  "tags": [
+   "prophet inequality",
+   "matroids",
+   "single sample",
+   "limited information"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "In the single-sample model the algorithm does not know the distributions but sees exactly one prior sample from each random variable before the online sequence. Does a single sample yield a constant-fraction-of-optimum guarantee for every matroid?",
+  "full_statement": "Let $M=(E,\\mathcal{I})$ be a matroid on ground set $E$ with independent sets $\\mathcal{I}$. Each element $e\\in E$ has a value $X_e\\sim D_e$ drawn independently, but the distributions $D_e$ are unknown to the algorithm. In the single-sample model, before the online phase the algorithm observes exactly one sample $\\tilde X_e\\sim D_e$ for each element $e$. Then the actual values $X_e$ arrive online, and the algorithm irrevocably builds an independent set (the accepted set must remain in $\\mathcal{I}$). The question is whether there exists a universal constant $c$ such that $\\mathbb{E}[w(\\mathrm{ALG})]\\ge \\frac{1}{c}\\,\\mathbb{E}[\\max_{S\\in\\mathcal{I}} w(S)]$ using a single sample per element, for every matroid, where $w(\\mathrm{ALG})$ is the total value of the accepted independent set. For the single-choice case (rank-1 / uniform matroid of rank 1) the tight answer is known to be $1/2$. Determine whether a single sample suffices to obtain a constant-competitive guarantee for every matroid.",
+  "known_results": "Single-choice single-sample is tight at $1/2$ (Rubinstein-Wang-Weinberg 2020). For general matroids the best is ($1/4$ - $\\epsilon$)-competitive using $O(\\operatorname{polylog} n)$ samples (EC 2024); whether a single sample gives a constant for general matroids is open and tied to the matroid secretary conjecture.",
+  "where_posed": {
+   "text": "Stated/originated in Azar, Kleinberg, Weinberg, 'Prophet Inequalities with Limited Information', 2014, SODA.",
+   "url": "https://arxiv.org/abs/1307.3736"
+  },
+  "source": {
+   "authors": "Pablo Azar, Robert Kleinberg, S. Matthew Weinberg",
+   "title": "Prophet Inequalities with Limited Information",
+   "year": 2014,
+   "venue": "SODA",
+   "url": "https://arxiv.org/abs/1307.3736"
+  },
+  "additional_refs": [
+   {
+    "authors": "Aviad Rubinstein, Jack Z. Wang, S. Matthew Weinberg",
+    "title": "Optimal Single-Choice Prophet Inequalities from Samples",
+    "year": 2020,
+    "venue": "ITCS",
+    "url": "https://arxiv.org/abs/1911.07945"
+   },
+   {
+    "authors": "Hu Fu, Pinyan Lu, Zhihao Gavin Tang, Hongxun Wu, Jinzhao Wu, Qianfan Zhang",
+    "title": "Sample-Based Matroid Prophet Inequalities",
+    "year": 2024,
+    "venue": "EC",
+    "url": "https://arxiv.org/abs/2406.12799"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "online-matching-general-vertex-arrivals",
+  "title": "Competitive ratio for online bipartite matching with general vertex arrivals",
+  "collection": "Online Algorithms & Learning",
+  "area": "Online Algorithms",
+  "tags": [
+   "online matching",
+   "competitive analysis",
+   "RANKING",
+   "vertex arrivals"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "In the general-vertex-arrival model, vertices on both sides of a bipartite graph arrive online (each revealing its already-arrived neighbors) and must be matched irrevocably. What is the optimal competitive ratio for maximum cardinality matching?",
+  "full_statement": "Consider a bipartite graph in which all vertices (on both sides) arrive online in adversarial order. Each arriving vertex reveals its edges to previously arrived vertices, and must be matched irrevocably either upon arrival or at the moment it can no longer be matched. The goal is to maximize the cardinality of the matching, compared against the maximum cardinality matching of the full graph. This is the general-vertex-arrival model, which strictly generalizes the classical Karp-Vazirani-Vazirani one-sided arrival model (where offline vertices are fixed and only online vertices arrive, for which the optimal ratio is $1-1/e$). Determine the optimal competitive ratio $\\rho$ for maximum cardinality matching in this model. Known: the best integral algorithm achieves $\\tfrac12 + \\Omega(1)$, the best fractional algorithm achieves $0.526$, and no algorithm exceeds $0.583$.",
+  "known_results": "Gamlath, Kapralov, Maggiori, Svensson, and Wajc gave the first integral algorithm beating the trivial $1/2$ barrier by a constant amount. Wang and Wong obtained a $0.526$ fractional guarantee, while the best known upper bound rules out ratios above $0.583$. This leaves a substantial gap, especially compared with the edge-arrival model, where the optimal ratio is essentially understood at $1/2$. The open problem is to determine the optimal competitive ratio for general vertex arrivals, or at least to close the interval between the current lower and upper bounds.",
+  "where_posed": {
+   "text": "Stated in Wang, Wong, 'Two-sided Online Bipartite Matching and Vertex Cover: Beating the Greedy Algorithm', 2015, ICALP.",
+   "url": "https://link.springer.com/chapter/10.1007/978-3-662-47672-7_85"
+  },
+  "source": {
+   "authors": "Yajun Wang, Sam Chiu-wai Wong",
+   "title": "Two-sided Online Bipartite Matching and Vertex Cover: Beating the Greedy Algorithm",
+   "year": 2015,
+   "venue": "ICALP",
+   "url": "https://link.springer.com/chapter/10.1007/978-3-662-47672-7_85"
+  },
+  "additional_refs": [
+   {
+    "authors": "Buddhima Gamlath, Michael Kapralov, Andreas Maggiori, Ola Svensson, David Wajc",
+    "title": "Online Matching with General Arrivals",
+    "year": 2019,
+    "venue": "FOCS",
+    "url": "https://arxiv.org/abs/1904.08255"
+   },
+   {
+    "authors": "Zhiyi Huang, Zhihao Gavin Tang, David Wajc",
+    "title": "Online Matching: A Brief Survey",
+    "year": 2024,
+    "venue": "SIGecom Exchanges",
+    "url": "https://www.sigecom.org/exchanges/volume_22/1/HUANG.pdf"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "fully-online-matching",
+  "title": "Competitive ratio for fully online matching",
+  "collection": "Online Algorithms & Learning",
+  "area": "Online Algorithms",
+  "tags": [
+   "online matching",
+   "fully online",
+   "RANKING",
+   "general graphs"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "In fully online matching, all vertices of a (possibly non-bipartite) graph arrive online with deadlines, and an unmatched vertex must be matched or dropped by its deadline. What is the optimal competitive ratio?",
+  "full_statement": "In the fully online matching model, the vertices of a (possibly non-bipartite) graph arrive online one at a time. Each vertex has a deadline that occurs after all of its neighbors have arrived. An algorithm may match a vertex to any currently available neighbor at any time up to its deadline, and all matching decisions are irrevocable; at its deadline, an unmatched vertex must be either matched or permanently dropped. This generalizes the classical online bipartite matching model by allowing vertices on both sides (and non-bipartite graphs) to arrive online with deadlines. The benchmark is the maximum matching of the full graph. Determine the optimal competitive ratio. For bipartite graphs, the best integral algorithm is $0.569$-competitive, the best fractional algorithm is $0.6$-competitive, and no algorithm exceeds $0.613$.",
+  "known_results": "For bipartite fully online matching, the best integral algorithm currently achieves ratio $0.569$, due to Huang, Tang, Wu, and Zhang. Tang and Zhang improved the fractional guarantee to $0.6$, while Eckl and coauthors proved an impossibility result at $0.613$. The known upper and lower bounds are close enough to suggest a sharp constant may be accessible, but the exact competitive ratio is still open.",
+  "where_posed": {
+   "text": "Stated/originated in Huang, Kang, Tang, Wu, Zhang, Zhu, 'Fully Online Matching', 2020, JACM.",
+   "url": "https://dl.acm.org/doi/10.1145/3390890"
+  },
+  "source": {
+   "authors": "Zhiyi Huang, Ning Kang, Zhihao Gavin Tang, Xiaowei Wu, Yuhao Zhang, Xue Zhu",
+   "title": "Fully Online Matching",
+   "year": 2020,
+   "venue": "JACM",
+   "url": "https://dl.acm.org/doi/10.1145/3390890"
+  },
+  "additional_refs": [
+   {
+    "authors": "Zhiyi Huang, Zhihao Gavin Tang, Xiaowei Wu, Yuhao Zhang",
+    "title": "Fully Online Matching II: Beating Ranking and Water-filling",
+    "year": 2020,
+    "venue": "FOCS",
+    "url": "https://arxiv.org/abs/2005.06311"
+   },
+   {
+    "authors": "Alexander Eckl, Anja Kirschbaum, Marilena Leichter, Kevin Schewior",
+    "title": "A Stronger Impossibility for Fully Online Matching",
+    "year": 2021,
+    "venue": "Operations Research Letters",
+    "url": "https://arxiv.org/abs/2102.09432"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "vertex-weighted-random-order-matching",
+  "title": "Optimal ratio for vertex-weighted online matching in random order",
+  "collection": "Online Algorithms & Learning",
+  "area": "Online Algorithms",
+  "tags": [
+   "online matching",
+   "vertex-weighted",
+   "random order",
+   "competitive analysis"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "For vertex-weighted online bipartite matching with weighted offline vertices and online vertices arriving in uniformly random order, one can beat the adversarial-optimal $1-1/e$. What is the exact best-possible competitive ratio?",
+  "full_statement": "Consider online bipartite matching in which the offline vertices carry weights and the online vertices arrive in uniformly random order, each being matched irrevocably upon arrival to an available offline neighbor (or left unmatched). The objective is the total weight of matched offline vertices, compared against the offline optimum (maximum-weight matching). For adversarial one-sided arrivals the optimal competitive ratio for this vertex-weighted setting is exactly $1-1/e$; with uniformly random arrival order one can do strictly better. Determine the optimal competitive ratio $\\rho$ (the ratio of expected matched weight to the offline optimum) in the random-order vertex-weighted setting. Known: $\\rho \\ge 0.662 > 1 - 1/e$, with no matching upper bound currently established.",
+  "known_results": "In the adversarial one-sided arrival model, the vertex-weighted problem is tight at $1-1/e$, by Aggarwal, Goel, Karande, and Mehta. Uniformly random arrival order makes the problem easier: algorithms of Huang, Tang, Wu, and Zhang and the later analysis of Jin and Williamson achieve ratio about $0.662$, strictly above $1-1/e$. No matching upper bound is known. The open problem is to identify the exact random-order competitive ratio and determine how much random order can improve over the adversarial threshold.",
+  "where_posed": {
+   "text": "Stated in Huang, Tang, Wu, Zhang, 'Online Vertex-Weighted Bipartite Matching: Beating 1-1/e with Random Arrivals', 2018, ICALP / ACM TALG.",
+   "url": "https://arxiv.org/abs/1804.07458"
+  },
+  "source": {
+   "authors": "Zhiyi Huang, Zhihao Gavin Tang, Xiaowei Wu, Yuhao Zhang",
+   "title": "Online Vertex-Weighted Bipartite Matching: Beating 1-1/e with Random Arrivals",
+   "year": 2018,
+   "venue": "ICALP / ACM TALG",
+   "url": "https://arxiv.org/abs/1804.07458"
+  },
+  "additional_refs": [
+   {
+    "authors": "Gagan Aggarwal, Gagan Goel, Chinmay Karande, Aranyak Mehta",
+    "title": "Online Vertex-Weighted Bipartite Matching and Single-bid Budgeted Allocations",
+    "year": 2011,
+    "venue": "SODA",
+    "url": "https://dl.acm.org/doi/10.5555/2133036.2133131"
+   },
+   {
+    "authors": "Billy Jin, David P. Williamson",
+    "title": "Improved Analysis of RANKING for Online Vertex-Weighted Bipartite Matching in the Random Order Model",
+    "year": 2021,
+    "venue": "WINE",
+    "url": "https://arxiv.org/abs/2107.03077"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "edge-weighted-matching-free-disposal",
+  "title": "Tight ratio for edge-weighted online matching with free disposal",
+  "collection": "Online Algorithms & Learning",
+  "area": "Online Algorithms",
+  "tags": [
+   "online matching",
+   "edge-weighted",
+   "free disposal",
+   "display ads",
+   "OCS"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "In edge-weighted online bipartite matching with free disposal ('display ads'), each offline vertex holds one item but may discard a prior match for free if a better one arrives. What is the best-possible competitive ratio?",
+  "full_statement": "Consider edge-weighted online bipartite matching, motivated by display advertising. Online vertices arrive in adversarial order. Matching an online vertex $v$ to an offline vertex $u$ yields edge weight $w_{uv}$. Each offline vertex $u$ may hold at most one item, but is allowed free disposal: if a better-weight online vertex arrives, $u$ may discard its previously matched item at no cost and keep only its highest-weight match. The objective is to maximize the total weight retained, compared against the offline optimum. Greedy guarantees $1/2$; beating $1/2$ was a major open problem until 2020. Determine the optimal competitive ratio $\\rho$. Known: $0.536 \\le \\rho \\le 1 - 1/e$ in the integral case.",
+  "known_results": "The greedy algorithm is $1/2$-competitive. Fahrbach, Huang, Tao, and Zadimoghaddam were the first to beat the $1/2$ barrier, obtaining ratio $0.5086$ via online correlated selection, and Blanc and Charikar later improved the guarantee to $0.536$. On the impossibility side, no upper bound below $1-1/e$ is known. The open problem is to determine the tight competitive ratio for edge-weighted online matching with free disposal.",
+  "where_posed": {
+   "text": "Stated in Fahrbach, Huang, Tao, Zadimoghaddam, 'Edge-Weighted Online Bipartite Matching', 2020, FOCS / JACM.",
+   "url": "https://arxiv.org/abs/2005.01929"
+  },
+  "source": {
+   "authors": "Matthew Fahrbach, Zhiyi Huang, Runzhou Tao, Morteza Zadimoghaddam",
+   "title": "Edge-Weighted Online Bipartite Matching",
+   "year": 2020,
+   "venue": "FOCS / JACM",
+   "url": "https://arxiv.org/abs/2005.01929"
+  },
+  "additional_refs": [
+   {
+    "authors": "Guy Blanc, Moses Charikar",
+    "title": "Multiway Online Correlated Selection",
+    "year": 2021,
+    "venue": "FOCS",
+    "url": "https://arxiv.org/abs/2106.05579"
+   },
+   {
+    "authors": "Jon Feldman, Nitish Korula, Vahab Mirrokni, S. Muthukrishnan, Martin Pal",
+    "title": "Online Ad Assignment with Free Disposal",
+    "year": 2009,
+    "venue": "WINE",
+    "url": "https://link.springer.com/chapter/10.1007/978-3-642-10841-9_34"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "adwords-general-bids",
+  "title": "AdWords with general bids: is 1-1/e achievable?",
+  "collection": "Online Algorithms & Learning",
+  "area": "Online Algorithms",
+  "tags": [
+   "AdWords",
+   "online matching",
+   "budgeted allocation",
+   "OCS",
+   "competitive analysis"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "In AdWords, advertisers with budgets receive online queries and spend a bid (capped by remaining budget) per assignment. Without the small-bid assumption, is the optimal $1-1/e$ revenue ratio (or anything close) achievable?",
+  "full_statement": "In the AdWords problem, each advertiser $i$ has a budget $B_i$, and queries $j$ arrive online. Assigning query $j$ to advertiser $i$ spends $\\min(b_{ij}, \\text{remaining } B_i)$, where $b_{ij}$ is the bid; in the general-bids setting these bids may be comparable to $B_i$ (i.e., there is no small-bid / tiny-bid assumption). Each query is assigned irrevocably upon arrival, and the goal is to maximize total spend (revenue). The optimal $1-1/e$ ratio of Mehta-Saberi-Vazirani-Vazirani holds only under the small-bid assumption (each bid tiny relative to the budget). Without it, greedy gives only $1/2$. Determine the optimal competitive ratio for general bids; in particular, is it $1-1/e$? Known: $0.5016 \\le \\rho \\le 1 - 1/e$.",
+  "known_results": "When all bids are small relative to budgets, the MSVV algorithm gives the optimal $1-1/e$ guarantee. With arbitrary bid sizes, the simple greedy guarantee is only $1/2$, and Huang, Zhang, and Zhang were the first to beat this barrier, obtaining a ratio of $0.5016$ using panoramic online correlated selection. There is still no upper bound below $1-1/e$ for general bids. The open problem is to determine the true optimal competitive ratio in this large-bid regime, and in particular whether the small-bids constant $1-1/e$ can be recovered.",
+  "where_posed": {
+   "text": "Stated/originated in Mehta, Saberi, Vazirani, Vazirani, 'AdWords and Generalized Online Matching', 2007, JACM (FOCS 2005).",
+   "url": "https://people.eecs.berkeley.edu/~vazirani/pubs/adwords.pdf"
+  },
+  "source": {
+   "authors": "Aranyak Mehta, Amin Saberi, Umesh Vazirani, Vijay Vazirani",
+   "title": "AdWords and Generalized Online Matching",
+   "year": 2007,
+   "venue": "JACM (FOCS 2005)",
+   "url": "https://people.eecs.berkeley.edu/~vazirani/pubs/adwords.pdf"
+  },
+  "additional_refs": [
+   {
+    "authors": "Zhiyi Huang, Qiankun Zhang, Yuhao Zhang",
+    "title": "AdWords in a Panorama",
+    "year": 2020,
+    "venue": "FOCS",
+    "url": "https://arxiv.org/abs/2009.04114"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "k-server-conjecture-deterministic",
+  "title": "The (deterministic) k-server conjecture",
+  "collection": "Online Algorithms & Learning",
+  "area": "Online Algorithms",
+  "tags": [
+   "k-server",
+   "competitive analysis",
+   "metric spaces",
+   "work function algorithm"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "With $k$ mobile servers in a metric space serving requested points by moving a server to each request, is there for every metric space a deterministic online algorithm whose cost is at most $k$ times the optimal offline cost?",
+  "full_statement": "In the $k$-server problem, an algorithm controls $k$ mobile servers located in a metric space $M$ and must serve a sequence of requested points: each request must be served by moving some server to the requested point, and the cost is the total distance moved by all servers. The deterministic $k$-server conjecture asks: for every metric space $M$ with $|M|\\ge k+1$, does there exist a deterministic online $k$-server algorithm $A$ and a constant $c_M$ (depending only on $M$) such that $\\mathrm{cost}_A(\\sigma)\\le k\\cdot \\mathrm{OPT}(\\sigma)+c_M$ for all request sequences $\\sigma$, where $\\mathrm{OPT}(\\sigma)$ is the optimal offline cost? Equivalently, is the deterministic competitive ratio exactly $k$? The matching lower bound of $k$ is already known, so the question is whether this lower bound is achievable. The best general upper bound is $2k-1$. Determine whether the deterministic competitive ratio equals $k$ for every metric space.",
+  "known_results": "The lower bound of $k$ is classical, so the conjecture asks whether this bound is always achievable. The best general deterministic upper bound is $2k-1$, obtained by Koutsoupias and Papadimitriou through the Work Function Algorithm. The conjectured ratio $k$ is known in several special cases, including $k=2$, line metrics, tree metrics, and metrics with only $k+1$ or $k+2$ points. The full metric-space case remains open.",
+  "where_posed": {
+   "text": "Stated/originated in Manasse, McGeoch, Sleator, 'Competitive Algorithms for Server Problems', STOC 1988 / J. Algorithms 1990.",
+   "url": "https://dl.acm.org/doi/10.1145/62212.62243"
+  },
+  "source": {
+   "authors": "Mark S. Manasse, Lyle A. McGeoch, Daniel D. Sleator",
+   "title": "Competitive Algorithms for Server Problems",
+   "year": 1990,
+   "venue": "STOC 1988 / J. Algorithms 1990",
+   "url": "https://dl.acm.org/doi/10.1145/62212.62243"
+  },
+  "additional_refs": [
+   {
+    "authors": "Elias Koutsoupias, Christos H. Papadimitriou",
+    "title": "On the k-Server Conjecture",
+    "year": 1995,
+    "venue": "JACM",
+    "url": "https://www.cs.ox.ac.uk/people/elias.koutsoupias/Personal/Papers/paper-kp95.pdf"
+   }
+  ],
+  "enabled": true
+ }
+]

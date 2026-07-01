@@ -1,0 +1,58 @@
+{
+ "number": 6,
+ "ref": "ORDOS-006",
+ "id": "vertex-weighted-random-order-matching",
+ "title": "Optimal ratio for vertex-weighted online matching in random order",
+ "collection": "Online Algorithms & Learning",
+ "area": "Online Algorithms",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "online matching",
+  "vertex-weighted",
+  "random order",
+  "competitive analysis"
+ ],
+ "short_statement": "For vertex-weighted online bipartite matching with weighted offline vertices and online vertices arriving in uniformly random order, one can beat the adversarial-optimal $1-1/e$. What is the exact best-possible competitive ratio?",
+ "open_problem": "Determine the optimal competitive ratio $\\rho$ (the ratio of expected matched weight to the offline optimum) in the random-order vertex-weighted setting.",
+ "full_statement": "Consider online bipartite matching in which the offline vertices carry weights and the online vertices arrive in uniformly random order, each being matched irrevocably upon arrival to an available offline neighbor (or left unmatched). The objective is the total weight of matched offline vertices, compared against the offline optimum (maximum-weight matching). For adversarial one-sided arrivals the optimal competitive ratio for this vertex-weighted setting is exactly $1-1/e$; with uniformly random arrival order one can do strictly better. Determine the optimal competitive ratio $\\rho$ (the ratio of expected matched weight to the offline optimum) in the random-order vertex-weighted setting. Known: $\\rho \\ge 0.662 > 1 - 1/e$, with no matching upper bound currently established.",
+ "known_results": "In the adversarial one-sided arrival model, the vertex-weighted problem is tight at $1-1/e$, by Aggarwal, Goel, Karande, and Mehta. Uniformly random arrival order makes the problem easier: algorithms of Huang, Tang, Wu, and Zhang and the later analysis of Jin and Williamson achieve ratio about $0.662$, strictly above $1-1/e$. No matching upper bound is known. The open problem is to identify the exact random-order competitive ratio and determine how much random order can improve over the adversarial threshold.",
+ "where_posed": {
+  "text": "Stated in Huang, Tang, Wu, Zhang, 'Online Vertex-Weighted Bipartite Matching: Beating 1-1/e with Random Arrivals', 2018, ICALP / ACM TALG.",
+  "url": "https://arxiv.org/abs/1804.07458"
+ },
+ "source": {
+  "authors": "Zhiyi Huang, Zhihao Gavin Tang, Xiaowei Wu, Yuhao Zhang",
+  "title": "Online Vertex-Weighted Bipartite Matching: Beating 1-1/e with Random Arrivals",
+  "year": 2018,
+  "venue": "ICALP / ACM TALG",
+  "url": "https://arxiv.org/abs/1804.07458"
+ },
+ "additional_refs": [
+  {
+   "authors": "Gagan Aggarwal, Gagan Goel, Chinmay Karande, Aranyak Mehta",
+   "title": "Online Vertex-Weighted Bipartite Matching and Single-bid Budgeted Allocations",
+   "year": 2011,
+   "venue": "SODA",
+   "url": "https://dl.acm.org/doi/10.5555/2133036.2133131"
+  },
+  {
+   "authors": "Billy Jin, David P. Williamson",
+   "title": "Improved Analysis of RANKING for Online Vertex-Weighted Bipartite Matching in the Random Order Model",
+   "year": 2021,
+   "venue": "WINE",
+   "url": "https://arxiv.org/abs/2107.03077"
+  }
+ ],
+ "bibtex": "@misc{Huang2018,\n  author = {Zhiyi Huang and Zhihao Gavin Tang and Xiaowei Wu and Yuhao Zhang},\n  title = {Online Vertex-Weighted Bipartite Matching: Beating 1-1/e with Random Arrivals},\n  year = {2018},\n  howpublished = {ICALP / ACM TALG},\n  url = {https://arxiv.org/abs/1804.07458},\n  note = {Source of ORdős Problem ORDOS-006}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/vertex-weighted-random-order-matching.html",
+  "api": "https://ordos-problems.github.io/api/problems/vertex-weighted-random-order-matching.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

@@ -1,0 +1,59 @@
+{
+ "number": 22,
+ "ref": "ORDOS-022",
+ "id": "menu-complexity-multi-item",
+ "title": "Menu complexity of approximately revenue-optimal multi-item auctions",
+ "collection": "Market & Mechanism Design",
+ "area": "Mechanism Design",
+ "status": "partially resolved",
+ "confidence": "high",
+ "tags": [
+  "auctions",
+  "revenue",
+  "menu complexity",
+  "simple vs optimal",
+  "multi-item"
+ ],
+ "short_statement": "When selling several items to one additive buyer, how many distinct menu (lottery) options are needed to capture a $(1-\\epsilon)$ fraction of the optimal revenue, as a function of the number of items $n$ (and the exact two-item exponent)?",
+ "open_problem": "the tight growth of $C(n,\\varepsilon)$ in $n$ for fixed $\\varepsilon$ (in particular whether $\\mathrm{poly}(n)$ suffices), and the exact two-item menu-size exponent. Determine these.",
+ "full_statement": "Consider a single additive buyer whose item values are drawn from independent distributions $F_1,\\dots,F_n$ over $n$ items. A mechanism can be described as a menu of (possibly randomized) options. Let $C(n,\\varepsilon)$ be the minimum menu size such that some mechanism with at most $C(n,\\varepsilon)$ entries achieves expected revenue $\\ge(1-\\varepsilon)\\mathrm{Rev}(F)$ for every such product distribution $F$, where $\\mathrm{Rev}(F)$ is the optimal revenue. Even with two items the revenue-optimal menu can require a continuum of options. Known: $C(n,1/n)\\ge 2^{\\Omega(n)}$; for two items the menu size is between $\\Omega(\\varepsilon^{-1/4})$ and $O(\\varepsilon^{-2})$. Open: the tight growth of $C(n,\\varepsilon)$ in $n$ for fixed $\\varepsilon$ (in particular whether $\\mathrm{poly}(n)$ suffices), and the exact two-item menu-size exponent. Determine these.",
+ "known_results": "Several qualitative questions are resolved: finite menus can approximate optimal revenue to within a $(1-\\epsilon)$ factor, and the better of selling items separately and selling the grand bundle gives a constant-factor approximation. For two items, the communication complexity is $\\Theta(\\log(1/\\epsilon))$. The open problem is quantitative menu-size growth: for fixed $\\epsilon$, it is unknown whether a polynomial-size menu in $n$ always suffices, since exponential lower bounds are known only when $\\epsilon=1/n$. Even for two items, the exact exponent in the dependence on $1/\\epsilon$ remains open.",
+ "where_posed": {
+  "text": "Studied in Hart, Nisan, 'Selling Multiple Correlated Goods: Revenue Maximization and Menu-Size Complexity', 2019, Journal of Economic Theory.",
+  "url": "https://arxiv.org/abs/1304.6116"
+ },
+ "source": {
+  "authors": "Sergiu Hart, Noam Nisan",
+  "title": "Selling Multiple Correlated Goods: Revenue Maximization and Menu-Size Complexity",
+  "year": 2019,
+  "venue": "Journal of Economic Theory",
+  "url": "https://arxiv.org/abs/1304.6116"
+ },
+ "additional_refs": [
+  {
+   "authors": "Moshe Babaioff, Yannai A. Gonczarowski, Noam Nisan",
+   "title": "The Menu-Size Complexity of Revenue Approximation",
+   "year": 2017,
+   "venue": "STOC (GEB 2022)",
+   "url": "https://arxiv.org/abs/1604.06580"
+  },
+  {
+   "authors": "Yannai A. Gonczarowski",
+   "title": "Bounding the Menu-Size of Approximately Optimal Auctions via Optimal-Transport Duality",
+   "year": 2018,
+   "venue": "STOC",
+   "url": "https://arxiv.org/abs/1708.08907"
+  }
+ ],
+ "bibtex": "@misc{Hart2019,\n  author = {Sergiu Hart and Noam Nisan},\n  title = {Selling Multiple Correlated Goods: Revenue Maximization and Menu-Size Complexity},\n  year = {2019},\n  howpublished = {Journal of Economic Theory},\n  url = {https://arxiv.org/abs/1304.6116},\n  note = {Source of ORdős Problem ORDOS-022}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/menu-complexity-multi-item.html",
+  "api": "https://ordos-problems.github.io/api/problems/menu-complexity-multi-item.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

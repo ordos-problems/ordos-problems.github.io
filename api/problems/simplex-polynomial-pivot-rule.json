@@ -1,0 +1,58 @@
+{
+ "number": 72,
+ "ref": "ORDOS-072",
+ "id": "simplex-polynomial-pivot-rule",
+ "title": "A polynomial pivot rule for the simplex method",
+ "collection": "Operations Research",
+ "area": "Linear Programming",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "simplex method",
+  "pivot rule",
+  "linear programming",
+  "Klee-Minty"
+ ],
+ "short_statement": "Is there a pivot rule under which the simplex method always solves a linear program in a number of pivot steps bounded by a polynomial in the number of variables and constraints?",
+ "open_problem": "does there exist a (deterministic or randomized) pivot rule for which the number of pivot steps is bounded by a polynomial in $m$ and $n$ for every linear program?",
+ "full_statement": "The simplex method solves $\\max\\{c^\\top x : Ax\\le b,\\ x\\ge 0\\}$ by walking along edges of the feasible polyhedron from vertex to adjacent improving vertex; a \\emph{pivot rule} chooses, at each vertex, which improving edge to follow. Klee and Minty (1972) showed Dantzig's most-negative-reduced-cost rule can take $2^n-1$ steps on a deformed cube, and analogous exponential lower bounds are known for essentially every classical deterministic rule (Bland, steepest edge, greatest improvement, etc.). Question: does there exist a (deterministic or randomized) pivot rule for which the number of pivot steps is bounded by a polynomial in $m$ and $n$ for every linear program?",
+ "known_results": "Best known are subexponential randomized rules: Random-Facet achieves $\\exp(O(\\sqrt{n\\log n}))$ pivots (Kalai 1992; Matoušek–Sharir–Welzl), later shown essentially tight for such rules (Friedmann–Hansen–Zwick). No polynomial pivot rule is known. The question is intimately tied to the polynomial Hirsch conjecture (a polynomial diameter bound is necessary for any polynomial pivot rule).",
+ "where_posed": {
+  "text": "A central open problem of linear optimization since Klee–Minty (1972); see Kalai (1992) and Todd's surveys.",
+  "url": "https://www.sciencedirect.com/science/article/pii/B9780125104302500190"
+ },
+ "source": {
+  "authors": "Victor Klee, George J. Minty",
+  "title": "How Good is the Simplex Algorithm?",
+  "year": 1972,
+  "venue": "Inequalities III (Academic Press)",
+  "url": "https://www.sciencedirect.com/science/article/pii/B9780125104302500190"
+ },
+ "additional_refs": [
+  {
+   "authors": "Gil Kalai",
+   "title": "A subexponential randomized simplex algorithm",
+   "year": 1992,
+   "venue": "STOC",
+   "url": "https://doi.org/10.1145/129712.129759"
+  },
+  {
+   "authors": "Oliver Friedmann, Thomas Dueholm Hansen, Uri Zwick",
+   "title": "Subexponential lower bounds for randomized pivoting rules for the simplex algorithm",
+   "year": 2011,
+   "venue": "STOC",
+   "url": "https://doi.org/10.1145/1993636.1993675"
+  }
+ ],
+ "bibtex": "@misc{Klee1972,\n  author = {Victor Klee and George J. Minty},\n  title = {How Good is the Simplex Algorithm?},\n  year = {1972},\n  howpublished = {Inequalities III (Academic Press)},\n  url = {https://www.sciencedirect.com/science/article/pii/B9780125104302500190},\n  note = {Source of ORdős Problem ORDOS-072}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/simplex-polynomial-pivot-rule.html",
+  "api": "https://ordos-problems.github.io/api/problems/simplex-polynomial-pivot-rule.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

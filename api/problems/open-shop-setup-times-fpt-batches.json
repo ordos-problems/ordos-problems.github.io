@@ -1,0 +1,59 @@
+{
+ "number": 87,
+ "ref": "ORDOS-087",
+ "id": "open-shop-setup-times-fpt-batches",
+ "title": "Open-shop scheduling with sequence-dependent batch setup times",
+ "collection": "Operations Research",
+ "area": "Scheduling",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "open shop",
+  "setup times",
+  "batch scheduling",
+  "parameterized complexity",
+  "makespan"
+ ],
+ "short_statement": "Is unit-time open-shop makespan scheduling with sequence-dependent batch setup times fixed-parameter tractable in the number of batches?",
+ "open_problem": "Determine whether batch/open-shop scheduling with setup times is fixed-parameter tractable in the number of batches alone.",
+ "full_statement": "In $O|p_{ij}=1,ST_{sd,b}|C_{\\max}$, each job has one unit-time operation on each machine, jobs are partitioned into $g$ batches, and a machine incurs a sequence-dependent setup time $s_{pq}$ when it switches from processing a job of batch $p$ to a job of batch $q$. The processing order of a job's operations is unconstrained, each machine handles at most one operation at a time, and each job is processed by at most one machine at a time. The objective is to minimize makespan. The open problem asks whether this problem is fixed-parameter tractable parameterized by the number of batches $g$, ideally also under high-multiplicity encoding where the number of jobs in each batch is given compactly.",
+ "known_results": "The problem generalizes the traveling salesperson problem and is NP-hard already for one machine. Van Bevern and Pyatkin give algorithms for cases where every batch contains more jobs than machines, and polynomial algorithms when both the number of machines and number of batches are constants. Mnich and van Bevern list FPT in the number of batches alone as Open Problem 14.",
+ "where_posed": {
+  "text": "Open Problem 14 in Mnich and van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems' (Computers & Operations Research 2018).",
+  "url": "https://arxiv.org/abs/1709.01670"
+ },
+ "source": {
+  "authors": "Matthias Mnich, René van Bevern",
+  "title": "Parameterized complexity of machine scheduling: 15 open problems",
+  "year": 2018,
+  "venue": "Computers & Operations Research",
+  "url": "https://arxiv.org/abs/1709.01670"
+ },
+ "additional_refs": [
+  {
+   "authors": "René van Bevern, Artem V. Pyatkin",
+   "title": "Completing partial schedules for Open Shop with unit processing times and routing",
+   "year": 2016,
+   "venue": "CSR",
+   "url": "https://doi.org/10.1007/978-3-319-34171-2_6"
+  },
+  {
+   "authors": "Matthias Mnich, René van Bevern",
+   "title": "Parameterized complexity of machine scheduling: 15 open problems",
+   "year": 2018,
+   "venue": "Computers & Operations Research",
+   "url": "https://doi.org/10.1016/j.cor.2018.07.020"
+  }
+ ],
+ "bibtex": "@misc{Mnich2018,\n  author = {Matthias Mnich and René van Bevern},\n  title = {Parameterized complexity of machine scheduling: 15 open problems},\n  year = {2018},\n  howpublished = {Computers & Operations Research},\n  url = {https://arxiv.org/abs/1709.01670},\n  note = {Source of ORdős Problem ORDOS-087}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/open-shop-setup-times-fpt-batches.html",
+  "api": "https://ordos-problems.github.io/api/problems/open-shop-setup-times-fpt-batches.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

@@ -1,0 +1,59 @@
+{
+ "number": 91,
+ "ref": "ORDOS-091",
+ "id": "talagrand-empirical-process-decomposition",
+ "title": "Talagrand's decomposition conjecture for empirical processes",
+ "collection": "Applied Probability",
+ "area": "Empirical Processes",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "Talagrand",
+  "empirical processes",
+  "generic chaining",
+  "selector processes",
+  "probability"
+ ],
+ "short_statement": "Does every bounded empirical process decompose into a non-cancellation part plus a generic-chaining part, as predicted by Talagrand's program?",
+ "open_problem": "Talagrand's conjecture asks whether these are the only mechanisms: can one always find a decomposition $\\mathcal{F}\\subset \\mathcal{F}_1+\\mathcal{F}_2$ such that $$\\mathbb{E}\\sup_{f_1\\in\\mathcal{F}_1}\\sum_{i\\le N}|f_1(X_i)|\\le \\sqrt N\\,S_N(\\mathcal{F}),$$ $$\\gamma_2(\\mathcal{F}_2,d_2)\\le L S_N(\\mathcal{F}),\\qquad \\gamma_1(\\mathcal{F}_2,d_\\infty)\\le L\\sqrt N\\,S_N(\\mathcal{F})$$ for a universal constant $L$?",
+ "full_statement": "Let $(X_i)_{i\\le N}$ be i.i.d. random variables on a measurable space and let $\\mathcal{F}$ be a countable class of measurable functions. Define the empirical-process supremum $$S_N(\\mathcal{F})=\\mathbb{E}\\sup_{f\\in\\mathcal{F}}\\left|\\frac{1}{\\sqrt N}\\sum_{i\\le N}(f(X_i)-\\mathbb{E}f(X_i))\\right|.$$ There are two basic mechanisms for controlling $S_N(\\mathcal{F})$: a pointwise/no-cancellation bound through $\\sum_i |f(X_i)|$, and a cancellation/chaining bound involving $\\gamma_2(\\mathcal{F},d_2)$ and $\\gamma_1(\\mathcal{F},d_\\infty)$, where $d_p(f,g)=\\|f-g\\|_p$. Talagrand's conjecture asks whether these are the only mechanisms: can one always find a decomposition $\\mathcal{F}\\subset \\mathcal{F}_1+\\mathcal{F}_2$ such that $$\\mathbb{E}\\sup_{f_1\\in\\mathcal{F}_1}\\sum_{i\\le N}|f_1(X_i)|\\le \\sqrt N\\,S_N(\\mathcal{F}),$$ $$\\gamma_2(\\mathcal{F}_2,d_2)\\le L S_N(\\mathcal{F}),\\qquad \\gamma_1(\\mathcal{F}_2,d_\\infty)\\le L\\sqrt N\\,S_N(\\mathcal{F})$$ for a universal constant $L$? A related selector-process version asks for an analogous decomposition for Bernoulli selectors $\\delta_i$.",
+ "known_results": "Talagrand's majorizing-measure theorem fully characterizes Gaussian process suprema via generic chaining. Bednorz and Latała solved the Bernoulli conjecture, showing that a Bernoulli process decomposes into an $\\ell^1$ no-cancellation part and a Gaussian/chaining part. They identify this as one step in Talagrand's broader program and record the selector-process and empirical-process decomposition conjectures as open.",
+ "where_posed": {
+  "text": "Conjectures 9.1 and 9.2 in Bednorz and Latała, 'On the boundedness of Bernoulli processes', attributed to Talagrand's program and book.",
+  "url": "https://arxiv.org/abs/1305.4292"
+ },
+ "source": {
+  "authors": "Witold Bednorz, Rafał Latała",
+  "title": "On the boundedness of Bernoulli processes",
+  "year": 2014,
+  "venue": "Annals of Mathematics",
+  "url": "https://arxiv.org/abs/1305.4292"
+ },
+ "additional_refs": [
+  {
+   "authors": "Michel Talagrand",
+   "title": "Upper and Lower Bounds for Stochastic Processes: Modern Methods and Classical Problems",
+   "year": 2014,
+   "venue": "Springer",
+   "url": "https://doi.org/10.1007/978-3-642-54075-2"
+  },
+  {
+   "authors": "Michel Talagrand",
+   "title": "Are many small sets explicitly small?",
+   "year": 2010,
+   "venue": "STOC",
+   "url": "https://doi.org/10.1145/1806689.1806716"
+  }
+ ],
+ "bibtex": "@misc{Bednorz2014,\n  author = {Witold Bednorz and Rafał Latała},\n  title = {On the boundedness of Bernoulli processes},\n  year = {2014},\n  howpublished = {Annals of Mathematics},\n  url = {https://arxiv.org/abs/1305.4292},\n  note = {Source of ORdős Problem ORDOS-091}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/talagrand-empirical-process-decomposition.html",
+  "api": "https://ordos-problems.github.io/api/problems/talagrand-empirical-process-decomposition.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

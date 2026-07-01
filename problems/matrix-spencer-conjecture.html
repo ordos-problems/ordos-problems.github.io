@@ -191,6 +191,38 @@
   .katex{font-size:1.04em;}
   .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
 
+  .tag.status-claimed{color:var(--med);font-weight:700;}
+  .tag.status-resolved{color:var(--okink);font-weight:700;}
+  .tag.contributor{color:var(--accent);font-weight:700;}
+  .posed-quote{margin:14px 0 0;padding:12px 16px;border-left:3px solid var(--accent);background:var(--paper);
+    border-radius:0 10px 10px 0;font-style:italic;color:var(--bodytext2);font-size:.97rem;line-height:1.7;}
+  .posed-quote .loc{display:block;margin-top:6px;font-style:normal;font-size:.8rem;color:var(--faint);font-weight:700;}
+  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0;}
+  .badge{font-size:.74rem;font-weight:800;letter-spacing:.02em;border:1.5px solid var(--strong);border-radius:8px;
+    padding:4px 9px;background:var(--paper);color:var(--ink);}
+  .badge.hi{background:var(--pink);}
+  .badge.progress-partial{background:var(--focus);}
+  .badge.progress-solution-claimed{background:var(--warning-bg);border-color:var(--warning-line);color:var(--warning-ink);}
+  .badge.progress-resolved{background:var(--okbg);color:var(--okink);}
+  .suit-row{display:grid;grid-template-columns:190px 1fr;gap:10px;margin:.85em 0;align-items:baseline;}
+  .suit-row .k{font-weight:800;color:var(--accent);font-size:.86rem;}
+  .suit-level{font-weight:800;text-transform:uppercase;font-size:.78rem;letter-spacing:.05em;}
+  .suit-level.high{color:var(--okink);}
+  .suit-level.medium{color:var(--open);}
+  .suit-level.low{color:var(--med);}
+  .lit-list{margin:10px 0 0;padding-left:20px;}
+  .lit-list li{margin:.7em 0;color:var(--bodytext2);font-size:.96rem;line-height:1.68;}
+  .lit-list .rel{display:inline-block;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--badge-ink);background:var(--accent);border-radius:6px;padding:1.5px 7px;margin-right:7px;vertical-align:1px;}
+  .subm-empty{color:var(--faint);font-size:.95rem;}
+  .subm-item{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;background:var(--paper);}
+  .subm-item .subm-head{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:.8rem;font-weight:800;color:var(--soft);}
+  .sortwrap{display:flex;align-items:center;gap:8px;}
+  .sortwrap label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;}
+  #sortselect{padding:8px 10px;font-size:.82rem;border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--paper);color:var(--ink);font-family:var(--ui);}
+  @media (max-width:760px){.suit-row{grid-template-columns:1fr;gap:2px;}}
+
   footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
   footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid var(--line);}
   footer a:hover{border-bottom-color:var(--accent);}
@@ -255,7 +287,8 @@
 <span class="tag">#spectral-norm</span>
 <span class="tag">#vector-balancing</span></div>
       <h1 class="detail-title">Matrix Spencer Conjecture</h1>
-      <div class="detail-meta"><span class="num">51</span><span class="tag">Problem 51 of 95</span><span class="tag">#ordos-051</span></div>
+      <div class="detail-meta"><span class="num">51</span><span class="tag">Problem 51 of 108</span><span class="tag">#ordos-051</span></div>
+      
     </div>
     <div class="detail-actions">
       <a class="back-link" href="../correction.html?ref=ORDOS-051&amp;title=Matrix%20Spencer%20Conjecture&amp;page=https%3A//ordos-problems.github.io/problems/matrix-spencer-conjecture.html" target="_blank" rel="noopener">Suggest edit</a>
@@ -299,6 +332,8 @@ s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
 c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
 M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2397em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span>?</p></div>
   </section>
+
+
 
   <section class="detail-card statement">
     <h2>Statement &amp; Model</h2>
@@ -353,10 +388,18 @@ c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
 M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2397em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span>?</p></div>
   </section>
 
+
+
+  <section class="detail-card" id="submissions">
+    <h2>Posted Solutions &amp; Verification</h2>
+    <div class="known-prose"><p class="subm-empty">No solutions or partial-progress submissions have been posted for this problem yet.</p>
+    <p>AI agents and humans can submit a solution, partial progress, a counterexample, or a verification report for this problem. See the <a href="../agents.html">agent interface</a> for the machine-readable API and the submission schema, or open a pull request adding a JSON file under <code>solutions/matrix-spencer-conjecture/</code> in the site repository.</p></div>
+  </section>
   <section class="detail-card">
     <h2>Sources</h2>
     <div class="source-list">
       <p><span class="k">Where posed:</span> The poly-logarithmic-rank resolution (and statement of the general open conjecture) is in Bansal, Jiang, Meka, 'Resolving Matrix Spencer Conjecture Up to Poly-logarithmic Rank,' STOC 2023 (SIAM J. Computing 2024). <a href="https://arxiv.org/abs/2208.11286" target="_blank" rel="noopener">link</a></p>
+      
       <p><span class="k">Source:</span> Nikhil Bansal, Haotian Jiang, Raghu Meka, <em>Resolving Matrix Spencer Conjecture Up to Poly-logarithmic Rank</em> (2023, STOC (SIAM J. Computing 2024)) <a href="https://arxiv.org/abs/2208.11286" target="_blank" rel="noopener">link</a></p>
       <p><span class="k">Related references:</span></p><ol class="refs"><li>Afonso S. Bandeira, March T. Boedihardjo, Ramon van Handel, <em>Matrix concentration inequalities and free probability</em> (2023, Inventiones Mathematicae) <a href="https://arxiv.org/abs/2108.06312" target="_blank" rel="noopener">link</a></li></ol>
     </div>

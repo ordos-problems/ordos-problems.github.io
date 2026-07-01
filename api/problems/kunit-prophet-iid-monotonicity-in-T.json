@@ -1,0 +1,62 @@
+{
+ "number": 58,
+ "ref": "ORDOS-058",
+ "id": "kunit-prophet-iid-monotonicity-in-T",
+ "title": "Monotonicity in T of the tight k-unit IID prophet ratio",
+ "collection": "Online Resource Allocation (Ma notes)",
+ "area": "Prophet Inequalities",
+ "status": "open",
+ "confidence": "high",
+ "contributor": "Will Ma",
+ "tags": [
+  "prophet inequality",
+  "k-unit",
+  "IID",
+  "optimal stopping",
+  "correlation gap",
+  "will-ma-notes",
+  "permission-pending"
+ ],
+ "short_statement": "For the i.i.d. prophet inequality accepting up to $k$ of $T$ values, an LP captures the tight online-to-offline ratio. Numerically the ratio decreases in $T$; the conjecture is to prove this monotonicity for general $k$, which would fully characterize the tight $k$-unit IID prophet guarantee.",
+ "open_problem": "Show that for each fixed $k$, $\\mathrm{val}(k,T)$ is decreasing in $T$ (more arrivals make the gambler's task relatively harder). For $k=1$ this monotonicity was established by Correa et al.",
+ "full_statement": "Consider the IID prophet inequality with $T$ values and capacity $k$: T values arrive i.i.d. from a distribution $\\mathbf F$, and the gambler may accept up to $k$ of them online, comparing against the offline optimum. Let $\\mathrm{val}(k,T)=\\inf_{\\mathbf F}\\mathrm{ONL}/\\mathrm{OFF}$ be the tight competitive ratio (online versus offline) for given $k$ and $T$, captured by a known LP (the LP of the notes without the normalization constraint). \\textbf{Open:} Show that for each fixed $k$, $\\mathrm{val}(k,T)$ is decreasing in $T$ (more arrivals make the gambler's task relatively harder). For $k=1$ this monotonicity was established by Correa et al. (2017); the general $k$ case is open. Proving it would fully characterize the tight $k$-unit IID prophet guarantee.",
+ "known_results": "Established for $k = 1$ (Correa-Foncea-Hoeksma-Oosterwijk-Vredeveld 2017; the tight single-item IID constant is ~0.745, problem known since Hill-Kertz 1982). Proving monotonicity in T for general k is open and would fully characterize the tight k-unit IID prophet inequality.",
+ "where_posed": {
+  "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #1).",
+  "url": ""
+ },
+ "source": {
+  "authors": "Will Ma",
+  "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #1)",
+  "year": 2024,
+  "venue": "Lecture notes (uploaded)",
+  "url": ""
+ },
+ "additional_refs": [
+  {
+   "authors": "Jose Correa, Patricio Foncea, Ruben Hoeksma, Tim Oosterwijk, Tjark Vredeveld",
+   "title": "Posted Price Mechanisms for a Random Stream of Customers",
+   "year": 2017,
+   "venue": "EC",
+   "url": "https://dl.acm.org/doi/10.1145/3033274.3085137"
+  },
+  {
+   "authors": "Theodore P. Hill, Robert P. Kertz",
+   "title": "Comparisons of stop rule and supremum expectations of i.i.d. random variables",
+   "year": 1982,
+   "venue": "Annals of Probability",
+   "url": "https://www.jstor.org/stable/2243440"
+  }
+ ],
+ "bibtex": "@misc{Ma2024,\n  author = {Will Ma},\n  title = {Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #1)},\n  year = {2024},\n  howpublished = {Lecture notes (uploaded)},\n  note = {Source of ORdős Problem ORDOS-058}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/kunit-prophet-iid-monotonicity-in-T.html",
+  "api": "https://ordos-problems.github.io/api/problems/kunit-prophet-iid-monotonicity-in-T.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

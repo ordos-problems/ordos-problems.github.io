@@ -1,0 +1,52 @@
+{
+ "number": 101,
+ "ref": "ORDOS-101",
+ "id": "optimal-contest-design-gradient-patterns",
+ "title": "Optimal contest design beyond quasiconvex gradient structure",
+ "collection": "Market & Mechanism Design",
+ "area": "Mechanism Design",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "contest design",
+  "mechanism design",
+  "strategic behavior",
+  "nonconvex optimization",
+  "recommender systems"
+ ],
+ "short_statement": "In rank-based contest design, can the structure of the optimal prize vector be characterized for objectives whose gradient sequence has a more complicated pattern than the quasiconvex cases currently covered?",
+ "open_problem": "Characterize the optimal rank-based contest policy for objective functions whose gradient sequence lies outside the quasiconvex or posynomial regimes where the current structural theorem applies.",
+ "full_statement": "In contest design, $n$ strategic contestants choose costly effort levels, which induce qualities, and a designer allocates a fixed prize budget across ranks to optimize an objective of the resulting quality vector. Golrezaei, Hajiaghayi, and Shin show that for broad nonconvex objectives, including convex combinations of user welfare and average quality and arbitrary posynomials over quality, the optimal rank-based policy has a sharp structure: possibly higher prize to the first rank, zero prize to the last rank, and equal prizes to all intermediate ranks. Their proof connects the shape of the objective's gradient sequence to transition points in the optimal prize vector. The open problem is to understand what replaces this structure when the gradient sequence has a more complicated pattern beyond the regimes currently handled.",
+ "known_results": "For linear costs and the covered nonconvex objective classes, the paper gives a structural characterization and an FPTAS using a reduction from a high-dimensional nonconvex problem to one-dimensional optimization. Classical special cases include the UniformButLast and HardMax structures. The remaining open problem is a structural one: determine whether comparable low-dimensional descriptions exist for more general gradient patterns, or whether fundamentally more complex optimal prize vectors are unavoidable.",
+ "where_posed": {
+  "text": "Conclusion of Golrezaei, Hajiaghayi, and Shin, 'Optimal Contest Beyond Convexity'.",
+  "url": "https://arxiv.org/abs/2604.04844"
+ },
+ "source": {
+  "authors": "Negin Golrezaei, MohammadTaghi Hajiaghayi, Suho Shin",
+  "title": "Optimal Contest Beyond Convexity",
+  "year": 2026,
+  "venue": "STOC 2026 / arXiv:2604.04844",
+  "url": "https://arxiv.org/abs/2604.04844"
+ },
+ "additional_refs": [
+  {
+   "authors": "Shuchi Chawla, Jason D. Hartline, Balasubramanian Sivan",
+   "title": "Optimal Crowdsourcing Contests",
+   "year": 2019,
+   "venue": "Games and Economic Behavior",
+   "url": "https://doi.org/10.1016/j.geb.2018.11.006"
+  }
+ ],
+ "bibtex": "@misc{Golrezaei2026,\n  author = {Negin Golrezaei and MohammadTaghi Hajiaghayi and Suho Shin},\n  title = {Optimal Contest Beyond Convexity},\n  year = {2026},\n  howpublished = {STOC 2026 / arXiv:2604.04844},\n  url = {https://arxiv.org/abs/2604.04844},\n  note = {Source of ORdős Problem ORDOS-101}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/optimal-contest-design-gradient-patterns.html",
+  "api": "https://ordos-problems.github.io/api/problems/optimal-contest-design-gradient-patterns.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

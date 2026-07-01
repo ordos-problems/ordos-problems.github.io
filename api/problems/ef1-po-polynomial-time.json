@@ -1,0 +1,52 @@
+{
+ "number": 28,
+ "ref": "ORDOS-028",
+ "id": "ef1-po-polynomial-time",
+ "title": "Computing EF1 and Pareto-optimal allocations in polynomial time",
+ "collection": "Market & Mechanism Design",
+ "area": "Fair Division",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "fair division",
+  "EF1",
+  "Pareto optimality",
+  "computational complexity",
+  "indivisible goods"
+ ],
+ "short_statement": "For indivisible goods with additive valuations, an allocation that is both EF1 (envy-free up to one good) and Pareto-optimal always exists, but the known algorithm is only pseudo-polynomial. Can such an allocation be computed in truly polynomial time?",
+ "open_problem": "Determine whether a truly polynomial-time algorithm exists.",
+ "full_statement": "There are $n$ agents with additive valuations $v_i:2^M\\to\\mathbb{Z}_{\\ge0}$ over a set $M$ of $m$ indivisible goods, with the valuations given in binary. An allocation is EF1 (envy-free up to one good) if any agent's envy toward another vanishes after removing some single good from the envied bundle, and (fractionally) Pareto-optimal if no other (fractional) allocation makes some agent better off without making another worse off. Such an allocation always exists (the maximum-Nash-welfare allocation is one), so the question is purely computational: is there an algorithm running in time $\\mathrm{poly}(n,m,\\log V_{\\max})$ (where $V_{\\max}$ is the largest value) that outputs an allocation that is simultaneously EF1 and fractionally Pareto-optimal? The known algorithm runs in only pseudo-polynomial time (polynomial in the magnitude of values, not their bit-length). The problem is in PLS and is not known to be PLS-hard, NP-hard, or in P. Determine whether a truly polynomial-time algorithm exists.",
+ "known_results": "Upper bound: pseudo-polynomial (Barman-Krishnamurthy-Vaish 2018); truly polynomial for a constant number of agents or a constant number of distinct values. No lower bound known (not known NP-hard or PLS-hard). Listed as an open problem in the Aziz-Li-Moulin-Wu survey.",
+ "where_posed": {
+  "text": "Pseudo-polynomial algorithm and the open computational question from Barman, Krishnamurthy, Vaish, 'Finding Fair and Efficient Allocations', 2018, EC; listed open in the Aziz-Li-Moulin-Wu survey.",
+  "url": "https://arxiv.org/abs/1707.04731"
+ },
+ "source": {
+  "authors": "Siddharth Barman, Sanath Kumar Krishnamurthy, Rohit Vaish",
+  "title": "Finding Fair and Efficient Allocations",
+  "year": 2018,
+  "venue": "EC",
+  "url": "https://arxiv.org/abs/1707.04731"
+ },
+ "additional_refs": [
+  {
+   "authors": "Haris Aziz, Bo Li, Herve Moulin, Xiaowei Wu",
+   "title": "Algorithmic Fair Allocation of Indivisible Items: A Survey and New Questions",
+   "year": 2022,
+   "venue": "ACM SIGecom Exchanges",
+   "url": "https://www.sigecom.org/exchanges/volume_20/1/AZIZ.pdf"
+  }
+ ],
+ "bibtex": "@misc{Barman2018,\n  author = {Siddharth Barman and Sanath Kumar Krishnamurthy and Rohit Vaish},\n  title = {Finding Fair and Efficient Allocations},\n  year = {2018},\n  howpublished = {EC},\n  url = {https://arxiv.org/abs/1707.04731},\n  note = {Source of ORdős Problem ORDOS-028}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/ef1-po-polynomial-time.html",
+  "api": "https://ordos-problems.github.io/api/problems/ef1-po-polynomial-time.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

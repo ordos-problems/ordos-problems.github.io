@@ -1,0 +1,59 @@
+{
+ "number": 27,
+ "ref": "ORDOS-027",
+ "id": "online-bipartite-matching-random-order",
+ "title": "Tight competitive ratio of online bipartite matching under random arrival",
+ "collection": "Market & Mechanism Design",
+ "area": "Matching Markets",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "online matching",
+  "bipartite matching",
+  "random order",
+  "RANKING",
+  "competitive ratio"
+ ],
+ "short_statement": "With offline vertices known in advance and online vertices arriving in uniformly random order (matched immediately and irrevocably), what is the exact best-possible competitive ratio, and what is the exact ratio of the canonical RANKING algorithm?",
+ "open_problem": "Determine the optimal competitive ratio for online bipartite matching under uniformly random arrivals, and the exact ratio of RANKING in this model.",
+ "full_statement": "Let $G=(L,R,E)$ be a bipartite graph in which the vertices $L$ are offline (known in advance) and the vertices of $R$ arrive online one at a time in uniformly random order. Upon arrival, each online vertex reveals its edges to $L$ and must be matched immediately and irrevocably to an available offline neighbor (or left unmatched). The objective is to maximize the cardinality of the matching, compared against the maximum matching $\\mathrm{OPT}(G)$. In the worst-case (adversarial) arrival model the optimal competitive ratio is exactly $1-1/e$; with uniformly random arrival order, randomness provably helps. Define $$\\rho^*=\\inf_G\\sup_{\\text{online algs}}\\frac{\\mathbb{E}[|\\text{ALG}|]}{|\\text{OPT}(G)|}.$$ Determine $\\rho^*$ (and the sub-question: the exact competitive ratio of the canonical RANKING algorithm in this random-order model). Known: $0.696\\le\\rho^*\\le 0.8206$.",
+ "known_results": "Lower bound: RANKING achieves >= 0.696 in random order (Mahdian-Yan 2011). Upper bound: ~0.8206 (Chierichetti et al., ICALP 2025, improving 0.823 of Manshadi-Oveis Gharan-Saberi). Exact optimal ratio open with a large gap.",
+ "where_posed": {
+  "text": "Model and adversarial-optimal result from Karp, Vazirani, Vazirani, 'An Optimal Algorithm for On-line Bipartite Matching', 1990, STOC.",
+  "url": "https://dl.acm.org/doi/10.1145/100216.100262"
+ },
+ "source": {
+  "authors": "Richard M. Karp, Umesh V. Vazirani, Vijay V. Vazirani",
+  "title": "An Optimal Algorithm for On-line Bipartite Matching",
+  "year": 1990,
+  "venue": "STOC",
+  "url": "https://dl.acm.org/doi/10.1145/100216.100262"
+ },
+ "additional_refs": [
+  {
+   "authors": "Mohammad Mahdian, Qiqi Yan",
+   "title": "Online Bipartite Matching with Random Arrivals: Strongly Factor-Revealing LPs",
+   "year": 2011,
+   "venue": "STOC",
+   "url": "https://dl.acm.org/doi/10.1145/1993636.1993716"
+  },
+  {
+   "authors": "Vahideh H. Manshadi, Shayan Oveis Gharan, Amin Saberi",
+   "title": "Online Stochastic Matching: Online Actions Based on Offline Statistics",
+   "year": 2011,
+   "venue": "SODA (Math. Oper. Res. 2012)",
+   "url": "https://arxiv.org/abs/1007.1673"
+  }
+ ],
+ "bibtex": "@misc{Karp1990,\n  author = {Richard M. Karp and Umesh V. Vazirani and Vijay V. Vazirani},\n  title = {An Optimal Algorithm for On-line Bipartite Matching},\n  year = {1990},\n  howpublished = {STOC},\n  url = {https://dl.acm.org/doi/10.1145/100216.100262},\n  note = {Source of ORdős Problem ORDOS-027}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/online-bipartite-matching-random-order.html",
+  "api": "https://ordos-problems.github.io/api/problems/online-bipartite-matching-random-order.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

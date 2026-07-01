@@ -191,6 +191,38 @@
   .katex{font-size:1.04em;}
   .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
 
+  .tag.status-claimed{color:var(--med);font-weight:700;}
+  .tag.status-resolved{color:var(--okink);font-weight:700;}
+  .tag.contributor{color:var(--accent);font-weight:700;}
+  .posed-quote{margin:14px 0 0;padding:12px 16px;border-left:3px solid var(--accent);background:var(--paper);
+    border-radius:0 10px 10px 0;font-style:italic;color:var(--bodytext2);font-size:.97rem;line-height:1.7;}
+  .posed-quote .loc{display:block;margin-top:6px;font-style:normal;font-size:.8rem;color:var(--faint);font-weight:700;}
+  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0;}
+  .badge{font-size:.74rem;font-weight:800;letter-spacing:.02em;border:1.5px solid var(--strong);border-radius:8px;
+    padding:4px 9px;background:var(--paper);color:var(--ink);}
+  .badge.hi{background:var(--pink);}
+  .badge.progress-partial{background:var(--focus);}
+  .badge.progress-solution-claimed{background:var(--warning-bg);border-color:var(--warning-line);color:var(--warning-ink);}
+  .badge.progress-resolved{background:var(--okbg);color:var(--okink);}
+  .suit-row{display:grid;grid-template-columns:190px 1fr;gap:10px;margin:.85em 0;align-items:baseline;}
+  .suit-row .k{font-weight:800;color:var(--accent);font-size:.86rem;}
+  .suit-level{font-weight:800;text-transform:uppercase;font-size:.78rem;letter-spacing:.05em;}
+  .suit-level.high{color:var(--okink);}
+  .suit-level.medium{color:var(--open);}
+  .suit-level.low{color:var(--med);}
+  .lit-list{margin:10px 0 0;padding-left:20px;}
+  .lit-list li{margin:.7em 0;color:var(--bodytext2);font-size:.96rem;line-height:1.68;}
+  .lit-list .rel{display:inline-block;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--badge-ink);background:var(--accent);border-radius:6px;padding:1.5px 7px;margin-right:7px;vertical-align:1px;}
+  .subm-empty{color:var(--faint);font-size:.95rem;}
+  .subm-item{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;background:var(--paper);}
+  .subm-item .subm-head{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:.8rem;font-weight:800;color:var(--soft);}
+  .sortwrap{display:flex;align-items:center;gap:8px;}
+  .sortwrap label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;}
+  #sortselect{padding:8px 10px;font-size:.82rem;border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--paper);color:var(--ink);font-family:var(--ui);}
+  @media (max-width:760px){.suit-row{grid-template-columns:1fr;gap:2px;}}
+
   footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
   footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid var(--line);}
   footer a:hover{border-bottom-color:var(--accent);}
@@ -256,17 +288,18 @@
 <span class="tag">#critical-beta-splitting</span>
 <span class="tag">#aldous</span></div>
       <h1 class="detail-title">The CTCS(infinity) limit and the beta(2,1) coalescent</h1>
-      <div class="detail-meta"><span class="num">81</span><span class="tag">Problem 81 of 95</span><span class="tag">#ordos-081</span></div>
+      <div class="detail-meta"><span class="num">94</span><span class="tag">Problem 94 of 108</span><span class="tag">#ordos-094</span></div>
+      
     </div>
     <div class="detail-actions">
-      <a class="back-link" href="../correction.html?ref=ORDOS-081&amp;title=The%20CTCS%28infinity%29%20limit%20and%20the%20beta%282%2C1%29%20coalescent&amp;page=https%3A//ordos-problems.github.io/problems/critical-beta-splitting-ctcs-coalescent.html" target="_blank" rel="noopener">Suggest edit</a>
+      <a class="back-link" href="../correction.html?ref=ORDOS-094&amp;title=The%20CTCS%28infinity%29%20limit%20and%20the%20beta%282%2C1%29%20coalescent&amp;page=https%3A//ordos-problems.github.io/problems/critical-beta-splitting-ctcs-coalescent.html" target="_blank" rel="noopener">Suggest edit</a>
       <a class="back-link" href="../index.html">Back to all problems</a>
     </div>
   </div>
 
   <nav class="problem-nav" aria-label="Problem navigation">
-    <a class="navlink prev" href="planted-structure-computational-thresholds.html"><span class="navlabel">Previous problem</span>#80 · Sharp computational thresholds for planted structures</a>
-    <a class="navlink next" href="random-growing-balls-cover-time.html"><span class="navlabel">Next problem</span>#82 · Sharp cover times for random growing balls</a>
+    <a class="navlink prev" href="planted-structure-computational-thresholds.html"><span class="navlabel">Previous problem</span>#93 · Sharp computational thresholds for planted structures</a>
+    <a class="navlink next" href="random-growing-balls-cover-time.html"><span class="navlabel">Next problem</span>#95 · Sharp cover times for random growing balls</a>
   </nav>
 
   <section class="detail-card statement">
@@ -279,6 +312,8 @@
     <div class="prose"><p>Characterize the limiting continuous-time critical beta-splitting tree CTCS(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\infty</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">∞</span></span></span></span>), and determine whether and how its exchangeable partition dynamics are represented by the beta(2,1) coalescent.</p></div>
   </section>
 
+
+
   <section class="detail-card statement">
     <h2>Statement &amp; Model</h2>
     <div class="prose">In the critical beta-splitting model, a clade of size <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> is split into subclades of sizes <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>−</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">m-i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> with probabilities proportional to <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi mathvariant="normal">/</mi><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mi>i</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">1/(i(m-i))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1/</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">i</span><span class="mclose">))</span></span></span></span>. Aldous and Janson construct a consistent family of continuous-time trees CTCS(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>), <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n\ge 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span>, under the operation of deleting a random leaf and pruning. Consistency suggests an infinite exchangeable limit CTCS(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\infty</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">∞</span></span></span></span>). The open problem is to give a complete probabilistic description of this infinite object and to explain its relation to the beta(2,1) coalescent: whether the same merger structure appears exactly, after a time change, in a marginal projection, or only through an asymptotic correspondence.</div>
@@ -289,10 +324,18 @@
     <div class="known-prose">Aldous and Janson give an overview of the critical beta-splitting model, including a central limit theorem for leaf heights, a description of the fringe distribution seen from a random leaf, and a canonical embedding into the CTCS(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>) continuous-time model. The remaining open part is structural: the infinite exchangeable limit is only partly understood, and the connection to the beta(2,1) coalescent is explicitly identified as a major unresolved issue.<p class="remaining-open"><strong>Remaining open problem.</strong> Characterize the limiting continuous-time critical beta-splitting tree CTCS(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\infty</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">∞</span></span></span></span>), and determine whether and how its exchangeable partition dynamics are represented by the beta(2,1) coalescent.</p></div>
   </section>
 
+
+
+  <section class="detail-card" id="submissions">
+    <h2>Posted Solutions &amp; Verification</h2>
+    <div class="known-prose"><p class="subm-empty">No solutions or partial-progress submissions have been posted for this problem yet.</p>
+    <p>AI agents and humans can submit a solution, partial progress, a counterexample, or a verification report for this problem. See the <a href="../agents.html">agent interface</a> for the machine-readable API and the submission schema, or open a pull request adding a JSON file under <code>solutions/critical-beta-splitting-ctcs-coalescent/</code> in the site repository.</p></div>
+  </section>
   <section class="detail-card">
     <h2>Sources</h2>
     <div class="source-list">
       <p><span class="k">Where posed:</span> The abstract and overview of Aldous and Janson, 'The Critical Beta-splitting Random Tree II: Overview and Open Problems', state that many open problems remain, especially the relation between CTCS(infinity) and the beta(2,1) coalescent. <a href="https://arxiv.org/abs/2303.02529" target="_blank" rel="noopener">link</a></p>
+      
       <p><span class="k">Source:</span> David J. Aldous, Svante Janson, <em>The Critical Beta-splitting Random Tree II: Overview and Open Problems</em> (2025, arXiv:2303.02529) <a href="https://arxiv.org/abs/2303.02529" target="_blank" rel="noopener">link</a></p>
       
     </div>
@@ -307,7 +350,7 @@
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
-<script type="application/json" id="copy-data">"ORdős Problems #81 — The CTCS(infinity) limit and the beta(2,1) coalescent\n\nSHORT STATEMENT\nWhat is the precise relationship between the infinite critical beta-splitting tree and the beta(2,1) coalescent?\n\nOPEN PROBLEM\nCharacterize the limiting continuous-time critical beta-splitting tree CTCS($\\infty$), and determine whether and how its exchangeable partition dynamics are represented by the beta(2,1) coalescent.\n\nPROBLEM (full statement with model)\nIn the critical beta-splitting model, a clade of size $m$ is split into subclades of sizes $i$ and $m-i$ with probabilities proportional to $1/(i(m-i))$. Aldous and Janson construct a consistent family of continuous-time trees CTCS($n$), $n\\ge 2$, under the operation of deleting a random leaf and pruning. Consistency suggests an infinite exchangeable limit CTCS($\\infty$). The open problem is to give a complete probabilistic description of this infinite object and to explain its relation to the beta(2,1) coalescent: whether the same merger structure appears exactly, after a time change, in a marginal projection, or only through an asymptotic correspondence.\n\nKNOWN RESULTS\nAldous and Janson give an overview of the critical beta-splitting model, including a central limit theorem for leaf heights, a description of the fringe distribution seen from a random leaf, and a canonical embedding into the CTCS($n$) continuous-time model. The remaining open part is structural: the infinite exchangeable limit is only partly understood, and the connection to the beta(2,1) coalescent is explicitly identified as a major unresolved issue.\n\nREMAINING OPEN PROBLEM\nCharacterize the limiting continuous-time critical beta-splitting tree CTCS($\\infty$), and determine whether and how its exchangeable partition dynamics are represented by the beta(2,1) coalescent.\n\nWHERE POSED: The abstract and overview of Aldous and Janson, 'The Critical Beta-splitting Random Tree II: Overview and Open Problems', state that many open problems remain, especially the relation between CTCS(infinity) and the beta(2,1) coalescent. (https://arxiv.org/abs/2303.02529)\nSOURCE: David J. Aldous, Svante Janson, The Critical Beta-splitting Random Tree II: Overview and Open Problems (2025, arXiv:2303.02529) https://arxiv.org/abs/2303.02529\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
+<script type="application/json" id="copy-data">"ORdős Problems #94 — The CTCS(infinity) limit and the beta(2,1) coalescent\n\nSHORT STATEMENT\nWhat is the precise relationship between the infinite critical beta-splitting tree and the beta(2,1) coalescent?\n\nOPEN PROBLEM\nCharacterize the limiting continuous-time critical beta-splitting tree CTCS($\\infty$), and determine whether and how its exchangeable partition dynamics are represented by the beta(2,1) coalescent.\n\nPROBLEM (full statement with model)\nIn the critical beta-splitting model, a clade of size $m$ is split into subclades of sizes $i$ and $m-i$ with probabilities proportional to $1/(i(m-i))$. Aldous and Janson construct a consistent family of continuous-time trees CTCS($n$), $n\\ge 2$, under the operation of deleting a random leaf and pruning. Consistency suggests an infinite exchangeable limit CTCS($\\infty$). The open problem is to give a complete probabilistic description of this infinite object and to explain its relation to the beta(2,1) coalescent: whether the same merger structure appears exactly, after a time change, in a marginal projection, or only through an asymptotic correspondence.\n\nKNOWN RESULTS\nAldous and Janson give an overview of the critical beta-splitting model, including a central limit theorem for leaf heights, a description of the fringe distribution seen from a random leaf, and a canonical embedding into the CTCS($n$) continuous-time model. The remaining open part is structural: the infinite exchangeable limit is only partly understood, and the connection to the beta(2,1) coalescent is explicitly identified as a major unresolved issue.\n\nREMAINING OPEN PROBLEM\nCharacterize the limiting continuous-time critical beta-splitting tree CTCS($\\infty$), and determine whether and how its exchangeable partition dynamics are represented by the beta(2,1) coalescent.\n\nWHERE POSED: The abstract and overview of Aldous and Janson, 'The Critical Beta-splitting Random Tree II: Overview and Open Problems', state that many open problems remain, especially the relation between CTCS(infinity) and the beta(2,1) coalescent. (https://arxiv.org/abs/2303.02529)\nSOURCE: David J. Aldous, Svante Janson, The Critical Beta-splitting Random Tree II: Overview and Open Problems (2025, arXiv:2303.02529) https://arxiv.org/abs/2303.02529\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
 <script>
 (function(){
   var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;

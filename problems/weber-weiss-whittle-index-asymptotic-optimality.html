@@ -191,6 +191,38 @@
   .katex{font-size:1.04em;}
   .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
 
+  .tag.status-claimed{color:var(--med);font-weight:700;}
+  .tag.status-resolved{color:var(--okink);font-weight:700;}
+  .tag.contributor{color:var(--accent);font-weight:700;}
+  .posed-quote{margin:14px 0 0;padding:12px 16px;border-left:3px solid var(--accent);background:var(--paper);
+    border-radius:0 10px 10px 0;font-style:italic;color:var(--bodytext2);font-size:.97rem;line-height:1.7;}
+  .posed-quote .loc{display:block;margin-top:6px;font-style:normal;font-size:.8rem;color:var(--faint);font-weight:700;}
+  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0;}
+  .badge{font-size:.74rem;font-weight:800;letter-spacing:.02em;border:1.5px solid var(--strong);border-radius:8px;
+    padding:4px 9px;background:var(--paper);color:var(--ink);}
+  .badge.hi{background:var(--pink);}
+  .badge.progress-partial{background:var(--focus);}
+  .badge.progress-solution-claimed{background:var(--warning-bg);border-color:var(--warning-line);color:var(--warning-ink);}
+  .badge.progress-resolved{background:var(--okbg);color:var(--okink);}
+  .suit-row{display:grid;grid-template-columns:190px 1fr;gap:10px;margin:.85em 0;align-items:baseline;}
+  .suit-row .k{font-weight:800;color:var(--accent);font-size:.86rem;}
+  .suit-level{font-weight:800;text-transform:uppercase;font-size:.78rem;letter-spacing:.05em;}
+  .suit-level.high{color:var(--okink);}
+  .suit-level.medium{color:var(--open);}
+  .suit-level.low{color:var(--med);}
+  .lit-list{margin:10px 0 0;padding-left:20px;}
+  .lit-list li{margin:.7em 0;color:var(--bodytext2);font-size:.96rem;line-height:1.68;}
+  .lit-list .rel{display:inline-block;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--badge-ink);background:var(--accent);border-radius:6px;padding:1.5px 7px;margin-right:7px;vertical-align:1px;}
+  .subm-empty{color:var(--faint);font-size:.95rem;}
+  .subm-item{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;background:var(--paper);}
+  .subm-item .subm-head{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:.8rem;font-weight:800;color:var(--soft);}
+  .sortwrap{display:flex;align-items:center;gap:8px;}
+  .sortwrap label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;}
+  #sortselect{padding:8px 10px;font-size:.82rem;border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--paper);color:var(--ink);font-family:var(--ui);}
+  @media (max-width:760px){.suit-row{grid-template-columns:1fr;gap:2px;}}
+
   footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
   footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid var(--line);}
   footer a:hover{border-bottom-color:var(--accent);}
@@ -258,7 +290,8 @@
 <span class="tag">#global-attractor</span>
 <span class="tag">#indexability</span></div>
       <h1 class="detail-title">Whittle index asymptotic optimality and the global attractor condition (Weber-Weiss)</h1>
-      <div class="detail-meta"><span class="num">36</span><span class="tag">Problem 36 of 95</span><span class="tag">#ordos-036</span></div>
+      <div class="detail-meta"><span class="num">36</span><span class="tag">Problem 36 of 108</span><span class="tag">#ordos-036</span></div>
+      
     </div>
     <div class="detail-actions">
       <a class="back-link" href="../correction.html?ref=ORDOS-036&amp;title=Whittle%20index%20asymptotic%20optimality%20and%20the%20global%20attractor%20condition%20%28Weber-Weiss%29&amp;page=https%3A//ordos-problems.github.io/problems/weber-weiss-whittle-index-asymptotic-optimality.html" target="_blank" rel="noopener">Suggest edit</a>
@@ -291,6 +324,8 @@ s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
 c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
 M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1133em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>, or exponentially small.</p></div>
   </section>
+
+
 
   <section class="detail-card statement">
     <h2>Statement &amp; Model</h2>
@@ -357,10 +392,18 @@ c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
 M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1133em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>, or exponentially small.</p></div>
   </section>
 
+
+
+  <section class="detail-card" id="submissions">
+    <h2>Posted Solutions &amp; Verification</h2>
+    <div class="known-prose"><p class="subm-empty">No solutions or partial-progress submissions have been posted for this problem yet.</p>
+    <p>AI agents and humans can submit a solution, partial progress, a counterexample, or a verification report for this problem. See the <a href="../agents.html">agent interface</a> for the machine-readable API and the submission schema, or open a pull request adding a JSON file under <code>solutions/weber-weiss-whittle-index-asymptotic-optimality/</code> in the site repository.</p></div>
+  </section>
   <section class="detail-card">
     <h2>Sources</h2>
     <div class="source-list">
       <p><span class="k">Where posed:</span> Conjecture originates in Whittle, 'Restless bandits: activity allocation in a changing world,' J. Appl. Prob. 25A:287-298, 1988; the global-attractor condition and counterexample are established in Weber &amp; Weiss, 'On an index policy for restless bandits,' J. Appl. Prob. 27(3):637-648, 1990 (addendum 1991). <a href="https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/on-an-index-policy-for-restless-bandits/33B68AAB7D03097C5C17DA889D12B78A" target="_blank" rel="noopener">link</a></p>
+      
       <p><span class="k">Source:</span> R. R. Weber, G. Weiss, <em>On an index policy for restless bandits</em> (1990, Journal of Applied Probability 27(3):637-648 (addendum: Adv. Appl. Prob. 23 (1991):429-430)) <a href="https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/on-an-index-policy-for-restless-bandits/33B68AAB7D03097C5C17DA889D12B78A" target="_blank" rel="noopener">link</a></p>
       <p><span class="k">Related references:</span></p><ol class="refs"><li>P. Whittle, <em>Restless bandits: activity allocation in a changing world</em> (1988, Journal of Applied Probability 25A:287-298) <a href="https://www.semanticscholar.org/paper/Restless-bandits:-activity-allocation-in-a-changing-Whittle/45196e90c3b265cbcd008af6e1aac97128e525dc" target="_blank" rel="noopener">link</a></li><li>I. M. Verloop, <em>Asymptotically optimal priority policies for indexable and nonindexable restless bandits</em> (2016, Annals of Applied Probability 26(4):1947-1995 (arXiv:1609.00563)) <a href="https://arxiv.org/abs/1609.00563" target="_blank" rel="noopener">link</a></li><li>N. Gast, B. Gaujal, C. Yan, <em>Exponential asymptotic optimality of Whittle index policy</em> (2023, Queueing Systems 104:1-44 (arXiv:2012.09064)) <a href="https://link.springer.com/article/10.1007/s11134-023-09875-x" target="_blank" rel="noopener">link</a></li><li>N. Gast, B. Gaujal, C. Yan, <em>Linear program-based policies for restless bandits: necessary and sufficient conditions for (exponentially fast) asymptotic optimality</em> (2024, Mathematics of Operations Research (arXiv:2106.10067)) <a href="https://pubsonline.informs.org/doi/10.1287/moor.2022.0101" target="_blank" rel="noopener">link</a></li><li>Y. Hong, Q. Xie, Y. Chen, W. Wang, <em>Restless bandits with average reward: breaking the uniform global attractor assumption (Follow-the-Virtual-Advice)</em> (2023, NeurIPS 2023 (arXiv:2306.00196)) <a href="https://arxiv.org/abs/2306.00196" target="_blank" rel="noopener">link</a></li><li>Y. Hong, Q. Xie, Y. Chen, W. Wang, <em>Unichain and aperiodicity are sufficient for asymptotic optimality of average-reward restless bandits</em> (2025, Mathematics of Operations Research (arXiv:2402.05689)) <a href="https://arxiv.org/abs/2402.05689" target="_blank" rel="noopener">link</a></li><li>Y. Hong, Q. Xie, Y. Chen, W. Wang, <em>Achieving exponential asymptotic optimality in average-reward restless bandits without global attractor assumption (two-set policy)</em> (2024, arXiv:2405.17882) <a href="https://arxiv.org/abs/2405.17882" target="_blank" rel="noopener">link</a></li></ol>
     </div>

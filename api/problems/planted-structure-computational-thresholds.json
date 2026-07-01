@@ -1,0 +1,59 @@
+{
+ "number": 93,
+ "ref": "ORDOS-093",
+ "id": "planted-structure-computational-thresholds",
+ "title": "Sharp computational thresholds for planted structures",
+ "collection": "Computer Science",
+ "area": "Average-Case Complexity",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "planted clique",
+  "planted dense subgraph",
+  "submatrix detection",
+  "average-case reductions",
+  "statistical-computational gaps"
+ ],
+ "short_statement": "Can the conjectured computational thresholds for planted dense subgraph and submatrix problems be made sharp under clean average-case assumptions?",
+ "open_problem": "Give sharp polynomial-time thresholds, or matching conditional lower bounds, for planted dense subgraph and submatrix localization across the sparse and growing-structure regimes where information-theoretic recovery is possible but no efficient algorithm is known.",
+ "full_statement": "A planted-structure problem starts with a random background object, such as an Erdos-Renyi graph or a noisy matrix, and then plants a structured signal, such as a denser vertex subset, a community, or an elevated submatrix. The information-theoretic threshold asks when the planted object can be detected or localized by any estimator, while the computational threshold asks when this can be done in polynomial time. The open problem is to turn the broad statistical-computational gap picture into sharp theorems for canonical planted dense subgraph and submatrix models: identify the exact efficient boundary, prove algorithms up to that boundary, and prove lower bounds beyond it under transparent assumptions such as planted clique hardness.",
+ "known_results": "Wu and Xu survey a general recipe for information-theoretic limits and planted-clique reductions, and earlier work by Hajek, Wu, and Xu gives computational lower bounds for community detection in random graphs. These results explain why an intermediate regime can exist. What remains open is the sharp boundary: in many planted dense subgraph and submatrix regimes the information-theoretic limit, best known efficient algorithm, and conditional lower bound still do not coincide.",
+ "where_posed": {
+  "text": "Wu and Xu frame planted-structure inference around separate information-theoretic and computational thresholds and describe planted-clique reductions as the standard route to conditional computational limits.",
+  "url": "https://arxiv.org/abs/1806.00118"
+ },
+ "source": {
+  "authors": "Yihong Wu, Jiaming Xu",
+  "title": "Statistical Problems with Planted Structures: Information-Theoretical and Computational Limits",
+  "year": 2018,
+  "venue": "arXiv:1806.00118",
+  "url": "https://arxiv.org/abs/1806.00118"
+ },
+ "additional_refs": [
+  {
+   "authors": "Bruce Hajek, Yihong Wu, Jiaming Xu",
+   "title": "Computational Lower Bounds for Community Detection on Random Graphs",
+   "year": 2014,
+   "venue": "arXiv:1406.6625",
+   "url": "https://arxiv.org/abs/1406.6625"
+  },
+  {
+   "authors": "Yudong Chen, Jiaming Xu",
+   "title": "Statistical-Computational Tradeoffs in Planted Problems and Submatrix Localization with a Growing Number of Clusters and Submatrices",
+   "year": 2014,
+   "venue": "arXiv:1402.1267",
+   "url": "https://arxiv.org/abs/1402.1267"
+  }
+ ],
+ "bibtex": "@misc{Wu2018,\n  author = {Yihong Wu and Jiaming Xu},\n  title = {Statistical Problems with Planted Structures: Information-Theoretical and Computational Limits},\n  year = {2018},\n  howpublished = {arXiv:1806.00118},\n  url = {https://arxiv.org/abs/1806.00118},\n  note = {Source of ORdős Problem ORDOS-093}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/planted-structure-computational-thresholds.html",
+  "api": "https://ordos-problems.github.io/api/problems/planted-structure-computational-thresholds.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

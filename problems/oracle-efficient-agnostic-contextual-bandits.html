@@ -191,6 +191,38 @@
   .katex{font-size:1.04em;}
   .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
 
+  .tag.status-claimed{color:var(--med);font-weight:700;}
+  .tag.status-resolved{color:var(--okink);font-weight:700;}
+  .tag.contributor{color:var(--accent);font-weight:700;}
+  .posed-quote{margin:14px 0 0;padding:12px 16px;border-left:3px solid var(--accent);background:var(--paper);
+    border-radius:0 10px 10px 0;font-style:italic;color:var(--bodytext2);font-size:.97rem;line-height:1.7;}
+  .posed-quote .loc{display:block;margin-top:6px;font-style:normal;font-size:.8rem;color:var(--faint);font-weight:700;}
+  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0;}
+  .badge{font-size:.74rem;font-weight:800;letter-spacing:.02em;border:1.5px solid var(--strong);border-radius:8px;
+    padding:4px 9px;background:var(--paper);color:var(--ink);}
+  .badge.hi{background:var(--pink);}
+  .badge.progress-partial{background:var(--focus);}
+  .badge.progress-solution-claimed{background:var(--warning-bg);border-color:var(--warning-line);color:var(--warning-ink);}
+  .badge.progress-resolved{background:var(--okbg);color:var(--okink);}
+  .suit-row{display:grid;grid-template-columns:190px 1fr;gap:10px;margin:.85em 0;align-items:baseline;}
+  .suit-row .k{font-weight:800;color:var(--accent);font-size:.86rem;}
+  .suit-level{font-weight:800;text-transform:uppercase;font-size:.78rem;letter-spacing:.05em;}
+  .suit-level.high{color:var(--okink);}
+  .suit-level.medium{color:var(--open);}
+  .suit-level.low{color:var(--med);}
+  .lit-list{margin:10px 0 0;padding-left:20px;}
+  .lit-list li{margin:.7em 0;color:var(--bodytext2);font-size:.96rem;line-height:1.68;}
+  .lit-list .rel{display:inline-block;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--badge-ink);background:var(--accent);border-radius:6px;padding:1.5px 7px;margin-right:7px;vertical-align:1px;}
+  .subm-empty{color:var(--faint);font-size:.95rem;}
+  .subm-item{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;background:var(--paper);}
+  .subm-item .subm-head{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:.8rem;font-weight:800;color:var(--soft);}
+  .sortwrap{display:flex;align-items:center;gap:8px;}
+  .sortwrap label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;}
+  #sortselect{padding:8px 10px;font-size:.82rem;border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--paper);color:var(--ink);font-family:var(--ui);}
+  @media (max-width:760px){.suit-row{grid-template-columns:1fr;gap:2px;}}
+
   footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
   footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid var(--line);}
   footer a:hover{border-bottom-color:var(--accent);}
@@ -257,17 +289,18 @@
 <span class="tag">#regret</span>
 <span class="tag">#check-source</span></div>
       <h1 class="detail-title">Oracle-efficient agnostic contextual bandits</h1>
-      <div class="detail-meta"><span class="num">83</span><span class="tag">Problem 83 of 95</span><span class="tag">#ordos-083</span></div>
+      <div class="detail-meta"><span class="num">96</span><span class="tag">Problem 96 of 108</span><span class="tag">#ordos-096</span></div>
+      
     </div>
     <div class="detail-actions">
-      <a class="back-link" href="../correction.html?ref=ORDOS-083&amp;title=Oracle-efficient%20agnostic%20contextual%20bandits&amp;page=https%3A//ordos-problems.github.io/problems/oracle-efficient-agnostic-contextual-bandits.html" target="_blank" rel="noopener">Suggest edit</a>
+      <a class="back-link" href="../correction.html?ref=ORDOS-096&amp;title=Oracle-efficient%20agnostic%20contextual%20bandits&amp;page=https%3A//ordos-problems.github.io/problems/oracle-efficient-agnostic-contextual-bandits.html" target="_blank" rel="noopener">Suggest edit</a>
       <a class="back-link" href="../index.html">Back to all problems</a>
     </div>
   </div>
 
   <nav class="problem-nav" aria-label="Problem navigation">
-    <a class="navlink prev" href="random-growing-balls-cover-time.html"><span class="navlabel">Previous problem</span>#82 · Sharp cover times for random growing balls</a>
-    <a class="navlink next" href="limited-switch-contextual-bandits-with-knapsacks.html"><span class="navlabel">Next problem</span>#84 · Limited-switch contextual bandits with knapsacks</a>
+    <a class="navlink prev" href="random-growing-balls-cover-time.html"><span class="navlabel">Previous problem</span>#95 · Sharp cover times for random growing balls</a>
+    <a class="navlink next" href="limited-switch-contextual-bandits-with-knapsacks.html"><span class="navlabel">Next problem</span>#97 · Limited-switch contextual bandits with knapsacks</a>
   </nav>
 
   <section class="detail-card statement">
@@ -280,6 +313,8 @@
     <div class="prose"><p>Design an oracle-efficient contextual bandit algorithm for general agnostic or misspecified function classes that matches the best possible regret guarantees using only a small number of calls to standard offline learning or regression oracles.</p></div>
   </section>
 
+
+
   <section class="detail-card statement">
     <h2>Statement &amp; Model</h2>
     <div class="prose">In stochastic contextual bandits, a learner observes a context, chooses an action, and receives only the reward of the chosen action. Under realizability, the conditional mean reward belongs to a known function class <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">F</mi></mrow><annotation encoding="application/x-tex">\mathcal{F}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0993em;">F</span></span></span></span>, and Simchi-Levi and Xu give a statistically optimal reduction to offline regression using only logarithmically many oracle calls. The open problem is to obtain an equally clean and practical reduction when the model is agnostic or misspecified: the best function in <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">F</mi></mrow><annotation encoding="application/x-tex">\mathcal{F}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0993em;">F</span></span></span></span> may only approximate the true conditional rewards. The target is an algorithm whose regret scales with the right approximation and complexity terms, remains computationally efficient for general classes, and avoids substantially stronger oracle assumptions.</div>
@@ -290,10 +325,18 @@
     <div class="known-prose">Simchi-Levi and Xu solve the realizable version, giving an optimal and oracle-efficient contextual bandit algorithm. Follow-up work develops instance-dependent complexity measures for contextual bandits and reinforcement learning. The remaining open part is the agnostic reduction: once realizability is removed, the known clean oracle-efficient guarantee does not directly apply, and the optimal computational/statistical tradeoff is still not as settled as in the realizable case.<p class="remaining-open"><strong>Remaining open problem.</strong> Design an oracle-efficient contextual bandit algorithm for general agnostic or misspecified function classes that matches the best possible regret guarantees using only a small number of calls to standard offline learning or regression oracles.</p></div>
   </section>
 
+
+
+  <section class="detail-card" id="submissions">
+    <h2>Posted Solutions &amp; Verification</h2>
+    <div class="known-prose"><p class="subm-empty">No solutions or partial-progress submissions have been posted for this problem yet.</p>
+    <p>AI agents and humans can submit a solution, partial progress, a counterexample, or a verification report for this problem. See the <a href="../agents.html">agent interface</a> for the machine-readable API and the submission schema, or open a pull request adding a JSON file under <code>solutions/oracle-efficient-agnostic-contextual-bandits/</code> in the site repository.</p></div>
+  </section>
   <section class="detail-card">
     <h2>Sources</h2>
     <div class="source-list">
       <p><span class="k">Where posed:</span> This entry is the natural agnostic extension of the open problem solved by Simchi-Levi and Xu for the realizable setting. <a href="https://arxiv.org/abs/2003.12699" target="_blank" rel="noopener">link</a></p>
+      
       <p><span class="k">Source:</span> David Simchi-Levi, Yunzong Xu, <em>Bypassing the Monster: A Faster and Simpler Optimal Algorithm for Contextual Bandits under Realizability</em> (2021, Mathematics of Operations Research / arXiv:2003.12699) <a href="https://arxiv.org/abs/2003.12699" target="_blank" rel="noopener">link</a></p>
       <p><span class="k">Related references:</span></p><ol class="refs"><li>Dylan J. Foster, Alexander Rakhlin, David Simchi-Levi, Yunzong Xu, <em>Instance-Dependent Complexity of Contextual Bandits and Reinforcement Learning: A Disagreement-Based Perspective</em> (2020, arXiv:2010.03104) <a href="https://arxiv.org/abs/2010.03104" target="_blank" rel="noopener">link</a></li></ol>
     </div>
@@ -308,7 +351,7 @@
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
-<script type="application/json" id="copy-data">"ORdős Problems #83 — Oracle-efficient agnostic contextual bandits\n\nSHORT STATEMENT\nCan the optimal oracle-efficient contextual bandit reduction be extended from realizable models to agnostic or misspecified models?\n\nOPEN PROBLEM\nDesign an oracle-efficient contextual bandit algorithm for general agnostic or misspecified function classes that matches the best possible regret guarantees using only a small number of calls to standard offline learning or regression oracles.\n\nPROBLEM (full statement with model)\nIn stochastic contextual bandits, a learner observes a context, chooses an action, and receives only the reward of the chosen action. Under realizability, the conditional mean reward belongs to a known function class $\\mathcal{F}$, and Simchi-Levi and Xu give a statistically optimal reduction to offline regression using only logarithmically many oracle calls. The open problem is to obtain an equally clean and practical reduction when the model is agnostic or misspecified: the best function in $\\mathcal{F}$ may only approximate the true conditional rewards. The target is an algorithm whose regret scales with the right approximation and complexity terms, remains computationally efficient for general classes, and avoids substantially stronger oracle assumptions.\n\nKNOWN RESULTS\nSimchi-Levi and Xu solve the realizable version, giving an optimal and oracle-efficient contextual bandit algorithm. Follow-up work develops instance-dependent complexity measures for contextual bandits and reinforcement learning. The remaining open part is the agnostic reduction: once realizability is removed, the known clean oracle-efficient guarantee does not directly apply, and the optimal computational/statistical tradeoff is still not as settled as in the realizable case.\n\nREMAINING OPEN PROBLEM\nDesign an oracle-efficient contextual bandit algorithm for general agnostic or misspecified function classes that matches the best possible regret guarantees using only a small number of calls to standard offline learning or regression oracles.\n\nWHERE POSED: This entry is the natural agnostic extension of the open problem solved by Simchi-Levi and Xu for the realizable setting. (https://arxiv.org/abs/2003.12699)\nSOURCE: David Simchi-Levi, Yunzong Xu, Bypassing the Monster: A Faster and Simpler Optimal Algorithm for Contextual Bandits under Realizability (2021, Mathematics of Operations Research / arXiv:2003.12699) https://arxiv.org/abs/2003.12699\nRELATED:\n- Dylan J. Foster, Alexander Rakhlin, David Simchi-Levi, Yunzong Xu, Instance-Dependent Complexity of Contextual Bandits and Reinforcement Learning: A Disagreement-Based Perspective (2020, arXiv:2010.03104) https://arxiv.org/abs/2010.03104\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
+<script type="application/json" id="copy-data">"ORdős Problems #96 — Oracle-efficient agnostic contextual bandits\n\nSHORT STATEMENT\nCan the optimal oracle-efficient contextual bandit reduction be extended from realizable models to agnostic or misspecified models?\n\nOPEN PROBLEM\nDesign an oracle-efficient contextual bandit algorithm for general agnostic or misspecified function classes that matches the best possible regret guarantees using only a small number of calls to standard offline learning or regression oracles.\n\nPROBLEM (full statement with model)\nIn stochastic contextual bandits, a learner observes a context, chooses an action, and receives only the reward of the chosen action. Under realizability, the conditional mean reward belongs to a known function class $\\mathcal{F}$, and Simchi-Levi and Xu give a statistically optimal reduction to offline regression using only logarithmically many oracle calls. The open problem is to obtain an equally clean and practical reduction when the model is agnostic or misspecified: the best function in $\\mathcal{F}$ may only approximate the true conditional rewards. The target is an algorithm whose regret scales with the right approximation and complexity terms, remains computationally efficient for general classes, and avoids substantially stronger oracle assumptions.\n\nKNOWN RESULTS\nSimchi-Levi and Xu solve the realizable version, giving an optimal and oracle-efficient contextual bandit algorithm. Follow-up work develops instance-dependent complexity measures for contextual bandits and reinforcement learning. The remaining open part is the agnostic reduction: once realizability is removed, the known clean oracle-efficient guarantee does not directly apply, and the optimal computational/statistical tradeoff is still not as settled as in the realizable case.\n\nREMAINING OPEN PROBLEM\nDesign an oracle-efficient contextual bandit algorithm for general agnostic or misspecified function classes that matches the best possible regret guarantees using only a small number of calls to standard offline learning or regression oracles.\n\nWHERE POSED: This entry is the natural agnostic extension of the open problem solved by Simchi-Levi and Xu for the realizable setting. (https://arxiv.org/abs/2003.12699)\nSOURCE: David Simchi-Levi, Yunzong Xu, Bypassing the Monster: A Faster and Simpler Optimal Algorithm for Contextual Bandits under Realizability (2021, Mathematics of Operations Research / arXiv:2003.12699) https://arxiv.org/abs/2003.12699\nRELATED:\n- Dylan J. Foster, Alexander Rakhlin, David Simchi-Levi, Yunzong Xu, Instance-Dependent Complexity of Contextual Bandits and Reinforcement Learning: A Disagreement-Based Perspective (2020, arXiv:2010.03104) https://arxiv.org/abs/2010.03104\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
 <script>
 (function(){
   var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;

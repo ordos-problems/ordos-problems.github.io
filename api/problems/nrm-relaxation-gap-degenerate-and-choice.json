@@ -1,0 +1,82 @@
+{
+ "number": 41,
+ "ref": "ORDOS-041",
+ "id": "nrm-relaxation-gap-degenerate-and-choice",
+ "title": "Tight regret of LP-relaxation policies for network revenue management: degenerate and choice-based cases",
+ "collection": "Operations Management",
+ "area": "Revenue Management",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "network-revenue-management",
+  "deterministic-linear-program",
+  "bid-prices",
+  "re-solving",
+  "regret",
+  "choice-models",
+  "asymptotic-optimality"
+ ],
+ "short_statement": "In network revenue management, the deterministic LP upper-bounds optimal revenue and re-solving heuristics achieve $O(1)$ regret under non-degeneracy in the independent-demand case. For choice-based NRM, no policy is known to achieve constant ($T$-independent) regret without a non-degeneracy assumption, and the tight relaxation gap and best simple-policy regret are uncharacterized.",
+ "open_problem": "Find a tractable policy with $O(1)$ regret for general choice-based network revenue management, including degenerate CDLP instances, or prove such regret is impossible.",
+ "full_statement": "Quantity-based NRM: $T$ periods, $m$ resources with integer capacities $c \\in \\mathbb{Z}_{+}^m$, $n$ products; product $j$ consumes bundle $A_{\\cdot j} \\in \\{0,1\\}^m$ and yields revenue $r_j$; demand is stochastic. In the choice-based model, at each period the firm offers an assortment $S \\subseteq \\{1,\\dots,n\\}$ and an arriving customer chooses $j \\in S$ with probability $P_j(S)$ (e.g. MNL). Let $V^*$ be the optimal DP value and $V^{\\mathrm{CDLP}} = \\max_{\\lambda \\geq 0} \\sum_S \\lambda_S (\\sum_j P_j(S) r_j)$ s.t. $\\sum_S \\lambda_S \\sum_j P_j(S) A_{ij} \\leq c_i\\ \\forall i$, $\\sum_S \\lambda_S \\leq T$, so $V^{\\mathrm{CDLP}} \\geq V^*$ (the choice-based deterministic LP). Define the regret of policy $\\pi$ as $V^* - V^\\pi$ under fluid scaling $c \\to k c$, $T \\to kT$, $k \\to \\infty$. $$\\textbf{Open: } \\text{Is there a tractable policy } \\pi \\text{ (e.g. CDLP-based re-solving/decomposition) with regret } O(1) \\text{ (independent of } k,T\\text{) for } \\textit{all} \\text{ choice-based instances, including degenerate CDLP?}$$ Equivalently, characterize $\\inf_\\pi \\sup_{\\text{instances}} \\mathrm{Regret}(\\pi)$ and the tightest bound on $V^{\\mathrm{CDLP}} - V^*$ as a function of $m,n,T$ without a non-degeneracy assumption. For independent demand, re-solving achieves O(1) regret under non-degeneracy, and recent work removes non-degeneracy for continuous-value models.",
+ "known_results": "Independent-demand quantity-based NRM: Talluri & van Ryzin (1998) proved DLP bid-price controls are asymptotically optimal; naive frequent re-solving incurs $O(\\sqrt{T})$ loss. Jasin & Kumar (2012) gave a re-solving heuristic with $O(1)$ loss under non-degeneracy. Bumpensanti & Wang (2020) achieve uniformly bounded $O(1)$ regret independent of T and capacities via infrequent re-solving with probability thresholding, under non-degeneracy. Vera & Banerjee (2021) obtain constant regret for online allocation with finite types. For degenerate LP / continuous-value models, Jiang-Ma-Zhang (2025) prove $O(\\log ^2 T)$ regret with only densities bounded away from 0 ($O(\\log T)$ under a growth condition), removing non-degeneracy for that formulation; whether $O(1)$ is achievable for general degenerate discrete instances is unsettled. Choice-based NRM: Liu & van Ryzin (2008) showed the CDLP and its decomposition heuristic are asymptotically optimal as demand/capacity scale; Jasin & Kumar (2012) handle choice but rely on non-degeneracy. The non-linear structure of choice makes the fluid relaxation non-linear, and no policy is currently proven to achieve constant (T-independent) regret for general/degenerate choice-based instances, nor is the tight relaxation gap characterized — the genuinely open piece as of 2024-2025.",
+ "where_posed": {
+  "text": "The O(1)-regret re-solving result (independent demand, non-degenerate) is in Bumpensanti & Wang, 'A Re-Solving Heuristic with Uniformly Bounded Loss for Network Revenue Management,' Management Science 66(7):2993-3009, 2020; the residual choice-based/degenerate open question is framed in the surrounding literature (Liu-van Ryzin 2008; Jiang-Ma-Zhang 2025).",
+  "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2019.3365"
+ },
+ "source": {
+  "authors": "Pornpawee Bumpensanti, He Wang",
+  "title": "A Re-Solving Heuristic with Uniformly Bounded Loss for Network Revenue Management",
+  "year": 2020,
+  "venue": "Management Science 66(7):2993-3009",
+  "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2019.3365"
+ },
+ "additional_refs": [
+  {
+   "authors": "Jiashuo Jiang, Will Ma, Jiawei Zhang",
+   "title": "Degeneracy Is OK: Logarithmic Regret for Network Revenue Management with Indiscrete Distributions",
+   "year": 2025,
+   "venue": "Operations Research (arXiv:2210.07996)",
+   "url": "https://arxiv.org/abs/2210.07996"
+  },
+  {
+   "authors": "Stefanus Jasin, Sunil Kumar",
+   "title": "A Re-Solving Heuristic with Bounded Revenue Loss for Network Revenue Management with Customer Choice",
+   "year": 2012,
+   "venue": "Mathematics of Operations Research 37(2):313-345",
+   "url": "https://www.jstor.org/stable/23256626"
+  },
+  {
+   "authors": "Martin I. Reiman, Qiong Wang",
+   "title": "An Asymptotically Optimal Policy for a Quantity-Based Network Revenue Management Problem",
+   "year": 2008,
+   "venue": "Mathematics of Operations Research 33(2):257-282",
+   "url": "https://pubsonline.informs.org/doi/pdf/10.1287/moor.1080.0358"
+  },
+  {
+   "authors": "Qian Liu, Garrett van Ryzin",
+   "title": "On the Choice-Based Linear Programming Model for Network Revenue Management",
+   "year": 2008,
+   "venue": "Manufacturing & Service Operations Management 10(2):288-310",
+   "url": "https://pubsonline.informs.org/doi/10.1287/msom.1070.0169"
+  },
+  {
+   "authors": "Kalyan Talluri, Garrett van Ryzin",
+   "title": "An Analysis of Bid-Price Controls for Network Revenue Management",
+   "year": 1998,
+   "venue": "Management Science 44(11):1577-1593",
+   "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.44.11.1577"
+  }
+ ],
+ "bibtex": "@misc{Bumpensanti2020,\n  author = {Pornpawee Bumpensanti and He Wang},\n  title = {A Re-Solving Heuristic with Uniformly Bounded Loss for Network Revenue Management},\n  year = {2020},\n  howpublished = {Management Science 66(7):2993-3009},\n  url = {https://pubsonline.informs.org/doi/10.1287/mnsc.2019.3365},\n  note = {Source of ORdős Problem ORDOS-041}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/nrm-relaxation-gap-degenerate-and-choice.html",
+  "api": "https://ordos-problems.github.io/api/problems/nrm-relaxation-gap-degenerate-and-choice.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

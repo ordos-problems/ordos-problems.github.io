@@ -1,0 +1,58 @@
+{
+ "number": 75,
+ "ref": "ORDOS-075",
+ "id": "bhh-tsp-constant",
+ "title": "The exact value of the Beardwood–Halton–Hammersley TSP constant",
+ "collection": "Operations Research",
+ "area": "Probabilistic Combinatorial Optimization",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "traveling salesman problem",
+  "BHH constant",
+  "random Euclidean",
+  "asymptotics"
+ ],
+ "short_statement": "For $n$ points drawn uniformly at random in the unit square, the shortest tour length divided by $\\sqrt{n}$ converges to a universal constant $\\beta$. What is the exact value of $\\beta$?",
+ "open_problem": "Determine the exact value of $\\beta$ (or give matching rigorous upper and lower bounds).",
+ "full_statement": "Let $X_1,\\dots,X_n$ be independent and uniformly distributed in the unit square $[0,1]^2$, and let $L_n$ denote the length of the shortest closed tour (the optimal Euclidean Traveling Salesman tour) visiting all of them. Beardwood, Halton, and Hammersley (1959) proved that there is a constant $\\beta>0$ with $L_n/\\sqrt{n}\\to\\beta$ almost surely as $n\\to\\infty$. Determine the exact value of $\\beta$ (or give matching rigorous upper and lower bounds).",
+ "known_results": "Monte-Carlo estimates give $\\beta\\approx 0.7124$. The best rigorous bounds are roughly $0.6277 \\le \\beta \\le 0.9038$ (lower bound via Gaudio–Jaillet 2019 / Steele-type arguments; upper bound Carlsson–Yu 2023), with arguments suggesting the current upper-bound technique cannot go below $\\approx 0.88$. The exact value is unknown.",
+ "where_posed": {
+  "text": "Originates in Beardwood–Halton–Hammersley (1959); a long-standing open problem highlighted in Steele, 'Probability Theory and Combinatorial Optimization' (1997).",
+  "url": "https://doi.org/10.1017/S0305004100034095"
+ },
+ "source": {
+  "authors": "Jillian Beardwood, J. H. Halton, J. M. Hammersley",
+  "title": "The shortest path through many points",
+  "year": 1959,
+  "venue": "Proc. Cambridge Philosophical Society",
+  "url": "https://doi.org/10.1017/S0305004100034095"
+ },
+ "additional_refs": [
+  {
+   "authors": "John Gunnar Carlsson, Yiwei Yu",
+   "title": "A New Upper Bound for the Euclidean TSP Constant",
+   "year": 2023,
+   "venue": "INFORMS Journal on Computing",
+   "url": "https://optimization-online.org/2023/06/a-new-upper-bound-of-the-euclidean-tsp-constant/"
+  },
+  {
+   "authors": "Julia Gaudio, Patrick Jaillet",
+   "title": "An improved lower bound for the Traveling Salesman constant",
+   "year": 2020,
+   "venue": "Operations Research Letters",
+   "url": "https://arxiv.org/abs/1909.06078"
+  }
+ ],
+ "bibtex": "@misc{Beardwood1959,\n  author = {Jillian Beardwood and J. H. Halton and J. M. Hammersley},\n  title = {The shortest path through many points},\n  year = {1959},\n  howpublished = {Proc. Cambridge Philosophical Society},\n  url = {https://doi.org/10.1017/S0305004100034095},\n  note = {Source of ORdős Problem ORDOS-075}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/bhh-tsp-constant.html",
+  "api": "https://ordos-problems.github.io/api/problems/bhh-tsp-constant.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

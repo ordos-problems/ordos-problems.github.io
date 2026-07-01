@@ -2,7 +2,7 @@
   "scripts": {
     "compile": "python3 build/compile.py",
     "render": "node build/render_math.js",
-    "build": "python3 build/compile.py && node build/render_math.js && python3 build/build_site.py"
+    "build": "python3 build/compile.py && node build/render_math.js && python3 build/build_site.py && python3 build/build_api.py"
   },
   "dependencies": {
     "katex": "^0.17.0"

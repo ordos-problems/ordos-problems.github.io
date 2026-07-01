@@ -1,0 +1,52 @@
+{
+ "number": 92,
+ "ref": "ORDOS-092",
+ "id": "correlated-random-graph-matching-efficient-threshold",
+ "title": "Efficient recovery at the random graph matching threshold",
+ "collection": "Computer Science",
+ "area": "Average-Case Inference",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "graph matching",
+  "random graphs",
+  "average-case complexity",
+  "statistical-computational gaps",
+  "planted structures"
+ ],
+ "short_statement": "For correlated Erdos-Renyi graph matching, can polynomial-time algorithms reach the information-theoretic recovery thresholds?",
+ "open_problem": "Determine whether there is a polynomial-time algorithm for unseeded correlated Erdos-Renyi graph matching whose exact-recovery or almost-exact-recovery threshold matches the information-theoretic threshold, including the sparse regimes where current sharp results are only partly algorithmic.",
+ "full_statement": "Two observed graphs $G_1$ and $G_2$ are generated from a common parent Erdos-Renyi graph on $n$ vertices, followed by independent edge subsampling or an equivalent edge-correlation mechanism, and then the vertices of one graph are permuted by an unknown permutation $\\pi$. The statistical task is to recover $\\pi$ exactly, or to correctly match a positive or $1-o(1)$ fraction of vertices. Maximum likelihood gives the relevant information-theoretic benchmark but is not a polynomial-time algorithm. The open problem is to close the algorithmic gap: find a polynomial-time estimator that succeeds down to the information-theoretic threshold, or prove a rigorous computational barrier, especially for sparse graphs where local graph structure rather than dense spectral information drives the transition.",
+ "known_results": "Wu, Xu, and Yu determine sharp reconstruction thresholds for dense correlated random graph matching and determine sparse Erdos-Renyi thresholds up to constant factors; their positive results use a refined analysis of maximum likelihood. Seeded variants are much better understood algorithmically, but the remaining open part is the unseeded polynomial-time threshold: the information-theoretic characterization does not by itself give an efficient matching algorithm.",
+ "where_posed": {
+  "text": "This entry formulates the algorithmic gap suggested by the information-theoretic thresholds of Wu, Xu, and Yu and by the contrast with seeded graph-matching algorithms.",
+  "url": "https://arxiv.org/abs/2102.00082"
+ },
+ "source": {
+  "authors": "Yihong Wu, Jiaming Xu, Sophie H. Yu",
+  "title": "Settling the Sharp Reconstruction Thresholds of Random Graph Matching",
+  "year": 2022,
+  "venue": "arXiv:2102.00082",
+  "url": "https://arxiv.org/abs/2102.00082"
+ },
+ "additional_refs": [
+  {
+   "authors": "Elchanan Mossel, Jiaming Xu",
+   "title": "Seeded Graph Matching via Large Neighborhood Statistics",
+   "year": 2018,
+   "venue": "arXiv:1807.10262",
+   "url": "https://arxiv.org/abs/1807.10262"
+  }
+ ],
+ "bibtex": "@misc{Wu2022,\n  author = {Yihong Wu and Jiaming Xu and Sophie H. Yu},\n  title = {Settling the Sharp Reconstruction Thresholds of Random Graph Matching},\n  year = {2022},\n  howpublished = {arXiv:2102.00082},\n  url = {https://arxiv.org/abs/2102.00082},\n  note = {Source of ORdős Problem ORDOS-092}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/correlated-random-graph-matching-efficient-threshold.html",
+  "api": "https://ordos-problems.github.io/api/problems/correlated-random-graph-matching-efficient-threshold.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

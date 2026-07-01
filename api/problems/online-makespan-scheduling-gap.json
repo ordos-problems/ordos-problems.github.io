@@ -1,0 +1,59 @@
+{
+ "number": 12,
+ "ref": "ORDOS-012",
+ "id": "online-makespan-scheduling-gap",
+ "title": "Optimal competitive ratio for online makespan scheduling",
+ "collection": "Online Algorithms & Learning",
+ "area": "Online Algorithms",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "scheduling",
+  "makespan",
+  "list scheduling",
+  "competitive analysis",
+  "identical machines"
+ ],
+ "short_statement": "Jobs arrive one at a time and each must be placed irrevocably on one of $m$ identical machines, minimizing the makespan. What is the optimal competitive ratio of a deterministic online algorithm as $m$ grows large?",
+ "open_problem": "Determine the exact asymptotic deterministic competitive ratio for online makespan scheduling on identical machines.",
+ "full_statement": "In online makespan scheduling on identical machines ($P\\,|\\,online\\text{-}list\\,|\\,C_{\\max}$), jobs arrive one at a time and each must be assigned irrevocably to one of $m$ identical machines upon arrival. The objective is to minimize the makespan, i.e., the load (total processing time) of the busiest machine, compared against the optimal offline assignment. Graham's 1966 greedy (list scheduling) rule is $(2-1/m)$-competitive. Let $\\rho^*(m)$ be the optimal competitive ratio of a deterministic online algorithm on $m$ machines, and let $\\rho^*=\\lim_{m\\to\\infty}\\rho^*(m)$ be its asymptotic value. Determine $\\rho^*$. Known: $1.88\\le \\rho^* \\le 1.9201$.",
+ "known_results": "Graham's list-scheduling algorithm is $(2-1/m)$-competitive, and this is optimal only for $m=2$ and $m=3$. For large $m$, Fleischer and Wahl gave the best known deterministic upper bound, about $1.9201$, while Rudin's lower-bound construction gives about $1.88$. The asymptotic interval $[1.88,1.9201]$ has been stable for many years. The open problem is to determine the exact asymptotic deterministic competitive ratio for online makespan scheduling on identical machines.",
+ "where_posed": {
+  "text": "Greedy rule and model originated in Graham, 'Bounds for Certain Multiprocessing Anomalies', 1966, Bell System Technical Journal.",
+  "url": "https://onlinelibrary.wiley.com/doi/10.1002/j.1538-7305.1966.tb01709.x"
+ },
+ "source": {
+  "authors": "Ronald L. Graham",
+  "title": "Bounds for Certain Multiprocessing Anomalies",
+  "year": 1966,
+  "venue": "Bell System Technical Journal",
+  "url": "https://onlinelibrary.wiley.com/doi/10.1002/j.1538-7305.1966.tb01709.x"
+ },
+ "additional_refs": [
+  {
+   "authors": "Rudolf Fleischer, Michaela Wahl",
+   "title": "On-line Scheduling Revisited",
+   "year": 2000,
+   "venue": "J. Scheduling / ESA",
+   "url": ""
+  },
+  {
+   "authors": "John F. Rudin III, R. Chandrasekaran",
+   "title": "Improved Bounds for the Online Scheduling Problem",
+   "year": 2003,
+   "venue": "SIAM J. Computing",
+   "url": "https://epubs.siam.org/doi/10.1137/S0097539702403438"
+  }
+ ],
+ "bibtex": "@misc{Graham1966,\n  author = {Ronald L. Graham},\n  title = {Bounds for Certain Multiprocessing Anomalies},\n  year = {1966},\n  howpublished = {Bell System Technical Journal},\n  url = {https://onlinelibrary.wiley.com/doi/10.1002/j.1538-7305.1966.tb01709.x},\n  note = {Source of ORdős Problem ORDOS-012}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/online-makespan-scheduling-gap.html",
+  "api": "https://ordos-problems.github.io/api/problems/online-makespan-scheduling-gap.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

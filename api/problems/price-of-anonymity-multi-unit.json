@@ -1,0 +1,59 @@
+{
+ "number": 23,
+ "ref": "ORDOS-023",
+ "id": "price-of-anonymity-multi-unit",
+ "title": "Price of anonymity in multi-unit auctions",
+ "collection": "Market & Mechanism Design",
+ "area": "Mechanism Design",
+ "status": "partially resolved",
+ "confidence": "high",
+ "tags": [
+  "auctions",
+  "revenue",
+  "anonymous pricing",
+  "price of anonymity",
+  "multi-unit"
+ ],
+ "short_statement": "An anonymous mechanism must offer every buyer the same price; how much revenue does that cost versus the optimal (Myerson) mechanism? For a single item the tight gap is $\\approx 2.62$; for selling multiple identical units the exact gap is not fully pinned down.",
+ "open_problem": "the exact constants $\\rho_k$ for finite $k>1$ beyond the regular / large-market regime, and the multi-item analogues. Determine these.",
+ "full_statement": "Consider revenue maximization with $n$ buyers whose value distributions differ. The optimal (Myerson) mechanism may charge different buyers different prices, whereas an anonymous mechanism must offer everyone the same price. For $k$ identical units and $n$ independent, non-identical regular value distributions, the price of anonymity is $$\\rho_k=\\sup_F \\frac{\\mathrm{OPT}(F)}{\\mathrm{AP}(F)},$$ where $\\mathrm{OPT}(F)$ is the optimal (Myerson) revenue and $\\mathrm{AP}(F)$ is the best anonymous posted-price revenue, and the supremum is over all valid instances $F$. For a single item ($k=1$) the tight value is $\\rho_1\\approx 2.62$. Open: the exact constants $\\rho_k$ for finite $k>1$ beyond the regular / large-market regime, and the multi-item analogues. Determine these.",
+ "known_results": "For one item, the price of anonymity is known exactly up to numerical evaluation: $\\rho_1\\approx 2.6202$. In multi-unit settings with general regular distributions, the cross-group gap has order $\\Theta(\\log k)$, while in large regular markets the ratio is $2+O(1/\\sqrt{k})$ and converges to $2$. The open problem is to determine the exact constants for finite $k$ outside the large-market regime and to understand the corresponding anonymity loss for multi-item mechanisms.",
+ "where_posed": {
+  "text": "Stated in Alaei, Hartline, Niazadeh, Pountourakis, Yan, 'Optimal Auctions vs. Anonymous Pricing', 2015, FOCS (GEB 2019).",
+  "url": "https://arxiv.org/abs/1507.02615"
+ },
+ "source": {
+  "authors": "Saeed Alaei, Jason D. Hartline, Rad Niazadeh, Emmanouil Pountourakis, Yang Yan",
+  "title": "Optimal Auctions vs. Anonymous Pricing",
+  "year": 2015,
+  "venue": "FOCS (GEB 2019)",
+  "url": "https://arxiv.org/abs/1507.02615"
+ },
+ "additional_refs": [
+  {
+   "authors": "Yaonan Jin, Pinyan Lu, Qi Qi, Zhihao Gavin Tang, Tao Xiao",
+   "title": "Tight Approximation Ratio of Anonymous Pricing",
+   "year": 2019,
+   "venue": "STOC",
+   "url": "https://arxiv.org/abs/1811.00763"
+  },
+  {
+   "authors": "Yaonan Jin, Shunhua Jiang, Pinyan Lu, Hengjie Zhang",
+   "title": "Tight Revenue Gaps among Multi-Unit Mechanisms",
+   "year": 2021,
+   "venue": "EC/arXiv",
+   "url": "https://arxiv.org/abs/2102.07454"
+  }
+ ],
+ "bibtex": "@misc{Alaei2015,\n  author = {Saeed Alaei and Jason D. Hartline and Rad Niazadeh and Emmanouil Pountourakis and Yang Yan},\n  title = {Optimal Auctions vs. Anonymous Pricing},\n  year = {2015},\n  howpublished = {FOCS (GEB 2019)},\n  url = {https://arxiv.org/abs/1507.02615},\n  note = {Source of ORdős Problem ORDOS-023}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/price-of-anonymity-multi-unit.html",
+  "api": "https://ordos-problems.github.io/api/problems/price-of-anonymity-multi-unit.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

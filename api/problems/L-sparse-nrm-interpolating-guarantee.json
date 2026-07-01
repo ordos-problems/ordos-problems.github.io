@@ -1,0 +1,54 @@
+{
+ "number": 68,
+ "ref": "ORDOS-068",
+ "id": "L-sparse-nrm-interpolating-guarantee",
+ "title": "An L-sparse network revenue management guarantee interpolating in starting capacity",
+ "collection": "Online Resource Allocation (Ma notes)",
+ "area": "Online Resource Allocation",
+ "status": "open",
+ "confidence": "medium",
+ "contributor": "Will Ma",
+ "tags": [
+  "network revenue management",
+  "L-sparse",
+  "fluid relaxation",
+  "competitive ratio",
+  "will-ma-notes",
+  "permission-pending"
+ ],
+ "short_statement": "In $L$-sparse network revenue management, each product consumes one unit of up to $L$ resources. A simple scheme guarantees $1/(1+L)$ of the fluid benchmark, and a recent bound gives asymptotic optimality as the minimum starting capacity $k$ grows. The open problem is a single guarantee interpolating between the two regimes.",
+ "open_problem": "Find a guarantee that equals $1/(1+L)$ at $k=1$ and approaches $1$ as $k \\to \\infty$ (i.e. smoothly interpolating between the two regimes).",
+ "full_statement": "In $L$-sparse network revenue management, each product consumes one unit of up to $L$ different resources. For $L$-sparse NRM, $\\mathbb{E}[\\mathrm{ALG}] \\ge \\mathrm{FLU}/(1+L)$ holds under adversarial order, and $\\mathbb{E}[\\mathrm{ALG}] \\ge (1 - L/\\sqrt{k+3})\\,\\mathrm{FLU}$ (Amil-Makhdoumi-Wei 2022) gives asymptotic optimality (approaching 1) as $k = \\min_i k_i \\to \\infty$ for fixed $L$, but is vacuous when $k=1, L>1$. \\textbf{Open:} Find a guarantee that equals $1/(1+L)$ at $k=1$ and approaches $1$ as $k \\to \\infty$ (i.e. smoothly interpolating between the two regimes).",
+ "known_results": "Under adversarial order, a $1/(1+L)$ guarantee is known, and a folklore upper bound of $2/(1+L)$ shows that some linear dependence on $L$ is unavoidable when capacities are small. In the large-capacity regime, Amil, Makhdoumi, and Wei prove asymptotic optimality as the minimum starting capacity $k$ grows. The open problem is to find a single guarantee that recovers the small-capacity $1/(1+L)$ behavior and also approaches $1$ as $k$ grows.",
+ "where_posed": {
+  "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Remark 7.6.",
+  "url": ""
+ },
+ "source": {
+  "authors": "Will Ma",
+  "title": "Online Resource Allocation — Course Notes, Remark 7.6",
+  "year": 2024,
+  "venue": "Lecture notes (uploaded)",
+  "url": ""
+ },
+ "additional_refs": [
+  {
+   "authors": "Amil, Makhdoumi, Wei",
+   "title": "Multi-item Order Fulfillment Revisited: LP Formulation and Prophet Inequality",
+   "year": 2022,
+   "venue": "SSRN 4176274",
+   "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4176274"
+  }
+ ],
+ "bibtex": "@misc{Ma2024,\n  author = {Will Ma},\n  title = {Online Resource Allocation — Course Notes, Remark 7.6},\n  year = {2024},\n  howpublished = {Lecture notes (uploaded)},\n  note = {Source of ORdős Problem ORDOS-068}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/L-sparse-nrm-interpolating-guarantee.html",
+  "api": "https://ordos-problems.github.io/api/problems/L-sparse-nrm-interpolating-guarantee.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

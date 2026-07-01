@@ -1,0 +1,59 @@
+{
+ "number": 80,
+ "ref": "ORDOS-080",
+ "id": "perishable-inventory-optimal-policy",
+ "title": "A simple optimal policy for perishable inventory with fixed lifetime ≥ 3",
+ "collection": "Operations Management",
+ "area": "Inventory",
+ "status": "partially resolved",
+ "confidence": "medium",
+ "tags": [
+  "perishable inventory",
+  "fixed lifetime",
+  "optimal policy",
+  "asymptotic optimality",
+  "dynamic programming"
+ ],
+ "short_statement": "For periodic-review inventory of a product that expires after a fixed number of periods ($\\ge 3$), is any simple ordering policy exactly or asymptotically optimal?",
+ "open_problem": "does there exist a simple, tractable policy (e.g. an order-up-to rule in total inventory, or a critical-number policy) that is exactly optimal for $m\\ge 3$, or that is provably asymptotically optimal with explicit performance guarantees?",
+ "full_statement": "Consider a single item under periodic review whose units perish exactly $m$ periods after arrival (fixed shelf life), with i.i.d. demand, FIFO issuance, and linear holding, outdating (expiry), and shortage (or lost-sales) costs. The state needed for the dynamic program is the age profile of on-hand stock — the vector $(x_1,\\dots,x_{m-1})$ of quantities with $1,\\dots,m-1$ periods of remaining life — so the optimal order quantity is a function of this whole vector. For $m\\ge 3$ the optimal policy is not of base-stock/order-up-to form and is computationally intractable (curse of dimensionality). Question: does there exist a simple, tractable policy (e.g. an order-up-to rule in total inventory, or a critical-number policy) that is exactly optimal for $m\\ge 3$, or that is provably asymptotically optimal with explicit performance guarantees?",
+ "known_results": "The two-period case $m=2$ is well understood (Nahmias–Pierskalla 1973). For $m\\ge 3$ no simple optimal policy is known; Nahmias (1976) gives an effective approximate critical-number heuristic. Recent work proves asymptotic optimality of base-stock policies (as the outdating/penalty cost structure or lifetime grows) and of constant-order policies in certain regimes, but a simple policy that is exactly optimal, or asymptotically optimal with tight finite-horizon guarantees in general, remains open.",
+ "where_posed": {
+  "text": "Open problems highlighted in S. Nahmias, 'Perishable Inventory Theory: A Review' (Operations Research 1982).",
+  "url": "https://pubsonline.informs.org/doi/10.1287/opre.30.4.680"
+ },
+ "source": {
+  "authors": "Steven Nahmias",
+  "title": "Perishable Inventory Theory: A Review",
+  "year": 1982,
+  "venue": "Operations Research",
+  "url": "https://pubsonline.informs.org/doi/10.1287/opre.30.4.680"
+ },
+ "additional_refs": [
+  {
+   "authors": "Steven Nahmias, William P. Pierskalla",
+   "title": "Optimal ordering policies for a product that perishes in two periods subject to stochastic demand",
+   "year": 1973,
+   "venue": "Naval Research Logistics Quarterly",
+   "url": "https://scholar.google.com/scholar?q=Nahmias+Pierskalla+1973+product+perishes+two+periods+stochastic+demand"
+  },
+  {
+   "authors": "Recent work on asymptotic optimality (e.g., Bu, Gong, Chao; Chen et al.)",
+   "title": "Asymptotic optimality of base-stock and constant-order policies for perishable inventory",
+   "year": 2023,
+   "venue": "Operations Research / Management Science",
+   "url": "https://scholar.google.com/scholar?q=asymptotic+optimality+perishable+inventory+base-stock+constant-order"
+  }
+ ],
+ "bibtex": "@misc{Nahmias1982,\n  author = {Steven Nahmias},\n  title = {Perishable Inventory Theory: A Review},\n  year = {1982},\n  howpublished = {Operations Research},\n  url = {https://pubsonline.informs.org/doi/10.1287/opre.30.4.680},\n  note = {Source of ORdős Problem ORDOS-080}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/perishable-inventory-optimal-policy.html",
+  "api": "https://ordos-problems.github.io/api/problems/perishable-inventory-optimal-policy.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

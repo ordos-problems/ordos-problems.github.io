@@ -1,0 +1,58 @@
+{
+ "number": 76,
+ "ref": "ORDOS-076",
+ "id": "two-stage-stochastic-programming-complexity",
+ "title": "Complexity and approximability of two-stage stochastic programming",
+ "collection": "Operations Research",
+ "area": "Stochastic Programming",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "stochastic programming",
+  "computational complexity",
+  "sample average approximation",
+  "#P-hardness"
+ ],
+ "short_statement": "What is the exact computational complexity of evaluating/optimizing a two-stage stochastic linear program, and does it admit an efficient (e.g. fully polynomial randomized) approximation scheme?",
+ "open_problem": "pin down the exact complexity of approximating the optimal value — in particular, does the problem admit a fully polynomial randomized approximation scheme (FPRAS), or is approximation itself #P-hard? Relatedly, characterize the tight sample size needed by Sample Average Approximation (SAA) to guarantee an $\\epsilon$-optimal solution with high probability.",
+ "full_statement": "A two-stage stochastic linear program is $\\min_{x\\in X}\\; c^\\top x + \\mathbb{E}_{\\xi}\\,[\\,Q(x,\\xi)\\,]$, where the recourse cost is $Q(x,\\xi)=\\min\\{q^\\top y : Wy \\ge h(\\xi)-T(\\xi)x,\\ y\\ge 0\\}$ and $\\xi$ is a random vector with a known distribution (e.g. independent components). The difficulty is evaluating the expectation $\\mathbb{E}_\\xi[Q(x,\\xi)]$, a high-dimensional integral. Question: pin down the exact complexity of approximating the optimal value — in particular, does the problem admit a fully polynomial randomized approximation scheme (FPRAS), or is approximation itself #P-hard? Relatedly, characterize the tight sample size needed by Sample Average Approximation (SAA) to guarantee an $\\epsilon$-optimal solution with high probability.",
+ "known_results": "Dyer–Stougie (2006) argued two-stage stochastic programming is #P-hard and multistage is PSPACE-hard under explicit independent distributions (a subsequent note by Hanasusanto–Kuhn–Wiesemann (2016) corrected/clarified parts of the two-stage argument). SAA enjoys exponential convergence of the probability of a bad solution in the sample size, with sample complexity polynomial in dimension and $1/\\epsilon^2$ for fixed classes (Kleywegt–Shapiro–Homem-de-Mello; Shapiro–Nemirovski). The precise complexity/approximability and tight sample bounds for general two-stage problems remain unsettled.",
+ "where_posed": {
+  "text": "Complexity questions posed in Dyer & Stougie, 'Computational complexity of stochastic programming problems' (Math. Programming 2006); see also the comment of Hanasusanto–Kuhn–Wiesemann (2016).",
+  "url": "https://link.springer.com/article/10.1007/s10107-005-0597-0"
+ },
+ "source": {
+  "authors": "Martin Dyer, Leen Stougie",
+  "title": "Computational complexity of stochastic programming problems",
+  "year": 2006,
+  "venue": "Mathematical Programming",
+  "url": "https://link.springer.com/article/10.1007/s10107-005-0597-0"
+ },
+ "additional_refs": [
+  {
+   "authors": "Grani A. Hanasusanto, Daniel Kuhn, Wolfram Wiesemann",
+   "title": "A comment on 'computational complexity of stochastic programming problems'",
+   "year": 2016,
+   "venue": "Mathematical Programming",
+   "url": "https://link.springer.com/article/10.1007/s10107-015-0958-2"
+  },
+  {
+   "authors": "Anton J. Kleywegt, Alexander Shapiro, Tito Homem-de-Mello",
+   "title": "The Sample Average Approximation Method for Stochastic Discrete Optimization",
+   "year": 2002,
+   "venue": "SIAM J. Optimization",
+   "url": "https://doi.org/10.1137/S1052623499363220"
+  }
+ ],
+ "bibtex": "@misc{Dyer2006,\n  author = {Martin Dyer and Leen Stougie},\n  title = {Computational complexity of stochastic programming problems},\n  year = {2006},\n  howpublished = {Mathematical Programming},\n  url = {https://link.springer.com/article/10.1007/s10107-005-0597-0},\n  note = {Source of ORdős Problem ORDOS-076}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/two-stage-stochastic-programming-complexity.html",
+  "api": "https://ordos-problems.github.io/api/problems/two-stage-stochastic-programming-complexity.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

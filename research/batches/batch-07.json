@@ -1,0 +1,378 @@
+[
+ {
+  "id": "graph-balancing-makespan",
+  "collection": "Approximation & Discrepancy",
+  "area": "Approximation Algorithms",
+  "tags": [
+   "scheduling",
+   "graph balancing",
+   "makespan",
+   "restricted assignment"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Graph Balancing (Restricted Two-Machine Makespan)",
+  "short_statement": "Graph balancing is unrelated-machine scheduling where each job can go on only two machines (same time on either). It is NP-hard to beat $3/2$ and the best ratio is below $1.75$, but the exact threshold is open.",
+  "full_statement": "Graph balancing is the special case of unrelated-machine scheduling where each job can go on only two machines (and takes the same time on either); equivalently, orient the edges of a weighted multigraph to minimize the maximum weighted in-degree. In graph balancing, each job $j$ has a single size $p_j$ and may be assigned to one of (at most) two machines. \\textbf{Determine the best polynomial-time approximation ratio $\\rho$.} Known: $\\tfrac{3}{2} \\le \\rho < \\tfrac{7}{4}$.",
+  "known_results": "Ebenlendr, Krcal, and Sgall proved $3/2$ hardness and gave a $7/4$-approximation, establishing graph balancing as one of the cleanest restricted-assignment gaps. Jansen and Rohwedder later used local search to beat the $7/4$ barrier. The open problem is to determine the exact approximation threshold: the lower bound remains $3/2$, while the best algorithm is only known to be some constant strictly below $1.75$.",
+  "where_posed": {
+   "text": "The 3/2 hardness and 7/4 algorithm are from Ebenlendr, Krcal, Sgall, 'Graph Balancing: A Special Case of Scheduling Unrelated Parallel Machines,' Algorithmica (SODA 2008); local search below 1.75 from Jansen-Rohwedder (2019). The exact ratio is open.",
+   "url": "https://doi.org/10.1007/s00453-012-9668-9"
+  },
+  "source": {
+   "authors": "Tomas Ebenlendr, Marek Krcal, Jiri Sgall",
+   "title": "Graph Balancing: A Special Case of Scheduling Unrelated Parallel Machines",
+   "year": 2014,
+   "venue": "Algorithmica (SODA 2008)",
+   "url": "https://doi.org/10.1007/s00453-012-9668-9"
+  },
+  "additional_refs": [
+   {
+    "authors": "Klaus Jansen, Lars Rohwedder",
+    "title": "Local Search Breaks 1.75 for Graph Balancing",
+    "year": 2019,
+    "venue": "ICALP",
+    "url": "https://arxiv.org/abs/1811.00955"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "restricted-assignment-makespan",
+  "collection": "Approximation & Discrepancy",
+  "area": "Approximation Algorithms",
+  "tags": [
+   "scheduling",
+   "restricted assignment",
+   "makespan",
+   "configuration LP"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Restricted Assignment Makespan (Polynomial-Time Below 2)",
+  "short_statement": "In restricted-assignment makespan, each job has a fixed size and a set of allowed machines. The general $2$-approximation applies and the configuration LP estimates the optimum within $\\approx 1.94$, but producing an actual schedule below $2$ in polynomial time is open.",
+  "full_statement": "This is the special case of unrelated-machine makespan where each job has a fixed size and a set of machines it is allowed to run on (running time is the same on any allowed machine, infinite elsewhere). For restricted assignment ($p_{ij} \\in \\{p_j, \\infty\\}$), \\textbf{determine the best polynomial-time approximation ratio $\\rho$.} Known: $\\tfrac{3}{2} \\le \\rho \\le 2$. Svensson proved the configuration-LP integrality gap is $\\le \\tfrac{33}{17} \\approx 1.94$ (estimation only, i.e. a bound on the optimum, not an actual schedule); Jansen-Rohwedder give a constructive $\\tfrac{11}{6}$ in quasi-polynomial time. A polynomial-time schedule with ratio below 2 is open.",
+  "known_results": "The Lenstra-Shmoys-Tardos framework gives a $2$-approximation, and the problem is NP-hard to approximate below $3/2$. Svensson showed that the configuration LP has integrality gap at most $33/17\\approx 1.94$, but this is an estimation result and does not directly produce a polynomial-time schedule. Jansen and Rohwedder later gave a constructive $11/6\\approx 1.833$ approximation in quasi-polynomial time. The open problem is to find a genuinely polynomial-time algorithm with ratio strictly below $2$, or to prove that such a schedule cannot be efficiently constructed.",
+  "where_posed": {
+   "text": "The 1.94 configuration-LP estimation is from Svensson, 'Santa Claus Schedules Jobs on Unrelated Machines,' SIAM J. Computing (STOC 2011); quasi-polynomial 11/6 from Jansen-Rohwedder (2017). A polynomial-time schedule below 2 is a recognized open problem.",
+   "url": "https://arxiv.org/abs/1011.1168"
+  },
+  "source": {
+   "authors": "Ola Svensson",
+   "title": "Santa Claus Schedules Jobs on Unrelated Machines",
+   "year": 2012,
+   "venue": "SIAM Journal on Computing (STOC 2011)",
+   "url": "https://arxiv.org/abs/1011.1168"
+  },
+  "additional_refs": [
+   {
+    "authors": "Klaus Jansen, Lars Rohwedder",
+    "title": "A Quasi-Polynomial Approximation for the Restricted Assignment Problem",
+    "year": 2017,
+    "venue": "IPCO (SIAM J. Computing)",
+    "url": "https://arxiv.org/abs/1701.07208"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "santa-claus-best-approximation",
+  "collection": "Approximation & Discrepancy",
+  "area": "Approximation Algorithms",
+  "tags": [
+   "Santa Claus",
+   "max-min fair allocation",
+   "approximation ratio",
+   "local search"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Best Polynomial-Time Approximation for Restricted Santa Claus",
+  "short_statement": "Separately from the integrality-gap question, the best polynomial-time approximation ratio for restricted max-min fair allocation is open: non-constructive arguments give $\\approx 3.8\\text{--}4$, but the best actual polynomial-time algorithm only guarantees $4 + \\delta$.",
+  "full_statement": "Separately from the integrality-gap question, there is the algorithmic question: what is the best ratio achievable in polynomial time for restricted max-min fair allocation (restricted Santa Claus)? \\textbf{Determine the best polynomial-time approximation ratio $\\rho$.} Known: $\\rho \\le 4 + \\delta$ for any constant $\\delta > 0$ (Cheng-Mao). The configuration LP certifies that allocations within a factor $\\le 3.808$ of optimal exist (non-constructively), so closing the constructive vs. existential gap is open.",
+  "known_results": "Cheng and Mao give the best polynomial-time approximation, with ratio $4+\\delta$ for any fixed $\\delta>0$, improving earlier guarantees of $6+\\delta$ and about $12.33$. Separately, the configuration-LP analysis proves that allocations within a factor about $3.808$ of optimum exist, but the proof does not yield a polynomial-time algorithm with that ratio. The open problem is to close this constructive-versus-existential gap, or to prove that polynomial-time algorithms face a larger barrier.",
+  "where_posed": {
+   "text": "The best polynomial-time ratio 4 + delta is from Cheng & Mao, 'Restricted Max-Min Allocation: Integrality Gap and Approximation Algorithm,' Algorithmica (ICALP 2019); existential ~3.808 via the configuration LP. Closing the constructive-existential gap is open.",
+   "url": "https://arxiv.org/abs/1905.06084"
+  },
+  "source": {
+   "authors": "Siu-Wing Cheng, Yuchen Mao",
+   "title": "Restricted Max-Min Allocation: Integrality Gap and Approximation Algorithm",
+   "year": 2022,
+   "venue": "Algorithmica (ICALP 2019)",
+   "url": "https://arxiv.org/abs/1905.06084"
+  },
+  "additional_refs": [
+   {
+    "authors": "Chidambaram Annamalai, Christos Kalaitzis, Ola Svensson",
+    "title": "Combinatorial Algorithm for Restricted Max-Min Fair Allocation",
+    "year": 2017,
+    "venue": "ACM Transactions on Algorithms (SODA 2015)",
+    "url": "https://arxiv.org/abs/1409.0607"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "kunit-prophet-iid-monotonicity-in-T",
+  "collection": "Online Resource Allocation (Ma notes)",
+  "area": "Prophet Inequalities",
+  "tags": [
+   "prophet inequality",
+   "k-unit",
+   "IID",
+   "optimal stopping",
+   "correlation gap",
+   "will-ma-notes",
+   "permission-pending"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Monotonicity in T of the tight k-unit IID prophet ratio",
+  "short_statement": "For the i.i.d. prophet inequality accepting up to $k$ of $T$ values, an LP captures the tight online-to-offline ratio. Numerically the ratio decreases in $T$; the conjecture is to prove this monotonicity for general $k$, which would fully characterize the tight $k$-unit IID prophet guarantee.",
+  "full_statement": "Consider the IID prophet inequality with $T$ values and capacity $k$: T values arrive i.i.d. from a distribution $\\mathbf F$, and the gambler may accept up to $k$ of them online, comparing against the offline optimum. Let $\\mathrm{val}(k,T)=\\inf_{\\mathbf F}\\mathrm{ONL}/\\mathrm{OFF}$ be the tight competitive ratio (online versus offline) for given $k$ and $T$, captured by a known LP (the LP of the notes without the normalization constraint). \\textbf{Open:} Show that for each fixed $k$, $\\mathrm{val}(k,T)$ is decreasing in $T$ (more arrivals make the gambler's task relatively harder). For $k=1$ this monotonicity was established by Correa et al. (2017); the general $k$ case is open. Proving it would fully characterize the tight $k$-unit IID prophet guarantee.",
+  "known_results": "Established for $k = 1$ (Correa-Foncea-Hoeksma-Oosterwijk-Vredeveld 2017; the tight single-item IID constant is ~0.745, problem known since Hill-Kertz 1982). Proving monotonicity in T for general k is open and would fully characterize the tight k-unit IID prophet inequality.",
+  "where_posed": {
+   "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #1).",
+   "url": ""
+  },
+  "source": {
+   "authors": "Will Ma",
+   "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #1)",
+   "year": 2024,
+   "venue": "Lecture notes (uploaded)",
+   "url": ""
+  },
+  "additional_refs": [
+   {
+    "authors": "Jose Correa, Patricio Foncea, Ruben Hoeksma, Tim Oosterwijk, Tjark Vredeveld",
+    "title": "Posted Price Mechanisms for a Random Stream of Customers",
+    "year": 2017,
+    "venue": "EC",
+    "url": "https://dl.acm.org/doi/10.1145/3033274.3085137"
+   },
+   {
+    "authors": "Theodore P. Hill, Robert P. Kertz",
+    "title": "Comparisons of stop rule and supremum expectations of i.i.d. random variables",
+    "year": 1982,
+    "venue": "Annals of Probability",
+    "url": "https://www.jstor.org/stable/2243440"
+   }
+  ],
+  "enabled": true,
+  "contributor": "Will Ma"
+ },
+ {
+  "id": "kunit-prophet-onl-off-adversarial",
+  "collection": "Online Resource Allocation (Ma notes)",
+  "area": "Prophet Inequalities",
+  "tags": [
+   "prophet inequality",
+   "k-unit",
+   "adversarial order",
+   "competitive ratio",
+   "Bernoulli",
+   "will-ma-notes",
+   "permission-pending"
+  ],
+  "status": "open",
+  "confidence": "medium",
+  "title": "Online-vs-offline ratio for k-unit prophet under adversarial order (k>1)",
+  "short_statement": "For the $k$-unit prophet inequality under adversarial order, the online-to-fluid ratio is understood, but the online-to-offline ratio appears different and is not understood for $k>1$. The open problem asks for any nontrivial bound, even restricting to weighted-Bernoulli distributions.",
+  "full_statement": "Consider the $k$-unit prophet inequality under adversarial arrival order: values from distributions $\\mathbf F$ arrive in an adversarial order over $T$ steps, and an online algorithm may accept up to $k$. Let $\\mathrm{ONL}$ be the online value, $\\mathrm{FLU}$ the fluid/LP benchmark, and $\\mathrm{OFF}$ the true offline optimum. Under adversarial order, $\\inf_{T,\\mathbf F}\\mathrm{ONL}/\\mathrm{FLU}$ is known for $k$-unit prophet inequalities, but $\\inf_{T,\\mathbf F}\\mathrm{ONL}/\\mathrm{OFF}$ is not, and the two appear to differ (Jiang-Ma-Zhang 2022). \\textbf{Open:} Determine (or bound) $\\inf_{T,\\mathbf F}\\mathrm{ONL}/\\mathrm{OFF}$ for $k>1$, even restricting each value distribution to be weighted Bernoulli (a two-point distribution with one point at 0).",
+  "known_results": "The online-to-fluid ratio inf ONL/FLU is tight/understood for k-unit prophet; the online-to-offline ratio inf ONL/OFF is open for $k > 1$ and appears different (Jiang-Ma-Zhang 2022, Prop. 1 of arXiv version). Even the weighted-Bernoulli special case is open.",
+  "where_posed": {
+   "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #2).",
+   "url": ""
+  },
+  "source": {
+   "authors": "Will Ma",
+   "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #2)",
+   "year": 2024,
+   "venue": "Lecture notes (uploaded)",
+   "url": ""
+  },
+  "additional_refs": [
+   {
+    "authors": "Jiashuo Jiang, Will Ma, Jiawei Zhang",
+    "title": "Tight Guarantees for Multi-unit Prophet Inequalities and Online Stochastic Knapsack",
+    "year": 2022,
+    "venue": "SODA",
+    "url": "https://arxiv.org/abs/2107.02058"
+   }
+  ],
+  "enabled": true,
+  "contributor": "Will Ma"
+ },
+ {
+  "id": "kunit-prophet-correlation-gap-random-order",
+  "collection": "Online Resource Allocation (Ma notes)",
+  "area": "Prophet Inequalities",
+  "tags": [
+   "prophet inequality",
+   "k-unit",
+   "random order",
+   "correlation gap",
+   "will-ma-notes",
+   "permission-pending"
+  ],
+  "status": "open",
+  "confidence": "medium",
+  "title": "Overcoming the correlation gap for k-unit prophet under random order (k>1)",
+  "short_statement": "For $k$-unit prophet inequalities, the correlation-gap constant $c_k$ can be beaten when the algorithm freely chooses the arrival order. Under random order the best known bound is stuck exactly at $c_k$ for $k>1$ (only $k=1$ is beatable). The open problem is to extend the free-order techniques to random order for $k>1$.",
+  "full_statement": "For $k$-unit prophet inequalities, let $c_k^{\\mathrm{CG}} = 1 - e^{-k}k^k/k!$ be the correlation-gap constant, and let $\\mathrm{ONL}/\\mathrm{OFF}$ denote the online-to-offline ratio. This constant can be overcome (beaten) when the arrival order can be freely chosen by the algorithm. Under the slightly harder random arrival order, the best-known $\\inf_{T,\\mathbf F}\\mathrm{ONL}/\\mathrm{OFF}$ for $k$-unit prophet is stuck at $c_k^{\\mathrm{CG}}$ for $k>1$ (Arnosti-Ma 2022), while it is beaten for $k=1$ (Correa et al. 2021). \\textbf{Open:} Can the order-selection techniques be extended to overcome the correlation gap under random order for $k>1$? Any improvement would establish a separation for $\\inf \\mathrm{ONL}/\\mathrm{OFF}$ previously unknown.",
+  "known_results": "For $k=1$, Correa and coauthors show that the correlation-gap constant can be beaten. For $k>1$ under random arrival order, the best known online-to-offline guarantees remain stuck at the correlation-gap value $c_k^{\\mathrm{CG}}$, as in the Arnosti-Ma analysis of static thresholds. The open problem is to beat $c_k^{\\mathrm{CG}}$ for any fixed $k>1$ under random order; even an arbitrarily small improvement would establish a new separation between random order and the correlation-gap barrier.",
+  "where_posed": {
+   "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #3).",
+   "url": ""
+  },
+  "source": {
+   "authors": "Will Ma",
+   "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #3)",
+   "year": 2024,
+   "venue": "Lecture notes (uploaded)",
+   "url": ""
+  },
+  "additional_refs": [
+   {
+    "authors": "Nick Arnosti, Will Ma",
+    "title": "Tight Guarantees for Static Threshold Policies in the Prophet Secretary Problem",
+    "year": 2023,
+    "venue": "Operations Research",
+    "url": "https://arxiv.org/abs/2108.12893"
+   },
+   {
+    "authors": "Jose Correa, Andres Cristi, Boris Epstein, Jose Soto",
+    "title": "The Two-Sided Game of Googol / Sample-driven optimal stopping",
+    "year": 2021,
+    "venue": "SODA",
+    "url": "https://arxiv.org/abs/2009.11885"
+   }
+  ],
+  "enabled": true,
+  "contributor": "Will Ma"
+ },
+ {
+  "id": "arnosti-ma-stockout-threshold-conjecture",
+  "collection": "Online Resource Allocation (Ma notes)",
+  "area": "Prophet Inequalities",
+  "tags": [
+   "prophet inequality",
+   "static threshold",
+   "k-unit",
+   "revenue management",
+   "will-ma-notes",
+   "permission-pending"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "The stockout-probability static-threshold conjecture",
+  "short_statement": "For the $k$-unit IID prophet problem, Arnosti and Ma conjecture (and verify numerically) that setting a single static threshold so the stockout probability $\\Pr[D \\ge k]$ equals $\\Pr[\\mathrm{Pois}(k) \\ge k]$ achieves the tight correlation-gap guarantee. The open problem is to prove this or find a counterexample.",
+  "full_statement": "In the $k$-unit IID setting (T values arrive i.i.d.; accept up to $k$), consider static-threshold policies indexed by the threshold's induced demand distribution $D$ (the number of values above the threshold). \\textbf{Conjecture (Arnosti-Ma):} setting the threshold so that $\\Pr[D \\ge k] = \\Pr[\\mathrm{Pois}(k) \\ge k]$ achieves the tight guarantee $c_k^{\\mathrm{CG}} = 1 - e^{-k}k^k/k!$ under random order. \\textbf{Open:} Prove this (e.g. via Bernoulli optimization) or find a counterexample.",
+  "known_results": "Arnosti and Ma formulate this threshold rule and verify it numerically for the relevant Bernoulli-optimization problem. Their evidence supports the conjecture that the stockout-probability threshold achieves the tight correlation-gap guarantee $c_k^{\\mathrm{CG}}$ for every $k$. What is missing is a proof that this particular threshold is always worst-case optimal, or a counterexample showing that the numerical pattern eventually breaks.",
+  "where_posed": {
+   "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #4).",
+   "url": ""
+  },
+  "source": {
+   "authors": "Will Ma",
+   "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #4)",
+   "year": 2024,
+   "venue": "Lecture notes (uploaded)",
+   "url": ""
+  },
+  "additional_refs": [
+   {
+    "authors": "Nick Arnosti, Will Ma",
+    "title": "Tight Guarantees for Static Threshold Policies in the Prophet Secretary Problem",
+    "year": 2023,
+    "venue": "Operations Research",
+    "url": "https://arxiv.org/abs/2108.12893"
+   }
+  ],
+  "enabled": true,
+  "contributor": "Will Ma"
+ },
+ {
+  "id": "static-threshold-half-without-randomization-or-cardinal",
+  "collection": "Online Resource Allocation (Ma notes)",
+  "area": "Prophet Inequalities",
+  "tags": [
+   "prophet inequality",
+   "static threshold",
+   "ordinal information",
+   "single item",
+   "will-ma-notes",
+   "permission-pending"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Guarantee 1/2 with a static threshold without randomization or cardinal values",
+  "short_statement": "In the single-item prophet inequality, the $1/2$ guarantee is achievable by a deterministic static threshold, and separately knowing only ordinal (median) information. Open: can both restrictions hold at once - a static threshold guaranteeing $1/2$ using neither randomization nor cardinal values?",
+  "full_statement": "In the classic single-item (single-choice, $k=1$) prophet inequality, the $1/2$ guarantee can be achieved by a deterministic static threshold, and separately can be achieved knowing only ordinal (median) information rather than exact cardinal values. \\textbf{Open:} Is there a static-threshold policy guaranteeing $\\mathbb{E}[\\mathrm{ALG}] \\ge \\tfrac12\\,\\mathbb{E}[\\max_i X_i]$ that uses neither randomization nor knowledge of cardinal values? Formally, the algorithm is told only $\\boldsymbol\\Lambda \\in \\Delta([n])^T$ with $r_1 \\ge \\cdots \\ge r_n \\ge 0$, must commit to a threshold defined by an index $J \\in [n]$ (and possibly a deterministic tie-break), and then $r_1,\\dots,r_n$ are set adversarially.",
+  "known_results": "$1/2$ is achievable by a deterministic static threshold (knowing cardinal values) and, separately, knowing only the median (Samuel-Cahn 1984). Whether $1/2$ is achievable simultaneously without randomization and without cardinal values is open.",
+  "where_posed": {
+   "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #5).",
+   "url": ""
+  },
+  "source": {
+   "authors": "Will Ma",
+   "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #5)",
+   "year": 2024,
+   "venue": "Lecture notes (uploaded)",
+   "url": ""
+  },
+  "additional_refs": [
+   {
+    "authors": "Ester Samuel-Cahn",
+    "title": "Comparison of Threshold Stop Rules and Maximum for Independent Nonnegative Random Variables",
+    "year": 1984,
+    "venue": "Annals of Probability",
+    "url": "https://www.jstor.org/stable/2243359"
+   }
+  ],
+  "enabled": true,
+  "contributor": "Will Ma"
+ },
+ {
+  "id": "random-order-vs-worst-case-known-order",
+  "collection": "Online Resource Allocation (Ma notes)",
+  "area": "Prophet Inequalities",
+  "tags": [
+   "prophet inequality",
+   "random order",
+   "arrival order",
+   "free order",
+   "will-ma-notes",
+   "permission-pending"
+  ],
+  "status": "open",
+  "confidence": "medium",
+  "title": "Is unknown uniformly random order ever worse than worst-case known order?",
+  "short_statement": "Intuitively, an algorithm facing values in unknown uniformly random order should do at least as well as facing an adversary's worst order that it is told in advance. The open question: can this ever fail for some product distribution? Resolving that it never does would derive random-order prophet inequalities from fixed-order analysis.",
+  "full_statement": "When values arrive in an unknown uniformly random order, intuitively the algorithm should do at least as well as if an adversary picked the worst order but told the algorithm what it was. For the single-choice ($k=1$) accept/reject problem, \\textbf{Open:} does there exist a product distribution $\\mathbf F \\in \\Delta(\\mathbb{R}_{\\ge 0})^T$ for which $\\sup_{\\pi \\in \\Pi^T} \\mathbb{E}_\\sigma \\mathbb{E}_{\\mathbf V \\sim \\mathbf F}\\,\\mathrm{ALG}^\\pi(\\sigma(\\mathbf V)) < \\min_\\sigma \\sup_{\\pi \\in \\Pi^T} \\mathbb{E}_{\\mathbf V \\sim \\mathbf F}\\,\\mathrm{ALG}^\\pi(\\sigma(\\mathbf V))$? (Equation (C.1) of the notes.) Equivalently: can unknown random order be strictly worse than the worst-case known order? Resolving that it never happens would let one derive random-order prophet inequalities from the simpler fixed-order analysis.",
+  "known_results": "No counterexample is known, and the prevailing intuition is that unknown uniformly random order should not be worse than the adversary's worst order when that order is revealed in advance. Proving this would be useful because fixed-order prophet-inequality analyses could then transfer directly to random-order models. The difficulty is that the algorithm in the known-order benchmark can tailor its stopping rule to the revealed permutation, while the random-order algorithm must average over all permutations without seeing which one will occur.",
+  "where_posed": {
+   "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #6); see Equation (C.1) of the notes.",
+   "url": ""
+  },
+  "source": {
+   "authors": "Will Ma",
+   "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #6)",
+   "year": 2024,
+   "venue": "Lecture notes (uploaded)",
+   "url": ""
+  },
+  "additional_refs": [
+   {
+    "authors": "Tomer Ezra, Michal Feldman, Nick Gravin, Zhihao Gavin Tang",
+    "title": "On the Significance of Knowing the Arrival Order in Prophet Inequalities",
+    "year": 2022,
+    "venue": "arXiv",
+    "url": "https://arxiv.org/abs/2202.09215"
+   }
+  ],
+  "enabled": true,
+  "contributor": "Will Ma"
+ }
+]

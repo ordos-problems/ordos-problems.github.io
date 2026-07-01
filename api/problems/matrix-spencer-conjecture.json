@@ -1,0 +1,51 @@
+{
+ "number": 51,
+ "ref": "ORDOS-051",
+ "id": "matrix-spencer-conjecture",
+ "title": "Matrix Spencer Conjecture",
+ "collection": "Approximation & Discrepancy",
+ "area": "Discrepancy",
+ "status": "partially resolved",
+ "confidence": "high",
+ "tags": [
+  "discrepancy",
+  "matrix Spencer",
+  "spectral norm",
+  "vector balancing"
+ ],
+ "short_statement": "The matrix version of Spencer's 'six standard deviations' theorem asks: given $n$ symmetric $n\\times n$ matrices of operator norm at most $1$, can one choose signs so the signed sum has spectral norm $O(\\sqrt{n})$? Proven for low rank; open in general.",
+ "open_problem": "Prove or refute the full-rank Matrix Spencer conjecture: can $n$ bounded symmetric matrices always be signed to have spectral norm $O(\\sqrt n)$?",
+ "full_statement": "Spencer's classic 'six standard deviations' theorem balances n sets on n elements with discrepancy O(sqrt(n)); the matrix version asks the same for matrices. \\textbf{Conjecture (Matrix Spencer):} for symmetric matrices $A_1,\\dots,A_n \\in \\mathbb{R}^{n \\times n}$ with $\\|A_i\\|_{\\mathrm{op}} \\le 1$, there exist signs $x_i \\in \\{\\pm 1\\}$ with $\\big\\|\\sum_i x_i A_i\\big\\|_{\\mathrm{op}} = O(\\sqrt{n})$. (The diagonal case is Spencer's theorem.) Proven for rank $\\le n/\\log^3 n$; open in general (the full-rank case).",
+ "known_results": "The conjectured bound is $O(\\sqrt n)$, matching the scale of Spencer's original set-system theorem in the diagonal case. Bansal, Jiang, and Meka proved this bound for matrices of rank at most $n/\\log^3 n$, which covers a large low-rank regime and introduced new matrix-discrepancy techniques. The main unresolved case is full rank, where the noncommutative nature of the matrices prevents a direct extension of scalar discrepancy arguments.",
+ "where_posed": {
+  "text": "The poly-logarithmic-rank resolution (and statement of the general open conjecture) is in Bansal, Jiang, Meka, 'Resolving Matrix Spencer Conjecture Up to Poly-logarithmic Rank,' STOC 2023 (SIAM J. Computing 2024).",
+  "url": "https://arxiv.org/abs/2208.11286"
+ },
+ "source": {
+  "authors": "Nikhil Bansal, Haotian Jiang, Raghu Meka",
+  "title": "Resolving Matrix Spencer Conjecture Up to Poly-logarithmic Rank",
+  "year": 2023,
+  "venue": "STOC (SIAM J. Computing 2024)",
+  "url": "https://arxiv.org/abs/2208.11286"
+ },
+ "additional_refs": [
+  {
+   "authors": "Afonso S. Bandeira, March T. Boedihardjo, Ramon van Handel",
+   "title": "Matrix concentration inequalities and free probability",
+   "year": 2023,
+   "venue": "Inventiones Mathematicae",
+   "url": "https://arxiv.org/abs/2108.06312"
+  }
+ ],
+ "bibtex": "@misc{Bansal2023,\n  author = {Nikhil Bansal and Haotian Jiang and Raghu Meka},\n  title = {Resolving Matrix Spencer Conjecture Up to Poly-logarithmic Rank},\n  year = {2023},\n  howpublished = {STOC (SIAM J. Computing 2024)},\n  url = {https://arxiv.org/abs/2208.11286},\n  note = {Source of ORdős Problem ORDOS-051}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/matrix-spencer-conjecture.html",
+  "api": "https://ordos-problems.github.io/api/problems/matrix-spencer-conjecture.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

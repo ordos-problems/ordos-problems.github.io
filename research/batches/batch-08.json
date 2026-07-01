@@ -1,0 +1,396 @@
+[
+ {
+  "id": "ocrs-ex-ante-equivalence-oblivious-adversary",
+  "collection": "Online Resource Allocation (Ma notes)",
+  "area": "Online Contention Resolution",
+  "tags": [
+   "OCRS",
+   "prophet inequality",
+   "ex-ante",
+   "oblivious adversary",
+   "will-ma-notes",
+   "permission-pending"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Are ex-ante prophet inequalities and OCRS equivalent under oblivious adversarial order?",
+  "short_statement": "Online contention resolution schemes (OCRS) and ex-ante prophet inequalities give equivalent guarantees under random and fixed order. The open question is whether the same equivalence holds under oblivious adversarial order: prove it for a general feasibility family and polytope relaxation, or give a counterexample.",
+  "full_statement": "Online contention resolution schemes (OCRS) and ex-ante prophet inequalities are known to give equivalent guarantees under random order and under fixed order. \\textbf{Open:} For a feasibility family $\\mathcal F$, a standard polytope relaxation $\\mathcal P$, and $\\mathbf x \\in \\mathcal P$, are the best ex-ante prophet inequality guarantee and the best OCRS selectability equal under oblivious adversarial arrival order (as they are under random and fixed order)? Prove the equivalence for a general feasibility family and polytope relaxation, or exhibit a counterexample showing the two notions diverge.",
+  "known_results": "Lee and Singla established the equivalence between ex-ante prophet inequalities and online contention resolution schemes under random order and under fixed order. The oblivious-adversarial-order model sits between these regimes: the order is not adaptive to the realizations, but it is not random either. It is open whether the same reduction still goes through in this setting or whether the two notions separate.",
+  "where_posed": {
+   "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #1).",
+   "url": ""
+  },
+  "source": {
+   "authors": "Will Ma",
+   "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #1)",
+   "year": 2024,
+   "venue": "Lecture notes (uploaded)",
+   "url": ""
+  },
+  "additional_refs": [
+   {
+    "authors": "Euiwoong Lee, Sahil Singla",
+    "title": "Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities",
+    "year": 2018,
+    "venue": "ESA",
+    "url": "https://arxiv.org/abs/1806.09251"
+   }
+  ],
+  "enabled": true,
+  "contributor": "Will Ma"
+ },
+ {
+  "id": "ocrs-rank1-almighty-adversary",
+  "collection": "Online Resource Allocation (Ma notes)",
+  "area": "Online Contention Resolution",
+  "tags": [
+   "OCRS",
+   "matroid",
+   "almighty adversary",
+   "selectability",
+   "will-ma-notes",
+   "permission-pending"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "A 1/2-selectable OCRS for rank-1 matroids against the almighty adversary",
+  "short_statement": "A simple $1/2$-selectable OCRS is known for the rank-1 matroid against the standard online adversary. Open: whether a $1/2$-selectable OCRS exists against the much stronger almighty adversary (which sees all realizations); the best known is only $1/4$, and even beating $1/4$ is open.",
+  "full_statement": "A simple $\\tfrac12$-selectable online contention resolution scheme is known for the rank-1 matroid (single-choice) against the standard online adversary. \\textbf{Open:} For the rank-1 matroid, does there exist a $\\tfrac12$-selectable OCRS against the almighty adversary (which knows all realized values in advance)? An ex-ante prophet inequality guarantees $\\tfrac12$ against the almighty adversary on rank-1 matroids, but the best-known OCRS against the almighty adversary is only $\\tfrac14$ (Feldman et al. 2021). Either show a 1/2-selectable OCRS exists, find a modified one, or prove impossibility; even beating 1/4 is open.",
+  "known_results": "For rank-1 matroids, Feldman, Svensson, and Zenklusen give a $1/4$-selectable OCRS against the almighty adversary. In contrast, the corresponding ex-ante prophet-inequality guarantee is $1/2$, so the OCRS and prophet views do not currently match quantitatively in this adversarial model. It is open whether one can close the gap all the way to $1/2$, or even improve the OCRS constant beyond $1/4$.",
+  "where_posed": {
+   "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #2).",
+   "url": ""
+  },
+  "source": {
+   "authors": "Will Ma",
+   "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #2)",
+   "year": 2024,
+   "venue": "Lecture notes (uploaded)",
+   "url": ""
+  },
+  "additional_refs": [
+   {
+    "authors": "Moran Feldman, Ola Svensson, Rico Zenklusen",
+    "title": "Online Contention Resolution Schemes with Applications to Bayesian Selection Problems",
+    "year": 2021,
+    "venue": "SIAM J. Computing",
+    "url": "https://arxiv.org/abs/1606.06819"
+   }
+  ],
+  "enabled": true,
+  "contributor": "Will Ma"
+ },
+ {
+  "id": "explicit-kunit-ocrs-random-order",
+  "collection": "Online Resource Allocation (Ma notes)",
+  "area": "Online Contention Resolution",
+  "tags": [
+   "OCRS",
+   "k-unit",
+   "random order",
+   "correlation gap",
+   "explicit construction",
+   "will-ma-notes",
+   "permission-pending"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "An explicit k-unit OCRS achieving the correlation-gap guarantee under random order",
+  "short_statement": "For $k$-unit constraints under random order, a $c_k$-selectable OCRS is known to exist but only via a non-explicit existence proof (through ex-ante prophet inequalities). The open problem is to construct an explicit $c_k$-selectable OCRS for $k>1$; an explicit scheme is known only for $k=1$.",
+  "full_statement": "For $k$-unit constraints under random arrival order, a $c_k$-selectable OCRS is known to exist, but only via a non-explicit existence proof (going through ex-ante prophet inequalities). \\textbf{Open:} Under random order with a $k$-unit constraint, construct an explicit $c_k^{\\mathrm{CG}}$-selectable OCRS, where $c_k^{\\mathrm{CG}} = 1 - e^{-k}k^k/k!$. Such an OCRS is known to exist only via an existential argument; an explicit description is known only for $k=1$ (Lee-Singla 2018, Apx. A.2 of arXiv version).",
+  "known_results": "A $c_k^{\\mathrm{CG}}$-selectable OCRS is known to exist under random order because one can pass through the ex-ante prophet-inequality equivalence. That argument is not an explicit online rule, however. Lee and Singla give an explicit construction for the single-unit case $k=1$, but no comparable construction is known for $k>1$. The open problem is to turn the existential guarantee into a usable OCRS that achieves the same correlation-gap constant.",
+  "where_posed": {
+   "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #3).",
+   "url": ""
+  },
+  "source": {
+   "authors": "Will Ma",
+   "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #3)",
+   "year": 2024,
+   "venue": "Lecture notes (uploaded)",
+   "url": ""
+  },
+  "additional_refs": [
+   {
+    "authors": "Euiwoong Lee, Sahil Singla",
+    "title": "Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities",
+    "year": 2018,
+    "venue": "ESA",
+    "url": "https://arxiv.org/abs/1806.09251"
+   }
+  ],
+  "enabled": true,
+  "contributor": "Will Ma"
+ },
+ {
+  "id": "online-knapsack-unit-density-tight-guarantee",
+  "collection": "Online Resource Allocation (Ma notes)",
+  "area": "Online Resource Allocation",
+  "tags": [
+   "online knapsack",
+   "unit density",
+   "IID",
+   "fluid relaxation",
+   "competitive ratio",
+   "will-ma-notes",
+   "permission-pending"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Tight guarantee for online knapsack (unit-density / IID): is it (1-e^{-2})/2?",
+  "short_statement": "In online knapsack, items must be irrevocably accepted or rejected. For the unit-density (reward = size) and IID special cases, the best known guarantee relative to the fluid benchmark is $\\approx 0.355$ and no policy beats $\\approx 0.432$. The conjecture is that the tight guarantee equals $(1 - e^{-2})/2 \\approx 0.432$.",
+  "full_statement": "In the online knapsack problem, items with sizes and rewards arrive and must be irrevocably accepted (consuming capacity) or rejected. For online knapsack with the fluid relaxation as benchmark, in the unit-density case ($r_j = s_j$, reward equals size) or the IID case, the best known guarantee is $0.355$ (Jiang-Ma-Zhang 2022) improving $0.321$ (Stein et al. 2020), with an upper bound of $(1-e^{-2})/2 \\approx 0.432$. \\textbf{Conjecture:} the tight guarantee equals $(1-e^{-2})/2$. Determine it.",
+  "known_results": "For unit-density online knapsack, Stein, Truong, and Wang proved a $0.321$ guarantee, later improved to $0.355$ by Jiang, Ma, and Zhang. The known upper bound is $(1-e^{-2})/2\\approx 0.432$, and this value is the natural conjectured tight constant. For general rewards, no guarantee better than $1/(3+e^{-2})\\approx 0.319$ is known even under random order or IID assumptions. The open problem is to close the gap for unit-density knapsack, ideally proving or refuting the conjectured $(1-e^{-2})/2$ constant.",
+  "where_posed": {
+   "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Remarks 7.3-7.4.",
+   "url": ""
+  },
+  "source": {
+   "authors": "Will Ma",
+   "title": "Online Resource Allocation — Course Notes, Remarks 7.3–7.4",
+   "year": 2024,
+   "venue": "Lecture notes (uploaded)",
+   "url": ""
+  },
+  "additional_refs": [
+   {
+    "authors": "Clifford Stein, Van-Anh Truong, Xinshang Wang",
+    "title": "Advance Service Reservations with Heterogeneous Customers",
+    "year": 2020,
+    "venue": "Management Science",
+    "url": "https://arxiv.org/abs/1805.05554"
+   },
+   {
+    "authors": "Jiashuo Jiang, Will Ma, Jiawei Zhang",
+    "title": "Tight Guarantees for Multi-unit Prophet Inequalities and Online Stochastic Knapsack",
+    "year": 2022,
+    "venue": "SODA",
+    "url": "https://arxiv.org/abs/2107.02058"
+   }
+  ],
+  "enabled": true,
+  "contributor": "Will Ma"
+ },
+ {
+  "id": "L-sparse-nrm-interpolating-guarantee",
+  "collection": "Online Resource Allocation (Ma notes)",
+  "area": "Online Resource Allocation",
+  "tags": [
+   "network revenue management",
+   "L-sparse",
+   "fluid relaxation",
+   "competitive ratio",
+   "will-ma-notes",
+   "permission-pending"
+  ],
+  "status": "open",
+  "confidence": "medium",
+  "title": "An L-sparse network revenue management guarantee interpolating in starting capacity",
+  "short_statement": "In $L$-sparse network revenue management, each product consumes one unit of up to $L$ resources. A simple scheme guarantees $1/(1+L)$ of the fluid benchmark, and a recent bound gives asymptotic optimality as the minimum starting capacity $k$ grows. The open problem is a single guarantee interpolating between the two regimes.",
+  "full_statement": "In $L$-sparse network revenue management, each product consumes one unit of up to $L$ different resources. For $L$-sparse NRM, $\\mathbb{E}[\\mathrm{ALG}] \\ge \\mathrm{FLU}/(1+L)$ holds under adversarial order, and $\\mathbb{E}[\\mathrm{ALG}] \\ge (1 - L/\\sqrt{k+3})\\,\\mathrm{FLU}$ (Amil-Makhdoumi-Wei 2022) gives asymptotic optimality (approaching 1) as $k = \\min_i k_i \\to \\infty$ for fixed $L$, but is vacuous when $k=1, L>1$. \\textbf{Open:} Find a guarantee that equals $1/(1+L)$ at $k=1$ and approaches $1$ as $k \\to \\infty$ (i.e. smoothly interpolating between the two regimes).",
+  "known_results": "Under adversarial order, a $1/(1+L)$ guarantee is known, and a folklore upper bound of $2/(1+L)$ shows that some linear dependence on $L$ is unavoidable when capacities are small. In the large-capacity regime, Amil, Makhdoumi, and Wei prove asymptotic optimality as the minimum starting capacity $k$ grows. The open problem is to find a single guarantee that recovers the small-capacity $1/(1+L)$ behavior and also approaches $1$ as $k$ grows.",
+  "where_posed": {
+   "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Remark 7.6.",
+   "url": ""
+  },
+  "source": {
+   "authors": "Will Ma",
+   "title": "Online Resource Allocation — Course Notes, Remark 7.6",
+   "year": 2024,
+   "venue": "Lecture notes (uploaded)",
+   "url": ""
+  },
+  "additional_refs": [
+   {
+    "authors": "Amil, Makhdoumi, Wei",
+    "title": "Multi-item Order Fulfillment Revisited: LP Formulation and Prophet Inequality",
+    "year": 2022,
+    "venue": "SSRN 4176274",
+    "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4176274"
+   }
+  ],
+  "enabled": true,
+  "contributor": "Will Ma"
+ },
+ {
+  "id": "general-L-sparse-knapsack-guarantee",
+  "collection": "Online Resource Allocation (Ma notes)",
+  "area": "Online Resource Allocation",
+  "tags": [
+   "L-sparse knapsack",
+   "online resource allocation",
+   "fluid relaxation",
+   "competitive ratio",
+   "will-ma-notes",
+   "permission-pending"
+  ],
+  "status": "open",
+  "confidence": "medium",
+  "title": "Any nonzero guarantee for the most general L-sparse knapsack",
+  "short_statement": "The most general structure here is $L$-sparse knapsack: each product consumes a positive amount of up to $L$ resources. Nothing is known about online guarantees in this setting. The open problem asks for an adversarial-order guarantee that is $\\approx 0.319$ when $L=1$ and remains nonzero for all $L$.",
+  "full_statement": "The most general constraint structure in this framework is $L$-sparse knapsack: each product consumes a positive amount of up to $L$ different resources. For $L$-sparse knapsack (each product consumes a positive amount $s_{ij}\\in[0,1]$ of up to $L$ resources, i.e. $|\\{i: s_{ij}>0\\}| \\le L$), with the fluid relaxation as benchmark, \\textbf{Open:} is it possible to derive an adversarial-order guarantee that is $1/(3+e^{-2}) \\approx 0.319$ when $L=1$ and nonzero for all $L$? Currently nothing is known in this most general setting.",
+  "known_results": "For $L=1$, which is the single-resource online stochastic knapsack setting, the best-fit policy gives the tight adversarial-order guarantee $1/(3+e^{-2})\\approx 0.319$ relative to the fluid benchmark. For general $L$-sparse knapsack, where each product can consume positive amounts of several resources, no nonzero guarantee is currently known in this level of generality. The open problem is to obtain any meaningful adversarial-order guarantee for all $L$, ideally one that reduces to the tight $L=1$ constant.",
+  "where_posed": {
+   "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Remark 7.8.",
+   "url": ""
+  },
+  "source": {
+   "authors": "Will Ma",
+   "title": "Online Resource Allocation — Course Notes, Remark 7.8",
+   "year": 2024,
+   "venue": "Lecture notes (uploaded)",
+   "url": ""
+  },
+  "additional_refs": [
+   {
+    "authors": "Jiashuo Jiang, Will Ma, Jiawei Zhang",
+    "title": "Tight Guarantees for Multi-unit Prophet Inequalities and Online Stochastic Knapsack",
+    "year": 2022,
+    "venue": "SODA",
+    "url": "https://arxiv.org/abs/2107.02058"
+   }
+  ],
+  "enabled": true,
+  "contributor": "Will Ma"
+ },
+ {
+  "id": "matroid-random-order-extends-to-resource-allocation",
+  "collection": "Online Resource Allocation (Ma notes)",
+  "area": "Online Resource Allocation",
+  "tags": [
+   "matroid",
+   "random order",
+   "prophet inequality",
+   "1-1/e",
+   "online resource allocation",
+   "will-ma-notes",
+   "permission-pending"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Does the 1-1/e matroid random-order guarantee extend to abstract online resource allocation?",
+  "short_statement": "For matroid constraints under random (IID) order, the matroid prophet inequality gives a $1-1/e$ guarantee relative to the fluid benchmark, best possible even for a single resource. The open question is whether this $1-1/e$ guarantee extends to the abstract online resource allocation model under IID arrivals.",
+  "full_statement": "For matroid constraints under random (IID) arrival order, the matroid prophet inequality gives a $1-1/e$ guarantee relative to the fluid benchmark, which is best possible even for a single resource. Under random/IID arrival order, the matroid (ex-ante) prophet inequality yields $\\mathbb{E}[\\mathrm{ALG}] \\ge (1-1/e)\\,\\mathrm{FLU}$, tight even for a rank-1 matroid. \\textbf{Open:} Does the same $1-1/e$ guarantee hold for the abstract online resource allocation model (Definition 6.6 of the notes) under the IID special case?",
+  "known_results": "$1-1/e$ holds for matroids under random order (Kleinberg-Weinberg 2012; ex-ante version Lee-Singla 2018) and is best possible even for rank-1. Whether it extends to the abstract online resource allocation model under IID is open.",
+  "where_posed": {
+   "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Remark 7.9 (refers to the abstract online resource allocation model of Definition 6.6 of the notes).",
+   "url": ""
+  },
+  "source": {
+   "authors": "Will Ma",
+   "title": "Online Resource Allocation — Course Notes, Remark 7.9",
+   "year": 2024,
+   "venue": "Lecture notes (uploaded)",
+   "url": ""
+  },
+  "additional_refs": [
+   {
+    "authors": "Robert Kleinberg, S. Matthew Weinberg",
+    "title": "Matroid Prophet Inequalities",
+    "year": 2012,
+    "venue": "STOC",
+    "url": "https://dl.acm.org/doi/10.1145/2213977.2213991"
+   },
+   {
+    "authors": "Euiwoong Lee, Sahil Singla",
+    "title": "Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities",
+    "year": 2018,
+    "venue": "ESA",
+    "url": "https://arxiv.org/abs/1806.09251"
+   }
+  ],
+  "enabled": true,
+  "contributor": "Will Ma"
+ },
+ {
+  "id": "strongly-polynomial-lp",
+  "title": "A strongly polynomial algorithm for linear programming (Smale's 9th problem)",
+  "collection": "Operations Research",
+  "area": "Linear Programming",
+  "tags": [
+   "linear programming",
+   "computational complexity",
+   "strongly polynomial",
+   "Smale"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "Is there an algorithm that solves every linear program using a number of arithmetic operations bounded by a polynomial in the number of variables and constraints alone — independent of the bit-length of the data?",
+  "full_statement": "Consider a linear program $\\max\\{c^\\top x : Ax \\le b\\}$ with rational data $A \\in \\mathbb{Q}^{m\\times n}$, $b\\in\\mathbb{Q}^m$, $c\\in\\mathbb{Q}^n$. An algorithm is \\emph{strongly polynomial} if (i) it uses a number of elementary arithmetic operations $(+,-,\\times,\\div,\\le)$ bounded by a polynomial in $m$ and $n$ only, and (ii) the numbers occurring in the computation have bit-size bounded by a polynomial in the input size. Khachiyan's ellipsoid method (1979) and Karmarkar's interior-point method (1984) are \\emph{weakly} polynomial: their operation count depends on the bit-length $L$ of the data. Question (Smale's 9th problem): does a strongly polynomial algorithm for general linear programming exist?",
+  "known_results": "Strongly polynomial algorithms are known for important special cases: combinatorial LPs where entries of $A$ are bounded (Tardos 1986, depending only on $A$), LPs with at most two nonzeros per row or column, and fixed dimension (Megiddo). Recent layered/interior-point advances (e.g., Dadush–Huiberts–Natura–Végh) give bounds depending on the constraint-matrix condition number. The general case is open.",
+  "where_posed": {
+   "text": "Posed as Problem 9 in S. Smale, 'Mathematical problems for the next century' (1998); long studied since Tardos (1986).",
+   "url": "https://link.springer.com/article/10.1007/BF03025291"
+  },
+  "source": {
+   "authors": "Steve Smale",
+   "title": "Mathematical Problems for the Next Century",
+   "year": 1998,
+   "venue": "The Mathematical Intelligencer",
+   "url": "https://link.springer.com/article/10.1007/BF03025291"
+  },
+  "additional_refs": [
+   {
+    "authors": "Éva Tardos",
+    "title": "A Strongly Polynomial Algorithm to Solve Combinatorial Linear Programs",
+    "year": 1986,
+    "venue": "Operations Research",
+    "url": "https://doi.org/10.1287/opre.34.2.250"
+   },
+   {
+    "authors": "Daniel Dadush, Sophie Huiberts, Bento Natura, László A. Végh",
+    "title": "A scaling-invariant algorithm for linear programming whose running time depends only on the constraint matrix",
+    "year": 2020,
+    "venue": "STOC",
+    "url": "https://arxiv.org/abs/1912.06252"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "simplex-polynomial-pivot-rule",
+  "title": "A polynomial pivot rule for the simplex method",
+  "collection": "Operations Research",
+  "area": "Linear Programming",
+  "tags": [
+   "simplex method",
+   "pivot rule",
+   "linear programming",
+   "Klee-Minty"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "Is there a pivot rule under which the simplex method always solves a linear program in a number of pivot steps bounded by a polynomial in the number of variables and constraints?",
+  "full_statement": "The simplex method solves $\\max\\{c^\\top x : Ax\\le b,\\ x\\ge 0\\}$ by walking along edges of the feasible polyhedron from vertex to adjacent improving vertex; a \\emph{pivot rule} chooses, at each vertex, which improving edge to follow. Klee and Minty (1972) showed Dantzig's most-negative-reduced-cost rule can take $2^n-1$ steps on a deformed cube, and analogous exponential lower bounds are known for essentially every classical deterministic rule (Bland, steepest edge, greatest improvement, etc.). Question: does there exist a (deterministic or randomized) pivot rule for which the number of pivot steps is bounded by a polynomial in $m$ and $n$ for every linear program?",
+  "known_results": "Best known are subexponential randomized rules: Random-Facet achieves $\\exp(O(\\sqrt{n\\log n}))$ pivots (Kalai 1992; Matoušek–Sharir–Welzl), later shown essentially tight for such rules (Friedmann–Hansen–Zwick). No polynomial pivot rule is known. The question is intimately tied to the polynomial Hirsch conjecture (a polynomial diameter bound is necessary for any polynomial pivot rule).",
+  "where_posed": {
+   "text": "A central open problem of linear optimization since Klee–Minty (1972); see Kalai (1992) and Todd's surveys.",
+   "url": "https://www.sciencedirect.com/science/article/pii/B9780125104302500190"
+  },
+  "source": {
+   "authors": "Victor Klee, George J. Minty",
+   "title": "How Good is the Simplex Algorithm?",
+   "year": 1972,
+   "venue": "Inequalities III (Academic Press)",
+   "url": "https://www.sciencedirect.com/science/article/pii/B9780125104302500190"
+  },
+  "additional_refs": [
+   {
+    "authors": "Gil Kalai",
+    "title": "A subexponential randomized simplex algorithm",
+    "year": 1992,
+    "venue": "STOC",
+    "url": "https://doi.org/10.1145/129712.129759"
+   },
+   {
+    "authors": "Oliver Friedmann, Thomas Dueholm Hansen, Uri Zwick",
+    "title": "Subexponential lower bounds for randomized pivoting rules for the simplex algorithm",
+    "year": 2011,
+    "venue": "STOC",
+    "url": "https://doi.org/10.1145/1993636.1993675"
+   }
+  ],
+  "enabled": true
+ }
+]

@@ -1,0 +1,54 @@
+{
+ "number": 61,
+ "ref": "ORDOS-061",
+ "id": "arnosti-ma-stockout-threshold-conjecture",
+ "title": "The stockout-probability static-threshold conjecture",
+ "collection": "Online Resource Allocation (Ma notes)",
+ "area": "Prophet Inequalities",
+ "status": "open",
+ "confidence": "high",
+ "contributor": "Will Ma",
+ "tags": [
+  "prophet inequality",
+  "static threshold",
+  "k-unit",
+  "revenue management",
+  "will-ma-notes",
+  "permission-pending"
+ ],
+ "short_statement": "For the $k$-unit IID prophet problem, Arnosti and Ma conjecture (and verify numerically) that setting a single static threshold so the stockout probability $\\Pr[D \\ge k]$ equals $\\Pr[\\mathrm{Pois}(k) \\ge k]$ achieves the tight correlation-gap guarantee. The open problem is to prove this or find a counterexample.",
+ "open_problem": "Prove this (e.g. via Bernoulli optimization) or find a counterexample.",
+ "full_statement": "In the $k$-unit IID setting (T values arrive i.i.d.; accept up to $k$), consider static-threshold policies indexed by the threshold's induced demand distribution $D$ (the number of values above the threshold). \\textbf{Conjecture (Arnosti-Ma):} setting the threshold so that $\\Pr[D \\ge k] = \\Pr[\\mathrm{Pois}(k) \\ge k]$ achieves the tight guarantee $c_k^{\\mathrm{CG}} = 1 - e^{-k}k^k/k!$ under random order. \\textbf{Open:} Prove this (e.g. via Bernoulli optimization) or find a counterexample.",
+ "known_results": "Arnosti and Ma formulate this threshold rule and verify it numerically for the relevant Bernoulli-optimization problem. Their evidence supports the conjecture that the stockout-probability threshold achieves the tight correlation-gap guarantee $c_k^{\\mathrm{CG}}$ for every $k$. What is missing is a proof that this particular threshold is always worst-case optimal, or a counterexample showing that the numerical pattern eventually breaks.",
+ "where_posed": {
+  "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #4).",
+  "url": ""
+ },
+ "source": {
+  "authors": "Will Ma",
+  "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #4)",
+  "year": 2024,
+  "venue": "Lecture notes (uploaded)",
+  "url": ""
+ },
+ "additional_refs": [
+  {
+   "authors": "Nick Arnosti, Will Ma",
+   "title": "Tight Guarantees for Static Threshold Policies in the Prophet Secretary Problem",
+   "year": 2023,
+   "venue": "Operations Research",
+   "url": "https://arxiv.org/abs/2108.12893"
+  }
+ ],
+ "bibtex": "@misc{Ma2024,\n  author = {Will Ma},\n  title = {Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #4)},\n  year = {2024},\n  howpublished = {Lecture notes (uploaded)},\n  note = {Source of ORdős Problem ORDOS-061}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/arnosti-ma-stockout-threshold-conjecture.html",
+  "api": "https://ordos-problems.github.io/api/problems/arnosti-ma-stockout-threshold-conjecture.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

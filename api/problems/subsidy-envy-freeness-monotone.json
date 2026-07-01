@@ -1,0 +1,52 @@
+{
+ "number": 31,
+ "ref": "ORDOS-031",
+ "id": "subsidy-envy-freeness-monotone",
+ "title": "Minimum subsidy for envy-freeness with monotone valuations",
+ "collection": "Market & Mechanism Design",
+ "area": "Fair Division",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "fair division",
+  "subsidy",
+  "envy-freeness",
+  "indivisible goods",
+  "money"
+ ],
+ "short_statement": "Indivisible goods plus cash subsidies can eliminate envy. For additive valuations with item values in $[0,1]$, one dollar per agent suffices and is tight. What is the minimum per-agent subsidy for general monotone valuations?",
+ "open_problem": "Determine $s^*(n)$ for general monotone valuations.",
+ "full_statement": "When indivisible goods cannot be divided fairly, monetary subsidies can eliminate envy: some agents are given cash so that nobody prefers another agent's bundle-plus-cash to their own. Consider $n$ agents with monotone valuations $v_i:2^M\\to\\mathbb{R}_{\\ge0}$ satisfying the marginal bound $v_i(S\\cup\\{e\\})-v_i(S)\\le 1$ for all $S$ and $e$ (each item adds at most $1$). Let $s^*(n)$ be the smallest value such that every instance admits an allocation $(X_1,\\dots,X_n)$ together with per-agent subsidies $p_i\\ge0$ satisfying $\\max_i p_i\\le s^*(n)$ that is envy-free: $v_i(X_i)+p_i\\ge v_i(X_j)+p_j$ for all agents $i,j$. For additive valuations the tight total subsidy is $n-1$ (i.e., one dollar per agent on average suffices and is tight). Determine $s^*(n)$ for general monotone valuations.",
+ "known_results": "Additive: total subsidy n-1 suffices and is tight (Brustle et al. 2020). Monotone (general): per-agent upper bound improved to < n-1.5 (total ~ ($n^2$-n-1)/2); lower bound only n-1 total. The factor gap for monotone valuations is open; conjectured target is the additive bound.",
+ "where_posed": {
+  "text": "Additive tight bound and the monotone question from Brustle, Dippel, Narayan, Suzuki, Vetta, 'One Dollar Each Eliminates Envy', 2020, EC.",
+  "url": "https://arxiv.org/abs/1912.02797"
+ },
+ "source": {
+  "authors": "Johannes Brustle, Jack Dippel, Vishnu V. Narayan, Mashbat Suzuki, Adrian Vetta",
+  "title": "One Dollar Each Eliminates Envy",
+  "year": 2020,
+  "venue": "EC",
+  "url": "https://arxiv.org/abs/1912.02797"
+ },
+ "additional_refs": [
+  {
+   "authors": "Daniel Halpern, Nisarg Shah",
+   "title": "Fair Division with Subsidy",
+   "year": 2019,
+   "venue": "SAGT",
+   "url": "https://link.springer.com/chapter/10.1007/978-3-030-30473-7_25"
+  }
+ ],
+ "bibtex": "@misc{Brustle2020,\n  author = {Johannes Brustle and Jack Dippel and Vishnu V. Narayan and Mashbat Suzuki and Adrian Vetta},\n  title = {One Dollar Each Eliminates Envy},\n  year = {2020},\n  howpublished = {EC},\n  url = {https://arxiv.org/abs/1912.02797},\n  note = {Source of ORdős Problem ORDOS-031}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/subsidy-envy-freeness-monotone.html",
+  "api": "https://ordos-problems.github.io/api/problems/subsidy-envy-freeness-monotone.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

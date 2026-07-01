@@ -1,0 +1,51 @@
+{
+ "number": 48,
+ "ref": "ORDOS-048",
+ "id": "unrelated-machines-makespan-below-2",
+ "title": "Beating the 2-Approximation for Makespan on Unrelated Machines (R||Cmax)",
+ "collection": "Approximation & Discrepancy",
+ "area": "Approximation Algorithms",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "scheduling",
+  "unrelated machines",
+  "makespan",
+  "approximation ratio"
+ ],
+ "short_statement": "For makespan minimization on unrelated machines, the classic Lenstra-Shmoys-Tardos algorithm gives a $2$-approximation and it is NP-hard to beat $3/2$. Whether a ratio below $2$ (ideally $3/2$) is achievable has been open since 1990.",
+ "open_problem": "For $R \\,||\\, C_{\\max}$ (minimize makespan on unrelated parallel machines), determine the best polynomial-time approximation ratio $\\rho$.",
+ "full_statement": "Given jobs and machines where each job takes a different (machine-dependent) time on each machine, assign every job to a machine to minimize the makespan (the load of the busiest machine). For $R \\,||\\, C_{\\max}$ (minimize makespan on unrelated parallel machines), \\textbf{determine the best polynomial-time approximation ratio $\\rho$.} Known: $\\tfrac{3}{2} \\le \\rho \\le 2$ (both bounds from Lenstra-Shmoys-Tardos). Can $\\rho < 2$? Is $\\rho = \\tfrac{3}{2}$ achievable?",
+ "known_results": "Lenstra, Shmoys, and Tardos gave the classic $2$-approximation and also proved that no polynomial-time algorithm can achieve a ratio below $3/2$ unless $\\mathrm{P}=\\mathrm{NP}$. Several structured special cases, including restricted assignment and graph balancing, admit better guarantees. For the full unrelated-machines problem, however, no polynomial-time approximation ratio strictly below $2$ is known. The open problem is to beat the $2$ barrier, or to prove a stronger hardness result that explains why the original $[3/2,2]$ gap persists.",
+ "where_posed": {
+  "text": "Both the 2-approximation and the 3/2 hardness are from Lenstra, Shmoys, Tardos, 'Approximation algorithms for scheduling unrelated parallel machines,' Mathematical Programming, 1990; closing the gap is a classic open problem.",
+  "url": "https://doi.org/10.1007/BF01585745"
+ },
+ "source": {
+  "authors": "Jan Karel Lenstra, David B. Shmoys, Eva Tardos",
+  "title": "Approximation algorithms for scheduling unrelated parallel machines",
+  "year": 1990,
+  "venue": "Mathematical Programming",
+  "url": "https://doi.org/10.1007/BF01585745"
+ },
+ "additional_refs": [
+  {
+   "authors": "Ola Svensson",
+   "title": "Santa Claus Schedules Jobs on Unrelated Machines",
+   "year": 2012,
+   "venue": "SIAM Journal on Computing (STOC 2011)",
+   "url": "https://arxiv.org/abs/1011.1168"
+  }
+ ],
+ "bibtex": "@misc{Lenstra1990,\n  author = {Jan Karel Lenstra and David B. Shmoys and Eva Tardos},\n  title = {Approximation algorithms for scheduling unrelated parallel machines},\n  year = {1990},\n  howpublished = {Mathematical Programming},\n  url = {https://doi.org/10.1007/BF01585745},\n  note = {Source of ORdős Problem ORDOS-048}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/unrelated-machines-makespan-below-2.html",
+  "api": "https://ordos-problems.github.io/api/problems/unrelated-machines-makespan-below-2.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

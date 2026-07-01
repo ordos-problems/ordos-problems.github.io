@@ -1,0 +1,51 @@
+{
+ "number": 16,
+ "ref": "ORDOS-016",
+ "id": "submodular-bandit-cardinality-dependence",
+ "title": "Cardinality dependence in submodular maximization with bandit feedback",
+ "collection": "Online Algorithms & Learning",
+ "area": "Online Learning",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "bandits",
+  "submodular maximization",
+  "minimax regret",
+  "full-bandit feedback"
+ ],
+ "short_statement": "Repeatedly picking a subset of at most $k$ of $n$ items and observing only a noisy value of an unknown monotone submodular function, competing against the $(1-1/e)$ greedy benchmark, what is the exact dependence of the minimax regret on the cardinality budget $k$?",
+ "open_problem": "Determine the exact cardinality ($k$) dependence of the minimax regret for general algorithms; i.e., close the $L^{1/3}$ (lower bound) versus $L$ (upper bound) gap.",
+ "full_statement": "Consider repeated subset selection with full-bandit feedback against a monotone submodular function. There is a monotone submodular function $f:2^{[n]}\\to[0,1]$ over $n$ items, unknown to the learner. In each round the learner selects a subset of at most $k$ items (a cardinality-$k$ constraint) and observes only a noisy (sub-Gaussian) value of $f$ on the chosen set (full-bandit feedback). Performance is measured by minimax regret against the $(1-1/e)$ greedy benchmark over a horizon $T$. The dependence of the regret on the horizon $T$ ($T^{2/3}$) and on the number of items $n$ ($n^{1/3}$) is essentially settled. The dependence on the cardinality budget $k$ is not: the proven lower bound carries an $L^{1/3}$ factor while the best algorithm (Sub-UCB) carries an $L$ factor, minimizing over a split parameter $L\\le k$. Determine the exact cardinality ($k$) dependence of the minimax regret for general algorithms; i.e., close the $L^{1/3}$ (lower bound) versus $L$ (upper bound) gap.",
+ "known_results": "The minimax dependence on the time horizon and ground-set size is essentially understood: the regret scales as $T^{2/3}$ in time and has the known $n^{1/3}$ dependence. The unresolved part is the dependence on the cardinality constraint $L$. Current lower bounds give an $L^{1/3}$ dependence, while the best general upper bounds are linear in $L$; Tajdini, Jain, and Jamieson match the linear dependence only for a restricted algorithm class. The open problem is to close this cardinality gap for unrestricted algorithms.",
+ "where_posed": {
+  "text": "Stated in Tajdini, Jain, Jamieson, 'Nearly Minimax Optimal Submodular Maximization with Bandit Feedback', 2024, NeurIPS.",
+  "url": "https://openreview.net/forum?id=Vn0FWRImra"
+ },
+ "source": {
+  "authors": "Artin Tajdini, Lalit Jain, Kevin Jamieson",
+  "title": "Nearly Minimax Optimal Submodular Maximization with Bandit Feedback",
+  "year": 2024,
+  "venue": "NeurIPS",
+  "url": "https://openreview.net/forum?id=Vn0FWRImra"
+ },
+ "additional_refs": [
+  {
+   "authors": "Jean-Yves Audibert, Sebastien Bubeck, Gabor Lugosi",
+   "title": "Regret in Online Combinatorial Optimization",
+   "year": 2014,
+   "venue": "Math. of Operations Research",
+   "url": "https://arxiv.org/abs/1204.4710"
+  }
+ ],
+ "bibtex": "@misc{Tajdini2024,\n  author = {Artin Tajdini and Lalit Jain and Kevin Jamieson},\n  title = {Nearly Minimax Optimal Submodular Maximization with Bandit Feedback},\n  year = {2024},\n  howpublished = {NeurIPS},\n  url = {https://openreview.net/forum?id=Vn0FWRImra},\n  note = {Source of ORdős Problem ORDOS-016}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/submodular-bandit-cardinality-dependence.html",
+  "api": "https://ordos-problems.github.io/api/problems/submodular-bandit-cardinality-dependence.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

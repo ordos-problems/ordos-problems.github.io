@@ -1,0 +1,55 @@
+{
+ "number": 59,
+ "ref": "ORDOS-059",
+ "id": "kunit-prophet-onl-off-adversarial",
+ "title": "Online-vs-offline ratio for k-unit prophet under adversarial order (k>1)",
+ "collection": "Online Resource Allocation (Ma notes)",
+ "area": "Prophet Inequalities",
+ "status": "open",
+ "confidence": "medium",
+ "contributor": "Will Ma",
+ "tags": [
+  "prophet inequality",
+  "k-unit",
+  "adversarial order",
+  "competitive ratio",
+  "Bernoulli",
+  "will-ma-notes",
+  "permission-pending"
+ ],
+ "short_statement": "For the $k$-unit prophet inequality under adversarial order, the online-to-fluid ratio is understood, but the online-to-offline ratio appears different and is not understood for $k>1$. The open problem asks for any nontrivial bound, even restricting to weighted-Bernoulli distributions.",
+ "open_problem": "Determine (or bound) $\\inf_{T,\\mathbf F}\\mathrm{ONL}/\\mathrm{OFF}$ for $k>1$, even restricting each value distribution to be weighted Bernoulli (a two-point distribution with one point at 0).",
+ "full_statement": "Consider the $k$-unit prophet inequality under adversarial arrival order: values from distributions $\\mathbf F$ arrive in an adversarial order over $T$ steps, and an online algorithm may accept up to $k$. Let $\\mathrm{ONL}$ be the online value, $\\mathrm{FLU}$ the fluid/LP benchmark, and $\\mathrm{OFF}$ the true offline optimum. Under adversarial order, $\\inf_{T,\\mathbf F}\\mathrm{ONL}/\\mathrm{FLU}$ is known for $k$-unit prophet inequalities, but $\\inf_{T,\\mathbf F}\\mathrm{ONL}/\\mathrm{OFF}$ is not, and the two appear to differ (Jiang-Ma-Zhang 2022). \\textbf{Open:} Determine (or bound) $\\inf_{T,\\mathbf F}\\mathrm{ONL}/\\mathrm{OFF}$ for $k>1$, even restricting each value distribution to be weighted Bernoulli (a two-point distribution with one point at 0).",
+ "known_results": "The online-to-fluid ratio inf ONL/FLU is tight/understood for k-unit prophet; the online-to-offline ratio inf ONL/OFF is open for $k > 1$ and appears different (Jiang-Ma-Zhang 2022, Prop. 1 of arXiv version). Even the weighted-Bernoulli special case is open.",
+ "where_posed": {
+  "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #2).",
+  "url": ""
+ },
+ "source": {
+  "authors": "Will Ma",
+  "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #2)",
+  "year": 2024,
+  "venue": "Lecture notes (uploaded)",
+  "url": ""
+ },
+ "additional_refs": [
+  {
+   "authors": "Jiashuo Jiang, Will Ma, Jiawei Zhang",
+   "title": "Tight Guarantees for Multi-unit Prophet Inequalities and Online Stochastic Knapsack",
+   "year": 2022,
+   "venue": "SODA",
+   "url": "https://arxiv.org/abs/2107.02058"
+  }
+ ],
+ "bibtex": "@misc{Ma2024,\n  author = {Will Ma},\n  title = {Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #2)},\n  year = {2024},\n  howpublished = {Lecture notes (uploaded)},\n  note = {Source of ORdős Problem ORDOS-059}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/kunit-prophet-onl-off-adversarial.html",
+  "api": "https://ordos-problems.github.io/api/problems/kunit-prophet-onl-off-adversarial.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

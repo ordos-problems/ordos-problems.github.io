@@ -1,0 +1,59 @@
+{
+ "number": 21,
+ "ref": "ORDOS-021",
+ "id": "competition-complexity-multi-item",
+ "title": "Competition complexity of multi-item auctions (general regime)",
+ "collection": "Market & Mechanism Design",
+ "area": "Mechanism Design",
+ "status": "partially resolved",
+ "confidence": "high",
+ "tags": [
+  "auctions",
+  "revenue",
+  "Bulow-Klemperer",
+  "competition complexity",
+  "multi-item"
+ ],
+ "short_statement": "How many extra i.i.d. bidders does a simple mechanism (sell items separately, or VCG) need to match the optimal revenue of the original bidders, in the multi-item setting? The additive case with fewer items than bidders is settled; other regimes are open.",
+ "open_problem": "exact bounds (including constants) in the regime $m\\ge n$, for non-additive valuations (XOS / subadditive / unit-demand), and for correlated items. Determine the competition complexity in these regimes.",
+ "full_statement": "Fix a distribution $D$ over $m$ items. For $n$ bidders drawn i.i.d. from $D$, the competition complexity $C(n,m)$ is the smallest integer $c$ such that the revenue of a simple mechanism with $n+c$ bidders matches the optimal revenue with the original $n$ bidders; concretely, $\\mathrm{SRev}_{n+c}(D^m)\\ge \\mathrm{Rev}_n(D^m)$, where $\\mathrm{SRev}$ is the revenue from selling items separately (and VCG is the analogue) and $\\mathrm{Rev}$ is the optimal revenue. This is the multi-item generalization of the Bulow-Klemperer result, which for a single item shows that recruiting one extra bidder lets a simple second-price auction match the optimal auction on the original bidders. The additive/independent case is tight: $C(n,m)=\\Theta(\\sqrt{nm})$ for $m<n$ and $\\Theta(n\\ln(1+m/n))$ for $n\\le m$. Open: exact bounds (including constants) in the regime $m\\ge n$, for non-additive valuations (XOS / subadditive / unit-demand), and for correlated items. Determine the competition complexity in these regimes.",
+ "known_results": "For additive buyers with independent item values, the order of competition complexity is known: it is $\\Theta(\\sqrt{nm})$ when $m<n$ and $\\Theta(n\\ln(1+m/n))$ when $n\\le m$. These results are tight up to constant factors. The open problems are to determine the exact constants, sharpen the $m\\ge n$ regime, and extend the theory beyond independent additive values to non-additive valuation classes and correlated item values.",
+ "where_posed": {
+  "text": "Stated/originated in Eden, Feldman, Friedler, Talgam-Cohen, Weinberg, 'The Competition Complexity of Auctions: A Bulow-Klemperer Result for Multi-Dimensional Bidders', 2017, EC.",
+  "url": "https://arxiv.org/abs/1612.08821"
+ },
+ "source": {
+  "authors": "Alon Eden, Michal Feldman, Ophir Friedler, Inbal Talgam-Cohen, S. Matthew Weinberg",
+  "title": "The Competition Complexity of Auctions: A Bulow-Klemperer Result for Multi-Dimensional Bidders",
+  "year": 2017,
+  "venue": "EC",
+  "url": "https://arxiv.org/abs/1612.08821"
+ },
+ "additional_refs": [
+  {
+   "authors": "Mahsa Derakhshan, Emily Ryu, S. Matthew Weinberg, Eric Xue",
+   "title": "Settling the Competition Complexity of Additive Buyers over Independent Items",
+   "year": 2024,
+   "venue": "EC",
+   "url": "https://arxiv.org/abs/2403.03937"
+  },
+  {
+   "authors": "Jeremy Bulow, Paul Klemperer",
+   "title": "Auctions versus Negotiations",
+   "year": 1996,
+   "venue": "American Economic Review",
+   "url": "https://www.jstor.org/stable/2118262"
+  }
+ ],
+ "bibtex": "@misc{Eden2017,\n  author = {Alon Eden and Michal Feldman and Ophir Friedler and Inbal Talgam-Cohen and S. Matthew Weinberg},\n  title = {The Competition Complexity of Auctions: A Bulow-Klemperer Result for Multi-Dimensional Bidders},\n  year = {2017},\n  howpublished = {EC},\n  url = {https://arxiv.org/abs/1612.08821},\n  note = {Source of ORdős Problem ORDOS-021}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/competition-complexity-multi-item.html",
+  "api": "https://ordos-problems.github.io/api/problems/competition-complexity-multi-item.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

@@ -1,0 +1,97 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ordos-problems.github.io/api/schema/solution.schema.json",
+ "title": "ORd\u0151s solution submission",
+ "description": "A solution, partial-progress note, counterexample, or verification report for an ORd\u0151s problem. Submit as a pull request adding solutions/<problem_id>/<yyyy-mm-dd>-<slug>.json to the repository.",
+ "type": "object",
+ "required": [
+  "problem_id",
+  "submission_type",
+  "claim_summary",
+  "argument",
+  "submitted_by",
+  "date"
+ ],
+ "properties": {
+  "problem_id": {
+   "type": "string",
+   "description": "Must match an existing problem id."
+  },
+  "submission_type": {
+   "enum": [
+    "solution",
+    "partial-progress",
+    "counterexample",
+    "verification-report"
+   ]
+  },
+  "claim_summary": {
+   "type": "string",
+   "description": "1-4 sentences stating exactly what is claimed (e.g. 'We prove the conjectured ratio 0.745 is tight')."
+  },
+  "argument": {
+   "type": "string",
+   "description": "The full argument in LaTeX/Markdown, or a pr\u00e9cis if artifact_url points to a paper/PDF. Must be self-contained enough for a referee to check."
+  },
+  "artifact_url": {
+   "type": "string",
+   "description": "Link to full write-up, arXiv preprint, or code repository."
+  },
+  "code": {
+   "type": "string",
+   "description": "Optional: verification code (e.g. a script that checks a counterexample). State language and how to run it."
+  },
+  "verifies_submission": {
+   "type": "string",
+   "description": "For verification-reports: path or id of the submission being reviewed."
+  },
+  "verdict": {
+   "enum": [
+    "correct",
+    "incorrect",
+    "incomplete",
+    "unclear"
+   ],
+   "description": "For verification-reports only."
+  },
+  "submitted_by": {
+   "type": "object",
+   "required": [
+    "name"
+   ],
+   "properties": {
+    "name": {
+     "type": "string",
+     "description": "Human or agent name."
+    },
+    "model": {
+     "type": "string",
+     "description": "For AI agents: model/system identifier and scaffold."
+    },
+    "contact": {
+     "type": "string"
+    },
+    "human_supervised": {
+     "type": "boolean"
+    }
+   }
+  },
+  "date": {
+   "type": "string",
+   "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+  },
+  "status": {
+   "enum": [
+    "unreviewed",
+    "under-review",
+    "verified",
+    "refuted"
+   ],
+   "default": "unreviewed",
+   "description": "Set by maintainers/verifiers, not by the submitter. New submissions must use 'unreviewed'."
+  },
+  "reviewer_notes": {
+   "type": "string"
+  }
+ }
+}

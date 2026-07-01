@@ -1,0 +1,240 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ordos-problems.github.io/api/schema/problem.schema.json",
+ "title": "ORd\u0151s Problem record",
+ "type": "object",
+ "required": [
+  "id",
+  "title",
+  "status",
+  "short_statement",
+  "full_statement",
+  "source"
+ ],
+ "properties": {
+  "number": {
+   "type": "integer"
+  },
+  "ref": {
+   "type": "string",
+   "pattern": "^ORDOS-\\d{3,}$"
+  },
+  "id": {
+   "type": "string",
+   "pattern": "^[a-z0-9-]+$"
+  },
+  "title": {
+   "type": "string"
+  },
+  "collection": {
+   "type": "string"
+  },
+  "area": {
+   "type": "string"
+  },
+  "status": {
+   "enum": [
+    "open",
+    "partially resolved",
+    "solution claimed",
+    "conjecture",
+    "resolved"
+   ]
+  },
+  "confidence": {
+   "enum": [
+    "high",
+    "medium",
+    "low"
+   ]
+  },
+  "contributor": {
+   "type": "string"
+  },
+  "tags": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "short_statement": {
+   "type": "string",
+   "description": "1-3 sentence plain-language statement. Math in $...$ LaTeX."
+  },
+  "open_problem": {
+   "type": "string",
+   "description": "The precise ask, one or two sentences."
+  },
+  "background": {
+   "type": "string",
+   "description": "History, motivation, model context. LaTeX prose."
+  },
+  "full_statement": {
+   "type": "string",
+   "description": "Complete self-contained formal model and question. LaTeX prose."
+  },
+  "known_results": {
+   "type": "string"
+  },
+  "progress": {
+   "type": "object",
+   "properties": {
+    "state": {
+     "enum": [
+      "none",
+      "partial",
+      "solution-claimed",
+      "resolved"
+     ]
+    },
+    "summary": {
+     "type": "string"
+    },
+    "links": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "title": {
+        "type": "string"
+       },
+       "url": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  },
+  "importance": {
+   "type": "integer",
+   "minimum": 1,
+   "maximum": 10
+  },
+  "difficulty": {
+   "type": "integer",
+   "minimum": 1,
+   "maximum": 10
+  },
+  "counterexample_suitability": {
+   "enum": [
+    "low",
+    "medium",
+    "high"
+   ]
+  },
+  "counterexample_rationale": {
+   "type": "string"
+  },
+  "alphaevolve_suitability": {
+   "enum": [
+    "low",
+    "medium",
+    "high"
+   ]
+  },
+  "alphaevolve_rationale": {
+   "type": "string"
+  },
+  "literature": {
+   "type": "object",
+   "properties": {
+    "synthesis": {
+     "type": "string"
+    },
+    "reviewed": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "ref": {
+        "type": "string"
+       },
+       "result": {
+        "type": "string"
+       },
+       "relevance": {
+        "enum": [
+         "partial-progress",
+         "solves-special-case",
+         "hardness",
+         "related-tool",
+         "survey"
+        ]
+       },
+       "url": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  },
+  "agent_guidance": {
+   "type": "object",
+   "properties": {
+    "suitable_approaches": {
+     "type": "string"
+    },
+    "verification_notes": {
+     "type": "string"
+    },
+    "machine_checkable": {
+     "type": "boolean"
+    }
+   }
+  },
+  "where_posed": {
+   "type": "object",
+   "properties": {
+    "text": {
+     "type": "string"
+    },
+    "url": {
+     "type": "string"
+    },
+    "quote": {
+     "type": "string"
+    },
+    "location": {
+     "type": "string"
+    }
+   }
+  },
+  "source": {
+   "type": "object",
+   "properties": {
+    "authors": {
+     "type": "string"
+    },
+    "title": {
+     "type": "string"
+    },
+    "year": {
+     "type": [
+      "integer",
+      "string"
+     ]
+    },
+    "venue": {
+     "type": "string"
+    },
+    "url": {
+     "type": "string"
+    }
+   }
+  },
+  "additional_refs": {
+   "type": "array"
+  },
+  "bibtex": {
+   "type": "string"
+  },
+  "urls": {
+   "type": "object"
+  },
+  "submissions": {
+   "type": "object"
+  }
+ }
+}

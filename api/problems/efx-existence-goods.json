@@ -1,0 +1,58 @@
+{
+ "number": 17,
+ "ref": "ORDOS-017",
+ "id": "efx-existence-goods",
+ "title": "Existence of EFX allocations (four or more agents)",
+ "collection": "Market & Mechanism Design",
+ "area": "Fair Division",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "fair division",
+  "envy-freeness",
+  "EFX",
+  "indivisible goods"
+ ],
+ "short_statement": "An EFX allocation of indivisible goods is one where any envy agent $i$ feels toward agent $j$ vanishes after removing any single good from $j$'s bundle. Does a complete EFX allocation always exist for four or more agents, even with additive valuations?",
+ "open_problem": "does a complete EFX allocation exist for every instance with $n\\ge 4$ additive agents?",
+ "full_statement": "Let $N=\\{1,\\dots,n\\}$ be a set of agents and $M$ a set of indivisible goods, with each agent $i$ having an additive valuation $v_i$. An allocation $(X_1,\\dots,X_n)$ partitioning $M$ among the agents is EFX (envy-free up to any good) if for all agents $i,j$ and every good $g\\in X_j$ with $v_i(\\{g\\})>0$: $v_i(X_i)\\ge v_i(X_j\\setminus\\{g\\})$. In words, any envy that agent $i$ feels toward agent $j$ would vanish upon removing any single (positively valued) good from $j$'s bundle. Exact complete EFX allocations are known to always exist for up to 3 agents with additive valuations. Question: does a complete EFX allocation exist for every instance with $n\\ge 4$ additive agents?",
+ "known_results": "For additive goods, exact EFX allocations are known to exist for at most three agents, by Chaudhury, Garg, and Mehlhorn. For four agents, Berger and coauthors prove an almost-complete EFX allocation in which at most one good is left unallocated. For general $n$, EFX with charity is known, meaning that fewer than $n$ goods may be donated, and a $0.618$-EFX allocation always exists. The open problem is whether a complete exact EFX allocation always exists for additive goods when $n\\ge 4$.",
+ "where_posed": {
+  "text": "Notion introduced in Caragiannis, Kurokawa, Moulin, Procaccia, Shah, Wang, 'The Unreasonable Fairness of Maximum Nash Welfare', 2016, EC (TEAC 2019).",
+  "url": "https://www.cs.toronto.edu/~nisarg/papers/mnw.ec16.pdf"
+ },
+ "source": {
+  "authors": "Ioannis Caragiannis, David Kurokawa, Herve Moulin, Ariel D. Procaccia, Nisarg Shah, Junxing Wang",
+  "title": "The Unreasonable Fairness of Maximum Nash Welfare",
+  "year": 2016,
+  "venue": "EC (TEAC 2019)",
+  "url": "https://www.cs.toronto.edu/~nisarg/papers/mnw.ec16.pdf"
+ },
+ "additional_refs": [
+  {
+   "authors": "Bhaskar Ray Chaudhury, Jugal Garg, Kurt Mehlhorn",
+   "title": "EFX Exists for Three Agents",
+   "year": 2020,
+   "venue": "EC (JACM 2024)",
+   "url": "https://arxiv.org/abs/2002.05119"
+  },
+  {
+   "authors": "Bhaskar Ray Chaudhury, Telikepalli Kavitha, Kurt Mehlhorn, Alkmini Sgouritsa",
+   "title": "A Little Charity Guarantees Almost Envy-Freeness",
+   "year": 2020,
+   "venue": "SODA (SICOMP 2021)",
+   "url": "https://arxiv.org/abs/1907.04596"
+  }
+ ],
+ "bibtex": "@misc{Caragiannis2016,\n  author = {Ioannis Caragiannis and David Kurokawa and Herve Moulin and Ariel D. Procaccia and Nisarg Shah and Junxing Wang},\n  title = {The Unreasonable Fairness of Maximum Nash Welfare},\n  year = {2016},\n  howpublished = {EC (TEAC 2019)},\n  url = {https://www.cs.toronto.edu/~nisarg/papers/mnw.ec16.pdf},\n  note = {Source of ORdős Problem ORDOS-017}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/efx-existence-goods.html",
+  "api": "https://ordos-problems.github.io/api/problems/efx-existence-goods.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

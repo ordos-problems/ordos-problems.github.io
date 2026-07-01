@@ -1,0 +1,51 @@
+{
+ "number": 74,
+ "ref": "ORDOS-074",
+ "id": "strongly-polynomial-mdp",
+ "title": "A strongly polynomial algorithm for Markov decision processes",
+ "collection": "Operations Research",
+ "area": "Dynamic Programming",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "Markov decision process",
+  "policy iteration",
+  "strongly polynomial",
+  "dynamic programming"
+ ],
+ "short_statement": "Is there a strongly polynomial algorithm for discounted Markov decision processes when the discount factor is part of the input (equivalently, is policy iteration polynomial for input discount)?",
+ "open_problem": "when $\\gamma$ is part of the input, is policy iteration polynomial — and more broadly, does any strongly polynomial algorithm exist for MDPs (a natural special case on the road to strongly polynomial LP)?",
+ "full_statement": "A discounted MDP has a finite state set $S$, finite action sets $A_s$, transition probabilities $p(s'\\,|\\,s,a)$, rewards $r(s,a)$, and discount factor $\\gamma\\in(0,1)$; the goal is a stationary policy maximizing expected discounted reward $\\mathbb{E}[\\sum_{t\\ge0}\\gamma^t r(s_t,a_t)]$. This is a linear program with $|S|$ variables. Ye (2011) proved that Howard's policy-iteration method and the simplex method (Dantzig rule) are strongly polynomial when $\\gamma$ is a fixed constant, with complexity bounded by a polynomial in $|S|$ and $\\sum_s|A_s|$ but blowing up as $\\gamma\\to1$. Question: when $\\gamma$ is part of the input, is policy iteration polynomial — and more broadly, does any strongly polynomial algorithm exist for MDPs (a natural special case on the road to strongly polynomial LP)?",
+ "known_results": "Ye (2011) gives strong polynomiality for fixed $\\gamma$ (bound $\\sim \\frac{|S|^2\\,|A|}{1-\\gamma}\\log\\frac{|S|}{1-\\gamma}$). Post–Ye showed the simplex method is strongly polynomial for deterministic MDPs regardless of $\\gamma$. For general MDPs with input $\\gamma$ (or average-reward), strong polynomiality is open; Ye explicitly notes it remains open whether policy iteration is polynomial in this regime, or whether a strongly polynomial algorithm exists for MDPs or LP in general.",
+ "where_posed": {
+  "text": "Stated as an open question in Y. Ye, 'The Simplex and Policy-Iteration Methods Are Strongly Polynomial for the MDP with a Fixed Discount Rate' (Math. of OR 2011).",
+  "url": "https://web.stanford.edu/~yyye/SimplexMDP4.pdf"
+ },
+ "source": {
+  "authors": "Yinyu Ye",
+  "title": "The Simplex and Policy-Iteration Methods Are Strongly Polynomial for the Markov Decision Problem with a Fixed Discount Rate",
+  "year": 2011,
+  "venue": "Mathematics of Operations Research",
+  "url": "https://web.stanford.edu/~yyye/SimplexMDP4.pdf"
+ },
+ "additional_refs": [
+  {
+   "authors": "Ian Post, Yinyu Ye",
+   "title": "The Simplex Method is Strongly Polynomial for Deterministic Markov Decision Processes",
+   "year": 2015,
+   "venue": "Mathematics of Operations Research",
+   "url": "https://arxiv.org/abs/1208.5083"
+  }
+ ],
+ "bibtex": "@misc{Ye2011,\n  author = {Yinyu Ye},\n  title = {The Simplex and Policy-Iteration Methods Are Strongly Polynomial for the Markov Decision Problem with a Fixed Discount Rate},\n  year = {2011},\n  howpublished = {Mathematics of Operations Research},\n  url = {https://web.stanford.edu/~yyye/SimplexMDP4.pdf},\n  note = {Source of ORdős Problem ORDOS-074}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/strongly-polynomial-mdp.html",
+  "api": "https://ordos-problems.github.io/api/problems/strongly-polynomial-mdp.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

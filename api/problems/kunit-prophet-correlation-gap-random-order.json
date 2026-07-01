@@ -1,0 +1,61 @@
+{
+ "number": 60,
+ "ref": "ORDOS-060",
+ "id": "kunit-prophet-correlation-gap-random-order",
+ "title": "Overcoming the correlation gap for k-unit prophet under random order (k>1)",
+ "collection": "Online Resource Allocation (Ma notes)",
+ "area": "Prophet Inequalities",
+ "status": "open",
+ "confidence": "medium",
+ "contributor": "Will Ma",
+ "tags": [
+  "prophet inequality",
+  "k-unit",
+  "random order",
+  "correlation gap",
+  "will-ma-notes",
+  "permission-pending"
+ ],
+ "short_statement": "For $k$-unit prophet inequalities, the correlation-gap constant $c_k$ can be beaten when the algorithm freely chooses the arrival order. Under random order the best known bound is stuck exactly at $c_k$ for $k>1$ (only $k=1$ is beatable). The open problem is to extend the free-order techniques to random order for $k>1$.",
+ "open_problem": "Can the order-selection techniques be extended to overcome the correlation gap under random order for $k>1$? Any improvement would establish a separation for $\\inf \\mathrm{ONL}/\\mathrm{OFF}$ previously unknown.",
+ "full_statement": "For $k$-unit prophet inequalities, let $c_k^{\\mathrm{CG}} = 1 - e^{-k}k^k/k!$ be the correlation-gap constant, and let $\\mathrm{ONL}/\\mathrm{OFF}$ denote the online-to-offline ratio. This constant can be overcome (beaten) when the arrival order can be freely chosen by the algorithm. Under the slightly harder random arrival order, the best-known $\\inf_{T,\\mathbf F}\\mathrm{ONL}/\\mathrm{OFF}$ for $k$-unit prophet is stuck at $c_k^{\\mathrm{CG}}$ for $k>1$ (Arnosti-Ma 2022), while it is beaten for $k=1$ (Correa et al. 2021). \\textbf{Open:} Can the order-selection techniques be extended to overcome the correlation gap under random order for $k>1$? Any improvement would establish a separation for $\\inf \\mathrm{ONL}/\\mathrm{OFF}$ previously unknown.",
+ "known_results": "For $k=1$, Correa and coauthors show that the correlation-gap constant can be beaten. For $k>1$ under random arrival order, the best known online-to-offline guarantees remain stuck at the correlation-gap value $c_k^{\\mathrm{CG}}$, as in the Arnosti-Ma analysis of static thresholds. The open problem is to beat $c_k^{\\mathrm{CG}}$ for any fixed $k>1$ under random order; even an arbitrarily small improvement would establish a new separation between random order and the correlation-gap barrier.",
+ "where_posed": {
+  "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #3).",
+  "url": ""
+ },
+ "source": {
+  "authors": "Will Ma",
+  "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #3)",
+  "year": 2024,
+  "venue": "Lecture notes (uploaded)",
+  "url": ""
+ },
+ "additional_refs": [
+  {
+   "authors": "Nick Arnosti, Will Ma",
+   "title": "Tight Guarantees for Static Threshold Policies in the Prophet Secretary Problem",
+   "year": 2023,
+   "venue": "Operations Research",
+   "url": "https://arxiv.org/abs/2108.12893"
+  },
+  {
+   "authors": "Jose Correa, Andres Cristi, Boris Epstein, Jose Soto",
+   "title": "The Two-Sided Game of Googol / Sample-driven optimal stopping",
+   "year": 2021,
+   "venue": "SODA",
+   "url": "https://arxiv.org/abs/2009.11885"
+  }
+ ],
+ "bibtex": "@misc{Ma2024,\n  author = {Will Ma},\n  title = {Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #3)},\n  year = {2024},\n  howpublished = {Lecture notes (uploaded)},\n  note = {Source of ORdős Problem ORDOS-060}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/kunit-prophet-correlation-gap-random-order.html",
+  "api": "https://ordos-problems.github.io/api/problems/kunit-prophet-correlation-gap-random-order.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

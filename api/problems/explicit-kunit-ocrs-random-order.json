@@ -1,0 +1,55 @@
+{
+ "number": 66,
+ "ref": "ORDOS-066",
+ "id": "explicit-kunit-ocrs-random-order",
+ "title": "An explicit k-unit OCRS achieving the correlation-gap guarantee under random order",
+ "collection": "Online Resource Allocation (Ma notes)",
+ "area": "Online Contention Resolution",
+ "status": "open",
+ "confidence": "high",
+ "contributor": "Will Ma",
+ "tags": [
+  "OCRS",
+  "k-unit",
+  "random order",
+  "correlation gap",
+  "explicit construction",
+  "will-ma-notes",
+  "permission-pending"
+ ],
+ "short_statement": "For $k$-unit constraints under random order, a $c_k$-selectable OCRS is known to exist but only via a non-explicit existence proof (through ex-ante prophet inequalities). The open problem is to construct an explicit $c_k$-selectable OCRS for $k>1$; an explicit scheme is known only for $k=1$.",
+ "open_problem": "Under random order with a $k$-unit constraint, construct an explicit $c_k^{\\mathrm{CG}}$-selectable OCRS, where $c_k^{\\mathrm{CG}} = 1 - e^{-k}k^k/k!$. Such an OCRS is known to exist only via an existential argument; an explicit description is known only for $k=1$ (Lee-Singla 2018, Apx.",
+ "full_statement": "For $k$-unit constraints under random arrival order, a $c_k$-selectable OCRS is known to exist, but only via a non-explicit existence proof (going through ex-ante prophet inequalities). \\textbf{Open:} Under random order with a $k$-unit constraint, construct an explicit $c_k^{\\mathrm{CG}}$-selectable OCRS, where $c_k^{\\mathrm{CG}} = 1 - e^{-k}k^k/k!$. Such an OCRS is known to exist only via an existential argument; an explicit description is known only for $k=1$ (Lee-Singla 2018, Apx. A.2 of arXiv version).",
+ "known_results": "A $c_k^{\\mathrm{CG}}$-selectable OCRS is known to exist under random order because one can pass through the ex-ante prophet-inequality equivalence. That argument is not an explicit online rule, however. Lee and Singla give an explicit construction for the single-unit case $k=1$, but no comparable construction is known for $k>1$. The open problem is to turn the existential guarantee into a usable OCRS that achieves the same correlation-gap constant.",
+ "where_posed": {
+  "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #3).",
+  "url": ""
+ },
+ "source": {
+  "authors": "Will Ma",
+  "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #3)",
+  "year": 2024,
+  "venue": "Lecture notes (uploaded)",
+  "url": ""
+ },
+ "additional_refs": [
+  {
+   "authors": "Euiwoong Lee, Sahil Singla",
+   "title": "Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities",
+   "year": 2018,
+   "venue": "ESA",
+   "url": "https://arxiv.org/abs/1806.09251"
+  }
+ ],
+ "bibtex": "@misc{Ma2024,\n  author = {Will Ma},\n  title = {Online Resource Allocation — Course Notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #3)},\n  year = {2024},\n  howpublished = {Lecture notes (uploaded)},\n  note = {Source of ORdős Problem ORDOS-066}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/explicit-kunit-ocrs-random-order.html",
+  "api": "https://ordos-problems.github.io/api/problems/explicit-kunit-ocrs-random-order.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

@@ -1,0 +1,51 @@
+{
+ "number": 54,
+ "ref": "ORDOS-054",
+ "id": "metric-k-median-gap",
+ "title": "Metric k-Median: 1.736 Hardness vs. 2+epsilon Algorithm",
+ "collection": "Approximation & Discrepancy",
+ "area": "Approximation Algorithms",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "k-median",
+  "clustering",
+  "approximation ratio",
+  "hardness"
+ ],
+ "short_statement": "For metric $k$-median, it is NP-hard to approximate better than $1 + 2/e \\approx 1.736$, and as of 2025 the best algorithm achieves $2 + \\epsilon$. Determining the exact approximability in $[1.736, 2]$ is a major open problem.",
+ "open_problem": "The natural LP relaxation has integrality gap at least $2 - o(1)$, so the remaining question is whether the true threshold is below, at, or above the LP barrier near $2$.",
+ "full_statement": "In metric $k$-median, one is given a finite metric space $(V,d)$, a set of demand points (clients) in $V$, and an integer $k$. The algorithm must choose at most $k$ centers from $V$ and assign each client to its nearest chosen center, minimizing the total connection cost $\\sum_j d(j,S)$, where $S$ is the selected center set. The open problem is to determine the best possible polynomial-time approximation ratio $\\rho$ for this model. Known bounds are $1 + \\tfrac{2}{e} \\approx 1.736 \\le \\rho \\le 2 + \\varepsilon$. The natural LP relaxation has integrality gap at least $2 - o(1)$, so the remaining question is whether the true threshold is below, at, or above the LP barrier near $2$.",
+ "known_results": "Jain, Mahdian, and Saberi proved that approximating metric $k$-median below $1+2/e \\approx 1.736$ is NP-hard. The best current algorithm achieves $2+\\epsilon$, due to Cohen-Addad, Grandoni, Lee, Schwiegelshohn, and Svensson, improving the long-standing $2.613$ barrier. The natural LP relaxation has integrality gap at least $2-o(1)$. The open problem is to determine whether the true threshold is near the hardness bound, near $2$, or somewhere in between; closing it likely requires either a different relaxation/algorithmic idea or a stronger hardness construction.",
+ "where_posed": {
+  "text": "The (2+epsilon) algorithm is from Cohen-Addad, Grandoni, Lee, Schwiegelshohn, Svensson, 'A (2+epsilon)-Approximation Algorithm for Metric k-Median,' STOC 2025; the 1.736 hardness from Jain-Mahdian-Saberi (2002). The gap is a major open problem.",
+  "url": "https://arxiv.org/abs/2503.10972"
+ },
+ "source": {
+  "authors": "Vincent Cohen-Addad, Fabrizio Grandoni, Euiwoong Lee, Chris Schwiegelshohn, Ola Svensson",
+  "title": "A (2+epsilon)-Approximation Algorithm for Metric k-Median",
+  "year": 2025,
+  "venue": "STOC",
+  "url": "https://arxiv.org/abs/2503.10972"
+ },
+ "additional_refs": [
+  {
+   "authors": "Kamal Jain, Mohammad Mahdian, Amin Saberi",
+   "title": "A New Greedy Approach for Facility Location Problems",
+   "year": 2002,
+   "venue": "STOC",
+   "url": "https://doi.org/10.1145/509907.510012"
+  }
+ ],
+ "bibtex": "@misc{CohenAddad2025,\n  author = {Vincent Cohen-Addad and Fabrizio Grandoni and Euiwoong Lee and Chris Schwiegelshohn and Ola Svensson},\n  title = {A (2+epsilon)-Approximation Algorithm for Metric k-Median},\n  year = {2025},\n  howpublished = {STOC},\n  url = {https://arxiv.org/abs/2503.10972},\n  note = {Source of ORdős Problem ORDOS-054}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/metric-k-median-gap.html",
+  "api": "https://ordos-problems.github.io/api/problems/metric-k-median-gap.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

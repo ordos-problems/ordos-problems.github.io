@@ -1,0 +1,66 @@
+{
+ "number": 37,
+ "ref": "ORDOS-037",
+ "id": "bayesian-mab-switching-costs-optimal-policy",
+ "title": "Optimal policy for the Bayesian multi-armed bandit with switching costs",
+ "collection": "Operations Research",
+ "area": "Bandits",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "multi-armed-bandits",
+  "gittins-index",
+  "switching-costs",
+  "dynamic-programming",
+  "index-policies"
+ ],
+ "short_statement": "In the discounted Bayesian multi-armed bandit, the Gittins index is optimal; but once switching arms costs $c > 0$, no per-arm index rule can be optimal (Banks-Sundaram). Open: a clean characterization of the optimal policy structure (or a provably near-optimal simple policy) for the discounted MAB with switching costs.",
+ "open_problem": "Characterize the optimal policy for discounted Bayesian multi-armed bandits with positive switching costs, or give a tractable policy with provable optimality-gap guarantees.",
+ "full_statement": "Consider $n$ independent arms; arm $i$ is a Markov reward process with state $x_i$. At each $t$ the controller plays one arm, receiving discounted reward with factor $\\beta \\in (0,1)$; the played arm evolves and the others stay frozen. Switching from arm $i$ to $j \\neq i$ incurs cost $c_{ij} \\ge 0$ (canonical case $c_{ij} = c > 0$). The objective is to maximize $\\mathbb{E}\\big[\\sum_{t=0}^{\\infty} \\beta^t r_{a_t}(x_{a_t}(t)) - \\sum_{t} \\beta^t c_{a_{t-1} a_t}\\mathbf{1}\\{a_t \\neq a_{t-1}\\}\\big]$. Without switching costs the Gittins index theorem says always play the arm of highest index, computed from that arm alone. Banks-Sundaram (1994) show that for $c>0$ there is NO assignment of indices $\\nu_i(x_i)$ depending only on arm $i$ such that 'play the largest index' is optimal: the Gittins decomposition fails. Asawa-Teneketzis (1996) prove a partial result: it is optimal to continue the current arm and only consider switching at certain stopping times governed by the incumbent's Gittins index and a candidate 'switching index' — but this is not a globally index-decomposable optimal policy. $$\\textbf{Open:}\\quad \\text{characterize the optimal policy of the discounted MAB with switching cost } c>0,$$ or give a tractable policy with provable optimality-gap guarantees for general arm state spaces. The exact structure remains open and is believed PSPACE-hard in the worst case (cf. the restless generalization, Papadimitriou-Tsitsiklis 1999).",
+ "known_results": "Proven: With any positive switching cost the Gittins-index decomposition fails — no per-arm index policy is optimal in general (Banks-Sundaram 1994). Proven (partial structure): under an optimal policy one need only consider switching at stopping times attaining the incumbent's Gittins index or a candidate's 'switching index,' and an algorithm to compute that switching index exists (Asawa-Teneketzis 1996), but this does not give a global index policy. The general optimal-policy computation is widely regarded as intractable (Jun 2004 survey); the restless/Markov generalization is PSPACE-complete (Papadimitriou-Tsitsiklis 1999). Open: a clean structural characterization of the exact optimal policy for general arm state spaces, or a tractable policy with provable optimality-gap guarantees. (This Bayesian/discounted setting is distinct from the regret-minimization setting in the companion entry.)",
+ "where_posed": {
+  "text": "Stated/originated in Banks & Sundaram, 'Switching Costs and the Gittins Index,' Econometrica 62(3):687-694, 1994, which proves no index rule is optimal once switching is costly; intractability framed in Jun's (2004) survey.",
+  "url": "https://www.jstor.org/stable/2951662"
+ },
+ "source": {
+  "authors": "Jeffrey S. Banks, Rangarajan K. Sundaram",
+  "title": "Switching Costs and the Gittins Index",
+  "year": 1994,
+  "venue": "Econometrica 62(3):687-694",
+  "url": "https://www.jstor.org/stable/2951662"
+ },
+ "additional_refs": [
+  {
+   "authors": "M. Asawa, D. Teneketzis",
+   "title": "Multi-armed bandits with switching penalties",
+   "year": 1996,
+   "venue": "IEEE Transactions on Automatic Control 41(3):328-348",
+   "url": "https://ieeexplore.ieee.org/document/486316"
+  },
+  {
+   "authors": "Tackseung Jun",
+   "title": "A survey on the bandit problem with switching costs",
+   "year": 2004,
+   "venue": "De Economist 152:513-541",
+   "url": "https://link.springer.com/article/10.1007/s10645-004-2477-z"
+  },
+  {
+   "authors": "John Gittins, Kevin Glazebrook, Richard Weber",
+   "title": "Multi-Armed Bandit Allocation Indices (2nd ed.)",
+   "year": 2011,
+   "venue": "Wiley",
+   "url": "https://onlinelibrary.wiley.com/doi/book/10.1002/9780470980033"
+  }
+ ],
+ "bibtex": "@misc{Banks1994,\n  author = {Jeffrey S. Banks and Rangarajan K. Sundaram},\n  title = {Switching Costs and the Gittins Index},\n  year = {1994},\n  howpublished = {Econometrica 62(3):687-694},\n  url = {https://www.jstor.org/stable/2951662},\n  note = {Source of ORdős Problem ORDOS-037}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/bayesian-mab-switching-costs-optimal-policy.html",
+  "api": "https://ordos-problems.github.io/api/problems/bayesian-mab-switching-costs-optimal-policy.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

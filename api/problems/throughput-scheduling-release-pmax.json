@@ -1,0 +1,59 @@
+{
+ "number": 85,
+ "ref": "ORDOS-085",
+ "id": "throughput-scheduling-release-pmax",
+ "title": "Parameterized complexity of single-machine throughput scheduling with release dates",
+ "collection": "Operations Research",
+ "area": "Scheduling",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "machine scheduling",
+  "throughput scheduling",
+  "release dates",
+  "parameterized complexity",
+  "tardy jobs"
+ ],
+ "short_statement": "For single-machine throughput scheduling with release dates, are the unweighted and weighted tardy-job objectives W[1]-hard when parameterized by the maximum processing time?",
+ "open_problem": "Determine whether $1|r_j,p_j\\le c|\\sum U_j$ is polynomial-time solvable for each fixed processing-time bound $c$, and settle the weighted constant-$c$ case.",
+ "full_statement": "In $1|r_j|\\sum U_j$ and $1|r_j|\\sum w_jU_j$, each job $j$ has processing time $p_j$, release date $r_j$, due date $d_j$, and in the weighted case weight $w_j$. A nonpreemptive single-machine schedule chooses start times $S_j\\ge r_j$ with no overlap; $U_j=1$ iff $C_j=S_j+p_j>d_j$. The objective is to minimize the number, or total weight, of tardy jobs. Let $p_{\\max}=\\max_j p_j$. The open problem asks whether these problems are W[1]-hard parameterized by $p_{\\max}$, or instead fixed-parameter tractable (or even in XP) for this parameter. A positive FPT result would move toward polynomial-time algorithms for bounded-processing-time throughput scheduling; a hardness result would explain why this regime resists classical algorithms.",
+ "known_results": "The special case without release dates, $1||\\sum U_j$, is polynomial-time solvable, and $1||\\sum w_jU_j$ is weakly NP-hard but pseudo-polynomial. Sgall asked whether $1|r_j,p_j\\le c|\\sum U_j$ is polynomial-time solvable for constant $c$ and whether the weighted case is NP-hard for constant $c$. Mnich and van Bevern formulate the parameterized question and note that even membership in XP was open at publication.",
+ "where_posed": {
+  "text": "Open Problem 3 in Mnich and van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems' (Computers & Operations Research 2018).",
+  "url": "https://arxiv.org/abs/1709.01670"
+ },
+ "source": {
+  "authors": "Matthias Mnich, René van Bevern",
+  "title": "Parameterized complexity of machine scheduling: 15 open problems",
+  "year": 2018,
+  "venue": "Computers & Operations Research",
+  "url": "https://arxiv.org/abs/1709.01670"
+ },
+ "additional_refs": [
+  {
+   "authors": "Jiří Sgall",
+   "title": "Open problems in throughput scheduling",
+   "year": 2012,
+   "venue": "ESA",
+   "url": "https://doi.org/10.1007/978-3-642-33090-2_2"
+  },
+  {
+   "authors": "Matthias Mnich, René van Bevern",
+   "title": "Parameterized complexity of machine scheduling: 15 open problems",
+   "year": 2018,
+   "venue": "Computers & Operations Research",
+   "url": "https://doi.org/10.1016/j.cor.2018.07.020"
+  }
+ ],
+ "bibtex": "@misc{Mnich2018,\n  author = {Matthias Mnich and René van Bevern},\n  title = {Parameterized complexity of machine scheduling: 15 open problems},\n  year = {2018},\n  howpublished = {Computers & Operations Research},\n  url = {https://arxiv.org/abs/1709.01670},\n  note = {Source of ORdős Problem ORDOS-085}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/throughput-scheduling-release-pmax.html",
+  "api": "https://ordos-problems.github.io/api/problems/throughput-scheduling-release-pmax.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

@@ -1,0 +1,52 @@
+{
+ "number": 98,
+ "ref": "ORDOS-098",
+ "id": "two-sided-flexibility-random-graph-matching",
+ "title": "Optimal two-sided flexibility allocation for random bipartite matching",
+ "collection": "Operations Research",
+ "area": "Matching Markets",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "random graphs",
+  "bipartite matching",
+  "platform design",
+  "process flexibility",
+  "matching markets"
+ ],
+ "short_statement": "In a two-sided platform where a fixed flexibility budget can be split between the two sides of a random bipartite graph, is the expected maximum matching always optimized by either the fully one-sided or the balanced allocation?",
+ "open_problem": "Prove or refute that the expected maximum matching size is always maximized by one of the two extremal flexibility allocations: placing all flexibility on one side, or splitting it evenly across the two sides. If true, characterize the parameter regimes in which each allocation is optimal.",
+ "full_statement": "Consider the heterogeneous random bipartite-graph model of Freund, Martin, and Zhao. There are two sides of a matching market, a fixed budget $B$ of flexible agents, and an allocation decision specifying how much flexibility is placed on each side. Flexible nodes have a higher probability of being compatible with nodes on the opposite side, while the model normalizes edge probabilities so that changes in performance come from how compatibility is distributed rather than simply from adding more expected edges. The main performance metric $\\mu$ is the asymptotic expected size of a maximum matching. Numerical evidence using the Karp-Sipser-based approximation $\\mu_{KS}$ and empirical simulations $\\mu_{EMP}$ suggests that $\\mu$ is always maximized either by the one-sided allocation or by the balanced allocation. The open problem is to prove this extremal principle, or find a counterexample, and then give an analytical boundary in $(B,p_n,p_f)$ space separating the one-sided-optimal and balanced-optimal regimes.",
+ "known_results": "Freund, Martin, and Zhao give a complete analytical characterization for a simpler isolation-based metric $\\phi$, and they prove partial analytical comparisons for $\\mu$ in edge cases where flexibility cannibalization or flexibility asymmetry dominates. For the actual maximum-matching metric, their computational evidence strongly points to the one-sided-versus-balanced dichotomy, but no proof is known even for a parameter regime. The remaining open problem is therefore not to choose a model of platform flexibility, but to prove the optimal allocation structure inside their already specified random-graph model.",
+ "where_posed": {
+  "text": "Conclusion of Freund, Martin, and Zhao, 'Two-Sided Flexibility in Platforms', lists the extremal optimality of one-sided or balanced allocations for the maximum-matching metric as a natural open question.",
+  "url": "https://arxiv.org/abs/2404.04709"
+ },
+ "source": {
+  "authors": "Daniel Freund, Sebastien Martin, Jiayu Kamessi Zhao",
+  "title": "Two-Sided Flexibility in Platforms",
+  "year": 2026,
+  "venue": "arXiv:2404.04709",
+  "url": "https://arxiv.org/abs/2404.04709"
+ },
+ "additional_refs": [
+  {
+   "authors": "William C. Jordan, Stephen C. Graves",
+   "title": "Principles on the Benefits of Manufacturing Process Flexibility",
+   "year": 1995,
+   "venue": "Management Science",
+   "url": "https://doi.org/10.1287/mnsc.41.4.577"
+  }
+ ],
+ "bibtex": "@misc{Freund2026,\n  author = {Daniel Freund and Sebastien Martin and Jiayu Kamessi Zhao},\n  title = {Two-Sided Flexibility in Platforms},\n  year = {2026},\n  howpublished = {arXiv:2404.04709},\n  url = {https://arxiv.org/abs/2404.04709},\n  note = {Source of ORdős Problem ORDOS-098}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/two-sided-flexibility-random-graph-matching.html",
+  "api": "https://ordos-problems.github.io/api/problems/two-sided-flexibility-random-graph-matching.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

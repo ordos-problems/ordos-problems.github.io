@@ -1,0 +1,52 @@
+{
+ "number": 90,
+ "ref": "ORDOS-090",
+ "id": "heterogeneous-data-driven-decision-efficient-robust-policies",
+ "title": "Efficient robust policies for heterogeneous data-driven decisions",
+ "collection": "Management Science",
+ "area": "Data-Driven Decisions",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "data-driven optimization",
+  "heterogeneous data",
+  "distributionally robust optimization",
+  "newsvendor",
+  "pricing"
+ ],
+ "short_statement": "In the heterogeneity-ball framework for data-driven decisions, can one efficiently compute or approximate general robust policies that retain the known rate-optimal worst-case regret guarantees?",
+ "open_problem": "The open problem is algorithmic: can these general robust policies be computed efficiently, or approximated in a way that preserves their rate-optimal regret guarantees, for broad classes of OR/MS problems beyond the worked examples?",
+ "full_statement": "Consider the framework of Besbes, Ma, and Mouchtaki: a decision $x\\in\\mathcal{X}$ is evaluated on a future distribution $\\mu$, while historical observations are independent but may come from different unknown distributions $\\nu_1,\\dots,\\nu_n$ lying in a radius-$\\epsilon$ heterogeneity ball around $\\mu$ under a specified metric such as Kolmogorov, Wasserstein, total variation, or a divergence. A data-driven policy maps historical samples into a decision, and performance is measured by asymptotic worst-case expected regret relative to the oracle decision optimal for $\\mu$. SAA is rate-optimal for some problem/metric pairs but fails badly for others, such as pricing under Wasserstein heterogeneity and ski-rental variants. The paper proposes robust alternatives such as RDRO and DRO policies and proves rate-optimality in several settings. The open problem is algorithmic: can these general robust policies be computed efficiently, or approximated in a way that preserves their rate-optimal regret guarantees, for broad classes of OR/MS problems beyond the worked examples?",
+ "known_results": "Besbes, Ma, and Mouchtaki give a formal heterogeneity-ball model, upper/lower bounds for SAA, and problem-dependent rate-optimal robust policies for examples including newsvendor, pricing, and ski rental. They explicitly leave open efficient computation of the RDRO/DRO policies, approximations that still perform well, and broader finite-sample/adaptive-to-heterogeneity guarantees.",
+ "where_posed": {
+  "text": "Section 6 of Besbes, Ma, and Mouchtaki, 'Beyond IID: data-driven decision-making in heterogeneous environments', leaves open efficient computation/approximation of robust policies that perform well under heterogeneity.",
+  "url": "https://arxiv.org/abs/2206.09642"
+ },
+ "source": {
+  "authors": "Omar Besbes, Will Ma, Omar Mouchtaki",
+  "title": "Beyond IID: data-driven decision-making in heterogeneous environments",
+  "year": 2022,
+  "venue": "arXiv:2206.09642",
+  "url": "https://arxiv.org/abs/2206.09642"
+ },
+ "additional_refs": [
+  {
+   "authors": "Omar Besbes, Will Ma, Omar Mouchtaki",
+   "title": "From Contextual Data to Newsvendor Decisions: On the Actual Performance of Data-Driven Algorithms",
+   "year": 2023,
+   "venue": "arXiv:2302.08424",
+   "url": "https://arxiv.org/abs/2302.08424"
+  }
+ ],
+ "bibtex": "@misc{Besbes2022,\n  author = {Omar Besbes and Will Ma and Omar Mouchtaki},\n  title = {Beyond IID: data-driven decision-making in heterogeneous environments},\n  year = {2022},\n  howpublished = {arXiv:2206.09642},\n  url = {https://arxiv.org/abs/2206.09642},\n  note = {Source of ORdős Problem ORDOS-090}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/heterogeneous-data-driven-decision-efficient-robust-policies.html",
+  "api": "https://ordos-problems.github.io/api/problems/heterogeneous-data-driven-decision-efficient-robust-policies.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

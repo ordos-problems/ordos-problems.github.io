@@ -1,0 +1,479 @@
+[
+ {
+  "id": "bayesian-mab-switching-costs-optimal-policy",
+  "collection": "Operations Research",
+  "area": "Bandits",
+  "tags": [
+   "multi-armed-bandits",
+   "gittins-index",
+   "switching-costs",
+   "dynamic-programming",
+   "index-policies"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Optimal policy for the Bayesian multi-armed bandit with switching costs",
+  "short_statement": "In the discounted Bayesian multi-armed bandit, the Gittins index is optimal; but once switching arms costs $c > 0$, no per-arm index rule can be optimal (Banks-Sundaram). Open: a clean characterization of the optimal policy structure (or a provably near-optimal simple policy) for the discounted MAB with switching costs.",
+  "full_statement": "Consider $n$ independent arms; arm $i$ is a Markov reward process with state $x_i$. At each $t$ the controller plays one arm, receiving discounted reward with factor $\\beta \\in (0,1)$; the played arm evolves and the others stay frozen. Switching from arm $i$ to $j \\neq i$ incurs cost $c_{ij} \\ge 0$ (canonical case $c_{ij} = c > 0$). The objective is to maximize $\\mathbb{E}\\big[\\sum_{t=0}^{\\infty} \\beta^t r_{a_t}(x_{a_t}(t)) - \\sum_{t} \\beta^t c_{a_{t-1} a_t}\\mathbf{1}\\{a_t \\neq a_{t-1}\\}\\big]$. Without switching costs the Gittins index theorem says always play the arm of highest index, computed from that arm alone. Banks-Sundaram (1994) show that for $c>0$ there is NO assignment of indices $\\nu_i(x_i)$ depending only on arm $i$ such that 'play the largest index' is optimal: the Gittins decomposition fails. Asawa-Teneketzis (1996) prove a partial result: it is optimal to continue the current arm and only consider switching at certain stopping times governed by the incumbent's Gittins index and a candidate 'switching index' — but this is not a globally index-decomposable optimal policy. $$\\textbf{Open:}\\quad \\text{characterize the optimal policy of the discounted MAB with switching cost } c>0,$$ or give a tractable policy with provable optimality-gap guarantees for general arm state spaces. The exact structure remains open and is believed PSPACE-hard in the worst case (cf. the restless generalization, Papadimitriou-Tsitsiklis 1999).",
+  "known_results": "Proven: With any positive switching cost the Gittins-index decomposition fails — no per-arm index policy is optimal in general (Banks-Sundaram 1994). Proven (partial structure): under an optimal policy one need only consider switching at stopping times attaining the incumbent's Gittins index or a candidate's 'switching index,' and an algorithm to compute that switching index exists (Asawa-Teneketzis 1996), but this does not give a global index policy. The general optimal-policy computation is widely regarded as intractable (Jun 2004 survey); the restless/Markov generalization is PSPACE-complete (Papadimitriou-Tsitsiklis 1999). Open: a clean structural characterization of the exact optimal policy for general arm state spaces, or a tractable policy with provable optimality-gap guarantees. (This Bayesian/discounted setting is distinct from the regret-minimization setting in the companion entry.)",
+  "where_posed": {
+   "text": "Stated/originated in Banks & Sundaram, 'Switching Costs and the Gittins Index,' Econometrica 62(3):687-694, 1994, which proves no index rule is optimal once switching is costly; intractability framed in Jun's (2004) survey.",
+   "url": "https://www.jstor.org/stable/2951662"
+  },
+  "source": {
+   "authors": "Jeffrey S. Banks, Rangarajan K. Sundaram",
+   "title": "Switching Costs and the Gittins Index",
+   "year": 1994,
+   "venue": "Econometrica 62(3):687-694",
+   "url": "https://www.jstor.org/stable/2951662"
+  },
+  "additional_refs": [
+   {
+    "authors": "M. Asawa, D. Teneketzis",
+    "title": "Multi-armed bandits with switching penalties",
+    "year": 1996,
+    "venue": "IEEE Transactions on Automatic Control 41(3):328-348",
+    "url": "https://ieeexplore.ieee.org/document/486316"
+   },
+   {
+    "authors": "Tackseung Jun",
+    "title": "A survey on the bandit problem with switching costs",
+    "year": 2004,
+    "venue": "De Economist 152:513-541",
+    "url": "https://link.springer.com/article/10.1007/s10645-004-2477-z"
+   },
+   {
+    "authors": "John Gittins, Kevin Glazebrook, Richard Weber",
+    "title": "Multi-Armed Bandit Allocation Indices (2nd ed.)",
+    "year": 2011,
+    "venue": "Wiley",
+    "url": "https://onlinelibrary.wiley.com/doi/book/10.1002/9780470980033"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "stochastic-bandits-switching-cost-regret",
+  "collection": "Operations Research",
+  "area": "Bandits",
+  "tags": [
+   "multi-armed-bandits",
+   "regret",
+   "switching-costs",
+   "minimax",
+   "online-learning",
+   "lower-bounds"
+  ],
+  "status": "partially resolved",
+  "confidence": "medium",
+  "title": "Minimax and gap-dependent regret for bandits with switching costs",
+  "short_statement": "For regret minimization with a unit cost per arm switch, the adversarial minimax regret is order $T^{2/3}$ (vs $T^{1/2}$ without), and the stochastic switch-budget case has matching phase-transition bounds. Open: the exact instance-dependent (gap-dependent) optimal regret and tight dependence on general non-unit switching-cost structures.",
+  "full_statement": "An algorithm chooses $a_t \\in [K]$ for $t=1,\\dots,T$, observes only the played arm's reward (bandit feedback), and incurs a switching cost whenever $a_t \\neq a_{t-1}$; total cost = regret-from-rewards + switching cost. With unit costs, $R_T = (\\max_a \\sum_t \\mu_a - \\mathbb{E}\\sum_t \\mu_{a_t}) + \\mathbb{E}[\\sum_{t=2}^T \\mathbf{1}\\{a_t \\neq a_{t-1}\\}]$. Adversarial: Dekel-Ding-Koren-Peres (2014) prove the minimax value is $\\widetilde{\\Theta}(T^{2/3})$ (vs $\\Theta(\\sqrt{KT})$ without switching costs) via a multi-scale random-walk lower bound. Stochastic switch-budget: Simchi-Levi-Xu (2019) cap the number of switches at $S$ and prove matching bounds exhibiting equal-length 'phases' in $S$ where optimal regret is constant within a phase and drops sharply between phases. $$\\textbf{Open (residual):}\\ \\text{the exact gap-dependent optimal regret with switching cost } c, \\text{ and the tight minimax dependence under general (non-unit, arm-pair-dependent) switching-cost matrices,}$$ including matching constants and the precise interpolation between $T^{1/2}$ (cost $\\to 0$) and $T^{2/3}$ (unit cost) in the stochastic case.",
+  "known_results": "Proven: adversarial unit-switching-cost minimax regret is $\\tilde{\\Theta}(T^{2/3})$ (Dekel et al. 2014); for the stochastic problem with a fixed budget S on the number of switches, matching bounds with explicit phase transitions (Simchi-Levi-Xu 2019); best-of-both-worlds algorithms achieving $O(T^{2/3})$ adversarial and $O(\\sum_i \\log T / \\Delta_i)$ stochastic simultaneously (Rouyer-Seldin-Cesa-Bianchi 2021). Open/residual: exact instance-dependent (gap-dependent) optimal constants for stochastic switching-cost regret, and tight characterization for general non-unit / arm-pair-dependent switching-cost matrices. This is a regret-minimization counterpart to the Bayesian/Gittins entry; the core minimax rates are resolved, so confidence that a clean fully-open question remains is moderate.",
+  "where_posed": {
+   "text": "Core minimax rate established in Dekel, Ding, Koren, Peres, 'Bandits with Switching Costs: T^{2/3} Regret,' STOC 2014; the residual gap-dependent and non-unit-cost questions are noted in the surrounding literature (Simchi-Levi-Xu 2019; Rouyer-Seldin-Cesa-Bianchi 2021).",
+   "url": "https://arxiv.org/abs/1310.2997"
+  },
+  "source": {
+   "authors": "Ofer Dekel, Jian Ding, Tomer Koren, Yuval Peres",
+   "title": "Bandits with Switching Costs: T^{2/3} Regret",
+   "year": 2014,
+   "venue": "STOC 2014, 459-467 (arXiv:1310.2997)",
+   "url": "https://arxiv.org/abs/1310.2997"
+  },
+  "additional_refs": [
+   {
+    "authors": "David Simchi-Levi, Yunzong Xu",
+    "title": "Phase Transitions and Cyclic Phenomena in Bandits with Switching Constraints",
+    "year": 2019,
+    "venue": "NeurIPS 2019 (journal version Management Science 2023; arXiv:1905.10825)",
+    "url": "https://arxiv.org/abs/1905.10825"
+   },
+   {
+    "authors": "Chloé Rouyer, Yevgeny Seldin, Nicolò Cesa-Bianchi",
+    "title": "An Algorithm for Stochastic and Adversarial Bandits with Switching Costs",
+    "year": 2021,
+    "venue": "ICML 2021 (arXiv:2102.09864)",
+    "url": "https://arxiv.org/abs/2102.09864"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "cmu-theta-rule-exact-optimality-abandonment",
+  "collection": "Operations Research",
+  "area": "Queueing",
+  "tags": [
+   "scheduling",
+   "abandonment",
+   "impatience",
+   "index-policy",
+   "cmu-rule",
+   "markov-decision-process",
+   "multiclass-queue"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Exact optimality of the cμ/θ index rule for multiclass queues with abandonment",
+  "short_statement": "A server handles several customer classes that abandon while waiting. Without abandonment the $c\\mu$ rule is exactly optimal; with abandonment the $c\\mu/\\theta$ rule is asymptotically optimal in heavy traffic. Open: whether $c\\mu/\\theta$ - or any static priority/index rule - is exactly optimal for the discounted or average-cost problem, and under what conditions.",
+  "full_statement": "Consider a multiclass $M/M/1{+}M$ queue (or $M/M/N{+}M$ many-server system) with classes $i=1,\\dots,K$. Class-$i$ arrivals are Poisson at rate $\\lambda_i$, service is exponential at rate $\\mu_i$, each waiting class-$i$ customer abandons (reneges) independently at rate $\\theta_i>0$, and holding incurs cost rate $c_i$ per class-$i$ customer. A (preemptive or non-preemptive) policy $\\pi$ chooses which class to serve. The objective is $$ \\min_{\\pi}\\; \\limsup_{T\\to\\infty}\\frac{1}{T}\\,\\mathbb{E}^{\\pi}\\!\\left[\\int_0^T \\sum_{i=1}^K c_i Q_i(t)\\,dt\\right] \\quad\\text{(or discounted)}, $$ where $Q_i(t)$ is the number of class-$i$ customers. The $c\\mu/\\theta$ rule serves a customer of a class maximizing $c_i\\mu_i/\\theta_i$. \\textbf{Open:} Is the $c\\mu/\\theta$ rule — or any static priority / index policy — the EXACT optimal policy (discounted or average cost), and if not, under what conditions on $(c_i,\\mu_i,\\theta_i)$ is a static priority rule exactly optimal? In contrast to the no-abandonment case ($\\theta_i=0$), where the $c\\mu$ rule (serve the class of largest $c_i\\mu_i$) is provably exactly optimal, no exact index characterization is known when $\\theta_i>0$, and the optimal policy is generally not a static priority rule.",
+  "known_results": "Proven: (i) Without abandonment (θ_i=0), the cμ rule is exactly optimal for the single-server multiclass problem (Cox & Smith; Buyukkoc-Varaiya-Walrand 1985). (ii) With abandonment, the cμ/θ rule is asymptotically optimal in the many-server Halfin-Whitt regime (Atar-Giat-Shimkin 2010) and under ergodic/average cost (Atar-Giat-Shimkin 2011). (iii) For the EXACT problem, Down-Koole-Lewis (2011) show the classic cμ-type priority rule does NOT hold in general with abandonment, but an additional condition on the ordering of the θ_i is sufficient to recover a static priority rule. (iv) Larrañaga-Ayesta-Verloop (2014, 2015) derive Whittle/index heuristics (via a restless-bandit relaxation) that are asymptotically optimal and perform well numerically but are not claimed exactly optimal. Open: a full characterization of the exact optimal policy for the multiclass M/M/1+M (and M/M/N+M) abandonment scheduling problem under discounted or average cost; in particular it is open in general (beyond the special orderings of Down-Koole-Lewis) when a static priority / index rule such as cμ/θ is exactly optimal.",
+  "where_posed": {
+   "text": "The cμ/θ rule and its heavy-traffic optimality are introduced in Atar, Giat, Shimkin, 'The cμ/θ Rule for Many-Server Queues with Abandonment,' Operations Research 58(5):1427-1439, 2010; the exact-optimality gap is delineated by Down-Koole-Lewis (2011) and the index-heuristic line by Larrañaga-Ayesta-Verloop (2015).",
+   "url": "https://pubsonline.informs.org/doi/10.1287/opre.1100.0826"
+  },
+  "source": {
+   "authors": "Rami Atar, Chanit Giat, Nahum Shimkin",
+   "title": "The cμ/θ Rule for Many-Server Queues with Abandonment",
+   "year": 2010,
+   "venue": "Operations Research 58(5):1427-1439",
+   "url": "https://pubsonline.informs.org/doi/10.1287/opre.1100.0826"
+  },
+  "additional_refs": [
+   {
+    "authors": "Rami Atar, Chanit Giat, Nahum Shimkin",
+    "title": "On the asymptotic optimality of the cμ/θ rule under ergodic cost",
+    "year": 2011,
+    "venue": "Queueing Systems 67(2):127-144",
+    "url": "https://link.springer.com/article/10.1007/s11134-010-9206-x"
+   },
+   {
+    "authors": "Douglas G. Down, Ger Koole, Mark E. Lewis",
+    "title": "Dynamic control of a single-server system with abandonments",
+    "year": 2011,
+    "venue": "Queueing Systems 67(1):63-90",
+    "url": "https://link.springer.com/article/10.1007/s11134-010-9201-2"
+   },
+   {
+    "authors": "Maialen Larrañaga, Urtzi Ayesta, Ina Maria Verloop",
+    "title": "Asymptotically optimal index policies for an abandonment queue with convex holding cost",
+    "year": 2015,
+    "venue": "Queueing Systems 81(2-3):99-169",
+    "url": "https://link.springer.com/article/10.1007/s11134-015-9445-y"
+   },
+   {
+    "authors": "C. Buyukkoc, P. Varaiya, J. Walrand",
+    "title": "The cμ rule revisited",
+    "year": 1985,
+    "venue": "Advances in Applied Probability 17(1):237-238",
+    "url": "https://www.cambridge.org/core/journals/advances-in-applied-probability/article/c-rule-revisited/4208A5791793438658BF774D4D9DF013"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "optimal-routing-heterogeneous-parallel-servers",
+  "collection": "Operations Research",
+  "area": "Queueing",
+  "tags": [
+   "load-balancing",
+   "routing",
+   "dispatching",
+   "join-the-shortest-queue",
+   "power-of-d",
+   "heterogeneous-servers",
+   "mean-response-time"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Optimal dispatching to heterogeneous parallel servers (JSQ optimality fails)",
+  "short_statement": "For identical exponential servers, Join-the-Shortest-Queue is provably optimal. When servers have different service rates, JSQ is no longer optimal and no simple policy is known to exactly minimize mean response time. Characterizing the optimal dispatching policy for heterogeneous parallel servers is open.",
+  "full_statement": "Consider $N$ parallel single-server queues with a central dispatcher. Jobs arrive as a Poisson process of rate $\\lambda$; upon arrival a job is irrevocably routed to one queue based on the observed queue-length vector $\\mathbf{Q}(t)=(Q_1,\\dots,Q_N)$ (full information). Server $j$ works at rate $\\mu_j$ (exponential service), FCFS. \\textbf{Homogeneous ($\\mu_j\\equiv\\mu$):} JSQ — route to $\\arg\\min_j Q_j$ — stochastically minimizes $\\mathbf{Q}(t)$ in an appropriate order and minimizes $\\mathbb{E}\\sum_j f(Q_j)$ for increasing convex $f$, hence mean response time (Winston 1977; Weber 1978). \\textbf{Open (heterogeneous, $\\mu_j$ distinct):} determine the policy minimizing long-run mean response time $$ \\min_{\\pi}\\; \\limsup_{T\\to\\infty} \\frac{1}{T}\\,\\mathbb{E}^{\\pi}\\!\\left[\\int_0^T \\sum_{j=1}^N Q_j(t)\\,dt\\right] $$ (equivalently mean sojourn time by Little's law). JSQ is provably NOT optimal when the $\\mu_j$ differ; the exact optimal routing policy is unknown and conjectured to have a complicated, non-index threshold structure. A clean stated-open variant: is JSQ (or any explicit policy) optimal for minimizing mean response time with GENERAL (non-exponential) i.i.d. service even for identical servers?",
+  "known_results": "Proven: for homogeneous exponential servers, JSQ stochastically minimizes the sorted queue-length process and minimizes E[sum f($Q_j$)] for increasing-convex f, hence mean response time (Winston 1977; Weber 1978 extends to service times with non-decreasing hazard rate). Mean-field/asymptotic: power-of-d gives the double-exponential tail improvement over random routing (Vvedenskaya-Dobrushin-Karpelevich 1996; Mitzenmacher 2001); JSQ is heavy-traffic optimal with many servers in the Halfin-Whitt regime (Eschenfeldt-Gamarnik 2018). Heterogeneous servers: JSQ is provably NOT optimal once rates differ; SED/JSED and speed-aware variants are asymptotically (heavy-traffic) optimal in several settings, but no policy is known to be exactly optimal for mean response time, and the optimal policy is believed to have a complicated threshold structure. Open: (a) the exact optimal dispatching policy for heterogeneous parallel servers (distinct μ_j), explicitly noted as open in the load-balancing literature and the SIAM Review survey (van der Boor et al. 2022); (b) even for identical servers, exact non-asymptotic optimality of JSQ for mean sojourn time under general service-time distributions is open.",
+  "where_posed": {
+   "text": "JSQ optimality for identical servers is established in Winston, 'Optimality of the shortest line discipline,' J. Appl. Prob. 14(1):181-189, 1977 (and Weber 1978); the heterogeneous-server open problem is highlighted in the load-balancing literature and the van der Boor et al. (2022) SIAM Review survey.",
+   "url": "https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/optimality-of-the-shortest-line-discipline/A0E278FC4BCBFA67CA2F941C3D030233"
+  },
+  "source": {
+   "authors": "Wayne Winston",
+   "title": "Optimality of the shortest line discipline",
+   "year": 1977,
+   "venue": "Journal of Applied Probability 14(1):181-189",
+   "url": "https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/optimality-of-the-shortest-line-discipline/A0E278FC4BCBFA67CA2F941C3D030233"
+  },
+  "additional_refs": [
+   {
+    "authors": "Richard R. Weber",
+    "title": "On the optimal assignment of customers to parallel servers",
+    "year": 1978,
+    "venue": "Journal of Applied Probability 15(2):406-413",
+    "url": "https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/on-the-optimal-assignment-of-customers-to-parallel-servers/3B2CF58EF9B8B29F7D18F062977760D4"
+   },
+   {
+    "authors": "Patrick Eschenfeldt, David Gamarnik",
+    "title": "Join the Shortest Queue with Many Servers. The Heavy-Traffic Asymptotics",
+    "year": 2018,
+    "venue": "Mathematics of Operations Research 43(3):867-886 (arXiv:1502.00999)",
+    "url": "https://pubsonline.informs.org/doi/10.1287/moor.2017.0887"
+   },
+   {
+    "authors": "Mark van der Boor, Sem C. Borst, Johan S. H. van Leeuwaarden, Debankur Mukherjee",
+    "title": "Scalable Load Balancing in Networked Systems: A Survey of Recent Advances",
+    "year": 2022,
+    "venue": "SIAM Review 64(3):554-622",
+    "url": "https://epubs.siam.org/doi/10.1137/20M1323746"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "nrm-relaxation-gap-degenerate-and-choice",
+  "collection": "Operations Management",
+  "area": "Revenue Management",
+  "tags": [
+   "network-revenue-management",
+   "deterministic-linear-program",
+   "bid-prices",
+   "re-solving",
+   "regret",
+   "choice-models",
+   "asymptotic-optimality"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Tight regret of LP-relaxation policies for network revenue management: degenerate and choice-based cases",
+  "short_statement": "In network revenue management, the deterministic LP upper-bounds optimal revenue and re-solving heuristics achieve $O(1)$ regret under non-degeneracy in the independent-demand case. For choice-based NRM, no policy is known to achieve constant ($T$-independent) regret without a non-degeneracy assumption, and the tight relaxation gap and best simple-policy regret are uncharacterized.",
+  "full_statement": "Quantity-based NRM: $T$ periods, $m$ resources with integer capacities $c \\in \\mathbb{Z}_{+}^m$, $n$ products; product $j$ consumes bundle $A_{\\cdot j} \\in \\{0,1\\}^m$ and yields revenue $r_j$; demand is stochastic. In the choice-based model, at each period the firm offers an assortment $S \\subseteq \\{1,\\dots,n\\}$ and an arriving customer chooses $j \\in S$ with probability $P_j(S)$ (e.g. MNL). Let $V^*$ be the optimal DP value and $V^{\\mathrm{CDLP}} = \\max_{\\lambda \\geq 0} \\sum_S \\lambda_S (\\sum_j P_j(S) r_j)$ s.t. $\\sum_S \\lambda_S \\sum_j P_j(S) A_{ij} \\leq c_i\\ \\forall i$, $\\sum_S \\lambda_S \\leq T$, so $V^{\\mathrm{CDLP}} \\geq V^*$ (the choice-based deterministic LP). Define the regret of policy $\\pi$ as $V^* - V^\\pi$ under fluid scaling $c \\to k c$, $T \\to kT$, $k \\to \\infty$. $$\\textbf{Open: } \\text{Is there a tractable policy } \\pi \\text{ (e.g. CDLP-based re-solving/decomposition) with regret } O(1) \\text{ (independent of } k,T\\text{) for } \\textit{all} \\text{ choice-based instances, including degenerate CDLP?}$$ Equivalently, characterize $\\inf_\\pi \\sup_{\\text{instances}} \\mathrm{Regret}(\\pi)$ and the tightest bound on $V^{\\mathrm{CDLP}} - V^*$ as a function of $m,n,T$ without a non-degeneracy assumption. For independent demand, re-solving achieves O(1) regret under non-degeneracy, and recent work removes non-degeneracy for continuous-value models.",
+  "known_results": "Independent-demand quantity-based NRM: Talluri & van Ryzin (1998) proved DLP bid-price controls are asymptotically optimal; naive frequent re-solving incurs $O(\\sqrt{T})$ loss. Jasin & Kumar (2012) gave a re-solving heuristic with $O(1)$ loss under non-degeneracy. Bumpensanti & Wang (2020) achieve uniformly bounded $O(1)$ regret independent of T and capacities via infrequent re-solving with probability thresholding, under non-degeneracy. Vera & Banerjee (2021) obtain constant regret for online allocation with finite types. For degenerate LP / continuous-value models, Jiang-Ma-Zhang (2025) prove $O(\\log ^2 T)$ regret with only densities bounded away from 0 ($O(\\log T)$ under a growth condition), removing non-degeneracy for that formulation; whether $O(1)$ is achievable for general degenerate discrete instances is unsettled. Choice-based NRM: Liu & van Ryzin (2008) showed the CDLP and its decomposition heuristic are asymptotically optimal as demand/capacity scale; Jasin & Kumar (2012) handle choice but rely on non-degeneracy. The non-linear structure of choice makes the fluid relaxation non-linear, and no policy is currently proven to achieve constant (T-independent) regret for general/degenerate choice-based instances, nor is the tight relaxation gap characterized — the genuinely open piece as of 2024-2025.",
+  "where_posed": {
+   "text": "The O(1)-regret re-solving result (independent demand, non-degenerate) is in Bumpensanti & Wang, 'A Re-Solving Heuristic with Uniformly Bounded Loss for Network Revenue Management,' Management Science 66(7):2993-3009, 2020; the residual choice-based/degenerate open question is framed in the surrounding literature (Liu-van Ryzin 2008; Jiang-Ma-Zhang 2025).",
+   "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2019.3365"
+  },
+  "source": {
+   "authors": "Pornpawee Bumpensanti, He Wang",
+   "title": "A Re-Solving Heuristic with Uniformly Bounded Loss for Network Revenue Management",
+   "year": 2020,
+   "venue": "Management Science 66(7):2993-3009",
+   "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2019.3365"
+  },
+  "additional_refs": [
+   {
+    "authors": "Jiashuo Jiang, Will Ma, Jiawei Zhang",
+    "title": "Degeneracy Is OK: Logarithmic Regret for Network Revenue Management with Indiscrete Distributions",
+    "year": 2025,
+    "venue": "Operations Research (arXiv:2210.07996)",
+    "url": "https://arxiv.org/abs/2210.07996"
+   },
+   {
+    "authors": "Stefanus Jasin, Sunil Kumar",
+    "title": "A Re-Solving Heuristic with Bounded Revenue Loss for Network Revenue Management with Customer Choice",
+    "year": 2012,
+    "venue": "Mathematics of Operations Research 37(2):313-345",
+    "url": "https://www.jstor.org/stable/23256626"
+   },
+   {
+    "authors": "Martin I. Reiman, Qiong Wang",
+    "title": "An Asymptotically Optimal Policy for a Quantity-Based Network Revenue Management Problem",
+    "year": 2008,
+    "venue": "Mathematics of Operations Research 33(2):257-282",
+    "url": "https://pubsonline.informs.org/doi/pdf/10.1287/moor.1080.0358"
+   },
+   {
+    "authors": "Qian Liu, Garrett van Ryzin",
+    "title": "On the Choice-Based Linear Programming Model for Network Revenue Management",
+    "year": 2008,
+    "venue": "Manufacturing & Service Operations Management 10(2):288-310",
+    "url": "https://pubsonline.informs.org/doi/10.1287/msom.1070.0169"
+   },
+   {
+    "authors": "Kalyan Talluri, Garrett van Ryzin",
+    "title": "An Analysis of Bid-Price Controls for Network Revenue Management",
+    "year": 1998,
+    "venue": "Management Science 44(11):1577-1593",
+    "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.44.11.1577"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "stochastic-scheduling-optimal-policy-release-precedence",
+  "collection": "Operations Research",
+  "area": "Stochastic Scheduling",
+  "tags": [
+   "stochastic-scheduling",
+   "weighted-completion-time",
+   "release-dates",
+   "precedence-constraints",
+   "WSEPT",
+   "non-anticipative-policy",
+   "sharp-P-hardness"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Optimal policy for stochastic single-machine weighted completion time with release dates or precedence",
+  "short_statement": "On a single machine with random processing times, WSEPT is optimal for minimizing expected total weighted completion time with no release dates or precedence (Rothkopf 1966). With release dates and/or precedence, the optimal non-anticipative policy is uncharacterized even for exponential jobs; only constant-factor LP-based approximations are known.",
+  "full_statement": "Single machine, jobs $j = 1,\\dots,n$ with independent random processing times $P_j$ and weights $w_j > 0$; $C_j$ is the policy-dependent random completion time. A policy $\\pi$ must be non-anticipative (decisions at time $t$ depend only on information available by $t$). Objective: $$\\min_{\\pi \\in \\Pi_{\\mathrm{non\\text{-}ant}}} \\ \\mathbb{E}\\Big[\\sum_{j=1}^n w_j C_j^{\\pi}\\Big].$$ Baseline (Rothkopf 1966): with all $r_j = 0$ and no precedence, the static list policy WSEPT (process in non-increasing order of $w_j / \\mathbb{E}[P_j]$) is optimal. $$\\textbf{Open (release dates): } \\text{with release dates } r_j \\ (1\\,|\\,r_j\\,|\\,\\mathbb{E}\\sum w_j C_j), \\text{ characterize an optimal non-anticipative policy, even when } P_j \\sim \\mathrm{Exp}(\\mu_j).$$ $$\\textbf{Open (precedence): } \\text{with precedence constraints (e.g. series-parallel) and } P_j \\sim \\mathrm{Exp}(\\mu_j), \\text{ characterize the optimal policy for } 1\\,|\\,\\mathrm{prec}\\,|\\,\\mathbb{E}\\sum w_j C_j.$$ No closed-form optimal priority policy is known in either case; the gap between best-known approximation guarantees and optimality is open. (The deterministic special cases $1\\,|\\,r_j\\,|\\,\\sum w_j C_j$ and $1\\,|\\,\\mathrm{prec}\\,|\\,\\sum w_j C_j$ are already strongly NP-hard.)",
+  "known_results": "Rothkopf (1966) proved WSEPT is optimal for the single machine with no release dates and no precedence. For exponential processing times, WSEPT/cµ-type rules are optimal in several special structures, but with general release dates or precedence the optimal non-anticipative policy is uncharacterized even for exponential jobs. Best positive results are LP-based approximations: Möhring-Schulz-Uetz (1999, JACM) gave the first constant-factor guarantees for LP-guided priority policies with release dates and/or precedence; later work (Skutella-Sviridenko-Uetz; Correa-Schulz) improved constants and extended to unrelated machines, but these only bound the ratio to an optimal policy, not identify it. On complexity: the deterministic versions 1|$r_j$|sum $w_j C_j$ and 1|prec|sum $w_j C_j$ are strongly NP-hard; for the genuinely stochastic problem a 2026 result (arXiv:2601.17425) shows minimizing E[sum $w_j C_j$] on parallel machines is #P-hard even for two-point distributions with unit weights (and even evaluating WSEPT's expected cost is #P-hard) — the first hardness not inherited from the deterministic counterpart. The exact optimal-policy structure for the single-machine release-date and precedence cases, and the precise complexity of the single-machine stochastic version, remain open.",
+  "where_posed": {
+   "text": "The WSEPT optimality baseline is Rothkopf, 'Scheduling with Random Service Times,' Management Science 12(9):707-713, 1966; the open release-date and precedence cases (with only LP-based approximations known) are developed in Möhring-Schulz-Uetz (1999, JACM) and the subsequent stochastic-scheduling literature.",
+   "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.12.9.707"
+  },
+  "source": {
+   "authors": "Michael H. Rothkopf",
+   "title": "Scheduling with Random Service Times",
+   "year": 1966,
+   "venue": "Management Science 12(9):707-713",
+   "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.12.9.707"
+  },
+  "additional_refs": [
+   {
+    "authors": "Rolf H. Möhring, Andreas S. Schulz, Marc Uetz",
+    "title": "Approximation in Stochastic Scheduling: The Power of LP-Based Priority Policies",
+    "year": 1999,
+    "venue": "Journal of the ACM 46(6):924-942",
+    "url": "https://dl.acm.org/doi/10.1145/331524.331530"
+   },
+   {
+    "authors": "Martin Skutella, Maxim Sviridenko, Marc Uetz",
+    "title": "Unrelated Machine Scheduling with Stochastic Processing Times",
+    "year": 2016,
+    "venue": "Mathematics of Operations Research 41(3):851-864",
+    "url": "https://pubsonline.informs.org/doi/10.1287/moor.2015.0757"
+   },
+   {
+    "authors": "(authors to verify)",
+    "title": "Minimizing Completion Times of Stochastic Jobs on Parallel Machines is Hard",
+    "year": 2026,
+    "venue": "arXiv:2601.17425",
+    "url": "https://arxiv.org/abs/2601.17425"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "metric-tsp-four-thirds-integrality-gap",
+  "collection": "Approximation & Discrepancy",
+  "area": "Approximation Algorithms",
+  "tags": [
+   "TSP",
+   "integrality gap",
+   "Held-Karp",
+   "subtour LP",
+   "metric"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "The 4/3 Conjecture for the Subtour LP Integrality Gap (Metric TSP)",
+  "short_statement": "For metric TSP, the integrality gap of the subtour-elimination (Held-Karp) LP relaxation is conjectured to be exactly $4/3$. Examples force it to be at least $4/3$, but the best proven upper bound is only barely below $3/2$.",
+  "full_statement": "For the symmetric Traveling Salesman Problem with the triangle inequality, the standard linear-programming relaxation (the subtour-elimination / Held-Karp LP) gives a lower bound on the optimal tour length. Let $\\mathrm{OPT}(I)$ be the optimal tour length of a metric TSP instance $I$ and $\\mathrm{LP}(I)$ the optimal value of the subtour-elimination (Held-Karp) relaxation. Define the integrality gap $\\gamma = \\sup_I \\frac{\\mathrm{OPT}(I)}{\\mathrm{LP}(I)}$ (the worst-case ratio of the true optimum to the LP bound). \\textbf{Conjecture:} $\\gamma = \\tfrac{4}{3}$. Known: $\\tfrac{4}{3} \\le \\gamma \\le \\tfrac{3}{2} - \\varepsilon$ for some $\\varepsilon > 10^{-36}$. Determine $\\gamma$ exactly.",
+  "known_results": "The lower bound $4/3$ is witnessed by standard families of metric TSP instances, so the conjectured value cannot be improved. For roughly forty years the best general upper bound was $3/2$; Karlin, Klein, and Oveis Gharan broke this barrier by proving an upper bound of $3/2-\\epsilon$ for an extremely small absolute constant $\\epsilon$. The resulting gap is conceptually important: the lower bound is exactly the conjectured answer, while the best proof technique still sits very close to $3/2$.",
+  "where_posed": {
+   "text": "A long-standing conjecture in combinatorial optimization; surveyed and stated in Traub & Vygen, 'Approximation Algorithms for Traveling Salesman Problems' (Cambridge University Press, 2024).",
+   "url": "https://www.or.uni-bonn.de/tspbook/book.pdf"
+  },
+  "source": {
+   "authors": "Vera Traub, Jens Vygen",
+   "title": "Approximation Algorithms for Traveling Salesman Problems",
+   "year": 2024,
+   "venue": "Cambridge University Press (book)",
+   "url": "https://www.or.uni-bonn.de/tspbook/book.pdf"
+  },
+  "additional_refs": [
+   {
+    "authors": "Anna R. Karlin, Nathan Klein, Shayan Oveis Gharan",
+    "title": "A (Slightly) Improved Approximation Algorithm for Metric TSP",
+    "year": 2021,
+    "venue": "STOC",
+    "url": "https://arxiv.org/abs/2007.01409"
+   },
+   {
+    "authors": "Anna R. Karlin, Nathan Klein, Shayan Oveis Gharan",
+    "title": "A (Slightly) Improved Bound on the Integrality Gap of the Subtour LP for TSP",
+    "year": 2022,
+    "venue": "FOCS",
+    "url": "https://arxiv.org/abs/2105.10043"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "atsp-held-karp-integrality-gap",
+  "collection": "Approximation & Discrepancy",
+  "area": "Approximation Algorithms",
+  "tags": [
+   "ATSP",
+   "asymmetric TSP",
+   "integrality gap",
+   "Held-Karp"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Exact Integrality Gap of the Held-Karp LP for Asymmetric TSP",
+  "short_statement": "For asymmetric metric TSP, the Held-Karp LP integrality gap is now known to be a constant, but the exact value is open: known examples force it to be at least $2$, while the best proof only shows it is at most $22$.",
+  "full_statement": "In asymmetric TSP, the distance from A to B need not equal the distance from B to A (but the triangle inequality still holds). The Held-Karp LP lower-bounds the optimal tour. For asymmetric metric TSP, let $\\gamma = \\sup_I \\frac{\\mathrm{OPT}(I)}{\\mathrm{LP}(I)}$ be the integrality gap of the Held-Karp relaxation, where $\\mathrm{OPT}(I)$ is the optimal tour length and $\\mathrm{LP}(I)$ the LP optimum on instance $I$. Known: $2 \\le \\gamma \\le 22$. \\textbf{Determine $\\gamma$ exactly.} It is widely believed $\\gamma$ is much smaller than 22.",
+  "known_results": "Charikar, Goemans, and Karloff gave instances showing that the Held-Karp relaxation has integrality gap at least $2$. Svensson, Tarnawski, and Vegh proved the first constant upper bound, $319$, resolving the earlier question of whether the gap was bounded at all. Traub and Vygen later improved the upper bound to $22$. The exact value is still unknown, and the large separation between $2$ and $22$ suggests that either sharper rounding or stronger lower-bound constructions are needed.",
+  "where_posed": {
+   "text": "The constant-factor upper bound (and the open exact-value question) is established in Svensson, Tarnawski, Vegh, 'A Constant-Factor Approximation Algorithm for the Asymmetric Traveling Salesman Problem,' JACM (STOC 2018); lower bound 2 from Charikar-Goemans-Karloff (2006).",
+   "url": "https://arxiv.org/abs/1708.04215"
+  },
+  "source": {
+   "authors": "Ola Svensson, Jakub Tarnawski, Laszlo A. Vegh",
+   "title": "A Constant-Factor Approximation Algorithm for the Asymmetric Traveling Salesman Problem",
+   "year": 2020,
+   "venue": "Journal of the ACM (STOC 2018)",
+   "url": "https://arxiv.org/abs/1708.04215"
+  },
+  "additional_refs": [
+   {
+    "authors": "Vera Traub, Jens Vygen",
+    "title": "An Improved Approximation Algorithm for ATSP",
+    "year": 2020,
+    "venue": "STOC",
+    "url": "https://arxiv.org/abs/1912.00670"
+   },
+   {
+    "authors": "Moses Charikar, Michel X. Goemans, Howard Karloff",
+    "title": "On the Integrality Ratio for the Asymmetric Traveling Salesman Problem",
+    "year": 2006,
+    "venue": "Mathematics of Operations Research (FOCS 2004)",
+    "url": "https://doi.org/10.1287/moor.1060.0191"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "steiner-tree-bidirected-cut-integrality-gap",
+  "collection": "Approximation & Discrepancy",
+  "area": "Approximation Algorithms",
+  "tags": [
+   "Steiner tree",
+   "integrality gap",
+   "bidirected cut",
+   "LP relaxation"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Integrality Gap of the Bidirected-Cut Relaxation for Steiner Tree",
+  "short_statement": "For the Steiner tree problem, the integrality gap of the bidirected-cut relaxation is conjectured to be close to $1$; the best known lower bound is $6/5 = 1.2$ and the best upper bound is $1.9988$ (only shown below $2$ in 2024).",
+  "full_statement": "In the Steiner tree problem you must connect a set of required terminals in a weighted graph as cheaply as possible, possibly using extra (Steiner) vertices. The bidirected-cut relaxation is a natural LP that points each edge in both directions. For the Steiner tree problem, let $\\gamma_{\\mathrm{BCR}}$ be the integrality gap of the bidirected-cut relaxation (the worst-case ratio of the optimal integral Steiner tree cost to the LP optimum). Known: $\\tfrac{6}{5} = 1.2 \\le \\gamma_{\\mathrm{BCR}} \\le 1.9988$. \\textbf{Determine $\\gamma_{\\mathrm{BCR}}$;} it is conjectured to be substantially below 2.",
+  "known_results": "Lower bound $6/5$ = 1.2 (Vicari 2020), improving the older $36/31$. Upper bound 1.9988 (Byrka-Grandoni-Traub, FOCS 2024); before 2024 it was unknown whether the gap beat the trivial 2. A 2026 preprint claims ~1.898. Conjectured value much smaller.",
+  "where_posed": {
+   "text": "The first sub-2 upper bound (and the open exact-value question) is in Byrka, Grandoni, Traub, 'The Bidirected Cut Relaxation for Steiner Tree has Integrality Gap Smaller than 2,' FOCS 2024; lower bound 6/5 from Vicari (2020).",
+   "url": "https://arxiv.org/abs/2407.19905"
+  },
+  "source": {
+   "authors": "Jaroslaw Byrka, Fabrizio Grandoni, Vera Traub",
+   "title": "The Bidirected Cut Relaxation for Steiner Tree has Integrality Gap Smaller than 2",
+   "year": 2024,
+   "venue": "FOCS",
+   "url": "https://arxiv.org/abs/2407.19905"
+  },
+  "additional_refs": [
+   {
+    "authors": "Jaroslaw Byrka, Fabrizio Grandoni, Thomas Rothvoss, Laura Sanita",
+    "title": "Steiner Tree Approximation via Iterative Randomized Rounding",
+    "year": 2013,
+    "venue": "Journal of the ACM (STOC 2010)",
+    "url": "https://arxiv.org/abs/1011.0048"
+   },
+   {
+    "authors": "Marcus Vicari",
+    "title": "Simple examples for lower bounds on the integrality gap of the bidirected cut relaxation",
+    "year": 2020,
+    "venue": "arXiv:2002.07912",
+    "url": "https://arxiv.org/abs/2002.07912"
+   }
+  ],
+  "enabled": true
+ }
+]

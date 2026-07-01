@@ -1,0 +1,54 @@
+{
+ "number": 62,
+ "ref": "ORDOS-062",
+ "id": "static-threshold-half-without-randomization-or-cardinal",
+ "title": "Guarantee 1/2 with a static threshold without randomization or cardinal values",
+ "collection": "Online Resource Allocation (Ma notes)",
+ "area": "Prophet Inequalities",
+ "status": "open",
+ "confidence": "high",
+ "contributor": "Will Ma",
+ "tags": [
+  "prophet inequality",
+  "static threshold",
+  "ordinal information",
+  "single item",
+  "will-ma-notes",
+  "permission-pending"
+ ],
+ "short_statement": "In the single-item prophet inequality, the $1/2$ guarantee is achievable by a deterministic static threshold, and separately knowing only ordinal (median) information. Open: can both restrictions hold at once - a static threshold guaranteeing $1/2$ using neither randomization nor cardinal values?",
+ "open_problem": "Is there a static-threshold policy guaranteeing $\\mathbb{E}[\\mathrm{ALG}] \\ge \\tfrac12\\,\\mathbb{E}[\\max_i X_i]$ that uses neither randomization nor knowledge of cardinal values? Formally, the algorithm is told only $\\boldsymbol\\Lambda \\in \\Delta([n])^T$ with $r_1 \\ge \\cdots \\ge r_n \\ge 0$, must commit to a threshold defined by an index $J \\in [n]$ (and possibly a deterministic tie-break), and then $r_1,\\dots,r_n$ are set adversarially.",
+ "full_statement": "In the classic single-item (single-choice, $k=1$) prophet inequality, the $1/2$ guarantee can be achieved by a deterministic static threshold, and separately can be achieved knowing only ordinal (median) information rather than exact cardinal values. \\textbf{Open:} Is there a static-threshold policy guaranteeing $\\mathbb{E}[\\mathrm{ALG}] \\ge \\tfrac12\\,\\mathbb{E}[\\max_i X_i]$ that uses neither randomization nor knowledge of cardinal values? Formally, the algorithm is told only $\\boldsymbol\\Lambda \\in \\Delta([n])^T$ with $r_1 \\ge \\cdots \\ge r_n \\ge 0$, must commit to a threshold defined by an index $J \\in [n]$ (and possibly a deterministic tie-break), and then $r_1,\\dots,r_n$ are set adversarially.",
+ "known_results": "$1/2$ is achievable by a deterministic static threshold (knowing cardinal values) and, separately, knowing only the median (Samuel-Cahn 1984). Whether $1/2$ is achievable simultaneously without randomization and without cardinal values is open.",
+ "where_posed": {
+  "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #5).",
+  "url": ""
+ },
+ "source": {
+  "authors": "Will Ma",
+  "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #5)",
+  "year": 2024,
+  "venue": "Lecture notes (uploaded)",
+  "url": ""
+ },
+ "additional_refs": [
+  {
+   "authors": "Ester Samuel-Cahn",
+   "title": "Comparison of Threshold Stop Rules and Maximum for Independent Nonnegative Random Variables",
+   "year": 1984,
+   "venue": "Annals of Probability",
+   "url": "https://www.jstor.org/stable/2243359"
+  }
+ ],
+ "bibtex": "@misc{Ma2024,\n  author = {Will Ma},\n  title = {Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #5)},\n  year = {2024},\n  howpublished = {Lecture notes (uploaded)},\n  note = {Source of ORdős Problem ORDOS-062}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/static-threshold-half-without-randomization-or-cardinal.html",
+  "api": "https://ordos-problems.github.io/api/problems/static-threshold-half-without-randomization-or-cardinal.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

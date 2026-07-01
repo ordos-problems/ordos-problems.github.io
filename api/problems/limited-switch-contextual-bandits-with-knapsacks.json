@@ -1,0 +1,52 @@
+{
+ "number": 97,
+ "ref": "ORDOS-097",
+ "id": "limited-switch-contextual-bandits-with-knapsacks",
+ "title": "Limited-switch contextual bandits with knapsacks",
+ "collection": "Operations Research",
+ "area": "Online Resource Allocation",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "bandits with knapsacks",
+  "contextual bandits",
+  "limited switching",
+  "network revenue management",
+  "dynamic pricing"
+ ],
+ "short_statement": "What are the optimal regret rates for contextual bandits with knapsack constraints when the policy is allowed only a limited number of switches?",
+ "open_problem": "Characterize the minimax regret of contextual bandits with knapsacks under a switching budget, and design efficient algorithms whose regret has the correct dependence on horizon, resource budgets, number of resources, policy complexity, and number of allowed switches.",
+ "full_statement": "Bandits with knapsacks model online decisions that earn stochastic rewards while consuming limited resources. Contextual versions allow the reward and consumption distributions to depend on observed covariates and compete with a class of context-dependent policies. Limited-switch models add a practical constraint: the decision rule can be changed only a bounded number of times. Simchi-Levi, Xu, and Zhao solve a noncontextual limited-switch version for blind network revenue management and extend it to bandits with knapsacks. The open problem is to combine the two directions: obtain a sharp regret theory for contextual bandits with knapsacks under switching constraints, including whether the piecewise-constant dependence on the switch budget survives once policy classes and contexts enter the model.",
+ "known_results": "Simchi-Levi, Xu, and Zhao give matching upper and lower bounds for blind network revenue management and bandits with knapsacks under limited switches, showing that regret is governed by a piecewise-constant function of the switching budget and number of resources. Earlier work gives efficient algorithms for contextual bandits with knapsacks without limited switching. The remaining open part is the simultaneous contextual, resource-constrained, limited-switch model.",
+ "where_posed": {
+  "text": "This entry combines the limited-switch BwK question resolved by Simchi-Levi, Xu, and Zhao with the contextual BwK model of Agrawal, Devanur, and Li.",
+  "url": "https://arxiv.org/abs/1911.01067"
+ },
+ "source": {
+  "authors": "David Simchi-Levi, Yunzong Xu, Jinglong Zhao",
+  "title": "Blind Network Revenue Management and Bandits with Knapsacks under Limited Switches",
+  "year": 2025,
+  "venue": "arXiv:1911.01067",
+  "url": "https://arxiv.org/abs/1911.01067"
+ },
+ "additional_refs": [
+  {
+   "authors": "Shipra Agrawal, Nikhil R. Devanur, Lihong Li",
+   "title": "An efficient algorithm for contextual bandits with knapsacks, and an extension to concave objectives",
+   "year": 2016,
+   "venue": "COLT / arXiv:1506.03374",
+   "url": "https://arxiv.org/abs/1506.03374"
+  }
+ ],
+ "bibtex": "@misc{SimchiLevi2025,\n  author = {David Simchi-Levi and Yunzong Xu and Jinglong Zhao},\n  title = {Blind Network Revenue Management and Bandits with Knapsacks under Limited Switches},\n  year = {2025},\n  howpublished = {arXiv:1911.01067},\n  url = {https://arxiv.org/abs/1911.01067},\n  note = {Source of ORdős Problem ORDOS-097}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/limited-switch-contextual-bandits-with-knapsacks.html",
+  "api": "https://ordos-problems.github.io/api/problems/limited-switch-contextual-bandits-with-knapsacks.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "number": 95,
+ "ref": "ORDOS-095",
+ "id": "random-growing-balls-cover-time",
+ "title": "Sharp cover times for random growing balls",
+ "collection": "Applied Probability",
+ "area": "Random Coverage",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "random coverage",
+  "cover times",
+  "metric spaces",
+  "applied probability",
+  "Aldous"
+ ],
+ "short_statement": "For random growing balls on compact metric spaces, can one obtain sharp cover-time asymptotics beyond weak concentration?",
+ "open_problem": "Characterize the cover-time distribution for sequentially arriving randomly centered growing balls on broad classes of compact metric spaces, including sharp asymptotics, constants, and geometric conditions for concentration or limiting laws.",
+ "full_statement": "Let $(S,d)$ be a compact metric space with a probability measure $\\mu$. Centers $X_1,X_2,\\dots$ are sampled from $\\mu$, and the ball born at time $i$ grows deterministically with age, so at time $t$ it covers a set of the form $B(X_i,r(t-i))$. The cover time is the first $t$ at which the union of all active growing balls covers $S$. Aldous proves general weak-concentration bounds and records basic results for this model. The open problem is to go beyond existence-type bounds: identify the leading term, second-order correction, limiting distribution, and dependence on metric entropy, local dimension, boundary effects, and irregular geometry.",
+ "known_results": "Aldous gives weak-concentration results for coverage by fixed-radius random sets and for randomly centered growing balls, using general bounds for arbitrary random sets and monotone hitting times. The remaining open part is the sharp probabilistic theory of the growing-ball model: weak concentration does not determine the exact cover-time scale, constants, or limiting laws for natural compact spaces.",
+ "where_posed": {
+  "text": "Aldous, 'Covering a compact space by fixed-radius or growing random balls', records basic results and open problems for the growing-ball random coverage model.",
+  "url": "https://arxiv.org/abs/2101.12671"
+ },
+ "source": {
+  "authors": "David J. Aldous",
+  "title": "Covering a compact space by fixed-radius or growing random balls",
+  "year": 2021,
+  "venue": "arXiv:2101.12671",
+  "url": "https://arxiv.org/abs/2101.12671"
+ },
+ "additional_refs": [],
+ "bibtex": "@misc{Aldous2021,\n  author = {David J. Aldous},\n  title = {Covering a compact space by fixed-radius or growing random balls},\n  year = {2021},\n  howpublished = {arXiv:2101.12671},\n  url = {https://arxiv.org/abs/2101.12671},\n  note = {Source of ORdős Problem ORDOS-095}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/random-growing-balls-cover-time.html",
+  "api": "https://ordos-problems.github.io/api/problems/random-growing-balls-cover-time.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

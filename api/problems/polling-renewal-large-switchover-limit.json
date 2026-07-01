@@ -1,0 +1,52 @@
+{
+ "number": 105,
+ "ref": "ORDOS-105",
+ "id": "polling-renewal-large-switchover-limit",
+ "title": "Large switch-over limit for polling with renewal arrivals",
+ "collection": "Applied Probability",
+ "area": "Queueing Theory",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "queueing",
+  "polling systems",
+  "renewal arrivals",
+  "heavy traffic",
+  "applied probability"
+ ],
+ "short_statement": "For cyclic polling systems with general renewal arrivals, prove or disprove the conjecture that the system converges to a deterministic cyclic limit as deterministic switch-over times grow large.",
+ "open_problem": "Prove the deterministic-cycle limit for branching-type polling systems with general renewal arrivals as deterministic switch-over times tend to infinity, or construct a counterexample.",
+ "full_statement": "Consider an $N$-queue cyclic polling system in which a single server visits queues in a fixed order. Service disciplines are of branching type, service times are random, and switch-over times between queues are deterministic. For Poisson arrivals, the large switch-over regime is understood: after scaling by the total switch-over time, waiting times and queue lengths converge to deterministic-cycle behavior, with a uniform residual-cycle component for a tagged customer. The open problem is whether the same phenomenon holds when each queue has a general renewal arrival process. Equivalently, as all deterministic switch-over times grow while their ratios stay fixed, does the scaled polling system lose stochastic fluctuation and converge to the deterministic cyclic fluid system predicted by the law-of-large-numbers heuristic?",
+ "known_results": "Winands obtained exact large switch-over asymptotics for branching-type polling systems with Poisson arrivals, and related heavy-traffic results show that some higher-moment details of switch-over times vanish in the limit. Boon, Boxma, and Winands argue that the Poisson assumption should not be essential and provide simulation evidence for renewal arrivals, but the existing proof techniques rely on Poisson branching and immigration identities. The remaining open problem is a rigorous proof of the renewal-arrival conjecture, or a demonstration that renewal variability can survive the scaling in some admissible model.",
+ "where_posed": {
+  "text": "Open Problem 2 and Conjecture 4.2 in Boon, Boxma, and Winands, 'On open problems in polling systems'.",
+  "url": "https://arxiv.org/abs/1408.0142"
+ },
+ "source": {
+  "authors": "Marko Boon, Onno Boxma, Erik Winands",
+  "title": "On open problems in polling systems",
+  "year": 2011,
+  "venue": "Queueing Systems",
+  "url": "https://arxiv.org/abs/1408.0142"
+ },
+ "additional_refs": [
+  {
+   "authors": "Erik M. M. Winands",
+   "title": "Branching-type polling systems with large switch-over times",
+   "year": 2011,
+   "venue": "Queueing Systems",
+   "url": "https://doi.org/10.1007/s11134-011-9247-9"
+  }
+ ],
+ "bibtex": "@misc{Boon2011,\n  author = {Marko Boon and Onno Boxma and Erik Winands},\n  title = {On open problems in polling systems},\n  year = {2011},\n  howpublished = {Queueing Systems},\n  url = {https://arxiv.org/abs/1408.0142},\n  note = {Source of ORdős Problem ORDOS-105}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/polling-renewal-large-switchover-limit.html",
+  "api": "https://ordos-problems.github.io/api/problems/polling-renewal-large-switchover-limit.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

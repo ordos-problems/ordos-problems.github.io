@@ -1,0 +1,54 @@
+{
+ "number": 63,
+ "ref": "ORDOS-063",
+ "id": "random-order-vs-worst-case-known-order",
+ "title": "Is unknown uniformly random order ever worse than worst-case known order?",
+ "collection": "Online Resource Allocation (Ma notes)",
+ "area": "Prophet Inequalities",
+ "status": "open",
+ "confidence": "medium",
+ "contributor": "Will Ma",
+ "tags": [
+  "prophet inequality",
+  "random order",
+  "arrival order",
+  "free order",
+  "will-ma-notes",
+  "permission-pending"
+ ],
+ "short_statement": "Intuitively, an algorithm facing values in unknown uniformly random order should do at least as well as facing an adversary's worst order that it is told in advance. The open question: can this ever fail for some product distribution? Resolving that it never does would derive random-order prophet inequalities from fixed-order analysis.",
+ "open_problem": "does there exist a product distribution $\\mathbf F \\in \\Delta(\\mathbb{R}_{\\ge 0})^T$ for which $\\sup_{\\pi \\in \\Pi^T} \\mathbb{E}_\\sigma \\mathbb{E}_{\\mathbf V \\sim \\mathbf F}\\,\\mathrm{ALG}^\\pi(\\sigma(\\mathbf V)) < \\min_\\sigma \\sup_{\\pi \\in \\Pi^T} \\mathbb{E}_{\\mathbf V \\sim \\mathbf F}\\,\\mathrm{ALG}^\\pi(\\sigma(\\mathbf V))$? (Equation (C.1) of the notes.) Equivalently: can unknown random order be strictly worse than the worst-case known order?",
+ "full_statement": "When values arrive in an unknown uniformly random order, intuitively the algorithm should do at least as well as if an adversary picked the worst order but told the algorithm what it was. For the single-choice ($k=1$) accept/reject problem, \\textbf{Open:} does there exist a product distribution $\\mathbf F \\in \\Delta(\\mathbb{R}_{\\ge 0})^T$ for which $\\sup_{\\pi \\in \\Pi^T} \\mathbb{E}_\\sigma \\mathbb{E}_{\\mathbf V \\sim \\mathbf F}\\,\\mathrm{ALG}^\\pi(\\sigma(\\mathbf V)) < \\min_\\sigma \\sup_{\\pi \\in \\Pi^T} \\mathbb{E}_{\\mathbf V \\sim \\mathbf F}\\,\\mathrm{ALG}^\\pi(\\sigma(\\mathbf V))$? (Equation (C.1) of the notes.) Equivalently: can unknown random order be strictly worse than the worst-case known order? Resolving that it never happens would let one derive random-order prophet inequalities from the simpler fixed-order analysis.",
+ "known_results": "No counterexample is known, and the prevailing intuition is that unknown uniformly random order should not be worse than the adversary's worst order when that order is revealed in advance. Proving this would be useful because fixed-order prophet-inequality analyses could then transfer directly to random-order models. The difficulty is that the algorithm in the known-order benchmark can tailor its stopping rule to the revealed permutation, while the random-order algorithm must average over all permutations without seeing which one will occur.",
+ "where_posed": {
+  "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #6); see Equation (C.1) of the notes.",
+  "url": ""
+ },
+ "source": {
+  "authors": "Will Ma",
+  "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #6)",
+  "year": 2024,
+  "venue": "Lecture notes (uploaded)",
+  "url": ""
+ },
+ "additional_refs": [
+  {
+   "authors": "Tomer Ezra, Michal Feldman, Nick Gravin, Zhihao Gavin Tang",
+   "title": "On the Significance of Knowing the Arrival Order in Prophet Inequalities",
+   "year": 2022,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2202.09215"
+  }
+ ],
+ "bibtex": "@misc{Ma2024,\n  author = {Will Ma},\n  title = {Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #6)},\n  year = {2024},\n  howpublished = {Lecture notes (uploaded)},\n  note = {Source of ORdős Problem ORDOS-063}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/random-order-vs-worst-case-known-order.html",
+  "api": "https://ordos-problems.github.io/api/problems/random-order-vs-worst-case-known-order.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

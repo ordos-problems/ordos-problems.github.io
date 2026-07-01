@@ -1,0 +1,60 @@
+{
+ "number": 38,
+ "ref": "ORDOS-038",
+ "id": "stochastic-bandits-switching-cost-regret",
+ "title": "Minimax and gap-dependent regret for bandits with switching costs",
+ "collection": "Operations Research",
+ "area": "Bandits",
+ "status": "partially resolved",
+ "confidence": "medium",
+ "tags": [
+  "multi-armed-bandits",
+  "regret",
+  "switching-costs",
+  "minimax",
+  "online-learning",
+  "lower-bounds"
+ ],
+ "short_statement": "For regret minimization with a unit cost per arm switch, the adversarial minimax regret is order $T^{2/3}$ (vs $T^{1/2}$ without), and the stochastic switch-budget case has matching phase-transition bounds. Open: the exact instance-dependent (gap-dependent) optimal regret and tight dependence on general non-unit switching-cost structures.",
+ "open_problem": "Determine the exact gap-dependent regret and the tight minimax dependence for stochastic bandits with general switching-cost matrices.",
+ "full_statement": "An algorithm chooses $a_t \\in [K]$ for $t=1,\\dots,T$, observes only the played arm's reward (bandit feedback), and incurs a switching cost whenever $a_t \\neq a_{t-1}$; total cost = regret-from-rewards + switching cost. With unit costs, $R_T = (\\max_a \\sum_t \\mu_a - \\mathbb{E}\\sum_t \\mu_{a_t}) + \\mathbb{E}[\\sum_{t=2}^T \\mathbf{1}\\{a_t \\neq a_{t-1}\\}]$. Adversarial: Dekel-Ding-Koren-Peres (2014) prove the minimax value is $\\widetilde{\\Theta}(T^{2/3})$ (vs $\\Theta(\\sqrt{KT})$ without switching costs) via a multi-scale random-walk lower bound. Stochastic switch-budget: Simchi-Levi-Xu (2019) cap the number of switches at $S$ and prove matching bounds exhibiting equal-length 'phases' in $S$ where optimal regret is constant within a phase and drops sharply between phases. $$\\textbf{Open (residual):}\\ \\text{the exact gap-dependent optimal regret with switching cost } c, \\text{ and the tight minimax dependence under general (non-unit, arm-pair-dependent) switching-cost matrices,}$$ including matching constants and the precise interpolation between $T^{1/2}$ (cost $\\to 0$) and $T^{2/3}$ (unit cost) in the stochastic case.",
+ "known_results": "Proven: adversarial unit-switching-cost minimax regret is $\\tilde{\\Theta}(T^{2/3})$ (Dekel et al. 2014); for the stochastic problem with a fixed budget S on the number of switches, matching bounds with explicit phase transitions (Simchi-Levi-Xu 2019); best-of-both-worlds algorithms achieving $O(T^{2/3})$ adversarial and $O(\\sum_i \\log T / \\Delta_i)$ stochastic simultaneously (Rouyer-Seldin-Cesa-Bianchi 2021). Open/residual: exact instance-dependent (gap-dependent) optimal constants for stochastic switching-cost regret, and tight characterization for general non-unit / arm-pair-dependent switching-cost matrices. This is a regret-minimization counterpart to the Bayesian/Gittins entry; the core minimax rates are resolved, so confidence that a clean fully-open question remains is moderate.",
+ "where_posed": {
+  "text": "Core minimax rate established in Dekel, Ding, Koren, Peres, 'Bandits with Switching Costs: T^{2/3} Regret,' STOC 2014; the residual gap-dependent and non-unit-cost questions are noted in the surrounding literature (Simchi-Levi-Xu 2019; Rouyer-Seldin-Cesa-Bianchi 2021).",
+  "url": "https://arxiv.org/abs/1310.2997"
+ },
+ "source": {
+  "authors": "Ofer Dekel, Jian Ding, Tomer Koren, Yuval Peres",
+  "title": "Bandits with Switching Costs: T^{2/3} Regret",
+  "year": 2014,
+  "venue": "STOC 2014, 459-467 (arXiv:1310.2997)",
+  "url": "https://arxiv.org/abs/1310.2997"
+ },
+ "additional_refs": [
+  {
+   "authors": "David Simchi-Levi, Yunzong Xu",
+   "title": "Phase Transitions and Cyclic Phenomena in Bandits with Switching Constraints",
+   "year": 2019,
+   "venue": "NeurIPS 2019 (journal version Management Science 2023; arXiv:1905.10825)",
+   "url": "https://arxiv.org/abs/1905.10825"
+  },
+  {
+   "authors": "Chloé Rouyer, Yevgeny Seldin, Nicolò Cesa-Bianchi",
+   "title": "An Algorithm for Stochastic and Adversarial Bandits with Switching Costs",
+   "year": 2021,
+   "venue": "ICML 2021 (arXiv:2102.09864)",
+   "url": "https://arxiv.org/abs/2102.09864"
+  }
+ ],
+ "bibtex": "@misc{Dekel2014,\n  author = {Ofer Dekel and Jian Ding and Tomer Koren and Yuval Peres},\n  title = {Bandits with Switching Costs: T^{2/3} Regret},\n  year = {2014},\n  howpublished = {STOC 2014, 459-467 (arXiv:1310.2997)},\n  url = {https://arxiv.org/abs/1310.2997},\n  note = {Source of ORdős Problem ORDOS-038}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/stochastic-bandits-switching-cost-regret.html",
+  "api": "https://ordos-problems.github.io/api/problems/stochastic-bandits-switching-cost-regret.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

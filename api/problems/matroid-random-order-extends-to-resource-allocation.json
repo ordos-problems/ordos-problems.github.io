@@ -1,0 +1,62 @@
+{
+ "number": 70,
+ "ref": "ORDOS-070",
+ "id": "matroid-random-order-extends-to-resource-allocation",
+ "title": "Does the 1-1/e matroid random-order guarantee extend to abstract online resource allocation?",
+ "collection": "Online Resource Allocation (Ma notes)",
+ "area": "Online Resource Allocation",
+ "status": "open",
+ "confidence": "high",
+ "contributor": "Will Ma",
+ "tags": [
+  "matroid",
+  "random order",
+  "prophet inequality",
+  "1-1/e",
+  "online resource allocation",
+  "will-ma-notes",
+  "permission-pending"
+ ],
+ "short_statement": "For matroid constraints under random (IID) order, the matroid prophet inequality gives a $1-1/e$ guarantee relative to the fluid benchmark, best possible even for a single resource. The open question is whether this $1-1/e$ guarantee extends to the abstract online resource allocation model under IID arrivals.",
+ "open_problem": "Does the same $1-1/e$ guarantee hold for the abstract online resource allocation model (Definition 6.6 of the notes) under the IID special case?",
+ "full_statement": "For matroid constraints under random (IID) arrival order, the matroid prophet inequality gives a $1-1/e$ guarantee relative to the fluid benchmark, which is best possible even for a single resource. Under random/IID arrival order, the matroid (ex-ante) prophet inequality yields $\\mathbb{E}[\\mathrm{ALG}] \\ge (1-1/e)\\,\\mathrm{FLU}$, tight even for a rank-1 matroid. \\textbf{Open:} Does the same $1-1/e$ guarantee hold for the abstract online resource allocation model (Definition 6.6 of the notes) under the IID special case?",
+ "known_results": "$1-1/e$ holds for matroids under random order (Kleinberg-Weinberg 2012; ex-ante version Lee-Singla 2018) and is best possible even for rank-1. Whether it extends to the abstract online resource allocation model under IID is open.",
+ "where_posed": {
+  "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Remark 7.9 (refers to the abstract online resource allocation model of Definition 6.6 of the notes).",
+  "url": ""
+ },
+ "source": {
+  "authors": "Will Ma",
+  "title": "Online Resource Allocation — Course Notes, Remark 7.9",
+  "year": 2024,
+  "venue": "Lecture notes (uploaded)",
+  "url": ""
+ },
+ "additional_refs": [
+  {
+   "authors": "Robert Kleinberg, S. Matthew Weinberg",
+   "title": "Matroid Prophet Inequalities",
+   "year": 2012,
+   "venue": "STOC",
+   "url": "https://dl.acm.org/doi/10.1145/2213977.2213991"
+  },
+  {
+   "authors": "Euiwoong Lee, Sahil Singla",
+   "title": "Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities",
+   "year": 2018,
+   "venue": "ESA",
+   "url": "https://arxiv.org/abs/1806.09251"
+  }
+ ],
+ "bibtex": "@misc{Ma2024,\n  author = {Will Ma},\n  title = {Online Resource Allocation — Course Notes, Remark 7.9},\n  year = {2024},\n  howpublished = {Lecture notes (uploaded)},\n  note = {Source of ORdős Problem ORDOS-070}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/matroid-random-order-extends-to-resource-allocation.html",
+  "api": "https://ordos-problems.github.io/api/problems/matroid-random-order-extends-to-resource-allocation.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

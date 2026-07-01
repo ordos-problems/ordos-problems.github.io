@@ -1,0 +1,52 @@
+{
+ "number": 100,
+ "ref": "ORDOS-100",
+ "id": "new-product-exploration-heterogeneous-priors-assortment",
+ "title": "Optimal exploration of new products with heterogeneous priors",
+ "collection": "Operations Research",
+ "area": "Assortment Optimization",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "assortment optimization",
+  "online learning",
+  "social learning",
+  "mnl choice",
+  "platform design"
+ ],
+ "short_statement": "In assortment-based exploration of new products, can one characterize the optimal policy when entrant products have heterogeneous priors, rather than a common prior?",
+ "open_problem": "Give a full characterization of the optimal exploration policy for capacity-constrained assortment decisions with multiple new products whose quality priors are heterogeneous.",
+ "full_statement": "Baek, Dinev, and Lykouris study an online platform that repeatedly chooses a capacity-constrained assortment. Incumbent product qualities are known, while a new product's quality is learned through purchase behavior and reviews; under their main model, a purchase of an entrant reveals its attraction parameter. For homogeneous entrant priors under the MNL choice model, they characterize an optimal exploration policy, EFA, that keeps the best incumbents in the assortment and uses a threshold rule to decide how many entrants to explore simultaneously. The clean open problem is to extend this characterization to heterogeneous entrant priors: when new products have different prior distributions, how should the platform rank, group, and time exploration, and does an EFA-like threshold structure survive?",
+ "known_results": "The homogeneous-prior infinite-horizon MNL model is solved by the EFA policy, and the paper shows that standard bandit policies such as UCB and Thompson sampling can be arbitrarily worse because they choose exploration intensities that are too extreme. The authors take an initial step for heterogeneous priors in a simplified two-entrant setting, but a full characterization remains open. This is a structured gap inside the existing assortment-learning model rather than a request to invent a new modelling framework.",
+ "where_posed": {
+  "text": "Conclusion of Baek, Dinev, and Lykouris, 'Optimal Exploration of New Products under Assortment Decisions'.",
+  "url": "https://arxiv.org/abs/2604.18800"
+ },
+ "source": {
+  "authors": "Jackie Baek, Atanas Dinev, Thodoris Lykouris",
+  "title": "Optimal Exploration of New Products under Assortment Decisions",
+  "year": 2026,
+  "venue": "arXiv:2604.18800",
+  "url": "https://arxiv.org/abs/2604.18800"
+ },
+ "additional_refs": [
+  {
+   "authors": "Shipra Agrawal, Vashist Avadhanula, Vineet Goyal, Assaf Zeevi",
+   "title": "MNL-Bandit: A Dynamic Learning Approach to Assortment Selection",
+   "year": 2019,
+   "venue": "Operations Research",
+   "url": "https://doi.org/10.1287/opre.2018.1832"
+  }
+ ],
+ "bibtex": "@misc{Baek2026,\n  author = {Jackie Baek and Atanas Dinev and Thodoris Lykouris},\n  title = {Optimal Exploration of New Products under Assortment Decisions},\n  year = {2026},\n  howpublished = {arXiv:2604.18800},\n  url = {https://arxiv.org/abs/2604.18800},\n  note = {Source of ORdős Problem ORDOS-100}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/new-product-exploration-heterogeneous-priors-assortment.html",
+  "api": "https://ordos-problems.github.io/api/problems/new-product-exploration-heterogeneous-priors-assortment.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

@@ -1,0 +1,52 @@
+{
+ "number": 108,
+ "ref": "ORDOS-108",
+ "id": "deletion-channel-small-deletion-capacity-expansion",
+ "title": "Higher-order capacity expansion for the deletion channel",
+ "collection": "Computer Science",
+ "area": "Information Theory",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "information theory",
+  "deletion channel",
+  "capacity",
+  "coding",
+  "asymptotics"
+ ],
+ "short_statement": "For the binary deletion channel with small deletion probability $d$, determine sharper higher-order terms in the capacity expansion and characterize input processes that achieve them.",
+ "open_problem": "Determine the higher-order small-$d$ expansion of binary deletion-channel capacity and the structure of capacity-achieving input processes beyond the known leading terms.",
+ "full_statement": "In the binary deletion channel, each transmitted bit is independently deleted with probability $d$, and undeleted bits are received noiselessly but without position markers. Let $C(d)$ be the Shannon capacity. Even this elementary synchronization channel has no closed-form capacity. For small deletion probability, Kanoria and Montanari developed a systematic expansion and showed that near-optimal inputs can be obtained by modifying iid Bernoulli inputs to reduce long runs. Their concluding questions ask for sharper terms in the expansion and for a better structural understanding of the dependence patterns that improve capacity. The open problem is to determine the higher-order asymptotics of $C(d)$ as $d\\downarrow0$ and characterize the optimal or near-optimal input process at that order.",
+ "known_results": "Earlier work established the first-order behavior $C(d)=1+d\\log d+O(d)$. Kanoria and Montanari computed sharper small-$d$ bounds and showed that forbidding or penalizing long runs gives input processes that are within $O(d^{3-\\epsilon})$ of capacity. They conjecture stronger approximation behavior, including an $O(d^4)$-scale loss for a particular modified input process. The remaining open problem is to convert these partial expansions and structural heuristics into exact higher-order capacity terms and a principled description of optimal coding distributions.",
+ "where_posed": {
+  "text": "Open questions and Conjecture 6.4 in Kanoria and Montanari, 'Optimal coding for the deletion channel with small deletion probability'.",
+  "url": "https://arxiv.org/abs/1104.5546"
+ },
+ "source": {
+  "authors": "Yashodhan Kanoria, Andrea Montanari",
+  "title": "Optimal coding for the deletion channel with small deletion probability",
+  "year": 2011,
+  "venue": "IEEE Transactions on Information Theory",
+  "url": "https://arxiv.org/abs/1104.5546"
+ },
+ "additional_refs": [
+  {
+   "authors": "Michael Mitzenmacher, Elchanan Drinea",
+   "title": "A simple lower bound for the capacity of the deletion channel",
+   "year": 2006,
+   "venue": "IEEE Transactions on Information Theory",
+   "url": "https://doi.org/10.1109/TIT.2006.876241"
+  }
+ ],
+ "bibtex": "@misc{Kanoria2011,\n  author = {Yashodhan Kanoria and Andrea Montanari},\n  title = {Optimal coding for the deletion channel with small deletion probability},\n  year = {2011},\n  howpublished = {IEEE Transactions on Information Theory},\n  url = {https://arxiv.org/abs/1104.5546},\n  note = {Source of ORdős Problem ORDOS-108}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/deletion-channel-small-deletion-capacity-expansion.html",
+  "api": "https://ordos-problems.github.io/api/problems/deletion-channel-small-deletion-capacity-expansion.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

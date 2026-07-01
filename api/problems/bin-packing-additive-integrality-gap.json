@@ -1,0 +1,52 @@
+{
+ "number": 11,
+ "ref": "ORDOS-011",
+ "id": "bin-packing-additive-integrality-gap",
+ "title": "Additive integrality gap of the bin packing (Gilmore-Gomory) LP",
+ "collection": "Online Algorithms & Learning",
+ "area": "Online Algorithms",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "bin packing",
+  "integrality gap",
+  "approximation",
+  "MIRUP",
+  "cutting stock"
+ ],
+ "short_statement": "For bin packing, how far can the integer optimum be from the value of the Gilmore-Gomory configuration LP relaxation in absolute (additive) terms? Is the gap always $O(1)$ extra bins, or can it grow?",
+ "open_problem": "Determine whether the additive integrality gap is $O(1)$ or $\\Theta(\\log)$.",
+ "full_statement": "In the bin packing problem, items of given sizes must be packed into unit-capacity bins, minimizing the number of bins used. The standard strong LP relaxation is the Gilmore-Gomory configuration LP. For a bin packing instance $I$, let $\\mathrm{OPT}_f(I)$ be the value of the Gilmore-Gomory LP relaxation and $\\mathrm{OPT}(I)$ the integer optimum. Define the additive integrality gap $$\\mathrm{gap}=\\sup_I\\big(\\mathrm{OPT}(I)-\\mathrm{OPT}_f(I)\\big).$$ The question is whether $\\mathrm{gap}=O(1)$ (a constant number of extra bins regardless of instance). The related Modified Integer Round-Up Property (MIRUP) conjecture posits $\\mathrm{OPT}(I)\\le\\lceil \\mathrm{OPT}_f(I)\\rceil+1$. The best known upper bound is $\\mathrm{gap}=O(\\log \\mathrm{OPT}_f)$. Determine whether the additive integrality gap is $O(1)$ or $\\Theta(\\log)$.",
+ "known_results": "Hoberg and Rothvoss proved that the integer optimum is at most $\\mathrm{OPT}_f+O(\\log \\mathrm{OPT}_f)$, improving the earlier $O(\\log^2 \\mathrm{OPT}_f)$ additive bound of Karmarkar and Karp. On the lower-bound side, no family is known with additive gap growing beyond a constant, and the stronger MIRUP conjecture predicts an extremely small constant gap. The main open question is whether the true additive gap is bounded by $O(1)$ or whether the logarithmic upper bound is qualitatively necessary.",
+ "where_posed": {
+  "text": "Stated in Hoberg, Rothvoss, 'A Logarithmic Additive Integrality Gap for Bin Packing', 2017, SODA.",
+  "url": "https://arxiv.org/abs/1503.08796"
+ },
+ "source": {
+  "authors": "Rebecca Hoberg, Thomas Rothvoss",
+  "title": "A Logarithmic Additive Integrality Gap for Bin Packing",
+  "year": 2017,
+  "venue": "SODA",
+  "url": "https://arxiv.org/abs/1503.08796"
+ },
+ "additional_refs": [
+  {
+   "authors": "Narendra Karmarkar, Richard M. Karp",
+   "title": "An Efficient Approximation Scheme for the One-Dimensional Bin-Packing Problem",
+   "year": 1982,
+   "venue": "FOCS",
+   "url": "https://ieeexplore.ieee.org/document/4568405"
+  }
+ ],
+ "bibtex": "@misc{Hoberg2017,\n  author = {Rebecca Hoberg and Thomas Rothvoss},\n  title = {A Logarithmic Additive Integrality Gap for Bin Packing},\n  year = {2017},\n  howpublished = {SODA},\n  url = {https://arxiv.org/abs/1503.08796},\n  note = {Source of ORdős Problem ORDOS-011}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/bin-packing-additive-integrality-gap.html",
+  "api": "https://ordos-problems.github.io/api/problems/bin-packing-additive-integrality-gap.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

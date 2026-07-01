@@ -1,0 +1,51 @@
+{
+ "number": 57,
+ "ref": "ORDOS-057",
+ "id": "santa-claus-best-approximation",
+ "title": "Best Polynomial-Time Approximation for Restricted Santa Claus",
+ "collection": "Approximation & Discrepancy",
+ "area": "Approximation Algorithms",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "Santa Claus",
+  "max-min fair allocation",
+  "approximation ratio",
+  "local search"
+ ],
+ "short_statement": "Separately from the integrality-gap question, the best polynomial-time approximation ratio for restricted max-min fair allocation is open: non-constructive arguments give $\\approx 3.8\\text{--}4$, but the best actual polynomial-time algorithm only guarantees $4 + \\delta$.",
+ "open_problem": "Determine the best polynomial-time approximation ratio $\\rho$.",
+ "full_statement": "Separately from the integrality-gap question, there is the algorithmic question: what is the best ratio achievable in polynomial time for restricted max-min fair allocation (restricted Santa Claus)? \\textbf{Determine the best polynomial-time approximation ratio $\\rho$.} Known: $\\rho \\le 4 + \\delta$ for any constant $\\delta > 0$ (Cheng-Mao). The configuration LP certifies that allocations within a factor $\\le 3.808$ of optimal exist (non-constructively), so closing the constructive vs. existential gap is open.",
+ "known_results": "Cheng and Mao give the best polynomial-time approximation, with ratio $4+\\delta$ for any fixed $\\delta>0$, improving earlier guarantees of $6+\\delta$ and about $12.33$. Separately, the configuration-LP analysis proves that allocations within a factor about $3.808$ of optimum exist, but the proof does not yield a polynomial-time algorithm with that ratio. The open problem is to close this constructive-versus-existential gap, or to prove that polynomial-time algorithms face a larger barrier.",
+ "where_posed": {
+  "text": "The best polynomial-time ratio 4 + delta is from Cheng & Mao, 'Restricted Max-Min Allocation: Integrality Gap and Approximation Algorithm,' Algorithmica (ICALP 2019); existential ~3.808 via the configuration LP. Closing the constructive-existential gap is open.",
+  "url": "https://arxiv.org/abs/1905.06084"
+ },
+ "source": {
+  "authors": "Siu-Wing Cheng, Yuchen Mao",
+  "title": "Restricted Max-Min Allocation: Integrality Gap and Approximation Algorithm",
+  "year": 2022,
+  "venue": "Algorithmica (ICALP 2019)",
+  "url": "https://arxiv.org/abs/1905.06084"
+ },
+ "additional_refs": [
+  {
+   "authors": "Chidambaram Annamalai, Christos Kalaitzis, Ola Svensson",
+   "title": "Combinatorial Algorithm for Restricted Max-Min Fair Allocation",
+   "year": 2017,
+   "venue": "ACM Transactions on Algorithms (SODA 2015)",
+   "url": "https://arxiv.org/abs/1409.0607"
+  }
+ ],
+ "bibtex": "@misc{Cheng2022,\n  author = {Siu-Wing Cheng and Yuchen Mao},\n  title = {Restricted Max-Min Allocation: Integrality Gap and Approximation Algorithm},\n  year = {2022},\n  howpublished = {Algorithmica (ICALP 2019)},\n  url = {https://arxiv.org/abs/1905.06084},\n  note = {Source of ORdős Problem ORDOS-057}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/santa-claus-best-approximation.html",
+  "api": "https://ordos-problems.github.io/api/problems/santa-claus-best-approximation.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

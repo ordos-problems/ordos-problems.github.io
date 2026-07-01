@@ -1,0 +1,52 @@
+{
+ "number": 104,
+ "ref": "ORDOS-104",
+ "id": "polling-gated-one-limited-pgf",
+ "title": "Joint queue-length transform for gated/one-limited polling",
+ "collection": "Applied Probability",
+ "area": "Queueing Theory",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "queueing",
+  "polling systems",
+  "generating functions",
+  "applied probability",
+  "stochastic networks"
+ ],
+ "short_statement": "In the two-queue polling system where one queue has gated service and the other has one-limited service, determine the joint queue-length probability generating function at polling instants.",
+ "open_problem": "Determine the joint queue-length PGF at polling instants in the two-queue polling system with one gated queue and one one-limited queue.",
+ "full_statement": "A polling system has multiple queues served by a single server that visits queues cyclically, with switch-over times between visits. In the two-queue $G/1\\text{-}L$ model, queue 1 uses gated service: all customers present when the server arrives are served during that visit, while later arrivals wait for the next cycle. Queue 2 uses one-limited service: at most one customer is served per visit. Let $F_i(z_1,z_2)$ denote the joint probability generating function of the queue lengths at polling instants. Many standard two-queue polling disciplines are solvable by branching-process or boundary-value methods, but this mixed gated/one-limited case has resisted the usual functional-equation substitutions. The open problem is to determine the joint queue-length PGF, or an equivalent exact characterization, for this basic mixed-service polling model.",
+ "known_results": "Two-queue exhaustive/one-limited and many branching-type polling systems have exact transform characterizations. Boon, Boxma, and Winands explain that gated and exhaustive disciplines usually have comparable analytic complexity, making the unresolved $G/1\\text{-}L$ case striking. The functional equation for the joint PGF is known, but direct substitutions introduce iterated shifts and do not close the system. The remaining open problem is not to propose a new model, but to solve this already specified polling model exactly.",
+ "where_posed": {
+  "text": "Open Problem 1 in Boon, Boxma, and Winands, 'On open problems in polling systems'.",
+  "url": "https://arxiv.org/abs/1408.0142"
+ },
+ "source": {
+  "authors": "Marko Boon, Onno Boxma, Erik Winands",
+  "title": "On open problems in polling systems",
+  "year": 2011,
+  "venue": "Queueing Systems",
+  "url": "https://arxiv.org/abs/1408.0142"
+ },
+ "additional_refs": [
+  {
+   "authors": "Onno J. Boxma, J. W. Cohen, N. Huffels",
+   "title": "Approximations of the mean waiting time in an M/G/s queueing system",
+   "year": 1979,
+   "venue": "Operations Research",
+   "url": "https://doi.org/10.1287/opre.27.6.1115"
+  }
+ ],
+ "bibtex": "@misc{Boon2011,\n  author = {Marko Boon and Onno Boxma and Erik Winands},\n  title = {On open problems in polling systems},\n  year = {2011},\n  howpublished = {Queueing Systems},\n  url = {https://arxiv.org/abs/1408.0142},\n  note = {Source of ORdős Problem ORDOS-104}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/polling-gated-one-limited-pgf.html",
+  "api": "https://ordos-problems.github.io/api/problems/polling-gated-one-limited-pgf.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

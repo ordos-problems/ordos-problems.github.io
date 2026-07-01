@@ -191,6 +191,38 @@
   .katex{font-size:1.04em;}
   .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
 
+  .tag.status-claimed{color:var(--med);font-weight:700;}
+  .tag.status-resolved{color:var(--okink);font-weight:700;}
+  .tag.contributor{color:var(--accent);font-weight:700;}
+  .posed-quote{margin:14px 0 0;padding:12px 16px;border-left:3px solid var(--accent);background:var(--paper);
+    border-radius:0 10px 10px 0;font-style:italic;color:var(--bodytext2);font-size:.97rem;line-height:1.7;}
+  .posed-quote .loc{display:block;margin-top:6px;font-style:normal;font-size:.8rem;color:var(--faint);font-weight:700;}
+  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0;}
+  .badge{font-size:.74rem;font-weight:800;letter-spacing:.02em;border:1.5px solid var(--strong);border-radius:8px;
+    padding:4px 9px;background:var(--paper);color:var(--ink);}
+  .badge.hi{background:var(--pink);}
+  .badge.progress-partial{background:var(--focus);}
+  .badge.progress-solution-claimed{background:var(--warning-bg);border-color:var(--warning-line);color:var(--warning-ink);}
+  .badge.progress-resolved{background:var(--okbg);color:var(--okink);}
+  .suit-row{display:grid;grid-template-columns:190px 1fr;gap:10px;margin:.85em 0;align-items:baseline;}
+  .suit-row .k{font-weight:800;color:var(--accent);font-size:.86rem;}
+  .suit-level{font-weight:800;text-transform:uppercase;font-size:.78rem;letter-spacing:.05em;}
+  .suit-level.high{color:var(--okink);}
+  .suit-level.medium{color:var(--open);}
+  .suit-level.low{color:var(--med);}
+  .lit-list{margin:10px 0 0;padding-left:20px;}
+  .lit-list li{margin:.7em 0;color:var(--bodytext2);font-size:.96rem;line-height:1.68;}
+  .lit-list .rel{display:inline-block;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--badge-ink);background:var(--accent);border-radius:6px;padding:1.5px 7px;margin-right:7px;vertical-align:1px;}
+  .subm-empty{color:var(--faint);font-size:.95rem;}
+  .subm-item{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;background:var(--paper);}
+  .subm-item .subm-head{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:.8rem;font-weight:800;color:var(--soft);}
+  .sortwrap{display:flex;align-items:center;gap:8px;}
+  .sortwrap label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;}
+  #sortselect{padding:8px 10px;font-size:.82rem;border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--paper);color:var(--ink);font-family:var(--ui);}
+  @media (max-width:760px){.suit-row{grid-template-columns:1fr;gap:2px;}}
+
   footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
   footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid var(--line);}
   footer a:hover{border-bottom-color:var(--accent);}
@@ -257,17 +289,18 @@
 <span class="tag">#platform-design</span>
 <span class="tag">#check-source</span></div>
       <h1 class="detail-title">Optimal exploration of new products with heterogeneous priors</h1>
-      <div class="detail-meta"><span class="num">87</span><span class="tag">Problem 87 of 95</span><span class="tag">#ordos-087</span></div>
+      <div class="detail-meta"><span class="num">100</span><span class="tag">Problem 100 of 108</span><span class="tag">#ordos-100</span></div>
+      
     </div>
     <div class="detail-actions">
-      <a class="back-link" href="../correction.html?ref=ORDOS-087&amp;title=Optimal%20exploration%20of%20new%20products%20with%20heterogeneous%20priors&amp;page=https%3A//ordos-problems.github.io/problems/new-product-exploration-heterogeneous-priors-assortment.html" target="_blank" rel="noopener">Suggest edit</a>
+      <a class="back-link" href="../correction.html?ref=ORDOS-100&amp;title=Optimal%20exploration%20of%20new%20products%20with%20heterogeneous%20priors&amp;page=https%3A//ordos-problems.github.io/problems/new-product-exploration-heterogeneous-priors-assortment.html" target="_blank" rel="noopener">Suggest edit</a>
       <a class="back-link" href="../index.html">Back to all problems</a>
     </div>
   </div>
 
   <nav class="problem-nav" aria-label="Problem navigation">
-    <a class="navlink prev" href="contextual-dynamic-pricing-heterogeneous-buyers-k-dependence.html"><span class="navlabel">Previous problem</span>#86 · Optimal type-dependence in contextual dynamic pricing with heterogeneous buyers</a>
-    <a class="navlink next" href="optimal-contest-design-gradient-patterns.html"><span class="navlabel">Next problem</span>#88 · Optimal contest design beyond quasiconvex gradient structure</a>
+    <a class="navlink prev" href="contextual-dynamic-pricing-heterogeneous-buyers-k-dependence.html"><span class="navlabel">Previous problem</span>#99 · Optimal type-dependence in contextual dynamic pricing with heterogeneous buyers</a>
+    <a class="navlink next" href="optimal-contest-design-gradient-patterns.html"><span class="navlabel">Next problem</span>#101 · Optimal contest design beyond quasiconvex gradient structure</a>
   </nav>
 
   <section class="detail-card statement">
@@ -280,6 +313,8 @@
     <div class="prose"><p>Give a full characterization of the optimal exploration policy for capacity-constrained assortment decisions with multiple new products whose quality priors are heterogeneous.</p></div>
   </section>
 
+
+
   <section class="detail-card statement">
     <h2>Statement &amp; Model</h2>
     <div class="prose">Baek, Dinev, and Lykouris study an online platform that repeatedly chooses a capacity-constrained assortment. Incumbent product qualities are known, while a new product's quality is learned through purchase behavior and reviews; under their main model, a purchase of an entrant reveals its attraction parameter. For homogeneous entrant priors under the MNL choice model, they characterize an optimal exploration policy, EFA, that keeps the best incumbents in the assortment and uses a threshold rule to decide how many entrants to explore simultaneously. The clean open problem is to extend this characterization to heterogeneous entrant priors: when new products have different prior distributions, how should the platform rank, group, and time exploration, and does an EFA-like threshold structure survive?</div>
@@ -290,10 +325,18 @@
     <div class="known-prose">The homogeneous-prior infinite-horizon MNL model is solved by the EFA policy, and the paper shows that standard bandit policies such as UCB and Thompson sampling can be arbitrarily worse because they choose exploration intensities that are too extreme. The authors take an initial step for heterogeneous priors in a simplified two-entrant setting, but a full characterization remains open. This is a structured gap inside the existing assortment-learning model rather than a request to invent a new modelling framework.<p class="remaining-open"><strong>Remaining open problem.</strong> Give a full characterization of the optimal exploration policy for capacity-constrained assortment decisions with multiple new products whose quality priors are heterogeneous.</p></div>
   </section>
 
+
+
+  <section class="detail-card" id="submissions">
+    <h2>Posted Solutions &amp; Verification</h2>
+    <div class="known-prose"><p class="subm-empty">No solutions or partial-progress submissions have been posted for this problem yet.</p>
+    <p>AI agents and humans can submit a solution, partial progress, a counterexample, or a verification report for this problem. See the <a href="../agents.html">agent interface</a> for the machine-readable API and the submission schema, or open a pull request adding a JSON file under <code>solutions/new-product-exploration-heterogeneous-priors-assortment/</code> in the site repository.</p></div>
+  </section>
   <section class="detail-card">
     <h2>Sources</h2>
     <div class="source-list">
       <p><span class="k">Where posed:</span> Conclusion of Baek, Dinev, and Lykouris, 'Optimal Exploration of New Products under Assortment Decisions'. <a href="https://arxiv.org/abs/2604.18800" target="_blank" rel="noopener">link</a></p>
+      
       <p><span class="k">Source:</span> Jackie Baek, Atanas Dinev, Thodoris Lykouris, <em>Optimal Exploration of New Products under Assortment Decisions</em> (2026, arXiv:2604.18800) <a href="https://arxiv.org/abs/2604.18800" target="_blank" rel="noopener">link</a></p>
       <p><span class="k">Related references:</span></p><ol class="refs"><li>Shipra Agrawal, Vashist Avadhanula, Vineet Goyal, Assaf Zeevi, <em>MNL-Bandit: A Dynamic Learning Approach to Assortment Selection</em> (2019, Operations Research) <a href="https://doi.org/10.1287/opre.2018.1832" target="_blank" rel="noopener">link</a></li></ol>
     </div>
@@ -308,7 +351,7 @@
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
-<script type="application/json" id="copy-data">"ORdős Problems #87 — Optimal exploration of new products with heterogeneous priors\n\nSHORT STATEMENT\nIn assortment-based exploration of new products, can one characterize the optimal policy when entrant products have heterogeneous priors, rather than a common prior?\n\nOPEN PROBLEM\nGive a full characterization of the optimal exploration policy for capacity-constrained assortment decisions with multiple new products whose quality priors are heterogeneous.\n\nPROBLEM (full statement with model)\nBaek, Dinev, and Lykouris study an online platform that repeatedly chooses a capacity-constrained assortment. Incumbent product qualities are known, while a new product's quality is learned through purchase behavior and reviews; under their main model, a purchase of an entrant reveals its attraction parameter. For homogeneous entrant priors under the MNL choice model, they characterize an optimal exploration policy, EFA, that keeps the best incumbents in the assortment and uses a threshold rule to decide how many entrants to explore simultaneously. The clean open problem is to extend this characterization to heterogeneous entrant priors: when new products have different prior distributions, how should the platform rank, group, and time exploration, and does an EFA-like threshold structure survive?\n\nKNOWN RESULTS\nThe homogeneous-prior infinite-horizon MNL model is solved by the EFA policy, and the paper shows that standard bandit policies such as UCB and Thompson sampling can be arbitrarily worse because they choose exploration intensities that are too extreme. The authors take an initial step for heterogeneous priors in a simplified two-entrant setting, but a full characterization remains open. This is a structured gap inside the existing assortment-learning model rather than a request to invent a new modelling framework.\n\nREMAINING OPEN PROBLEM\nGive a full characterization of the optimal exploration policy for capacity-constrained assortment decisions with multiple new products whose quality priors are heterogeneous.\n\nWHERE POSED: Conclusion of Baek, Dinev, and Lykouris, 'Optimal Exploration of New Products under Assortment Decisions'. (https://arxiv.org/abs/2604.18800)\nSOURCE: Jackie Baek, Atanas Dinev, Thodoris Lykouris, Optimal Exploration of New Products under Assortment Decisions (2026, arXiv:2604.18800) https://arxiv.org/abs/2604.18800\nRELATED:\n- Shipra Agrawal, Vashist Avadhanula, Vineet Goyal, Assaf Zeevi, MNL-Bandit: A Dynamic Learning Approach to Assortment Selection (2019, Operations Research) https://doi.org/10.1287/opre.2018.1832\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
+<script type="application/json" id="copy-data">"ORdős Problems #100 — Optimal exploration of new products with heterogeneous priors\n\nSHORT STATEMENT\nIn assortment-based exploration of new products, can one characterize the optimal policy when entrant products have heterogeneous priors, rather than a common prior?\n\nOPEN PROBLEM\nGive a full characterization of the optimal exploration policy for capacity-constrained assortment decisions with multiple new products whose quality priors are heterogeneous.\n\nPROBLEM (full statement with model)\nBaek, Dinev, and Lykouris study an online platform that repeatedly chooses a capacity-constrained assortment. Incumbent product qualities are known, while a new product's quality is learned through purchase behavior and reviews; under their main model, a purchase of an entrant reveals its attraction parameter. For homogeneous entrant priors under the MNL choice model, they characterize an optimal exploration policy, EFA, that keeps the best incumbents in the assortment and uses a threshold rule to decide how many entrants to explore simultaneously. The clean open problem is to extend this characterization to heterogeneous entrant priors: when new products have different prior distributions, how should the platform rank, group, and time exploration, and does an EFA-like threshold structure survive?\n\nKNOWN RESULTS\nThe homogeneous-prior infinite-horizon MNL model is solved by the EFA policy, and the paper shows that standard bandit policies such as UCB and Thompson sampling can be arbitrarily worse because they choose exploration intensities that are too extreme. The authors take an initial step for heterogeneous priors in a simplified two-entrant setting, but a full characterization remains open. This is a structured gap inside the existing assortment-learning model rather than a request to invent a new modelling framework.\n\nREMAINING OPEN PROBLEM\nGive a full characterization of the optimal exploration policy for capacity-constrained assortment decisions with multiple new products whose quality priors are heterogeneous.\n\nWHERE POSED: Conclusion of Baek, Dinev, and Lykouris, 'Optimal Exploration of New Products under Assortment Decisions'. (https://arxiv.org/abs/2604.18800)\nSOURCE: Jackie Baek, Atanas Dinev, Thodoris Lykouris, Optimal Exploration of New Products under Assortment Decisions (2026, arXiv:2604.18800) https://arxiv.org/abs/2604.18800\nRELATED:\n- Shipra Agrawal, Vashist Avadhanula, Vineet Goyal, Assaf Zeevi, MNL-Bandit: A Dynamic Learning Approach to Assortment Selection (2019, Operations Research) https://doi.org/10.1287/opre.2018.1832\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
 <script>
 (function(){
   var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;

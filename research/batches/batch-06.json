@@ -1,0 +1,358 @@
+[
+ {
+  "id": "steiner-tree-approximation-ratio-gap",
+  "collection": "Approximation & Discrepancy",
+  "area": "Approximation Algorithms",
+  "tags": [
+   "Steiner tree",
+   "approximation ratio",
+   "hypergraphic LP",
+   "hardness"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Best Approximation Ratio for Steiner Tree (1.39 vs. hardness)",
+  "short_statement": "For graph Steiner tree, the best polynomial-time algorithm achieves ratio $\\ln 4 \\approx 1.39$, while the best hardness only rules out ratios below $96/95 \\approx 1.01$. Closing this gap - and pinning down the hypergraphic-LP integrality gap - is open.",
+  "full_statement": "For the graph Steiner tree problem (connect a set of required terminals in a weighted graph as cheaply as possible, possibly using extra Steiner vertices), the best known polynomial-time algorithm achieves a ratio of $\\ln 4 \\approx 1.39$ via iterative randomized rounding of a stronger 'hypergraphic' LP. \\textbf{Determine the best polynomial-time approximation ratio $\\rho$ for graph Steiner tree (assuming $\\mathrm{P} \\ne \\mathrm{NP}$).} Known: $\\tfrac{96}{95} \\approx 1.0105 \\le \\rho \\le \\ln 4 \\approx 1.386$. Relatedly, the hypergraphic LP integrality gap satisfies $\\tfrac{8}{7} \\le \\gamma \\le \\ln 4$ in general graphs.",
+  "known_results": "The best polynomial-time approximation ratio is $\\ln 4 \\approx 1.386$, achieved by the iterative-randomized-rounding algorithm of Byrka, Grandoni, Rothvoss, and Sanita for the hypergraphic relaxation. The strongest NP-hardness threshold is only $96/95 \\approx 1.0105$, due to Chlebik and Chlebikova. For the hypergraphic LP itself, known instances give an integrality gap of at least $8/7$, while the rounding analysis gives an upper bound of $\\ln 4$. The open problem is to determine the true approximability threshold for graph Steiner tree and, relatedly, the exact integrality gap of the hypergraphic LP.",
+  "where_posed": {
+   "text": "The ln 4 algorithm and hypergraphic LP are from Byrka, Grandoni, Rothvoss, Sanita, 'Steiner Tree Approximation via Iterative Randomized Rounding,' JACM (STOC 2010); the hardness bound 96/95 from Chlebik-Chlebikova (2008). The gap-closing is a well-known open problem.",
+   "url": "https://arxiv.org/abs/1011.0048"
+  },
+  "source": {
+   "authors": "Jaroslaw Byrka, Fabrizio Grandoni, Thomas Rothvoss, Laura Sanita",
+   "title": "Steiner Tree Approximation via Iterative Randomized Rounding",
+   "year": 2013,
+   "venue": "Journal of the ACM (STOC 2010)",
+   "url": "https://arxiv.org/abs/1011.0048"
+  },
+  "additional_refs": [
+   {
+    "authors": "Miroslav Chlebik, Janka Chlebikova",
+    "title": "The Steiner tree problem on graphs: Inapproximability results",
+    "year": 2008,
+    "venue": "Theoretical Computer Science",
+    "url": "https://doi.org/10.1016/j.tcs.2008.06.046"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "santa-claus-config-lp-integrality-gap",
+  "collection": "Approximation & Discrepancy",
+  "area": "Approximation Algorithms",
+  "tags": [
+   "Santa Claus",
+   "max-min fair allocation",
+   "configuration LP",
+   "integrality gap"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Integrality Gap of the Configuration LP for Restricted Santa Claus",
+  "short_statement": "In restricted Santa Claus (max-min fair allocation), the configuration-LP integrality gap is known to be a constant between $2$ and about $3.81$; determining it exactly is a long-standing open problem.",
+  "full_statement": "In the restricted Santa Claus (max-min fair allocation) problem, indivisible gifts must be handed to children so as to maximize the happiness of the least-happy child, where each gift has a fixed value and can only go to children who want it. The configuration LP is the standard relaxation. For the restricted max-min allocation (restricted Santa Claus) problem, let $\\gamma$ be the integrality gap of the configuration LP. Known: $2 \\le \\gamma \\le 3 + \\tfrac{21}{26} \\approx 3.808$. The upper bound is non-constructive (via local search whose polynomial-time convergence is itself open). \\textbf{Determine $\\gamma$.}",
+  "known_results": "Bansal and Sviridenko introduced the configuration LP for the Santa Claus problem, and Feige's hypergraph-matching framework showed that the restricted case has a constant integrality gap. The best current upper bound is $3+21/26 \\approx 3.808$, due to Cheng and Mao, while known examples force a gap of at least $2$. The open problem is to determine the exact integrality gap of this LP. This is not just a matter of improving constants: it asks for the true strength of the standard relaxation for restricted max-min allocation.",
+  "where_posed": {
+   "text": "The constant-gap result for restricted Santa Claus traces to Asadpour, Feige, Saberi, 'Santa Claus Meets Hypergraph Matchings,' ACM Trans. Algorithms (APPROX 2008); best upper bound 3+21/26 from Cheng-Mao (2022). The exact gap is a recognized open problem.",
+   "url": "https://www.wisdom.weizmann.ac.il/~feige/mypapers/santaclaus1.pdf"
+  },
+  "source": {
+   "authors": "Arash Asadpour, Uriel Feige, Amin Saberi",
+   "title": "Santa Claus Meets Hypergraph Matchings",
+   "year": 2012,
+   "venue": "ACM Transactions on Algorithms (APPROX 2008)",
+   "url": "https://www.wisdom.weizmann.ac.il/~feige/mypapers/santaclaus1.pdf"
+  },
+  "additional_refs": [
+   {
+    "authors": "Nikhil Bansal, Maxim Sviridenko",
+    "title": "The Santa Claus Problem",
+    "year": 2006,
+    "venue": "STOC",
+    "url": "https://doi.org/10.1145/1132516.1132522"
+   },
+   {
+    "authors": "Siu-Wing Cheng, Yuchen Mao",
+    "title": "Restricted Max-Min Allocation: Integrality Gap and Approximation Algorithm",
+    "year": 2022,
+    "venue": "Algorithmica (ICALP 2019)",
+    "url": "https://arxiv.org/abs/1905.06084"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "unrelated-machines-makespan-below-2",
+  "collection": "Approximation & Discrepancy",
+  "area": "Approximation Algorithms",
+  "tags": [
+   "scheduling",
+   "unrelated machines",
+   "makespan",
+   "approximation ratio"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Beating the 2-Approximation for Makespan on Unrelated Machines (R||Cmax)",
+  "short_statement": "For makespan minimization on unrelated machines, the classic Lenstra-Shmoys-Tardos algorithm gives a $2$-approximation and it is NP-hard to beat $3/2$. Whether a ratio below $2$ (ideally $3/2$) is achievable has been open since 1990.",
+  "full_statement": "Given jobs and machines where each job takes a different (machine-dependent) time on each machine, assign every job to a machine to minimize the makespan (the load of the busiest machine). For $R \\,||\\, C_{\\max}$ (minimize makespan on unrelated parallel machines), \\textbf{determine the best polynomial-time approximation ratio $\\rho$.} Known: $\\tfrac{3}{2} \\le \\rho \\le 2$ (both bounds from Lenstra-Shmoys-Tardos). Can $\\rho < 2$? Is $\\rho = \\tfrac{3}{2}$ achievable?",
+  "known_results": "Lenstra, Shmoys, and Tardos gave the classic $2$-approximation and also proved that no polynomial-time algorithm can achieve a ratio below $3/2$ unless $\\mathrm{P}=\\mathrm{NP}$. Several structured special cases, including restricted assignment and graph balancing, admit better guarantees. For the full unrelated-machines problem, however, no polynomial-time approximation ratio strictly below $2$ is known. The open problem is to beat the $2$ barrier, or to prove a stronger hardness result that explains why the original $[3/2,2]$ gap persists.",
+  "where_posed": {
+   "text": "Both the 2-approximation and the 3/2 hardness are from Lenstra, Shmoys, Tardos, 'Approximation algorithms for scheduling unrelated parallel machines,' Mathematical Programming, 1990; closing the gap is a classic open problem.",
+   "url": "https://doi.org/10.1007/BF01585745"
+  },
+  "source": {
+   "authors": "Jan Karel Lenstra, David B. Shmoys, Eva Tardos",
+   "title": "Approximation algorithms for scheduling unrelated parallel machines",
+   "year": 1990,
+   "venue": "Mathematical Programming",
+   "url": "https://doi.org/10.1007/BF01585745"
+  },
+  "additional_refs": [
+   {
+    "authors": "Ola Svensson",
+    "title": "Santa Claus Schedules Jobs on Unrelated Machines",
+    "year": 2012,
+    "venue": "SIAM Journal on Computing (STOC 2011)",
+    "url": "https://arxiv.org/abs/1011.1168"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "beck-fiala-conjecture",
+  "collection": "Approximation & Discrepancy",
+  "area": "Discrepancy",
+  "tags": [
+   "discrepancy",
+   "Beck-Fiala",
+   "set systems",
+   "combinatorial discrepancy"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Beck-Fiala Conjecture (Discrepancy of Bounded-Degree Set Systems)",
+  "short_statement": "Color elements of a set system red/blue to minimize the worst set imbalance (discrepancy). If every element lies in at most $t$ sets, the Beck-Fiala theorem gives at most $2t-1$; the conjecture is that the truth is only $O(\\sqrt{t})$, independent of the number of sets or elements.",
+  "full_statement": "Color the elements of a set system red and blue so that every set is as balanced as possible; the discrepancy is the worst imbalance over all sets. Let $\\mathcal{S}$ be a set system in which every element belongs to at most $t$ sets (equivalently, a matrix $A \\in \\{0,1\\}^{m \\times n}$ with at most $t$ ones per column). \\textbf{Conjecture (Beck-Fiala):} $\\mathrm{disc}(\\mathcal{S}) = \\min_{x \\in \\{\\pm 1\\}^n}\\|Ax\\|_\\infty = O(\\sqrt{t})$, independent of $m$ and $n$. The Beck-Fiala theorem guarantees discrepancy at most $2t-1$.",
+  "known_results": "Beck and Fiala proved the original $2t-1$ discrepancy bound, and Bukh later improved this slightly to $2t-O(\\log^* t)$. A different line of work based on Banaszczyk's vector-balancing theorem gives $O(\\sqrt{t\\log n})$, which has the conjectured dependence on $t$ but still depends on the number of elements. Bansal and Jiang prove the conjectured $O(\\sqrt{t})$ bound in the regime $t\\ge \\log^2 n$. The remaining open case is the full, dimension-free $O(\\sqrt{t})$ bound for every $t$.",
+  "where_posed": {
+   "text": "Conjectured in Beck & Fiala, 'Integer-making theorems,' Discrete Applied Mathematics, 1981, which also proves the 2t-1 bound.",
+   "url": "https://doi.org/10.1016/0166-218X(81)90022-6"
+  },
+  "source": {
+   "authors": "Jozsef Beck, Tibor Fiala",
+   "title": "Integer-making theorems",
+   "year": 1981,
+   "venue": "Discrete Applied Mathematics",
+   "url": "https://doi.org/10.1016/0166-218X(81)90022-6"
+  },
+  "additional_refs": [
+   {
+    "authors": "Wojciech Banaszczyk",
+    "title": "Balancing vectors and Gaussian measures of n-dimensional convex bodies",
+    "year": 1998,
+    "venue": "Random Structures & Algorithms",
+    "url": "https://doi.org/10.1002/(SICI)1098-2418(199807)12:4<351::AID-RSA3>3.0.CO;2-S"
+   },
+   {
+    "authors": "Nikhil Bansal, Haotian Jiang",
+    "title": "Decoupling via Affine Spectral-Independence: Beck-Fiala and Komlos Bounds Beyond Banaszczyk",
+    "year": 2026,
+    "venue": "STOC",
+    "url": "https://arxiv.org/abs/2508.03961"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "komlos-conjecture",
+  "collection": "Approximation & Discrepancy",
+  "area": "Discrepancy",
+  "tags": [
+   "discrepancy",
+   "Komlos",
+   "vector balancing",
+   "combinatorial discrepancy"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Komlos Conjecture (O(1) Discrepancy of Unit-Norm Vectors)",
+  "short_statement": "Given any vectors of Euclidean length at most $1$, the Komlos conjecture says one can sign them so every coordinate of the signed sum stays bounded by a universal constant, independent of dimension or count. It generalizes the Beck-Fiala conjecture.",
+  "full_statement": "Given any collection of vectors each of Euclidean length at most 1, the Komlos conjecture says you can attach a $+$ or $-$ sign to each so that every coordinate of the signed sum stays bounded by a universal constant — no matter how many vectors there are or what dimension they live in. \\textbf{Conjecture (Komlos):} there is a universal constant $K$ such that for any vectors $v_1,\\dots,v_n \\in \\mathbb{R}^m$ with $\\|v_i\\|_2 \\le 1$, there exist signs $\\varepsilon_i \\in \\{\\pm 1\\}$ with $\\big\\|\\sum_i \\varepsilon_i v_i\\big\\|_\\infty \\le K = O(1)$, independent of $m$ and $n$. This generalizes the Beck-Fiala conjecture.",
+  "known_results": "The conjecture predicts a universal $O(1)$ bound, independent of both the dimension and the number of vectors. Banaszczyk's theorem gives the best classical general bound, $O(\\sqrt{\\log n})$, and Bansal, Dadush, and Garg made this algorithmic. Bansal and Jiang recently improved the dependence to $O((\\log n)^{1/4})$. The best known lower bound on the universal constant is about $2.414$, and a proof of Komlos would imply the Beck-Fiala conjecture.",
+  "where_posed": {
+   "text": "A classical conjecture in discrepancy theory; stated in Nikolov's Prague Summer School lecture notes on Discrepancy Theory (2018).",
+   "url": "https://www.cs.toronto.edu/~anikolov/Prague18/Lectures/lect3.pdf"
+  },
+  "source": {
+   "authors": "Aleksandar Nikolov",
+   "title": "Prague Summer School: Discrepancy Theory (Lecture notes)",
+   "year": 2018,
+   "venue": "Lecture notes (survey)",
+   "url": "https://www.cs.toronto.edu/~anikolov/Prague18/Lectures/lect3.pdf"
+  },
+  "additional_refs": [
+   {
+    "authors": "Nikhil Bansal, Daniel Dadush, Shashwat Garg",
+    "title": "An Algorithm for Komlos Conjecture Matching Banaszczyk's Bound",
+    "year": 2019,
+    "venue": "SIAM J. Computing (FOCS 2016)",
+    "url": "https://arxiv.org/abs/1605.02882"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "matrix-spencer-conjecture",
+  "collection": "Approximation & Discrepancy",
+  "area": "Discrepancy",
+  "tags": [
+   "discrepancy",
+   "matrix Spencer",
+   "spectral norm",
+   "vector balancing"
+  ],
+  "status": "partially resolved",
+  "confidence": "high",
+  "title": "Matrix Spencer Conjecture",
+  "short_statement": "The matrix version of Spencer's 'six standard deviations' theorem asks: given $n$ symmetric $n\\times n$ matrices of operator norm at most $1$, can one choose signs so the signed sum has spectral norm $O(\\sqrt{n})$? Proven for low rank; open in general.",
+  "full_statement": "Spencer's classic 'six standard deviations' theorem balances n sets on n elements with discrepancy O(sqrt(n)); the matrix version asks the same for matrices. \\textbf{Conjecture (Matrix Spencer):} for symmetric matrices $A_1,\\dots,A_n \\in \\mathbb{R}^{n \\times n}$ with $\\|A_i\\|_{\\mathrm{op}} \\le 1$, there exist signs $x_i \\in \\{\\pm 1\\}$ with $\\big\\|\\sum_i x_i A_i\\big\\|_{\\mathrm{op}} = O(\\sqrt{n})$. (The diagonal case is Spencer's theorem.) Proven for rank $\\le n/\\log^3 n$; open in general (the full-rank case).",
+  "known_results": "The conjectured bound is $O(\\sqrt n)$, matching the scale of Spencer's original set-system theorem in the diagonal case. Bansal, Jiang, and Meka proved this bound for matrices of rank at most $n/\\log^3 n$, which covers a large low-rank regime and introduced new matrix-discrepancy techniques. The main unresolved case is full rank, where the noncommutative nature of the matrices prevents a direct extension of scalar discrepancy arguments.",
+  "where_posed": {
+   "text": "The poly-logarithmic-rank resolution (and statement of the general open conjecture) is in Bansal, Jiang, Meka, 'Resolving Matrix Spencer Conjecture Up to Poly-logarithmic Rank,' STOC 2023 (SIAM J. Computing 2024).",
+   "url": "https://arxiv.org/abs/2208.11286"
+  },
+  "source": {
+   "authors": "Nikhil Bansal, Haotian Jiang, Raghu Meka",
+   "title": "Resolving Matrix Spencer Conjecture Up to Poly-logarithmic Rank",
+   "year": 2023,
+   "venue": "STOC (SIAM J. Computing 2024)",
+   "url": "https://arxiv.org/abs/2208.11286"
+  },
+  "additional_refs": [
+   {
+    "authors": "Afonso S. Bandeira, March T. Boedihardjo, Ramon van Handel",
+    "title": "Matrix concentration inequalities and free probability",
+    "year": 2023,
+    "venue": "Inventiones Mathematicae",
+    "url": "https://arxiv.org/abs/2108.06312"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "cvrp-unit-demand-approximability",
+  "collection": "Approximation & Discrepancy",
+  "area": "Vehicle Routing",
+  "tags": [
+   "CVRP",
+   "vehicle routing",
+   "iterated tour partitioning",
+   "approximation ratio"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Approximability of Unit-Demand Capacitated Vehicle Routing",
+  "short_statement": "In capacitated vehicle routing, the classic iterated tour partitioning gives ratio $\\alpha+1$ ($\\alpha$ = best TSP ratio). A 2021 breakthrough shaved off a tiny amount; whether the $+1$ can be reduced - ideally to match TSP - is open.",
+  "full_statement": "In capacitated vehicle routing, vehicles of capacity $Q$ based at a depot must together visit all customers (each with unit demand) using minimum total travel distance. For unit-demand (and splittable) metric CVRP, let $\\rho$ be the best polynomial-time approximation ratio and $\\alpha$ the best metric-TSP ratio. Classic iterated tour partitioning gives $\\rho \\le \\alpha + 1$. Blauth-Traub-Vygen improved this to $\\rho \\le \\alpha + 1 - \\varepsilon$ with $\\varepsilon > 1/3000$. \\textbf{Open:} can $\\rho$ be pushed toward $\\alpha + o(1)$, and is there CVRP-specific hardness beyond the TSP-inherited bound?",
+  "known_results": "Iterated tour partitioning (Haimovich-Rinnooy Kan 1985) gives $\\alpha$+1. Improved to $\\alpha$+1-$\\epsilon$, $\\epsilon$>$1/3000$ (Blauth-Traub-Vygen 2021/2023) — first improvement in ~35 years. Hardness only TSP-inherited. Exact approximability open.",
+  "where_posed": {
+   "text": "The first improvement over alpha+1 (and the open question of pushing toward alpha) is in Blauth, Traub, Vygen, 'Improving the Approximation Ratio for Capacitated Vehicle Routing,' Mathematical Programming (IPCO 2021); the alpha+1 baseline from Haimovich-Rinnooy Kan (1985).",
+   "url": "https://arxiv.org/abs/2011.05235"
+  },
+  "source": {
+   "authors": "Jannis Blauth, Vera Traub, Jens Vygen",
+   "title": "Improving the Approximation Ratio for Capacitated Vehicle Routing",
+   "year": 2023,
+   "venue": "Mathematical Programming (IPCO 2021)",
+   "url": "https://arxiv.org/abs/2011.05235"
+  },
+  "additional_refs": [
+   {
+    "authors": "Mordecai Haimovich, Alexander H. G. Rinnooy Kan",
+    "title": "Bounds and Heuristics for Capacitated Routing Problems",
+    "year": 1985,
+    "venue": "Mathematics of Operations Research",
+    "url": "https://doi.org/10.1287/moor.10.4.527"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "metric-facility-location-gap",
+  "collection": "Approximation & Discrepancy",
+  "area": "Approximation Algorithms",
+  "tags": [
+   "facility location",
+   "approximation ratio",
+   "hardness",
+   "metric"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Metric Uncapacitated Facility Location: 1.463 vs. 1.488",
+  "short_statement": "For metric uncapacitated facility location, the best known algorithm achieves $1.488$ while it is NP-hard to beat $1.463$. This $\\approx 0.025$ gap has stood for over a decade and is one of the cleanest open problems in approximation.",
+  "full_statement": "Open some facilities (paying an opening cost) and connect each client to an open facility (paying the distance), minimizing the total. For metric uncapacitated facility location, \\textbf{determine the best polynomial-time approximation ratio $\\rho$ (assuming $\\mathrm{P} \\ne \\mathrm{NP}$).} Known: $1.463 \\le \\rho \\le 1.488$. The folklore belief is $\\rho = 1.463$.",
+  "known_results": "Guha and Khuller constructed hardness examples near $1.463$, later strengthened to a standard $\\mathrm{P}\\ne\\mathrm{NP}$ hardness statement by Sviridenko. Shi Li's 2013 algorithm achieves approximation ratio $1.488$, and no better general ratio is currently known. The open problem is to close this narrow $0.025$ window and determine the exact approximability threshold for metric uncapacitated facility location.",
+  "where_posed": {
+   "text": "The 1.488 algorithm is from Shi Li, 'A 1.488 Approximation Algorithm for the Uncapacitated Facility Location Problem,' Information and Computation (ICALP 2011); the 1.463 hardness from Guha-Khuller (strengthened by Sviridenko). The gap is a recognized open problem.",
+   "url": "https://doi.org/10.1016/j.ic.2012.01.007"
+  },
+  "source": {
+   "authors": "Shi Li",
+   "title": "A 1.488 Approximation Algorithm for the Uncapacitated Facility Location Problem",
+   "year": 2013,
+   "venue": "Information and Computation (ICALP 2011)",
+   "url": "https://doi.org/10.1016/j.ic.2012.01.007"
+  },
+  "additional_refs": [
+   {
+    "authors": "Sudipto Guha, Samir Khuller",
+    "title": "Greedy Strikes Back: Improved Facility Location Algorithms",
+    "year": 1999,
+    "venue": "Journal of Algorithms (SODA 1998)",
+    "url": "https://doi.org/10.1006/jagm.1998.0993"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "metric-k-median-gap",
+  "collection": "Approximation & Discrepancy",
+  "area": "Approximation Algorithms",
+  "tags": [
+   "k-median",
+   "clustering",
+   "approximation ratio",
+   "hardness"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Metric k-Median: 1.736 Hardness vs. 2+epsilon Algorithm",
+  "short_statement": "For metric $k$-median, it is NP-hard to approximate better than $1 + 2/e \\approx 1.736$, and as of 2025 the best algorithm achieves $2 + \\epsilon$. Determining the exact approximability in $[1.736, 2]$ is a major open problem.",
+  "full_statement": "In metric $k$-median, one is given a finite metric space $(V,d)$, a set of demand points (clients) in $V$, and an integer $k$. The algorithm must choose at most $k$ centers from $V$ and assign each client to its nearest chosen center, minimizing the total connection cost $\\sum_j d(j,S)$, where $S$ is the selected center set. The open problem is to determine the best possible polynomial-time approximation ratio $\\rho$ for this model. Known bounds are $1 + \\tfrac{2}{e} \\approx 1.736 \\le \\rho \\le 2 + \\varepsilon$. The natural LP relaxation has integrality gap at least $2 - o(1)$, so the remaining question is whether the true threshold is below, at, or above the LP barrier near $2$.",
+  "known_results": "Jain, Mahdian, and Saberi proved that approximating metric $k$-median below $1+2/e \\approx 1.736$ is NP-hard. The best current algorithm achieves $2+\\epsilon$, due to Cohen-Addad, Grandoni, Lee, Schwiegelshohn, and Svensson, improving the long-standing $2.613$ barrier. The natural LP relaxation has integrality gap at least $2-o(1)$. The open problem is to determine whether the true threshold is near the hardness bound, near $2$, or somewhere in between; closing it likely requires either a different relaxation/algorithmic idea or a stronger hardness construction.",
+  "where_posed": {
+   "text": "The (2+epsilon) algorithm is from Cohen-Addad, Grandoni, Lee, Schwiegelshohn, Svensson, 'A (2+epsilon)-Approximation Algorithm for Metric k-Median,' STOC 2025; the 1.736 hardness from Jain-Mahdian-Saberi (2002). The gap is a major open problem.",
+   "url": "https://arxiv.org/abs/2503.10972"
+  },
+  "source": {
+   "authors": "Vincent Cohen-Addad, Fabrizio Grandoni, Euiwoong Lee, Chris Schwiegelshohn, Ola Svensson",
+   "title": "A (2+epsilon)-Approximation Algorithm for Metric k-Median",
+   "year": 2025,
+   "venue": "STOC",
+   "url": "https://arxiv.org/abs/2503.10972"
+  },
+  "additional_refs": [
+   {
+    "authors": "Kamal Jain, Mohammad Mahdian, Amin Saberi",
+    "title": "A New Greedy Approach for Facility Location Problems",
+    "year": 2002,
+    "venue": "STOC",
+    "url": "https://doi.org/10.1145/509907.510012"
+   }
+  ],
+  "enabled": true
+ }
+]

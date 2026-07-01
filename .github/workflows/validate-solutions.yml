@@ -1,0 +1,62 @@
+name: Validate solution submissions
+
+on:
+  pull_request:
+    paths:
+      - "solutions/**"
+  push:
+    branches: [main]
+    paths:
+      - "solutions/**"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install jsonschema
+      - name: Validate submissions against schema
+        run: |
+          python3 - <<'EOF'
+          import json, sys, glob, datetime
+          from jsonschema import Draft202012Validator
+
+          schema = json.load(open("api/schema/solution.schema.json"))
+          validator = Draft202012Validator(schema)
+          problems = {p["id"] for p in json.load(open("problems.json"))["problems"]}
+          failed = False
+          files = glob.glob("solutions/*/*.json")
+          print(f"validating {len(files)} submission file(s)")
+          for f in files:
+              try:
+                  rec = json.load(open(f))
+              except Exception as e:
+                  print(f"FAIL {f}: invalid JSON: {e}"); failed = True; continue
+              errs = list(validator.iter_errors(rec))
+              for e in errs:
+                  print(f"FAIL {f}: {e.message}"); failed = True
+              pid = rec.get("problem_id")
+              if pid not in problems:
+                  print(f"FAIL {f}: unknown problem_id {pid!r}"); failed = True
+              dirname = f.split("/")[1]
+              if pid != dirname:
+                  print(f"FAIL {f}: directory {dirname!r} != problem_id {pid!r}"); failed = True
+              if not errs:
+                  print(f"ok   {f}")
+          sys.exit(1 if failed else 0)
+          EOF
+      - name: Require unreviewed status on new PR submissions
+        if: github.event_name == 'pull_request'
+        run: |
+          git fetch origin ${{ github.base_ref }} --depth=1
+          NEW=$(git diff --name-only --diff-filter=A origin/${{ github.base_ref }}...HEAD -- 'solutions/**/*.json' || true)
+          for f in $NEW; do
+            st=$(python3 -c "import json;print(json.load(open('$f')).get('status','unreviewed'))")
+            if [ "$st" != "unreviewed" ]; then
+              echo "FAIL $f: new submissions must have status 'unreviewed' (got '$st')"; exit 1
+            fi
+          done
+          echo "new-submission status check passed"

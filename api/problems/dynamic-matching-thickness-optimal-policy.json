@@ -1,0 +1,52 @@
+{
+ "number": 81,
+ "ref": "ORDOS-081",
+ "id": "dynamic-matching-thickness-optimal-policy",
+ "title": "Optimal policy in dynamic matching markets with stochastic arrivals and departures",
+ "collection": "Management Science",
+ "area": "Dynamic Matching",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "dynamic matching",
+  "market design",
+  "thickness",
+  "optimal stopping",
+  "networks"
+ ],
+ "short_statement": "In a market where agents arrive and depart over time and can only be matched to compatible partners present at the same time, what is the optimal matching policy — and exactly how valuable is waiting to 'thicken' the market?",
+ "open_problem": "characterize the optimal dynamic matching policy and the exact achievable loss in the general model — beyond the restricted class and beyond the specific sparsity regime.",
+ "full_statement": "Agents arrive to a market as a Poisson process of rate $m$; each ordered/unordered pair of present agents is compatible independently with a small probability (yielding a sparse random compatibility graph with average degree $d$); each agent, if not yet matched, departs after an independent $\\mathrm{Exp}(1)$ lifetime. A planner observes the compatibility graph over time (in the informed variant, also learns when an agent is about to depart) and decides when and whom to match (a match removes two compatible present agents). The objective is to minimize the long-run fraction of agents who perish unmatched (or expected waiting plus loss). Akbarpour–Li–Oveis Gharan (2020) show greedy matching is near-optimal without departure information, while a 'patient' waiting policy is much better with it, and characterize the optimal waiting threshold within a restricted policy class. Question: characterize the optimal dynamic matching policy and the exact achievable loss in the general model — beyond the restricted class and beyond the specific sparsity regime.",
+ "known_results": "Greedy loses an $O(1/d)$ fraction without departure info; with departure info, waiting reduces loss to $O(e^{-d}/d)$-type rates; the optimal policy is characterized only within a restricted class and a specific random-graph regime (Akbarpour–Li–Oveis Gharan, JPE 2020). The general optimal policy, exact loss, and behavior on structured (non-random) compatibility graphs are open and actively studied.",
+ "where_posed": {
+  "text": "Restricted-class optimality and the general open question are in Akbarpour, Li, Oveis Gharan, 'Thickness and Information in Dynamic Matching Markets' (J. Political Economy 2020).",
+  "url": "https://scholar.harvard.edu/shengwu_li/publications/thickness-and-information-dynamic-matching-markets"
+ },
+ "source": {
+  "authors": "Mohammad Akbarpour, Shengwu Li, Shayan Oveis Gharan",
+  "title": "Thickness and Information in Dynamic Matching Markets",
+  "year": 2020,
+  "venue": "Journal of Political Economy",
+  "url": "https://scholar.harvard.edu/shengwu_li/publications/thickness-and-information-dynamic-matching-markets"
+ },
+ "additional_refs": [
+  {
+   "authors": "Itai Ashlagi, Afshin Nikzad, Philipp Strack and others",
+   "title": "When to Match (cost-balancing principle for dynamic markets)",
+   "year": 2026,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2601.21858"
+  }
+ ],
+ "bibtex": "@misc{Akbarpour2020,\n  author = {Mohammad Akbarpour and Shengwu Li and Shayan Oveis Gharan},\n  title = {Thickness and Information in Dynamic Matching Markets},\n  year = {2020},\n  howpublished = {Journal of Political Economy},\n  url = {https://scholar.harvard.edu/shengwu_li/publications/thickness-and-information-dynamic-matching-markets},\n  note = {Source of ORdős Problem ORDOS-081}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/dynamic-matching-thickness-optimal-policy.html",
+  "api": "https://ordos-problems.github.io/api/problems/dynamic-matching-thickness-optimal-policy.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

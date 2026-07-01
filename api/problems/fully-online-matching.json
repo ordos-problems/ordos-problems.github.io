@@ -1,0 +1,58 @@
+{
+ "number": 5,
+ "ref": "ORDOS-005",
+ "id": "fully-online-matching",
+ "title": "Competitive ratio for fully online matching",
+ "collection": "Online Algorithms & Learning",
+ "area": "Online Algorithms",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "online matching",
+  "fully online",
+  "RANKING",
+  "general graphs"
+ ],
+ "short_statement": "In fully online matching, all vertices of a (possibly non-bipartite) graph arrive online with deadlines, and an unmatched vertex must be matched or dropped by its deadline. What is the optimal competitive ratio?",
+ "open_problem": "Determine the optimal competitive ratio.",
+ "full_statement": "In the fully online matching model, the vertices of a (possibly non-bipartite) graph arrive online one at a time. Each vertex has a deadline that occurs after all of its neighbors have arrived. An algorithm may match a vertex to any currently available neighbor at any time up to its deadline, and all matching decisions are irrevocable; at its deadline, an unmatched vertex must be either matched or permanently dropped. This generalizes the classical online bipartite matching model by allowing vertices on both sides (and non-bipartite graphs) to arrive online with deadlines. The benchmark is the maximum matching of the full graph. Determine the optimal competitive ratio. For bipartite graphs, the best integral algorithm is $0.569$-competitive, the best fractional algorithm is $0.6$-competitive, and no algorithm exceeds $0.613$.",
+ "known_results": "For bipartite fully online matching, the best integral algorithm currently achieves ratio $0.569$, due to Huang, Tang, Wu, and Zhang. Tang and Zhang improved the fractional guarantee to $0.6$, while Eckl and coauthors proved an impossibility result at $0.613$. The known upper and lower bounds are close enough to suggest a sharp constant may be accessible, but the exact competitive ratio is still open.",
+ "where_posed": {
+  "text": "Stated/originated in Huang, Kang, Tang, Wu, Zhang, Zhu, 'Fully Online Matching', 2020, JACM.",
+  "url": "https://dl.acm.org/doi/10.1145/3390890"
+ },
+ "source": {
+  "authors": "Zhiyi Huang, Ning Kang, Zhihao Gavin Tang, Xiaowei Wu, Yuhao Zhang, Xue Zhu",
+  "title": "Fully Online Matching",
+  "year": 2020,
+  "venue": "JACM",
+  "url": "https://dl.acm.org/doi/10.1145/3390890"
+ },
+ "additional_refs": [
+  {
+   "authors": "Zhiyi Huang, Zhihao Gavin Tang, Xiaowei Wu, Yuhao Zhang",
+   "title": "Fully Online Matching II: Beating Ranking and Water-filling",
+   "year": 2020,
+   "venue": "FOCS",
+   "url": "https://arxiv.org/abs/2005.06311"
+  },
+  {
+   "authors": "Alexander Eckl, Anja Kirschbaum, Marilena Leichter, Kevin Schewior",
+   "title": "A Stronger Impossibility for Fully Online Matching",
+   "year": 2021,
+   "venue": "Operations Research Letters",
+   "url": "https://arxiv.org/abs/2102.09432"
+  }
+ ],
+ "bibtex": "@misc{Huang2020,\n  author = {Zhiyi Huang and Ning Kang and Zhihao Gavin Tang and Xiaowei Wu and Yuhao Zhang and Xue Zhu},\n  title = {Fully Online Matching},\n  year = {2020},\n  howpublished = {JACM},\n  url = {https://dl.acm.org/doi/10.1145/3390890},\n  note = {Source of ORdős Problem ORDOS-005}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/fully-online-matching.html",
+  "api": "https://ordos-problems.github.io/api/problems/fully-online-matching.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

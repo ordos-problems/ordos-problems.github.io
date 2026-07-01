@@ -1,0 +1,58 @@
+{
+ "number": 4,
+ "ref": "ORDOS-004",
+ "id": "online-matching-general-vertex-arrivals",
+ "title": "Competitive ratio for online bipartite matching with general vertex arrivals",
+ "collection": "Online Algorithms & Learning",
+ "area": "Online Algorithms",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "online matching",
+  "competitive analysis",
+  "RANKING",
+  "vertex arrivals"
+ ],
+ "short_statement": "In the general-vertex-arrival model, vertices on both sides of a bipartite graph arrive online (each revealing its already-arrived neighbors) and must be matched irrevocably. What is the optimal competitive ratio for maximum cardinality matching?",
+ "open_problem": "Determine the optimal competitive ratio $\\rho$ for maximum cardinality matching in this model.",
+ "full_statement": "Consider a bipartite graph in which all vertices (on both sides) arrive online in adversarial order. Each arriving vertex reveals its edges to previously arrived vertices, and must be matched irrevocably either upon arrival or at the moment it can no longer be matched. The goal is to maximize the cardinality of the matching, compared against the maximum cardinality matching of the full graph. This is the general-vertex-arrival model, which strictly generalizes the classical Karp-Vazirani-Vazirani one-sided arrival model (where offline vertices are fixed and only online vertices arrive, for which the optimal ratio is $1-1/e$). Determine the optimal competitive ratio $\\rho$ for maximum cardinality matching in this model. Known: the best integral algorithm achieves $\\tfrac12 + \\Omega(1)$, the best fractional algorithm achieves $0.526$, and no algorithm exceeds $0.583$.",
+ "known_results": "Gamlath, Kapralov, Maggiori, Svensson, and Wajc gave the first integral algorithm beating the trivial $1/2$ barrier by a constant amount. Wang and Wong obtained a $0.526$ fractional guarantee, while the best known upper bound rules out ratios above $0.583$. This leaves a substantial gap, especially compared with the edge-arrival model, where the optimal ratio is essentially understood at $1/2$. The open problem is to determine the optimal competitive ratio for general vertex arrivals, or at least to close the interval between the current lower and upper bounds.",
+ "where_posed": {
+  "text": "Stated in Wang, Wong, 'Two-sided Online Bipartite Matching and Vertex Cover: Beating the Greedy Algorithm', 2015, ICALP.",
+  "url": "https://link.springer.com/chapter/10.1007/978-3-662-47672-7_85"
+ },
+ "source": {
+  "authors": "Yajun Wang, Sam Chiu-wai Wong",
+  "title": "Two-sided Online Bipartite Matching and Vertex Cover: Beating the Greedy Algorithm",
+  "year": 2015,
+  "venue": "ICALP",
+  "url": "https://link.springer.com/chapter/10.1007/978-3-662-47672-7_85"
+ },
+ "additional_refs": [
+  {
+   "authors": "Buddhima Gamlath, Michael Kapralov, Andreas Maggiori, Ola Svensson, David Wajc",
+   "title": "Online Matching with General Arrivals",
+   "year": 2019,
+   "venue": "FOCS",
+   "url": "https://arxiv.org/abs/1904.08255"
+  },
+  {
+   "authors": "Zhiyi Huang, Zhihao Gavin Tang, David Wajc",
+   "title": "Online Matching: A Brief Survey",
+   "year": 2024,
+   "venue": "SIGecom Exchanges",
+   "url": "https://www.sigecom.org/exchanges/volume_22/1/HUANG.pdf"
+  }
+ ],
+ "bibtex": "@misc{Wang2015,\n  author = {Yajun Wang and Sam Chiu-wai Wong},\n  title = {Two-sided Online Bipartite Matching and Vertex Cover: Beating the Greedy Algorithm},\n  year = {2015},\n  howpublished = {ICALP},\n  url = {https://link.springer.com/chapter/10.1007/978-3-662-47672-7_85},\n  note = {Source of ORdős Problem ORDOS-004}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/online-matching-general-vertex-arrivals.html",
+  "api": "https://ordos-problems.github.io/api/problems/online-matching-general-vertex-arrivals.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

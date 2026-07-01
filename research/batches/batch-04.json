@@ -1,0 +1,492 @@
+[
+ {
+  "id": "ef1-po-polynomial-time",
+  "title": "Computing EF1 and Pareto-optimal allocations in polynomial time",
+  "collection": "Market & Mechanism Design",
+  "area": "Fair Division",
+  "tags": [
+   "fair division",
+   "EF1",
+   "Pareto optimality",
+   "computational complexity",
+   "indivisible goods"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "For indivisible goods with additive valuations, an allocation that is both EF1 (envy-free up to one good) and Pareto-optimal always exists, but the known algorithm is only pseudo-polynomial. Can such an allocation be computed in truly polynomial time?",
+  "full_statement": "There are $n$ agents with additive valuations $v_i:2^M\\to\\mathbb{Z}_{\\ge0}$ over a set $M$ of $m$ indivisible goods, with the valuations given in binary. An allocation is EF1 (envy-free up to one good) if any agent's envy toward another vanishes after removing some single good from the envied bundle, and (fractionally) Pareto-optimal if no other (fractional) allocation makes some agent better off without making another worse off. Such an allocation always exists (the maximum-Nash-welfare allocation is one), so the question is purely computational: is there an algorithm running in time $\\mathrm{poly}(n,m,\\log V_{\\max})$ (where $V_{\\max}$ is the largest value) that outputs an allocation that is simultaneously EF1 and fractionally Pareto-optimal? The known algorithm runs in only pseudo-polynomial time (polynomial in the magnitude of values, not their bit-length). The problem is in PLS and is not known to be PLS-hard, NP-hard, or in P. Determine whether a truly polynomial-time algorithm exists.",
+  "known_results": "Upper bound: pseudo-polynomial (Barman-Krishnamurthy-Vaish 2018); truly polynomial for a constant number of agents or a constant number of distinct values. No lower bound known (not known NP-hard or PLS-hard). Listed as an open problem in the Aziz-Li-Moulin-Wu survey.",
+  "where_posed": {
+   "text": "Pseudo-polynomial algorithm and the open computational question from Barman, Krishnamurthy, Vaish, 'Finding Fair and Efficient Allocations', 2018, EC; listed open in the Aziz-Li-Moulin-Wu survey.",
+   "url": "https://arxiv.org/abs/1707.04731"
+  },
+  "source": {
+   "authors": "Siddharth Barman, Sanath Kumar Krishnamurthy, Rohit Vaish",
+   "title": "Finding Fair and Efficient Allocations",
+   "year": 2018,
+   "venue": "EC",
+   "url": "https://arxiv.org/abs/1707.04731"
+  },
+  "additional_refs": [
+   {
+    "authors": "Haris Aziz, Bo Li, Herve Moulin, Xiaowei Wu",
+    "title": "Algorithmic Fair Allocation of Indivisible Items: A Survey and New Questions",
+    "year": 2022,
+    "venue": "ACM SIGecom Exchanges",
+    "url": "https://www.sigecom.org/exchanges/volume_20/1/AZIZ.pdf"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "envy-free-cake-cutting-query-complexity",
+  "title": "Query complexity of envy-free cake cutting",
+  "collection": "Market & Mechanism Design",
+  "area": "Fair Division",
+  "tags": [
+   "cake cutting",
+   "envy-freeness",
+   "query complexity",
+   "Robertson-Webb",
+   "divisible goods"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "In the Robertson-Webb query model for envy-free cake cutting, a bounded protocol exists but uses a tower of six exponentials in $n$ queries, while the best lower bound is only quadratic. What is the true query complexity?",
+  "full_statement": "In cake cutting, a divisible good (the cake, modeled as $[0,1]$) is to be divided among $n$ agents with general nonatomic additive valuations. In the Robertson-Webb query model, a protocol learns agents' valuations only through 'cut' queries (asking an agent to mark a point giving a specified value) and 'evaluate' queries (asking an agent the value of a specified interval). An allocation is envy-free if no agent prefers another agent's piece to her own. Let $\\mathrm{RW}(n)$ be the worst-case number of Robertson-Webb queries required by any deterministic protocol that returns an envy-free allocation of $[0,1]$ among $n$ agents. A finite, bounded envy-free protocol exists for every $n$ (Aziz-Mackenzie), but its query bound is a tower of six exponentials in $n$; the best lower bound is only quadratic. Known: $\\mathrm{RW}(n)=\\Omega(n^2)$ and $\\mathrm{RW}(n)\\le n^{n^{n^{n^{n^{n}}}}}$. Determine the true asymptotic growth of $\\mathrm{RW}(n)$; even an elementary (tower-free) upper bound or a super-quadratic lower bound is open.",
+  "known_results": "Procaccia proved the best general lower bound, $\\Omega(n^2)$ Robertson-Webb queries. Aziz and Mackenzie gave the first finite bounded protocol for every number of agents, but the upper bound is a tower of six exponentials in $n$. This is one of the largest known gaps in fair division; substantial progress is known only for special cases such as four agents. The open problem is to determine the true asymptotic query complexity, or even to obtain either a tower-free upper bound or a super-quadratic lower bound.",
+  "where_posed": {
+   "text": "Bounded protocol with tower-of-exponentials query bound in Aziz, Mackenzie, 'A Discrete and Bounded Envy-Free Cake Cutting Protocol for Any Number of Agents', 2016, FOCS (CACM 2020).",
+   "url": "https://arxiv.org/abs/1604.03655"
+  },
+  "source": {
+   "authors": "Haris Aziz, Simon Mackenzie",
+   "title": "A Discrete and Bounded Envy-Free Cake Cutting Protocol for Any Number of Agents",
+   "year": 2016,
+   "venue": "FOCS (CACM 2020)",
+   "url": "https://arxiv.org/abs/1604.03655"
+  },
+  "additional_refs": [
+   {
+    "authors": "Ariel D. Procaccia",
+    "title": "Thou Shalt Covet Thy Neighbor's Cake",
+    "year": 2009,
+    "venue": "IJCAI",
+    "url": ""
+   },
+   {
+    "authors": "Simina Branzei, Noam Nisan",
+    "title": "The Query Complexity of Cake Cutting",
+    "year": 2022,
+    "venue": "NeurIPS",
+    "url": "https://arxiv.org/abs/1705.02946"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "max-smti-approximation",
+  "title": "Best approximation ratio for maximum stable matching with ties",
+  "collection": "Market & Mechanism Design",
+  "area": "Matching Markets",
+  "tags": [
+   "stable matching",
+   "ties",
+   "incomplete lists",
+   "approximation",
+   "inapproximability"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "In stable marriage with ties and incomplete lists (SMTI), finding a maximum-cardinality weakly stable matching is NP-hard. What is the optimal polynomial-time approximation ratio?",
+  "full_statement": "In the stable marriage problem with ties and incomplete lists (SMTI), agents rank only some potential partners (incomplete lists) and may be indifferent among several (ties). A matching is weakly stable if there is no pair who both strictly prefer each other to their assigned partners. Because of ties and incompleteness, weakly stable matchings can have different sizes, and finding a maximum-cardinality one (MAX-SMTI) is NP-hard (indeed APX-hard). Determine the optimal polynomial-time approximation ratio $\\alpha^*$ for MAX-SMTI. Known: $\\tfrac{4}{3}\\le\\alpha^*\\le\\tfrac{3}{2}$ assuming the Unique Games Conjecture (UGC), and $\\tfrac{33}{29}\\le\\alpha^*\\le\\tfrac{3}{2}$ unconditionally.",
+  "known_results": "The best general approximation algorithm has ratio $3/2$, with analyses due to McDermid and related work of Paluch and Kiraly. On the hardness side, no $(4/3-\\epsilon)$-approximation exists under the Unique Games Conjecture, and an unconditional NP-hardness bound of $33/29\\approx 1.138$ is known. The open problem is to determine the exact approximation threshold for MAX-SMTI, which currently lies between $4/3$ and $3/2$ under UGC and between $33/29$ and $3/2$ unconditionally.",
+  "where_posed": {
+   "text": "3/2-approximation in McDermid, 'A 3/2-Approximation Algorithm for General Stable Marriage', 2009, ICALP.",
+   "url": "https://link.springer.com/chapter/10.1007/978-3-642-02927-1_57"
+  },
+  "source": {
+   "authors": "Eric McDermid",
+   "title": "A 3/2-Approximation Algorithm for General Stable Marriage",
+   "year": 2009,
+   "venue": "ICALP",
+   "url": "https://link.springer.com/chapter/10.1007/978-3-642-02927-1_57"
+  },
+  "additional_refs": [
+   {
+    "authors": "Magnus M. Halldorsson, Kazuo Iwama, Shuichi Miyazaki, Hiroki Yanagisawa",
+    "title": "Improved Approximation Results for the Stable Marriage Problem",
+    "year": 2007,
+    "venue": "ACM Trans. Algorithms",
+    "url": "https://dl.acm.org/doi/10.1145/1273340.1273346"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "subsidy-envy-freeness-monotone",
+  "title": "Minimum subsidy for envy-freeness with monotone valuations",
+  "collection": "Market & Mechanism Design",
+  "area": "Fair Division",
+  "tags": [
+   "fair division",
+   "subsidy",
+   "envy-freeness",
+   "indivisible goods",
+   "money"
+  ],
+  "status": "open",
+  "confidence": "medium",
+  "short_statement": "Indivisible goods plus cash subsidies can eliminate envy. For additive valuations with item values in $[0,1]$, one dollar per agent suffices and is tight. What is the minimum per-agent subsidy for general monotone valuations?",
+  "full_statement": "When indivisible goods cannot be divided fairly, monetary subsidies can eliminate envy: some agents are given cash so that nobody prefers another agent's bundle-plus-cash to their own. Consider $n$ agents with monotone valuations $v_i:2^M\\to\\mathbb{R}_{\\ge0}$ satisfying the marginal bound $v_i(S\\cup\\{e\\})-v_i(S)\\le 1$ for all $S$ and $e$ (each item adds at most $1$). Let $s^*(n)$ be the smallest value such that every instance admits an allocation $(X_1,\\dots,X_n)$ together with per-agent subsidies $p_i\\ge0$ satisfying $\\max_i p_i\\le s^*(n)$ that is envy-free: $v_i(X_i)+p_i\\ge v_i(X_j)+p_j$ for all agents $i,j$. For additive valuations the tight total subsidy is $n-1$ (i.e., one dollar per agent on average suffices and is tight). Determine $s^*(n)$ for general monotone valuations.",
+  "known_results": "Additive: total subsidy n-1 suffices and is tight (Brustle et al. 2020). Monotone (general): per-agent upper bound improved to < n-1.5 (total ~ ($n^2$-n-1)/2); lower bound only n-1 total. The factor gap for monotone valuations is open; conjectured target is the additive bound.",
+  "where_posed": {
+   "text": "Additive tight bound and the monotone question from Brustle, Dippel, Narayan, Suzuki, Vetta, 'One Dollar Each Eliminates Envy', 2020, EC.",
+   "url": "https://arxiv.org/abs/1912.02797"
+  },
+  "source": {
+   "authors": "Johannes Brustle, Jack Dippel, Vishnu V. Narayan, Mashbat Suzuki, Adrian Vetta",
+   "title": "One Dollar Each Eliminates Envy",
+   "year": 2020,
+   "venue": "EC",
+   "url": "https://arxiv.org/abs/1912.02797"
+  },
+  "additional_refs": [
+   {
+    "authors": "Daniel Halpern, Nisarg Shah",
+    "title": "Fair Division with Subsidy",
+    "year": 2019,
+    "venue": "SAGT",
+    "url": "https://link.springer.com/chapter/10.1007/978-3-030-30473-7_25"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "lost-sales-inventory-positive-lead-time-optimal-policy",
+  "collection": "Operations Management",
+  "area": "Inventory",
+  "tags": [
+   "lost-sales",
+   "positive-lead-time",
+   "periodic-review",
+   "asymptotic-optimality",
+   "base-stock",
+   "constant-order-policy",
+   "curse-of-dimensionality"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Optimal policy structure for lost-sales inventory with positive lead time",
+  "short_statement": "For a periodic-review single-item inventory system with stochastic demand, lost sales, and a deterministic lead time $L \\ge 1$, characterize the structure of the cost-minimizing policy. It is provably neither base-stock nor constant-order for $L \\ge 1$, and no tractable characterization is known.",
+  "full_statement": "A single item is reviewed each period $t$ over an infinite horizon under the long-run average-cost criterion. Demands $D_t$ are i.i.d. nonnegative with known distribution. An order $q_t \\ge 0$ placed in period $t$ arrives after a deterministic lead time $L \\in \\mathbb{Z}_{\\ge 1}$, so the relevant state is the pipeline vector $\\mathbf{x}_t = (I_t, q_{t-L+1}, \\dots, q_{t-1}) \\in \\mathbb{R}_{\\ge 0}^{L}$, where $I_t$ is on-hand inventory; because the state is the entire vector of outstanding orders, the dynamic program is high-dimensional. With on-hand inventory after arrival $y_t$, demand is met up to availability and any remainder is LOST (not backlogged): $I_{t+1} = (y_t - D_t)^+$, with per-period cost $h\\,(y_t - D_t)^+ + p\\,(D_t - y_t)^+$ for holding cost $h>0$ and lost-sales penalty $p>0$. The objective is $\\min_{\\pi} \\limsup_{T\\to\\infty} \\frac{1}{T}\\,\\mathbb{E}^{\\pi}\\!\\left[\\sum_{t=1}^{T}\\big(h\\,I_{t+1} + p\\,(D_t - y_t)^+\\big)\\right]$. $$\\textbf{Open:}\\quad \\text{characterize the structure of an optimal policy } \\pi^\\star \\text{ for } L \\ge 1.$$ It is known that $\\pi^\\star$ is neither a base-stock nor a constant-order policy for $L\\ge 1$ (Zipkin 2008), and the value function lacks the convexity that makes the backlog model tractable. What remains genuinely open: a usable characterization of $\\pi^\\star$, explicit non-asymptotic optimality gaps for simple policies at moderate $L$, and whether a single simple policy is simultaneously near-optimal across all parameter regimes. Only asymptotic results exist: base-stock policies as the penalty grows, and constant-order policies as $L$ grows.",
+  "known_results": "The optimal policy can in principle be computed by dynamic programming but is intractable for $L \\ge 1$ due to the L-dimensional pipeline state, and its structure is uncharacterized; Zipkin (2008) shows it is neither base-stock nor constant-order. Two complementary asymptotic regimes are proven: (i) order-up-to/base-stock policies are asymptotically optimal as the lost-sales penalty p -> infinity (Huh, Janakiraman, Muckstadt, Rusmevichientong 2009); (ii) the constant-order policy is asymptotically optimal as the lead time L -> infinity (Goldberg et al. 2016), sharpened by Xin & Goldberg (2016) to an exponentially decaying optimality gap in L. Projected-inventory-level (PIL) policies are asymptotically optimal in BOTH regimes (van Jaarsveld & Arts 2024). What remains open: an exact characterization of the optimal policy for finite $L \\ge 1$, tight non-asymptotic optimality gaps at moderate L, and whether any simple policy is simultaneously optimal across all regimes. The Goldberg-Reiman-Wang (2021) survey frames this whole line as asymptotic analysis of an otherwise intractable problem.",
+  "where_posed": {
+   "text": "Stated/originated in Zipkin, 'On the Structure of Lost-Sales Inventory Models,' Operations Research 56(4):937-944, 2008, which proves the optimal policy is neither base-stock nor constant-order; framed as an open line in the Goldberg-Reiman-Wang (2021) survey.",
+   "url": "https://pubsonline.informs.org/doi/10.1287/opre.1070.0482"
+  },
+  "source": {
+   "authors": "Paul H. Zipkin",
+   "title": "On the Structure of Lost-Sales Inventory Models",
+   "year": 2008,
+   "venue": "Operations Research 56(4):937-944",
+   "url": "https://pubsonline.informs.org/doi/10.1287/opre.1070.0482"
+  },
+  "additional_refs": [
+   {
+    "authors": "Woonghee Tim Huh, Ganesh Janakiraman, John A. Muckstadt, Paat Rusmevichientong",
+    "title": "Asymptotic Optimality of Order-Up-To Policies in Lost Sales Inventory Systems",
+    "year": 2009,
+    "venue": "Management Science 55(3):404-420",
+    "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.1080.0945"
+   },
+   {
+    "authors": "David A. Goldberg, Dmitriy A. Katz-Rogozhnikov, Yingdong Lu, Mayank Sharma, Mark S. Squillante",
+    "title": "Asymptotic Optimality of Constant-Order Policies for Lost Sales Inventory Models with Large Lead Times",
+    "year": 2016,
+    "venue": "Mathematics of Operations Research 41(3):898-913 (arXiv:1211.4063)",
+    "url": "https://arxiv.org/abs/1211.4063"
+   },
+   {
+    "authors": "Linwei Xin, David A. Goldberg",
+    "title": "Optimality Gap of Constant-Order Policies Decays Exponentially in the Lead Time for Lost Sales Models",
+    "year": 2016,
+    "venue": "Operations Research 64(6):1556-1565 (arXiv:1409.1499)",
+    "url": "https://arxiv.org/abs/1409.1499"
+   },
+   {
+    "authors": "Willem van Jaarsveld, Joachim Arts",
+    "title": "Projected Inventory-Level Policies for Lost Sales Inventory Systems: Asymptotic Optimality in Two Regimes",
+    "year": 2024,
+    "venue": "Operations Research 72(5):1790-1805 (arXiv:2101.07519)",
+    "url": "https://pubsonline.informs.org/doi/10.1287/opre.2021.0032"
+   },
+   {
+    "authors": "David A. Goldberg, Martin I. Reiman, Qiong Wang",
+    "title": "A Survey of Recent Progress in the Asymptotic Analysis of Inventory Systems",
+    "year": 2021,
+    "venue": "Production and Operations Management 30(6):1718-1750",
+    "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/poms.13339"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "dual-sourcing-inventory-optimal-policy-structure",
+  "collection": "Operations Management",
+  "area": "Inventory",
+  "tags": [
+   "dual-sourcing",
+   "periodic-review",
+   "backlogging",
+   "tailored-base-surge",
+   "dual-index-policy",
+   "asymptotic-optimality",
+   "curse-of-dimensionality"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Optimal policy structure for dual-sourcing inventory (fast/slow sources)",
+  "short_statement": "A firm replenishes a single product from a cheap slow source and an expensive fast source under stochastic demand and full backlogging. When the lead-time gap is at least 2, the optimal ordering policy's structure is unknown and believed intractable; whether any simple policy (Tailored Base-Surge, dual-index, single-index) is optimal is open.",
+  "full_statement": "A single item is reviewed each period over an infinite horizon (discounted or long-run average cost) with i.i.d. demands $D_t$. Two sources are available: a regular source with per-unit cost $c_r$ and deterministic lead time $L_r$, and an expedited source with cost $c_e > c_r$ and lead time $L_e$, where $L_r > L_e \\ge 0$. In period $t$ the firm chooses order quantities $q^r_t, q^e_t \\ge 0$; unmet demand is fully backlogged with holding cost $h$ and backorder penalty $b$. The state must encode both outstanding-order pipelines, of dimension $\\sim (L_r - L_e)$, giving a high-dimensional MDP. A Tailored Base-Surge (TBS) policy fixes a constant regular order $q^r_t \\equiv r$ and uses an order-up-to rule $q^e_t = (S - \\widehat{IP}_t)^+$ at the expedited source, where $\\widehat{IP}_t$ is the expedited inventory position. $$\\textbf{Open:}\\quad \\text{characterize an optimal policy when the lead-time gap } L_r - L_e \\ge 2.$$ For $L_r - L_e = 1$ the optimal expedited decision is a base-stock rule, but for $L_r - L_e \\ge 2$ the optimal policy has no known simple structure and is conjectured intractable. What remains open: the exact structure of $\\pi^\\star$ for gap $\\ge 2$; whether TBS, dual-index, or single-index policies are exactly optimal in any nontrivial case; and non-asymptotic guarantees for moderate $L_r - L_e$. Only an asymptotic result is known: TBS is asymptotically optimal as the regular lead time $L_r \\to \\infty$ with $L_e$ fixed.",
+  "known_results": "For lead-time gap $L_r$ - $L_e$ = 1, the optimal expedited policy is base-stock and the problem is tractable; for gap >= 2 the optimal structure is unknown and the problem has 'resisted solution for over 40 years.' Heuristics perform well numerically but are not optimal in general: the dual-index policy (Veeraraghavan & Scheller-Wolf 2008) and new policy classes (Sheopuri-Janakiraman-Seshadri 2010); TBS analyzed by Janakiraman-Seshadri-Sheopuri 2015. The central proven result is that TBS is asymptotically optimal as $L_r$ -> infinity with $L_e$ fixed (Xin & Goldberg 2018); a 2026 working paper (Optimization Online) further shows the TBS optimality gap decays exponentially in $L_r$. What remains open: the exact optimal policy for any finite gap >= 2; whether any single simple policy class is exactly optimal; and tight non-asymptotic guarantees for moderate $L_r$ - $L_e$. The Goldberg-Reiman-Wang (2021) survey presents dual-sourcing as a flagship case where only asymptotic characterizations are available.",
+  "where_posed": {
+   "text": "Stated/originated in Xin & Goldberg, 'Asymptotic Optimality of Tailored Base-Surge Policies in Dual-Sourcing Inventory Systems,' Management Science 64(1):437-452, 2018; framed as a flagship open case in the Goldberg-Reiman-Wang (2021) survey.",
+   "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2016.2607"
+  },
+  "source": {
+   "authors": "Linwei Xin, David A. Goldberg",
+   "title": "Asymptotic Optimality of Tailored Base-Surge Policies in Dual-Sourcing Inventory Systems",
+   "year": 2018,
+   "venue": "Management Science 64(1):437-452 (arXiv:1503.01071)",
+   "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2016.2607"
+  },
+  "additional_refs": [
+   {
+    "authors": "Senthil Veeraraghavan, Alan Scheller-Wolf",
+    "title": "Now or Later: A Simple Policy for Effective Dual Sourcing in Capacitated Systems",
+    "year": 2008,
+    "venue": "Operations Research 56(4):850-864",
+    "url": "https://pubsonline.informs.org/doi/10.1287/opre.1080.0552"
+   },
+   {
+    "authors": "Anshul Sheopuri, Ganesh Janakiraman, Sridhar Seshadri",
+    "title": "New Policies for the Stochastic Inventory Control Problem with Two Supply Sources",
+    "year": 2010,
+    "venue": "Operations Research 58(3):734-745",
+    "url": "https://pubsonline.informs.org/doi/10.1287/opre.1090.0799"
+   },
+   {
+    "authors": "Ganesh Janakiraman, Sridhar Seshadri, Anshul Sheopuri",
+    "title": "Analysis of Tailored Base-Surge Policies in Dual Sourcing Inventory Systems",
+    "year": 2015,
+    "venue": "Management Science 61(7):1547-1561",
+    "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2014.1971"
+   },
+   {
+    "authors": "David A. Goldberg, Martin I. Reiman, Qiong Wang",
+    "title": "A Survey of Recent Progress in the Asymptotic Analysis of Inventory Systems",
+    "year": 2021,
+    "venue": "Production and Operations Management 30(6):1718-1750",
+    "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/poms.13339"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "optimal-policy-one-warehouse-multi-retailer",
+  "collection": "Operations Management",
+  "area": "Inventory",
+  "tags": [
+   "multi-echelon",
+   "distribution-system",
+   "base-stock",
+   "balance-assumption",
+   "allocation-problem",
+   "approximation-algorithms"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Optimal policy for one-warehouse multi-retailer (distribution) inventory systems",
+  "short_statement": "A single warehouse ships, with positive lead times, to several retailers each facing independent random demand. The optimal replenishment-and-allocation policy is unknown: echelon base-stock is optimal only under the artificial balance assumption (which permits negative allocations); without it, the true optimal structure is open.",
+  "full_statement": "Consider a periodic-review, one-warehouse $N$-retailer distribution (divergent) system over an infinite horizon. Retailer $i$ faces i.i.d. demand $D_i$ per period, with deterministic lead times $L_0$ (supplier$\\to$warehouse) and $L_i$ (warehouse$\\to$retailer $i$). Unit holding costs $h_0 \\ge 0$ at the warehouse and $h_i$ at retailer $i$, and unit backorder penalty $p_i$ at retailer $i$, are charged per period. Each period the warehouse orders $q_0 \\ge 0$ and then allocates on-hand stock $y_0$ among retailers as shipments $q_i \\ge 0$ subject to $\\sum_{i=1}^N q_i \\le y_0$ (no lateral transshipment, no return). Holding and backorder costs accrue at the retailers and holding cost at the warehouse. The objective is $\\min \\limsup_{T\\to\\infty}\\frac1T\\,\\mathbb{E}\\big[\\sum_{t=1}^{T}(h_0 (y_0^t)^+ + \\sum_{i=1}^N (h_i I_i^t + p_i B_i^t))\\big]$ over admissible policies. Clark and Scarf (1960) proved echelon base-stock policies optimal for SERIAL systems, but here the difficulty is the allocation/imbalance problem: once stock is shipped down it cannot be moved sideways, so the warehouse cannot always achieve desired echelon positions. \\textbf{Open:} Characterize the structure of an optimal policy, or prove none of a simple form exists. If the constraint $\\sum_i q_i \\le y_0$ is RELAXED to allow $q_i \\in \\mathbb{R}$ (the balance/allocation assumption), the problem decomposes and an echelon base-stock policy is optimal; under the true constraint $q_i \\ge 0$, echelon base-stock is provably suboptimal and the optimal policy is unknown. Is there a polynomial-time-computable or closed-form characterization of the optimal (or a provably near-optimal, with explicit small constant) replenishment-and-allocation policy?",
+  "known_results": "Echelon base-stock policies are optimal ONLY under the balance/allocation assumption (Zipkin 1984; Federgruen-Zipkin 1984; Eppen-Schrage), which relaxes the no-lateral-transshipment constraint by permitting negative allocations. Under the true $q_i$ >= 0 constraint, echelon base-stock is provably suboptimal and the exact optimal policy is uncharacterized. For the deterministic-demand lot-sizing OWMR variant, Levi-Roundy-Shmoys-Sviridenko (2008) gave a 1.8-approximation via LP rounding; power-of-two policies give ~1.26; recent FPTAS-based guarantees exist (Operations Research 2024). For the stochastic divergent problem, only heuristics with numerically-assessed gaps and asymptotic-optimality results (e.g., Lagrangian policies for lost-sales multi-store systems) are known. A clean structural characterization, or a simple policy with an explicit small constant-factor guarantee for the stochastic backlog objective, remains open as of 2024-2025.",
+  "where_posed": {
+   "text": "Originates with Clark & Scarf, 'Optimal Policies for a Multi-Echelon Inventory Problem,' Management Science 6(4):475-490, 1960 (which solved the serial case); the divergent/distribution open problem and the imbalance obstruction are developed in Zipkin (1984) and Federgruen-Zipkin (1984), and surveyed in de Kok et al. (2018).",
+   "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.6.4.475"
+  },
+  "source": {
+   "authors": "Andrew J. Clark, Herbert Scarf",
+   "title": "Optimal Policies for a Multi-Echelon Inventory Problem",
+   "year": 1960,
+   "venue": "Management Science 6(4):475-490",
+   "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.6.4.475"
+  },
+  "additional_refs": [
+   {
+    "authors": "Paul Zipkin",
+    "title": "On the Imbalance of Inventories in Multi-Echelon Systems",
+    "year": 1984,
+    "venue": "Mathematics of Operations Research 9(3):402-423",
+    "url": "https://pubsonline.informs.org/doi/10.1287/moor.9.3.402"
+   },
+   {
+    "authors": "Awi Federgruen, Paul Zipkin",
+    "title": "Allocation policies and cost approximations for multilocation inventory systems",
+    "year": 1984,
+    "venue": "Naval Research Logistics Quarterly 31(1):97-129",
+    "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/nav.3800310112"
+   },
+   {
+    "authors": "Retsef Levi, Robin Roundy, David B. Shmoys, Maxim Sviridenko",
+    "title": "A Constant Approximation Algorithm for the One-Warehouse Multiretailer Problem",
+    "year": 2008,
+    "venue": "Management Science 54(4):763-776",
+    "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.1070.0781"
+   },
+   {
+    "authors": "Ton de Kok, Christopher Grob, Marco Laumanns, Stefan Minner, Jörg Rambau, Konrad Schade",
+    "title": "A typology and literature review on stochastic multi-echelon inventory models",
+    "year": 2018,
+    "venue": "European Journal of Operational Research 269(3):955-983",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S0377221718301802"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "closed-form-optimal-policy-general-assembly-systems",
+  "collection": "Operations Management",
+  "area": "Inventory",
+  "tags": [
+   "multi-echelon",
+   "assembly-system",
+   "echelon-base-stock",
+   "long-run-balance",
+   "fixed-ordering-cost"
+  ],
+  "status": "partially resolved",
+  "confidence": "medium",
+  "title": "Tractable optimal control of assembly systems from arbitrary (imbalanced) initial inventory",
+  "short_statement": "In an assembly system, components with their own suppliers and lead times combine to meet random demand. For arbitrary initial imbalance the optimum is a balanced echelon base-stock policy with time-varying levels (Chen-Muharremoglu); open is whether those dynamic levels admit a closed-form/efficient characterization, and the structure once fixed ordering costs are added.",
+  "full_statement": "Consider an $M$-component assembly system (serial-assembly / in-tree topology): component $j$ is procured with lead time $\\ell_j$ and assembled into one finished unit. End demand is stochastic i.i.d.; linear holding costs apply at each stage and a backorder penalty at the finished-goods stage; the objective is long-run average (or discounted) cost. The issue is how to coordinate component orders when component inventories are out of balance. Rosling (1989) proves that under an initial-condition assumption ('long-run balance,' i.e. echelon inventory positions ordered consistently across components) the assembly system is equivalent to a serial system and a stationary balanced echelon base-stock policy with constant order-up-to levels $\\{s_j\\}$ is optimal. Chen-Muharremoglu (2014) extend optimality to ANY initial state: the optimal policy is a balanced echelon base-stock policy with dynamically evolving levels $\\{s_j^t\\}$, and Rosling's stationary policy is optimal whenever initial echelon inventory positions are non-decreasing in component index. \\textbf{Open:} (i) Is there a closed-form or polynomial-time characterization of the time-varying levels $s_j^t$ under arbitrary initial imbalance (beyond an existence/structure result)? (ii) What is the optimal policy structure for assembly systems with positive lead times and fixed ordering costs $K_j>0$, where the serial reduction and base-stock optimality are not known to hold?",
+  "known_results": "Rosling (1989) reduced assembly systems (without setup costs) to serial systems under a 'long-run balance' initial condition, giving optimality of a stationary balanced echelon base-stock policy. Chen-Muharremoglu (2014, SSRN 2475218) closed the STRUCTURAL gap for arbitrary initial imbalance: the optimum is a balanced echelon base-stock policy with time-varying base-stock levels, and Rosling's stationary policy is optimal under the easy-to-check condition that initial echelon inventory positions are non-decreasing in item index. Thus the qualitative optimal-policy structure is essentially known. What remains genuinely open: (a) an explicit closed-form / efficient computation of the time-varying levels under arbitrary initial states; and (b) the optimal policy structure for assembly systems WITH fixed ordering costs (and general non-in-tree topologies with imbalance), where serial reduction is not known to apply. Confidence is medium because the headline structural problem is largely resolved; the open content is the narrower computational/closed-form and fixed-cost extensions.",
+  "where_posed": {
+   "text": "Originates with Rosling, 'Optimal Inventory Policies for Assembly Systems Under Random Demands,' Operations Research 37(4):565-579, 1989; the arbitrary-imbalance structural extension and the remaining open computational/fixed-cost gaps are framed in Chen & Muharremoglu, 'Optimal Policies for Assembly Systems: Completing Rosling's Characterization' (2014).",
+   "url": "https://pubsonline.informs.org/doi/10.1287/opre.37.4.565"
+  },
+  "source": {
+   "authors": "Kaj Rosling",
+   "title": "Optimal Inventory Policies for Assembly Systems Under Random Demands",
+   "year": 1989,
+   "venue": "Operations Research 37(4):565-579",
+   "url": "https://pubsonline.informs.org/doi/10.1287/opre.37.4.565"
+  },
+  "additional_refs": [
+   {
+    "authors": "Andrew J. Clark, Herbert Scarf",
+    "title": "Optimal Policies for a Multi-Echelon Inventory Problem",
+    "year": 1960,
+    "venue": "Management Science 6(4):475-490",
+    "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.6.4.475"
+   },
+   {
+    "authors": "Shaokuan Chen, Alp Muharremoglu",
+    "title": "Optimal Policies for Assembly Systems: Completing Rosling's Characterization",
+    "year": 2014,
+    "venue": "Working paper, University of Texas at Dallas (SSRN 2475218)",
+    "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2475218"
+   },
+   {
+    "authors": "Ton de Kok, Christopher Grob, Marco Laumanns, Stefan Minner, Jörg Rambau, Konrad Schade",
+    "title": "A typology and literature review on stochastic multi-echelon inventory models",
+    "year": 2018,
+    "venue": "European Journal of Operational Research 269(3):955-983",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S0377221718301802"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "weber-weiss-whittle-index-asymptotic-optimality",
+  "collection": "Operations Research",
+  "area": "Bandits",
+  "tags": [
+   "restless-bandits",
+   "whittle-index",
+   "asymptotic-optimality",
+   "mean-field",
+   "global-attractor",
+   "indexability"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "title": "Whittle index asymptotic optimality and the global attractor condition (Weber-Weiss)",
+  "short_statement": "Whittle (1988) conjectured his index policy is asymptotically optimal for restless bandits as the number of arms grows. Weber-Weiss (1990) proved this under indexability plus a global-attractor condition on the mean-field ODE, but gave a counterexample where it fails. Open: when the global-attractor/non-degeneracy conditions hold and the minimal assumptions for each optimality-gap rate.",
+  "full_statement": "Consider $N$ arms, each a two-action ($a\\in\\{0,1\\}$) MDP with common kernels $P^0,P^1$ and rewards $R^0,R^1$ on a finite state space, under the hard constraint that exactly $\\alpha N$ arms are activated each time, with the long-run average-reward criterion. Let $V^{\\mathrm{opt}}(N)$ be the optimal value and $V^{\\mathrm{rel}}(N)=N\\rho^{\\mathrm{rel}}$ Whittle's relaxation value (the per-period constraint replaced by its time-average), which upper-bounds $V^{\\mathrm{opt}}(N)$. A bandit is $\\emph{indexable}$ if the set of states where the passive action is optimal in the $\\nu$-subsidized single-arm MDP is monotone non-decreasing in the subsidy $\\nu$; the Whittle index $\\nu_i$ is the smallest $\\nu$ making passive optimal in state $i$, and the Whittle Index Policy (WIP) activates the $\\alpha N$ highest-index arms. Let $\\mathbf m(t)\\in\\Delta^d$ be the empirical state distribution; under WIP it follows, as $N\\to\\infty$, a piecewise-affine mean-field drift $\\dot{\\mathbf m}=\\phi(\\mathbf m)$ with fixed point $\\mathbf m^*$. $\\textbf{Whittle's conjecture: }$ $V_{\\mathrm{WIP}}(N)/N\\to\\rho^{\\mathrm{rel}}$. $\\textbf{Weber-Weiss (1990): }$ if the bandit is indexable and $\\mathbf m^*$ is a $\\emph{global attractor}$, then $V_{\\mathrm{WIP}}(N)/N\\to\\rho^{\\mathrm{rel}}$; and there exists an indexable instance whose ODE has a stable limit cycle (no global attractor) for which WIP is $\\emph{not}$ asymptotically optimal. $\\textbf{Open: }$ (a) a checkable characterization of when the global-attractor / Uniform Global Attractor Property holds; (b) the tight minimal-assumption characterization of when the gap is $O(\\sqrt N)$ vs $O(1)$ vs $O(e^{-cN})$, and whether non-degeneracy/local stability are necessary for the exponential rate for index/priority-type policies.",
+  "known_results": "Proven: (i) Weber-Weiss (1990) — indexability + a global attractor of the mean-field ODE implies WIP is asymptotically optimal, plus an indexable counterexample (stable limit cycle) where WIP is NOT asymptotically optimal, so Whittle's conjecture is false in general (a technical gap patched by the 1991 addendum). (ii) Gast-Gaujal-Yan (2023) — under indexability + uniform global attractor + a non-degenerate fixed point, the gap is $O(e^{-cN})$; at a degenerate fixed point it can be only $O(1/\\sqrt{N})$; with no global attractor WIP converges to a limit-cycle time-average and is generally suboptimal. (iii) Gast-Gaujal-Yan (Math of OR 2024) — necessary AND sufficient conditions for general LP/priority policies for each rate regime; an explicit LP-index policy is asymptotically optimal with $O(1/\\sqrt{N})$ on ALL models, exponential under non-degeneracy + UGAP. (iv) Verloop (2016) gives asymptotic optimality of priority policies (incl. non-indexable) under a global attractor. (v) Hong-Xie-Chen-Wang removed the hard-to-verify assumptions: $O(1/\\sqrt{N})$ without UGAP (FTVA 2023; unichain+aperiodicity 2025), and $O(e^{-CN})$ under aperiodic-unichain + non-degeneracy + local stability with a matching lower bound (two-set policy 2024). Indexability itself is hard to verify; sufficient conditions exist only for structured families (Niño-Mora's partial conservation laws). Still open: a practically checkable characterization of the global-attractor/UGAP condition; the exact minimal assumptions per rate regime (esp. for index/priority policies); and whether indexability plus something easily verifiable can guarantee asymptotic (let alone exponential) optimality of the Whittle index policy specifically.",
+  "where_posed": {
+   "text": "Conjecture originates in Whittle, 'Restless bandits: activity allocation in a changing world,' J. Appl. Prob. 25A:287-298, 1988; the global-attractor condition and counterexample are established in Weber & Weiss, 'On an index policy for restless bandits,' J. Appl. Prob. 27(3):637-648, 1990 (addendum 1991).",
+   "url": "https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/on-an-index-policy-for-restless-bandits/33B68AAB7D03097C5C17DA889D12B78A"
+  },
+  "source": {
+   "authors": "R. R. Weber, G. Weiss",
+   "title": "On an index policy for restless bandits",
+   "year": 1990,
+   "venue": "Journal of Applied Probability 27(3):637-648 (addendum: Adv. Appl. Prob. 23 (1991):429-430)",
+   "url": "https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/on-an-index-policy-for-restless-bandits/33B68AAB7D03097C5C17DA889D12B78A"
+  },
+  "additional_refs": [
+   {
+    "authors": "P. Whittle",
+    "title": "Restless bandits: activity allocation in a changing world",
+    "year": 1988,
+    "venue": "Journal of Applied Probability 25A:287-298",
+    "url": "https://www.semanticscholar.org/paper/Restless-bandits:-activity-allocation-in-a-changing-Whittle/45196e90c3b265cbcd008af6e1aac97128e525dc"
+   },
+   {
+    "authors": "I. M. Verloop",
+    "title": "Asymptotically optimal priority policies for indexable and nonindexable restless bandits",
+    "year": 2016,
+    "venue": "Annals of Applied Probability 26(4):1947-1995 (arXiv:1609.00563)",
+    "url": "https://arxiv.org/abs/1609.00563"
+   },
+   {
+    "authors": "N. Gast, B. Gaujal, C. Yan",
+    "title": "Exponential asymptotic optimality of Whittle index policy",
+    "year": 2023,
+    "venue": "Queueing Systems 104:1-44 (arXiv:2012.09064)",
+    "url": "https://link.springer.com/article/10.1007/s11134-023-09875-x"
+   },
+   {
+    "authors": "N. Gast, B. Gaujal, C. Yan",
+    "title": "Linear program-based policies for restless bandits: necessary and sufficient conditions for (exponentially fast) asymptotic optimality",
+    "year": 2024,
+    "venue": "Mathematics of Operations Research (arXiv:2106.10067)",
+    "url": "https://pubsonline.informs.org/doi/10.1287/moor.2022.0101"
+   },
+   {
+    "authors": "Y. Hong, Q. Xie, Y. Chen, W. Wang",
+    "title": "Restless bandits with average reward: breaking the uniform global attractor assumption (Follow-the-Virtual-Advice)",
+    "year": 2023,
+    "venue": "NeurIPS 2023 (arXiv:2306.00196)",
+    "url": "https://arxiv.org/abs/2306.00196"
+   },
+   {
+    "authors": "Y. Hong, Q. Xie, Y. Chen, W. Wang",
+    "title": "Unichain and aperiodicity are sufficient for asymptotic optimality of average-reward restless bandits",
+    "year": 2025,
+    "venue": "Mathematics of Operations Research (arXiv:2402.05689)",
+    "url": "https://arxiv.org/abs/2402.05689"
+   },
+   {
+    "authors": "Y. Hong, Q. Xie, Y. Chen, W. Wang",
+    "title": "Achieving exponential asymptotic optimality in average-reward restless bandits without global attractor assumption (two-set policy)",
+    "year": 2024,
+    "venue": "arXiv:2405.17882",
+    "url": "https://arxiv.org/abs/2405.17882"
+   }
+  ],
+  "enabled": true
+ }
+]

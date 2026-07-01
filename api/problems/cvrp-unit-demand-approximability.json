@@ -1,0 +1,51 @@
+{
+ "number": 52,
+ "ref": "ORDOS-052",
+ "id": "cvrp-unit-demand-approximability",
+ "title": "Approximability of Unit-Demand Capacitated Vehicle Routing",
+ "collection": "Approximation & Discrepancy",
+ "area": "Vehicle Routing",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "CVRP",
+  "vehicle routing",
+  "iterated tour partitioning",
+  "approximation ratio"
+ ],
+ "short_statement": "In capacitated vehicle routing, the classic iterated tour partitioning gives ratio $\\alpha+1$ ($\\alpha$ = best TSP ratio). A 2021 breakthrough shaved off a tiny amount; whether the $+1$ can be reduced - ideally to match TSP - is open.",
+ "open_problem": "can $\\rho$ be pushed toward $\\alpha + o(1)$, and is there CVRP-specific hardness beyond the TSP-inherited bound?",
+ "full_statement": "In capacitated vehicle routing, vehicles of capacity $Q$ based at a depot must together visit all customers (each with unit demand) using minimum total travel distance. For unit-demand (and splittable) metric CVRP, let $\\rho$ be the best polynomial-time approximation ratio and $\\alpha$ the best metric-TSP ratio. Classic iterated tour partitioning gives $\\rho \\le \\alpha + 1$. Blauth-Traub-Vygen improved this to $\\rho \\le \\alpha + 1 - \\varepsilon$ with $\\varepsilon > 1/3000$. \\textbf{Open:} can $\\rho$ be pushed toward $\\alpha + o(1)$, and is there CVRP-specific hardness beyond the TSP-inherited bound?",
+ "known_results": "Iterated tour partitioning (Haimovich-Rinnooy Kan 1985) gives $\\alpha$+1. Improved to $\\alpha$+1-$\\epsilon$, $\\epsilon$>$1/3000$ (Blauth-Traub-Vygen 2021/2023) — first improvement in ~35 years. Hardness only TSP-inherited. Exact approximability open.",
+ "where_posed": {
+  "text": "The first improvement over alpha+1 (and the open question of pushing toward alpha) is in Blauth, Traub, Vygen, 'Improving the Approximation Ratio for Capacitated Vehicle Routing,' Mathematical Programming (IPCO 2021); the alpha+1 baseline from Haimovich-Rinnooy Kan (1985).",
+  "url": "https://arxiv.org/abs/2011.05235"
+ },
+ "source": {
+  "authors": "Jannis Blauth, Vera Traub, Jens Vygen",
+  "title": "Improving the Approximation Ratio for Capacitated Vehicle Routing",
+  "year": 2023,
+  "venue": "Mathematical Programming (IPCO 2021)",
+  "url": "https://arxiv.org/abs/2011.05235"
+ },
+ "additional_refs": [
+  {
+   "authors": "Mordecai Haimovich, Alexander H. G. Rinnooy Kan",
+   "title": "Bounds and Heuristics for Capacitated Routing Problems",
+   "year": 1985,
+   "venue": "Mathematics of Operations Research",
+   "url": "https://doi.org/10.1287/moor.10.4.527"
+  }
+ ],
+ "bibtex": "@misc{Blauth2023,\n  author = {Jannis Blauth and Vera Traub and Jens Vygen},\n  title = {Improving the Approximation Ratio for Capacitated Vehicle Routing},\n  year = {2023},\n  howpublished = {Mathematical Programming (IPCO 2021)},\n  url = {https://arxiv.org/abs/2011.05235},\n  note = {Source of ORdős Problem ORDOS-052}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/cvrp-unit-demand-approximability.html",
+  "api": "https://ordos-problems.github.io/api/problems/cvrp-unit-demand-approximability.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

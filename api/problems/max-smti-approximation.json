@@ -1,0 +1,52 @@
+{
+ "number": 30,
+ "ref": "ORDOS-030",
+ "id": "max-smti-approximation",
+ "title": "Best approximation ratio for maximum stable matching with ties",
+ "collection": "Market & Mechanism Design",
+ "area": "Matching Markets",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "stable matching",
+  "ties",
+  "incomplete lists",
+  "approximation",
+  "inapproximability"
+ ],
+ "short_statement": "In stable marriage with ties and incomplete lists (SMTI), finding a maximum-cardinality weakly stable matching is NP-hard. What is the optimal polynomial-time approximation ratio?",
+ "open_problem": "Determine the optimal polynomial-time approximation ratio $\\alpha^*$ for MAX-SMTI.",
+ "full_statement": "In the stable marriage problem with ties and incomplete lists (SMTI), agents rank only some potential partners (incomplete lists) and may be indifferent among several (ties). A matching is weakly stable if there is no pair who both strictly prefer each other to their assigned partners. Because of ties and incompleteness, weakly stable matchings can have different sizes, and finding a maximum-cardinality one (MAX-SMTI) is NP-hard (indeed APX-hard). Determine the optimal polynomial-time approximation ratio $\\alpha^*$ for MAX-SMTI. Known: $\\tfrac{4}{3}\\le\\alpha^*\\le\\tfrac{3}{2}$ assuming the Unique Games Conjecture (UGC), and $\\tfrac{33}{29}\\le\\alpha^*\\le\\tfrac{3}{2}$ unconditionally.",
+ "known_results": "The best general approximation algorithm has ratio $3/2$, with analyses due to McDermid and related work of Paluch and Kiraly. On the hardness side, no $(4/3-\\epsilon)$-approximation exists under the Unique Games Conjecture, and an unconditional NP-hardness bound of $33/29\\approx 1.138$ is known. The open problem is to determine the exact approximation threshold for MAX-SMTI, which currently lies between $4/3$ and $3/2$ under UGC and between $33/29$ and $3/2$ unconditionally.",
+ "where_posed": {
+  "text": "3/2-approximation in McDermid, 'A 3/2-Approximation Algorithm for General Stable Marriage', 2009, ICALP.",
+  "url": "https://link.springer.com/chapter/10.1007/978-3-642-02927-1_57"
+ },
+ "source": {
+  "authors": "Eric McDermid",
+  "title": "A 3/2-Approximation Algorithm for General Stable Marriage",
+  "year": 2009,
+  "venue": "ICALP",
+  "url": "https://link.springer.com/chapter/10.1007/978-3-642-02927-1_57"
+ },
+ "additional_refs": [
+  {
+   "authors": "Magnus M. Halldorsson, Kazuo Iwama, Shuichi Miyazaki, Hiroki Yanagisawa",
+   "title": "Improved Approximation Results for the Stable Marriage Problem",
+   "year": 2007,
+   "venue": "ACM Trans. Algorithms",
+   "url": "https://dl.acm.org/doi/10.1145/1273340.1273346"
+  }
+ ],
+ "bibtex": "@misc{McDermid2009,\n  author = {Eric McDermid},\n  title = {A 3/2-Approximation Algorithm for General Stable Marriage},\n  year = {2009},\n  howpublished = {ICALP},\n  url = {https://link.springer.com/chapter/10.1007/978-3-642-02927-1_57},\n  note = {Source of ORdős Problem ORDOS-030}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/max-smti-approximation.html",
+  "api": "https://ordos-problems.github.io/api/problems/max-smti-approximation.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

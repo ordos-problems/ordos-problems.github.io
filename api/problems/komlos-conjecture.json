@@ -1,0 +1,51 @@
+{
+ "number": 50,
+ "ref": "ORDOS-050",
+ "id": "komlos-conjecture",
+ "title": "Komlos Conjecture (O(1) Discrepancy of Unit-Norm Vectors)",
+ "collection": "Approximation & Discrepancy",
+ "area": "Discrepancy",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "discrepancy",
+  "Komlos",
+  "vector balancing",
+  "combinatorial discrepancy"
+ ],
+ "short_statement": "Given any vectors of Euclidean length at most $1$, the Komlos conjecture says one can sign them so every coordinate of the signed sum stays bounded by a universal constant, independent of dimension or count. It generalizes the Beck-Fiala conjecture.",
+ "open_problem": "Prove or refute the Komlos conjecture that unit Euclidean norm vectors can always be signed to have $O(1)$ discrepancy in every coordinate.",
+ "full_statement": "Given any collection of vectors each of Euclidean length at most 1, the Komlos conjecture says you can attach a $+$ or $-$ sign to each so that every coordinate of the signed sum stays bounded by a universal constant — no matter how many vectors there are or what dimension they live in. \\textbf{Conjecture (Komlos):} there is a universal constant $K$ such that for any vectors $v_1,\\dots,v_n \\in \\mathbb{R}^m$ with $\\|v_i\\|_2 \\le 1$, there exist signs $\\varepsilon_i \\in \\{\\pm 1\\}$ with $\\big\\|\\sum_i \\varepsilon_i v_i\\big\\|_\\infty \\le K = O(1)$, independent of $m$ and $n$. This generalizes the Beck-Fiala conjecture.",
+ "known_results": "The conjecture predicts a universal $O(1)$ bound, independent of both the dimension and the number of vectors. Banaszczyk's theorem gives the best classical general bound, $O(\\sqrt{\\log n})$, and Bansal, Dadush, and Garg made this algorithmic. Bansal and Jiang recently improved the dependence to $O((\\log n)^{1/4})$. The best known lower bound on the universal constant is about $2.414$, and a proof of Komlos would imply the Beck-Fiala conjecture.",
+ "where_posed": {
+  "text": "A classical conjecture in discrepancy theory; stated in Nikolov's Prague Summer School lecture notes on Discrepancy Theory (2018).",
+  "url": "https://www.cs.toronto.edu/~anikolov/Prague18/Lectures/lect3.pdf"
+ },
+ "source": {
+  "authors": "Aleksandar Nikolov",
+  "title": "Prague Summer School: Discrepancy Theory (Lecture notes)",
+  "year": 2018,
+  "venue": "Lecture notes (survey)",
+  "url": "https://www.cs.toronto.edu/~anikolov/Prague18/Lectures/lect3.pdf"
+ },
+ "additional_refs": [
+  {
+   "authors": "Nikhil Bansal, Daniel Dadush, Shashwat Garg",
+   "title": "An Algorithm for Komlos Conjecture Matching Banaszczyk's Bound",
+   "year": 2019,
+   "venue": "SIAM J. Computing (FOCS 2016)",
+   "url": "https://arxiv.org/abs/1605.02882"
+  }
+ ],
+ "bibtex": "@misc{Nikolov2018,\n  author = {Aleksandar Nikolov},\n  title = {Prague Summer School: Discrepancy Theory (Lecture notes)},\n  year = {2018},\n  howpublished = {Lecture notes (survey)},\n  url = {https://www.cs.toronto.edu/~anikolov/Prague18/Lectures/lect3.pdf},\n  note = {Source of ORdős Problem ORDOS-050}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/komlos-conjecture.html",
+  "api": "https://ordos-problems.github.io/api/problems/komlos-conjecture.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

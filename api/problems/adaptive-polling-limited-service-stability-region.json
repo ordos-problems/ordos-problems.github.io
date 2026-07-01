@@ -1,0 +1,44 @@
+{
+ "number": 106,
+ "ref": "ORDOS-106",
+ "id": "adaptive-polling-limited-service-stability-region",
+ "title": "Exact stability region for adaptive limited-service polling",
+ "collection": "Applied Probability",
+ "area": "Queueing Theory",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "queueing",
+  "polling systems",
+  "stability",
+  "fluid limits",
+  "stochastic networks"
+ ],
+ "short_statement": "In adaptive cyclic polling with limited service, characterize the exact stability region, including whether it can depend on the full primitive distributions rather than any finite set of moments.",
+ "open_problem": "Characterize the exact stability region of adaptive polling systems with general limited-service disciplines, and determine whether finite-moment data can ever be sufficient.",
+ "full_statement": "Consider a single-server cyclic polling system with three queues. The server follows an adaptive mechanism: if it finds a queue empty in one cycle, it may skip that queue in the next cycle. Under limited service, each visit serves at most a fixed number of customers before the server switches. For some special limited-service cases, fluid equations give sharp stability and instability conditions, but for general limited service they leave a nontrivial gap. Chernova, Foss, and Kim conjecture that this gap reflects a genuine phenomenon: stability may depend on the entire distributions of interarrival, service, and switch-over times, not merely on traffic intensities or finitely many moments. The open problem is to characterize the exact stability region and decide how distributional information enters it.",
+ "known_results": "For the adaptive polling model with a one-limited second queue, tight fluid equations can be derived. For more general limited-service disciplines, existing fluid bounds provide separate sufficient conditions for stability and instability but do not meet. The authors give examples showing that changing higher distributional features while keeping low moments fixed can change the limiting fractions that control stability. The remaining open problem is to turn this evidence into a complete stability criterion, or to identify a finite-dimensional summary that actually determines stability.",
+ "where_posed": {
+  "text": "Discussion and conjectures in Chernova, Foss, and Kim, 'On the Stability of a Polling System with an Adaptive Service Mechanism'.",
+  "url": "https://arxiv.org/abs/1105.2069"
+ },
+ "source": {
+  "authors": "Natalia Chernova, Sergey Foss, Bara Kim",
+  "title": "On the Stability of a Polling System with an Adaptive Service Mechanism",
+  "year": 2012,
+  "venue": "Annals of Operations Research",
+  "url": "https://arxiv.org/abs/1105.2069"
+ },
+ "additional_refs": [],
+ "bibtex": "@misc{Chernova2012,\n  author = {Natalia Chernova and Sergey Foss and Bara Kim},\n  title = {On the Stability of a Polling System with an Adaptive Service Mechanism},\n  year = {2012},\n  howpublished = {Annals of Operations Research},\n  url = {https://arxiv.org/abs/1105.2069},\n  note = {Source of ORdős Problem ORDOS-106}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/adaptive-polling-limited-service-stability-region.html",
+  "api": "https://ordos-problems.github.io/api/problems/adaptive-polling-limited-service-stability-region.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

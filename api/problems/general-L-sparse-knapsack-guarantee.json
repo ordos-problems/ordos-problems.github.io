@@ -1,0 +1,54 @@
+{
+ "number": 69,
+ "ref": "ORDOS-069",
+ "id": "general-L-sparse-knapsack-guarantee",
+ "title": "Any nonzero guarantee for the most general L-sparse knapsack",
+ "collection": "Online Resource Allocation (Ma notes)",
+ "area": "Online Resource Allocation",
+ "status": "open",
+ "confidence": "medium",
+ "contributor": "Will Ma",
+ "tags": [
+  "L-sparse knapsack",
+  "online resource allocation",
+  "fluid relaxation",
+  "competitive ratio",
+  "will-ma-notes",
+  "permission-pending"
+ ],
+ "short_statement": "The most general structure here is $L$-sparse knapsack: each product consumes a positive amount of up to $L$ resources. Nothing is known about online guarantees in this setting. The open problem asks for an adversarial-order guarantee that is $\\approx 0.319$ when $L=1$ and remains nonzero for all $L$.",
+ "open_problem": "is it possible to derive an adversarial-order guarantee that is $1/(3+e^{-2}) \\approx 0.319$ when $L=1$ and nonzero for all $L$? Currently nothing is known in this most general setting.",
+ "full_statement": "The most general constraint structure in this framework is $L$-sparse knapsack: each product consumes a positive amount of up to $L$ different resources. For $L$-sparse knapsack (each product consumes a positive amount $s_{ij}\\in[0,1]$ of up to $L$ resources, i.e. $|\\{i: s_{ij}>0\\}| \\le L$), with the fluid relaxation as benchmark, \\textbf{Open:} is it possible to derive an adversarial-order guarantee that is $1/(3+e^{-2}) \\approx 0.319$ when $L=1$ and nonzero for all $L$? Currently nothing is known in this most general setting.",
+ "known_results": "For $L=1$, which is the single-resource online stochastic knapsack setting, the best-fit policy gives the tight adversarial-order guarantee $1/(3+e^{-2})\\approx 0.319$ relative to the fluid benchmark. For general $L$-sparse knapsack, where each product can consume positive amounts of several resources, no nonzero guarantee is currently known in this level of generality. The open problem is to obtain any meaningful adversarial-order guarantee for all $L$, ideally one that reduces to the tight $L=1$ constant.",
+ "where_posed": {
+  "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Remark 7.8.",
+  "url": ""
+ },
+ "source": {
+  "authors": "Will Ma",
+  "title": "Online Resource Allocation — Course Notes, Remark 7.8",
+  "year": 2024,
+  "venue": "Lecture notes (uploaded)",
+  "url": ""
+ },
+ "additional_refs": [
+  {
+   "authors": "Jiashuo Jiang, Will Ma, Jiawei Zhang",
+   "title": "Tight Guarantees for Multi-unit Prophet Inequalities and Online Stochastic Knapsack",
+   "year": 2022,
+   "venue": "SODA",
+   "url": "https://arxiv.org/abs/2107.02058"
+  }
+ ],
+ "bibtex": "@misc{Ma2024,\n  author = {Will Ma},\n  title = {Online Resource Allocation — Course Notes, Remark 7.8},\n  year = {2024},\n  howpublished = {Lecture notes (uploaded)},\n  note = {Source of ORdős Problem ORDOS-069}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/general-L-sparse-knapsack-guarantee.html",
+  "api": "https://ordos-problems.github.io/api/problems/general-L-sparse-knapsack-guarantee.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

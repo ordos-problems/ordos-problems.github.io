@@ -1,0 +1,59 @@
+{
+ "number": 86,
+ "ref": "ORDOS-086",
+ "id": "job-shop-makespan-fpt-as-machines",
+ "title": "FPT approximation scheme for job-shop makespan parameterized only by machines",
+ "collection": "Operations Research",
+ "area": "Scheduling",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "job shop",
+  "makespan",
+  "approximation scheme",
+  "parameterized algorithms",
+  "scheduling"
+ ],
+ "short_statement": "Does job-shop makespan minimization admit a $(1+\\epsilon)$-approximation running in $f(m,\\epsilon)\\operatorname{poly}(n)$ time, with dependence exponential only in the number of machines and accuracy?",
+ "open_problem": "Determine whether job-shop makespan admits an FPT approximation scheme parameterized only by the number of machines and $\\epsilon$, without dependence on maximum operations per job.",
+ "full_statement": "In $J||C_{\\max}$, each job consists of an ordered list of operations, where each operation must be processed nonpreemptively on a specified machine for a specified duration; each machine processes at most one operation at a time and operations of a job must respect their order. The objective is to minimize the makespan $C_{\\max}$. For a fixed number $m$ of machines, job-shop scheduling admits PTAS/FPT-AS-type results when additional structural parameters are used, for example the maximum number $n_{\\max}$ of operations per job. The open problem asks whether there is an algorithm that, for every $\\epsilon>0$, returns a $(1+\\epsilon)$-approximation for $J||C_{\\max}$ in time $f(m,\\epsilon)\\cdot \\operatorname{poly}(n)$, without dependence on $n_{\\max}$ or other job-structure parameters outside the polynomial factor.",
+ "known_results": "Open-shop and flow-shop makespan have fixed-parameter approximation schemes parameterized by $m$ and $\\epsilon$ in classical work. For job shop, Jansen, Solis-Oba, and Sviridenko obtain a $(1+\\epsilon)$-approximation with dependence on $m$, $n_{\\max}$, and $\\epsilon$. Mnich and van Bevern list removing $n_{\\max}$ from the parameter dependence as Open Problem 13.",
+ "where_posed": {
+  "text": "Open Problem 13 in Mnich and van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems' (Computers & Operations Research 2018).",
+  "url": "https://arxiv.org/abs/1709.01670"
+ },
+ "source": {
+  "authors": "Matthias Mnich, René van Bevern",
+  "title": "Parameterized complexity of machine scheduling: 15 open problems",
+  "year": 2018,
+  "venue": "Computers & Operations Research",
+  "url": "https://arxiv.org/abs/1709.01670"
+ },
+ "additional_refs": [
+  {
+   "authors": "Klaus Jansen, Roberto Solis-Oba, Maxim Sviridenko",
+   "title": "Makespan minimization in job shops: a linear time approximation scheme",
+   "year": 2003,
+   "venue": "SIAM Journal on Discrete Mathematics",
+   "url": "https://doi.org/10.1137/S0895480199363908"
+  },
+  {
+   "authors": "Matthias Mnich, René van Bevern",
+   "title": "Parameterized complexity of machine scheduling: 15 open problems",
+   "year": 2018,
+   "venue": "Computers & Operations Research",
+   "url": "https://doi.org/10.1016/j.cor.2018.07.020"
+  }
+ ],
+ "bibtex": "@misc{Mnich2018,\n  author = {Matthias Mnich and René van Bevern},\n  title = {Parameterized complexity of machine scheduling: 15 open problems},\n  year = {2018},\n  howpublished = {Computers & Operations Research},\n  url = {https://arxiv.org/abs/1709.01670},\n  note = {Source of ORdős Problem ORDOS-086}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/job-shop-makespan-fpt-as-machines.html",
+  "api": "https://ordos-problems.github.io/api/problems/job-shop-makespan-fpt-as-machines.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

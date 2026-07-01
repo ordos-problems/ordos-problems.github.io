@@ -1,0 +1,58 @@
+{
+ "number": 13,
+ "ref": "ORDOS-013",
+ "id": "randomized-list-update",
+ "title": "Optimal competitive ratio for randomized list update",
+ "collection": "Online Algorithms & Learning",
+ "area": "Online Algorithms",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "list update",
+  "competitive analysis",
+  "randomized",
+  "data structures"
+ ],
+ "short_statement": "Maintaining an unsorted linked list under access requests (access cost = position, accessed item may move toward the front for free), what is the optimal competitive ratio of a randomized algorithm against an oblivious adversary?",
+ "open_problem": "Determine the optimal randomized competitive ratio for the list update problem against an oblivious adversary.",
+ "full_statement": "In the list update problem, an algorithm maintains an unsorted linked list of items under a sequence of access requests. Accessing the item currently in position $i$ costs $i$; immediately after an access, the accessed item may be moved toward the front of the list for free (free transpositions of the accessed item), while other rearrangements cost per transposition (partial cost model). For deterministic algorithms the optimal competitive ratio is exactly $2$ (settled). Let $r^*$ be the optimal competitive ratio of a randomized online list-update algorithm against an oblivious adversary in the partial cost model. Determine $r^*$. Known: $1.50084 \\le r^* \\le 1.6$. Moreover, every 'projective' algorithm has ratio $\\ge 1.6$.",
+ "known_results": "The deterministic version is completely understood: Sleator and Tarjan proved the tight competitive ratio is exactly $2$. For randomized algorithms against an oblivious adversary, the best upper bound remains the COMB algorithm of Albers, von Stengel, and Werchner with ratio $1.6$, while the best lower bound is $1.50084$. Known high-performing algorithms are projective, and projective algorithms cannot beat $1.6$. The open problem is to determine whether a non-projective randomized algorithm can improve on $1.6$, or whether the optimal randomized ratio is closer to the current lower bound.",
+ "where_posed": {
+  "text": "Best known randomized algorithm (COMB) from Albers, von Stengel, Werchner, 'A Combined BIT and TIMESTAMP Algorithm for the List Update Problem', 1995, Information Processing Letters.",
+  "url": "https://dblp.org/rec/journals/ipl/AlbersSW95.html"
+ },
+ "source": {
+  "authors": "Susanne Albers, Bernhard von Stengel, Ralph Werchner",
+  "title": "A Combined BIT and TIMESTAMP Algorithm for the List Update Problem",
+  "year": 1995,
+  "venue": "Information Processing Letters",
+  "url": "https://dblp.org/rec/journals/ipl/AlbersSW95.html"
+ },
+ "additional_refs": [
+  {
+   "authors": "Daniel D. Sleator, Robert E. Tarjan",
+   "title": "Amortized Efficiency of List Update and Paging Rules",
+   "year": 1985,
+   "venue": "Communications of the ACM",
+   "url": "https://dl.acm.org/doi/10.1145/2786.2793"
+  },
+  {
+   "authors": "Christoph Ambuhl, Bernd Gartner, Bernhard von Stengel",
+   "title": "Optimal Lower Bounds for Projective List Update Algorithms",
+   "year": 2013,
+   "venue": "ACM Transactions on Algorithms",
+   "url": "https://arxiv.org/abs/1002.2440"
+  }
+ ],
+ "bibtex": "@misc{Albers1995,\n  author = {Susanne Albers and Bernhard von Stengel and Ralph Werchner},\n  title = {A Combined BIT and TIMESTAMP Algorithm for the List Update Problem},\n  year = {1995},\n  howpublished = {Information Processing Letters},\n  url = {https://dblp.org/rec/journals/ipl/AlbersSW95.html},\n  note = {Source of ORdős Problem ORDOS-013}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/randomized-list-update.html",
+  "api": "https://ordos-problems.github.io/api/problems/randomized-list-update.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

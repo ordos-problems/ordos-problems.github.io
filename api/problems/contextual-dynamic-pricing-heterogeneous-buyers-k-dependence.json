@@ -1,0 +1,59 @@
+{
+ "number": 99,
+ "ref": "ORDOS-099",
+ "id": "contextual-dynamic-pricing-heterogeneous-buyers-k-dependence",
+ "title": "Optimal type-dependence in contextual dynamic pricing with heterogeneous buyers",
+ "collection": "Operations Research",
+ "area": "Dynamic Pricing",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "dynamic pricing",
+  "contextual bandits",
+  "heterogeneous buyers",
+  "regret",
+  "online learning"
+ ],
+ "short_statement": "For contextual dynamic pricing with an unknown finite mixture of buyer types, what is the optimal regret dependence on the number of latent types, and can it be achieved by a computationally efficient algorithm?",
+ "open_problem": "Close the dependence on the latent support size $K_\\star$ in contextual dynamic pricing with heterogeneous buyers, and determine whether the existing exponential-time discretized-model approach can be replaced by a polynomial-time algorithm with comparable regret.",
+ "full_statement": "A seller repeatedly observes a $d$-dimensional context, posts a price, and observes only a binary purchase decision. The buyer's valuation type is drawn from an unknown distribution $D_\\star$ with finite support size $K_\\star$, so heterogeneity creates a context-dependent, non-i.i.d. demand curve even when the type distribution is fixed. Lykouris, Nietert, Okoroafor, Podimata, and Zimmert give an optimistic posterior sampling approach whose regret scales as $\\widetilde O(K_\\star d\\sqrt T)$ in the general contextual setting, with a lower bound of $\\Omega(\\sqrt{K_\\star dT})$ for sufficiently large horizons. In the non-contextual case they improve the type dependence to $\\widetilde O(\\sqrt{K_\\star T})$ using a variance-aware zooming algorithm. The open problem is to obtain the right $K_\\star$ dependence in the full contextual model, and to do so with an efficient algorithm rather than one whose runtime is exponential in $K_\\star$ and $d$.",
+ "known_results": "The contextual regret dependence on $d$ and $T$ is essentially sharp, but the dependence on $K_\\star$ has a gap between the $\\widetilde O(K_\\star d\\sqrt T)$ upper bound and the $\\Omega(\\sqrt{K_\\star dT})$ lower bound. The non-contextual $d=1$ case shows that the linear dependence on $K_\\star$ is not inherent there. The paper explicitly leaves open both the optimal $K_\\star$ dependence in the contextual case and whether the exponential dependence of POPS on the discretized model class can be removed while preserving similar regret.",
+ "where_posed": {
+  "text": "Open questions section of Lykouris, Nietert, Okoroafor, Podimata, and Zimmert, 'Contextual Dynamic Pricing with Heterogeneous Buyers'.",
+  "url": "https://arxiv.org/abs/2512.09513"
+ },
+ "source": {
+  "authors": "Thodoris Lykouris, Sloan Nietert, Princewill Okoroafor, Chara Podimata, Julian Zimmert",
+  "title": "Contextual Dynamic Pricing with Heterogeneous Buyers",
+  "year": 2025,
+  "venue": "arXiv:2512.09513",
+  "url": "https://arxiv.org/abs/2512.09513"
+ },
+ "additional_refs": [
+  {
+   "authors": "Nicolò Cesa-Bianchi, Tommaso Cesari, Vianney Perchet",
+   "title": "Dynamic Pricing with Finitely Many Unknown Valuations",
+   "year": 2019,
+   "venue": "ALT",
+   "url": "https://proceedings.mlr.press/v98/cesa-bianchi19a.html"
+  },
+  {
+   "authors": "Robert Kleinberg, Aleksandrs Slivkins, Eli Upfal",
+   "title": "Multi-armed bandits in metric spaces",
+   "year": 2008,
+   "venue": "STOC",
+   "url": "https://doi.org/10.1145/1374376.1374455"
+  }
+ ],
+ "bibtex": "@misc{Lykouris2025,\n  author = {Thodoris Lykouris and Sloan Nietert and Princewill Okoroafor and Chara Podimata and Julian Zimmert},\n  title = {Contextual Dynamic Pricing with Heterogeneous Buyers},\n  year = {2025},\n  howpublished = {arXiv:2512.09513},\n  url = {https://arxiv.org/abs/2512.09513},\n  note = {Source of ORdős Problem ORDOS-099}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/contextual-dynamic-pricing-heterogeneous-buyers-k-dependence.html",
+  "api": "https://ordos-problems.github.io/api/problems/contextual-dynamic-pricing-heterogeneous-buyers-k-dependence.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

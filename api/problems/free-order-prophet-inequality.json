@@ -1,0 +1,51 @@
+{
+ "number": 2,
+ "ref": "ORDOS-002",
+ "id": "free-order-prophet-inequality",
+ "title": "Optimal ratio for the free-order (order-selection) prophet inequality",
+ "collection": "Online Algorithms & Learning",
+ "area": "Online Algorithms",
+ "status": "partially resolved",
+ "confidence": "high",
+ "tags": [
+  "prophet inequality",
+  "order selection",
+  "stopping theory",
+  "competitive analysis"
+ ],
+ "short_statement": "A gambler facing $n$ items with known distributions may choose the order in which to inspect them, then observes values online and stops irrevocably, keeping one. What is the exact optimal competitive ratio against the expected maximum in this free-order (order-selection) model?",
+ "open_problem": "Determine the exact value of $\\alpha^*_{\\mathrm{OS}}$.",
+ "full_statement": "There are $n$ items with values drawn independently from known distributions $D_1,\\dots,D_n$. In the free-order (order-selection) prophet inequality, the gambler first selects an inspection order $\\sigma$ (a permutation committing to the sequence in which items will be observed), then observes the realized values online one at a time and applies a stopping rule, irrevocably keeping exactly one value. The benchmark is the prophet's expected maximum $\\mathbb{E}[\\max_i X_i]$. Define the optimal order-selection ratio $$\\alpha^*_{\\mathrm{OS}} = \\sup_{(\\sigma,\\text{stop})}\\inf_{\\{D_i\\}} \\frac{\\mathbb{E}[X_{\\text{alg}}]}{\\mathbb{E}[\\max_i X_i]},$$ where the supremum is over all order-and-stopping-rule strategies and the infimum is over all instances. It is known that order selection achieves $\\ge 0.7258$, while no strategy in the random-order model exceeds $0.7254$, so order selection strictly beats random order. Determine the exact value of $\\alpha^*_{\\mathrm{OS}}$.",
+ "known_results": "Order-selection guarantee 0.7258 and random-order hardness 0.7254 (Bubna-Chiplunkar, EC 2023), establishing a strict separation. Essentially settled to about 0.7258 but no exact tight constant proven, so technically open.",
+ "where_posed": {
+  "text": "Stated in Bubna, Chiplunkar, 'Prophet Inequality: Order Selection Beats Random Order', 2023, EC.",
+  "url": "https://arxiv.org/abs/2211.04145"
+ },
+ "source": {
+  "authors": "Archit Bubna, Ashish Chiplunkar",
+  "title": "Prophet Inequality: Order Selection Beats Random Order",
+  "year": 2023,
+  "venue": "EC",
+  "url": "https://arxiv.org/abs/2211.04145"
+ },
+ "additional_refs": [
+  {
+   "authors": "Bo Peng, Zhihao Gavin Tang",
+   "title": "Order Selection Prophet Inequality: From Threshold Optimization to Arrival Time Design",
+   "year": 2022,
+   "venue": "FOCS",
+   "url": "https://arxiv.org/abs/2204.01425"
+  }
+ ],
+ "bibtex": "@misc{Bubna2023,\n  author = {Archit Bubna and Ashish Chiplunkar},\n  title = {Prophet Inequality: Order Selection Beats Random Order},\n  year = {2023},\n  howpublished = {EC},\n  url = {https://arxiv.org/abs/2211.04145},\n  note = {Source of ORdős Problem ORDOS-002}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/free-order-prophet-inequality.html",
+  "api": "https://ordos-problems.github.io/api/problems/free-order-prophet-inequality.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

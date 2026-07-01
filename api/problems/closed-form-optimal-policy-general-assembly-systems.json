@@ -1,0 +1,66 @@
+{
+ "number": 35,
+ "ref": "ORDOS-035",
+ "id": "closed-form-optimal-policy-general-assembly-systems",
+ "title": "Tractable optimal control of assembly systems from arbitrary (imbalanced) initial inventory",
+ "collection": "Operations Management",
+ "area": "Inventory",
+ "status": "partially resolved",
+ "confidence": "medium",
+ "tags": [
+  "multi-echelon",
+  "assembly-system",
+  "echelon-base-stock",
+  "long-run-balance",
+  "fixed-ordering-cost"
+ ],
+ "short_statement": "In an assembly system, components with their own suppliers and lead times combine to meet random demand. For arbitrary initial imbalance the optimum is a balanced echelon base-stock policy with time-varying levels (Chen-Muharremoglu); open is whether those dynamic levels admit a closed-form/efficient characterization, and the structure once fixed ordering costs are added.",
+ "open_problem": "Find a closed-form or polynomial-time characterization of the dynamic base-stock levels for general assembly systems, and understand what survives with positive fixed ordering costs.",
+ "full_statement": "Consider an $M$-component assembly system (serial-assembly / in-tree topology): component $j$ is procured with lead time $\\ell_j$ and assembled into one finished unit. End demand is stochastic i.i.d.; linear holding costs apply at each stage and a backorder penalty at the finished-goods stage; the objective is long-run average (or discounted) cost. The issue is how to coordinate component orders when component inventories are out of balance. Rosling (1989) proves that under an initial-condition assumption ('long-run balance,' i.e. echelon inventory positions ordered consistently across components) the assembly system is equivalent to a serial system and a stationary balanced echelon base-stock policy with constant order-up-to levels $\\{s_j\\}$ is optimal. Chen-Muharremoglu (2014) extend optimality to ANY initial state: the optimal policy is a balanced echelon base-stock policy with dynamically evolving levels $\\{s_j^t\\}$, and Rosling's stationary policy is optimal whenever initial echelon inventory positions are non-decreasing in component index. \\textbf{Open:} (i) Is there a closed-form or polynomial-time characterization of the time-varying levels $s_j^t$ under arbitrary initial imbalance (beyond an existence/structure result)? (ii) What is the optimal policy structure for assembly systems with positive lead times and fixed ordering costs $K_j>0$, where the serial reduction and base-stock optimality are not known to hold?",
+ "known_results": "Rosling (1989) reduced assembly systems (without setup costs) to serial systems under a 'long-run balance' initial condition, giving optimality of a stationary balanced echelon base-stock policy. Chen-Muharremoglu (2014, SSRN 2475218) closed the STRUCTURAL gap for arbitrary initial imbalance: the optimum is a balanced echelon base-stock policy with time-varying base-stock levels, and Rosling's stationary policy is optimal under the easy-to-check condition that initial echelon inventory positions are non-decreasing in item index. Thus the qualitative optimal-policy structure is essentially known. What remains genuinely open: (a) an explicit closed-form / efficient computation of the time-varying levels under arbitrary initial states; and (b) the optimal policy structure for assembly systems WITH fixed ordering costs (and general non-in-tree topologies with imbalance), where serial reduction is not known to apply. Confidence is medium because the headline structural problem is largely resolved; the open content is the narrower computational/closed-form and fixed-cost extensions.",
+ "where_posed": {
+  "text": "Originates with Rosling, 'Optimal Inventory Policies for Assembly Systems Under Random Demands,' Operations Research 37(4):565-579, 1989; the arbitrary-imbalance structural extension and the remaining open computational/fixed-cost gaps are framed in Chen & Muharremoglu, 'Optimal Policies for Assembly Systems: Completing Rosling's Characterization' (2014).",
+  "url": "https://pubsonline.informs.org/doi/10.1287/opre.37.4.565"
+ },
+ "source": {
+  "authors": "Kaj Rosling",
+  "title": "Optimal Inventory Policies for Assembly Systems Under Random Demands",
+  "year": 1989,
+  "venue": "Operations Research 37(4):565-579",
+  "url": "https://pubsonline.informs.org/doi/10.1287/opre.37.4.565"
+ },
+ "additional_refs": [
+  {
+   "authors": "Andrew J. Clark, Herbert Scarf",
+   "title": "Optimal Policies for a Multi-Echelon Inventory Problem",
+   "year": 1960,
+   "venue": "Management Science 6(4):475-490",
+   "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.6.4.475"
+  },
+  {
+   "authors": "Shaokuan Chen, Alp Muharremoglu",
+   "title": "Optimal Policies for Assembly Systems: Completing Rosling's Characterization",
+   "year": 2014,
+   "venue": "Working paper, University of Texas at Dallas (SSRN 2475218)",
+   "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2475218"
+  },
+  {
+   "authors": "Ton de Kok, Christopher Grob, Marco Laumanns, Stefan Minner, Jörg Rambau, Konrad Schade",
+   "title": "A typology and literature review on stochastic multi-echelon inventory models",
+   "year": 2018,
+   "venue": "European Journal of Operational Research 269(3):955-983",
+   "url": "https://www.sciencedirect.com/science/article/abs/pii/S0377221718301802"
+  }
+ ],
+ "bibtex": "@misc{Rosling1989,\n  author = {Kaj Rosling},\n  title = {Optimal Inventory Policies for Assembly Systems Under Random Demands},\n  year = {1989},\n  howpublished = {Operations Research 37(4):565-579},\n  url = {https://pubsonline.informs.org/doi/10.1287/opre.37.4.565},\n  note = {Source of ORdős Problem ORDOS-035}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/closed-form-optimal-policy-general-assembly-systems.html",
+  "api": "https://ordos-problems.github.io/api/problems/closed-form-optimal-policy-general-assembly-systems.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

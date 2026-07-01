@@ -2646,8 +2646,8 @@
         "url": "https://www.jstor.org/stable/2243440"
       }
     ],
-    "enabled": false,
-    "disabled_reason": "Temporarily hidden pending permission from Will Ma to include problems from his course notes."
+    "enabled": true,
+    "contributor": "Will Ma"
   },
   {
     "id": "kunit-prophet-onl-off-adversarial",
@@ -2688,8 +2688,8 @@
         "url": "https://arxiv.org/abs/2107.02058"
       }
     ],
-    "enabled": false,
-    "disabled_reason": "Temporarily hidden pending permission from Will Ma to include problems from his course notes."
+    "enabled": true,
+    "contributor": "Will Ma"
   },
   {
     "id": "kunit-prophet-correlation-gap-random-order",
@@ -2736,8 +2736,8 @@
         "url": "https://arxiv.org/abs/2009.11885"
       }
     ],
-    "enabled": false,
-    "disabled_reason": "Temporarily hidden pending permission from Will Ma to include problems from his course notes."
+    "enabled": true,
+    "contributor": "Will Ma"
   },
   {
     "id": "arnosti-ma-stockout-threshold-conjecture",
@@ -2777,8 +2777,8 @@
         "url": "https://arxiv.org/abs/2108.12893"
       }
     ],
-    "enabled": false,
-    "disabled_reason": "Temporarily hidden pending permission from Will Ma to include problems from his course notes."
+    "enabled": true,
+    "contributor": "Will Ma"
   },
   {
     "id": "static-threshold-half-without-randomization-or-cardinal",
@@ -2818,8 +2818,8 @@
         "url": "https://www.jstor.org/stable/2243359"
       }
     ],
-    "enabled": false,
-    "disabled_reason": "Temporarily hidden pending permission from Will Ma to include problems from his course notes."
+    "enabled": true,
+    "contributor": "Will Ma"
   },
   {
     "id": "random-order-vs-worst-case-known-order",
@@ -2859,8 +2859,8 @@
         "url": "https://arxiv.org/abs/2202.09215"
       }
     ],
-    "enabled": false,
-    "disabled_reason": "Temporarily hidden pending permission from Will Ma to include problems from his course notes."
+    "enabled": true,
+    "contributor": "Will Ma"
   },
   {
     "id": "ocrs-ex-ante-equivalence-oblivious-adversary",
@@ -2900,8 +2900,8 @@
         "url": "https://arxiv.org/abs/1806.09251"
       }
     ],
-    "enabled": false,
-    "disabled_reason": "Temporarily hidden pending permission from Will Ma to include problems from his course notes."
+    "enabled": true,
+    "contributor": "Will Ma"
   },
   {
     "id": "ocrs-rank1-almighty-adversary",
@@ -2941,8 +2941,8 @@
         "url": "https://arxiv.org/abs/1606.06819"
       }
     ],
-    "enabled": false,
-    "disabled_reason": "Temporarily hidden pending permission from Will Ma to include problems from his course notes."
+    "enabled": true,
+    "contributor": "Will Ma"
   },
   {
     "id": "explicit-kunit-ocrs-random-order",
@@ -2983,8 +2983,8 @@
         "url": "https://arxiv.org/abs/1806.09251"
       }
     ],
-    "enabled": false,
-    "disabled_reason": "Temporarily hidden pending permission from Will Ma to include problems from his course notes."
+    "enabled": true,
+    "contributor": "Will Ma"
   },
   {
     "id": "online-knapsack-unit-density-tight-guarantee",
@@ -3032,8 +3032,8 @@
         "url": "https://arxiv.org/abs/2107.02058"
       }
     ],
-    "enabled": false,
-    "disabled_reason": "Temporarily hidden pending permission from Will Ma to include problems from his course notes."
+    "enabled": true,
+    "contributor": "Will Ma"
   },
   {
     "id": "L-sparse-nrm-interpolating-guarantee",
@@ -3073,8 +3073,8 @@
         "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4176274"
       }
     ],
-    "enabled": false,
-    "disabled_reason": "Temporarily hidden pending permission from Will Ma to include problems from his course notes."
+    "enabled": true,
+    "contributor": "Will Ma"
   },
   {
     "id": "general-L-sparse-knapsack-guarantee",
@@ -3114,8 +3114,8 @@
         "url": "https://arxiv.org/abs/2107.02058"
       }
     ],
-    "enabled": false,
-    "disabled_reason": "Temporarily hidden pending permission from Will Ma to include problems from his course notes."
+    "enabled": true,
+    "contributor": "Will Ma"
   },
   {
     "id": "matroid-random-order-extends-to-resource-allocation",
@@ -3163,8 +3163,8 @@
         "url": "https://arxiv.org/abs/1806.09251"
       }
     ],
-    "enabled": false,
-    "disabled_reason": "Temporarily hidden pending permission from Will Ma to include problems from his course notes."
+    "enabled": true,
+    "contributor": "Will Ma"
   },
   {
     "id": "strongly-polynomial-lp",

@@ -1,0 +1,374 @@
+[
+ {
+  "id": "randomized-k-server-polylog-power",
+  "title": "The right competitive ratio for randomized k-server (conjecture refuted)",
+  "collection": "Online Algorithms & Learning",
+  "area": "Online Algorithms",
+  "tags": [
+   "k-server",
+   "randomized",
+   "metrical task systems",
+   "competitive analysis"
+  ],
+  "status": "partially resolved",
+  "confidence": "high",
+  "short_statement": "The randomized $k$-server conjecture (an $O(\\log k)$-competitive algorithm on every metric) was refuted in 2023 by an $\\Omega(\\log^2 k)$ lower bound. What is the true polylogarithmic dependence on $k$ (and the number of points $n$)?",
+  "full_statement": "Consider the $k$-server problem with a randomized online algorithm playing against an oblivious adversary, where the algorithm controls $k$ servers in a metric space, serves a sequence of requested points by moving servers, and pays total distance moved. The long-standing randomized $k$-server conjecture predicted that an $O(\\log k)$-competitive randomized algorithm exists on every metric. This was refuted: Bubeck-Coester-Rabani proved an $\\Omega(\\log^2 k)$ lower bound on certain $(k+1)$-point metrics (with a universal $\\Omega(\\log k)$). The best upper bounds are $O(\\log^2 k)$ on hierarchically separated trees (HSTs) and $\\tilde O(\\log^3 n\\,\\log^2 k)$ on general $n$-point metrics, where $n$ is the number of points. Determine the optimal randomized competitive ratio as a function of $k$ (and $n$); in particular, is the truth $\\Theta(\\log^2 k)$?",
+  "known_results": "Bubeck, Coester, and Rabani refuted the original $O(\\log k)$ conjecture by proving an $\\Omega(\\log^2 k)$ lower bound on certain metrics, together with a universal $\\Omega(\\log k)$ lower bound. On the positive side, $O(\\log^2 k)$ algorithms are known for hierarchically separated trees, and polylogarithmic guarantees are known for general metrics. The problem has therefore shifted from the old logarithmic conjecture to determining the correct polylogarithmic exponent.",
+  "where_posed": {
+   "text": "Refutation and reframing in Bubeck, Coester, Rabani, 'The Randomized k-Server Conjecture is False!', 2023, STOC.",
+   "url": "https://arxiv.org/abs/2211.05753"
+  },
+  "source": {
+   "authors": "Sebastien Bubeck, Christian Coester, Yuval Rabani",
+   "title": "The Randomized k-Server Conjecture is False!",
+   "year": 2023,
+   "venue": "STOC",
+   "url": "https://arxiv.org/abs/2211.05753"
+  },
+  "additional_refs": [
+   {
+    "authors": "Sebastien Bubeck, Michael B. Cohen, Yin Tat Lee, James R. Lee, Aleksander Madry",
+    "title": "k-server via Multiscale Entropic Regularization",
+    "year": 2018,
+    "venue": "STOC",
+    "url": "https://arxiv.org/abs/1711.01085"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "bin-packing-additive-integrality-gap",
+  "title": "Additive integrality gap of the bin packing (Gilmore-Gomory) LP",
+  "collection": "Online Algorithms & Learning",
+  "area": "Online Algorithms",
+  "tags": [
+   "bin packing",
+   "integrality gap",
+   "approximation",
+   "MIRUP",
+   "cutting stock"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "For bin packing, how far can the integer optimum be from the value of the Gilmore-Gomory configuration LP relaxation in absolute (additive) terms? Is the gap always $O(1)$ extra bins, or can it grow?",
+  "full_statement": "In the bin packing problem, items of given sizes must be packed into unit-capacity bins, minimizing the number of bins used. The standard strong LP relaxation is the Gilmore-Gomory configuration LP. For a bin packing instance $I$, let $\\mathrm{OPT}_f(I)$ be the value of the Gilmore-Gomory LP relaxation and $\\mathrm{OPT}(I)$ the integer optimum. Define the additive integrality gap $$\\mathrm{gap}=\\sup_I\\big(\\mathrm{OPT}(I)-\\mathrm{OPT}_f(I)\\big).$$ The question is whether $\\mathrm{gap}=O(1)$ (a constant number of extra bins regardless of instance). The related Modified Integer Round-Up Property (MIRUP) conjecture posits $\\mathrm{OPT}(I)\\le\\lceil \\mathrm{OPT}_f(I)\\rceil+1$. The best known upper bound is $\\mathrm{gap}=O(\\log \\mathrm{OPT}_f)$. Determine whether the additive integrality gap is $O(1)$ or $\\Theta(\\log)$.",
+  "known_results": "Hoberg and Rothvoss proved that the integer optimum is at most $\\mathrm{OPT}_f+O(\\log \\mathrm{OPT}_f)$, improving the earlier $O(\\log^2 \\mathrm{OPT}_f)$ additive bound of Karmarkar and Karp. On the lower-bound side, no family is known with additive gap growing beyond a constant, and the stronger MIRUP conjecture predicts an extremely small constant gap. The main open question is whether the true additive gap is bounded by $O(1)$ or whether the logarithmic upper bound is qualitatively necessary.",
+  "where_posed": {
+   "text": "Stated in Hoberg, Rothvoss, 'A Logarithmic Additive Integrality Gap for Bin Packing', 2017, SODA.",
+   "url": "https://arxiv.org/abs/1503.08796"
+  },
+  "source": {
+   "authors": "Rebecca Hoberg, Thomas Rothvoss",
+   "title": "A Logarithmic Additive Integrality Gap for Bin Packing",
+   "year": 2017,
+   "venue": "SODA",
+   "url": "https://arxiv.org/abs/1503.08796"
+  },
+  "additional_refs": [
+   {
+    "authors": "Narendra Karmarkar, Richard M. Karp",
+    "title": "An Efficient Approximation Scheme for the One-Dimensional Bin-Packing Problem",
+    "year": 1982,
+    "venue": "FOCS",
+    "url": "https://ieeexplore.ieee.org/document/4568405"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "online-makespan-scheduling-gap",
+  "title": "Optimal competitive ratio for online makespan scheduling",
+  "collection": "Online Algorithms & Learning",
+  "area": "Online Algorithms",
+  "tags": [
+   "scheduling",
+   "makespan",
+   "list scheduling",
+   "competitive analysis",
+   "identical machines"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "Jobs arrive one at a time and each must be placed irrevocably on one of $m$ identical machines, minimizing the makespan. What is the optimal competitive ratio of a deterministic online algorithm as $m$ grows large?",
+  "full_statement": "In online makespan scheduling on identical machines ($P\\,|\\,online\\text{-}list\\,|\\,C_{\\max}$), jobs arrive one at a time and each must be assigned irrevocably to one of $m$ identical machines upon arrival. The objective is to minimize the makespan, i.e., the load (total processing time) of the busiest machine, compared against the optimal offline assignment. Graham's 1966 greedy (list scheduling) rule is $(2-1/m)$-competitive. Let $\\rho^*(m)$ be the optimal competitive ratio of a deterministic online algorithm on $m$ machines, and let $\\rho^*=\\lim_{m\\to\\infty}\\rho^*(m)$ be its asymptotic value. Determine $\\rho^*$. Known: $1.88\\le \\rho^* \\le 1.9201$.",
+  "known_results": "Graham's list-scheduling algorithm is $(2-1/m)$-competitive, and this is optimal only for $m=2$ and $m=3$. For large $m$, Fleischer and Wahl gave the best known deterministic upper bound, about $1.9201$, while Rudin's lower-bound construction gives about $1.88$. The asymptotic interval $[1.88,1.9201]$ has been stable for many years. The open problem is to determine the exact asymptotic deterministic competitive ratio for online makespan scheduling on identical machines.",
+  "where_posed": {
+   "text": "Greedy rule and model originated in Graham, 'Bounds for Certain Multiprocessing Anomalies', 1966, Bell System Technical Journal.",
+   "url": "https://onlinelibrary.wiley.com/doi/10.1002/j.1538-7305.1966.tb01709.x"
+  },
+  "source": {
+   "authors": "Ronald L. Graham",
+   "title": "Bounds for Certain Multiprocessing Anomalies",
+   "year": 1966,
+   "venue": "Bell System Technical Journal",
+   "url": "https://onlinelibrary.wiley.com/doi/10.1002/j.1538-7305.1966.tb01709.x"
+  },
+  "additional_refs": [
+   {
+    "authors": "Rudolf Fleischer, Michaela Wahl",
+    "title": "On-line Scheduling Revisited",
+    "year": 2000,
+    "venue": "J. Scheduling / ESA",
+    "url": ""
+   },
+   {
+    "authors": "John F. Rudin III, R. Chandrasekaran",
+    "title": "Improved Bounds for the Online Scheduling Problem",
+    "year": 2003,
+    "venue": "SIAM J. Computing",
+    "url": "https://epubs.siam.org/doi/10.1137/S0097539702403438"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "randomized-list-update",
+  "title": "Optimal competitive ratio for randomized list update",
+  "collection": "Online Algorithms & Learning",
+  "area": "Online Algorithms",
+  "tags": [
+   "list update",
+   "competitive analysis",
+   "randomized",
+   "data structures"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "Maintaining an unsorted linked list under access requests (access cost = position, accessed item may move toward the front for free), what is the optimal competitive ratio of a randomized algorithm against an oblivious adversary?",
+  "full_statement": "In the list update problem, an algorithm maintains an unsorted linked list of items under a sequence of access requests. Accessing the item currently in position $i$ costs $i$; immediately after an access, the accessed item may be moved toward the front of the list for free (free transpositions of the accessed item), while other rearrangements cost per transposition (partial cost model). For deterministic algorithms the optimal competitive ratio is exactly $2$ (settled). Let $r^*$ be the optimal competitive ratio of a randomized online list-update algorithm against an oblivious adversary in the partial cost model. Determine $r^*$. Known: $1.50084 \\le r^* \\le 1.6$. Moreover, every 'projective' algorithm has ratio $\\ge 1.6$.",
+  "known_results": "The deterministic version is completely understood: Sleator and Tarjan proved the tight competitive ratio is exactly $2$. For randomized algorithms against an oblivious adversary, the best upper bound remains the COMB algorithm of Albers, von Stengel, and Werchner with ratio $1.6$, while the best lower bound is $1.50084$. Known high-performing algorithms are projective, and projective algorithms cannot beat $1.6$. The open problem is to determine whether a non-projective randomized algorithm can improve on $1.6$, or whether the optimal randomized ratio is closer to the current lower bound.",
+  "where_posed": {
+   "text": "Best known randomized algorithm (COMB) from Albers, von Stengel, Werchner, 'A Combined BIT and TIMESTAMP Algorithm for the List Update Problem', 1995, Information Processing Letters.",
+   "url": "https://dblp.org/rec/journals/ipl/AlbersSW95.html"
+  },
+  "source": {
+   "authors": "Susanne Albers, Bernhard von Stengel, Ralph Werchner",
+   "title": "A Combined BIT and TIMESTAMP Algorithm for the List Update Problem",
+   "year": 1995,
+   "venue": "Information Processing Letters",
+   "url": "https://dblp.org/rec/journals/ipl/AlbersSW95.html"
+  },
+  "additional_refs": [
+   {
+    "authors": "Daniel D. Sleator, Robert E. Tarjan",
+    "title": "Amortized Efficiency of List Update and Paging Rules",
+    "year": 1985,
+    "venue": "Communications of the ACM",
+    "url": "https://dl.acm.org/doi/10.1145/2786.2793"
+   },
+   {
+    "authors": "Christoph Ambuhl, Bernd Gartner, Bernhard von Stengel",
+    "title": "Optimal Lower Bounds for Projective List Update Algorithms",
+    "year": 2013,
+    "venue": "ACM Transactions on Algorithms",
+    "url": "https://arxiv.org/abs/1002.2440"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "k-taxi-deterministic-finiteness",
+  "title": "Deterministic competitive ratio for the hard k-taxi problem",
+  "collection": "Online Algorithms & Learning",
+  "area": "Online Algorithms",
+  "tags": [
+   "k-taxi",
+   "k-server",
+   "competitive analysis",
+   "metric spaces"
+  ],
+  "status": "open",
+  "confidence": "medium",
+  "short_statement": "In the hard $k$-taxi problem, $k$ taxis serve pickup-dropoff requests and only empty (passenger-free) driving is charged. Does any finite deterministic competitive ratio exist for general $k$ on every metric space?",
+  "full_statement": "The $k$-taxi problem generalizes $k$-server: $k$ taxis are located in a metric space, and each request is a pair $(s,t)$ of points; to serve it, some taxi must travel to the pickup point $s$ and then carry the passenger to the dropoff point $t$. In the hard version of the problem, the cost counts only the distance a taxi travels without a passenger (the 'empty' driving); the distance traveled while carrying a passenger (from $s$ to $t$) is free. This generalizes $k$-server, which is recovered by taking $s=t$. The question is whether there exists any finite deterministic competitive ratio (for instance, of the form $2^{O(k)}$) for every fixed $k$ on every metric space. The known lower bound is $\\Omega(2^k)$, and finiteness of the deterministic competitive ratio is established only for $k\\le 3$. Determine whether any finite deterministic competitive ratio exists for general $k$ on arbitrary metrics.",
+  "known_results": "Deterministic hard k-taxi: lower bound $\\Omega(2^k)$; a finite competitive ratio is known only for small k. Whether any finite deterministic ratio exists for general k on general metrics is open. The randomized version was largely settled to poly-log.",
+  "where_posed": {
+   "text": "Stated/originated in Coester, Koutsoupias, 'The Online k-Taxi Problem', 2019, STOC.",
+   "url": "https://arxiv.org/abs/1807.06645"
+  },
+  "source": {
+   "authors": "Christian Coester, Elias Koutsoupias",
+   "title": "The Online k-Taxi Problem",
+   "year": 2019,
+   "venue": "STOC",
+   "url": "https://arxiv.org/abs/1807.06645"
+  },
+  "additional_refs": [
+   {
+    "authors": "Anupam Gupta, Amit Kumar, Debmalya Panigrahi",
+    "title": "Caching with Time Windows and Delays / k-Taxi progress",
+    "year": 2024,
+    "venue": "SODA",
+    "url": "https://arxiv.org/abs/2111.04657"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "general-convex-body-chasing",
+  "title": "Optimal competitive ratio for general convex body chasing",
+  "collection": "Online Algorithms & Learning",
+  "area": "Online Algorithms",
+  "tags": [
+   "convex body chasing",
+   "competitive analysis",
+   "online convex optimization"
+  ],
+  "status": "partially resolved",
+  "confidence": "high",
+  "short_statement": "Convex bodies in $\\mathbb{R}^d$ arrive online and after each you must move your point into the current body, paying distance moved. For general (arbitrary) convex bodies, is the optimal competitive ratio $\\Theta(\\sqrt{d})$?",
+  "full_statement": "In convex body chasing, convex bodies $K_1,K_2,\\dots\\subseteq\\mathbb{R}^d$ are revealed online one at a time. After each body $K_n$ is revealed, the algorithm must choose a point $x_n\\in K_n$, paying movement cost $\\|x_n-x_{n-1}\\|$. The competitive ratio is $$\\sup \\frac{\\sum_n\\|x_n-x_{n-1}\\|}{\\mathrm{OPT}},$$ where $\\mathrm{OPT}$ is the optimal offline cost. The nested case (each body contained in the previous, $K_1\\supseteq K_2\\supseteq\\cdots$) is essentially settled at $\\Theta(\\sqrt{d})$. For general (arbitrary) convex bodies in Euclidean space, the best upper bound is $O(\\min(d,\\sqrt{d\\log N}))$ (where $N$ is the number of bodies) and the lower bound is $\\Omega(\\sqrt d)$. Determine the optimal competitive ratio for general convex body chasing; in particular, is it $\\Theta(\\sqrt d)$?",
+  "known_results": "The Friedman-Linial conjecture (a finite ratio depending only on d exists) is resolved: Sellke and Argue-Gupta-Guruganesh-Tang achieve $O(d)$. Nested chasing is essentially tight at $\\Theta(\\sqrt{d})$. For general convex body chasing in Euclidean space, the best upper bound is O(min(d, sqrt(d log N))) versus $\\Omega(\\sqrt{d})$; the exact ratio remains open.",
+  "where_posed": {
+   "text": "Stated/originated in Friedman, Linial, 'On Convex Body Chasing', 1993, Discrete & Computational Geometry.",
+   "url": "https://link.springer.com/article/10.1007/BF02189324"
+  },
+  "source": {
+   "authors": "Joel Friedman, Nathan Linial",
+   "title": "On Convex Body Chasing",
+   "year": 1993,
+   "venue": "Discrete & Computational Geometry",
+   "url": "https://link.springer.com/article/10.1007/BF02189324"
+  },
+  "additional_refs": [
+   {
+    "authors": "C.J. Argue, Anupam Gupta, Guru Guruganesh, Ziye Tang",
+    "title": "Chasing Convex Bodies with Linear Competitive Ratio",
+    "year": 2020,
+    "venue": "SODA / JACM",
+    "url": "https://arxiv.org/abs/1905.11877"
+   },
+   {
+    "authors": "Mark Sellke",
+    "title": "Chasing Convex Bodies Optimally",
+    "year": 2020,
+    "venue": "SODA",
+    "url": "https://arxiv.org/abs/1905.11968"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "submodular-bandit-cardinality-dependence",
+  "title": "Cardinality dependence in submodular maximization with bandit feedback",
+  "collection": "Online Algorithms & Learning",
+  "area": "Online Learning",
+  "tags": [
+   "bandits",
+   "submodular maximization",
+   "minimax regret",
+   "full-bandit feedback"
+  ],
+  "status": "open",
+  "confidence": "medium",
+  "short_statement": "Repeatedly picking a subset of at most $k$ of $n$ items and observing only a noisy value of an unknown monotone submodular function, competing against the $(1-1/e)$ greedy benchmark, what is the exact dependence of the minimax regret on the cardinality budget $k$?",
+  "full_statement": "Consider repeated subset selection with full-bandit feedback against a monotone submodular function. There is a monotone submodular function $f:2^{[n]}\\to[0,1]$ over $n$ items, unknown to the learner. In each round the learner selects a subset of at most $k$ items (a cardinality-$k$ constraint) and observes only a noisy (sub-Gaussian) value of $f$ on the chosen set (full-bandit feedback). Performance is measured by minimax regret against the $(1-1/e)$ greedy benchmark over a horizon $T$. The dependence of the regret on the horizon $T$ ($T^{2/3}$) and on the number of items $n$ ($n^{1/3}$) is essentially settled. The dependence on the cardinality budget $k$ is not: the proven lower bound carries an $L^{1/3}$ factor while the best algorithm (Sub-UCB) carries an $L$ factor, minimizing over a split parameter $L\\le k$. Determine the exact cardinality ($k$) dependence of the minimax regret for general algorithms; i.e., close the $L^{1/3}$ (lower bound) versus $L$ (upper bound) gap.",
+  "known_results": "The minimax dependence on the time horizon and ground-set size is essentially understood: the regret scales as $T^{2/3}$ in time and has the known $n^{1/3}$ dependence. The unresolved part is the dependence on the cardinality constraint $L$. Current lower bounds give an $L^{1/3}$ dependence, while the best general upper bounds are linear in $L$; Tajdini, Jain, and Jamieson match the linear dependence only for a restricted algorithm class. The open problem is to close this cardinality gap for unrestricted algorithms.",
+  "where_posed": {
+   "text": "Stated in Tajdini, Jain, Jamieson, 'Nearly Minimax Optimal Submodular Maximization with Bandit Feedback', 2024, NeurIPS.",
+   "url": "https://openreview.net/forum?id=Vn0FWRImra"
+  },
+  "source": {
+   "authors": "Artin Tajdini, Lalit Jain, Kevin Jamieson",
+   "title": "Nearly Minimax Optimal Submodular Maximization with Bandit Feedback",
+   "year": 2024,
+   "venue": "NeurIPS",
+   "url": "https://openreview.net/forum?id=Vn0FWRImra"
+  },
+  "additional_refs": [
+   {
+    "authors": "Jean-Yves Audibert, Sebastien Bubeck, Gabor Lugosi",
+    "title": "Regret in Online Combinatorial Optimization",
+    "year": 2014,
+    "venue": "Math. of Operations Research",
+    "url": "https://arxiv.org/abs/1204.4710"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "efx-existence-goods",
+  "title": "Existence of EFX allocations (four or more agents)",
+  "collection": "Market & Mechanism Design",
+  "area": "Fair Division",
+  "tags": [
+   "fair division",
+   "envy-freeness",
+   "EFX",
+   "indivisible goods"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "An EFX allocation of indivisible goods is one where any envy agent $i$ feels toward agent $j$ vanishes after removing any single good from $j$'s bundle. Does a complete EFX allocation always exist for four or more agents, even with additive valuations?",
+  "full_statement": "Let $N=\\{1,\\dots,n\\}$ be a set of agents and $M$ a set of indivisible goods, with each agent $i$ having an additive valuation $v_i$. An allocation $(X_1,\\dots,X_n)$ partitioning $M$ among the agents is EFX (envy-free up to any good) if for all agents $i,j$ and every good $g\\in X_j$ with $v_i(\\{g\\})>0$: $v_i(X_i)\\ge v_i(X_j\\setminus\\{g\\})$. In words, any envy that agent $i$ feels toward agent $j$ would vanish upon removing any single (positively valued) good from $j$'s bundle. Exact complete EFX allocations are known to always exist for up to 3 agents with additive valuations. Question: does a complete EFX allocation exist for every instance with $n\\ge 4$ additive agents?",
+  "known_results": "For additive goods, exact EFX allocations are known to exist for at most three agents, by Chaudhury, Garg, and Mehlhorn. For four agents, Berger and coauthors prove an almost-complete EFX allocation in which at most one good is left unallocated. For general $n$, EFX with charity is known, meaning that fewer than $n$ goods may be donated, and a $0.618$-EFX allocation always exists. The open problem is whether a complete exact EFX allocation always exists for additive goods when $n\\ge 4$.",
+  "where_posed": {
+   "text": "Notion introduced in Caragiannis, Kurokawa, Moulin, Procaccia, Shah, Wang, 'The Unreasonable Fairness of Maximum Nash Welfare', 2016, EC (TEAC 2019).",
+   "url": "https://www.cs.toronto.edu/~nisarg/papers/mnw.ec16.pdf"
+  },
+  "source": {
+   "authors": "Ioannis Caragiannis, David Kurokawa, Herve Moulin, Ariel D. Procaccia, Nisarg Shah, Junxing Wang",
+   "title": "The Unreasonable Fairness of Maximum Nash Welfare",
+   "year": 2016,
+   "venue": "EC (TEAC 2019)",
+   "url": "https://www.cs.toronto.edu/~nisarg/papers/mnw.ec16.pdf"
+  },
+  "additional_refs": [
+   {
+    "authors": "Bhaskar Ray Chaudhury, Jugal Garg, Kurt Mehlhorn",
+    "title": "EFX Exists for Three Agents",
+    "year": 2020,
+    "venue": "EC (JACM 2024)",
+    "url": "https://arxiv.org/abs/2002.05119"
+   },
+   {
+    "authors": "Bhaskar Ray Chaudhury, Telikepalli Kavitha, Kurt Mehlhorn, Alkmini Sgouritsa",
+    "title": "A Little Charity Guarantees Almost Envy-Freeness",
+    "year": 2020,
+    "venue": "SODA (SICOMP 2021)",
+    "url": "https://arxiv.org/abs/1907.04596"
+   }
+  ],
+  "enabled": true
+ },
+ {
+  "id": "efx-chores",
+  "title": "Existence of EFX allocations for chores (three agents)",
+  "collection": "Market & Mechanism Design",
+  "area": "Fair Division",
+  "tags": [
+   "fair division",
+   "chores",
+   "EFX",
+   "envy-freeness",
+   "disutilities"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "For indivisible chores (which impose costs), an EFX allocation is one where any envy agent $i$ feels toward $j$ vanishes after dropping any single chore from $i$'s own bundle. Does an EFX allocation always exist for additive chores with three agents?",
+  "full_statement": "Let $N=\\{1,\\dots,n\\}$ be a set of agents and $M$ a set of indivisible chores, with each agent $i$ having an additive cost function $c_i$ (chores impose costs / disutilities). An allocation $(X_1,\\dots,X_n)$ partitioning $M$ is EFX (for chores) if for all agents $i,j$ and every chore $e\\in X_i$ with $c_i(\\{e\\})>0$: $c_i(X_i\\setminus\\{e\\})\\le c_i(X_j)$. In words, any envy agent $i$ feels toward agent $j$ vanishes upon dropping any single (positively costly) chore from $i$'s own bundle. Unlike the goods setting, the situation for chores is harsher: with additive costs and four or more agents, EFX allocations can provably fail to exist. Question: does an EFX allocation always exist for chores with additive costs and $n=3$ agents?",
+  "known_results": "For superadditive cost functions, EFX allocations can fail to exist even with three agents. For additive costs, nonexistence examples are known for some number of agents $n\\ge 4$, so the general chores analogue of the goods conjecture is false. The remaining small case of additive chores with exactly three agents is still open. Positive results are known when the number of chores is at most $n+2$, for identical-ordering costs, and for bi-valued costs; in general, a $2$-EFX allocation always exists for additive chores.",
+  "where_posed": {
+   "text": "Stated in Christoforidis, Santorinaios, 'On the Pursuit of EFX for Chores: Non-Existence and Approximations', 2024, IJCAI.",
+   "url": "https://arxiv.org/abs/2406.10752"
+  },
+  "source": {
+   "authors": "Vasilis Christoforidis, Christodoulos Santorinaios",
+   "title": "On the Pursuit of EFX for Chores: Non-Existence and Approximations",
+   "year": 2024,
+   "venue": "IJCAI",
+   "url": "https://arxiv.org/abs/2406.10752"
+  },
+  "additional_refs": [
+   {
+    "authors": "Shengwei Zhou, Xiaowei Wu",
+    "title": "Approximately EFX Allocations for Indivisible Chores",
+    "year": 2022,
+    "venue": "IJCAI (Artif. Intell. 2024)",
+    "url": "https://arxiv.org/abs/2109.07313"
+   }
+  ],
+  "enabled": true
+ }
+]
