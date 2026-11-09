@@ -4078,12 +4078,12 @@
       "capped-base-stock",
       "demand-learning"
     ],
-    "status": "open",
+    "status": "partially resolved",
     "confidence": "high",
     "title": "Optimal policy structure for lost-sales inventory with positive lead time",
     "short_statement": "For periodic-review lost-sales inventory with positive deterministic lead time, characterize the exact optimal policy. Uniform approximation results are available, including a 2026 capped-base-stock bound, but do not give an exact policy.",
-    "full_statement": "Consider periodic-review lost-sales inventory with i.i.d. nonnegative demands $D_t$, $0<\\mathbb E D_t<\\infty$, deterministic lead time $L\\ge1$, and holding/lost-sales costs $h,p>0$. Before arrivals in period $t$, the state is on-hand stock $I_t$ and pipeline $(x_{1,t},\\ldots,x_{L,t})$. Receive $x_{1,t}$, choose a nonnegative order $q_t$ without seeing $D_t$, then meet demand up to available stock. Set $I_{t+1}=(I_t+x_{1,t}-D_t)^+$, shift $x_{i,t+1}=x_{i+1,t}$ for $i<L$, and set $x_{L,t+1}=q_t$. Start empty and minimize $$C(\\pi)=\\limsup_{T\\to\\infty}T^{-1}\\mathbb E^\\pi\\sum_{t=1}^T[hI_{t+1}+p(D_t-I_t-x_{1,t})^+],\\quad\\mathrm{OPT}=\\inf_\\pi C(\\pi).$$ The exact finite-lead-time policy structure is the target. Base-stock and constant-order policies are not generally exactly optimal. Uniform approximation is not wholly open: Xin's July 2026 preprint proves $\\inf_{\\pi\\in\\mathrm{CBS}}C(\\pi)\\le[1+4L^2/((L+1)(3L-1))]\\mathrm{OPT}\\le(7/3)\\mathrm{OPT}$ for capped base-stock policies, including ordinary base stock as the infinite-cap case. Seek sharper bounds or exact structure beyond these guarantees.",
-    "known_results": "The optimal policy can in principle be computed by dynamic programming on the $L$-dimensional pipeline state but is intractable for moderate $L$, and its structure is uncharacterized: Karlin and Scarf (1958) showed base-stock is already suboptimal at $L=1$, and Zipkin (Operations Research 2008) proved via $L^{\\natural}$-convexity that the optimal policy is monotone with bounded sensitivity in the pipeline vector but neither base-stock nor constant-order is generally optimal. Asymptotic regimes are well understood: (i) order-up-to/base-stock policies are asymptotically optimal as the lost-sales penalty $p\\to\\infty$ (Huh, Janakiraman, Muckstadt, Rusmevichientong, Management Science 2009); (ii) the constant-order policy is asymptotically optimal as $L\\to\\infty$ (Goldberg, Katz-Rogozhnikov, Lu, Sharma, Squillante, Mathematics of OR 2016), with optimality gap decaying exponentially in $L$ (Xin and Goldberg, Operations Research 2016). Capped base-stock policies (a base-stock rule with an order cap) interpolate between the two extremes: Xin (Operations Research 2021) showed they converge exponentially fast in the base-stock level to constant-order policies and perform robustly, and Xin (Operations Research 2022) proved an asymptotic worst-case guarantee for a continuous-review lost-sales model — a capped base-stock policy has asymptotic ratio at most 1.79 for the continuous-review model with Poisson demand (via an asymptotic analysis jointly in large penalty and lead time). Projected-inventory-level (PIL) policies are asymptotically optimal in BOTH classical regimes: as $p\\to\\infty$ for general demand, and as $L\\to\\infty$ for exponential demand (van Jaarsveld and Arts, Operations Research 2024); Moradi, Arts, and Drent (arXiv:2504.10132, April 2025) extended large-$L$ asymptotic optimality of PIL to any demand with finite second moment provided the penalty is sufficiently large, via a Wiener-Hopf/ladder-process solution of the constant-order relative value function. On the learning side, Zhang, Chao, and Shi (Management Science 2020) gave a $O(\\sqrt{T})$-regret algorithm against the best base-stock policy under censored demand, and Lyu, Zhang, and Xin (Operations Research 2024) gave UCB-type algorithms with Kaplan-Meier estimation that learn the best capped base-stock policy with regret whose lead-time dependence is linear rather than exponential. Xin's 'Capped Base-Stock Policies: A 2.33-Approximation' (July 2026 preprint), Section 2 and Theorem 1, gives the nonasymptotic periodic-review bound stated above for all positive finite-mean i.i.d. demand, all $L\\ge1$, and $h,p>0$. It does not improve the earlier factor 2 for the different dual-balancing policy class. Separately, Hu (arXiv:2610.34576v1, October 2026), Theorem 4.1, claims a uniform $\\sqrt2$ base-stock bound without setup costs and $(\\sqrt2+\\sqrt6)/2<1.932$ for an $(r,Q)$-or-no-order policy with setup costs, but only in continuous review with unit Poisson demand. Neither is an exact optimal-policy characterization.",
+    "full_statement": "Consider periodic-review lost-sales inventory with i.i.d. nonnegative demands $D_t$, $0<\\mathbb E D_t<\\infty$, deterministic lead time $L\\ge1$, and holding/lost-sales costs $h,p>0$. Before arrivals in period $t$, the state is on-hand stock $I_t$ and pipeline $(x_{1,t},\\ldots,x_{L,t})$. Receive $x_{1,t}$, choose a nonnegative order $q_t$ without seeing $D_t$, then meet demand up to available stock. Set $I_{t+1}=(I_t+x_{1,t}-D_t)^+$, shift $x_{i,t+1}=x_{i+1,t}$ for $i<L$, and set $x_{L,t+1}=q_t$. Start empty and minimize $$C(\\pi)=\\limsup_{T\\to\\infty}T^{-1}\\mathbb E^\\pi\\sum_{t=1}^T[hI_{t+1}+p(D_t-I_t-x_{1,t})^+],\\quad\\mathrm{OPT}=\\inf_\\pi C(\\pi).$$ The exact finite-lead-time policy structure is the target. Base-stock and constant-order policies are not generally exactly optimal. Uniform approximation is not wholly open: Xin's July 2026 preprint proves $\\inf_{\\pi\\in\\mathrm{CBS}}C(\\pi)\\le[1+4L^2/((L+1)(3L-1))]\\mathrm{OPT}\\le(7/3)\\mathrm{OPT}$ for capped base-stock policies, including ordinary base stock as the infinite-cap case. Seek sharper bounds or exact structure beyond these guarantees.\n\nOne concrete subquestion fixes $L$ and lets $p\\to\\infty$ when $D^{[L+1]}$, the sum of $L+1$ iid demands, is continuously distributed with $\\mathbb P(D^{[L+1]}>x)\\sim c x^{-\\alpha}$ for $c>0$ and $\\alpha>1$: does $C_{\\rm BS}^*(p)/\\mathrm{OPT}(p)\\to1$? Here $C_{\\rm BS}^*$ is the infimum average cost over policies ordering up to a constant total inventory position. This is not the large-$L$ PIL question.",
+    "known_results": "Dynamic programming retains the pipeline state and becomes computationally demanding as lead time grows; this is not a general complexity impossibility theorem. Partial structure is known: Karlin and Scarf (1958) showed base-stock is already suboptimal at $L=1$, and Zipkin (Operations Research 2008) proved via $L^{\\natural}$-convexity that the optimal policy is monotone with bounded sensitivity in the pipeline vector but neither base-stock nor constant-order is generally optimal. Asymptotic regimes are well understood: (i) order-up-to/base-stock policies are asymptotically optimal as the lost-sales penalty $p\\to\\infty$ under their demand-tail condition (Huh, Janakiraman, Muckstadt, Rusmevichientong, Management Science 2009); (ii) the constant-order policy is asymptotically optimal as $L\\to\\infty$ (Goldberg, Katz-Rogozhnikov, Lu, Sharma, Squillante, Mathematics of OR 2016), with optimality gap decaying exponentially in $L$ (Xin and Goldberg, Operations Research 2016). Capped base-stock policies (a base-stock rule with an order cap) interpolate between the two extremes: Xin (Operations Research 2021) showed they converge exponentially fast in the base-stock level to constant-order policies and perform robustly, and Xin (Operations Research 2022) proved an asymptotic worst-case guarantee for a continuous-review lost-sales model — a capped base-stock policy has asymptotic ratio at most 1.79 for the continuous-review model with Poisson demand (via an asymptotic analysis jointly in large penalty and lead time). Projected-inventory-level (PIL) policies are asymptotically optimal in BOTH classical regimes: as $p\\to\\infty$ under Assumption 1 (bounded lead-time demand, or unbounded demand with sublinear conditional mean excess), and as $L\\to\\infty$ for exponential demand (van Jaarsveld and Arts, Operations Research 2024); Moradi, Arts, and Drent (arXiv:2504.10132, April 2025) extended large-$L$ asymptotic optimality of PIL to any demand with finite second moment provided the penalty is sufficiently large, via a Wiener-Hopf/ladder-process solution of the constant-order relative value function. On the learning side, Zhang, Chao, and Shi (Management Science 2020) gave a $O(\\sqrt{T})$-regret algorithm against the best base-stock policy under censored demand, and Lyu, Zhang, and Xin (Operations Research 2024) gave UCB-type algorithms with Kaplan-Meier estimation that learn the best capped base-stock policy with regret whose lead-time dependence is linear rather than exponential. Xin's 'Capped Base-Stock Policies: A 2.33-Approximation' (July 2026 preprint), Section 2 and Theorem 1, gives the nonasymptotic periodic-review bound stated above for all positive finite-mean i.i.d. demand, all $L\\ge1$, and $h,p>0$. It does not improve the earlier factor 2 for the different dual-balancing policy class. Separately, Hu (arXiv:2610.34576v1, October 2026), Theorem 4.1, claims a uniform $\\sqrt2$ base-stock bound without setup costs and $(\\sqrt2+\\sqrt6)/2<1.932$ for an $(r,Q)$-or-no-order policy with setup costs, but only in continuous review with unit Poisson demand. Neither is an exact optimal-policy characterization.\n\nA separate remaining asymptotic gap is explicit in Bu, Gong, and Chao (Operations Research 2024), Theorem 2(b) and the following discussion. Let $D^{[L+1]}$ be the sum of $L+1$ iid demands. Their base-stock optimality argument requires $\\mathbb E[D^{[L+1]}-x\\mid D^{[L+1]}>x]=o(x)$, not merely $O(x)$. For continuous regularly varying tails $\\mathbb P(D^{[L+1]}>x)\\sim c x^{-\\alpha}$ with $\\alpha>1$, their bounds imply only $\\limsup_{p\\to\\infty}C_{\\rm BS}^*(p)/\\mathrm{OPT}(p)\\le(L+1)^{1/\\alpha}$. Whether the best base-stock policy is asymptotically optimal in this heavier-tail regime is explicitly left open there. The cited PIL large-penalty theorem also retains a tail condition; its later large-lead-time extension takes a different limit.\n\nRemaining open problem. Tight finite-parameter policy guarantees and exact structure remain, together with the specifically identified heavy-tail, fixed-$L$, large-$p$ base-stock question.",
     "where_posed": {
       "text": "The model originates with Karlin and Scarf (1958); the modern structural framing and negative results are in Zipkin, 'On the Structure of Lost-Sales Inventory Models', Operations Research 56(4):937-944, 2008, which proves the optimal policy is neither base-stock nor constant-order. The problem is presented as the flagship open line in Goldberg, Reiman, and Wang, 'A Survey of Recent Progress in the Asymptotic Analysis of Inventory Systems', Production and Operations Management 30(6):1718-1750, 2021.",
       "url": "https://pubsonline.informs.org/doi/10.1287/opre.1070.0482",
@@ -4174,13 +4174,20 @@
         "year": 2026,
         "venue": "arXiv:2610.34576v1, 25 October 2026",
         "url": "https://arxiv.org/abs/2610.34576v1"
+      },
+      {
+        "authors": "Jinzhi Bu, Xiting Gong, Xiuli Chao",
+        "title": "Asymptotic Scaling of Optimal Cost and Asymptotic Optimality of Base-Stock Policy in Several Multidimensional Inventory Systems",
+        "year": 2024,
+        "venue": "Operations Research 72(5):1765-1774",
+        "url": "https://doi.org/10.1287/opre.2022.0488"
       }
     ],
     "enabled": true,
-    "background": "Periodic-review inventory theory with backlogged demand is one of the great success stories of operations research: for the backlog model the $L$-dimensional pipeline of outstanding orders collapses to the scalar inventory position, the dynamic program is convex, and a simple base-stock (order-up-to) policy is exactly optimal. Karlin and Scarf, in their foundational 1958 work, already observed that the seemingly innocuous change from backlogging to lost sales — unmet demand simply vanishes, as in brick-and-mortar and online retail, perishables, and spare parts, where customers walk or switch to a competitor — destroys this entire structure: even for lead time $L=1$ the optimal order is not a function of the inventory position alone, so base-stock optimality fails in general. Morton (1969) derived bounds relating the optimal policy to the backlog solution, but the exact dynamic program lives on the full $L$-dimensional pipeline vector and is intractable beyond very small lead times. Zipkin's influential 2008 papers revived the problem: using $L^{\\natural}$-convexity he established monotonicity and bounded-sensitivity properties of the optimal order quantity, showed that neither base-stock nor constant-order is generally optimal, and showed numerically that base-stock policies can perform badly when the lead time is long and the penalty moderate. The problem then became the launching pad for the modern \"asymptotic analysis of inventory systems\" program surveyed by Goldberg, Reiman, and Wang (2021): if the exact optimum cannot be computed or described, prove that simple, interpretable policies are near-optimal in limiting regimes (large penalty, large lead time), and quantify the rate. Beyond its intrinsic role as perhaps the oldest unsolved structural question in inventory theory, the model is now a canonical benchmark for approximation guarantees in MDPs with high-dimensional states, for online learning with censored demand, and for deep-reinforcement-learning methods in operations, so any genuine structural characterization would reverberate well beyond inventory theory.",
+    "background": "Periodic-review inventory theory with backlogged demand is one of the great success stories of operations research: for the backlog model the $L$-dimensional pipeline of outstanding orders collapses to the scalar inventory position, the dynamic program is convex, and a simple base-stock (order-up-to) policy is exactly optimal. Karlin and Scarf, in their foundational 1958 work, already observed that the seemingly innocuous change from backlogging to lost sales — unmet demand simply vanishes, as in brick-and-mortar and online retail, perishables, and spare parts, where customers walk or switch to a competitor — destroys this entire structure: even for lead time $L=1$ the optimal order is not a function of the inventory position alone, so base-stock optimality fails in general. Morton (1969) derived bounds relating the optimal policy to the backlog solution, but the exact dynamic program lives on the full $L$-dimensional pipeline vector and can be expensive to solve at larger lead times. Zipkin's influential 2008 papers revived the problem: using $L^{\\natural}$-convexity he established monotonicity and bounded-sensitivity properties of the optimal order quantity, showed that neither base-stock nor constant-order is generally optimal, and showed numerically that base-stock policies can perform badly when the lead time is long and the penalty moderate. The problem then became the launching pad for the modern \"asymptotic analysis of inventory systems\" program surveyed by Goldberg, Reiman, and Wang (2021): if the exact optimum cannot be computed or described, prove that simple, interpretable policies are near-optimal in limiting regimes (large penalty, large lead time), and quantify the rate. Beyond its intrinsic role as perhaps the oldest unsolved structural question in inventory theory, the model is now a canonical benchmark for approximation guarantees in MDPs with high-dimensional states, for online learning with censored demand, and for deep-reinforcement-learning methods in operations, so any genuine structural characterization would reverberate well beyond inventory theory.",
     "progress": {
       "state": "partial",
-      "summary": "The 2026 periodic-review CBS guarantee removes the alleged absence of uniform nonasymptotic bounds for that class. Exact policy characterization and sharper worst-case factors remain separate targets; continuous-review improvements require different assumptions.",
+      "summary": "The 2026 periodic-review CBS guarantee removes the alleged absence of uniform nonasymptotic bounds for that class. Exact policy characterization and sharper worst-case factors remain separate targets; continuous-review improvements require different assumptions. The fixed-lead-time, heavy-tail, large-penalty base-stock question is explicitly identified by Bu, Gong, and Chao (2024).",
       "links": [
         {
           "title": "Projected Inventory-Level Policies for Lost Sales Inventory Systems: Asymptotic Optimality in Two Regimes — van Jaarsveld & Arts, OR 2024",
@@ -4205,6 +4212,10 @@
         {
           "title": "Hu, continuous-review lost-sales guarantee (2026 preprint)",
           "url": "https://arxiv.org/abs/2610.34576v1"
+        },
+        {
+          "title": "Jinzhi Bu, Xiting Gong, Xiuli Chao (2024)",
+          "url": "https://doi.org/10.1287/opre.2022.0488"
         }
       ]
     },
@@ -4215,7 +4226,7 @@
     "alphaevolve_suitability": "medium",
     "alphaevolve_rationale": "An evolutionary loop over interpretable policy programs (functions of the pipeline vector) with fitness from simulation or exact small-$L$ value iteration could plausibly rediscover or beat PIL/capped-base-stock heuristics and suggest new conjecturable policy structures — exactly how PIL itself emerged from human insight plus numerics. However, the open problem as posed demands proofs (characterization or uniform gap bounds), which search alone cannot supply, and existing heuristics are already within a percent of optimal on benchmark instances, leaving little numeric headroom.",
     "literature": {
-      "synthesis": "Three kinds of progress must be kept separate: structural properties of exact optima, asymptotic optimality in limiting regimes, and uniform approximation factors. The existing base-stock, constant-order and projected-inventory analyses remain relevant, but the statement that nothing is known at finite parameters is false. The new CBS theorem directly addresses the periodic-review model. Continuous-review Poisson guarantees are related results, not substitutes for it; nor does a guarantee for the best policy within a restricted class characterize the unrestricted optimum.",
+      "synthesis": "Three kinds of progress must be kept separate: structural properties of exact optima, asymptotic optimality in limiting regimes, and uniform approximation factors. The existing base-stock, constant-order and projected-inventory analyses remain relevant, but the statement that nothing is known at finite parameters is false. The new CBS theorem directly addresses the periodic-review model. Continuous-review Poisson guarantees are related results, not substitutes for it; nor does a guarantee for the best policy within a restricted class characterize the unrestricted optimum. A second distinction is between bounded or sublinear-mean-excess demand and regularly varying tails. The large-penalty base-stock and PIL theorems cited here are not unconditional over all finite-mean demand. The heavy-tail question concerns the best base-stock policy at fixed lead time and is not settled by large-lead-time optimality of a different policy.",
       "reviewed": [
         {
           "ref": "Paul H. Zipkin, 'On the Structure of Lost-Sales Inventory Models', Operations Research 56(4):937-944, 2008",
@@ -4243,7 +4254,7 @@
         },
         {
           "ref": "Willem van Jaarsveld, Joachim Arts, 'Projected Inventory-Level Policies for Lost Sales Inventory Systems: Asymptotic Optimality in Two Regimes', Operations Research 72(5):1790-1805, 2024",
-          "result": "PIL policies (order so the expected inventory level upon the order's arrival hits a fixed target) cost less than the corresponding backlog system, hence are asymptotically optimal as $p\\to\\infty$ under mild assumptions; they dominate constant-order for every finite $L$, hence are asymptotically optimal as $L\\to\\infty$ for exponential demand.",
+          "result": "Theorems 2 and 4 establish PIL optimality in different limits: large lead time for exponential demand; large penalty under Assumption 1 on lead-time demand tails.",
           "relevance": "partial-progress",
           "url": "https://pubsonline.informs.org/doi/10.1287/opre.2021.0032"
         },
@@ -4264,6 +4275,12 @@
           "result": "Theorem 4.1 improves the related continuous-review guarantee; see known_results for its different assumptions.",
           "relevance": "partial-progress",
           "url": "https://arxiv.org/abs/2610.34576v1"
+        },
+        {
+          "ref": "Jinzhi Bu, Xiting Gong, Xiuli Chao, 'Asymptotic Scaling of Optimal Cost and Asymptotic Optimality of Base-Stock Policy in Several Multidimensional Inventory Systems', Operations Research 72(5):1765-1774, 2024",
+          "result": "Theorem 2(b) and its following discussion identify a heavy-tail large-penalty gap for best base-stock policies: the displayed bound is (L+1)^(1/alpha), not asymptotic ratio one.",
+          "relevance": "partial-progress",
+          "url": "https://doi.org/10.1287/opre.2022.0488"
         }
       ]
     },
@@ -4272,7 +4289,8 @@
       "verification_notes": "A claimed characterization must specify the policy class precisely and prove optimality (or an explicit gap bound) for the stated demand class and cost parameters under the long-run average criterion — check that the average-cost optimality equation or a vanishing-discount argument is handled rigorously, a classic failure point on unbounded state spaces. Numerical claims of exact optimality for a policy class can be refuted (but not confirmed) by exact value iteration on small discrete-demand instances ($L\\le 4$, truncated support) with rigorous span-based error bounds; watch for discretization artifacts with continuous demand. Common failure modes: silently assuming backlog-style state collapse to inventory position, confusing asymptotic optimality with exact optimality, and heuristics validated only on the standard (geometric/Poisson demand) benchmark grid. Compare any claimed CBS improvement with Xin's 2026 theorem and keep periodic/continuous review assumptions separate.",
       "machine_checkable": false
     },
-    "notes_for_maintainer": "Audit 2026-11-09 supersedes July assertions of no periodic-review approximation guarantee. Read Xin's author-uploaded manuscript Sections 2 and 5 (Theorem 1) via ResearchGate; SSRN direct fetch returned 403 but its indexed author abstract and DOI were checked. Read Hu's model and Theorem 4.1. Both 2026 results are recorded as preprints, not independently certified proofs. Corrected arrival/pipeline timing in full_statement and qualified overly universal base-stock nonoptimality claims. Existing references and unrelated fields retained."
+    "notes_for_maintainer": "Audit 2026-11-09 supersedes July assertions of no periodic-review approximation guarantee. Read Xin's author-uploaded manuscript Sections 2 and 5 (Theorem 1) via ResearchGate; SSRN direct fetch returned 403 but its indexed author abstract and DOI were checked. Read Hu's model and Theorem 4.1. Both 2026 results are recorded as preprints, not independently certified proofs. Corrected arrival/pipeline timing in full_statement and qualified overly universal base-stock nonoptimality claims. Existing references and unrelated fields retained. 2026-11-09 queueing/inventory pass: checked Bu-Gong-Chao Theorem 2 and van Jaarsveld-Arts Assumption 1/Theorem 4. Removed the unconditional 'general demand' phrasing for penalty asymptotics. The 2026 CBS and continuous-review results from the prior pass are retained.",
+    "open_problem": "Find sharper uniform policy guarantees or exact policy structure in the stated periodic-review lost-sales model. A concrete residual subquestion is whether the best base-stock policy is asymptotically optimal at fixed lead time as the penalty grows under continuous regularly varying demand tails; the known sublinear-mean-excess argument does not cover that class."
   },
   {
     "id": "dual-sourcing-inventory-optimal-policy-structure",
@@ -9403,7 +9421,7 @@
   },
   {
     "id": "perishable-inventory-optimal-policy",
-    "title": "A simple optimal policy for perishable inventory with fixed lifetime ≥ 3",
+    "title": "Finite-parameter guarantees for fixed-lifetime perishable inventory",
     "collection": "Operations Management",
     "area": "Inventory",
     "tags": [
@@ -9413,15 +9431,15 @@
       "asymptotic optimality",
       "dynamic programming"
     ],
-    "status": "open",
+    "status": "partially resolved",
     "confidence": "medium",
-    "short_statement": "For periodic-review inventory of a product that expires after a fixed number of periods ($\\ge 3$), is any simple ordering policy exactly or asymptotically optimal?",
-    "full_statement": "Consider a single item under periodic review whose units perish exactly $m$ periods after arrival (fixed shelf life), with i.i.d. demand, FIFO issuance, and linear holding, outdating (expiry), and shortage (or lost-sales) costs. The state needed for the dynamic program is the age profile of on-hand stock — the vector $(x_1,\\dots,x_{m-1})$ of quantities with $1,\\dots,m-1$ periods of remaining life — so the optimal order quantity is a function of this whole vector. For $m\\ge 3$ the optimal policy is not of base-stock/order-up-to form and is computationally intractable (curse of dimensionality). Question: does there exist a simple, tractable policy (e.g. an order-up-to rule in total inventory, or a critical-number policy) that is exactly optimal for $m\\ge 3$, or that is provably asymptotically optimal with explicit performance guarantees?",
-    "known_results": "Nahmias and Pierskalla solve important two-period perishability cases, and Nahmias's 1982 review records how quickly the dynamic program becomes difficult for longer lifetimes. For $m \\ge 3$, the optimal order quantity depends on the full age vector, and no general base-stock, critical-number, or low-dimensional exact policy is known. Zhang, Ayer, and White prove 2-approximation guarantees for marginal-cost dual-balancing and truncated-balancing policies when FIFO is optimal, under general stochastic demand. These approximation guarantees are useful but leave a large gap between known tractable policies and exact optimality. Later asymptotic inventory-control work gives additional insight in special regimes, but it does not resolve the finite-lifetime exact policy structure.",
+    "short_statement": "Simple policies already have approximation and large-penalty optimality guarantees. The remaining target is sharper nonasymptotic control or exact structure at finite parameters, not the mere existence of asymptotic results.",
+    "full_statement": "Consider periodic-review inventory of a single item with fixed shelf life $m\\ge3$, zero replenishment lead time, no order-capacity or setup cost, iid nonnegative demand $D_t$ of finite positive mean, and lost sales. At the start of a period the age vector $(x_1,\\ldots,x_{m-1})$ gives stock with $1,\\ldots,m-1$ periods of remaining life. A nonnegative order arrives immediately with $m$ periods of life. Demand is served oldest first (FIFO). Unmet demand $L_t$ is lost; leftover stock $O_t$ with one period of life expires. Let $H_t$ be all stock remaining after demand and before expiry. The cost is $hH_t+wO_t+pL_t$, with $h,p>0$ and $w\\ge0$. Remaining units age by one period.\n\nStarting empty, minimize $\\limsup_{T\\to\\infty}T^{-1}\\mathbb E\\sum_{t=1}^T(hH_t+wO_t+pL_t)$ over nonanticipative ordering policies. A base-stock policy orders $(S-\\sum_a x_a)^+$.\n\nThe remaining question is an exact structural characterization or a tractable policy with sharper explicit finite-parameter error bounds across this model. State the dependence on $m$, costs, and the demand distribution, and provide a proved computation guarantee for any parameters to be tuned. Large-$p$ optimality in several demand classes is already known and is not, by itself, a new resolution. Positive lead time adds a pipeline to the state and is a separate extension.",
+    "known_results": "Classical work by Nahmias and Pierskalla and Nahmias's survey develops age-profile dynamic programming and short-lifetime special cases. Zhang, Ayer, and White's approximation work gives factor-two guarantees under its FIFO-optimality and finite-horizon assumptions; such a finite-horizon bound should not be silently treated as an infinite-horizon average-cost theorem.\n\nBu, Gong, and Chao (Operations Research 72(5):1765-1774, 2024), Section 4 and Theorem 3, establish large-penalty asymptotics for zero-lead-time perishable inventory, including the iid lost-sales specialization above. For unbounded demand with $\\mathbb E[D-x\\mid D>x]=o(x)$, the best base-stock cost is asymptotically optimal; Theorem 3(b) also covers continuously distributed regularly varying tails with exponent greater than one. Proposition 5 gives stronger bounded-demand conclusions, including exact optimality at sufficiently large penalty for bounded integer-valued demand. Thus even some finite-parameter cases are settled.\n\nBu, Gong, and Yin's Management Science article, published online August 26, 2026, studies the different positive-lead-time model. Its publisher abstract reports large-penalty PIL optimality for specified unbounded-demand classes and special bounded-demand results. The full theorem assumptions were not accessible in this pass, so no universal claim for arbitrary demand, lead time, or issuance is made here.\n\nRemaining open problem. Obtain sharper finite-parameter guarantees or exact structure outside the established regimes; do not ask whether any asymptotically optimal simple policy exists.",
     "where_posed": {
-      "text": "The structural difficulty and open directions are highlighted in Nahmias, 'Perishable Inventory Theory: A Review', Operations Research 1982.",
-      "url": "https://pubsonline.informs.org/doi/10.1287/opre.30.4.680",
-      "location": "Review discussion of fixed-lifetime models and high-dimensional optimal policies.",
+      "text": "Editorial residual question based on the classical structural problem and the regimes now treated by Bu, Gong, and Chao (2024); not a verbatim conjecture from the recent paper.",
+      "url": "https://doi.org/10.1287/opre.2022.0488",
+      "location": "Section 4, Theorem 3 and Proposition 5, read alongside the classical survey.",
       "quote": ""
     },
     "source": {
@@ -9437,21 +9455,28 @@
         "title": "Optimal ordering policies for a product that perishes in two periods subject to stochastic demand",
         "year": 1973,
         "venue": "Naval Research Logistics Quarterly",
-        "url": "https://scholar.google.com/scholar?q=Nahmias+Pierskalla+1973+product+perishes+two+periods+stochastic+demand"
+        "url": "https://doi.org/10.1002/nav.3800200204"
       },
       {
-        "authors": "Recent work on asymptotic optimality (e.g., Bu, Gong, Chao; Chen et al.)",
-        "title": "Asymptotic optimality of base-stock and constant-order policies for perishable inventory",
-        "year": 2023,
-        "venue": "Operations Research / Management Science",
-        "url": "https://scholar.google.com/scholar?q=asymptotic+optimality+perishable+inventory+base-stock+constant-order"
+        "authors": "Jinzhi Bu, Xiting Gong, Xiuli Chao",
+        "title": "Asymptotic Scaling of Optimal Cost and Asymptotic Optimality of Base-Stock Policy in Several Multidimensional Inventory Systems",
+        "year": 2024,
+        "venue": "Operations Research 72(5):1765-1774",
+        "url": "https://doi.org/10.1287/opre.2022.0488"
+      },
+      {
+        "authors": "Jinzhi Bu, Xiting Gong, Huanyu Yin",
+        "title": "Managing Perishable Inventory Systems with Positive Lead Times: Inventory Position vs. Projected Inventory Level",
+        "year": 2026,
+        "venue": "Management Science, Articles in Advance, August 26, 2026",
+        "url": "https://doi.org/10.1287/mnsc.2023.03801"
       }
     ],
     "enabled": true,
-    "background": "Perishable inventory is a classical operations-management model for blood products, pharmaceuticals, food, and other goods with fixed shelf lives. The model is not hard because the business setting is vague; it is hard because the exact dynamic program has a high-dimensional age-profile state. If units expire after $m$ periods, the controller must track how many units have each remaining lifetime, because ordering too much creates future outdating while ordering too little creates shortages or lost sales. For $m=2$, the state is essentially one-dimensional and classical structure is available. For $m \\ge 3$, simple base-stock or order-up-to rules do not describe the optimal policy in general, and exact dynamic programming scales poorly. Approximation algorithms and heuristics exist, including myopic/critical-number ideas and later dual-balancing policies with constant-factor guarantees under FIFO optimality. The central open problem is therefore structural and algorithmic: find a simple exact policy class, or a sharper provably near-optimal policy, for the fixed-lifetime model beyond the two-period case.",
+    "background": "Age composition matters because two inventories with the same total stock can have very different future expiry losses. The oldest-first rule fixes issuance, leaving the order decision as the control. This creates a genuine multidimensional dynamic program even with one item and zero lead time. The policy literature now offers more than heuristics: approximation algorithms and high-penalty asymptotic theorems explain when relatively simple policies work. A useful open question must therefore isolate what these theorems leave unresolved. Here that is exact structure and finite-parameter performance outside the proved regimes. The positive-lead-time extension has additional pipeline information and a separate recent projected-inventory-level literature; its results should not be confused with the zero-lead-time baseline.",
     "progress": {
       "state": "partial",
-      "summary": "The two-period case is classical, and modern approximation algorithms give worst-case factor-2 guarantees under FIFO optimality. General exact structure for $m \\ge 3$ remains open.",
+      "summary": "Published 2024 results prove base-stock optimality in several large-penalty regimes, including some exact bounded-demand cases. A 2026 Management Science paper adds positive-lead-time PIL results; its abstract was screened, not its full theorems.",
       "links": [
         {
           "title": "Nahmias, Perishable Inventory Theory: A Review",
@@ -9460,6 +9485,14 @@
         {
           "title": "Zhang, Ayer, White, 2-Approximation Algorithms for Perishable Inventory Control",
           "url": "https://arxiv.org/abs/1605.01442"
+        },
+        {
+          "title": "Jinzhi Bu, Xiting Gong, Xiuli Chao (2024)",
+          "url": "https://doi.org/10.1287/opre.2022.0488"
+        },
+        {
+          "title": "Jinzhi Bu, Xiting Gong, Huanyu Yin (2026)",
+          "url": "https://doi.org/10.1287/mnsc.2023.03801"
         }
       ]
     },
@@ -9470,7 +9503,7 @@
     "alphaevolve_suitability": "medium",
     "alphaevolve_rationale": "Search can map optimal actions for truncated MDPs and find counterexamples to conjectured monotonicity or low-dimensional policies. It can also optimize candidate heuristic parameters, but proofs need dynamic-programming or convexity arguments.",
     "literature": {
-      "synthesis": "The perishable inventory literature has a long split between exact dynamic programming and usable policies. Classical work resolves special short-lifetime models, while Nahmias's review explains that fixed lifetime $m \\ge 3$ creates a multidimensional state and destroys the simplicity of ordinary inventory base-stock rules. Approximation work by Zhang, Ayer, and White provides a robust positive result: when FIFO issuing is optimal, dual-balancing-style policies are within a factor of two of the optimal ordering policy. This is meaningful operationally but still far from a structural characterization. The open gap is to decide whether the general model admits a clean policy description, whether stronger approximation ratios are possible, and which assumptions on demand, issuing, or costs recover simple optimality.",
+      "synthesis": "The former statement combined exact optimality with existence of any asymptotically optimal policy, leaving the latter incorrectly presented as unexplored. Bu, Gong, and Chao provide explicit average-cost asymptotics in the zero-lead-time model. Approximation algorithms answer a different finite-horizon question, while Bu, Gong, and Yin address positive lead times and more general issuance. These are complementary results with distinct assumptions. The remaining target is a nonasymptotic theorem or exact policy structure for a fixed, specified model, not an unqualified statement that perishability prevents all simple policies from being optimal.",
       "reviewed": [
         {
           "ref": "Nahmias, 'Perishable Inventory Theory: A Review', Operations Research 1982",
@@ -9485,20 +9518,32 @@
           "url": "https://onlinelibrary.wiley.com/doi/10.1002/nav.3800200204"
         },
         {
-          "ref": "Zhang, Ayer, White, '2-Approximation Algorithms for Perishable Inventory Control When FIFO Is an Optimal Issuing Policy', arXiv 2016",
-          "result": "Gives dual-balancing and truncated-balancing policies with factor-2 guarantees under FIFO optimality.",
+          "ref": "Can Zhang, Turgay Ayer, Chelsea C. White III, '2-Approximation Algorithms for Perishable Inventory Control When FIFO Is an Optimal Issuing Policy', arXiv:1605.01442v2, 2016",
+          "result": "Factor-two approximation under the paper's FIFO-optimality and finite-horizon conditions; not automatically an average-cost guarantee.",
           "relevance": "partial-progress",
-          "url": "https://arxiv.org/abs/1605.01442"
+          "url": "https://arxiv.org/abs/1605.01442v2"
+        },
+        {
+          "ref": "Jinzhi Bu, Xiting Gong, Xiuli Chao, 'Asymptotic Scaling of Optimal Cost and Asymptotic Optimality of Base-Stock Policy in Several Multidimensional Inventory Systems', Operations Research 72(5):1765-1774, 2024",
+          "result": "Section 4, Theorem 3 and Proposition 5: zero-lead-time perishable inventory large-penalty asymptotics, plus exact high-penalty cases for bounded integer demand.",
+          "relevance": "solves-special-case",
+          "url": "https://doi.org/10.1287/opre.2022.0488"
+        },
+        {
+          "ref": "Jinzhi Bu, Xiting Gong, Huanyu Yin, 'Managing Perishable Inventory Systems with Positive Lead Times: Inventory Position vs. Projected Inventory Level', Management Science, Articles in Advance, August 26, 2026, 2026",
+          "result": "Publisher abstract screened: PIL asymptotic optimality and special bounded-demand results in positive-lead-time systems. Full theorem assumptions not reviewed; retained as related-model progress.",
+          "relevance": "related-tool",
+          "url": "https://doi.org/10.1287/mnsc.2023.03801"
         }
       ]
     },
     "agent_guidance": {
       "suitable_approaches": "Start with $m=3$ finite-support demand and compute exact discounted or average-cost optimal actions on truncated state spaces. Test conjectures about monotonicity, Schur-convexity in the age profile, or dominance by total inventory plus oldest stock. For approximation, try primal-dual or balancing arguments that improve the factor-2 analysis.",
-      "verification_notes": "A claimed exact policy must specify the issuing rule, cost criterion, demand assumptions, and prove Bellman optimality. Numerical dynamic programming is useful evidence but does not prove infinite-state optimality unless accompanied by certified truncation or structural bounds.",
+      "verification_notes": "Specify the zero-lead-time FIFO lost-sales average-cost model, including the holding-before-expiry convention. Do not report a known large-penalty limit as new. Transfer of a finite-horizon approximation theorem to average cost needs justification. Positive-lead-time PIL claims require their own assumptions.",
       "machine_checkable": true
     },
-    "notes_for_maintainer": "Avoid phrasing this as a healthcare modelling problem. The clean problem is fixed-lifetime inventory control with a specified age-profile MDP.",
-    "open_problem": "For periodic-review fixed-lifetime perishable inventory with $m \\ge 3$, characterize a simple exact optimal policy if one exists, or give sharp performance guarantees for a tractable policy class under general demand and cost parameters."
+    "notes_for_maintainer": "Reviewed 2026-11-09: Bu-Gong-Chao Section 4, Theorem 3/Proposition 5 and Appendix C; 2026 Bu-Gong-Yin publisher metadata and abstract only (full PDF unavailable). Removed the vague multi-author placeholder reference.",
+    "open_problem": "For the specified FIFO lost-sales model at fixed finite parameters, establish a useful exact policy structure or sharper explicit performance bounds for a tractable policy. Exclude already settled high-penalty demand regimes and specify the benchmark and computational guarantees."
   },
   {
     "id": "dynamic-matching-thickness-optimal-policy",
@@ -9817,7 +9862,7 @@
   },
   {
     "id": "dynamic-spatial-matching-greedy",
-    "title": "Cost of the greedy algorithm for dynamic spatial matching",
+    "title": "Greedy spatial matching beyond the solved one-dimensional batch case",
     "collection": "Operations Management",
     "area": "Spatial Matching",
     "tags": [
@@ -9833,30 +9878,30 @@
       "random-geometric-probability",
       "online-platforms"
     ],
-    "status": "open",
+    "status": "partially resolved",
     "confidence": "high",
-    "short_statement": "Determine the exact expected cost scaling of nearest-neighbor greedy in balanced dynamic spatial matching.",
-    "full_statement": "Supply and demand points are sampled independently in $[0,1]^d$, usually uniformly, and matching cost is Euclidean distance. In the semi-dynamic model, $N$ supply points are initially present and $N$ demand points arrive sequentially; each demand must be matched irrevocably to an unmatched supply point. In the fully dynamic model, supply and demand both arrive over time and unmatched agents may wait subject to the model's queue-size or market-thickness assumptions. The standard greedy policy matches each arriving agent to the nearest currently available compatible opposite-side agent. Kanoria characterizes near-optimal achievable cost scaling using hierarchical greedy policies, but the ordinary nearest-neighbor greedy policy is not sharply understood in balanced markets. The open problem is to determine the expected average cost of standard greedy as a function of $N$ and dimension $d$, including possible logarithmic factors and constants, and to compare this scaling with the optimal achievable cost.",
-    "known_results": "Kanoria determines the optimal achievable cost scaling in major static, semi-dynamic, and fully dynamic random spatial matching regimes and gives concrete hierarchical matching algorithms. In almost all cases, the optimal dynamic scaling is close to the static benchmark or nearest-neighbor distance; one explicit remaining gap in that paper is a logarithmic factor for $d=1$ in the fully dynamic model. Akbarpour, Alimohammadi, Li, and Saberi show that in one-dimensional spatial markets, a small amount of excess supply can make a simple greedy algorithm perform very well. These results do not give a sharp analysis of standard nearest-neighbor greedy under balanced supply and demand, nor do they determine whether greedy suffers avoidable logarithmic losses in the key low-dimensional dynamic regimes.",
+    "short_statement": "Ordinary greedy is already constant-competitive for one-dimensional iid uniform supply and demand. Its higher-dimensional performance and the replenishing-market model remain separate targets.",
+    "full_statement": "Fix a dimension $d$. In the balanced semi-dynamic model, $N$ supply points and $N$ demand points are independent uniform samples from $[0,1]^d$. All supply points are available initially. Demands arrive one by one and must be matched immediately and irrevocably. Ordinary greedy chooses the closest unused supply in Euclidean distance, with a fixed tie rule. Let $G_d(N)$ be its expected total distance divided by $N$, and let $B_d(N)$ be the expected offline minimum total distance divided by $N$.\n\nThe first remaining question is whether $G_d(N)=\\Theta(B_d(N))$ for each fixed $d\\ge2$, or whether greedy has an extra asymptotic loss. The balanced $d=1$ scaling is already settled: $G_1(N)=\\Theta(N^{-1/2})$. Exact leading constants are a finer question.\n\nIn the fully dynamic model, maintain exactly $m$ supply points. Begin with iid uniform supply. At each period an independent uniform demand arrives, is matched immediately to its nearest supply, and both leave; an independent uniform replacement supply then arrives. Let\n$$G_d^{\\rm rep}(m)=\\limsup_{T\\to\\infty}\\frac1T\\mathbb E\\sum_{t=1}^T\\|D_t-S_t^{\\rm matched}\\|_2.$$\nThe second question is its sharp order as $m\\to\\infty$ and its ratio to the infimum of this long-run criterion over nonanticipative policies. Demand does not wait in this model. Distinguish ordinary nearest-neighbor greedy from Hierarchical Greedy and from SOAR.",
+    "known_results": "Kanoria's Dynamic Spatial Matching appeared in Annals of Applied Probability 35(5):3086-3118 (2025). It provides benchmark cost scalings and hierarchical policies, not a general sharp analysis of ordinary greedy.\n\nBalkanski, Faenza, and Perivier (EC 2023; arXiv:2210.03166v3, March 27, 2025), Section 3, prove ordinary greedy constant-competitive when supply and demand are iid uniform on the line. Thus the balanced average cost is $\\Theta(N^{-1/2})$. They also prove constant competitiveness with a fixed positive linear excess of supply, improving the earlier polylogarithmic loss. Their Appendices A.1 and A.4 distinguish higher-dimensional and sublinear-excess questions. Here competitive ratio means a ratio of expected costs.\n\nChen, Kanoria, Kumar, and Zhang, Feature-Based Dynamic Matching (Operations Research 74(2):788-803, 2026 issue; online 2025), establish near-optimal SOAR regret scalings. The author manuscript's Proposition 2 and discussion in Section 4.1 resolve the exponent gap for uniform semi-dynamic matching with distance-to-a-power costs, up to logarithmic factors. This is not a theorem for ordinary greedy, and it does not resolve the fully dynamic one-dimensional logarithmic gap mentioned by Kanoria.\n\nRemaining open problem. Analyze ordinary greedy in higher dimensions and in the precisely specified replenishing market. Do not present balanced one-dimensional batch scaling as open.",
     "where_posed": {
-      "text": "Residual question around standard greedy after Kanoria's optimal-scaling results and later excess-supply analysis.",
-      "url": "https://arxiv.org/abs/2105.07329",
-      "location": "Open directions and discussion of greedy/spatial balance",
+      "text": "Kanoria discusses ordinary greedy as a separate unresolved analysis; Balkanski, Faenza, and Perivier settle the one-dimensional iid batch case and discuss higher dimensions.",
+      "url": "https://arxiv.org/abs/2210.03166v3",
+      "location": "Section 3 and Appendix A.1; Kanoria Sections 3-4 and 7.",
       "quote": ""
     },
     "source": {
       "authors": "Yash Kanoria",
       "title": "Dynamic Spatial Matching",
-      "year": 2022,
-      "venue": "arXiv:2105.07329 (math.PR); EC 2022",
-      "url": "https://arxiv.org/abs/2105.07329"
+      "year": 2025,
+      "venue": "Annals of Applied Probability 35(5):3086-3118",
+      "url": "https://doi.org/10.1214/25-AAP2154"
     },
     "additional_refs": [
       {
         "authors": "Mohammad Akbarpour, Yeganeh Alimohammadi, Shengwu Li, Amin Saberi",
         "title": "The Value of Excess Supply in Spatial Matching Markets",
-        "year": 2021,
-        "venue": "EC",
+        "year": 2022,
+        "venue": "Proceedings of EC 2022; arXiv:2104.03219 (2021)",
         "url": "https://arxiv.org/abs/2104.03219"
       },
       {
@@ -9865,21 +9910,35 @@
         "year": 1984,
         "venue": "Combinatorica",
         "url": "https://doi.org/10.1007/BF02579135"
+      },
+      {
+        "authors": "Eric Balkanski, Yuri Faenza, Noemie Perivier",
+        "title": "The Power of Greedy for Online Minimum Cost Matching on the Line",
+        "year": 2025,
+        "venue": "arXiv:2210.03166v3, March 27, 2025 revision; conference version EC 2023",
+        "url": "https://arxiv.org/abs/2210.03166v3"
+      },
+      {
+        "authors": "Yilun Chen, Yash Kanoria, Akshit Kumar, Wenxin Zhang",
+        "title": "Feature-Based Dynamic Matching",
+        "year": 2026,
+        "venue": "Operations Research 74(2):788-803; first published online November 18, 2025",
+        "url": "https://doi.org/10.1287/opre.2024.0730"
       }
     ],
     "enabled": true,
-    "background": "Dynamic spatial matching is a stripped-down model of platforms that match supply and demand in metric space: ride-hailing, delivery, labor platforms, and service dispatch all face the tension between immediate local matching and preserving future options. In random spatial models, supply and demand locations are iid in $[0,1]^d$, and static optimal matching already has dimension-dependent behavior governed by Ajtai-Komlos-Tusnady and Talagrand-type results. Kanoria showed that in many dynamic regimes the platform can achieve cost nearly as low as if future arrivals were known, using policies that deliberately preserve balance across spatial scales. Standard nearest-neighbor greedy is the more obvious operational rule, but it is myopic. It may consume nearby supply in a way that creates holes and causes later long matches. Excess supply can repair greedy in one-dimensional settings, but the balanced case and the fully dynamic case remain much less clear.",
+    "background": "Dynamic spatial matching is a stripped-down model of platforms that match supply and demand in metric space: ride-hailing, delivery, labor platforms, and service dispatch all face the tension between immediate local matching and preserving future options. In random spatial models, supply and demand locations are iid in $[0,1]^d$, and static optimal matching already has dimension-dependent behavior governed by Ajtai-Komlos-Tusnady and Talagrand-type results. Kanoria showed that in many dynamic regimes the platform can achieve cost nearly as low as if future arrivals were known, using policies that deliberately preserve balance across spatial scales. Standard nearest-neighbor greedy is the more obvious operational rule, but it is myopic. It may consume nearby supply in a way that creates holes and causes later long matches. The iid uniform one-dimensional batch model is now understood to within a constant factor, both in the balanced case and with fixed linear excess supply. Higher-dimensional batch matching and the replenishing-supply process remain distinct analytical challenges.",
     "progress": {
       "state": "partial",
-      "summary": "Optimal scaling is known via hierarchical greedy-style algorithms, and excess-supply one-dimensional results explain some greedy behavior. Balanced standard nearest-neighbor greedy remains poorly understood.",
+      "summary": "One-dimensional iid batch scaling is settled by greedy's constant-competitive guarantee. SOAR resolves a different semi-dynamic exponent gap; higher-dimensional greedy and replenishing-market behavior are not thereby resolved.",
       "links": [
         {
-          "title": "Dynamic Spatial Matching",
-          "url": "https://arxiv.org/abs/2105.07329"
+          "title": "Eric Balkanski, Yuri Faenza, Noemie Perivier (2025)",
+          "url": "https://arxiv.org/abs/2210.03166v3"
         },
         {
-          "title": "The Value of Excess Supply in Spatial Matching Markets",
-          "url": "https://arxiv.org/abs/2104.03219"
+          "title": "Yilun Chen, Yash Kanoria, Akshit Kumar, Wenxin Zhang (2026)",
+          "url": "https://doi.org/10.1287/opre.2024.0730"
         }
       ]
     },
@@ -9890,16 +9949,16 @@
     "alphaevolve_suitability": "high",
     "alphaevolve_rationale": "Automated simulation and search over arrival sequences can estimate exponents, identify bottleneck configurations, and test coupling hypotheses. Proof still needs probabilistic scaling arguments.",
     "literature": {
-      "synthesis": "The optimal-cost story is substantially clearer than the greedy-cost story. Kanoria's hierarchical algorithms deliberately preserve spatial balance across scales, avoiding the local myopia of nearest-neighbor matching. Standard greedy lacks that multiscale control; it can consume nearby supply in ways that create later long matches. Excess supply can mitigate this problem in one dimension, as Akbarpour et al. show, but that does not settle balanced markets or fully dynamic arrivals. The remaining open problem is a sharp stochastic-process analysis of greedy's spatial imbalance over time, potentially requiring tools from discrepancy, random allocation, transport, and queueing.",
+      "synthesis": "The previous entry missed a direct positive theorem for the very algorithm it asked about. Random one-dimensional batch matching is no longer an unsolved scaling question for greedy. Higher dimensions and replenishment change the dependence among available supply points and are separate targets. SOAR gives another important advance, but achieves its guarantee by planning with simulated future demand, not by nearest-neighbor decisions. Its distance-power result therefore updates the benchmark literature without settling ordinary greedy's performance or a different fully dynamic gap.",
       "reviewed": [
         {
-          "ref": "Yash Kanoria, 'Dynamic Spatial Matching', Annals of Applied Probability 2023 / arXiv 2021",
-          "result": "Determines optimal achievable cost scaling in static, semi-dynamic, and fully dynamic random spatial matching models using hierarchical algorithms and identifies remaining low-dimensional logarithmic gaps.",
-          "relevance": "poses-problem",
-          "url": "https://arxiv.org/abs/2105.07329"
+          "ref": "Yash Kanoria, 'Dynamic Spatial Matching', Annals of Applied Probability 35(5):3086-3118, 2025",
+          "result": "Benchmark spatial cost scalings and hierarchical algorithms. The replenishing model has immediate demand matching and one replacement supply per period.",
+          "relevance": "related-tool",
+          "url": "https://doi.org/10.1214/25-AAP2154"
         },
         {
-          "ref": "Mohammad Akbarpour, Yeganeh Alimohammadi, Shengwu Li, and Amin Saberi, 'The Value of Excess Supply in Spatial Matching Markets', EC 2021",
+          "ref": "Mohammad Akbarpour, Yeganeh Alimohammadi, Shengwu Li, and Amin Saberi, 'The Value of Excess Supply in Spatial Matching Markets', EC 2022; arXiv 2021",
           "result": "Shows that excess supply can dramatically improve greedy performance in a one-dimensional spatial matching model.",
           "relevance": "partial-progress",
           "url": "https://arxiv.org/abs/2104.03219"
@@ -9915,15 +9974,28 @@
           "result": "Develops static random matching asymptotics and high-dimensional tools that form benchmarks for dynamic spatial matching.",
           "relevance": "related-tool",
           "url": "https://doi.org/10.1214/aoap/1177005578"
+        },
+        {
+          "ref": "Eric Balkanski, Yuri Faenza, Noemie Perivier, 'The Power of Greedy for Online Minimum Cost Matching on the Line', arXiv:2210.03166v3, March 27, 2025 revision; conference version EC 2023, 2025",
+          "result": "Section 3 settles constant competitiveness on the line in the iid uniform balanced and fixed linear-excess models; Appendix A.1 discusses the higher-dimensional gap.",
+          "relevance": "solves-special-case",
+          "url": "https://arxiv.org/abs/2210.03166v3"
+        },
+        {
+          "ref": "Yilun Chen, Yash Kanoria, Akshit Kumar, Wenxin Zhang, 'Feature-Based Dynamic Matching', Operations Research 74(2):788-803; first published online November 18, 2025, 2026",
+          "result": "SOAR gives near-optimal semi-dynamic regret scaling; the distance-power exponent-gap resolution is not a greedy or replenishing-market theorem.",
+          "relevance": "partial-progress",
+          "url": "https://doi.org/10.1287/opre.2024.0730"
         }
       ]
     },
     "agent_guidance": {
       "suitable_approaches": "Use simulations to infer the exponent, but formulate conjectures in terms of discrepancy accumulated across dyadic cells. Try coupling greedy to random sequential adsorption, online allocation, or transport processes. Lower bounds may come from showing that greedy creates under-supplied intervals or boxes at multiple scales; upper bounds likely need a martingale or potential function tracking imbalance.",
-      "verification_notes": "A solution must state the exact model variant, dimension, arrival process, and whether excess supply is present. Empirical exponents should be treated as conjectural unless accompanied by concentration and finite-size error control. Claims about hierarchical greedy do not automatically apply to standard nearest-neighbor greedy, which is the policy targeted by this record.",
+      "verification_notes": "Specify balanced batch versus replenishing supply, and expected total versus average cost. The one-dimensional balanced greedy rate is known. Neither hierarchical nor SOAR performance is evidence for ordinary greedy. Demand is matched immediately in the replenishing model, not held in an unspecified waiting queue.",
       "machine_checkable": true
     },
-    "open_problem": "Characterize the scaling and, where possible, constants of standard nearest-neighbor greedy in semi-dynamic and fully dynamic random spatial matching, especially in balanced markets and in dimensions $d=1$ and $d=2$ where discrepancy effects are strongest."
+    "open_problem": "Determine the sharp expected average cost of ordinary nearest-neighbor greedy in the balanced semi-dynamic model for fixed dimension at least two, and in the replenishing-supply model for each dimension. The one-dimensional iid uniform batch model already has a constant-competitive guarantee.",
+    "notes_for_maintainer": "Reviewed 2026-11-09: Balkanski-Faenza-Perivier v3 Section 3/Appendix A.1 and the Feature-Based Dynamic Matching author manuscript Proposition 2/Section 4.1. Updated Kanoria's publication metadata and corrected the fully dynamic model."
   },
   {
     "id": "throughput-scheduling-release-pmax",
@@ -12651,30 +12723,26 @@
       "applied probability",
       "operations research"
     ],
-    "status": "open",
+    "status": "partially resolved",
     "confidence": "medium",
-    "short_statement": "Find a tractable exact stationary characterization for the classical FCFS $M/G/k$ queue with $k\\ge2$ and arbitrary service distribution.",
-    "open_problem": "Give a computationally tractable exact characterization of stationary performance for the FCFS $M/G/k$ queue with arbitrary service-time distribution and $k\\ge2$, or prove a rigorous obstruction under a natural computational model.",
+    "short_statement": "Exact special cases and stationary samplers exist for FCFS multiserver queues. Can general service-time inputs yield efficiently computable stationary probabilities with certified errors?",
+    "open_problem": "Develop a broadly applicable exact characterization and efficient certified numerical evaluation of stationary FCFS M/G/k probabilities under an explicit input model for the service distribution, or prove a matching computational obstruction. A mean bound or stationary sampler alone does not settle this target.",
     "background": "The $M/G/k$ queue is one of the oldest and most natural unsolved models in queueing theory. Poisson arrivals are routed to the first available one of $k$ identical FCFS servers, and service times have a general distribution. When $k=1$, the Pollaczek-Khinchine formula gives a classical exact transform for waiting time. When service times are exponential, the $M/M/k$ birth-death chain is exactly solvable. But for $k\\ge2$ and general service times, the Markov state must include residual service times of all busy servers, destroying the one-dimensional transform structure of $M/G/1$. Decades of work provide approximations, special cases, phase-type numerical methods, continuity results, bounds, and heavy-traffic formulas, but no broadly tractable exact characterization comparable to the single-server formula. This is a clean mathematical open problem, not a modelling gap: the model is fixed and classical.",
-    "full_statement": "Consider a stable first-come-first-served $M/G/k$ queue with $k\\ge2$ identical servers. Arrivals form a Poisson process of rate $\\lambda$, service times are iid with distribution $G$ and finite mean $1/\\mu$, and the traffic intensity is $\\rho=\\lambda/(k\\mu)<1$. Let $Q$ be the stationary number in system, $W$ the stationary waiting time, and let the full Markov state record the queue length together with residual service times of busy servers. The open problem is to find an exact representation or algorithm that computes the stationary distribution, transforms, or basic performance measures of $(Q,W)$ for arbitrary $G$ with provable finite error and complexity guarantees. The target is a theory comparable in generality to Pollaczek-Khinchine for $M/G/1$, Erlang formulas for $M/M/k$, or matrix-analytic methods for phase-type service, but without replacing $G$ by an approximation. A weaker but still meaningful resolution would prove a rigorous obstruction: for a natural input model for $G$, exact stationary performance cannot be represented or computed within a specified tractable class.",
-    "known_results": "Exact formulas are known for $M/M/k$, $M/G/1$, $D/M/k$, $M/D/k$, and many phase-type or rational-transform special cases. For $M/G/2$, integral-equation and transform methods exist in special settings, and phase-type approximations convert the problem to large finite Markov chains. Tijms, van Hoorn, and Federgruen developed steady-state approximations and explicitly questioned whether computationally tractable exact methods for general $M/G/k$ steady-state probabilities are likely. Gupta, Harchol-Balter, Dai, and Zwart showed that two service-time moments are insufficient for universally accurate approximation, while Gupta and Osogami used Markov-Krein theory to obtain tight mean-waiting-time bounds under moment information. Sigman and Connor-Kendall developed exact or perfect simulation methods for stationary $M/G/c$ queues, but simulation of samples is not the same as a closed stationary characterization. The broad exact-performance problem remains open.",
+    "full_statement": "Consider a stationary FCFS $M/G/k$ queue with $k\\ge2$ identical unit-speed servers, Poisson arrival rate $\\lambda$, iid service time $S\\sim G$ independent of arrivals, and load $\\rho=\\lambda\\mathbb E S/k<1$. Let $N_{\\rm sys}$ count all jobs in the system, $Q_{\\rm wait}$ count only jobs waiting, and $W$ be the delay before service of an arriving job. Residual service times are part of the Markov state.\n\nThe target is an exact characterization, together with a certified numerical procedure, for quantities such as $\\mathbb P(W>x)$ or $\\mathbb P(N_{\\rm sys}=j)$ at specified $x\\ge0$ and integer $j\\ge0$. A useful result must define how $G$ is supplied (for example, finite rational support, a phase-type representation, or a distribution oracle with explicit tail bounds), return errors at most a requested $\\varepsilon>0$, and bound its computational cost. An impossibility theorem must likewise fix the input and output model.\n\nThe remaining open problem is a broadly applicable, computationally tractable theory beyond special distributions and formal infinite-dimensional balance equations. An exact stationary sample, a mean bound, and a deterministic certified probability calculation are different outputs. Mean-delay claims require additional integrability assumptions; finite mean service alone is not a universal finite-mean-delay assumption.",
+    "known_results": "The single-server Pollaczek-Khinchine theory and exponential-service Erlang formulas are exact benchmarks. Phase-type services permit matrix-analytic methods on a countably infinite level process, not generally a finite CTMC. Tijms, van Hoorn, and Federgruen (1981) give practical steady-state approximations. Gupta, Harchol-Balter, Dai, and Zwart (2010) show limitations of using only two service-time moments. Gupta and Osogami (2011) study extremal mean-waiting-time bounds under moment information. Perfect-simulation results address sampling rather than automatically giving a fast, certified numerical distribution.\n\nHong (arXiv:2510.11015v3, revised August 22, 2026), Theorem 1 and equation (8), gives the bound $\\mathbb E Q_{\\rm wait}\\le R_s^{\\max}/(1-\\rho)$ for the Poisson-arrival specialization, where $\\mu=1/\\mathbb E S$ and $R_s^{\\max}=\\sup_{t:\\mathbb P(\\mu S\\ge t)>0}\\mathbb E[\\mu S-t\\mid\\mu S\\ge t]$. It assumes bounded mean residual service, non-lattice service, and Assumption 3 on positive Harris recurrence and convergence of mean queue lengths for the auxiliary modified queues. For NBUE service satisfying those assumptions, $R_s^{\\max}=1$, hence $\\mathbb E Q_{\\rm wait}\\le1/(1-\\rho)$. Jobs in service are excluded from this bound.\n\nRemaining open problem. These sharper nonasymptotic bounds do not provide an exact general stationary distribution or a certified efficient computation for arbitrary $G$.",
     "where_posed": {
-      "text": "Classical open problem in queueing theory; summarized in references around the $M/G/k$ queue and exact stationary probabilities.",
-      "url": "https://en.wikipedia.org/wiki/M/G/k_queue",
+      "text": "Computational tractability of general M/G/c steady-state probabilities is discussed by Tijms, van Hoorn, and Federgruen (1981). The certified-algorithm formulation is editorial.",
+      "url": "https://www.cambridge.org/core/journals/advances-in-applied-probability/article/approximations-for-the-steadystate-probabilities-in-the-mgc-queue/68FA7A245D0673F7FC950130666E7A22",
       "quote": "",
-      "location": "Steady state distribution discussion"
+      "location": "Discussion of exact computation versus approximations."
     },
     "progress": {
       "state": "partial",
-      "summary": "Approximations, special cases, bounds, and heavy-traffic analyses are extensive, but no general exact tractable solution is known for arbitrary service distributions.",
+      "summary": "A revised 2026 preprint gives interpretable nonasymptotic FCFS mean-queue bounds under explicit assumptions. Exact efficient stationary-distribution computation remains a separate question.",
       "links": [
         {
-          "title": "M/G/k queue overview",
-          "url": "https://en.wikipedia.org/wiki/M/G/k_queue"
-        },
-        {
-          "title": "SRPT for Multiserver Systems",
-          "url": "https://arxiv.org/abs/1805.07686"
+          "title": "Yige Hong (2026)",
+          "url": "https://arxiv.org/abs/2510.11015v3"
         }
       ]
     },
@@ -12685,31 +12753,31 @@
     "alphaevolve_suitability": "medium",
     "alphaevolve_rationale": "Search can discover transform identities, numerical patterns, and hard service-time distributions for approximations. A resolution likely needs analytic queueing theory or a formal computational-complexity obstruction.",
     "literature": {
-      "synthesis": "The obstruction in $M/G/k$ is residual-service dimensionality. In $M/G/1$, a departure or workload recursion collapses the system to one dimension. With multiple FCFS servers, the vector of residual service times matters, and arrivals see a correlated configuration of server ages. Phase-type approximations convert the problem to a finite Markov chain but can grow rapidly and do not constitute a closed-form exact solution for arbitrary $G$. Moment-based approximations are useful operationally, but impossibility results for two-moment approximations show that distributional detail can matter. The open gap is an exact representation that is both mathematically general and computationally usable.",
+      "synthesis": "The computational target must be separated from existence of a stationary law and from sampling it. The newer leave-one-out bound supplies useful numerical control for light-tailed distributions, but bounds only a mean and carries regularity assumptions on auxiliary queues. General probability computation still needs an explicit distribution input model, a truncation or approximation certificate, and a runtime guarantee. The statement no longer confuses queue length with total population or phase-type matrix analysis with a finite-state chain.",
       "reviewed": [
         {
-          "ref": "H. C. Tijms, M. H. van Hoorn, and A. Federgruen, 'Approximations for the Steady-State Probabilities in the M/G/c Queue', Advances in Applied Probability 1981",
-          "result": "Develops approximation methods and frames the difficulty of exact steady-state computation for $M/G/c$.",
-          "relevance": "partial-progress",
-          "url": "https://en.wikipedia.org/wiki/M/G/k_queue"
-        },
-        {
-          "ref": "Varun Gupta, Mor Harchol-Balter, J. G. Dai, and Bert Zwart, 'On the inapproximability of M/G/K: Why two moments of job size distribution are not enough', Queueing Systems 2010",
-          "result": "Shows that approximations based only on the first two service-time moments cannot be uniformly accurate.",
-          "relevance": "hardness",
-          "url": "https://en.wikipedia.org/wiki/M/G/k_queue"
-        },
-        {
-          "ref": "Varun Gupta and Takanori Osogami, 'On Markov-Krein characterization of the mean waiting time in M/G/K and other queueing systems', Queueing Systems 2011",
-          "result": "Uses moment-problem methods to give tight bounds on mean waiting time under moment information.",
-          "relevance": "partial-progress",
-          "url": "https://en.wikipedia.org/wiki/Markov%E2%80%93Krein_theorem"
-        },
-        {
-          "ref": "Isaac Grosof, Ziv Scully, and Mor Harchol-Balter, 'SRPT for Multiserver Systems', arXiv 2018",
-          "result": "Illustrates recent progress on multiserver $M/G/k$ performance under specific scheduling policies and asymptotic regimes.",
+          "ref": "H. C. Tijms, M. H. van Hoorn, A. Federgruen, 'Approximations for the Steady-State Probabilities in the M/G/c Queue', Advances in Applied Probability, 1981",
+          "result": "Steady-state probability approximations, not a general exact algorithm.",
           "relevance": "related-tool",
-          "url": "https://arxiv.org/abs/1805.07686"
+          "url": "https://www.cambridge.org/core/journals/advances-in-applied-probability/article/approximations-for-the-steadystate-probabilities-in-the-mgc-queue/68FA7A245D0673F7FC950130666E7A22"
+        },
+        {
+          "ref": "Varun Gupta, Mor Harchol-Balter, J. G. Dai, Bert Zwart, 'On the inapproximability of M/G/K: Why two moments of job size distribution are not enough', Queueing Systems, 2010",
+          "result": "Limits to approximating performance from only two service-time moments.",
+          "relevance": "hardness",
+          "url": "https://link.springer.com/article/10.1007/s11134-010-9183-2"
+        },
+        {
+          "ref": "Varun Gupta, Takayuki Osogami, 'On Markov-Krein characterization of the mean waiting time in M/G/K and other queueing systems', Queueing Systems, 2011",
+          "result": "Moment-based extremal waiting-time bounds.",
+          "relevance": "related-tool",
+          "url": "https://link.springer.com/article/10.1007/s11134-011-9231-2"
+        },
+        {
+          "ref": "Yige Hong, 'An interpretable universal bound for multiserver queues via a leave-one-out technique', arXiv:2510.11015v3, August 22, 2026 revision, 2026",
+          "result": "Theorem 1, Assumptions 1-3, and equation (8): a nonasymptotic bound on waiting jobs using the maximal normalized mean residual service time; not an exact stationary distribution.",
+          "relevance": "partial-progress",
+          "url": "https://arxiv.org/abs/2510.11015v3"
         }
       ]
     },
@@ -12719,11 +12787,11 @@
       "machine_checkable": false
     },
     "source": {
-      "authors": "Queueing theory literature",
-      "title": "Exact stationary analysis of the M/G/k queue",
-      "year": 2026,
-      "venue": "Classical open problem",
-      "url": "https://en.wikipedia.org/wiki/M/G/k_queue"
+      "authors": "H. C. Tijms, M. H. van Hoorn, A. Federgruen",
+      "title": "Approximations for the Steady-State Probabilities in the M/G/c Queue",
+      "year": 1981,
+      "venue": "Advances in Applied Probability 13(1):186-206",
+      "url": "https://www.cambridge.org/core/journals/advances-in-applied-probability/article/approximations-for-the-steadystate-probabilities-in-the-mgc-queue/68FA7A245D0673F7FC950130666E7A22"
     },
     "additional_refs": [
       {
@@ -12741,14 +12809,22 @@
         "url": "https://link.springer.com/article/10.1007/s11134-010-9183-2"
       },
       {
-        "authors": "Varun Gupta, Takanori Osogami",
+        "authors": "Varun Gupta, Takayuki Osogami",
         "title": "On Markov-Krein characterization of the mean waiting time in M/G/K and other queueing systems",
         "year": 2011,
         "venue": "Queueing Systems",
         "url": "https://link.springer.com/article/10.1007/s11134-011-9231-2"
+      },
+      {
+        "authors": "Yige Hong",
+        "title": "An interpretable universal bound for multiserver queues via a leave-one-out technique",
+        "year": 2026,
+        "venue": "arXiv:2510.11015v3, August 22, 2026 revision",
+        "url": "https://arxiv.org/abs/2510.11015v3"
       }
     ],
-    "enabled": true
+    "enabled": true,
+    "notes_for_maintainer": "Reviewed 2026-11-09: Hong v3 Sections 3-4 and proof roadmap. Preserve Assumption 3, non-lattice qualification, and waiting-versus-in-service distinction. Earlier bibliographic links to Wikipedia were replaced with paper-specific sources; corrected Takayuki Osogami's name."
   },
   {
     "id": "subadditive-combinatorial-auction-constructive-prophet",
@@ -13439,7 +13515,7 @@
   },
   {
     "id": "stochastic-inventory-capacity-constraints-policy-structure",
-    "title": "Optimal policy structure for capacitated stochastic inventory with fixed ordering costs",
+    "title": "Policy structure after the capacitated inventory continuous-order conjecture",
     "collection": "Operations Management",
     "area": "Inventory Theory",
     "tags": [
@@ -13449,26 +13525,26 @@
       "policy-structure",
       "operations-management"
     ],
-    "status": "open",
+    "status": "partially resolved",
     "confidence": "high",
-    "short_statement": "In a single-item periodic-review inventory system with fixed ordering costs and an order-capacity constraint, the natural continuous-order-property conjecture is false. What is the correct exact structural description of the optimal policy?",
-    "full_statement": "Consider a periodic-review, single-item, single-location stochastic inventory system. At the beginning of period $t$, the state is inventory position $x_t$. The controller may order $q_t \\in [0,Q]$, where $Q$ is a fixed order-capacity bound. If $q_t>0$ a fixed ordering cost $K$ is incurred, in addition to any proportional ordering cost. Random demand $D_t$ is then realized, and the system incurs holding and backorder or lost-sales costs according to a specified standard convex one-period cost function. The objective is to minimize expected discounted cost or long-run average cost over an infinite horizon. Classical uncapacitated fixed-cost inventory models have $(s,S)$-type structure, while capacitated models may require multiple reorder regions. The open problem is to characterize the exact structure of an optimal stationary policy under the order-capacity constraint: after the continuous order property and modified multi-$(s,S)$ conjecture fail in general, is there a finite, checkable structural class that is always optimal, or can one prove that no comparably simple threshold description exists?",
-    "background": "Fixed ordering costs and order-capacity constraints are both standard ingredients in inventory theory. Separately, they lead to fairly interpretable policies: fixed costs suggest $(s,S)$ rules, while capacity constraints create gradual replenishment behavior. Together they produce a surprisingly delicate dynamic program. The state is only one-dimensional, so this is not a vague modelling problem or a curse-of-dimensionality artifact. The hard part is structural: the Bellman operator can create disconnected ordering regions and invalidate the most natural conjectures about when an order should be placed. This makes the problem a useful benchmark for operations-management theory, because a complete answer would say whether the classical threshold-policy paradigm survives once capacity and fixed charges are both present. Rossi, Chen, and Tarim give a numerical counterexample to the continuous order property, showing that the most obvious clean structure is false. The remaining question is not whether practitioners can compute good heuristics; it is whether the exact optimal policy has any parsimonious theorem-level description.",
-    "open_problem": "Give an exact structural characterization of optimal policies for capacitated stochastic inventory with fixed ordering costs, or prove that no finite threshold-like policy class can represent all optimal policies.",
-    "known_results": "Classical uncapacitated fixed-cost inventory models admit $(s,S)$-type optimal policies under standard assumptions. Capacitated variants have only partial structural characterizations. Rossi, Chen, and Tarim (2023) show that if the continuous order property held, the optimal policy would have a modified multi-$(s,S)$ form, but they also provide a numerical counterexample in which the continuous order property is violated. Their computations indicate that violations may be rare, and modified multi-$(s,S)$ policies perform extremely well in tested instances. The exact general optimal-policy structure remains open.",
+    "short_statement": "A four-period counterexample disproves a single connected ordering region under nonstationary demand. The remaining question is a useful exact structural description with a quantified number of reorder regions.",
+    "full_statement": "Fix a finite horizon $T$, integer inventory $x_t\\in\\mathbb Z$ (negative inventory denotes backorders), and a zero-lead-time integer order $q_t\\in\\{0,\\ldots,B\\}$ with fixed capacity $B\\ge1$. Demands $D_t$ are independent, nonnegative, integer-valued, and have specified finite-support rational distributions that may vary by period. After ordering and demand, $x_{t+1}=x_t+q_t-D_t$. The cost is\n$$K\\mathbf1\\{q_t>0\\}+v q_t+h(x_{t+1})^++p(-x_{t+1})^+,$$\nwith $K,h,p>0$, $v\\ge0$, and zero terminal cost. Minimize expected total cost over nonanticipative policies.\n\nWith $V_{T+1}=0$, the exact recursion is\n$$V_t(x)=\\min_{0\\le q\\le B}\\left\\{K\\mathbf1\\{q>0\\}+vq+\\mathbb E[h(x+q-D_t)^++p(D_t-x-q)^++V_{t+1}(x+q-D_t)]\\right\\}.$$\nThe minimum is over integer orders. Let $\\mathcal O_t$ be the set of inventory levels at which every minimizing action orders a positive quantity. The continuous-order conjecture would make $\\mathcal O_t$ a lower interval; this is false for nonstationary finite-horizon demand.\n\nThe remaining structural question is to bound and represent the number of separated ordering intervals and the associated order-up-to targets in terms of $T$, capacity, and demand support size, or prove that these can grow too rapidly for a uniformly small threshold description. Identify distributional assumptions restoring a simpler structure. Infinite-horizon iid demand and lost sales are separate variants: a finite-horizon backorder counterexample does not by itself settle their policy structure.",
+    "background": "A fixed charge rewards batching, while a capacity limit prevents inventory from being restored in one large order. Their interaction can make ordering attractive at a higher inventory level but unattractive at a nearby lower one: paying the setup cost today changes how later constrained orders can be used. Consequently, ordinary convexity and a single reorder threshold are insufficient. The state is one-dimensional, so a useful structure theorem would improve both understanding and exact computation. This entry uses the finite-horizon backorder model of the cited counterexample rather than mixing several inventory models. It asks how complex an optimal rule must be after the simplest conjecture has failed.",
+    "open_problem": "Bound the number and describe the structure of optimal ordering intervals and order-up-to targets in the stated finite-horizon capacitated backorder model, or exhibit families requiring unboundedly many intervals. Specify how complexity scales with horizon, capacity, and demand support; the continuous-order conjecture itself is already false.",
+    "known_results": "Rossi, Chen, and Tarim's paper appeared in European Journal of Operational Research 312(2):541-555 (2024), following its 2023 preprint. Conditional on the continuous-order property, it derives a modified multi-$(s,S)$ structure. Section 6, Example 3 and Tables 2-3, disprove that property with four independent nonstationary finite-support demands and $K=250$, $B=41$, $h=1$, $p=26$, $v=0$. In period 1, the displayed optimal action is zero at inventory 615, 41 at 616-618, and zero again at 619. This is a finite-horizon backorder result, not a stationary infinite-horizon or lost-sales counterexample.\n\nTheir numerical experiments support the usefulness of simple policies, but do not give a uniform approximation ratio or prove that every instance needs only a bounded number of thresholds.\n\nRemaining open problem. Characterize the geometry and representational complexity of optimal reorder regions beyond the disproved continuous-order property, with the horizon and demand assumptions stated explicitly.",
     "where_posed": {
-      "text": "Posed in Rossi, Chen, and Tarim, 'On the stochastic inventory problem under order capacity constraints', 2023.",
-      "url": "https://arxiv.org/abs/2307.00942",
-      "quote": "A long-standing problem is that of determining the structure of the optimal control policy when this system is subject to order quantity capacity constraints.",
-      "location": "Abstract"
+      "text": "Rossi, Chen, and Tarim discuss the longstanding structural question and disprove continuous ordering. The interval-complexity formulation is an editorial sharpening of the residual problem.",
+      "url": "https://doi.org/10.1016/j.ejor.2023.06.045",
+      "quote": "",
+      "location": "Sections 3, 5-6; Example 3 and Tables 2-3."
     },
     "progress": {
       "state": "partial",
-      "summary": "The continuous order property and the resulting modified multi-$(s,S)$ conjecture are known to fail in general, but computational evidence suggests that violations are rare and that the heuristic policy class is often nearly optimal.",
+      "summary": "The continuous-order conjecture is disproved for finite-horizon nonstationary demand. The general exact structural-complexity question remains; the cited example does not resolve stationary infinite-horizon variants.",
       "links": [
         {
-          "title": "Rossi, Chen, Tarim, 2023",
-          "url": "https://arxiv.org/abs/2307.00942"
+          "title": "Published EJOR paper (2024)",
+          "url": "https://doi.org/10.1016/j.ejor.2023.06.045"
         }
       ]
     },
@@ -13479,13 +13555,13 @@
     "alphaevolve_suitability": "high",
     "alphaevolve_rationale": "An evolutionary search loop can generate small dynamic-programming instances with unusual optimal action regions, helping identify the right structural invariants or further counterexamples.",
     "literature": {
-      "synthesis": "The literature around this model is a good example of a mature operations-management problem where the modelling is settled but the structural theorem is missing. Classical fixed-cost inventory control suggests reorder intervals and order-up-to levels. Capacity constraints complicate this by preventing large corrective orders, so the Bellman recursion may favor ordering over multiple separated state regions. Rossi, Chen, and Tarim isolate the continuous order property as the condition under which a modified multi-$(s,S)$ policy follows, then disprove that property by explicit numerical example. This leaves two possible directions: find a richer exact class that contains all optimal policies, or prove a negative result showing that no simple interval/threshold representation is possible without extra assumptions.",
+      "synthesis": "The earlier entry overstated the scope of the counterexample by placing it inside an infinite-horizon model and allowing lost sales. The published construction instead uses four periods, nonstationary independent demand, complete backorders, and zero lead time. Separating these cases leaves a concrete remaining target: quantify how complicated the reorder regions can become, rather than ask for an undefined 'simple' policy or repropose a conjecture already disproved. Observed rarity of violations is empirical evidence, not an approximation theorem.",
       "reviewed": [
         {
-          "ref": "Roberto Rossi, Zhen Chen, S. Armagan Tarim, 'On the stochastic inventory problem under order capacity constraints', arXiv 2023",
-          "result": "Shows that the continuous order property implies a modified multi-$(s,S)$ structure, but gives a counterexample to the property.",
+          "ref": "Roberto Rossi, Zhen Chen, S. Armagan Tarim, 'On the stochastic inventory problem under order capacity constraints', EJOR 312(2):541-555, 2024",
+          "result": "Conditional modified multi-(s,S) structure; a four-period nonstationary backorder counterexample, Example 3 and Tables 2-3.",
           "relevance": "partial-progress",
-          "url": "https://arxiv.org/abs/2307.00942"
+          "url": "https://doi.org/10.1016/j.ejor.2023.06.045"
         },
         {
           "ref": "Evan L. Porteus, 'Foundations of Stochastic Inventory Theory', Stanford University Press 2002",
@@ -13503,18 +13579,27 @@
     },
     "agent_guidance": {
       "suitable_approaches": "Compute exact finite-horizon or discounted infinite-horizon policies for small integer-demand instances and classify the geometry of ordering regions. Search for invariants based on $K$-convexity variants, discrete convexity, or monotone comparative statics that survive the known counterexample.",
-      "verification_notes": "A claimed positive structure must handle the known continuous-order-property counterexample. A claimed counterexample to a new conjecture should include the finite demand distribution, parameters, truncation/error certificate, and the Bellman values or policy table.",
+      "verification_notes": "Match finite horizon, zero terminal cost, complete backorders, zero lead time, and independent but nonstationary demand. Use exact rational Bellman arithmetic for a finite counterexample. Explain why a finite state calculation covers all reachable states. An infinite-horizon counterexample needs its own stationary argument.",
       "machine_checkable": true
     },
     "source": {
       "authors": "Roberto Rossi, Zhen Chen, S. Armagan Tarim",
       "title": "On the stochastic inventory problem under order capacity constraints",
-      "year": 2023,
-      "venue": "arXiv:2307.00942",
-      "url": "https://arxiv.org/abs/2307.00942"
+      "year": 2024,
+      "venue": "European Journal of Operational Research 312(2):541-555",
+      "url": "https://doi.org/10.1016/j.ejor.2023.06.045"
     },
-    "additional_refs": [],
-    "enabled": true
+    "additional_refs": [
+      {
+        "authors": "Roberto Rossi, Zhen Chen, S. Armagan Tarim",
+        "title": "On the stochastic inventory problem under order capacity constraints (open-access published PDF)",
+        "year": 2024,
+        "venue": "European Journal of Operational Research 312(2):541-555",
+        "url": "https://www.pure.ed.ac.uk/ws/portalfiles/portal/376590298/RossiEtal2023EJOROnTheStochasticInventoryProblem.pdf"
+      }
+    ],
+    "enabled": true,
+    "notes_for_maintainer": "Reviewed 2026-11-09 against the published EJOR Section 6 and Tables 2-3. Corrected horizon and backorder scope. Verification test reproduces selected first-period actions by exact integer-scaled Bellman recursion."
   },
   {
     "id": "total-weighted-tardiness-pmax-fpt",
@@ -13829,24 +13914,24 @@
       "state-space collapse",
       "stochastic processing networks"
     ],
-    "status": "conjecture",
+    "status": "partially resolved",
     "confidence": "high",
-    "short_statement": "For a general $n\\times n$ input-queued switch under MaxWeight, prove the conjectured uniqueness of the transform equation that identifies the steady-state heavy-traffic joint queue-length distribution.",
-    "full_statement": "Consider an $n\\times n$ input-queued switch with queues indexed by input-output pairs $(i,j)$. In each time slot, arrivals $A_{ij}(t)$ join queue $(i,j)$, and the scheduler chooses a matching $M(t)$ between inputs and outputs; queues in the matching receive one unit of service if nonempty. The MaxWeight policy chooses a feasible matching maximizing $\\sum_{(i,j)\\in M(t)} Q_{ij}(t)$, where $Q_{ij}(t)$ is the queue length. Let the arrival-rate matrix approach the boundary of the switch capacity region in heavy traffic, and consider the steady-state queue-length vector under the usual diffusion/heavy-traffic scaling. For non-complete-resource-pooling regimes, the limiting state-space collapse is multidimensional rather than one-dimensional. Jhunjhunwala and Maguluri derive a candidate Laplace transform for the limiting joint distribution of the collapsed queue-length vector by solving an implicit functional equation, and they obtain a closed-form distribution for special cases. The open problem is to prove, for the general $n\\times n$ switch, that the relevant functional equation has a unique admissible solution. Equivalently, prove that the proposed nonlinear function of $2n$ independent exponential random variables is indeed the exact heavy-traffic steady-state joint queue-length distribution for the general MaxWeight input-queued switch, or find a counterexample.",
+    "short_statement": "For an all-ports-saturated MaxWeight switch, a candidate heavy-traffic joint law is conditional on transform uniqueness. Its explicit exponential representation requires symmetric arrival variances.",
+    "full_statement": "Fix $n\\ge2$. An $n\\times n$ discrete-time input-queued switch has integer queue lengths $Q_{ij}(t)$. Each slot chooses a permutation matching $M(t)$ maximizing $\\sum_{(i,j)\\in M(t)}Q_{ij}(t)$, with a fixed tie rule. Arrivals are independent across input-output pairs and iid over slots, uniformly bounded over the heavy-traffic family. Use the update $Q_{ij}(t+1)=[Q_{ij}(t)+A_{ij}(t)-\\mathbf1\\{(i,j)\\in M(t)\\}]^+$, and assume irreducibility and aperiodicity.\n\nFor $\\varepsilon>0$, let $\\mathbb E A_{ij}=(1-\\varepsilon)\\nu_{ij}$, where every $\\nu_{ij}>0$ and every row and column of $\\nu$ sums to one. Thus every port becomes saturated as $\\varepsilon\\downarrow0$. Write $Q^{(\\varepsilon)}$ for the stationary queue vector.\n\nThe concrete symmetric-variance question is whether, when $\\operatorname{Var}(A_{ij})\\to\\sigma^2>0$ for all $i,j$,\n$$\\varepsilon Q_{ij}^{(\\varepsilon)}\\ \\Rightarrow\\ Y_i+Y_{n+j}-2\\min_{1\\le r\\le2n}Y_r,$$\njointly over all entries, where the $2n$ variables $Y_r$ are independent exponentials of mean $\\sigma^2/2$.\n\nJhunjhunwala and Maguluri derive this representation conditional on uniqueness of their limiting transform equation (Conjecture 2.16 and Theorem 2.17). Prove that uniqueness, or establish or refute the joint-law formula by another method. For unequal variances, the broader target is the corresponding transform characterization; the displayed iid-exponential formula is not asserted.",
     "background": "Input-queued switches are a canonical stochastic-processing-network model for packet switches, data-center fabrics, and constrained service systems. Each scheduling decision must be a matching, so resource sharing is combinatorial rather than separable across queues. MaxWeight is throughput optimal and has become a central policy in queueing theory, wireless networks, and cloud scheduling. For systems satisfying complete resource pooling, heavy-traffic limits often collapse to one-dimensional reflected Brownian motion, and mean-delay formulas can be comparatively explicit. Input-queued switches under general loads are more subtle: the bottleneck structure can have several active constraints, producing multidimensional state-space collapse and a much harder stationary distribution problem. Mean queue lengths have been characterized in important regimes, but a full joint distribution would be much sharper: it would describe correlations between ports, enable tail approximations, and test whether transform methods can replace more ad hoc interchange-of-limits arguments in non-CRP networks.",
-    "known_results": "Maguluri and Srikant proved heavy-traffic mean queue-length behavior for MaxWeight input-queued switches when all ports are saturated, settling one version of an earlier conjecture and showing optimal scaling up to a constant factor. Jhunjhunwala and Maguluri introduced a transform method for non-CRP stochastic processing networks. They solved the heavy-traffic joint distribution for the $\\mathcal{N}$-system and for a special three-queue input-queued-switch case, and for the general $n\\times n$ switch they derived a candidate transform and distribution conditional on a uniqueness conjecture for an implicit functional equation. As of the 2026 literature check, the general uniqueness theorem and hence the full distributional characterization for arbitrary $n$ remain open.",
+    "known_results": "MaxWeight state-space collapse and heavy-traffic mean queue-length formulas are known in the all-ports-saturated regime. Jhunjhunwala and Maguluri (arXiv:2206.06504v2, 2023) solve special three-queue and $\\mathcal N$ systems. For the general switch, Conjecture 2.16 asks for uniqueness of an admissible transform solution; Theorem 2.17 gives the exponential representation only conditional on that conjecture and symmetric variances.\n\nMou and Maguluri (Advances in Applied Probability 56, 2024, pp. 1106-1152; arXiv:2006.06150v2) extend heavy-traffic mean-sum analysis to bounded arrivals modulated by independent finite-state irreducible aperiodic Markov chains. They obtain matching upper and lower limits for the MaxWeight mean and a factor less than two against a universal policy lower bound. This concerns a mean, not the full joint queue-length law.\n\nRemaining open problem. Prove the general transform uniqueness statement or the symmetric-variance joint-law conjecture. The Markov-arrival mean result does not settle either question, and arbitrary capacity-boundary faces are not covered by the displayed candidate.",
     "where_posed": {
-      "text": "Stated as a conjectural step in Jhunjhunwala and Maguluri, 'Heavy Traffic Joint Queue Length Distribution without Resource Pooling', arXiv 2022/2023.",
-      "url": "https://arxiv.org/abs/2206.06504",
-      "quote": "under a conjecture on uniqueness of the solution",
-      "location": "Abstract"
+      "text": "Jhunjhunwala and Maguluri formulate the transform uniqueness conjecture and its conditional distributional consequence.",
+      "url": "https://arxiv.org/abs/2206.06504v2",
+      "quote": "",
+      "location": "Conjecture 2.16 and Theorem 2.17, Section 2.3."
     },
     "source": {
       "authors": "Prakirt Raj Jhunjhunwala, Siva Theja Maguluri",
       "title": "Heavy Traffic Joint Queue Length Distribution without Resource Pooling",
       "year": 2023,
-      "venue": "arXiv",
-      "url": "https://arxiv.org/abs/2206.06504"
+      "venue": "arXiv:2206.06504v2",
+      "url": "https://arxiv.org/abs/2206.06504v2"
     },
     "additional_refs": [
       {
@@ -13862,15 +13947,26 @@
         "year": 2024,
         "venue": "arXiv",
         "url": "https://arxiv.org/abs/2302.05791"
+      },
+      {
+        "authors": "Shancong Mou, Siva Theja Maguluri",
+        "title": "Heavy-Traffic Queue Length Behavior in a Switch under Markovian Arrivals",
+        "year": 2024,
+        "venue": "Advances in Applied Probability 56:1106-1152",
+        "url": "https://doi.org/10.1017/apr.2023.60"
       }
     ],
     "progress": {
       "state": "partial",
-      "summary": "The candidate distribution is known and verified in special non-CRP systems. The missing step is not a better model but a proof that the transform equation admits only the proposed admissible solution in the general switch.",
+      "summary": "The candidate joint law remains conditional. Published 2024 progress extends mean-sum formulas to Markovian arrivals, not the full joint distribution.",
       "links": [
         {
           "title": "Jhunjhunwala-Maguluri transform method",
           "url": "https://arxiv.org/abs/2206.06504"
+        },
+        {
+          "title": "Shancong Mou, Siva Theja Maguluri (2024)",
+          "url": "https://doi.org/10.1017/apr.2023.60"
         }
       ]
     },
@@ -13881,12 +13977,12 @@
     "alphaevolve_suitability": "medium",
     "alphaevolve_rationale": "Symbolic or computational search may help discover identities, boundary conditions, or small-dimensional transform solutions. The final resolution is likely analytic, but search could expose the structure needed for uniqueness.",
     "literature": {
-      "synthesis": "The literature has a clear progression from throughput optimality and mean heavy-traffic behavior toward distributional characterization. Maguluri and Srikant gave exact heavy-traffic mean formulas in saturated input-queued switches and established optimal scaling properties of MaxWeight. Jhunjhunwala and Maguluri then developed a transform approach aimed at the full joint distribution in non-CRP systems, where one-dimensional Brownian approximations are insufficient. Their special-case solutions show that explicit distributional answers are possible, but the general switch reduces to uniqueness of an implicit Laplace-transform functional equation. Related BAR methods in multiclass queueing networks suggest that stationary equations can sometimes yield sharp distributional limits, but they also show how delicate truncation, boundary terms, and state-space collapse verification become in multidimensional networks. The remaining gap is a rigorous uniqueness or counterexample theorem for the switch transform.",
+      "synthesis": "Three distinct statements must be kept apart: collapse to a lower-dimensional subspace, a limiting expected total queue size, and identification of a joint distribution. The first two do not identify the transform uniquely. The candidate representation additionally assumes equal limiting variances and approach to the all-ports-saturated face. Temporal dependence can be handled for mean-sum asymptotics in Mou and Maguluri's model, but this does not justify importing their result as a proof of the iid-arrival joint-law conjecture.",
       "reviewed": [
         {
           "ref": "Prakirt Raj Jhunjhunwala, Siva Theja Maguluri, 'Heavy Traffic Joint Queue Length Distribution without Resource Pooling', arXiv 2023",
           "result": "Derives the transform equation and candidate distribution; proves exact joint distributions in special cases.",
-          "relevance": "poses-problem",
+          "relevance": "related-tool",
           "url": "https://arxiv.org/abs/2206.06504"
         },
         {
@@ -13900,19 +13996,27 @@
           "result": "Develops stationary-equation methods for heavy-traffic steady-state limits in multiclass queueing networks.",
           "relevance": "related-tool",
           "url": "https://arxiv.org/abs/2302.05791"
+        },
+        {
+          "ref": "Shancong Mou, Siva Theja Maguluri, 'Heavy-Traffic Queue Length Behavior in a Switch under Markovian Arrivals', Advances in Applied Probability 56:1106-1152, 2024",
+          "result": "Extends heavy-traffic mean-sum results to the stated finite-state Markov-modulated arrival model. It does not identify the general switch's joint distribution.",
+          "relevance": "partial-progress",
+          "url": "https://doi.org/10.1017/apr.2023.60"
         }
       ]
     },
     "agent_guidance": {
       "suitable_approaches": "Attack the functional equation directly: identify a class of admissible analytic transforms, prove boundary regularity, and use monotonicity or convexity to rule out multiple solutions. Another route is to derive the limiting stationary BAR independently and show it pins down the same transform. Computational experiments on $3\\times 3$ and $4\\times 4$ switches may suggest missing identities or reveal nonuniqueness.",
-      "verification_notes": "A proof must specify the function class in which uniqueness is claimed and verify that the proposed transform lies in it. Simulations alone are not a solution; a verifier should check that all heavy-traffic interchange and state-space-collapse assumptions are handled or explicitly imported from prior theorems.",
+      "verification_notes": "Prove a joint limit, not just means or marginals. Verify the all-ports-saturated, positive-rate, iid-across-queues and symmetric-variance assumptions for the explicit formula. Any transform uniqueness proof must include the boundary transforms and admissibility conditions, not just exhibit one solution.",
       "machine_checkable": false
     },
-    "enabled": true
+    "enabled": true,
+    "notes_for_maintainer": "Reviewed 2026-11-09: source v2 Conjecture 2.16/Theorem 2.17; Mou-Maguluri v2 Section 4. Corrected the missing symmetric-variance and all-ports-saturated qualifications.",
+    "open_problem": "Prove the general switch transform-uniqueness conjecture, or establish or refute the displayed symmetric-variance joint law in the all-ports-saturated regime. Do not extend its iid-exponential formula to arbitrary variances or infer a joint law from a mean-sum result."
   },
   {
     "id": "multi-server-job-queue-stability-region",
-    "title": "Exact Stability Region for FCFS Multi-Server-Job Queues",
+    "title": "Computing the stability threshold of FCFS multiserver-job queues",
     "collection": "Applied Probability",
     "area": "Queueing Theory",
     "tags": [
@@ -13925,15 +14029,15 @@
     ],
     "status": "partially resolved",
     "confidence": "high",
-    "short_statement": "For FCFS multiserver jobs, saturated-system throughput gives an exact finite-state criterion with Poisson arrivals and phase-type durations. Seek compact or polynomial-complexity criteria and broader input models.",
-    "full_statement": "Consider a system with $N$ identical servers and $K$ job classes. Class $k$ jobs arrive according to a renewal or Poisson process of rate $\\lambda_k$, require $b_k\\in\\{1,\\ldots,N\\}$ servers simultaneously, and have service-time distribution $S_k$. Jobs wait in a single first-come-first-served queue. When the job at the head of the line requires at most the currently idle servers, it starts service and occupies $b_k$ servers for its service time; otherwise it blocks later jobs even if those later jobs would fit. Let $X(t)$ describe the ordered waiting line, jobs in service, and residual service/interarrival information needed to make the process Markov. For independent Poisson class streams, let $\\lambda=\\sum_k\\lambda_k$ and sample each new job's class with probability $p_k=\\lambda_k/\\lambda$. With phase-type durations, an exact criterion already exists: $\\lambda<\\lambda^*(p)$, where $\\lambda^*(p)$ is stationary completion throughput of the saturated FCFS system, which replaces each departure immediately and keeps $N$ jobs present. Its finite CTMC can be solved by balance equations. The remaining computational target is a compact closed form or a characterization polynomial in the primitive class/server description, not merely finite-state enumerability. General renewal streams or non-phase-type service require separate assumptions and cannot automatically be replaced by i.i.d. Poisson job marks.",
+    "short_statement": "A general saturation formula now describes stability beyond phase-type service. The remaining challenge is computing its threshold with certified accuracy and useful complexity guarantees.",
+    "full_statement": "There are $N$ identical servers and one FCFS queue. Arrivals form a renewal process with iid positive interarrival times of mean $1/\\lambda$. Independently, jobs have iid joint marks $(B,S)$, where $B\\in\\{1,\\ldots,N\\}$ is the number of simultaneously required servers and $S>0$ is the duration, with $\\mathbb E S<\\infty$. Dependence between a job's size $B$ and duration $S$ is allowed. A job occupies all $B$ servers for its entire service; a blocked head-of-line job prevents later jobs from starting.\n\nThe saturated workload construction makes all jobs available at time zero. For a sorted vector $h\\in\\mathbb R_+^N$, define $T_b(h)_i=\\max(h_b,h_i)$ and $(e_b)_i=\\mathbf1\\{i\\le b\\}$. Starting at $H_0=0$, set\n$$H_{n+1}=\\operatorname{sort}\\bigl(T_{B_n}(H_n)+S_n e_{B_n}\\bigr),\\qquad \\gamma=\\lim_{n\\to\\infty}\\frac{\\max_i H_{n,i}}{n}.$$\nThe monotone-separable saturation rule gives a finite stationary workload below the threshold $\\lambda_c=1/\\gamma$. The equality case $\\lambda=\\lambda_c$ needs separate analysis.\n\nThe remaining open problem is effective computation of $\\gamma$, not existence of a general threshold representation. For example, given rational finite-support job marks, $N$, and rational $\\delta,\\eta\\in(0,1)$, construct certified bounds $\\gamma_-\\le\\gamma\\le\\gamma_+$ of width at most $\\delta$ (deterministically, or with probability at least $1-\\eta$), and quantify runtime in the input bit length, $N$, $\\delta^{-1}$, and $\\log(1/\\eta)$. Can this be done without enumerating an exponentially large saturated state space, or is there a complexity obstruction? State any support, moment, or separation assumptions needed for the algorithm.",
     "background": "Modern cloud, parallel-computing, and machine-learning systems routinely run jobs that need several servers or accelerators at once. This destroys the separability of classical many-server queues: a job may be delayed not because total work is too high, but because the wrong combination of servers is available. Under FCFS, large jobs can block smaller jobs behind them, leaving capacity idle while work waits. The resulting stability problem is a clean stochastic-process question with direct operational meaning: it asks when the queue does not explode. It is not a modeling problem; the FCFS multi-server-job model is fixed and simple to state. The difficulty is that the usual traffic condition $\\sum_k\\lambda_k b_k\\mathbb{E}S_k<N$ is not sufficient in general because fragmentation and head-of-line blocking can waste service capacity.",
-    "known_results": "Wang, Xie, and Harchol-Balter emphasize that even the exact stability region is very hard, and they derive sufficient conditions for zero queueing in large-system scaling regimes. Grosof, Harchol-Balter, and Scheller-Wolf give a closed-form stability region for the two-class FCFS multiserver-job system with distinct server requirements and exponential service distributions. Grosof, Hong, Harchol-Balter, and Scheller-Wolf (Performance Evaluation 162, 2023, article 102378), Sections 2.2 and 3, describe the saturation-rule criterion for Poisson arrivals with i.i.d. joint server-need/phase-type-duration marks. Appendix C computes the threshold from finite balance equations. Theorem 4.2 further gives mean response time to additive $O(1)$ as arrival rate approaches that threshold. Thus exact finite-state characterization extends beyond two classes. This is not a polynomial-in-input-size complexity theorem.",
+    "known_results": "Wang, Xie, and Harchol-Balter emphasize that even the exact stability region is very hard, and they derive sufficient conditions for zero queueing in large-system scaling regimes. Grosof, Harchol-Balter, and Scheller-Wolf give a closed-form stability region for the two-class FCFS multiserver-job system with distinct server requirements and exponential service distributions. Grosof, Hong, Harchol-Balter, and Scheller-Wolf (Performance Evaluation 162, 2023, article 102378), Sections 2.2 and 3, describe the saturation-rule criterion for Poisson arrivals with i.i.d. joint server-need/phase-type-duration marks. Appendix C computes the threshold from finite balance equations. Theorem 4.2 further gives mean response time to additive $O(1)$ as arrival rate approaches that threshold. Thus exact finite-state characterization extends beyond two classes. This is not a polynomial-in-input-size complexity theorem.\n\nBaccelli, Olliaro, Ajmone Marsan, and Marin (arXiv:2601.20653v1, 2026), Theorems 4.2 and 5.1, establish a monotone-separable workload recursion and the pile-growth threshold for general finite-mean service durations, including the iid marked renewal model above. Section 5 explicitly leaves the complexity of evaluating $\\gamma$ open. Algorithm 2 estimates the limit numerically; successive estimates becoming close are not a certified error bound. Likewise, their sub-perfect sampling procedure returns lower approximations, not an observable certificate of an exact stationary sample.\n\nRemaining open problem. Obtain compact or complexity-controlled, certified evaluation of the threshold. Do not describe general non-phase-type threshold existence as still wholly open.",
     "where_posed": {
-      "text": "Stated in Wang, Xie, and Harchol-Balter, 'Zero Queueing for Multi-Server Jobs', arXiv 2020/2021.",
-      "url": "https://arxiv.org/abs/2011.10521",
-      "quote": "exact stability region is a very hard problem",
-      "location": "Abstract"
+      "text": "The computational question is explicitly identified by Baccelli, Olliaro, Ajmone Marsan, and Marin (2026). The finite-input accuracy formulation here makes that question precise.",
+      "url": "https://arxiv.org/abs/2601.20653v1",
+      "quote": "",
+      "location": "Section 5, immediately after Theorem 5.1 and equation (8)."
     },
     "source": {
       "authors": "Weina Wang, Qiaomin Xie, Mor Harchol-Balter",
@@ -13963,11 +14067,18 @@
         "year": 2023,
         "venue": "Performance Evaluation 162, article 102378",
         "url": "https://arxiv.org/abs/2310.01621"
+      },
+      {
+        "authors": "Francois Baccelli, Diletta Olliaro, Marco Ajmone Marsan, Andrea Marin",
+        "title": "The Multiserver-Job Stochastic Recurrence Equation for Cloud Computing Performance Evaluation",
+        "year": 2026,
+        "venue": "arXiv:2601.20653v1, January 28, 2026",
+        "url": "https://arxiv.org/abs/2601.20653v1"
       }
     ],
     "progress": {
       "state": "partial",
-      "summary": "Exact finite-state saturation criteria cover arbitrary finite class mixtures with Poisson arrivals and phase-type durations; compact/polynomial-complexity and broader-input targets remain distinct.",
+      "summary": "A 2026 preprint extends the saturation representation to general service durations. Finite-state phase-type methods remain available; certified efficient evaluation of the general pile-growth constant is unresolved.",
       "links": [
         {
           "title": "Two-class stability result",
@@ -13976,6 +14087,10 @@
         {
           "title": "RESET and MARC (2023), model, saturation criterion, Theorem 4.2 and Appendix C",
           "url": "https://arxiv.org/abs/2310.01621"
+        },
+        {
+          "title": "Francois Baccelli, Diletta Olliaro, Marco Ajmone Marsan, Andrea Marin (2026)",
+          "url": "https://arxiv.org/abs/2601.20653v1"
         }
       ]
     },
@@ -13986,7 +14101,7 @@
     "alphaevolve_suitability": "high",
     "alphaevolve_rationale": "This is well suited to automated finite-state CTMC construction for exponential services, saturated-system experiments, and search for small counterexamples to conjectured stability criteria.",
     "literature": {
-      "synthesis": "The missing distinction was between a compact formula and an exact characterization through a finite saturated CTMC. For phase-type durations and Poisson i.i.d.-marked arrivals, the latter is available, including correlated server need and duration. The finite state space can grow rapidly with server count; solving balance equations is not by itself a polynomial algorithm in the original input size. Renewal and general-duration extensions need their own argument.",
+      "synthesis": "The 2023 phase-type analysis and the 2026 workload recursion address different levels of the problem. One supplies a finite CTMC computation in a restricted distributional family; the other supplies a broadly applicable limiting representation. Neither alone proves polynomial complexity in the primitive input. This entry now focuses on making the threshold computable with explicit accuracy and runtime bounds. Independent renewal class streams are not silently treated as an iid marked superposition, and critical-load behavior is kept separate.",
       "reviewed": [
         {
           "ref": "Weina Wang, Qiaomin Xie, Mor Harchol-Balter, 'Zero Queueing for Multi-Server Jobs', arXiv 2021",
@@ -14011,16 +14126,23 @@
           "result": "Uses exact saturated throughput and finite-state calculations; also proves a heavy-traffic mean-response approximation with bounded additive error.",
           "relevance": "partial-progress",
           "url": "https://arxiv.org/abs/2310.01621"
+        },
+        {
+          "ref": "Francois Baccelli, Diletta Olliaro, Marco Ajmone Marsan, Andrea Marin, 'The Multiserver-Job Stochastic Recurrence Equation for Cloud Computing Performance Evaluation', arXiv:2601.20653v1, January 28, 2026, 2026",
+          "result": "Theorems 4.2 and 5.1 give monotone-separability and a general saturation threshold. Section 5 explicitly leaves evaluation complexity open; its numerical stopping rule is not an error certificate.",
+          "relevance": "partial-progress",
+          "url": "https://arxiv.org/abs/2601.20653v1"
         }
       ]
     },
     "agent_guidance": {
-      "suitable_approaches": "Start from the existing saturated finite CTMC. Seek state-space compression, tractable subclasses, or complexity bounds rather than rederiving enumerability.",
-      "verification_notes": "Distinguish polynomial complexity in the primitive input from polynomial complexity in an exponentially expanded CTMC. Do not transfer Poisson i.i.d.-mark results to superposed general renewal streams without checking the class-order process.",
+      "suitable_approaches": "Use subadditivity, regeneration at all-server jobs, or finite-state descriptions of relative workloads to bound the pile-growth constant. Separate tractability for rational finite-support and phase-type inputs from oracle access to arbitrary distributions.",
+      "verification_notes": "A numerical stopping rule needs a proved error certificate. Check the iid mark and renewal assumptions, dependence within marks, workload convergence criterion, and the critical equality case separately. An exponential-state exact CTMC is not a polynomial-time result, and two equal successive lower approximations do not certify perfect sampling.",
       "machine_checkable": true
     },
     "enabled": true,
-    "notes_for_maintainer": "Audit 2026-11-09: full-text model, saturation discussion, Theorem 4.2 and Appendix C reviewed. Narrowed the outstanding target; no blanket resolved status for the general-input/polynomial-complexity question."
+    "notes_for_maintainer": "Reviewed 2026-11-09 against Sections 3-5 of arXiv:2601.20653v1. This is a reported preprint result, not independent certification of every proof. Retargeted the entry from threshold existence to effective computation.",
+    "open_problem": "Compute the FCFS saturation growth constant with certified error and explicit complexity bounds for a specified finite input representation. A general threshold representation now exists; compact or polynomial-time evaluation, and critical-load behavior, are separate remaining questions."
   },
   {
     "id": "sbp-queueing-network-bar-tight-matrix-condition",
@@ -14035,48 +14157,52 @@
       "state-space collapse",
       "stability"
     ],
-    "status": "open",
+    "status": "partially resolved",
     "confidence": "high",
-    "short_statement": "For multiclass queueing networks under static-buffer-priority service, determine whether the BAR tight-matrix condition generally implies the stability and state-space-collapse conditions needed for steady-state heavy-traffic convergence.",
-    "full_statement": "Consider an open multiclass queueing network operating under a static-buffer-priority (SBP) service discipline. In heavy traffic, the basic adjoint relationship (BAR) method of Braverman, Dai, and Miyazawa establishes steady-state convergence to the associated semimartingale reflected Brownian motion provided three conditions hold: stability of the prelimit networks, state-space collapse (SSC), and tightness of a certain matrix appearing in the BAR/Palm-distribution formulation. In a two-station, five-class reentrant-line example under last-buffer-first-served priority, the tight-matrix condition implies both stability and SSC. The open problem is to decide whether this implication is general. Prove that, for a broad class of SBP multiclass queueing networks in heavy traffic, the tight-matrix condition alone implies the needed stability and SSC conditions; or construct a network and SBP discipline where the tight matrix condition holds but stability or SSC fails.",
+    "short_statement": "New matrix classifications make the BAR tightness condition easier to verify. Do those algebraic conditions also force prelimit stability and the stronger steady-state state-space-collapse condition?",
+    "full_statement": "Consider a finite open multiclass queueing network with classes $1,\\ldots,K$ assigned to $d$ single-server stations. The substochastic routing matrix $P$ has spectral radius below one. External arrivals are independent renewal streams, service requirements are iid within each class, and all primitive sequences and routing choices are independent. Each station uses a fixed non-idling, preemptive-resume priority order between its classes. Assume unit-mean interarrival and service primitives have finite $(2+\\delta)$ moments for some $\\delta>0$.\n\nIndex a heavy-traffic family by $r\\downarrow0$, keeping routing, priorities, and unitized primitive distributions fixed. External rates and service means are $\\lambda^{(r)}=\\lambda-r\\lambda^*$ and $m^{(r)}=m-rm^*$, positive for active classes. Write $\\alpha=(I-P^\\top)^{-1}\\lambda$, $\\alpha^*=(I-P^\\top)^{-1}\\lambda^*$, and let $C_{jk}=1$ when class $k$ uses station $j$. Require $C\\operatorname{diag}(m)\\alpha=\\mathbf1$ and\n$$b=C\\bigl(\\operatorname{diag}(m^*)\\alpha+\\operatorname{diag}(m)\\alpha^*\\bigr)>0.$$\nThus every station approaches load one from below.\n\nLet $L$ contain the lowest-priority class at each station and $H$ the other classes. Set $B_{k\\ell}=1$ if $\\ell$ is the immediately higher-priority class than $k$ at its station, and zero otherwise. For $A=(I-P^\\top)\\operatorname{diag}(1/m)(I-B)$, assume $A_{HH}$ is invertible and define\n$$R=A_{LL}-A_{LH}A_{HH}^{-1}A_{HL},$$\nindexing $L$ in station order. Require $R$ to be completely $\\mathcal S$: every principal submatrix $R_D$ admits a strictly positive vector $v$ with $R_Dv>0$.\n\nFor subsets $D\\subseteq\\{1,\\ldots,d\\}$, introduce $x_D\\in[0,1]$ and real $x_D^{(j)}$. The pair $(R,b)$ is tight if the only solution to\n$$\\sum_j R_{ij}b_j(x_D^{(j)}-x_D)=0\\ (i\\in D),\\quad x_D\\ge x_{D'},\\ x_D^{(j)}\\ge x_{D'}^{(j)}\\ (D\\subseteq D'),$$\n$$x_D^{(j)}=x_{D\\setminus\\{j\\}}^{(j)}\\ (j\\in D),\\qquad x_\\emptyset=x_\\emptyset^{(j)}=1$$\nhas every variable equal to one.\n\nDoes this tight-system condition imply that sufficiently small-$r$ networks have unique stationary laws and that their high-priority stationary job counts $Z_k^{(r)}$ satisfy\n$$\\lim_{a\\to\\infty}\\sup_{0<r\\le r_0}\\mathbb E[Z_k^{(r)}\\mathbf1\\{Z_k^{(r)}>a\\}]=0\\quad(k\\in H)$$\nfor some $r_0>0$? Prove the implication under clearly stated irreducibility/renewal regularity assumptions, or give a counterexample retaining them. This uniform-integrability condition is stronger than merely $rZ_H^{(r)}\\Rightarrow0$.",
     "background": "Heavy-traffic theory for multiclass queueing networks is one of the main ways applied probability turns complex service systems into tractable diffusion approximations. The hard part is usually steady state: proving convergence of stationary distributions requires stability, tightness, and interchange of limits, not just process-level weak convergence from a fixed initial condition. The BAR approach attacks the stationary equation directly and has produced sharp results for generalized Jackson networks. Extending it to multiclass networks under static-buffer-priority service is important because priority disciplines are common in manufacturing, healthcare, communication systems, and computing. Braverman, Dai, and Miyazawa isolate three verifiable modules. If one of them, the tight-matrix condition, automatically implied the others, the method would become much more powerful and easier to apply.",
-    "known_results": "The BAR approach is established for generalized Jackson networks and extended by Braverman, Dai, and Miyazawa to multiclass networks under SBP policies. Their framework shows that steady-state convergence follows from stability, SSC, and tightness of a matrix condition, and they prove all three in reentrant lines under last-buffer-first-served service. In the two-station, five-class reentrant-line case, tightness of the matrix condition implies both stability and SSC. The authors explicitly state that whether this relationship holds generally is open. No general theorem or counterexample was found in the 2026 search.",
+    "known_results": "Braverman, Dai, and Miyazawa's published Stochastic Systems 15(1):1-49 paper (2025), Theorem 5.1, proves steady-state diffusion convergence under separate primitive-moment, heavy-traffic, stability, uniform-integrability, and tight-system assumptions, with positive-definite limiting covariance. The paragraph following Corollary 5.1 explicitly leaves the relation between stability, SSC, and tightness open beyond the studied examples.\n\nDai, Ji, and Miyazawa (arXiv:2404.13651v3, July 2025), Theorem 3.1, classify tight completely-$\\mathcal S$ matrices in dimension two; Theorem 3.2 gives a sufficient higher-dimensional condition. Corollary 4.2 shows that a well-defined completely-$\\mathcal S$ reflection matrix arising from a two-station SBP network is tight. Theorem 4.1 covers LBFS reentrant lines. Their three-station, seven-class FBFS example has a non-tight matrix; it does not refute the implication from tightness to stability or SSC.\n\nRemaining open problem. Derive the prelimit stability and uniform-integrability assumptions from the algebraic condition, or show precisely why they are independent. Verifying a matrix condition is not itself that implication.",
     "where_posed": {
-      "text": "Stated in Braverman, Dai, and Miyazawa, 'The BAR approach for multiclass queueing networks with SBP service policies', arXiv 2023/2024.",
-      "url": "https://arxiv.org/abs/2302.05791",
-      "quote": "Whether such a relationship holds generally is an open problem.",
-      "location": "Abstract"
+      "text": "Braverman, Dai, and Miyazawa explicitly ask whether the relationship among the three assumptions extends to general networks.",
+      "url": "https://doi.org/10.1287/stsy.2023.0011",
+      "quote": "",
+      "location": "Abstract and paragraph after Corollary 5.1 (Section 5)."
     },
     "source": {
       "authors": "Anton Braverman, J. G. Dai, Masakiyo Miyazawa",
-      "title": "The BAR approach for multiclass queueing networks with SBP service policies",
-      "year": 2024,
-      "venue": "arXiv",
-      "url": "https://arxiv.org/abs/2302.05791"
+      "title": "The BAR Approach for Multiclass Queueing Networks with SBP Service Policies",
+      "year": 2025,
+      "venue": "Stochastic Systems 15(1):1-49",
+      "url": "https://doi.org/10.1287/stsy.2023.0011"
     },
     "additional_refs": [
-      {
-        "authors": "J. G. Dai, Masakiyo Miyazawa",
-        "title": "Basic adjoint relationships for queueing networks and their applications",
-        "year": 2011,
-        "venue": "Stochastic Systems",
-        "url": "https://pubsonline.informs.org/journal/stsy"
-      },
       {
         "authors": "Maury Bramson",
         "title": "Stability of Queueing Networks",
         "year": 2008,
         "venue": "Lecture Notes in Mathematics",
         "url": "https://link.springer.com/book/10.1007/978-3-540-68895-5"
+      },
+      {
+        "authors": "J. G. Dai, Yiquan Ji, Masakiyo Miyazawa",
+        "title": "Tight matrices and heavy traffic steady state convergence in queueing networks",
+        "year": 2025,
+        "venue": "arXiv:2404.13651v3, July 6, 2025 revision",
+        "url": "https://arxiv.org/abs/2404.13651v3"
       }
     ],
     "progress": {
       "state": "partial",
-      "summary": "The implication is proved in specific reentrant-line examples. The unresolved question is whether it is a structural theorem for SBP networks or a coincidence of those examples.",
+      "summary": "Published 2025 BAR results and a revised 2025 tight-matrix classification clarify the assumptions and settle verification in important cases. The general implication to stability and SSC remains distinct.",
       "links": [
         {
-          "title": "BAR approach for SBP networks",
-          "url": "https://arxiv.org/abs/2302.05791"
+          "title": "Published BAR theorem and open relationship (2025)",
+          "url": "https://doi.org/10.1287/stsy.2023.0011"
+        },
+        {
+          "title": "J. G. Dai, Yiquan Ji, Masakiyo Miyazawa (2025)",
+          "url": "https://arxiv.org/abs/2404.13651v3"
         }
       ]
     },
@@ -14087,34 +14213,30 @@
     "alphaevolve_suitability": "high",
     "alphaevolve_rationale": "Automated enumeration of small reentrant networks and priority rules could test the implication and search for counterexamples. Symbolic computation may also help verify matrix tightness conditions in finite examples.",
     "literature": {
-      "synthesis": "Classical heavy-traffic steady-state proofs often require substantial model-specific work to prove stability, state-space collapse, and interchange of limits. The BAR method reframes the problem through stationary equations and boundary terms, which can be more modular. Braverman, Dai, and Miyazawa's SBP extension identifies a tight-matrix condition that appears powerful in examples: in a two-station, five-class reentrant line it implies the other two major hypotheses. The open gap is whether this is an accident of low-dimensional reentrant-line structure or a general algebraic property of SBP networks. A positive answer would streamline heavy-traffic stationary analysis; a counterexample would clarify which additional hypotheses are indispensable.",
+      "synthesis": "The BAR convergence theorem assumes probabilistic control of the prelimit system as well as algebraic control of its limiting reflection data. Recent work makes the algebraic part concrete, especially for two stations and LBFS reentrant lines. It does not remove the separate need for stationary laws or the uniform integrability of high-priority counts. In particular, a stable FBFS example with a non-tight matrix concerns failure of automatic tightness, not a counterexample in the direction asked here. The entry now states the actual strong SSC assumption instead of equating it with a scaled weak limit.",
       "reviewed": [
         {
-          "ref": "Anton Braverman, J. G. Dai, Masakiyo Miyazawa, 'The BAR approach for multiclass queueing networks with SBP service policies', arXiv 2024",
-          "result": "Extends BAR to SBP multiclass networks and poses the tight-matrix implication problem.",
-          "relevance": "poses-problem",
-          "url": "https://arxiv.org/abs/2302.05791"
+          "ref": "Anton Braverman, J. G. Dai, Masakiyo Miyazawa, 'The BAR Approach for Multiclass Queueing Networks with SBP Service Policies', Stochastic Systems 15(1):1-49, 2025",
+          "result": "Theorem 5.1 requires stability, high-priority uniform integrability, and tightness separately; the relationship among them is left open after Corollary 5.1.",
+          "relevance": "partial-progress",
+          "url": "https://doi.org/10.1287/stsy.2023.0011"
         },
         {
-          "ref": "Maury Bramson, 'Stability of Queueing Networks', Springer 2008",
-          "result": "Provides foundational methods and counterexamples for stability in multiclass queueing networks.",
-          "relevance": "related-tool",
-          "url": "https://link.springer.com/book/10.1007/978-3-540-68895-5"
-        },
-        {
-          "ref": "J. G. Dai, Masakiyo Miyazawa, BAR methods for queueing networks, Stochastic Systems 2011",
-          "result": "Develops BAR-based stationary analysis tools that motivate the later multiclass SBP extension.",
-          "relevance": "related-tool",
-          "url": "https://pubsonline.informs.org/journal/stsy"
+          "ref": "J. G. Dai, Yiquan Ji, Masakiyo Miyazawa, 'Tight matrices and heavy traffic steady state convergence in queueing networks', arXiv:2404.13651v3, July 6, 2025 revision, 2025",
+          "result": "Theorems 3.1-3.2, Corollary 4.2, and Example 4.1 classify or verify tightness in several cases. A non-tight FBFS example does not disprove tightness implying stability/SSC.",
+          "relevance": "partial-progress",
+          "url": "https://arxiv.org/abs/2404.13651v3"
         }
       ]
     },
     "agent_guidance": {
       "suitable_approaches": "For a positive result, try to derive Lyapunov stability and SSC estimates directly from the algebraic tight-matrix condition. For a negative result, enumerate small multiclass networks with exponential service and SBP disciplines, check the matrix condition, and compare against fluid-model stability or known instability criteria.",
-      "verification_notes": "A counterexample must verify the tight-matrix condition exactly and then rigorously prove failure of stability or SSC. A positive theorem must state the class of networks, traffic assumptions, and priority disciplines precisely.",
+      "verification_notes": "Check the priority ordering, Schur-complement reflection matrix, complete-S property, and tight-system equations. A proposed counterexample must have a tight system and fail stability or the uniform-integrability condition; a non-tight example has the wrong logical direction. Weak convergence of scaled high-priority counts alone is insufficient.",
       "machine_checkable": true
     },
-    "enabled": true
+    "enabled": true,
+    "notes_for_maintainer": "Reviewed 2026-11-09 against the published BAR Theorem 5.1, Assumptions 5.1-5.5, and the Dai-Ji-Miyazawa v3 classification. Removed an unverifiable journal-homepage reference.",
+    "open_problem": "Does the stated BAR tight-system condition imply prelimit stability and uniform integrability of high-priority stationary queue lengths under the primitive and heavy-traffic assumptions? Give a general implication with explicit regularity assumptions or a counterexample. The 2025 matrix classifications alone do not settle this."
   },
   {
     "id": "smooth-kernel-rgg-spectral-threshold-conjecture",
@@ -20640,5 +20762,82 @@
       "verification_notes": "A polynomial-time algorithm must run in the Turing bit model and handle arbitrary integer coefficients and radicands encoded in binary. A claimed separation bound must be effective: it must provide a computable lower bound large enough to determine the sign using polynomially many bits of precision. A randomized or average-case algorithm does not settle the decision problem unless it has the required worst-case correctness guarantee. Near-collision examples should provide exact integer data and a rigorous certificate that the displayed nonzero sum has the claimed magnitude.",
       "machine_checkable": true
     }
+  },
+  {
+    "id": "skill-based-queue-routing-logarithmic-regret",
+    "title": "Closing the logarithmic regret gap in skill-based queue routing",
+    "collection": "Applied Probability",
+    "area": "Queueing and Online Learning",
+    "tags": [
+      "queueing",
+      "skill-based-routing",
+      "bandits",
+      "regret",
+      "operations-research",
+      "applied-probability"
+    ],
+    "status": "open",
+    "confidence": "medium",
+    "enabled": true,
+    "short_statement": "Learning unknown match rewards in a fixed skill-based queue has logarithmic lower bounds and polylogarithmic upper bounds. Can a stable policy attain logarithmic regret against the same slack-constrained benchmark?",
+    "full_statement": "Fix a connected bipartite compatibility graph $E\\subseteq[I]\\times[J]$ with $|E|>I+J-1$. Type-$i$ customers arrive as independent Poisson processes of known rates $\\lambda_i>0$. Server $j$ serves one customer at a time with independent exponential durations of known rate $\\mu_j>0$, regardless of customer type. Initially empty, the system allows customers to wait for compatible servers. A completed type-$(i,j)$ service yields an independent Bernoulli reward of unknown mean $\\theta_{ij}\\in(0,1)$. Rewards are observed only at completion.\n\nChoose a fixed known $\\epsilon>0$ and define the routing polytope\n$$\\mathcal X_\\epsilon=\\{x\\ge0:\\ \\sum_{j:(i,j)\\in E}x_{ij}=\\lambda_i,\\quad\\sum_{i:(i,j)\\in E}x_{ij}\\le\\mu_j-\\epsilon\\}.$$\nAssume $\\sum_{i\\in U}\\lambda_i<\\sum_{j\\in\\cup_{i\\in U}\\{j:(i,j)\\in E\\}}\\mu_j$ for every nonempty $U\\subseteq[I]$, feasibility, and the source's nondegenerate regime: all primal and dual feasible bases are nondegenerate and the optimum $x^\\theta$ is unique. Choose $\\epsilon$ small enough that the feasible bases at zero slack remain feasible. The benchmark is $v_\\epsilon(\\theta)=\\max_{x\\in\\mathcal X_\\epsilon}\\sum_{(i,j)\\in E}\\theta_{ij}x_{ij}$, not the zero-slack value.\n\nLet $D_{ij}(t)$ count completed services and define\n$$R_\\pi^\\theta(t)=t v_\\epsilon(\\theta)-\\sum_{(i,j)\\in E}\\theta_{ij}\\mathbb E_\\pi^\\theta D_{ij}(t).$$\nPolicies are nonanticipative and must satisfy, on every admissible instance,\n$$\\lim_{t\\to\\infty}\\left[t\\lambda_i-\\sum_j\\mathbb E_\\pi^\\theta D_{ij}(t)\\right]<\\infty,\\qquad\n\\sum_i\\mathbb E_\\pi^\\theta D_{ij}(t)\\le t(\\mu_j-\\epsilon).$$\nAlso impose the source's consistency condition: for every admissible reward vector $\\xi$, every line with $x_{ij}^\\xi>0$, and every $b>0$, $\\mathbb P_\\pi^\\xi(D_{ij}(t)<b\\log t)\\to0$.\n\nCan one policy attain $R_\\pi^\\theta(t)=O(\\log t)$ on every fixed nondegenerate instance, with an instance-dependent constant? Otherwise prove that a larger order is unavoidable in this same policy class. The dimension, positive slack, and reward gaps stay fixed as $t\\to\\infty$; a minimax bound or a result against $\\mathcal X_0$ is a different question.",
+    "background": "In a bandit problem, choosing an action typically produces an immediate observation. In a queue, the observation arrives only after a compatible server has completed service, and changing a routing rule changes both congestion and the supply of future observations. The operational objective is therefore coupled to the statistical learning problem. Fixing a positive capacity slack isolates this difficulty from critical-load instability. The recent Stochastic Systems analysis uses vertices of a static routing polytope as actions and growing episodes to control transient queue behavior. Its logarithmic factors leave a concrete algorithmic question within an already specified stochastic model.",
+    "open_problem": "Close the gap between logarithmic lower bounds and the $O((\\log t)^{2\\beta})$ guarantee for every fixed $\\beta>1$, under the stated positive-slack, nondegenerate, consistent-policy model. In particular, establish instance-dependent $O(\\log t)$ regret, or a stronger lower bound for the same model.",
+    "known_results": "Van Kempen, Sanders, Sloothaak, and Wolf (Stochastic Systems 16(2):140-164, 2026), Theorem 2, prove $O((\\log t)^{2\\beta})$ regret for every fixed $\\beta>1$ for UCB Queue Routing with Bernoulli rewards and prescribed growing episode lengths. Theorem 1 gives an instance-dependent $\\Omega(\\log t)$ lower bound under stability, slack, and consistency conditions. Its change-of-measure argument requires admissible confusing reward alternatives; for bounded Bernoulli means this qualification must be checked rather than allowing alternatives outside $(0,1)$.\n\nSection 4.5.2 explicitly proposes exploiting shared observations across routing actions to improve the dependence on the number of LP vertices. Section 4.5.4 explains why changing to the zero-slack benchmark adds a different loss. Neither numerical performance nor ordinary finite-armed UCB alone proves the desired queueing guarantee.\n\nRemaining open problem. Attain logarithmic regret or prove an unavoidable larger order with these same assumptions and benchmark. This gap-closing question is an editorial inference from Theorems 1-2, not a quoted conjecture.",
+    "where_posed": {
+      "text": "Editorially extracted gap between Theorems 1 and 2 of van Kempen, Sanders, Sloothaak, and Wolf (2026); related improvement directions are explicit in the paper.",
+      "url": "https://doi.org/10.1287/stsy.2024.0095",
+      "location": "Sections 2-4, Theorems 1-2, equations (7)-(8), (24), and Sections 4.5.2/4.5.4.",
+      "quote": ""
+    },
+    "source": {
+      "authors": "Sanne van Kempen, Jaron Sanders, Fiona Sloothaak, Maarten G. Wolf",
+      "title": "Learning Payoffs While Routing in Skill-Based Queues",
+      "year": 2026,
+      "venue": "Stochastic Systems 16(2):140-164",
+      "url": "https://doi.org/10.1287/stsy.2024.0095"
+    },
+    "additional_refs": [
+      {
+        "authors": "Sanne van Kempen, Jaron Sanders, Fiona Sloothaak, Maarten G. Wolf",
+        "title": "Learning payoffs while routing in skill-based queues (preprint)",
+        "year": 2024,
+        "venue": "arXiv:2412.10168",
+        "url": "https://arxiv.org/abs/2412.10168"
+      }
+    ],
+    "progress": {
+      "state": "partial",
+      "summary": "The published 2026 theorem gives a polylogarithmic upper bound. Logarithmic lower bounds apply with the source's consistency and identifiability assumptions; matching the orders is the target.",
+      "links": [
+        {
+          "title": "Published model and regret theorems",
+          "url": "https://doi.org/10.1287/stsy.2024.0095"
+        }
+      ]
+    },
+    "importance": 7,
+    "difficulty": 7,
+    "counterexample_suitability": "low",
+    "counterexample_rationale": "The target is an asymptotic stochastic-control guarantee. Small simulations cannot certify a lower bound over all admissible learning policies.",
+    "alphaevolve_suitability": "medium",
+    "alphaevolve_rationale": "Policy search may suggest ways to share observations or shorten warmup periods, but asymptotic regret and stability need proof.",
+    "literature": {
+      "synthesis": "The learning lower bound and the constructive queueing upper bound use a common positive-slack routing benchmark but have different technical requirements. The upper bound accounts for switching transients and random numbers of completed observations. A better method may reuse observations across actions and avoid repeatedly paying a growing warmup cost. The lower bound must keep reward alternatives inside the chosen family. The target here is instance-dependent logarithmic regret at fixed slack, not a uniform guarantee in vanishing slack, and not a conjecture that every nondegenerate instance has the same positive lower-bound constant.",
+      "reviewed": [
+        {
+          "ref": "Sanne van Kempen, Jaron Sanders, Fiona Sloothaak, Maarten G. Wolf, 'Learning Payoffs While Routing in Skill-Based Queues', Stochastic Systems 16(2):140-164, 2026",
+          "result": "Theorems 1-2 give logarithmic lower and polylogarithmic upper bounds with explicit stability, slack, consistency, and nondegeneracy assumptions.",
+          "relevance": "partial-progress",
+          "url": "https://doi.org/10.1287/stsy.2024.0095"
+        }
+      ]
+    },
+    "agent_guidance": {
+      "suitable_approaches": "Exploit shared reward observations across routing vertices. Analyze switching transients directly or design a routing implementation with faster coupling. For lower bounds, use admissible Bernoulli alternatives and account for unfinished work.",
+      "verification_notes": "Keep the epsilon-slack LP benchmark, server-only service rates, completion-only reward feedback, consistency, and expected capacity constraints. Prove queue stability as well as regret. An epsilon-dependent bound cannot be treated as uniform when epsilon tends to zero. Do not use Bernoulli alternatives with means above one in a KL lower bound.",
+      "machine_checkable": false
+    },
+    "notes_for_maintainer": "Added 2026-11-09 after reviewing the published Sections 2-4, Theorems 1-2 and proof outline. Editorial gap extraction, not an independently certified conjecture. Targeted follow-up search found no matching resolution; absence from search is not proof of open status."
   }
 ]

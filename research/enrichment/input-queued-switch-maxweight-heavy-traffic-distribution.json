@@ -1,0 +1,93 @@
+{
+  "id": "input-queued-switch-maxweight-heavy-traffic-distribution",
+  "status": "partially resolved",
+  "short_statement": "For an all-ports-saturated MaxWeight switch, a candidate heavy-traffic joint law is conditional on transform uniqueness. Its explicit exponential representation requires symmetric arrival variances.",
+  "full_statement": "Fix $n\\ge2$. An $n\\times n$ discrete-time input-queued switch has integer queue lengths $Q_{ij}(t)$. Each slot chooses a permutation matching $M(t)$ maximizing $\\sum_{(i,j)\\in M(t)}Q_{ij}(t)$, with a fixed tie rule. Arrivals are independent across input-output pairs and iid over slots, uniformly bounded over the heavy-traffic family. Use the update $Q_{ij}(t+1)=[Q_{ij}(t)+A_{ij}(t)-\\mathbf1\\{(i,j)\\in M(t)\\}]^+$, and assume irreducibility and aperiodicity.\n\nFor $\\varepsilon>0$, let $\\mathbb E A_{ij}=(1-\\varepsilon)\\nu_{ij}$, where every $\\nu_{ij}>0$ and every row and column of $\\nu$ sums to one. Thus every port becomes saturated as $\\varepsilon\\downarrow0$. Write $Q^{(\\varepsilon)}$ for the stationary queue vector.\n\nThe concrete symmetric-variance question is whether, when $\\operatorname{Var}(A_{ij})\\to\\sigma^2>0$ for all $i,j$,\n$$\\varepsilon Q_{ij}^{(\\varepsilon)}\\ \\Rightarrow\\ Y_i+Y_{n+j}-2\\min_{1\\le r\\le2n}Y_r,$$\njointly over all entries, where the $2n$ variables $Y_r$ are independent exponentials of mean $\\sigma^2/2$.\n\nJhunjhunwala and Maguluri derive this representation conditional on uniqueness of their limiting transform equation (Conjecture 2.16 and Theorem 2.17). Prove that uniqueness, or establish or refute the joint-law formula by another method. For unequal variances, the broader target is the corresponding transform characterization; the displayed iid-exponential formula is not asserted.",
+  "known_results": "MaxWeight state-space collapse and heavy-traffic mean queue-length formulas are known in the all-ports-saturated regime. Jhunjhunwala and Maguluri (arXiv:2206.06504v2, 2023) solve special three-queue and $\\mathcal N$ systems. For the general switch, Conjecture 2.16 asks for uniqueness of an admissible transform solution; Theorem 2.17 gives the exponential representation only conditional on that conjecture and symmetric variances.\n\nMou and Maguluri (Advances in Applied Probability 56, 2024, pp. 1106-1152; arXiv:2006.06150v2) extend heavy-traffic mean-sum analysis to bounded arrivals modulated by independent finite-state irreducible aperiodic Markov chains. They obtain matching upper and lower limits for the MaxWeight mean and a factor less than two against a universal policy lower bound. This concerns a mean, not the full joint queue-length law.\n\nRemaining open problem. Prove the general transform uniqueness statement or the symmetric-variance joint-law conjecture. The Markov-arrival mean result does not settle either question, and arbitrary capacity-boundary faces are not covered by the displayed candidate.",
+  "where_posed": {
+    "text": "Jhunjhunwala and Maguluri formulate the transform uniqueness conjecture and its conditional distributional consequence.",
+    "url": "https://arxiv.org/abs/2206.06504v2",
+    "location": "Conjecture 2.16 and Theorem 2.17, Section 2.3.",
+    "quote": ""
+  },
+  "source": {
+    "authors": "Prakirt Raj Jhunjhunwala, Siva Theja Maguluri",
+    "title": "Heavy Traffic Joint Queue Length Distribution without Resource Pooling",
+    "year": 2023,
+    "venue": "arXiv:2206.06504v2",
+    "url": "https://arxiv.org/abs/2206.06504v2"
+  },
+  "additional_refs": [
+    {
+      "authors": "Siva Theja Maguluri, R. Srikant",
+      "title": "Queue Length Behavior in a Switch under the MaxWeight Algorithm",
+      "year": 2015,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/1503.05872"
+    },
+    {
+      "authors": "Anton Braverman, J. G. Dai, Masakiyo Miyazawa",
+      "title": "The BAR approach for multiclass queueing networks with SBP service policies",
+      "year": 2024,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/2302.05791"
+    },
+    {
+      "authors": "Shancong Mou, Siva Theja Maguluri",
+      "title": "Heavy-Traffic Queue Length Behavior in a Switch under Markovian Arrivals",
+      "year": 2024,
+      "venue": "Advances in Applied Probability 56:1106-1152",
+      "url": "https://doi.org/10.1017/apr.2023.60"
+    }
+  ],
+  "progress": {
+    "state": "partial",
+    "summary": "The candidate joint law remains conditional. Published 2024 progress extends mean-sum formulas to Markovian arrivals, not the full joint distribution.",
+    "links": [
+      {
+        "title": "Jhunjhunwala-Maguluri transform method",
+        "url": "https://arxiv.org/abs/2206.06504"
+      },
+      {
+        "title": "Shancong Mou, Siva Theja Maguluri (2024)",
+        "url": "https://doi.org/10.1017/apr.2023.60"
+      }
+    ]
+  },
+  "literature": {
+    "synthesis": "Three distinct statements must be kept apart: collapse to a lower-dimensional subspace, a limiting expected total queue size, and identification of a joint distribution. The first two do not identify the transform uniquely. The candidate representation additionally assumes equal limiting variances and approach to the all-ports-saturated face. Temporal dependence can be handled for mean-sum asymptotics in Mou and Maguluri's model, but this does not justify importing their result as a proof of the iid-arrival joint-law conjecture.",
+    "reviewed": [
+      {
+        "ref": "Prakirt Raj Jhunjhunwala, Siva Theja Maguluri, 'Heavy Traffic Joint Queue Length Distribution without Resource Pooling', arXiv 2023",
+        "result": "Derives the transform equation and candidate distribution; proves exact joint distributions in special cases.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/2206.06504"
+      },
+      {
+        "ref": "Siva Theja Maguluri, R. Srikant, 'Queue Length Behavior in a Switch under the MaxWeight Algorithm', arXiv 2015",
+        "result": "Characterizes heavy-traffic mean queue lengths under MaxWeight for saturated switches.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1503.05872"
+      },
+      {
+        "ref": "Anton Braverman, J. G. Dai, Masakiyo Miyazawa, 'The BAR approach for multiclass queueing networks with SBP service policies', arXiv 2024",
+        "result": "Develops stationary-equation methods for heavy-traffic steady-state limits in multiclass queueing networks.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/2302.05791"
+      },
+      {
+        "ref": "Shancong Mou, Siva Theja Maguluri, 'Heavy-Traffic Queue Length Behavior in a Switch under Markovian Arrivals', Advances in Applied Probability 56:1106-1152, 2024",
+        "result": "Extends heavy-traffic mean-sum results to the stated finite-state Markov-modulated arrival model. It does not identify the general switch's joint distribution.",
+        "relevance": "partial-progress",
+        "url": "https://doi.org/10.1017/apr.2023.60"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Attack the functional equation directly: identify a class of admissible analytic transforms, prove boundary regularity, and use monotonicity or convexity to rule out multiple solutions. Another route is to derive the limiting stationary BAR independently and show it pins down the same transform. Computational experiments on $3\\times 3$ and $4\\times 4$ switches may suggest missing identities or reveal nonuniqueness.",
+    "verification_notes": "Prove a joint limit, not just means or marginals. Verify the all-ports-saturated, positive-rate, iid-across-queues and symmetric-variance assumptions for the explicit formula. Any transform uniqueness proof must include the boundary transforms and admissibility conditions, not just exhibit one solution.",
+    "machine_checkable": false
+  },
+  "notes_for_maintainer": "Reviewed 2026-11-09: source v2 Conjecture 2.16/Theorem 2.17; Mou-Maguluri v2 Section 4. Corrected the missing symmetric-variance and all-ports-saturated qualifications.",
+  "open_problem": "Prove the general switch transform-uniqueness conjecture, or establish or refute the displayed symmetric-variance joint law in the all-ports-saturated regime. Do not extend its iid-exponential formula to arbitrary variances or infer a joint law from a mean-sum result."
+}

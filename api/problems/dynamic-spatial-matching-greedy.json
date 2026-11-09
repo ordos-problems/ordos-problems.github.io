@@ -2,10 +2,10 @@
  "number": 84,
  "ref": "ORDOS-084",
  "id": "dynamic-spatial-matching-greedy",
- "title": "Cost of the greedy algorithm for dynamic spatial matching",
+ "title": "Greedy spatial matching beyond the solved one-dimensional batch case",
  "collection": "Operations Management",
  "area": "Spatial Matching",
- "status": "open",
+ "status": "partially resolved",
  "confidence": "high",
  "tags": [
   "dynamic matching",
@@ -20,22 +20,22 @@
   "random-geometric-probability",
   "online-platforms"
  ],
- "short_statement": "Determine the exact expected cost scaling of nearest-neighbor greedy in balanced dynamic spatial matching.",
- "open_problem": "Characterize the scaling and, where possible, constants of standard nearest-neighbor greedy in semi-dynamic and fully dynamic random spatial matching, especially in balanced markets and in dimensions $d=1$ and $d=2$ where discrepancy effects are strongest.",
- "background": "Dynamic spatial matching is a stripped-down model of platforms that match supply and demand in metric space: ride-hailing, delivery, labor platforms, and service dispatch all face the tension between immediate local matching and preserving future options. In random spatial models, supply and demand locations are iid in $[0,1]^d$, and static optimal matching already has dimension-dependent behavior governed by Ajtai-Komlos-Tusnady and Talagrand-type results. Kanoria showed that in many dynamic regimes the platform can achieve cost nearly as low as if future arrivals were known, using policies that deliberately preserve balance across spatial scales. Standard nearest-neighbor greedy is the more obvious operational rule, but it is myopic. It may consume nearby supply in a way that creates holes and causes later long matches. Excess supply can repair greedy in one-dimensional settings, but the balanced case and the fully dynamic case remain much less clear.",
- "full_statement": "Supply and demand points are sampled independently in $[0,1]^d$, usually uniformly, and matching cost is Euclidean distance. In the semi-dynamic model, $N$ supply points are initially present and $N$ demand points arrive sequentially; each demand must be matched irrevocably to an unmatched supply point. In the fully dynamic model, supply and demand both arrive over time and unmatched agents may wait subject to the model's queue-size or market-thickness assumptions. The standard greedy policy matches each arriving agent to the nearest currently available compatible opposite-side agent. Kanoria characterizes near-optimal achievable cost scaling using hierarchical greedy policies, but the ordinary nearest-neighbor greedy policy is not sharply understood in balanced markets. The open problem is to determine the expected average cost of standard greedy as a function of $N$ and dimension $d$, including possible logarithmic factors and constants, and to compare this scaling with the optimal achievable cost.",
- "known_results": "Kanoria determines the optimal achievable cost scaling in major static, semi-dynamic, and fully dynamic random spatial matching regimes and gives concrete hierarchical matching algorithms. In almost all cases, the optimal dynamic scaling is close to the static benchmark or nearest-neighbor distance; one explicit remaining gap in that paper is a logarithmic factor for $d=1$ in the fully dynamic model. Akbarpour, Alimohammadi, Li, and Saberi show that in one-dimensional spatial markets, a small amount of excess supply can make a simple greedy algorithm perform very well. These results do not give a sharp analysis of standard nearest-neighbor greedy under balanced supply and demand, nor do they determine whether greedy suffers avoidable logarithmic losses in the key low-dimensional dynamic regimes.",
+ "short_statement": "Ordinary greedy is already constant-competitive for one-dimensional iid uniform supply and demand. Its higher-dimensional performance and the replenishing-market model remain separate targets.",
+ "open_problem": "Determine the sharp expected average cost of ordinary nearest-neighbor greedy in the balanced semi-dynamic model for fixed dimension at least two, and in the replenishing-supply model for each dimension. The one-dimensional iid uniform batch model already has a constant-competitive guarantee.",
+ "background": "Dynamic spatial matching is a stripped-down model of platforms that match supply and demand in metric space: ride-hailing, delivery, labor platforms, and service dispatch all face the tension between immediate local matching and preserving future options. In random spatial models, supply and demand locations are iid in $[0,1]^d$, and static optimal matching already has dimension-dependent behavior governed by Ajtai-Komlos-Tusnady and Talagrand-type results. Kanoria showed that in many dynamic regimes the platform can achieve cost nearly as low as if future arrivals were known, using policies that deliberately preserve balance across spatial scales. Standard nearest-neighbor greedy is the more obvious operational rule, but it is myopic. It may consume nearby supply in a way that creates holes and causes later long matches. The iid uniform one-dimensional batch model is now understood to within a constant factor, both in the balanced case and with fixed linear excess supply. Higher-dimensional batch matching and the replenishing-supply process remain distinct analytical challenges.",
+ "full_statement": "Fix a dimension $d$. In the balanced semi-dynamic model, $N$ supply points and $N$ demand points are independent uniform samples from $[0,1]^d$. All supply points are available initially. Demands arrive one by one and must be matched immediately and irrevocably. Ordinary greedy chooses the closest unused supply in Euclidean distance, with a fixed tie rule. Let $G_d(N)$ be its expected total distance divided by $N$, and let $B_d(N)$ be the expected offline minimum total distance divided by $N$.\n\nThe first remaining question is whether $G_d(N)=\\Theta(B_d(N))$ for each fixed $d\\ge2$, or whether greedy has an extra asymptotic loss. The balanced $d=1$ scaling is already settled: $G_1(N)=\\Theta(N^{-1/2})$. Exact leading constants are a finer question.\n\nIn the fully dynamic model, maintain exactly $m$ supply points. Begin with iid uniform supply. At each period an independent uniform demand arrives, is matched immediately to its nearest supply, and both leave; an independent uniform replacement supply then arrives. Let\n$$G_d^{\\rm rep}(m)=\\limsup_{T\\to\\infty}\\frac1T\\mathbb E\\sum_{t=1}^T\\|D_t-S_t^{\\rm matched}\\|_2.$$\nThe second question is its sharp order as $m\\to\\infty$ and its ratio to the infimum of this long-run criterion over nonanticipative policies. Demand does not wait in this model. Distinguish ordinary nearest-neighbor greedy from Hierarchical Greedy and from SOAR.",
+ "known_results": "Kanoria's Dynamic Spatial Matching appeared in Annals of Applied Probability 35(5):3086-3118 (2025). It provides benchmark cost scalings and hierarchical policies, not a general sharp analysis of ordinary greedy.\n\nBalkanski, Faenza, and Perivier (EC 2023; arXiv:2210.03166v3, March 27, 2025), Section 3, prove ordinary greedy constant-competitive when supply and demand are iid uniform on the line. Thus the balanced average cost is $\\Theta(N^{-1/2})$. They also prove constant competitiveness with a fixed positive linear excess of supply, improving the earlier polylogarithmic loss. Their Appendices A.1 and A.4 distinguish higher-dimensional and sublinear-excess questions. Here competitive ratio means a ratio of expected costs.\n\nChen, Kanoria, Kumar, and Zhang, Feature-Based Dynamic Matching (Operations Research 74(2):788-803, 2026 issue; online 2025), establish near-optimal SOAR regret scalings. The author manuscript's Proposition 2 and discussion in Section 4.1 resolve the exponent gap for uniform semi-dynamic matching with distance-to-a-power costs, up to logarithmic factors. This is not a theorem for ordinary greedy, and it does not resolve the fully dynamic one-dimensional logarithmic gap mentioned by Kanoria.\n\nRemaining open problem. Analyze ordinary greedy in higher dimensions and in the precisely specified replenishing market. Do not present balanced one-dimensional batch scaling as open.",
  "progress": {
   "state": "partial",
-  "summary": "Optimal scaling is known via hierarchical greedy-style algorithms, and excess-supply one-dimensional results explain some greedy behavior. Balanced standard nearest-neighbor greedy remains poorly understood.",
+  "summary": "One-dimensional iid batch scaling is settled by greedy's constant-competitive guarantee. SOAR resolves a different semi-dynamic exponent gap; higher-dimensional greedy and replenishing-market behavior are not thereby resolved.",
   "links": [
    {
-    "title": "Dynamic Spatial Matching",
-    "url": "https://arxiv.org/abs/2105.07329"
+    "title": "Eric Balkanski, Yuri Faenza, Noemie Perivier (2025)",
+    "url": "https://arxiv.org/abs/2210.03166v3"
    },
    {
-    "title": "The Value of Excess Supply in Spatial Matching Markets",
-    "url": "https://arxiv.org/abs/2104.03219"
+    "title": "Yilun Chen, Yash Kanoria, Akshit Kumar, Wenxin Zhang (2026)",
+    "url": "https://doi.org/10.1287/opre.2024.0730"
    }
   ]
  },
@@ -46,16 +46,16 @@
  "alphaevolve_suitability": "high",
  "alphaevolve_rationale": "Automated simulation and search over arrival sequences can estimate exponents, identify bottleneck configurations, and test coupling hypotheses. Proof still needs probabilistic scaling arguments.",
  "literature": {
-  "synthesis": "The optimal-cost story is substantially clearer than the greedy-cost story. Kanoria's hierarchical algorithms deliberately preserve spatial balance across scales, avoiding the local myopia of nearest-neighbor matching. Standard greedy lacks that multiscale control; it can consume nearby supply in ways that create later long matches. Excess supply can mitigate this problem in one dimension, as Akbarpour et al. show, but that does not settle balanced markets or fully dynamic arrivals. The remaining open problem is a sharp stochastic-process analysis of greedy's spatial imbalance over time, potentially requiring tools from discrepancy, random allocation, transport, and queueing.",
+  "synthesis": "The previous entry missed a direct positive theorem for the very algorithm it asked about. Random one-dimensional batch matching is no longer an unsolved scaling question for greedy. Higher dimensions and replenishment change the dependence among available supply points and are separate targets. SOAR gives another important advance, but achieves its guarantee by planning with simulated future demand, not by nearest-neighbor decisions. Its distance-power result therefore updates the benchmark literature without settling ordinary greedy's performance or a different fully dynamic gap.",
   "reviewed": [
    {
-    "ref": "Yash Kanoria, 'Dynamic Spatial Matching', Annals of Applied Probability 2023 / arXiv 2021",
-    "result": "Determines optimal achievable cost scaling in static, semi-dynamic, and fully dynamic random spatial matching models using hierarchical algorithms and identifies remaining low-dimensional logarithmic gaps.",
-    "relevance": "poses-problem",
-    "url": "https://arxiv.org/abs/2105.07329"
+    "ref": "Yash Kanoria, 'Dynamic Spatial Matching', Annals of Applied Probability 35(5):3086-3118, 2025",
+    "result": "Benchmark spatial cost scalings and hierarchical algorithms. The replenishing model has immediate demand matching and one replacement supply per period.",
+    "relevance": "related-tool",
+    "url": "https://doi.org/10.1214/25-AAP2154"
    },
    {
-    "ref": "Mohammad Akbarpour, Yeganeh Alimohammadi, Shengwu Li, and Amin Saberi, 'The Value of Excess Supply in Spatial Matching Markets', EC 2021",
+    "ref": "Mohammad Akbarpour, Yeganeh Alimohammadi, Shengwu Li, and Amin Saberi, 'The Value of Excess Supply in Spatial Matching Markets', EC 2022; arXiv 2021",
     "result": "Shows that excess supply can dramatically improve greedy performance in a one-dimensional spatial matching model.",
     "relevance": "partial-progress",
     "url": "https://arxiv.org/abs/2104.03219"
@@ -71,33 +71,45 @@
     "result": "Develops static random matching asymptotics and high-dimensional tools that form benchmarks for dynamic spatial matching.",
     "relevance": "related-tool",
     "url": "https://doi.org/10.1214/aoap/1177005578"
+   },
+   {
+    "ref": "Eric Balkanski, Yuri Faenza, Noemie Perivier, 'The Power of Greedy for Online Minimum Cost Matching on the Line', arXiv:2210.03166v3, March 27, 2025 revision; conference version EC 2023, 2025",
+    "result": "Section 3 settles constant competitiveness on the line in the iid uniform balanced and fixed linear-excess models; Appendix A.1 discusses the higher-dimensional gap.",
+    "relevance": "solves-special-case",
+    "url": "https://arxiv.org/abs/2210.03166v3"
+   },
+   {
+    "ref": "Yilun Chen, Yash Kanoria, Akshit Kumar, Wenxin Zhang, 'Feature-Based Dynamic Matching', Operations Research 74(2):788-803; first published online November 18, 2025, 2026",
+    "result": "SOAR gives near-optimal semi-dynamic regret scaling; the distance-power exponent-gap resolution is not a greedy or replenishing-market theorem.",
+    "relevance": "partial-progress",
+    "url": "https://doi.org/10.1287/opre.2024.0730"
    }
   ]
  },
  "agent_guidance": {
   "suitable_approaches": "Use simulations to infer the exponent, but formulate conjectures in terms of discrepancy accumulated across dyadic cells. Try coupling greedy to random sequential adsorption, online allocation, or transport processes. Lower bounds may come from showing that greedy creates under-supplied intervals or boxes at multiple scales; upper bounds likely need a martingale or potential function tracking imbalance.",
-  "verification_notes": "A solution must state the exact model variant, dimension, arrival process, and whether excess supply is present. Empirical exponents should be treated as conjectural unless accompanied by concentration and finite-size error control. Claims about hierarchical greedy do not automatically apply to standard nearest-neighbor greedy, which is the policy targeted by this record.",
+  "verification_notes": "Specify balanced batch versus replenishing supply, and expected total versus average cost. The one-dimensional balanced greedy rate is known. Neither hierarchical nor SOAR performance is evidence for ordinary greedy. Demand is matched immediately in the replenishing model, not held in an unspecified waiting queue.",
   "machine_checkable": true
  },
  "where_posed": {
-  "text": "Residual question around standard greedy after Kanoria's optimal-scaling results and later excess-supply analysis.",
-  "url": "https://arxiv.org/abs/2105.07329",
-  "quote": "",
-  "location": "Open directions and discussion of greedy/spatial balance"
+  "text": "Kanoria discusses ordinary greedy as a separate unresolved analysis; Balkanski, Faenza, and Perivier settle the one-dimensional iid batch case and discuss higher dimensions.",
+  "url": "https://arxiv.org/abs/2210.03166v3",
+  "location": "Section 3 and Appendix A.1; Kanoria Sections 3-4 and 7.",
+  "quote": ""
  },
  "source": {
   "authors": "Yash Kanoria",
   "title": "Dynamic Spatial Matching",
-  "year": 2022,
-  "venue": "arXiv:2105.07329 (math.PR); EC 2022",
-  "url": "https://arxiv.org/abs/2105.07329"
+  "year": 2025,
+  "venue": "Annals of Applied Probability 35(5):3086-3118",
+  "url": "https://doi.org/10.1214/25-AAP2154"
  },
  "additional_refs": [
   {
    "authors": "Mohammad Akbarpour, Yeganeh Alimohammadi, Shengwu Li, Amin Saberi",
    "title": "The Value of Excess Supply in Spatial Matching Markets",
-   "year": 2021,
-   "venue": "EC",
+   "year": 2022,
+   "venue": "Proceedings of EC 2022; arXiv:2104.03219 (2021)",
    "url": "https://arxiv.org/abs/2104.03219"
   },
   {
@@ -106,9 +118,23 @@
    "year": 1984,
    "venue": "Combinatorica",
    "url": "https://doi.org/10.1007/BF02579135"
+  },
+  {
+   "authors": "Eric Balkanski, Yuri Faenza, Noemie Perivier",
+   "title": "The Power of Greedy for Online Minimum Cost Matching on the Line",
+   "year": 2025,
+   "venue": "arXiv:2210.03166v3, March 27, 2025 revision; conference version EC 2023",
+   "url": "https://arxiv.org/abs/2210.03166v3"
+  },
+  {
+   "authors": "Yilun Chen, Yash Kanoria, Akshit Kumar, Wenxin Zhang",
+   "title": "Feature-Based Dynamic Matching",
+   "year": 2026,
+   "venue": "Operations Research 74(2):788-803; first published online November 18, 2025",
+   "url": "https://doi.org/10.1287/opre.2024.0730"
   }
  ],
- "bibtex": "@misc{Kanoria2022,\n  author = {Yash Kanoria},\n  title = {Dynamic Spatial Matching},\n  year = {2022},\n  howpublished = {arXiv:2105.07329 (math.PR); EC 2022},\n  url = {https://arxiv.org/abs/2105.07329},\n  note = {Source of ORdős Problem ORDOS-084}\n}",
+ "bibtex": "@misc{Kanoria2025,\n  author = {Yash Kanoria},\n  title = {Dynamic Spatial Matching},\n  year = {2025},\n  howpublished = {Annals of Applied Probability 35(5):3086-3118},\n  url = {https://doi.org/10.1214/25-AAP2154},\n  note = {Source of ORdős Problem ORDOS-084}\n}",
  "urls": {
   "human": "https://ordos-problems.github.io/problems/dynamic-spatial-matching-greedy.html",
   "api": "https://ordos-problems.github.io/api/problems/dynamic-spatial-matching-greedy.json",

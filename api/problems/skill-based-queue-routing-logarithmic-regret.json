@@ -1,0 +1,88 @@
+{
+ "number": 183,
+ "ref": "ORDOS-183",
+ "id": "skill-based-queue-routing-logarithmic-regret",
+ "title": "Closing the logarithmic regret gap in skill-based queue routing",
+ "collection": "Applied Probability",
+ "area": "Queueing and Online Learning",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "queueing",
+  "skill-based-routing",
+  "bandits",
+  "regret",
+  "operations-research",
+  "applied-probability"
+ ],
+ "short_statement": "Learning unknown match rewards in a fixed skill-based queue has logarithmic lower bounds and polylogarithmic upper bounds. Can a stable policy attain logarithmic regret against the same slack-constrained benchmark?",
+ "open_problem": "Close the gap between logarithmic lower bounds and the $O((\\log t)^{2\\beta})$ guarantee for every fixed $\\beta>1$, under the stated positive-slack, nondegenerate, consistent-policy model. In particular, establish instance-dependent $O(\\log t)$ regret, or a stronger lower bound for the same model.",
+ "background": "In a bandit problem, choosing an action typically produces an immediate observation. In a queue, the observation arrives only after a compatible server has completed service, and changing a routing rule changes both congestion and the supply of future observations. The operational objective is therefore coupled to the statistical learning problem. Fixing a positive capacity slack isolates this difficulty from critical-load instability. The recent Stochastic Systems analysis uses vertices of a static routing polytope as actions and growing episodes to control transient queue behavior. Its logarithmic factors leave a concrete algorithmic question within an already specified stochastic model.",
+ "full_statement": "Fix a connected bipartite compatibility graph $E\\subseteq[I]\\times[J]$ with $|E|>I+J-1$. Type-$i$ customers arrive as independent Poisson processes of known rates $\\lambda_i>0$. Server $j$ serves one customer at a time with independent exponential durations of known rate $\\mu_j>0$, regardless of customer type. Initially empty, the system allows customers to wait for compatible servers. A completed type-$(i,j)$ service yields an independent Bernoulli reward of unknown mean $\\theta_{ij}\\in(0,1)$. Rewards are observed only at completion.\n\nChoose a fixed known $\\epsilon>0$ and define the routing polytope\n$$\\mathcal X_\\epsilon=\\{x\\ge0:\\ \\sum_{j:(i,j)\\in E}x_{ij}=\\lambda_i,\\quad\\sum_{i:(i,j)\\in E}x_{ij}\\le\\mu_j-\\epsilon\\}.$$\nAssume $\\sum_{i\\in U}\\lambda_i<\\sum_{j\\in\\cup_{i\\in U}\\{j:(i,j)\\in E\\}}\\mu_j$ for every nonempty $U\\subseteq[I]$, feasibility, and the source's nondegenerate regime: all primal and dual feasible bases are nondegenerate and the optimum $x^\\theta$ is unique. Choose $\\epsilon$ small enough that the feasible bases at zero slack remain feasible. The benchmark is $v_\\epsilon(\\theta)=\\max_{x\\in\\mathcal X_\\epsilon}\\sum_{(i,j)\\in E}\\theta_{ij}x_{ij}$, not the zero-slack value.\n\nLet $D_{ij}(t)$ count completed services and define\n$$R_\\pi^\\theta(t)=t v_\\epsilon(\\theta)-\\sum_{(i,j)\\in E}\\theta_{ij}\\mathbb E_\\pi^\\theta D_{ij}(t).$$\nPolicies are nonanticipative and must satisfy, on every admissible instance,\n$$\\lim_{t\\to\\infty}\\left[t\\lambda_i-\\sum_j\\mathbb E_\\pi^\\theta D_{ij}(t)\\right]<\\infty,\\qquad\n\\sum_i\\mathbb E_\\pi^\\theta D_{ij}(t)\\le t(\\mu_j-\\epsilon).$$\nAlso impose the source's consistency condition: for every admissible reward vector $\\xi$, every line with $x_{ij}^\\xi>0$, and every $b>0$, $\\mathbb P_\\pi^\\xi(D_{ij}(t)<b\\log t)\\to0$.\n\nCan one policy attain $R_\\pi^\\theta(t)=O(\\log t)$ on every fixed nondegenerate instance, with an instance-dependent constant? Otherwise prove that a larger order is unavoidable in this same policy class. The dimension, positive slack, and reward gaps stay fixed as $t\\to\\infty$; a minimax bound or a result against $\\mathcal X_0$ is a different question.",
+ "known_results": "Van Kempen, Sanders, Sloothaak, and Wolf (Stochastic Systems 16(2):140-164, 2026), Theorem 2, prove $O((\\log t)^{2\\beta})$ regret for every fixed $\\beta>1$ for UCB Queue Routing with Bernoulli rewards and prescribed growing episode lengths. Theorem 1 gives an instance-dependent $\\Omega(\\log t)$ lower bound under stability, slack, and consistency conditions. Its change-of-measure argument requires admissible confusing reward alternatives; for bounded Bernoulli means this qualification must be checked rather than allowing alternatives outside $(0,1)$.\n\nSection 4.5.2 explicitly proposes exploiting shared observations across routing actions to improve the dependence on the number of LP vertices. Section 4.5.4 explains why changing to the zero-slack benchmark adds a different loss. Neither numerical performance nor ordinary finite-armed UCB alone proves the desired queueing guarantee.\n\nRemaining open problem. Attain logarithmic regret or prove an unavoidable larger order with these same assumptions and benchmark. This gap-closing question is an editorial inference from Theorems 1-2, not a quoted conjecture.",
+ "progress": {
+  "state": "partial",
+  "summary": "The published 2026 theorem gives a polylogarithmic upper bound. Logarithmic lower bounds apply with the source's consistency and identifiability assumptions; matching the orders is the target.",
+  "links": [
+   {
+    "title": "Published model and regret theorems",
+    "url": "https://doi.org/10.1287/stsy.2024.0095"
+   }
+  ]
+ },
+ "importance": 7,
+ "difficulty": 7,
+ "counterexample_suitability": "low",
+ "counterexample_rationale": "The target is an asymptotic stochastic-control guarantee. Small simulations cannot certify a lower bound over all admissible learning policies.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Policy search may suggest ways to share observations or shorten warmup periods, but asymptotic regret and stability need proof.",
+ "literature": {
+  "synthesis": "The learning lower bound and the constructive queueing upper bound use a common positive-slack routing benchmark but have different technical requirements. The upper bound accounts for switching transients and random numbers of completed observations. A better method may reuse observations across actions and avoid repeatedly paying a growing warmup cost. The lower bound must keep reward alternatives inside the chosen family. The target here is instance-dependent logarithmic regret at fixed slack, not a uniform guarantee in vanishing slack, and not a conjecture that every nondegenerate instance has the same positive lower-bound constant.",
+  "reviewed": [
+   {
+    "ref": "Sanne van Kempen, Jaron Sanders, Fiona Sloothaak, Maarten G. Wolf, 'Learning Payoffs While Routing in Skill-Based Queues', Stochastic Systems 16(2):140-164, 2026",
+    "result": "Theorems 1-2 give logarithmic lower and polylogarithmic upper bounds with explicit stability, slack, consistency, and nondegeneracy assumptions.",
+    "relevance": "partial-progress",
+    "url": "https://doi.org/10.1287/stsy.2024.0095"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Exploit shared reward observations across routing vertices. Analyze switching transients directly or design a routing implementation with faster coupling. For lower bounds, use admissible Bernoulli alternatives and account for unfinished work.",
+  "verification_notes": "Keep the epsilon-slack LP benchmark, server-only service rates, completion-only reward feedback, consistency, and expected capacity constraints. Prove queue stability as well as regret. An epsilon-dependent bound cannot be treated as uniform when epsilon tends to zero. Do not use Bernoulli alternatives with means above one in a KL lower bound.",
+  "machine_checkable": false
+ },
+ "where_posed": {
+  "text": "Editorially extracted gap between Theorems 1 and 2 of van Kempen, Sanders, Sloothaak, and Wolf (2026); related improvement directions are explicit in the paper.",
+  "url": "https://doi.org/10.1287/stsy.2024.0095",
+  "location": "Sections 2-4, Theorems 1-2, equations (7)-(8), (24), and Sections 4.5.2/4.5.4.",
+  "quote": ""
+ },
+ "source": {
+  "authors": "Sanne van Kempen, Jaron Sanders, Fiona Sloothaak, Maarten G. Wolf",
+  "title": "Learning Payoffs While Routing in Skill-Based Queues",
+  "year": 2026,
+  "venue": "Stochastic Systems 16(2):140-164",
+  "url": "https://doi.org/10.1287/stsy.2024.0095"
+ },
+ "additional_refs": [
+  {
+   "authors": "Sanne van Kempen, Jaron Sanders, Fiona Sloothaak, Maarten G. Wolf",
+   "title": "Learning payoffs while routing in skill-based queues (preprint)",
+   "year": 2024,
+   "venue": "arXiv:2412.10168",
+   "url": "https://arxiv.org/abs/2412.10168"
+  }
+ ],
+ "bibtex": "@misc{Kempen2026,\n  author = {Sanne van Kempen and Jaron Sanders and Fiona Sloothaak and Maarten G. Wolf},\n  title = {Learning Payoffs While Routing in Skill-Based Queues},\n  year = {2026},\n  howpublished = {Stochastic Systems 16(2):140-164},\n  url = {https://doi.org/10.1287/stsy.2024.0095},\n  note = {Source of ORdős Problem ORDOS-183}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/skill-based-queue-routing-logarithmic-regret.html",
+  "api": "https://ordos-problems.github.io/api/problems/skill-based-queue-routing-logarithmic-regret.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

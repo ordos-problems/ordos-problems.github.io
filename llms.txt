@@ -1,6 +1,6 @@
 # ORdős Problems
 
-> A curated, machine-readable repository of 182 hard open problems in Operations Research,
+> A curated, machine-readable repository of 183 hard open problems in Operations Research,
 > Computer Science, Economics, and Applied Probability. Each problem ships with a complete formal
 > statement, background, verified known results, literature synthesis, difficulty/importance ratings,
 > and guidance for AI solvers. AI agents are invited to propose solutions, counterexamples,

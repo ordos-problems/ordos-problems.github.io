@@ -1,0 +1,294 @@
+{
+  "audit_date": "2026-11-09",
+  "scope": "Queueing, inventory control, and spatial matching follow-up. This supplements the earlier November 9 audits and is not a complete reassessment of the catalogue.",
+  "method": "Read primary-source models and relevant theorem statements, inspect version and publication metadata, compare assumptions and benchmarks, and search for follow-up work. Record abstract-only leads separately. A theorem-statement check is not independent proof certification.",
+  "coverage_counts": {
+    "catalogue_enabled_records_before": 182,
+    "catalogue_enabled_records_after": 183,
+    "changed_existing_entries": 8,
+    "new_entries": 1,
+    "existing_entries_selected_for_triage": 21,
+    "existing_entries_without_theorem_level_reassessment_in_this_pass": 174,
+    "independently_certified_full_paper_proofs": 0,
+    "reproduced_finite_counterexamples": 1
+  },
+  "changed_problem_ids": [
+    "multi-server-job-queue-stability-region",
+    "mgk-queue-exact-stationary-performance",
+    "sbp-queueing-network-bar-tight-matrix-condition",
+    "input-queued-switch-maxweight-heavy-traffic-distribution",
+    "perishable-inventory-optimal-policy",
+    "stochastic-inventory-capacity-constraints-policy-structure",
+    "lost-sales-inventory-positive-lead-time-optimal-policy",
+    "dynamic-spatial-matching-greedy"
+  ],
+  "new_problem_ids": [
+    "skill-based-queue-routing-logarithmic-regret"
+  ],
+  "limitations": [
+    "Only eight existing entries received substantive theorem/model updates. The other selected entries were triaged, not recertified; unsuccessful searches do not establish open status.",
+    "No complete manuscript proof was independently verified. Preprint results are attributed claims, not referee-certified conclusions.",
+    "Bu, Gong, and Yin (Management Science, online August 26, 2026) was checked through publisher metadata and its abstract. Its full theorem assumptions were inaccessible, so the record does not assert a theorem for the catalogue's baseline from that abstract.",
+    "The skill-based routing question is an editorially extracted bound gap, not a quoted author conjecture. The lower-bound comparison requires admissible reward alternatives.",
+    "The finite inventory counterexample is reproduced for integer orders at seven selected initial states, with exact arithmetic and all reachable states. This is not a verification of every result in the paper.",
+    "No git push or live deployment is part of this pass."
+  ],
+  "journal_screening": [
+    {
+      "journal": "Operations Research",
+      "scope": "Selected 2026 issue tables of contents and article searches, including volume 74 issues 2, 3, and 5; full-text checks of relevant 2024 inventory articles. Issue screening does not imply all papers were read."
+    },
+    {
+      "journal": "Stochastic Systems",
+      "scope": "Selected 2025-2026 issues and article searches; full-text model/theorem checks for the 2025 BAR article and 2026 skill-based queue routing article."
+    },
+    {
+      "journal": "Management Science",
+      "scope": "The 2026 positive-lead-time perishable inventory article: publisher metadata and abstract only."
+    },
+    {
+      "journal": "European Journal of Operational Research",
+      "scope": "Rossi, Chen, and Tarim, volume 312 issue 2 (2024): model, counterexample, and discussion."
+    },
+    {
+      "journal": "Advances in Applied Probability / Annals of Applied Probability",
+      "scope": "Relevant 2024 Markovian-switch and 2025 dynamic-spatial-matching results; journal dates distinguished from preprint revision dates."
+    }
+  ],
+  "entries": [
+    {
+      "id": "multi-server-job-queue-stability-region",
+      "review_level": "theorem-and-model",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2601.20653v1",
+          "version": "January 28, 2026",
+          "sections": "Sections 3-5, Theorems 4.2 and 5.1, Algorithms 1-2"
+        }
+      ],
+      "summary": "The general-service saturated stochastic recurrence gives a stability-threshold representation. Reframed the residual question as certified efficient evaluation of its growth constant, not existence of a threshold. Numerical agreement of lower estimates is not a certified error bound; critical-load behavior is separate."
+    },
+    {
+      "id": "mgk-queue-exact-stationary-performance",
+      "review_level": "theorem-and-model",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2510.11015v3",
+          "version": "August 22, 2026",
+          "sections": "Sections 3-4, Theorem 1, equation (8), proof roadmap"
+        }
+      ],
+      "summary": "Added the residual-service mean bound while retaining Assumptions 1-3, including non-lattice service and the auxiliary-queue recurrence/convergence assumption. Distinguished waiting jobs from jobs in service and mean bounds from exact stationary laws. Corrected Takayuki Osogami's name and replaced vague/Wikipedia references with paper citations."
+    },
+    {
+      "id": "sbp-queueing-network-bar-tight-matrix-condition",
+      "review_level": "theorem-and-model",
+      "sources": [
+        {
+          "url": "https://doi.org/10.1287/stsy.2023.0011",
+          "full_text": "https://www.rs.tus.ac.jp/miyazawa/pdf-file/BravDaiMiya2025-SSY.pdf",
+          "version": "Stochastic Systems 15(1):1-49, 2025",
+          "sections": "Assumptions 5.1-5.5, Theorem 5.1, Corollary 5.1 and following discussion"
+        },
+        {
+          "url": "https://arxiv.org/abs/2404.13651v3",
+          "version": "July 6, 2025",
+          "sections": "Sections 2-4, Definition 3.1, Theorems 3.1-3.2 and 4.1, Corollary 4.2, Example 4.1"
+        }
+      ],
+      "summary": "Specified the Schur-complement reflection matrix and tightness equations. Distinguished uniform integrability of unscaled high-priority queues from weaker scaled SSC. Added two-station classification and LBFS cases. The non-tight three-station example does not refute tightness implying stability/SSC."
+    },
+    {
+      "id": "input-queued-switch-maxweight-heavy-traffic-distribution",
+      "review_level": "theorem-and-model",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2206.06504v2",
+          "version": "September 15, 2023",
+          "sections": "Section 2.1, Conjecture 2.16, Theorem 2.17, state-space-collapse definition"
+        },
+        {
+          "url": "https://doi.org/10.1017/apr.2023.60",
+          "full_text": "https://arxiv.org/html/2006.06150v2",
+          "version": "Advances in Applied Probability 56:1106-1152, 2024; preprint v2 December 6, 2023",
+          "sections": "Model, abstract, and Section 4 mean-queue analysis"
+        }
+      ],
+      "summary": "Made the candidate joint law explicit in the all-ports-saturated symmetric-variance model. Added the published Markovian-arrival mean-sum result without claiming that it establishes the joint distribution."
+    },
+    {
+      "id": "perishable-inventory-optimal-policy",
+      "review_level": "theorem-and-model; one abstract-only update",
+      "sources": [
+        {
+          "url": "https://doi.org/10.1287/opre.2022.0488",
+          "full_text": "https://ira.lib.polyu.edu.hk/bitstream/10397/108613/1/Bu_Asymptotic_Scaling_Optimal.pdf",
+          "version": "Operations Research 72(5):1765-1774, 2024",
+          "sections": "Section 4 model, Theorem 3, Proposition 5, Appendix C"
+        },
+        {
+          "url": "https://arxiv.org/abs/1605.01442v2",
+          "version": "2016 preprint",
+          "sections": "Approximation statement and FIFO optimality assumptions; finite-horizon scope"
+        },
+        {
+          "url": "https://doi.org/10.1287/mnsc.2023.03801",
+          "version": "Management Science Articles in Advance, August 26, 2026",
+          "sections": "Publisher metadata and abstract only",
+          "review_level": "abstract-only"
+        }
+      ],
+      "summary": "Replaced the already answered generic asymptotic-optimality question with finite-parameter guarantees for a fixed zero-lead-time FIFO model. Included the 2024 large-penalty results, distinguishing sublinear mean excess, regularly varying tails, and bounded-demand exact optimality. Marked the 2026 positive-lead-time article as related abstract-only evidence."
+    },
+    {
+      "id": "stochastic-inventory-capacity-constraints-policy-structure",
+      "review_level": "theorem-and-model; finite example reproduced",
+      "sources": [
+        {
+          "url": "https://doi.org/10.1016/j.ejor.2023.06.045",
+          "full_text": "https://www.pure.ed.ac.uk/ws/portalfiles/portal/376590298/RossiEtal2023EJOROnTheStochasticInventoryProblem.pdf",
+          "version": "European Journal of Operational Research 312(2):541-555, 2024",
+          "sections": "Sections 3, 5-6, Example 3 and Tables 2-3, Section 7 discussion"
+        }
+      ],
+      "summary": "Corrected the model to finite-horizon, nonstationary demand, zero lead time and complete backordering. The counterexample is not a stationary infinite-horizon lost-sales result. Reframed the surviving question as complexity of exact ordering-region structure."
+    },
+    {
+      "id": "lost-sales-inventory-positive-lead-time-optimal-policy",
+      "review_level": "theorem-and-model",
+      "sources": [
+        {
+          "url": "https://doi.org/10.1287/opre.2021.0032",
+          "full_text": "https://pure.tue.nl/ws/portalfiles/portal/341165393/van-jaarsveld-arts-2024-projected-inventory-level-policies-for-lost-sales-inventory-systems-asymptotic-optimality-in.pdf",
+          "version": "Operations Research 72(5):1790-1805, 2024",
+          "sections": "Assumption 1; Theorems 2 and 4"
+        },
+        {
+          "url": "https://doi.org/10.1287/opre.2022.0488",
+          "full_text": "https://ira.lib.polyu.edu.hk/bitstream/10397/108613/1/Bu_Asymptotic_Scaling_Optimal.pdf",
+          "version": "Operations Research 72(5):1765-1774, 2024",
+          "sections": "Section 3, Theorem 2(b) and explicit remaining heavy-tail question"
+        }
+      ],
+      "summary": "Retained the previously recorded 2026 approximation progress, qualified PIL demand assumptions, and separated large-penalty and large-lead-time regimes. Added the explicit fixed-lead-time regularly varying tail question: the available ratio bound does not establish ratio one. Prior-pass 2026 claims are retained, not independently re-proved here."
+    },
+    {
+      "id": "dynamic-spatial-matching-greedy",
+      "review_level": "theorem-and-model",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2210.03166v3",
+          "version": "March 27, 2025 revision of EC 2023 paper",
+          "sections": "Section 3 fully random guarantee and proof; Appendix A.1 higher-dimensional discussion"
+        },
+        {
+          "url": "https://doi.org/10.1214/25-AAP2154",
+          "full_text": "https://business.columbia.edu/sites/default/files-efs/citation_file_upload/2105.07329v3.pdf",
+          "version": "Annals of Applied Probability 35(5):3086-3118, 2025",
+          "sections": "Batch, semi-dynamic and fully dynamic model definitions; related-work and open-question discussion"
+        },
+        {
+          "url": "https://doi.org/10.1287/opre.2024.0730",
+          "full_text": "https://business.columbia.edu/sites/default/files-efs/citation_file_upload/ssrn-4451799.pdf",
+          "version": "Operations Research 74(2):788-803, 2026; online November 18, 2025",
+          "sections": "Section 4.1, Proposition 2 and distance-power discussion"
+        }
+      ],
+      "summary": "Removed the balanced one-dimensional iid batch case from the open target: greedy is constant-competitive there. Corrected fully dynamic replenishment (demand does not wait). Kept higher-dimensional and replenishing-market greedy questions; SOAR's separate semi-dynamic exponent result is not a theorem for ordinary greedy."
+    },
+    {
+      "id": "skill-based-queue-routing-logarithmic-regret",
+      "review_level": "theorem-and-model; new editorial gap",
+      "sources": [
+        {
+          "url": "https://doi.org/10.1287/stsy.2024.0095",
+          "version": "Stochastic Systems 16(2):140-164, 2026; online May 5, 2026",
+          "sections": "Sections 2-4, Theorems 1-2, equations (7)-(8) and (24), proof outline, Sections 4.5.2 and 4.5.4"
+        }
+      ],
+      "summary": "Added the instance-dependent logarithmic versus polylogarithmic regret gap for skill-based queue routing. Retained fixed positive slack, completion feedback, stability, consistency and nondegeneracy. Bernoulli lower bounds require confusing alternatives inside the admissible family. This is an extracted gap, not a quoted conjecture; confidence is medium."
+    }
+  ],
+  "triaged_not_recertified_problem_ids": [
+    "optimal-policy-one-warehouse-multi-retailer",
+    "mg1-response-time-tail-optimal-scheduling",
+    "optimal-routing-heterogeneous-parallel-servers",
+    "finite-heterogeneous-server-load-balancing-optimality",
+    "cmu-theta-rule-exact-optimality-abandonment",
+    "generalized-cmu-exact-optimality",
+    "ggm-fcfs-stationary-ergodic-tv-convergence",
+    "jsq-stationary-ergodic-stability-regimes",
+    "polling-gated-one-limited-pgf",
+    "polling-renewal-large-switchover-limit",
+    "adaptive-polling-limited-service-stability-region",
+    "supermarket-heavy-traffic-stationary-short-queue-profile",
+    "queueing-network-stability-clean-undecidability"
+  ],
+  "deferred_leads": [
+    {
+      "url": "https://math-mprf.org/journal/articles/id1747/",
+      "title": "Stability of Multiserver-job Models with Arbitrary Service Times under Existence of Blocking Requests",
+      "reason": "2026 abstract/metadata only; blocking-request assumptions need a full-text check before transferring a stability result."
+    },
+    {
+      "url": "https://arxiv.org/abs/2503.02982",
+      "title": "Heavy-traffic Optimality of Skip-the-Longest-Queues in Heterogeneous Service Systems",
+      "reason": "Abstract screening: discrete-slot, sparse-communication heavy-traffic results are not an exact finite continuous-time routing policy."
+    },
+    {
+      "url": "https://doi.org/10.1287/stsy.2023.0054",
+      "title": "Speed-aware JSQ follow-up",
+      "reason": "Already reflected by existing many-server discussion; not treated as a new exact finite-system result."
+    },
+    {
+      "url": "https://doi.org/10.1007/s11134-026-09995-0",
+      "title": "The power of letting go: scheduling with immediate and delayed rejections in multi-server queues",
+      "reason": "Screened fluid/rejection model differs from the no-rejection exact scheduling target."
+    },
+    {
+      "url": "https://arxiv.org/abs/2505.21331",
+      "title": "Scheduling in Queueing Systems with Uncertain and Evolving Holding Costs",
+      "reason": "Learning and evolving-cost model differs from the catalogue's exact classical scheduling targets."
+    },
+    {
+      "url": "https://doi.org/10.1287/stsy.2024.0073",
+      "title": "Learning-Based Pricing and Matching for Two-Sided Queues",
+      "reason": "Issue/abstract screening only; no theorem or new open question imported."
+    },
+    {
+      "url": "https://doi.org/10.1287/stsy.2025.0106",
+      "title": "Queueing, Predictions, and Large Language Models: Challenges and Open Problems",
+      "reason": "Selected-section screening; broad modeling directions were not imported as well-posed theorem targets."
+    },
+    {
+      "url": "https://doi.org/10.1016/j.orl.2026.107543",
+      "title": "Asymptotic optimality of independent base-stock policies in assemble-to-order systems",
+      "reason": "Abstract-only lead; theorem assumptions not verified."
+    },
+    {
+      "url": "https://doi.org/10.1287/opre.2024.0982",
+      "title": "An Online Mirror Descent Learning Algorithm for Multiproduct Inventory Systems",
+      "reason": "Issue/abstract screening identifies a learning model; not transferred to exact known-demand policy structure."
+    }
+  ],
+  "editorial_checks": [
+    {
+      "problem_id": "stochastic-inventory-capacity-constraints-policy-structure",
+      "test": "QueueingInventoryRegressionTests.test_rossi_chen_tarim_counterexample_exactly",
+      "result": "Exact integer-scaled Bellman recursion for Example 3 reproduces unique optimal orders 33, 0, 0, 41, 41, 41, 0 at initial stocks 601, 602, 615, 616, 617, 618, 619 respectively. No reachable-state truncation; integer order quantities 0 through 41."
+    }
+  ],
+  "validation": {
+    "build": "npm run build: 183 enabled records, zero compiler issues, zero KaTeX failures",
+    "regression_tests": "python3 -m unittest discover -s tests -v: 23 tests passed, including six queueing/inventory checks",
+    "changed_record_schema_errors": 0,
+    "changed_api_record_schema_errors": 0,
+    "whole_catalogue_schema_errors_before": 80,
+    "preexisting_schema_errors_remaining_in_untouched_records": 77,
+    "source_diff": "Exactly the eight listed existing records changed, one listed new record added, no records removed.",
+    "merge_idempotence": "A second merge produces an identical SHA-256 hash of build/problems_source.json.",
+    "whitespace_check": "git diff --check: clean",
+    "proof_certification": "No full manuscript proof certified; the seven-state integer-order inventory counterexample check passed.",
+    "deployment": "Local files rebuilt only; not committed or pushed."
+  }
+}

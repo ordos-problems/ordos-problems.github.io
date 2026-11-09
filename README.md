@@ -108,6 +108,8 @@ The November 9 follow-up is recorded in `research/status-audit-followup-2026-11-
 
 The subsequent deeper sweep is recorded in `research/status-audit-deep-sweep-2026-11-09.json`: 14 updated entries, two additional theorem/model checks, and nine abstract/search screens. It records exact theorem scope, versioned citations, deferred leads, and remaining gaps. Reported resolutions are labeled as claims until independently verified. Small regression checks include an affine-slice counterexample to a subsidiary Exact Matching statement and a six-edge graph-balancing witness; these do not certify entire papers.
 
+The queueing and inventory follow-up is recorded in `research/status-audit-queueing-inventory-2026-11-09.json`: eight updated entries and one new skill-based queue-routing question. It separates exact results, asymptotic regimes, conditional distributional results, and abstract-only leads. An exact Bellman-recursion test reproduces selected states of the published capacitated-inventory counterexample; this does not certify the entire paper.
+
 ### Presentation And Checks
 
 The catalogue uses EB Garamond headings, Figtree body text, a pale-yellow light theme, pink controls, and numbered problem cards. Five results appear per page; multiple selected tags use union semantics. Suitability rankings remain in the data for compatibility but are not displayed as the website's organizing principle.

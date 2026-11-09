@@ -2,10 +2,10 @@
  "number": 80,
  "ref": "ORDOS-080",
  "id": "perishable-inventory-optimal-policy",
- "title": "A simple optimal policy for perishable inventory with fixed lifetime ≥ 3",
+ "title": "Finite-parameter guarantees for fixed-lifetime perishable inventory",
  "collection": "Operations Management",
  "area": "Inventory",
- "status": "open",
+ "status": "partially resolved",
  "confidence": "medium",
  "tags": [
   "perishable inventory",
@@ -14,14 +14,14 @@
   "asymptotic optimality",
   "dynamic programming"
  ],
- "short_statement": "For periodic-review inventory of a product that expires after a fixed number of periods ($\\ge 3$), is any simple ordering policy exactly or asymptotically optimal?",
- "open_problem": "For periodic-review fixed-lifetime perishable inventory with $m \\ge 3$, characterize a simple exact optimal policy if one exists, or give sharp performance guarantees for a tractable policy class under general demand and cost parameters.",
- "background": "Perishable inventory is a classical operations-management model for blood products, pharmaceuticals, food, and other goods with fixed shelf lives. The model is not hard because the business setting is vague; it is hard because the exact dynamic program has a high-dimensional age-profile state. If units expire after $m$ periods, the controller must track how many units have each remaining lifetime, because ordering too much creates future outdating while ordering too little creates shortages or lost sales. For $m=2$, the state is essentially one-dimensional and classical structure is available. For $m \\ge 3$, simple base-stock or order-up-to rules do not describe the optimal policy in general, and exact dynamic programming scales poorly. Approximation algorithms and heuristics exist, including myopic/critical-number ideas and later dual-balancing policies with constant-factor guarantees under FIFO optimality. The central open problem is therefore structural and algorithmic: find a simple exact policy class, or a sharper provably near-optimal policy, for the fixed-lifetime model beyond the two-period case.",
- "full_statement": "Consider a single item under periodic review whose units perish exactly $m$ periods after arrival (fixed shelf life), with i.i.d. demand, FIFO issuance, and linear holding, outdating (expiry), and shortage (or lost-sales) costs. The state needed for the dynamic program is the age profile of on-hand stock — the vector $(x_1,\\dots,x_{m-1})$ of quantities with $1,\\dots,m-1$ periods of remaining life — so the optimal order quantity is a function of this whole vector. For $m\\ge 3$ the optimal policy is not of base-stock/order-up-to form and is computationally intractable (curse of dimensionality). Question: does there exist a simple, tractable policy (e.g. an order-up-to rule in total inventory, or a critical-number policy) that is exactly optimal for $m\\ge 3$, or that is provably asymptotically optimal with explicit performance guarantees?",
- "known_results": "Nahmias and Pierskalla solve important two-period perishability cases, and Nahmias's 1982 review records how quickly the dynamic program becomes difficult for longer lifetimes. For $m \\ge 3$, the optimal order quantity depends on the full age vector, and no general base-stock, critical-number, or low-dimensional exact policy is known. Zhang, Ayer, and White prove 2-approximation guarantees for marginal-cost dual-balancing and truncated-balancing policies when FIFO is optimal, under general stochastic demand. These approximation guarantees are useful but leave a large gap between known tractable policies and exact optimality. Later asymptotic inventory-control work gives additional insight in special regimes, but it does not resolve the finite-lifetime exact policy structure.",
+ "short_statement": "Simple policies already have approximation and large-penalty optimality guarantees. The remaining target is sharper nonasymptotic control or exact structure at finite parameters, not the mere existence of asymptotic results.",
+ "open_problem": "For the specified FIFO lost-sales model at fixed finite parameters, establish a useful exact policy structure or sharper explicit performance bounds for a tractable policy. Exclude already settled high-penalty demand regimes and specify the benchmark and computational guarantees.",
+ "background": "Age composition matters because two inventories with the same total stock can have very different future expiry losses. The oldest-first rule fixes issuance, leaving the order decision as the control. This creates a genuine multidimensional dynamic program even with one item and zero lead time. The policy literature now offers more than heuristics: approximation algorithms and high-penalty asymptotic theorems explain when relatively simple policies work. A useful open question must therefore isolate what these theorems leave unresolved. Here that is exact structure and finite-parameter performance outside the proved regimes. The positive-lead-time extension has additional pipeline information and a separate recent projected-inventory-level literature; its results should not be confused with the zero-lead-time baseline.",
+ "full_statement": "Consider periodic-review inventory of a single item with fixed shelf life $m\\ge3$, zero replenishment lead time, no order-capacity or setup cost, iid nonnegative demand $D_t$ of finite positive mean, and lost sales. At the start of a period the age vector $(x_1,\\ldots,x_{m-1})$ gives stock with $1,\\ldots,m-1$ periods of remaining life. A nonnegative order arrives immediately with $m$ periods of life. Demand is served oldest first (FIFO). Unmet demand $L_t$ is lost; leftover stock $O_t$ with one period of life expires. Let $H_t$ be all stock remaining after demand and before expiry. The cost is $hH_t+wO_t+pL_t$, with $h,p>0$ and $w\\ge0$. Remaining units age by one period.\n\nStarting empty, minimize $\\limsup_{T\\to\\infty}T^{-1}\\mathbb E\\sum_{t=1}^T(hH_t+wO_t+pL_t)$ over nonanticipative ordering policies. A base-stock policy orders $(S-\\sum_a x_a)^+$.\n\nThe remaining question is an exact structural characterization or a tractable policy with sharper explicit finite-parameter error bounds across this model. State the dependence on $m$, costs, and the demand distribution, and provide a proved computation guarantee for any parameters to be tuned. Large-$p$ optimality in several demand classes is already known and is not, by itself, a new resolution. Positive lead time adds a pipeline to the state and is a separate extension.",
+ "known_results": "Classical work by Nahmias and Pierskalla and Nahmias's survey develops age-profile dynamic programming and short-lifetime special cases. Zhang, Ayer, and White's approximation work gives factor-two guarantees under its FIFO-optimality and finite-horizon assumptions; such a finite-horizon bound should not be silently treated as an infinite-horizon average-cost theorem.\n\nBu, Gong, and Chao (Operations Research 72(5):1765-1774, 2024), Section 4 and Theorem 3, establish large-penalty asymptotics for zero-lead-time perishable inventory, including the iid lost-sales specialization above. For unbounded demand with $\\mathbb E[D-x\\mid D>x]=o(x)$, the best base-stock cost is asymptotically optimal; Theorem 3(b) also covers continuously distributed regularly varying tails with exponent greater than one. Proposition 5 gives stronger bounded-demand conclusions, including exact optimality at sufficiently large penalty for bounded integer-valued demand. Thus even some finite-parameter cases are settled.\n\nBu, Gong, and Yin's Management Science article, published online August 26, 2026, studies the different positive-lead-time model. Its publisher abstract reports large-penalty PIL optimality for specified unbounded-demand classes and special bounded-demand results. The full theorem assumptions were not accessible in this pass, so no universal claim for arbitrary demand, lead time, or issuance is made here.\n\nRemaining open problem. Obtain sharper finite-parameter guarantees or exact structure outside the established regimes; do not ask whether any asymptotically optimal simple policy exists.",
  "progress": {
   "state": "partial",
-  "summary": "The two-period case is classical, and modern approximation algorithms give worst-case factor-2 guarantees under FIFO optimality. General exact structure for $m \\ge 3$ remains open.",
+  "summary": "Published 2024 results prove base-stock optimality in several large-penalty regimes, including some exact bounded-demand cases. A 2026 Management Science paper adds positive-lead-time PIL results; its abstract was screened, not its full theorems.",
   "links": [
    {
     "title": "Nahmias, Perishable Inventory Theory: A Review",
@@ -30,6 +30,14 @@
    {
     "title": "Zhang, Ayer, White, 2-Approximation Algorithms for Perishable Inventory Control",
     "url": "https://arxiv.org/abs/1605.01442"
+   },
+   {
+    "title": "Jinzhi Bu, Xiting Gong, Xiuli Chao (2024)",
+    "url": "https://doi.org/10.1287/opre.2022.0488"
+   },
+   {
+    "title": "Jinzhi Bu, Xiting Gong, Huanyu Yin (2026)",
+    "url": "https://doi.org/10.1287/mnsc.2023.03801"
    }
   ]
  },
@@ -40,7 +48,7 @@
  "alphaevolve_suitability": "medium",
  "alphaevolve_rationale": "Search can map optimal actions for truncated MDPs and find counterexamples to conjectured monotonicity or low-dimensional policies. It can also optimize candidate heuristic parameters, but proofs need dynamic-programming or convexity arguments.",
  "literature": {
-  "synthesis": "The perishable inventory literature has a long split between exact dynamic programming and usable policies. Classical work resolves special short-lifetime models, while Nahmias's review explains that fixed lifetime $m \\ge 3$ creates a multidimensional state and destroys the simplicity of ordinary inventory base-stock rules. Approximation work by Zhang, Ayer, and White provides a robust positive result: when FIFO issuing is optimal, dual-balancing-style policies are within a factor of two of the optimal ordering policy. This is meaningful operationally but still far from a structural characterization. The open gap is to decide whether the general model admits a clean policy description, whether stronger approximation ratios are possible, and which assumptions on demand, issuing, or costs recover simple optimality.",
+  "synthesis": "The former statement combined exact optimality with existence of any asymptotically optimal policy, leaving the latter incorrectly presented as unexplored. Bu, Gong, and Chao provide explicit average-cost asymptotics in the zero-lead-time model. Approximation algorithms answer a different finite-horizon question, while Bu, Gong, and Yin address positive lead times and more general issuance. These are complementary results with distinct assumptions. The remaining target is a nonasymptotic theorem or exact policy structure for a fixed, specified model, not an unqualified statement that perishability prevents all simple policies from being optimal.",
   "reviewed": [
    {
     "ref": "Nahmias, 'Perishable Inventory Theory: A Review', Operations Research 1982",
@@ -55,23 +63,35 @@
     "url": "https://onlinelibrary.wiley.com/doi/10.1002/nav.3800200204"
    },
    {
-    "ref": "Zhang, Ayer, White, '2-Approximation Algorithms for Perishable Inventory Control When FIFO Is an Optimal Issuing Policy', arXiv 2016",
-    "result": "Gives dual-balancing and truncated-balancing policies with factor-2 guarantees under FIFO optimality.",
+    "ref": "Can Zhang, Turgay Ayer, Chelsea C. White III, '2-Approximation Algorithms for Perishable Inventory Control When FIFO Is an Optimal Issuing Policy', arXiv:1605.01442v2, 2016",
+    "result": "Factor-two approximation under the paper's FIFO-optimality and finite-horizon conditions; not automatically an average-cost guarantee.",
     "relevance": "partial-progress",
-    "url": "https://arxiv.org/abs/1605.01442"
+    "url": "https://arxiv.org/abs/1605.01442v2"
+   },
+   {
+    "ref": "Jinzhi Bu, Xiting Gong, Xiuli Chao, 'Asymptotic Scaling of Optimal Cost and Asymptotic Optimality of Base-Stock Policy in Several Multidimensional Inventory Systems', Operations Research 72(5):1765-1774, 2024",
+    "result": "Section 4, Theorem 3 and Proposition 5: zero-lead-time perishable inventory large-penalty asymptotics, plus exact high-penalty cases for bounded integer demand.",
+    "relevance": "solves-special-case",
+    "url": "https://doi.org/10.1287/opre.2022.0488"
+   },
+   {
+    "ref": "Jinzhi Bu, Xiting Gong, Huanyu Yin, 'Managing Perishable Inventory Systems with Positive Lead Times: Inventory Position vs. Projected Inventory Level', Management Science, Articles in Advance, August 26, 2026, 2026",
+    "result": "Publisher abstract screened: PIL asymptotic optimality and special bounded-demand results in positive-lead-time systems. Full theorem assumptions not reviewed; retained as related-model progress.",
+    "relevance": "related-tool",
+    "url": "https://doi.org/10.1287/mnsc.2023.03801"
    }
   ]
  },
  "agent_guidance": {
   "suitable_approaches": "Start with $m=3$ finite-support demand and compute exact discounted or average-cost optimal actions on truncated state spaces. Test conjectures about monotonicity, Schur-convexity in the age profile, or dominance by total inventory plus oldest stock. For approximation, try primal-dual or balancing arguments that improve the factor-2 analysis.",
-  "verification_notes": "A claimed exact policy must specify the issuing rule, cost criterion, demand assumptions, and prove Bellman optimality. Numerical dynamic programming is useful evidence but does not prove infinite-state optimality unless accompanied by certified truncation or structural bounds.",
+  "verification_notes": "Specify the zero-lead-time FIFO lost-sales average-cost model, including the holding-before-expiry convention. Do not report a known large-penalty limit as new. Transfer of a finite-horizon approximation theorem to average cost needs justification. Positive-lead-time PIL claims require their own assumptions.",
   "machine_checkable": true
  },
  "where_posed": {
-  "text": "The structural difficulty and open directions are highlighted in Nahmias, 'Perishable Inventory Theory: A Review', Operations Research 1982.",
-  "url": "https://pubsonline.informs.org/doi/10.1287/opre.30.4.680",
-  "quote": "",
-  "location": "Review discussion of fixed-lifetime models and high-dimensional optimal policies."
+  "text": "Editorial residual question based on the classical structural problem and the regimes now treated by Bu, Gong, and Chao (2024); not a verbatim conjecture from the recent paper.",
+  "url": "https://doi.org/10.1287/opre.2022.0488",
+  "location": "Section 4, Theorem 3 and Proposition 5, read alongside the classical survey.",
+  "quote": ""
  },
  "source": {
   "authors": "Steven Nahmias",
@@ -86,14 +106,21 @@
    "title": "Optimal ordering policies for a product that perishes in two periods subject to stochastic demand",
    "year": 1973,
    "venue": "Naval Research Logistics Quarterly",
-   "url": "https://scholar.google.com/scholar?q=Nahmias+Pierskalla+1973+product+perishes+two+periods+stochastic+demand"
+   "url": "https://doi.org/10.1002/nav.3800200204"
   },
   {
-   "authors": "Recent work on asymptotic optimality (e.g., Bu, Gong, Chao; Chen et al.)",
-   "title": "Asymptotic optimality of base-stock and constant-order policies for perishable inventory",
-   "year": 2023,
-   "venue": "Operations Research / Management Science",
-   "url": "https://scholar.google.com/scholar?q=asymptotic+optimality+perishable+inventory+base-stock+constant-order"
+   "authors": "Jinzhi Bu, Xiting Gong, Xiuli Chao",
+   "title": "Asymptotic Scaling of Optimal Cost and Asymptotic Optimality of Base-Stock Policy in Several Multidimensional Inventory Systems",
+   "year": 2024,
+   "venue": "Operations Research 72(5):1765-1774",
+   "url": "https://doi.org/10.1287/opre.2022.0488"
+  },
+  {
+   "authors": "Jinzhi Bu, Xiting Gong, Huanyu Yin",
+   "title": "Managing Perishable Inventory Systems with Positive Lead Times: Inventory Position vs. Projected Inventory Level",
+   "year": 2026,
+   "venue": "Management Science, Articles in Advance, August 26, 2026",
+   "url": "https://doi.org/10.1287/mnsc.2023.03801"
   }
  ],
  "bibtex": "@misc{Nahmias1982,\n  author = {Steven Nahmias},\n  title = {Perishable Inventory Theory: A Review},\n  year = {1982},\n  howpublished = {Operations Research},\n  url = {https://pubsonline.informs.org/doi/10.1287/opre.30.4.680},\n  note = {Source of ORdős Problem ORDOS-080}\n}",

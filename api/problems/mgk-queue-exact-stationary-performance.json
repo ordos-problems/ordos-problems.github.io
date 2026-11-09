@@ -5,7 +5,7 @@
  "title": "Exact stationary performance of the $M/G/k$ queue",
  "collection": "Applied Probability",
  "area": "Queueing Theory",
- "status": "open",
+ "status": "partially resolved",
  "confidence": "medium",
  "tags": [
   "queueing theory",
@@ -16,22 +16,18 @@
   "applied probability",
   "operations research"
  ],
- "short_statement": "Find a tractable exact stationary characterization for the classical FCFS $M/G/k$ queue with $k\\ge2$ and arbitrary service distribution.",
- "open_problem": "Give a computationally tractable exact characterization of stationary performance for the FCFS $M/G/k$ queue with arbitrary service-time distribution and $k\\ge2$, or prove a rigorous obstruction under a natural computational model.",
+ "short_statement": "Exact special cases and stationary samplers exist for FCFS multiserver queues. Can general service-time inputs yield efficiently computable stationary probabilities with certified errors?",
+ "open_problem": "Develop a broadly applicable exact characterization and efficient certified numerical evaluation of stationary FCFS M/G/k probabilities under an explicit input model for the service distribution, or prove a matching computational obstruction. A mean bound or stationary sampler alone does not settle this target.",
  "background": "The $M/G/k$ queue is one of the oldest and most natural unsolved models in queueing theory. Poisson arrivals are routed to the first available one of $k$ identical FCFS servers, and service times have a general distribution. When $k=1$, the Pollaczek-Khinchine formula gives a classical exact transform for waiting time. When service times are exponential, the $M/M/k$ birth-death chain is exactly solvable. But for $k\\ge2$ and general service times, the Markov state must include residual service times of all busy servers, destroying the one-dimensional transform structure of $M/G/1$. Decades of work provide approximations, special cases, phase-type numerical methods, continuity results, bounds, and heavy-traffic formulas, but no broadly tractable exact characterization comparable to the single-server formula. This is a clean mathematical open problem, not a modelling gap: the model is fixed and classical.",
- "full_statement": "Consider a stable first-come-first-served $M/G/k$ queue with $k\\ge2$ identical servers. Arrivals form a Poisson process of rate $\\lambda$, service times are iid with distribution $G$ and finite mean $1/\\mu$, and the traffic intensity is $\\rho=\\lambda/(k\\mu)<1$. Let $Q$ be the stationary number in system, $W$ the stationary waiting time, and let the full Markov state record the queue length together with residual service times of busy servers. The open problem is to find an exact representation or algorithm that computes the stationary distribution, transforms, or basic performance measures of $(Q,W)$ for arbitrary $G$ with provable finite error and complexity guarantees. The target is a theory comparable in generality to Pollaczek-Khinchine for $M/G/1$, Erlang formulas for $M/M/k$, or matrix-analytic methods for phase-type service, but without replacing $G$ by an approximation. A weaker but still meaningful resolution would prove a rigorous obstruction: for a natural input model for $G$, exact stationary performance cannot be represented or computed within a specified tractable class.",
- "known_results": "Exact formulas are known for $M/M/k$, $M/G/1$, $D/M/k$, $M/D/k$, and many phase-type or rational-transform special cases. For $M/G/2$, integral-equation and transform methods exist in special settings, and phase-type approximations convert the problem to large finite Markov chains. Tijms, van Hoorn, and Federgruen developed steady-state approximations and explicitly questioned whether computationally tractable exact methods for general $M/G/k$ steady-state probabilities are likely. Gupta, Harchol-Balter, Dai, and Zwart showed that two service-time moments are insufficient for universally accurate approximation, while Gupta and Osogami used Markov-Krein theory to obtain tight mean-waiting-time bounds under moment information. Sigman and Connor-Kendall developed exact or perfect simulation methods for stationary $M/G/c$ queues, but simulation of samples is not the same as a closed stationary characterization. The broad exact-performance problem remains open.",
+ "full_statement": "Consider a stationary FCFS $M/G/k$ queue with $k\\ge2$ identical unit-speed servers, Poisson arrival rate $\\lambda$, iid service time $S\\sim G$ independent of arrivals, and load $\\rho=\\lambda\\mathbb E S/k<1$. Let $N_{\\rm sys}$ count all jobs in the system, $Q_{\\rm wait}$ count only jobs waiting, and $W$ be the delay before service of an arriving job. Residual service times are part of the Markov state.\n\nThe target is an exact characterization, together with a certified numerical procedure, for quantities such as $\\mathbb P(W>x)$ or $\\mathbb P(N_{\\rm sys}=j)$ at specified $x\\ge0$ and integer $j\\ge0$. A useful result must define how $G$ is supplied (for example, finite rational support, a phase-type representation, or a distribution oracle with explicit tail bounds), return errors at most a requested $\\varepsilon>0$, and bound its computational cost. An impossibility theorem must likewise fix the input and output model.\n\nThe remaining open problem is a broadly applicable, computationally tractable theory beyond special distributions and formal infinite-dimensional balance equations. An exact stationary sample, a mean bound, and a deterministic certified probability calculation are different outputs. Mean-delay claims require additional integrability assumptions; finite mean service alone is not a universal finite-mean-delay assumption.",
+ "known_results": "The single-server Pollaczek-Khinchine theory and exponential-service Erlang formulas are exact benchmarks. Phase-type services permit matrix-analytic methods on a countably infinite level process, not generally a finite CTMC. Tijms, van Hoorn, and Federgruen (1981) give practical steady-state approximations. Gupta, Harchol-Balter, Dai, and Zwart (2010) show limitations of using only two service-time moments. Gupta and Osogami (2011) study extremal mean-waiting-time bounds under moment information. Perfect-simulation results address sampling rather than automatically giving a fast, certified numerical distribution.\n\nHong (arXiv:2510.11015v3, revised August 22, 2026), Theorem 1 and equation (8), gives the bound $\\mathbb E Q_{\\rm wait}\\le R_s^{\\max}/(1-\\rho)$ for the Poisson-arrival specialization, where $\\mu=1/\\mathbb E S$ and $R_s^{\\max}=\\sup_{t:\\mathbb P(\\mu S\\ge t)>0}\\mathbb E[\\mu S-t\\mid\\mu S\\ge t]$. It assumes bounded mean residual service, non-lattice service, and Assumption 3 on positive Harris recurrence and convergence of mean queue lengths for the auxiliary modified queues. For NBUE service satisfying those assumptions, $R_s^{\\max}=1$, hence $\\mathbb E Q_{\\rm wait}\\le1/(1-\\rho)$. Jobs in service are excluded from this bound.\n\nRemaining open problem. These sharper nonasymptotic bounds do not provide an exact general stationary distribution or a certified efficient computation for arbitrary $G$.",
  "progress": {
   "state": "partial",
-  "summary": "Approximations, special cases, bounds, and heavy-traffic analyses are extensive, but no general exact tractable solution is known for arbitrary service distributions.",
+  "summary": "A revised 2026 preprint gives interpretable nonasymptotic FCFS mean-queue bounds under explicit assumptions. Exact efficient stationary-distribution computation remains a separate question.",
   "links": [
    {
-    "title": "M/G/k queue overview",
-    "url": "https://en.wikipedia.org/wiki/M/G/k_queue"
-   },
-   {
-    "title": "SRPT for Multiserver Systems",
-    "url": "https://arxiv.org/abs/1805.07686"
+    "title": "Yige Hong (2026)",
+    "url": "https://arxiv.org/abs/2510.11015v3"
    }
   ]
  },
@@ -42,31 +38,31 @@
  "alphaevolve_suitability": "medium",
  "alphaevolve_rationale": "Search can discover transform identities, numerical patterns, and hard service-time distributions for approximations. A resolution likely needs analytic queueing theory or a formal computational-complexity obstruction.",
  "literature": {
-  "synthesis": "The obstruction in $M/G/k$ is residual-service dimensionality. In $M/G/1$, a departure or workload recursion collapses the system to one dimension. With multiple FCFS servers, the vector of residual service times matters, and arrivals see a correlated configuration of server ages. Phase-type approximations convert the problem to a finite Markov chain but can grow rapidly and do not constitute a closed-form exact solution for arbitrary $G$. Moment-based approximations are useful operationally, but impossibility results for two-moment approximations show that distributional detail can matter. The open gap is an exact representation that is both mathematically general and computationally usable.",
+  "synthesis": "The computational target must be separated from existence of a stationary law and from sampling it. The newer leave-one-out bound supplies useful numerical control for light-tailed distributions, but bounds only a mean and carries regularity assumptions on auxiliary queues. General probability computation still needs an explicit distribution input model, a truncation or approximation certificate, and a runtime guarantee. The statement no longer confuses queue length with total population or phase-type matrix analysis with a finite-state chain.",
   "reviewed": [
    {
-    "ref": "H. C. Tijms, M. H. van Hoorn, and A. Federgruen, 'Approximations for the Steady-State Probabilities in the M/G/c Queue', Advances in Applied Probability 1981",
-    "result": "Develops approximation methods and frames the difficulty of exact steady-state computation for $M/G/c$.",
-    "relevance": "partial-progress",
-    "url": "https://en.wikipedia.org/wiki/M/G/k_queue"
-   },
-   {
-    "ref": "Varun Gupta, Mor Harchol-Balter, J. G. Dai, and Bert Zwart, 'On the inapproximability of M/G/K: Why two moments of job size distribution are not enough', Queueing Systems 2010",
-    "result": "Shows that approximations based only on the first two service-time moments cannot be uniformly accurate.",
-    "relevance": "hardness",
-    "url": "https://en.wikipedia.org/wiki/M/G/k_queue"
-   },
-   {
-    "ref": "Varun Gupta and Takanori Osogami, 'On Markov-Krein characterization of the mean waiting time in M/G/K and other queueing systems', Queueing Systems 2011",
-    "result": "Uses moment-problem methods to give tight bounds on mean waiting time under moment information.",
-    "relevance": "partial-progress",
-    "url": "https://en.wikipedia.org/wiki/Markov%E2%80%93Krein_theorem"
-   },
-   {
-    "ref": "Isaac Grosof, Ziv Scully, and Mor Harchol-Balter, 'SRPT for Multiserver Systems', arXiv 2018",
-    "result": "Illustrates recent progress on multiserver $M/G/k$ performance under specific scheduling policies and asymptotic regimes.",
+    "ref": "H. C. Tijms, M. H. van Hoorn, A. Federgruen, 'Approximations for the Steady-State Probabilities in the M/G/c Queue', Advances in Applied Probability, 1981",
+    "result": "Steady-state probability approximations, not a general exact algorithm.",
     "relevance": "related-tool",
-    "url": "https://arxiv.org/abs/1805.07686"
+    "url": "https://www.cambridge.org/core/journals/advances-in-applied-probability/article/approximations-for-the-steadystate-probabilities-in-the-mgc-queue/68FA7A245D0673F7FC950130666E7A22"
+   },
+   {
+    "ref": "Varun Gupta, Mor Harchol-Balter, J. G. Dai, Bert Zwart, 'On the inapproximability of M/G/K: Why two moments of job size distribution are not enough', Queueing Systems, 2010",
+    "result": "Limits to approximating performance from only two service-time moments.",
+    "relevance": "hardness",
+    "url": "https://link.springer.com/article/10.1007/s11134-010-9183-2"
+   },
+   {
+    "ref": "Varun Gupta, Takayuki Osogami, 'On Markov-Krein characterization of the mean waiting time in M/G/K and other queueing systems', Queueing Systems, 2011",
+    "result": "Moment-based extremal waiting-time bounds.",
+    "relevance": "related-tool",
+    "url": "https://link.springer.com/article/10.1007/s11134-011-9231-2"
+   },
+   {
+    "ref": "Yige Hong, 'An interpretable universal bound for multiserver queues via a leave-one-out technique', arXiv:2510.11015v3, August 22, 2026 revision, 2026",
+    "result": "Theorem 1, Assumptions 1-3, and equation (8): a nonasymptotic bound on waiting jobs using the maximal normalized mean residual service time; not an exact stationary distribution.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2510.11015v3"
    }
   ]
  },
@@ -76,17 +72,17 @@
   "machine_checkable": false
  },
  "where_posed": {
-  "text": "Classical open problem in queueing theory; summarized in references around the $M/G/k$ queue and exact stationary probabilities.",
-  "url": "https://en.wikipedia.org/wiki/M/G/k_queue",
-  "quote": "",
-  "location": "Steady state distribution discussion"
+  "text": "Computational tractability of general M/G/c steady-state probabilities is discussed by Tijms, van Hoorn, and Federgruen (1981). The certified-algorithm formulation is editorial.",
+  "url": "https://www.cambridge.org/core/journals/advances-in-applied-probability/article/approximations-for-the-steadystate-probabilities-in-the-mgc-queue/68FA7A245D0673F7FC950130666E7A22",
+  "location": "Discussion of exact computation versus approximations.",
+  "quote": ""
  },
  "source": {
-  "authors": "Queueing theory literature",
-  "title": "Exact stationary analysis of the M/G/k queue",
-  "year": 2026,
-  "venue": "Classical open problem",
-  "url": "https://en.wikipedia.org/wiki/M/G/k_queue"
+  "authors": "H. C. Tijms, M. H. van Hoorn, A. Federgruen",
+  "title": "Approximations for the Steady-State Probabilities in the M/G/c Queue",
+  "year": 1981,
+  "venue": "Advances in Applied Probability 13(1):186-206",
+  "url": "https://www.cambridge.org/core/journals/advances-in-applied-probability/article/approximations-for-the-steadystate-probabilities-in-the-mgc-queue/68FA7A245D0673F7FC950130666E7A22"
  },
  "additional_refs": [
   {
@@ -104,14 +100,21 @@
    "url": "https://link.springer.com/article/10.1007/s11134-010-9183-2"
   },
   {
-   "authors": "Varun Gupta, Takanori Osogami",
+   "authors": "Varun Gupta, Takayuki Osogami",
    "title": "On Markov-Krein characterization of the mean waiting time in M/G/K and other queueing systems",
    "year": 2011,
    "venue": "Queueing Systems",
    "url": "https://link.springer.com/article/10.1007/s11134-011-9231-2"
+  },
+  {
+   "authors": "Yige Hong",
+   "title": "An interpretable universal bound for multiserver queues via a leave-one-out technique",
+   "year": 2026,
+   "venue": "arXiv:2510.11015v3, August 22, 2026 revision",
+   "url": "https://arxiv.org/abs/2510.11015v3"
   }
  ],
- "bibtex": "@misc{literature2026,\n  author = {Queueing theory literature},\n  title = {Exact stationary analysis of the M/G/k queue},\n  year = {2026},\n  howpublished = {Classical open problem},\n  url = {https://en.wikipedia.org/wiki/M/G/k_queue},\n  note = {Source of ORdős Problem ORDOS-111}\n}",
+ "bibtex": "@misc{Tijms1981,\n  author = {H. C. Tijms and M. H. van Hoorn and A. Federgruen},\n  title = {Approximations for the Steady-State Probabilities in the M/G/c Queue},\n  year = {1981},\n  howpublished = {Advances in Applied Probability 13(1):186-206},\n  url = {https://www.cambridge.org/core/journals/advances-in-applied-probability/article/approximations-for-the-steadystate-probabilities-in-the-mgc-queue/68FA7A245D0673F7FC950130666E7A22},\n  note = {Source of ORdős Problem ORDOS-111}\n}",
  "urls": {
   "human": "https://ordos-problems.github.io/problems/mgk-queue-exact-stationary-performance.html",
   "api": "https://ordos-problems.github.io/api/problems/mgk-queue-exact-stationary-performance.json",

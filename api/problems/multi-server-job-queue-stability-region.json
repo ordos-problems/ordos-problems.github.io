@@ -2,7 +2,7 @@
  "number": 124,
  "ref": "ORDOS-124",
  "id": "multi-server-job-queue-stability-region",
- "title": "Exact Stability Region for FCFS Multi-Server-Job Queues",
+ "title": "Computing the stability threshold of FCFS multiserver-job queues",
  "collection": "Applied Probability",
  "area": "Queueing Theory",
  "status": "partially resolved",
@@ -15,14 +15,14 @@
   "cloud systems",
   "parallel jobs"
  ],
- "short_statement": "For FCFS multiserver jobs, saturated-system throughput gives an exact finite-state criterion with Poisson arrivals and phase-type durations. Seek compact or polynomial-complexity criteria and broader input models.",
- "open_problem": "Resolve the open question stated in the model above.",
+ "short_statement": "A general saturation formula now describes stability beyond phase-type service. The remaining challenge is computing its threshold with certified accuracy and useful complexity guarantees.",
+ "open_problem": "Compute the FCFS saturation growth constant with certified error and explicit complexity bounds for a specified finite input representation. A general threshold representation now exists; compact or polynomial-time evaluation, and critical-load behavior, are separate remaining questions.",
  "background": "Modern cloud, parallel-computing, and machine-learning systems routinely run jobs that need several servers or accelerators at once. This destroys the separability of classical many-server queues: a job may be delayed not because total work is too high, but because the wrong combination of servers is available. Under FCFS, large jobs can block smaller jobs behind them, leaving capacity idle while work waits. The resulting stability problem is a clean stochastic-process question with direct operational meaning: it asks when the queue does not explode. It is not a modeling problem; the FCFS multi-server-job model is fixed and simple to state. The difficulty is that the usual traffic condition $\\sum_k\\lambda_k b_k\\mathbb{E}S_k<N$ is not sufficient in general because fragmentation and head-of-line blocking can waste service capacity.",
- "full_statement": "Consider a system with $N$ identical servers and $K$ job classes. Class $k$ jobs arrive according to a renewal or Poisson process of rate $\\lambda_k$, require $b_k\\in\\{1,\\ldots,N\\}$ servers simultaneously, and have service-time distribution $S_k$. Jobs wait in a single first-come-first-served queue. When the job at the head of the line requires at most the currently idle servers, it starts service and occupies $b_k$ servers for its service time; otherwise it blocks later jobs even if those later jobs would fit. Let $X(t)$ describe the ordered waiting line, jobs in service, and residual service/interarrival information needed to make the process Markov. For independent Poisson class streams, let $\\lambda=\\sum_k\\lambda_k$ and sample each new job's class with probability $p_k=\\lambda_k/\\lambda$. With phase-type durations, an exact criterion already exists: $\\lambda<\\lambda^*(p)$, where $\\lambda^*(p)$ is stationary completion throughput of the saturated FCFS system, which replaces each departure immediately and keeps $N$ jobs present. Its finite CTMC can be solved by balance equations. The remaining computational target is a compact closed form or a characterization polynomial in the primitive class/server description, not merely finite-state enumerability. General renewal streams or non-phase-type service require separate assumptions and cannot automatically be replaced by i.i.d. Poisson job marks.",
- "known_results": "Wang, Xie, and Harchol-Balter emphasize that even the exact stability region is very hard, and they derive sufficient conditions for zero queueing in large-system scaling regimes. Grosof, Harchol-Balter, and Scheller-Wolf give a closed-form stability region for the two-class FCFS multiserver-job system with distinct server requirements and exponential service distributions. Grosof, Hong, Harchol-Balter, and Scheller-Wolf (Performance Evaluation 162, 2023, article 102378), Sections 2.2 and 3, describe the saturation-rule criterion for Poisson arrivals with i.i.d. joint server-need/phase-type-duration marks. Appendix C computes the threshold from finite balance equations. Theorem 4.2 further gives mean response time to additive $O(1)$ as arrival rate approaches that threshold. Thus exact finite-state characterization extends beyond two classes. This is not a polynomial-in-input-size complexity theorem.",
+ "full_statement": "There are $N$ identical servers and one FCFS queue. Arrivals form a renewal process with iid positive interarrival times of mean $1/\\lambda$. Independently, jobs have iid joint marks $(B,S)$, where $B\\in\\{1,\\ldots,N\\}$ is the number of simultaneously required servers and $S>0$ is the duration, with $\\mathbb E S<\\infty$. Dependence between a job's size $B$ and duration $S$ is allowed. A job occupies all $B$ servers for its entire service; a blocked head-of-line job prevents later jobs from starting.\n\nThe saturated workload construction makes all jobs available at time zero. For a sorted vector $h\\in\\mathbb R_+^N$, define $T_b(h)_i=\\max(h_b,h_i)$ and $(e_b)_i=\\mathbf1\\{i\\le b\\}$. Starting at $H_0=0$, set\n$$H_{n+1}=\\operatorname{sort}\\bigl(T_{B_n}(H_n)+S_n e_{B_n}\\bigr),\\qquad \\gamma=\\lim_{n\\to\\infty}\\frac{\\max_i H_{n,i}}{n}.$$\nThe monotone-separable saturation rule gives a finite stationary workload below the threshold $\\lambda_c=1/\\gamma$. The equality case $\\lambda=\\lambda_c$ needs separate analysis.\n\nThe remaining open problem is effective computation of $\\gamma$, not existence of a general threshold representation. For example, given rational finite-support job marks, $N$, and rational $\\delta,\\eta\\in(0,1)$, construct certified bounds $\\gamma_-\\le\\gamma\\le\\gamma_+$ of width at most $\\delta$ (deterministically, or with probability at least $1-\\eta$), and quantify runtime in the input bit length, $N$, $\\delta^{-1}$, and $\\log(1/\\eta)$. Can this be done without enumerating an exponentially large saturated state space, or is there a complexity obstruction? State any support, moment, or separation assumptions needed for the algorithm.",
+ "known_results": "Wang, Xie, and Harchol-Balter emphasize that even the exact stability region is very hard, and they derive sufficient conditions for zero queueing in large-system scaling regimes. Grosof, Harchol-Balter, and Scheller-Wolf give a closed-form stability region for the two-class FCFS multiserver-job system with distinct server requirements and exponential service distributions. Grosof, Hong, Harchol-Balter, and Scheller-Wolf (Performance Evaluation 162, 2023, article 102378), Sections 2.2 and 3, describe the saturation-rule criterion for Poisson arrivals with i.i.d. joint server-need/phase-type-duration marks. Appendix C computes the threshold from finite balance equations. Theorem 4.2 further gives mean response time to additive $O(1)$ as arrival rate approaches that threshold. Thus exact finite-state characterization extends beyond two classes. This is not a polynomial-in-input-size complexity theorem.\n\nBaccelli, Olliaro, Ajmone Marsan, and Marin (arXiv:2601.20653v1, 2026), Theorems 4.2 and 5.1, establish a monotone-separable workload recursion and the pile-growth threshold for general finite-mean service durations, including the iid marked renewal model above. Section 5 explicitly leaves the complexity of evaluating $\\gamma$ open. Algorithm 2 estimates the limit numerically; successive estimates becoming close are not a certified error bound. Likewise, their sub-perfect sampling procedure returns lower approximations, not an observable certificate of an exact stationary sample.\n\nRemaining open problem. Obtain compact or complexity-controlled, certified evaluation of the threshold. Do not describe general non-phase-type threshold existence as still wholly open.",
  "progress": {
   "state": "partial",
-  "summary": "Exact finite-state saturation criteria cover arbitrary finite class mixtures with Poisson arrivals and phase-type durations; compact/polynomial-complexity and broader-input targets remain distinct.",
+  "summary": "A 2026 preprint extends the saturation representation to general service durations. Finite-state phase-type methods remain available; certified efficient evaluation of the general pile-growth constant is unresolved.",
   "links": [
    {
     "title": "Two-class stability result",
@@ -31,6 +31,10 @@
    {
     "title": "RESET and MARC (2023), model, saturation criterion, Theorem 4.2 and Appendix C",
     "url": "https://arxiv.org/abs/2310.01621"
+   },
+   {
+    "title": "Francois Baccelli, Diletta Olliaro, Marco Ajmone Marsan, Andrea Marin (2026)",
+    "url": "https://arxiv.org/abs/2601.20653v1"
    }
   ]
  },
@@ -41,7 +45,7 @@
  "alphaevolve_suitability": "high",
  "alphaevolve_rationale": "This is well suited to automated finite-state CTMC construction for exponential services, saturated-system experiments, and search for small counterexamples to conjectured stability criteria.",
  "literature": {
-  "synthesis": "The missing distinction was between a compact formula and an exact characterization through a finite saturated CTMC. For phase-type durations and Poisson i.i.d.-marked arrivals, the latter is available, including correlated server need and duration. The finite state space can grow rapidly with server count; solving balance equations is not by itself a polynomial algorithm in the original input size. Renewal and general-duration extensions need their own argument.",
+  "synthesis": "The 2023 phase-type analysis and the 2026 workload recursion address different levels of the problem. One supplies a finite CTMC computation in a restricted distributional family; the other supplies a broadly applicable limiting representation. Neither alone proves polynomial complexity in the primitive input. This entry now focuses on making the threshold computable with explicit accuracy and runtime bounds. Independent renewal class streams are not silently treated as an iid marked superposition, and critical-load behavior is kept separate.",
   "reviewed": [
    {
     "ref": "Weina Wang, Qiaomin Xie, Mor Harchol-Balter, 'Zero Queueing for Multi-Server Jobs', arXiv 2021",
@@ -66,19 +70,25 @@
     "result": "Uses exact saturated throughput and finite-state calculations; also proves a heavy-traffic mean-response approximation with bounded additive error.",
     "relevance": "partial-progress",
     "url": "https://arxiv.org/abs/2310.01621"
+   },
+   {
+    "ref": "Francois Baccelli, Diletta Olliaro, Marco Ajmone Marsan, Andrea Marin, 'The Multiserver-Job Stochastic Recurrence Equation for Cloud Computing Performance Evaluation', arXiv:2601.20653v1, January 28, 2026, 2026",
+    "result": "Theorems 4.2 and 5.1 give monotone-separability and a general saturation threshold. Section 5 explicitly leaves evaluation complexity open; its numerical stopping rule is not an error certificate.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2601.20653v1"
    }
   ]
  },
  "agent_guidance": {
-  "suitable_approaches": "Start from the existing saturated finite CTMC. Seek state-space compression, tractable subclasses, or complexity bounds rather than rederiving enumerability.",
-  "verification_notes": "Distinguish polynomial complexity in the primitive input from polynomial complexity in an exponentially expanded CTMC. Do not transfer Poisson i.i.d.-mark results to superposed general renewal streams without checking the class-order process.",
+  "suitable_approaches": "Use subadditivity, regeneration at all-server jobs, or finite-state descriptions of relative workloads to bound the pile-growth constant. Separate tractability for rational finite-support and phase-type inputs from oracle access to arbitrary distributions.",
+  "verification_notes": "A numerical stopping rule needs a proved error certificate. Check the iid mark and renewal assumptions, dependence within marks, workload convergence criterion, and the critical equality case separately. An exponential-state exact CTMC is not a polynomial-time result, and two equal successive lower approximations do not certify perfect sampling.",
   "machine_checkable": true
  },
  "where_posed": {
-  "text": "Stated in Wang, Xie, and Harchol-Balter, 'Zero Queueing for Multi-Server Jobs', arXiv 2020/2021.",
-  "url": "https://arxiv.org/abs/2011.10521",
-  "quote": "exact stability region is a very hard problem",
-  "location": "Abstract"
+  "text": "The computational question is explicitly identified by Baccelli, Olliaro, Ajmone Marsan, and Marin (2026). The finite-input accuracy formulation here makes that question precise.",
+  "url": "https://arxiv.org/abs/2601.20653v1",
+  "location": "Section 5, immediately after Theorem 5.1 and equation (8).",
+  "quote": ""
  },
  "source": {
   "authors": "Weina Wang, Qiaomin Xie, Mor Harchol-Balter",
@@ -108,6 +118,13 @@
    "year": 2023,
    "venue": "Performance Evaluation 162, article 102378",
    "url": "https://arxiv.org/abs/2310.01621"
+  },
+  {
+   "authors": "Francois Baccelli, Diletta Olliaro, Marco Ajmone Marsan, Andrea Marin",
+   "title": "The Multiserver-Job Stochastic Recurrence Equation for Cloud Computing Performance Evaluation",
+   "year": 2026,
+   "venue": "arXiv:2601.20653v1, January 28, 2026",
+   "url": "https://arxiv.org/abs/2601.20653v1"
   }
  ],
  "bibtex": "@misc{Wang2021,\n  author = {Weina Wang and Qiaomin Xie and Mor Harchol-Balter},\n  title = {Zero Queueing for Multi-Server Jobs},\n  year = {2021},\n  howpublished = {arXiv},\n  url = {https://arxiv.org/abs/2011.10521},\n  note = {Source of ORdős Problem ORDOS-124}\n}",

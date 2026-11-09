@@ -5,7 +5,7 @@
  "title": "Does BAR Tightness Imply Stability and State-Space Collapse in SBP Queueing Networks?",
  "collection": "Applied Probability",
  "area": "Queueing Networks",
- "status": "open",
+ "status": "partially resolved",
  "confidence": "high",
  "tags": [
   "queueing networks",
@@ -15,18 +15,22 @@
   "state-space collapse",
   "stability"
  ],
- "short_statement": "For multiclass queueing networks under static-buffer-priority service, determine whether the BAR tight-matrix condition generally implies the stability and state-space-collapse conditions needed for steady-state heavy-traffic convergence.",
- "open_problem": "The open problem is to decide whether this implication is general.",
+ "short_statement": "New matrix classifications make the BAR tightness condition easier to verify. Do those algebraic conditions also force prelimit stability and the stronger steady-state state-space-collapse condition?",
+ "open_problem": "Does the stated BAR tight-system condition imply prelimit stability and uniform integrability of high-priority stationary queue lengths under the primitive and heavy-traffic assumptions? Give a general implication with explicit regularity assumptions or a counterexample. The 2025 matrix classifications alone do not settle this.",
  "background": "Heavy-traffic theory for multiclass queueing networks is one of the main ways applied probability turns complex service systems into tractable diffusion approximations. The hard part is usually steady state: proving convergence of stationary distributions requires stability, tightness, and interchange of limits, not just process-level weak convergence from a fixed initial condition. The BAR approach attacks the stationary equation directly and has produced sharp results for generalized Jackson networks. Extending it to multiclass networks under static-buffer-priority service is important because priority disciplines are common in manufacturing, healthcare, communication systems, and computing. Braverman, Dai, and Miyazawa isolate three verifiable modules. If one of them, the tight-matrix condition, automatically implied the others, the method would become much more powerful and easier to apply.",
- "full_statement": "Consider an open multiclass queueing network operating under a static-buffer-priority (SBP) service discipline. In heavy traffic, the basic adjoint relationship (BAR) method of Braverman, Dai, and Miyazawa establishes steady-state convergence to the associated semimartingale reflected Brownian motion provided three conditions hold: stability of the prelimit networks, state-space collapse (SSC), and tightness of a certain matrix appearing in the BAR/Palm-distribution formulation. In a two-station, five-class reentrant-line example under last-buffer-first-served priority, the tight-matrix condition implies both stability and SSC. The open problem is to decide whether this implication is general. Prove that, for a broad class of SBP multiclass queueing networks in heavy traffic, the tight-matrix condition alone implies the needed stability and SSC conditions; or construct a network and SBP discipline where the tight matrix condition holds but stability or SSC fails.",
- "known_results": "The BAR approach is established for generalized Jackson networks and extended by Braverman, Dai, and Miyazawa to multiclass networks under SBP policies. Their framework shows that steady-state convergence follows from stability, SSC, and tightness of a matrix condition, and they prove all three in reentrant lines under last-buffer-first-served service. In the two-station, five-class reentrant-line case, tightness of the matrix condition implies both stability and SSC. The authors explicitly state that whether this relationship holds generally is open. No general theorem or counterexample was found in the 2026 search.",
+ "full_statement": "Consider a finite open multiclass queueing network with classes $1,\\ldots,K$ assigned to $d$ single-server stations. The substochastic routing matrix $P$ has spectral radius below one. External arrivals are independent renewal streams, service requirements are iid within each class, and all primitive sequences and routing choices are independent. Each station uses a fixed non-idling, preemptive-resume priority order between its classes. Assume unit-mean interarrival and service primitives have finite $(2+\\delta)$ moments for some $\\delta>0$.\n\nIndex a heavy-traffic family by $r\\downarrow0$, keeping routing, priorities, and unitized primitive distributions fixed. External rates and service means are $\\lambda^{(r)}=\\lambda-r\\lambda^*$ and $m^{(r)}=m-rm^*$, positive for active classes. Write $\\alpha=(I-P^\\top)^{-1}\\lambda$, $\\alpha^*=(I-P^\\top)^{-1}\\lambda^*$, and let $C_{jk}=1$ when class $k$ uses station $j$. Require $C\\operatorname{diag}(m)\\alpha=\\mathbf1$ and\n$$b=C\\bigl(\\operatorname{diag}(m^*)\\alpha+\\operatorname{diag}(m)\\alpha^*\\bigr)>0.$$\nThus every station approaches load one from below.\n\nLet $L$ contain the lowest-priority class at each station and $H$ the other classes. Set $B_{k\\ell}=1$ if $\\ell$ is the immediately higher-priority class than $k$ at its station, and zero otherwise. For $A=(I-P^\\top)\\operatorname{diag}(1/m)(I-B)$, assume $A_{HH}$ is invertible and define\n$$R=A_{LL}-A_{LH}A_{HH}^{-1}A_{HL},$$\nindexing $L$ in station order. Require $R$ to be completely $\\mathcal S$: every principal submatrix $R_D$ admits a strictly positive vector $v$ with $R_Dv>0$.\n\nFor subsets $D\\subseteq\\{1,\\ldots,d\\}$, introduce $x_D\\in[0,1]$ and real $x_D^{(j)}$. The pair $(R,b)$ is tight if the only solution to\n$$\\sum_j R_{ij}b_j(x_D^{(j)}-x_D)=0\\ (i\\in D),\\quad x_D\\ge x_{D'},\\ x_D^{(j)}\\ge x_{D'}^{(j)}\\ (D\\subseteq D'),$$\n$$x_D^{(j)}=x_{D\\setminus\\{j\\}}^{(j)}\\ (j\\in D),\\qquad x_\\emptyset=x_\\emptyset^{(j)}=1$$\nhas every variable equal to one.\n\nDoes this tight-system condition imply that sufficiently small-$r$ networks have unique stationary laws and that their high-priority stationary job counts $Z_k^{(r)}$ satisfy\n$$\\lim_{a\\to\\infty}\\sup_{0<r\\le r_0}\\mathbb E[Z_k^{(r)}\\mathbf1\\{Z_k^{(r)}>a\\}]=0\\quad(k\\in H)$$\nfor some $r_0>0$? Prove the implication under clearly stated irreducibility/renewal regularity assumptions, or give a counterexample retaining them. This uniform-integrability condition is stronger than merely $rZ_H^{(r)}\\Rightarrow0$.",
+ "known_results": "Braverman, Dai, and Miyazawa's published Stochastic Systems 15(1):1-49 paper (2025), Theorem 5.1, proves steady-state diffusion convergence under separate primitive-moment, heavy-traffic, stability, uniform-integrability, and tight-system assumptions, with positive-definite limiting covariance. The paragraph following Corollary 5.1 explicitly leaves the relation between stability, SSC, and tightness open beyond the studied examples.\n\nDai, Ji, and Miyazawa (arXiv:2404.13651v3, July 2025), Theorem 3.1, classify tight completely-$\\mathcal S$ matrices in dimension two; Theorem 3.2 gives a sufficient higher-dimensional condition. Corollary 4.2 shows that a well-defined completely-$\\mathcal S$ reflection matrix arising from a two-station SBP network is tight. Theorem 4.1 covers LBFS reentrant lines. Their three-station, seven-class FBFS example has a non-tight matrix; it does not refute the implication from tightness to stability or SSC.\n\nRemaining open problem. Derive the prelimit stability and uniform-integrability assumptions from the algebraic condition, or show precisely why they are independent. Verifying a matrix condition is not itself that implication.",
  "progress": {
   "state": "partial",
-  "summary": "The implication is proved in specific reentrant-line examples. The unresolved question is whether it is a structural theorem for SBP networks or a coincidence of those examples.",
+  "summary": "Published 2025 BAR results and a revised 2025 tight-matrix classification clarify the assumptions and settle verification in important cases. The general implication to stability and SSC remains distinct.",
   "links": [
    {
-    "title": "BAR approach for SBP networks",
-    "url": "https://arxiv.org/abs/2302.05791"
+    "title": "Published BAR theorem and open relationship (2025)",
+    "url": "https://doi.org/10.1287/stsy.2023.0011"
+   },
+   {
+    "title": "J. G. Dai, Yiquan Ji, Masakiyo Miyazawa (2025)",
+    "url": "https://arxiv.org/abs/2404.13651v3"
    }
   ]
  },
@@ -37,63 +41,57 @@
  "alphaevolve_suitability": "high",
  "alphaevolve_rationale": "Automated enumeration of small reentrant networks and priority rules could test the implication and search for counterexamples. Symbolic computation may also help verify matrix tightness conditions in finite examples.",
  "literature": {
-  "synthesis": "Classical heavy-traffic steady-state proofs often require substantial model-specific work to prove stability, state-space collapse, and interchange of limits. The BAR method reframes the problem through stationary equations and boundary terms, which can be more modular. Braverman, Dai, and Miyazawa's SBP extension identifies a tight-matrix condition that appears powerful in examples: in a two-station, five-class reentrant line it implies the other two major hypotheses. The open gap is whether this is an accident of low-dimensional reentrant-line structure or a general algebraic property of SBP networks. A positive answer would streamline heavy-traffic stationary analysis; a counterexample would clarify which additional hypotheses are indispensable.",
+  "synthesis": "The BAR convergence theorem assumes probabilistic control of the prelimit system as well as algebraic control of its limiting reflection data. Recent work makes the algebraic part concrete, especially for two stations and LBFS reentrant lines. It does not remove the separate need for stationary laws or the uniform integrability of high-priority counts. In particular, a stable FBFS example with a non-tight matrix concerns failure of automatic tightness, not a counterexample in the direction asked here. The entry now states the actual strong SSC assumption instead of equating it with a scaled weak limit.",
   "reviewed": [
    {
-    "ref": "Anton Braverman, J. G. Dai, Masakiyo Miyazawa, 'The BAR approach for multiclass queueing networks with SBP service policies', arXiv 2024",
-    "result": "Extends BAR to SBP multiclass networks and poses the tight-matrix implication problem.",
-    "relevance": "poses-problem",
-    "url": "https://arxiv.org/abs/2302.05791"
+    "ref": "Anton Braverman, J. G. Dai, Masakiyo Miyazawa, 'The BAR Approach for Multiclass Queueing Networks with SBP Service Policies', Stochastic Systems 15(1):1-49, 2025",
+    "result": "Theorem 5.1 requires stability, high-priority uniform integrability, and tightness separately; the relationship among them is left open after Corollary 5.1.",
+    "relevance": "partial-progress",
+    "url": "https://doi.org/10.1287/stsy.2023.0011"
    },
    {
-    "ref": "Maury Bramson, 'Stability of Queueing Networks', Springer 2008",
-    "result": "Provides foundational methods and counterexamples for stability in multiclass queueing networks.",
-    "relevance": "related-tool",
-    "url": "https://link.springer.com/book/10.1007/978-3-540-68895-5"
-   },
-   {
-    "ref": "J. G. Dai, Masakiyo Miyazawa, BAR methods for queueing networks, Stochastic Systems 2011",
-    "result": "Develops BAR-based stationary analysis tools that motivate the later multiclass SBP extension.",
-    "relevance": "related-tool",
-    "url": "https://pubsonline.informs.org/journal/stsy"
+    "ref": "J. G. Dai, Yiquan Ji, Masakiyo Miyazawa, 'Tight matrices and heavy traffic steady state convergence in queueing networks', arXiv:2404.13651v3, July 6, 2025 revision, 2025",
+    "result": "Theorems 3.1-3.2, Corollary 4.2, and Example 4.1 classify or verify tightness in several cases. A non-tight FBFS example does not disprove tightness implying stability/SSC.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2404.13651v3"
    }
   ]
  },
  "agent_guidance": {
   "suitable_approaches": "For a positive result, try to derive Lyapunov stability and SSC estimates directly from the algebraic tight-matrix condition. For a negative result, enumerate small multiclass networks with exponential service and SBP disciplines, check the matrix condition, and compare against fluid-model stability or known instability criteria.",
-  "verification_notes": "A counterexample must verify the tight-matrix condition exactly and then rigorously prove failure of stability or SSC. A positive theorem must state the class of networks, traffic assumptions, and priority disciplines precisely.",
+  "verification_notes": "Check the priority ordering, Schur-complement reflection matrix, complete-S property, and tight-system equations. A proposed counterexample must have a tight system and fail stability or the uniform-integrability condition; a non-tight example has the wrong logical direction. Weak convergence of scaled high-priority counts alone is insufficient.",
   "machine_checkable": true
  },
  "where_posed": {
-  "text": "Stated in Braverman, Dai, and Miyazawa, 'The BAR approach for multiclass queueing networks with SBP service policies', arXiv 2023/2024.",
-  "url": "https://arxiv.org/abs/2302.05791",
-  "quote": "Whether such a relationship holds generally is an open problem.",
-  "location": "Abstract"
+  "text": "Braverman, Dai, and Miyazawa explicitly ask whether the relationship among the three assumptions extends to general networks.",
+  "url": "https://doi.org/10.1287/stsy.2023.0011",
+  "location": "Abstract and paragraph after Corollary 5.1 (Section 5).",
+  "quote": ""
  },
  "source": {
   "authors": "Anton Braverman, J. G. Dai, Masakiyo Miyazawa",
-  "title": "The BAR approach for multiclass queueing networks with SBP service policies",
-  "year": 2024,
-  "venue": "arXiv",
-  "url": "https://arxiv.org/abs/2302.05791"
+  "title": "The BAR Approach for Multiclass Queueing Networks with SBP Service Policies",
+  "year": 2025,
+  "venue": "Stochastic Systems 15(1):1-49",
+  "url": "https://doi.org/10.1287/stsy.2023.0011"
  },
  "additional_refs": [
-  {
-   "authors": "J. G. Dai, Masakiyo Miyazawa",
-   "title": "Basic adjoint relationships for queueing networks and their applications",
-   "year": 2011,
-   "venue": "Stochastic Systems",
-   "url": "https://pubsonline.informs.org/journal/stsy"
-  },
   {
    "authors": "Maury Bramson",
    "title": "Stability of Queueing Networks",
    "year": 2008,
    "venue": "Lecture Notes in Mathematics",
    "url": "https://link.springer.com/book/10.1007/978-3-540-68895-5"
+  },
+  {
+   "authors": "J. G. Dai, Yiquan Ji, Masakiyo Miyazawa",
+   "title": "Tight matrices and heavy traffic steady state convergence in queueing networks",
+   "year": 2025,
+   "venue": "arXiv:2404.13651v3, July 6, 2025 revision",
+   "url": "https://arxiv.org/abs/2404.13651v3"
   }
  ],
- "bibtex": "@misc{Braverman2024,\n  author = {Anton Braverman and J. G. Dai and Masakiyo Miyazawa},\n  title = {The BAR approach for multiclass queueing networks with SBP service policies},\n  year = {2024},\n  howpublished = {arXiv},\n  url = {https://arxiv.org/abs/2302.05791},\n  note = {Source of ORdős Problem ORDOS-125}\n}",
+ "bibtex": "@misc{Braverman2025,\n  author = {Anton Braverman and J. G. Dai and Masakiyo Miyazawa},\n  title = {The BAR Approach for Multiclass Queueing Networks with SBP Service Policies},\n  year = {2025},\n  howpublished = {Stochastic Systems 15(1):1-49},\n  url = {https://doi.org/10.1287/stsy.2023.0011},\n  note = {Source of ORdős Problem ORDOS-125}\n}",
  "urls": {
   "human": "https://ordos-problems.github.io/problems/sbp-queueing-network-bar-tight-matrix-condition.html",
   "api": "https://ordos-problems.github.io/api/problems/sbp-queueing-network-bar-tight-matrix-condition.json",
