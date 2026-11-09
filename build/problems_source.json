@@ -829,11 +829,11 @@
       "display ads",
       "OCS"
     ],
-    "status": "open",
+    "status": "partially resolved",
     "confidence": "high",
-    "short_statement": "For edge-weighted online bipartite matching with free disposal, determine the optimal competitive ratio between the current $0.5368$ lower bound and the broad $1-1/e$ upper bound.",
-    "full_statement": "Let $G=(L,R,E)$ be a bipartite graph. The offline side $L$ is known in advance, while vertices of $R$ arrive one at a time in an adversarial order. When online vertex $v\\in R$ arrives, all incident edge weights $w_{uv}\\ge 0$ for $u\\in L$ are revealed. The algorithm may either discard $v$ or assign it immediately to one offline vertex $u$. Assignments are irrevocable from the perspective of the arriving vertex, but offline vertices have free disposal: an offline vertex may receive many online vertices over time and contributes only $\\max\\{w_{uv}:v\\text{ assigned to }u\\}$ to the final objective, with value $0$ if no vertex is assigned to it. Equivalently, an advertiser may keep the best impression ever assigned and ignore lower-value previous assignments. The benchmark is the maximum-weight offline matching in $G$, which can assign at most one online vertex to each offline vertex after seeing the entire graph and arrival sequence. For randomized algorithms, the expectation is over the algorithm's internal randomness against an oblivious or adaptive adversarial arrival model as specified. Determine the supremum competitive ratio $\\alpha$ such that an online algorithm always obtains expected retained weight at least $\\alpha\\cdot\\mathrm{OPT}$.",
-    "known_results": "Greedy, which assigns each arriving vertex to the offline vertex with the largest immediate marginal retained value, is $1/2$-competitive, matching the generic monotone-submodular-welfare guarantee. Without free disposal, no positive competitive ratio is possible for arbitrary edge weights: a single offline vertex and two possible second arrivals force an online algorithm either to reject useful early value or to be stuck with a dominated low edge. Fahrbach, Huang, Tao, and Zadimoghaddam showed that free disposal contains more structure than general online submodular welfare and gave the first improvement beyond $1/2$, achieving $0.5086$. Their algorithm uses the online primal-dual framework, a complementary-cumulative-distribution-function view of retained weights, and online correlated selection, a subroutine that selects from a sequence of pairs with negative correlation across repeated appearances. Blanc and Charikar generalized this to multiway online correlated selection, where each step may present more than two candidates, and improved the ratio to $0.5368$. They also proved that the earlier pairwise-OCS formulation cannot exceed $0.5239$, so further progress probably needs either stronger correlation primitives or a different proof architecture. Kapralov, Post, and Vondrak's hardness for online monotone submodular welfare explains why the broad superclass has a $1/2$ barrier, but it does not give a tight upper bound for this matching special case. No source-checked upper bound close to $0.5368$ is known for edge-weighted matching with free disposal itself.",
+    "short_statement": "Online arrivals reveal arbitrary edge weights, while each offline vertex retains only its best assigned edge. The best checked guarantee is now $0.556195$.",
+    "full_statement": "Let $G=(L,R,E)$ be a bipartite graph. The offline side $L$ is known in advance, while vertices of $R$ arrive one at a time in an adversarial order. When online vertex $v\\in R$ arrives, all incident edge weights $w_{uv}\\ge 0$ for $u\\in L$ are revealed. The algorithm may either discard $v$ or assign it immediately to one offline vertex $u$. Assignments are irrevocable from the perspective of the arriving vertex, but offline vertices have free disposal: an offline vertex may receive many online vertices over time and contributes only $\\max\\{w_{uv}:v\\text{ assigned to }u\\}$ to the final objective, with value $0$ if no vertex is assigned to it. Equivalently, an advertiser may keep the best impression ever assigned and ignore lower-value previous assignments. The benchmark is the maximum-weight offline matching in $G$, which can assign at most one online vertex to each offline vertex after seeing the entire graph and arrival sequence. For randomized algorithms, the expectation is over the algorithm's internal randomness against an oblivious adversary that fixes the entire graph, edge weights, and arrival order independently of the random coins. Determine the supremum competitive ratio $\\alpha$ such that an online algorithm always obtains expected retained weight at least $\\alpha\\cdot\\mathrm{OPT}$.",
+    "known_results": "Greedy is $1/2$-competitive. Matthew Fahrbach, Zhiyi Huang, Runzhou Tao, and Morteza Zadimoghaddam first surpassed this with $0.5086$; Guy Blanc and Moses Charikar raised the guarantee to $0.5368$ using multiway online correlated selection.\n\nAlireza Farhadi and Mohammad Hajiaghayi, 'Online Edge-Weighted Matching Beyond 0.55' (arXiv:2611.06896v1, November 2026), Theorem 1, give $0.556195$ against an oblivious adversary for arbitrary nonnegative edge weights. Rational inputs admit an expected-polynomial-time implementation. Their tightness analysis concerns their algorithm, not every online policy; their formal certificates were not replayed in this audit.\n\nRemaining open problem. Determine the optimal ratio in $[0.556195,1-1/e]$. The upper endpoint follows already from unweighted online matching. Guarantees for product-structured weights or limitations of a particular correlation scheme do not close this general gap.",
     "where_posed": {
       "text": "Highlighted in Fahrbach, Huang, Tao, and Zadimoghaddam, 'Edge-Weighted Online Bipartite Matching', FOCS 2020 / JACM 2022.",
       "url": "https://arxiv.org/abs/2005.01929",
@@ -861,13 +861,20 @@
         "year": 2009,
         "venue": "WINE",
         "url": "https://link.springer.com/chapter/10.1007/978-3-642-10841-9_34"
+      },
+      {
+        "authors": "Alireza Farhadi, Mohammad Hajiaghayi",
+        "title": "Online Edge-Weighted Matching Beyond 0.55",
+        "year": 2026,
+        "venue": "arXiv preprint",
+        "url": "https://arxiv.org/abs/2611.06896v1"
       }
     ],
     "enabled": true,
     "background": "Edge-weighted online bipartite matching with free disposal is a clean abstraction of display advertising and related allocation systems. Offline vertices are reusable only in the sense that they may keep the best offer seen so far: if a later online vertex gives a better edge weight, the old tentative match can be discarded without penalty. This free-disposal rule makes the problem easier than irrevocable edge-weighted matching, but still far harder than unweighted or vertex-weighted matching. The trivial greedy algorithm is $1/2$-competitive, and for years no algorithm beat that barrier. The breakthrough came from online correlated selection, a randomized subroutine that deliberately correlates choices across time. The exact competitive ratio remains wide open: the best algorithms are only slightly above $1/2$, while the natural upper bound remains the classical $1-1/e$ scale.",
     "progress": {
       "state": "partial",
-      "summary": "The lower bound has improved from $1/2$ to $0.5086$ and then $0.5368$. The broad upper bound is still far away, so the exact ratio is not close to settled.",
+      "summary": "A November 2026 preprint raises the general guarantee to $0.556195$; the optimal ratio remains unknown.",
       "links": [
         {
           "title": "Edge-weighted online bipartite matching",
@@ -876,6 +883,10 @@
         {
           "title": "Multiway online correlated selection",
           "url": "https://arxiv.org/abs/2106.05579"
+        },
+        {
+          "title": "Alireza Farhadi, Mohammad Hajiaghayi: Online Edge-Weighted Matching Beyond 0.55",
+          "url": "https://arxiv.org/abs/2611.06896v1"
         }
       ]
     },
@@ -886,12 +897,12 @@
     "alphaevolve_suitability": "high",
     "alphaevolve_rationale": "This is one of the more code-search-friendly online matching problems: factor-revealing programs, OCS parameter searches, and finite weighted hard instances are all computationally accessible.",
     "literature": {
-      "synthesis": "The edge-weighted free-disposal problem resisted progress because the usual Ranking-style monotonicity disappears when edge weights depend on both endpoints. In unweighted or vertex-weighted online matching, the algorithm can often reason about whether an offline vertex has already been used; in the edge-weighted free-disposal model, an offline vertex has a whole retained-value distribution, and a new edge may be valuable only above some weight levels. Fahrbach, Huang, Tao, and Zadimoghaddam's CCDF/primal-dual view decomposes the retained value of each offline vertex by thresholds and uses OCS to create negative correlation in repeated choices. Blanc and Charikar's multiway OCS broadens the selection primitive and gives the current best ratio without relying on the same factor-revealing LP. The upper limit for pairwise OCS is a useful barrier: simply optimizing the first OCS framework cannot close the gap. The absence of a matching impossibility result is just as important. Known $1/2$ barriers apply to online monotone submodular welfare, but edge-weighted matching has additional exchange and threshold structure; closing the problem requires either a more powerful algorithmic correlation/primal-dual method or a hard distribution that exploits edge weights while respecting matching-like structure.",
+      "synthesis": "Free disposal makes each offline vertex's contribution a retained maximum. Correlations across repeated choices and threshold-based primal-dual accounting have successively improved guarantees. The new bound belongs in that progression, while framework-specific tightness must remain separate from a universal impossibility result.",
       "reviewed": [
         {
           "ref": "Matthew Fahrbach, Zhiyi Huang, Runzhou Tao, Morteza Zadimoghaddam, 'Edge-Weighted Online Bipartite Matching', JACM 2022",
           "result": "First algorithm beating $1/2$, with competitive ratio $0.5086$.",
-          "relevance": "poses-problem",
+          "relevance": "partial-progress",
           "url": "https://arxiv.org/abs/2005.01929"
         },
         {
@@ -905,6 +916,12 @@
           "result": "Develops the advertising/free-disposal allocation perspective motivating the model.",
           "relevance": "related-tool",
           "url": "https://link.springer.com/chapter/10.1007/978-3-642-10841-9_34"
+        },
+        {
+          "ref": "Alireza Farhadi, Mohammad Hajiaghayi, 'Online Edge-Weighted Matching Beyond 0.55', arXiv preprint, 2026",
+          "result": "Theorem 1: $0.556195$ competitive in the general free-disposal model; not a matching universal upper bound.",
+          "relevance": "partial-progress",
+          "url": "https://arxiv.org/abs/2611.06896v1"
         }
       ]
     },
@@ -913,7 +930,7 @@
       "verification_notes": "For an algorithmic improvement, verify the model includes free disposal and arbitrary edge weights, not only vertex weights, unweighted edges, stochastic arrivals, or bounded capacities. The proof must compare expected retained maximum edge weight at each offline vertex against the offline maximum-weight matching. If the algorithm uses OCS, the correlation guarantee must hold online for every adaptive sequence of candidate sets generated by the matching algorithm, and the primal-dual or factor-revealing analysis must cover all weight levels, including ties and zero weights. For an upper bound, the hard instance must be a distribution over finite weighted bipartite graphs and arrival orders; by Yao's principle it must bound every deterministic online policy, not merely Greedy, Ranking, or a named OCS family. A limitation of a restricted framework should be labeled as such and should not be presented as a global impossibility theorem.",
       "machine_checkable": true
     },
-    "open_problem": "Determine the tight competitive ratio for edge-weighted online bipartite matching with free disposal, or prove a substantially stronger upper or lower bound than the current $0.5368$ versus $1-1/e$ gap."
+    "open_problem": "Determine the optimal randomized competitive ratio against an oblivious adversary: close the gap between $0.556195$ and $1-1/e$."
   },
   {
     "id": "adwords-general-bids",
@@ -2043,15 +2060,15 @@
       "rainbow cycle number",
       "SAT-solving"
     ],
-    "status": "open",
+    "status": "partially resolved",
     "confidence": "high",
-    "short_statement": "An EFX allocation of indivisible goods is one where any envy agent $i$ feels toward agent $j$ vanishes after removing any single good from $j$'s bundle. Does a complete EFX allocation always exist for four or more agents, even with additive valuations?",
-    "full_statement": "Let $N=\\{1,\\dots,n\\}$ be a set of agents and $M$ a set of indivisible goods, with each agent $i$ having an additive valuation $v_i$ (so $v_i(S)=\\sum_{g\\in S} v_i(\\{g\\})$ for any bundle $S\\subseteq M$). An allocation $(X_1,\\dots,X_n)$ partitioning $M$ among the agents is EFX (envy-free up to any good) if for all agents $i,j$ and every good $g\\in X_j$ with $v_i(\\{g\\})>0$: $v_i(X_i)\\ge v_i(X_j\\setminus\\{g\\})$. In words, any envy that agent $i$ feels toward agent $j$ would vanish upon removing any single (positively valued) good from $j$'s bundle. Exact complete EFX allocations are known to always exist for up to 3 agents with additive valuations (Chaudhury, Garg, Mehlhorn 2020), and for $n$ agents when all valuations coincide, or when there are at most 3 distinct valuation functions among the agents. Question: does a complete EFX allocation exist for every instance with $n\\ge 4$ additive agents? As of mid-2026 this remains open even for $n=4$.",
-    "known_results": "For additive valuations, exact EFX allocations are known to exist for at most three agents (Chaudhury, Garg, Mehlhorn, EC 2020 / JACM 2024), for agents whose valuations come from at most 3 distinct functions (Mahara 2023; extended in AAAI 2025's \"(Almost Full) EFX for Three (and More) Types of Agents\"), and for a handful of other structured cases (binary valuations, MMS-feasible valuations, graphical/multigraph valuations). For four agents, Berger, Cohen, Feldman, and Fiat (AAAI 2022, \"Almost Full EFX Exists for Four Agents\") proved that an EFX allocation always exists that leaves at most one good unallocated (\"almost-complete\" EFX); this remains the best exact-EFX progress toward $n=4$ as of July 2026 and has not been extended to a fully complete allocation. For general $n$, EFX with bounded charity is known: Chaudhury, Kavitha, Mehlhorn, Sgouritsa (SODA 2020) show an EFX allocation exists if up to $n-1$ goods may be donated to an unenvied charity; Berger et al. improved the donation bound to $n-2$ goods for nice-cancelable valuations, and Mahara (2024) extended this to general monotone valuations. On the approximation side, the 0.618-EFX ($1/\\varphi$, the inverse golden ratio) result of Amanatidis, Markakis, Ntokos (2020/2021) remains the best known guarantee that holds for ALL additive instances with any number of agents; the 2/3-EFX results of Amanatidis, Filos-Ratsikas, Sgouritsa and others (EC 2024/2025, \"Pushing the Frontier on Approximate EFX Allocations\") beat 0.618 only under extra restrictions (at most 7 agents, at most 3 distinct valuations, or graphical/multigraph valuations), so 0.618 is still the best universal bound as of 2026. No nonexistence example is known for additive valuations at any $n$; a 2026 SAT-based computer search (Akrami, Mayorov, Mehlhorn, Srinivas, Weidenbach) did find explicit nonexistence counterexamples for the strictly more general class of monotone (in particular submodular) valuations with $n\\ge 3$ agents and $m\\ge n+5$ goods, sharpening the sense that additive valuations sit right at the boundary of tractability. The central open question — complete EFX existence for $n\\ge4$ additive agents — remains unresolved as of July 2026.",
+    "short_statement": "Complete EFX allocations are known for three additive agents. Four agents are the first unrestricted case, with new positive results for small numbers of goods.",
+    "full_statement": "Let $N=\\{1,\\ldots,n\\}$ and let $M$ be a finite set of indivisible goods. Each agent has nonnegative additive values $v_i(S)=\\sum_{g\\in S}v_i(g)$. A complete allocation partitions all goods into bundles $(X_1,\\ldots,X_n)$, allowing empty bundles.\n\nHere EFX means that for every $i,j$ and $g\\in X_j$ with $v_i(g)>0$, $$v_i(X_i)\\ge v_i(X_j\\setminus\\{g\\}).$$ The stronger convention EFX0 imposes this also when $v_i(g)=0$; positive results for EFX0 imply EFX in this entry.\n\nDoes every additive instance admit a complete EFX allocation? The unrestricted question starts at $n=4$. A theorem for a bounded number of goods, a partial allocation, or approximate EFX does not settle it.",
+    "known_results": "Bhaskar Ray Chaudhury, Jugal Garg, and Kurt Mehlhorn establish complete EFX existence for three additive agents. Ben Berger, Avi Cohen, Michal Feldman, and Amos Fiat establish four-agent EFX with at most one good left unallocated. Vishwa Prakash HV, Pratik Ghosal, Prajakta Nimbhorkar, and Nithin Varma extend complete existence to any number of agents with at most three distinct additive valuation functions (EC 2025, arXiv:2410.13580v3).\n\nEyad Alkassar, Mahmoud Fouz, and Kurt Mehlhorn, 'Complete EFX Allocations Exist for Four Additive Agents and Up to Nine Goods' (arXiv:2608.08590v1), Theorem 1, prove complete EFX0 for four agents and at most nine goods, including zero values. The proof is computer-assisted; this audit checked its statement and model, not the certificate corpus.\n\nRemaining open problem. Complete EFX for unrestricted four-agent additive instances, and hence the general additive existence question, is not settled by these bounded-size results. Counterexamples for nonadditive submodular valuations do not refute additive existence. Approximate EFX, EF2X, and allocations with unassigned goods are different relaxations.",
     "where_posed": {
       "text": "The open problem is repeatedly stated in the EFX literature; the clearest recent formal statement is in Ashuri, Gkatzelis, Sgouritsa, 'EF2X Exists For Four Agents', 2024/2025 (arXiv), and the notion itself originates in Caragiannis, Kurokawa, Moulin, Procaccia, Shah, Wang, 'The Unreasonable Fairness of Maximum Nash Welfare', EC 2016 / TEAC 2019.",
       "url": "https://arxiv.org/abs/2412.00254",
-      "quote": "The central open problem in this literature, which has proven to be extremely challenging, is regarding the existence of an EFX allocation, i.e., an allocation such that any envy from some agent i toward another agent j would vanish if we were to remove any single good from the bundle allocated to j. When the agents' valuations are additive, which has been the main focus of prior works, Chaudhury et al. [2024] showed that an EFX allocation is guaranteed to exist for all instances involving up to three agents. Subsequently, Berger et al. [2022] extended this guarantee to nice-cancelable valuations and Akrami et al. [2023] to MMS-feasible valuations. However, the existence of EFX allocations for instances involving four agents remains open, even for additive valuations.",
+      "quote": "",
       "location": "Abstract / Introduction"
     },
     "source": {
@@ -2094,8 +2111,8 @@
         "authors": "Georgios Amanatidis, Aris Filos-Ratsikas, Alkmini Sgouritsa",
         "title": "Pushing the Frontier on Approximate EFX Allocations",
         "year": 2024,
-        "venue": "EC",
-        "url": "https://arxiv.org/abs/2406.12413"
+        "venue": "EC 2024 / arXiv v3, July 2026",
+        "url": "https://arxiv.org/abs/2406.12413v3"
       },
       {
         "authors": "Hannaneh Akrami, Alexander Mayorov, Kurt Mehlhorn, Shreyas Srinivas, Christoph Weidenbach",
@@ -2103,13 +2120,27 @@
         "year": 2026,
         "venue": "arXiv",
         "url": "https://arxiv.org/abs/2604.18216"
+      },
+      {
+        "authors": "Eyad Alkassar, Mahmoud Fouz, Kurt Mehlhorn",
+        "title": "Complete EFX Allocations Exist for Four Additive Agents and Up to Nine Goods",
+        "year": 2026,
+        "venue": "arXiv preprint",
+        "url": "https://arxiv.org/abs/2608.08590v1"
+      },
+      {
+        "authors": "Vishwa Prakash HV, Pratik Ghosal, Prajakta Nimbhorkar, Nithin Varma",
+        "title": "EFX Exists for Three Types of Agents",
+        "year": 2025,
+        "venue": "EC 2025 / arXiv v3",
+        "url": "https://arxiv.org/abs/2410.13580v3"
       }
     ],
     "enabled": true,
-    "background": "Fair division asks how to split a set of indivisible resources among agents with different preferences so that no one feels cheated. When goods are divisible, envy-freeness (nobody prefers another's share) and efficiency can be achieved simultaneously, but indivisibility breaks this: if there is one house and two heirs, someone will envy the other no matter what. Envy-freeness up to any good (EFX), proposed by Caragiannis, Kurokawa, Moulin, Procaccia, Shah, and Wang in their influential 2016 paper on maximum Nash welfare, asks for the strongest reasonable relaxation: agent $i$ may envy agent $j$, but that envy must vanish once ANY single good is (hypothetically) removed from $j$'s bundle. This is strictly stronger than the more permissive and better-understood EF1 (envy vanishes after removing SOME good), and is widely regarded as the right notion of \"almost envy-free\" for indivisible goods. Despite a decade of sustained effort by many of the leading researchers in algorithmic game theory, EFX's existence for more than three agents is unresolved, making it perhaps the most famous open question in fair division and a benchmark for the field's proof techniques (rainbow cycle numbers, envy-graph algorithms, champion-graph arguments). The problem matters beyond its own puzzle value: EFX sits at the center of a web of related questions (EFX with bounded charity, EFX plus Pareto-optimality, EFX for chores, EFX for general valuations), and techniques developed while attacking it — e.g., the rainbow-cycle-number framework — have become standard tools throughout discrete fair division. The problem also has real-world resonance: course allocation, inheritance division, and cloud-resource allocation are all naturally modeled as indivisible-goods fair division, so a clean existence/nonexistence answer would have direct implications for mechanism design in these settings.",
+    "background": "Indivisibility prevents ordinary envy-freeness even in simple examples: if two agents both value the only good, one must receive nothing. EFX relaxes envy-freeness by testing envy after a hypothetical removal from the other agent's bundle. It is stronger than EF1, which permits choosing a favorable item to remove. The precise treatment of zero-valued goods is stated in the model below.\n\nFor nonnegative additive valuations, complete EFX existence is known for three agents. Four agents remain the first unrestricted case, despite positive theorems for few valuation types and small numbers of goods. Allowing unallocated goods, weakening the fairness inequality, or leaving the additive valuation class changes the question. These distinctions make EFX a useful test of which fairness guarantees can be achieved without disposal or transfers.",
     "progress": {
       "state": "partial",
-      "summary": "No full resolution as of July 2026: the four-agent additive case is still open. Progress since 2024 has been mostly on relaxations and adjacent cases rather than closing the core question: EF2X (envy vanishes after removing any TWO goods) was shown to always exist for four agents, even for cancelable valuations, by Ashuri, Gkatzelis, and Sgouritsa (arXiv 2412.00254, Nov 2024 / rev. Apr 2025); the AAAI 2025 paper 'EFX Exists for Three Types of Agents' extended exact EFX to instances with at most 3 distinct valuation functions among any number of agents; and a 2025/2026 SAT-solver search (arXiv 2604.18216) produced the first explicit EFX nonexistence examples, but only for the broader monotone/submodular valuation class, leaving additive valuations without any known counterexample. The 0.618-EFX-with-charity guarantee for general additive instances has not been improved past 0.618 as of mid-2026; improvements to 2/3 apply only under added restrictions.",
+      "summary": "Complete four-agent existence is proved up to nine goods; unrestricted additive existence remains open.",
       "links": [
         {
           "title": "(Almost Full) EFX Exists for Four Agents (and Beyond) — Berger, Cohen, Feldman, Fiat, AAAI 2022",
@@ -2121,11 +2152,19 @@
         },
         {
           "title": "Pushing the Frontier on Approximate EFX Allocations — EC 2024",
-          "url": "https://arxiv.org/abs/2406.12413"
+          "url": "https://arxiv.org/abs/2406.12413v3"
         },
         {
           "title": "A Counterexample to EFX; n≥3 Agents, m≥n+5 Items; Monotone/Submodular Valuations; via SAT-Solving",
           "url": "https://arxiv.org/abs/2604.18216"
+        },
+        {
+          "title": "Eyad Alkassar, Mahmoud Fouz, Kurt Mehlhorn: Complete EFX Allocations Exist for Four Additive Agents and Up to Nine Goods",
+          "url": "https://arxiv.org/abs/2608.08590v1"
+        },
+        {
+          "title": "Vishwa Prakash HV, Pratik Ghosal, Prajakta Nimbhorkar, Nithin Varma: EFX Exists for Three Types of Agents",
+          "url": "https://arxiv.org/abs/2410.13580v3"
         }
       ]
     },
@@ -2136,7 +2175,7 @@
     "alphaevolve_suitability": "medium",
     "alphaevolve_rationale": "An evolutionary/LLM-guided search loop could plausibly explore the space of small additive-valuation instances (matrices of values) combined with SAT/ILP feasibility checks for EFX, mirroring the recent SAT-based nonexistence result for monotone valuations; the challenge is that a positive result (existence for all instances) cannot be found this way, only a counterexample, so alphaevolve-style search is suited to hunting for a negative example or for extremal/near-tight approximation constructions (e.g. improving the 0.618-EFX charity bound), not to proving universal existence.",
     "literature": {
-      "synthesis": "EFX existence for additive valuations with $n\\ge 4$ agents has resisted the two main lines of attack that succeeded for $n\\le 3$: the envy-cycle-elimination / champion-graph techniques of Chaudhury, Garg, and Mehlhorn (EC 2020) and the rainbow-cycle-number framework of Chaudhury, Garg, Mehlhorn, Mehta, Misra (EC 2021) and its near-optimal refinement by Akrami, Alon, Chaudhury, Garg, Mehlhorn, Mehta (EC 2023). Both approaches bound the number of leftover (\"unallocated\") goods needed to guarantee EFX, and both have been pushed to their apparent limits: the rainbow cycle number is now known to be $\\Theta(d\\log d)$ in $d$ dimensions, translating into near-tight bounds on unallocated goods for the charity relaxation, but not into full existence. The four-agent case specifically has been attacked directly (Berger, Cohen, Feldman, Fiat, AAAI 2022, reaching \"leave at most one good\" EFX) without further improvement toward zero leftover goods as of 2026. Recent work has instead diversified: relaxations such as EF2X (Ashuri, Gkatzelis, Sgouritsa) sidestep the hard case entirely by weakening the fairness guarantee; restricted-valuation results (few distinct valuation types, graphical structure) chip away at special cases; and a 2026 SAT-solver-based search finally produced explicit nonexistence counterexamples, but only once the valuation class was broadened from additive to general monotone/submodular functions, which sharpens the sense that additive valuations occupy a genuine knife-edge in the problem's difficulty landscape. No consensus exists on whether the true answer is existence (most researchers' guess, given no additive counterexample after a decade) or nonexistence (which the 2026 SAT result for the adjacent submodular class makes newly plausible). The remaining gap is essentially: either a genuinely new combinatorial/topological argument extending the $n=3$ machinery to $n=4$, or a much larger/cleverer computational search targeted specifically at additive instances.",
+      "synthesis": "The main distinction is completeness: leaving one good unallocated is not a solution of the original existence question. Few-type and bounded-size theorems remove restricted cases. Nonadditive counterexamples and approximate fairness address different statements.",
       "reviewed": [
         {
           "ref": "Caragiannis, Kurokawa, Moulin, Procaccia, Shah, Wang, 'The Unreasonable Fairness of Maximum Nash Welfare', EC 2016 / TEAC 2019",
@@ -2157,12 +2196,6 @@
           "url": "https://arxiv.org/abs/2102.10654"
         },
         {
-          "ref": "Amanatidis, Filos-Ratsikas, Sgouritsa, 'Pushing the Frontier on Approximate EFX Allocations', EC 2024",
-          "result": "Shows $2/3$-EFX allocations exist under restrictions (at most 7 agents, at most 3 valuation values, or multigraph structure); the unrestricted best bound remains $0.618$-EFX (Amanatidis, Markakis, Ntokos).",
-          "relevance": "partial-progress",
-          "url": "https://arxiv.org/abs/2406.12413"
-        },
-        {
           "ref": "Ashuri, Gkatzelis, Sgouritsa, 'EF2X Exists For Four Agents', arXiv 2412.00254, 2024/2025",
           "result": "Proves the relaxation EF2X (envy vanishes after removing any two goods) always exists for four agents, even for cancelable valuations, via a pseudopolynomial constructive algorithm; explicitly states that full EFX for four additive agents remains open.",
           "relevance": "related-tool",
@@ -2173,6 +2206,18 @@
           "result": "First explicit EFX nonexistence example, obtained via SAT encoding, but for general monotone (including submodular) valuations rather than additive; also shows every 3-agent, 7-good monotone instance does admit EFX.",
           "relevance": "related-tool",
           "url": "https://arxiv.org/abs/2604.18216"
+        },
+        {
+          "ref": "Eyad Alkassar, Mahmoud Fouz, Kurt Mehlhorn, 'Complete EFX Allocations Exist for Four Additive Agents and Up to Nine Goods', arXiv preprint, 2026",
+          "result": "Theorem 1: complete four-agent EFX0 for at most nine goods; arbitrary-size existence remains open.",
+          "relevance": "solves-special-case",
+          "url": "https://arxiv.org/abs/2608.08590v1"
+        },
+        {
+          "ref": "Vishwa Prakash HV, Pratik Ghosal, Prajakta Nimbhorkar, Nithin Varma, 'EFX Exists for Three Types of Agents', EC 2025 / arXiv v3, 2025",
+          "result": "Complete EFX for at most three distinct additive valuation functions.",
+          "relevance": "solves-special-case",
+          "url": "https://arxiv.org/abs/2410.13580v3"
         }
       ]
     },
@@ -2181,7 +2226,8 @@
       "verification_notes": "A claimed existence proof for $n=4$ must produce (or algorithmically construct) an explicit EFX allocation for an ARBITRARY 4-agent additive instance and verify the EFX condition (a finite, polynomial-time-checkable set of $O(n \\cdot m)$ inequalities) directly; watch for proofs that secretly assume extra structure (e.g., generic/non-degenerate valuations) not present in the general statement. A claimed counterexample must be a fully specified finite instance (agents, goods, valuation matrix) together with a proof or brute-force check (feasible for small instances) that NO allocation satisfies all EFX inequalities; this is machine-checkable by enumerating the (finite but combinatorially large) space of allocations. Common failure mode: confusing EFX with EF1 or with EFX-with-charity (partial allocations), which are much easier and already solved — a valid contribution must address the COMPLETE allocation, unrestricted additive case.",
       "machine_checkable": true
     },
-    "notes_for_maintainer": "Carefully re-verified per instructions: the n=4 additive-valuations EFX existence question is STILL OPEN as of July 2026 — no full resolution found. Best exact-EFX progress remains Berger et al. AAAI 2022 ('almost full', at most one unallocated good), unchanged since the old batch record. The approximate/charity constant is also STILL 0.618 for the fully general case (Amanatidis-Markakis-Ntokos); claims of '2/3-EFX' (Amanatidis-Filos-Ratsikas-Sgouritsa, EC 2024) only hold under added restrictions (<=7 agents, <=3 distinct valuations, or graph/multigraph structure), so I did NOT change the headline constant. One noteworthy and possibly under-the-radar 2026 development worth flagging to the maintainer: arXiv 2604.18216 (very recent, SAT-solving based) gives the FIRST EVER explicit EFX nonexistence counterexample, but for the strictly broader class of monotone/submodular (not additive) valuations — this does not resolve our problem but is highly relevant context and a plausible template for future additive-specific search. I could not access full PDF text for that paper (returned empty), so I rely on its arXiv abstract page and secondary search-result summaries; recommend a follow-up check when the paper is indexed with full text. All other citations were verified via direct arXiv/AAAI/DOI page fetches."
+    "notes_for_maintainer": "2026-11-09: checked August four-agent theorem and corrected the three-valuation-types attribution and venue. Computational proof corpus not independently replayed. Removed stale July assertions of an exhaustive current frontier.",
+    "open_problem": "Does every instance with four or more agents and nonnegative additive valuations admit a complete EFX allocation, with no bound on the number of goods?"
   },
   {
     "id": "efx-chores",
@@ -2196,11 +2242,11 @@
       "disutilities",
       "Pareto optimality"
     ],
-    "status": "open",
+    "status": "partially resolved",
     "confidence": "high",
-    "short_statement": "For indivisible chores (which impose costs), an EFX allocation is one where any envy agent $i$ feels toward $j$ vanishes after dropping any single chore from $i$'s own bundle. Does an EFX allocation always exist for additive chores with three agents?",
-    "full_statement": "Let $N=\\{1,\\dots,n\\}$ be a set of agents and $M$ a set of indivisible chores, with each agent $i$ having an additive cost function $c_i$ (chores impose costs / disutilities, $c_i(S)=\\sum_{e\\in S}c_i(\\{e\\})$). An allocation $(X_1,\\dots,X_n)$ partitioning $M$ is EFX (for chores) if for all agents $i,j$ and every chore $e\\in X_i$ with $c_i(\\{e\\})>0$: $c_i(X_i\\setminus\\{e\\})\\le c_i(X_j)$. In words, any envy agent $i$ feels toward agent $j$ vanishes upon dropping any single (positively costly) chore from $i$'s own bundle. Unlike the goods setting, the chores setting is harsher: with additive costs restricted to only three distinct values (tri-valued) and four or more agents, EFX allocations can provably fail to exist (He, Tao 2026), which — since tri-valued costs are a special case of unrestricted additive costs — resolves the general $n\\ge4$ additive-chores existence question in the negative. The precise remaining gap: does an EFX allocation always exist for chores with (unrestricted) additive costs and exactly $n=3$ agents?",
-    "known_results": "The general chores analogue of the EFX-for-goods conjecture is now FALSE: He and Tao (arXiv, June 2026) prove that even for tri-valued additive cost functions (only three distinct positive cost levels), for every $n\\ge4$ there is an instance with no EFX allocation; since tri-valued costs are additive costs, this resolves the $n\\ge4$ general-additive-chores existence question negatively. Their construction is tight: EFX is known to always exist for chores with at most two distinct cost values (bi-valued), so three values is the minimum needed for a counterexample. They further show that even for bi-valued instances, EFX can be incompatible with Pareto-optimality once $n\\ge4$ (the first such example with strictly positive costs), while an EFX allocation itself is guaranteed to exist for every bi-valued 4-agent instance. Earlier, Christoforidis and Santorinaios (IJCAI 2024) had shown EFX can fail to exist for only $n=3$ agents under SUPERADDITIVE cost functions (six chores suffice), establishing the first goods/chores separation and NP-completeness of EFX-existence-checking for general monotone costs, but that result does not apply to additive costs. For (unrestricted) additive costs specifically, positive existence results hold when the number of chores is at most $n+2$, when all but one agent share an identical ordering over chores, and (via Kobayashi et al. 2025 and Garg et al. 2023) for three-agent personalized bi-valued costs. In general, a 2-EFX allocation (envy vanishes after removing the two costliest chores) always exists for additive chores (Zhou, Wu 2022/2024), and this approximation factor has since been sharpened further by several 2024-2026 papers (e.g., 'Existence of 2-EFX Allocations of Chores', 2025; 'Constant-Factor EFX Exists for Chores', 2024). As of July 2026, the single remaining open case that gives this problem its name — complete EFX existence for additive costs with exactly $n=3$ agents — has NOT been resolved by the He-Tao nonexistence result (which requires $n\\ge4$) and remains open.",
+    "short_statement": "For three agents dividing indivisible chores with additive costs, complete EFX is known for at most eight chores. The arbitrary-size existence question remains.",
+    "full_statement": "Let $N=\\{1,2,3\\}$ and let $M$ be a finite set of indivisible chores. Agent $i$ has nonnegative additive costs $c_i(S)=\\sum_{g\\in S}c_i(g)$. A complete allocation partitions $M$ into $(X_1,X_2,X_3)$, allowing empty bundles.\n\nUse the standard all-chores EFX convention: for every $i,j$ and every $g\\in X_i$, including $c_i(g)=0$, $$c_i(X_i\\setminus\\{g\\})\\le c_i(X_j).$$ Removing a chore is hypothetical, and from the envious agent's own bundle. This is stronger than checking only positive-cost deletions.\n\nDoes such an allocation always exist for three agents and an arbitrary number of chores? Counterexamples for four or more agents do not settle this question.",
+    "known_results": "Wentao He and Biaoshuai Tao (arXiv:2606.08872v2, July 2026), Theorems 1-3, give additive counterexamples for every $n\\ge4$, using three positive cost values. They also prove four-agent bi-valued EFX existence and bi-valued EFX/Pareto-optimality incompatibility for $n\\ge4$. This is not a bi-valued existence theorem for all $n$.\n\nXinkai Zhang, 'EFX Allocations for Three Agents and Seven or Eight Chores' (arXiv:2609.10585v2, October 2026), Theorems 1.1-1.2, handles seven and eight chores with arbitrary nonnegative additive costs. Together with the earlier $m\\le2n$ theorem, this covers three-agent instances with at most eight chores. The computer-assisted certificates were not replayed here.\n\nJugal Garg and Aniket Murhekar (arXiv:2507.19461v1) prove existence of multiplicative 2-EFX for any number of additive agents: after deleting any one owned chore, its remaining cost is at most twice the comparison bundle's cost. This does not mean deleting two chores.\n\nRemaining open problem. Prove complete exact EFX for three additive agents without bounding the number of chores, or give a counterexample.",
     "where_posed": {
       "text": "Nonexistence for chores under superadditive costs (n=3) established in Christoforidis, Santorinaios, 'On the Pursuit of EFX for Chores: Non-Existence and Approximations', IJCAI 2024; the sharper additive-costs, general-n nonexistence result (n>=4) is due to He, Tao, 'EFX for Additive Chores: Nonexistence, Pareto Incompatibility, and Bi-Valued Existence', arXiv, June 2026, which explicitly frames itself as resolving 'the long-standing open problem for the existence of EFX allocations with additive cost functions'; the n=3 additive case is left open by both.",
       "url": "https://arxiv.org/abs/2606.08872",
@@ -2226,19 +2272,33 @@
         "authors": "Wentao He, Biaoshuai Tao",
         "title": "EFX for Additive Chores: Nonexistence, Pareto Incompatibility, and Bi-Valued Existence",
         "year": 2026,
-        "venue": "arXiv",
-        "url": "https://arxiv.org/abs/2606.08872"
+        "venue": "arXiv preprint",
+        "url": "https://arxiv.org/abs/2606.08872v2"
+      },
+      {
+        "authors": "Jugal Garg, Aniket Murhekar",
+        "title": "Existence of 2-EFX Allocations of Chores",
+        "year": 2025,
+        "venue": "arXiv preprint",
+        "url": "https://arxiv.org/abs/2507.19461v1"
+      },
+      {
+        "authors": "Xinkai Zhang",
+        "title": "EFX Allocations for Three Agents and Seven or Eight Chores",
+        "year": 2026,
+        "venue": "arXiv preprint",
+        "url": "https://arxiv.org/abs/2609.10585v2"
       }
     ],
     "enabled": true,
-    "background": "Once envy-freeness up to any good (EFX) was proposed for indivisible goods, it was natural to ask about its mirror image for chores — indivisible tasks or costs that agents dislike rather than desire, such as household duties, unwanted job assignments, or waste-disposal responsibilities. The chores setting is not a trivial relabeling of the goods setting: negating valuations flips incentives in ways that break many of the arguments that work for goods, and indeed the two settings have turned out to have surprisingly different answers. For goods, no EFX nonexistence example is known for additive valuations at any number of agents; for chores, by contrast, nonexistence had long been suspected and was confirmed for small cases, revealing a genuine asymmetry between the two models that is itself an interesting structural finding in fair division theory. This makes the chores side of EFX a natural stress-test for which techniques from the goods literature (envy-cycle elimination, rainbow cycle numbers, champion graphs) transfer and which break down, and why. Beyond its theoretical interest, chore division is arguably the more common real-world scenario — splitting caregiving duties, unpleasant shifts, or cost-sharing obligations among roommates, partners, or coworkers — so pinning down exactly where EFX allocations do and do not exist for chores has direct implications for designing fair task-assignment mechanisms. The problem also serves as a proving ground for the interaction between fairness and efficiency (Pareto-optimality), since a recurring theme in the chores literature is that EFX and Pareto-optimality can conflict even when EFX by itself is achievable, unlike in most known goods settings.",
+    "background": "For chores, the envious agent hypothetically removes a task from its own bundle; for goods, removal is from the envied bundle. Negating utilities therefore does not simply transfer the known goods proofs. With additive costs, higher-agent counterexamples now rule out a universal existence theorem, while three-agent existence remains an important separate target. Recent bounded-size existence results, approximate fairness results, and incompatibility with Pareto efficiency each answer different questions. This entry fixes three agents, additive nonnegative costs, complete allocation, and exact EFX, so that progress can be compared within one model.",
     "progress": {
       "state": "partial",
-      "summary": "Major 2026 development: He and Tao (arXiv 2606.08872, submitted 7 June 2026) proved that EFX allocations can fail to exist for additive chores whenever $n\\ge4$, using a tri-valued (hence additive) counterexample, and additionally proved every EFX allocation can fail to be Pareto-optimal for bi-valued chores when $n\\ge4$. This settles the general-$n$ question negatively but their construction explicitly requires $n\\ge4$; the specific $n=3$, fully general additive-costs case (the version this problem entry is about) is NOT addressed by their counterexample and remains open as of July 2026. Positive existence for the $n=4$ bi-valued special case was also newly shown by the same paper. No paper found claims to resolve $n=3$ additive chores either way.",
+      "summary": "The checked arXiv theorem covers up to eight chores. Neither higher-agent counterexamples nor multiplicative approximation resolves unrestricted three-agent existence.",
       "links": [
         {
           "title": "EFX for Additive Chores: Nonexistence, Pareto Incompatibility, and Bi-Valued Existence — He, Tao, 2026",
-          "url": "https://arxiv.org/abs/2606.08872"
+          "url": "https://arxiv.org/abs/2606.08872v2"
         },
         {
           "title": "On the Pursuit of EFX for Chores: Non-Existence and Approximations — Christoforidis, Santorinaios, IJCAI 2024",
@@ -2246,7 +2306,11 @@
         },
         {
           "title": "Existence of 2-EFX Allocations of Chores, 2025",
-          "url": "https://arxiv.org/abs/2507.19461"
+          "url": "https://arxiv.org/abs/2507.19461v1"
+        },
+        {
+          "title": "Xinkai Zhang: EFX Allocations for Three Agents and Seven or Eight Chores",
+          "url": "https://arxiv.org/abs/2609.10585v2"
         }
       ]
     },
@@ -2257,7 +2321,7 @@
     "alphaevolve_suitability": "high",
     "alphaevolve_rationale": "Because the remaining question is about one exact, small finite case ($n=3$), an evolutionary/LLM-guided search over cost matrices combined with a fast EFX-feasibility oracle (brute-force or SAT-based, since $n=3$ keeps the allocation space and the number of EFX inequalities small) is very well matched to this problem: it could either surface an $n=3$ counterexample (mirroring how He-Tao's $n\\ge4$ counterexample was found) or, by exhaustively failing to find one across systematically varied instances, build strong empirical evidence for an existence conjecture that a human could then try to prove.",
     "literature": {
-      "synthesis": "The chores side of EFX has followed a 'divide and conquer by number of distinct cost values' pattern: bi-valued instances are well understood (existence holds quite broadly, including for $n=3$ personalized bi-valued costs per Garg et al. 2023 and Kobayashi et al. 2025, and for $n=4$ per He-Tao 2026), while tri-valued and general additive instances are where the picture darkens. Christoforidis and Santorinaios (IJCAI 2024) first showed a goods/chores asymmetry by exhibiting nonexistence for $n=3$ under superadditive costs and proving NP-completeness of EFX-checking for monotone costs, but left the additive case open. The 2026 breakthrough by He and Tao closes the general-$n$ additive question by constructing a tri-valued (hence additive), $n\\ge4$ nonexistence example — tight in the sense that only two distinct cost values would not suffice — and separately shows EFX and Pareto-optimality can conflict for bi-valued costs once $n\\ge4$, extending known EFX/PO incompatibility results (which previously needed zero-cost items) to strictly positive costs. Crucially, their counterexample construction inherently needs at least four agents; nothing in the current literature settles whether $n=3$, unrestricted-additive-cost EFX allocations always exist. This leaves $n=3$ as a sharply delineated remaining gap: below it (bi-valued or $n\\le2$) existence is known, and just above it (tri-valued, $n\\ge4$) nonexistence is now known, so $n=3$ general additive costs is the precise unresolved boundary case. In parallel, the approximation literature has matured quickly, with 2-EFX (Zhou-Wu) and various constant-factor / conditional bounds (2024-2026) narrowing the practical gap even while exact existence remains unsettled for the hardest cases.",
+      "synthesis": "The direction of deletion matters: goods EFX removes from the envied bundle, whereas chores EFX removes from one's own bundle. Existence, approximate fairness, and compatibility with Pareto efficiency are separate questions. The unrestricted three-agent target survives both the higher-agent negative result and the recent bounded-size positive results.",
       "reviewed": [
         {
           "ref": "Vasilis Christoforidis, Christodoulos Santorinaios, 'On the Pursuit of EFX for Chores: Non-Existence and Approximations', IJCAI 2024",
@@ -2266,37 +2330,32 @@
           "url": "https://arxiv.org/abs/2406.10752"
         },
         {
-          "ref": "Wentao He, Biaoshuai Tao, 'EFX for Additive Chores: Nonexistence, Pareto Incompatibility, and Bi-Valued Existence', arXiv 2606.08872, 2026",
-          "result": "Resolves general-$n$ additive-chores EFX existence negatively via a tri-valued, $n\\ge4$ counterexample (tight in number of cost values); shows EFX/Pareto-optimality incompatibility for bi-valued costs at $n\\ge4$ (first with strictly positive costs); proves EFX always exists for $n=4$ bi-valued instances.",
+          "ref": "Wentao He, Biaoshuai Tao, 'EFX for Additive Chores: Nonexistence, Pareto Incompatibility, and Bi-Valued Existence', arXiv preprint, 2026",
+          "result": "Theorems 1-3 distinguish higher-agent nonexistence, efficiency incompatibility, and four-agent bi-valued existence.",
           "relevance": "hardness",
-          "url": "https://arxiv.org/abs/2606.08872"
+          "url": "https://arxiv.org/abs/2606.08872v2"
         },
         {
-          "ref": "Shengwei Zhou, Xiaowei Wu, 'Approximately EFX Allocations for Indivisible Chores', IJCAI 2022 / Artif. Intell. 2024",
-          "result": "Establishes a 2-EFX allocation (envy vanishes after dropping the two most costly chores) always exists for additive costs, and gives algorithms for computing it.",
+          "ref": "Jugal Garg, Aniket Murhekar, 'Existence of 2-EFX Allocations of Chores', arXiv preprint, 2025",
+          "result": "Proves multiplicative 2-EFX for additive costs; this is not a two-chore deletion guarantee.",
           "relevance": "partial-progress",
-          "url": "https://arxiv.org/abs/2109.07313"
+          "url": "https://arxiv.org/abs/2507.19461v1"
         },
         {
-          "ref": "'Existence of 2-EFX Allocations of Chores', arXiv 2507.19461, 2025",
-          "result": "Gives a simplified/strengthened approach to the 2-EFX existence guarantee for chores.",
-          "relevance": "partial-progress",
-          "url": "https://arxiv.org/abs/2507.19461"
-        },
-        {
-          "ref": "'Constant-Factor EFX Exists for Chores', arXiv 2407.03318, 2024",
-          "result": "Improves constant-factor approximate EFX guarantees for additive chores beyond the earlier 2-EFX bound in certain regimes.",
-          "relevance": "partial-progress",
-          "url": "https://arxiv.org/abs/2407.03318"
+          "ref": "Xinkai Zhang, 'EFX Allocations for Three Agents and Seven or Eight Chores', arXiv preprint, 2026",
+          "result": "Theorems 1.1-1.2 give three-agent exact existence for seven and eight chores, including zero costs.",
+          "relevance": "solves-special-case",
+          "url": "https://arxiv.org/abs/2609.10585v2"
         }
       ]
     },
     "agent_guidance": {
       "suitable_approaches": "Because the target case is fixed and small ($n=3$, unrestricted additive costs), the most promising approaches are: (1) adapt the He-Tao tri-valued construction technique — try to push their nonexistence gadget down to $n=3$, or prove structurally why it cannot go below $n=4$ (which would itself be informative); (2) exhaustive or SAT/ILP-based search over small 3-agent additive-cost instances (bounded number of chores, small integer costs) to find a counterexample directly, mirroring the SAT-solving methodology used for the analogous goods problem; (3) attempt to extend the existing $n=3$ positive results (bi-valued, personalized bi-valued, identical-ordering) toward general additive costs by relaxing their structural assumptions one at a time to see where the proof breaks.",
-      "verification_notes": "A nonexistence proof for $n=3$ must exhibit a fully specified instance (3 additive cost vectors over a finite chore set) and verify NO partition satisfies all EFX inequalities — for $n=3$ and a modest number of chores this is a finite check that a solver (SAT/ILP or brute force) can perform exactly, so numerics/computer verification suffice as long as the search is exhaustive over allocations (not just heuristic). A positive existence proof must give an algorithm (or nonconstructive argument) guaranteeing an EFX allocation for EVERY 3-agent additive instance; check especially that the construction does not implicitly assume bi-valued, superadditive-free, or other restricted cost structure, since nearly all current $n=3$ positive results rely on some such restriction. Any claimed resolution should be checked against the He-Tao paper's framing carefully, since their abstract's claim to 'resolve the long-standing open problem' refers to the general-$n$ (not $n=3$-specific) question.",
+      "verification_notes": "Verify completeness, additivity, nonnegative costs, and every owned-chore deletion, including zero-cost chores. A nonexistence proof must rule out all allocations, not only balanced bundle sizes. Do not confuse multiplicative 2-EFX with EF2X. Computational existence certificates require a correct encoding, exhaustive case coverage, and independently checkable unsatisfiability proofs. The higher-agent counterexamples do not settle the three-agent target.",
       "machine_checkable": true
     },
-    "notes_for_maintainer": "IMPORTANT UPDATE: since the old batch-02.json record was written, a very recent paper (He & Tao, arXiv 2606.08872, submitted 7 June 2026 — about 3-4 weeks before this enrichment) proves EFX allocations can fail to exist for ADDITIVE chores whenever n>=4 (via a tri-valued counterexample), which the authors explicitly describe as resolving 'the long-standing open problem for the existence of EFX allocations with additive cost functions.' However, their counterexample construction requires n>=4; it does NOT address n=3, which is precisely the case this problem entry (id efx-chores) is scoped to per its title 'Existence of EFX allocations for chores (three agents)'. I therefore kept status as 'open' (matching the original record's specific n=3 framing) but substantially rewrote known_results/progress to reflect that the GENERAL n>=4 additive question is now resolved negatively — this is a meaningfully different state of the art than the old batch file, which only knew about the superadditive n=3 nonexistence result from Christoforidis-Santorinaios 2024. Recommend the maintainer double check whether the problem's scope/title should be tightened to explicitly say 'n=3, additive costs, exact existence' to avoid confusion with the now-resolved general-n question, and consider whether a separate resolved entry should be created for the general-n additive nonexistence result. Because the source paper is extremely recent (weeks old at time of writing) and I could only access an HTML dump that was truncated before its own 'Open Problems' section, I recommend a follow-up check once the paper is more widely indexed/discussed to confirm no error in my reading of scope."
+    "notes_for_maintainer": "2026-11-09: corrected 2-EFX, the m<=2n baseline, and the bi-valued scope. Standardized the zero-cost convention explicitly. Checked arXiv statements, not solver certificates. An unrefereed nine-chores repository claim was located but not theorem-reviewed; tracked in the deep-sweep audit, so no claim that nine is the first open size is made.",
+    "open_problem": "Does every three-agent instance with nonnegative additive chore costs admit a complete exact EFX allocation, for arbitrarily many chores?"
   },
   {
     "id": "nash-social-welfare-approximation",
@@ -3917,11 +3976,11 @@
       "indivisible goods",
       "money"
     ],
-    "status": "open",
+    "status": "partially resolved",
     "confidence": "medium",
     "short_statement": "For monotone valuations with item marginals at most one, determine the minimum subsidy needed to guarantee an envy-free allocation.",
-    "full_statement": "There are $n$ agents and a finite set $M$ of indivisible goods. Each agent $i$ has a monotone valuation $v_i:2^M\\to\\mathbb{R}_{\\ge0}$ with bounded marginal increments: $v_i(S\\cup\\{g\\})-v_i(S)\\le 1$ for all $S\\subseteq M$ and goods $g\\notin S$. An allocation $(X_1,\\ldots,X_n)$ partitions $M$. A subsidy vector $p\\in\\mathbb{R}_{\\ge0}^n$ makes the allocation envy-free if $$v_i(X_i)+p_i\\ge v_i(X_j)+p_j\\quad\\text{for all agents }i,j.$$ Let $S_{\\mathcal V}(n)$ be the smallest number such that every instance in valuation class $\\mathcal V$ admits some allocation and subsidies with $\\sum_i p_i\\le S_{\\mathcal V}(n)$. The additive case has the tight value $S_{\\mathrm{add}}(n)=n-1$. The open problem is to determine $S_{\\mathrm{mon}}(n)$ for arbitrary monotone valuations with unit marginals: does the $n-1$ total-subsidy bound still suffice, or can complementarities/substitutabilities force asymptotically larger total or per-agent subsidies?",
-    "known_results": "Halpern and Shah showed that subsidies can guarantee envy-freeness and conjectured a sharp $n-1$ total bound for additive valuations with unit marginal upper bounds. Brustle, Dippel, Narayan, Suzuki, and Vetta proved this additive conjecture: a total subsidy of $n-1$ suffices, equivalently at most one dollar per agent after normalizing one subsidy to zero, and this is tight. They also proved that for general monotone valuations an envy-free allocation always exists with subsidy at most $2(n-1)$ per agent, hence total subsidy $O(n^2)$ independent of the number of goods. Binary, identical, and other structured valuation classes admit stronger bounds in related work. The open gap is whether general monotone valuations require more than the additive $n-1$ total subsidy, and if so what the correct dependence on $n$ is.",
+    "full_statement": "There are $n$ agents and a finite set $M$ of indivisible goods. Each agent $i$ has a monotone valuation $v_i:2^M\\to\\mathbb{R}_{\\ge0}$ normalized by $v_i(\\emptyset)=0$, with bounded marginal increments: $v_i(S\\cup\\{g\\})-v_i(S)\\le 1$ for all $S\\subseteq M$ and goods $g\\notin S$. An allocation $(X_1,\\ldots,X_n)$ partitions $M$. A subsidy vector $p\\in\\mathbb{R}_{\\ge0}^n$ makes the allocation envy-free if $$v_i(X_i)+p_i\\ge v_i(X_j)+p_j\\quad\\text{for all agents }i,j.$$ Let $S_{\\mathcal V}(n)$ be the smallest number such that every instance in valuation class $\\mathcal V$ admits some allocation and subsidies with $\\sum_i p_i\\le S_{\\mathcal V}(n)$. The additive case has the tight value $S_{\\mathrm{add}}(n)=n-1$. The open problem is to determine $S_{\\mathrm{mon}}(n)$ for arbitrary monotone valuations with unit marginals: does the $n-1$ total-subsidy bound still suffice, or can complementarities/substitutabilities force asymptotically larger total or per-agent subsidies?",
+    "known_results": "Johannes Brustle, Jack Dippel, Vishnu V. Narayan, Mashbat Suzuki, and Adrian Vetta proved the tight additive bound $n-1$ and a quadratic bound for monotone valuations. The lower bound $n-1$ comes from one good valued at one by every agent.\n\nMax Dupré la Tour and Mashbat Suzuki, 'Subquadratic Subsidies for Nonnegative or Nonpositive Valuations' (arXiv:2609.08272v1), Theorem 1, establish total subsidy at most $5\\sqrt{2}(n-1)^{3/2}\\sqrt{\\log(4n)}$ for every $n$. Their normalization is $v_i(\\emptyset)=0$ with absolute single-item marginals at most one. All valuations must be nonnegative on every bundle, or all nonpositive; monotone goods satisfy the first condition. This removes the earlier prime-power restriction on the number of agents. The argument is existential, not a polynomial-time algorithm.\n\nRemaining open problem. Does the sharp additive $n-1$ bound extend to arbitrary monotone valuations? More generally, close the linear-to-subquadratic worst-case gap.",
     "where_posed": {
       "text": "The monotone-valuations gap follows from Brustle et al., 'One Dollar Each Eliminates Envy', EC 2020.",
       "url": "https://arxiv.org/abs/1912.02797",
@@ -3942,17 +4001,28 @@
         "year": 2019,
         "venue": "SAGT",
         "url": "https://link.springer.com/chapter/10.1007/978-3-030-30473-7_25"
+      },
+      {
+        "authors": "Max Dupré la Tour, Mashbat Suzuki",
+        "title": "Subquadratic Subsidies for Nonnegative or Nonpositive Valuations",
+        "year": 2026,
+        "venue": "arXiv preprint",
+        "url": "https://arxiv.org/abs/2609.08272v1"
       }
     ],
     "enabled": true,
     "background": "Indivisible goods often do not admit envy-free allocations, but cash transfers can compensate agents and restore envy-freeness. The subsidy question asks how much money is always sufficient. This is a clean hybrid of fair division and quasi-linear utility: allocate indivisible goods, then add nonnegative payments so every agent prefers its own bundle plus payment. For additive valuations with each item worth at most one dollar marginally, Brustle, Dippel, Narayan, Suzuki, and Vetta proved the striking tight result that total subsidy $n-1$ suffices. For general monotone valuations with bounded marginals, envy can still be eliminated with bounded subsidy independent of the number of items, but the best known bounds are much larger. The main open question is whether the additive one-dollar-each phenomenon extends to monotone valuations.",
     "progress": {
       "state": "partial",
-      "summary": "The additive case is tight at total subsidy $n-1$. General monotone valuations have bounded subsidies independent of item count, but the optimal dependence on $n$ is open.",
+      "summary": "A subquadratic bound now holds for every number of agents; the conjectured linear bound remains unresolved.",
       "links": [
         {
           "title": "One Dollar Each Eliminates Envy",
           "url": "https://arxiv.org/abs/1912.02797"
+        },
+        {
+          "title": "Max Dupré la Tour, Mashbat Suzuki: Subquadratic Subsidies for Nonnegative or Nonpositive Valuations",
+          "url": "https://arxiv.org/abs/2609.08272v1"
         }
       ]
     },
@@ -3963,12 +4033,12 @@
     "alphaevolve_suitability": "high",
     "alphaevolve_rationale": "Finite monotone valuations can be represented explicitly for small instances, and subsidy minimization can be solved by linear programming once an allocation is fixed.",
     "literature": {
-      "synthesis": "The subsidy approach changes indivisible fair division from an impossibility-heavy setting into a quantitative compensation problem. Halpern and Shah initiated the systematic study and gave broad guarantees. Brustle et al. resolved the additive conjecture with an elegant tight $n-1$ total subsidy bound, showing that the necessary money can be very small and independent of the number of goods. Their monotone result shows boundedness survives without additivity, but the proof loses much more in $n$. The open issue is whether complementarity/substitutability inside monotone valuations truly forces larger payments or merely defeats current allocation methods.",
+      "synthesis": "The additive case is sharp, whereas complementarities and substitutions make the monotone case harder. Recent existence bounds improve the dependence on the number of agents without settling either the optimal total subsidy or efficient construction.",
       "reviewed": [
         {
           "ref": "Johannes Brustle, Jack Dippel, Vishnu V. Narayan, Mashbat Suzuki, Adrian Vetta, 'One Dollar Each Eliminates Envy', EC 2020",
           "result": "Proves the tight additive $n-1$ subsidy bound and gives monotone upper bounds.",
-          "relevance": "poses-problem",
+          "relevance": "partial-progress",
           "url": "https://arxiv.org/abs/1912.02797"
         },
         {
@@ -3978,10 +4048,10 @@
           "url": "https://link.springer.com/chapter/10.1007/978-3-030-30473-7_25"
         },
         {
-          "ref": "Haris Aziz, Ioannis Caragiannis, Ayumi Igarashi, Toby Walsh, fair division with payments literature",
-          "result": "Provides related algorithmic context for fairness with transfers and indivisible goods.",
-          "relevance": "related-tool",
-          "url": "https://arxiv.org/search/cs?query=fair+division+subsidy+envy"
+          "ref": "Max Dupré la Tour, Mashbat Suzuki, 'Subquadratic Subsidies for Nonnegative or Nonpositive Valuations', arXiv preprint, 2026",
+          "result": "Theorem 1 removes the prime-power restriction and proves an existential subquadratic subsidy bound.",
+          "relevance": "partial-progress",
+          "url": "https://arxiv.org/abs/2609.08272v1"
         }
       ]
     },
@@ -3990,7 +4060,7 @@
       "verification_notes": "A claimed lower bound must specify a finite monotone unit-marginal valuation profile and prove that every allocation requires more than the proposed subsidy threshold; checking only one allocation is insufficient. A claimed upper bound must construct, or prove existence of, an allocation and nonnegative subsidies for arbitrary monotone valuations under the unit-marginal condition, with total subsidy measured after the usual normalization that at least one agent receives zero. Algorithmic claims should also state the valuation oracle model.",
       "machine_checkable": true
     },
-    "open_problem": "Determine whether total subsidy $n-1$ suffices beyond additive valuations, or find the correct asymptotic subsidy bound for general monotone valuations with bounded marginals."
+    "open_problem": "For normalized monotone valuations with unit-bounded marginals, determine the minimum worst-case total subsidy. Is $n-1$ sufficient, or can one prove a superlinear lower bound?"
   },
   {
     "id": "lost-sales-inventory-positive-lead-time-optimal-policy",
@@ -4217,12 +4287,12 @@
       "asymptotic-optimality",
       "curse-of-dimensionality"
     ],
-    "status": "open",
+    "status": "partially resolved",
     "confidence": "high",
     "title": "Optimal policy structure for dual-sourcing inventory (fast/slow sources)",
-    "short_statement": "A firm replenishes a single product from a cheap slow source and an expensive fast source under stochastic demand and full backlogging. When the lead-time gap is at least 2, the optimal ordering policy's structure is unknown and believed intractable; whether any simple policy (Tailored Base-Surge, dual-index, single-index) is optimal is open.",
-    "full_statement": "A single item is reviewed each period over an infinite horizon (discounted or long-run average cost) with i.i.d. demands $D_t$. Two sources are available: a regular source with per-unit cost $c_r$ and deterministic lead time $L_r$, and an expedited source with cost $c_e > c_r$ and lead time $L_e$, where $L_r > L_e \\ge 0$. In period $t$ the firm chooses order quantities $q^r_t, q^e_t \\ge 0$; unmet demand is fully backlogged with holding cost $h$ and backorder penalty $b$. The state must encode both outstanding-order pipelines, of dimension $\\sim (L_r - L_e)$, giving a high-dimensional MDP. A Tailored Base-Surge (TBS) policy fixes a constant regular order $q^r_t \\equiv r$ and uses an order-up-to rule $q^e_t = (S - \\widehat{IP}_t)^+$ at the expedited source, where $\\widehat{IP}_t$ is the expedited inventory position. $$\\textbf{Open:}\\quad \\text{characterize an optimal policy when the lead-time gap } L_r - L_e \\ge 2.$$ For $L_r - L_e = 1$ the optimal expedited decision is a base-stock rule, but for $L_r - L_e \\ge 2$ the optimal policy has no known simple structure and is conjectured intractable. What remains open: the exact structure of $\\pi^\\star$ for gap $\\ge 2$; whether TBS, dual-index, or single-index policies are exactly optimal in any nontrivial case; and non-asymptotic guarantees for moderate $L_r - L_e$. Only an asymptotic result is known: TBS is asymptotically optimal as the regular lead time $L_r \\to \\infty$ with $L_e$ fixed.",
-    "known_results": "For lead-time gap one, the state and dynamic program simplify enough to yield tractable structural results. For larger gaps, dual-index policies and Tailored Base-Surge policies have strong numerical performance. Xin and Goldberg prove that a simple Tailored Base-Surge policy is asymptotically optimal as the regular-source lead time tends to infinity with the express-source lead time fixed, giving a theoretical foundation for the heuristic in the regime where the dynamic program is most intractable. The exact optimal policy for fixed finite lead-time gaps at least two remains unknown. Later survey and inventory-asymptotics work clarifies why large-lead-time asymptotic optimality does not automatically provide a usable exact policy for moderate lead times.",
+    "short_statement": "Two suppliers trade replenishment speed against cost. New guarantees support projection policies, while exact optimal control at a fixed lead-time gap remains poorly understood.",
+    "full_statement": "A single product is reviewed in discrete periods under i.i.d. nonnegative demand of finite positive mean and finite variance. Orders placed before demand arrive after deterministic lead times $L_r>L_e\\ge0$ from an uncapacitated regular supplier and an expedited supplier. There are no fixed order costs. Unit prices satisfy $c_e>c_r$; unmet demand is fully backlogged, and end-of-period net inventory $I_t$ incurs $h(I_t)^++b(-I_t)^+$, with $h,b>0$.\n\nA nonanticipating policy chooses nonnegative orders $(q_t^r,q_t^e)$ from current net inventory and outstanding orders. Under the long-run expected average-cost criterion, minimize $$J(\\pi)=\\limsup_{T\\to\\infty}\\frac1T\\mathbb E_\\pi\\!\\left[\\sum_{t=1}^T(c_rq_t^r+c_eq_t^e+h(I_t)^++b(-I_t)^+)\\right].$$ Fix an initial state with finite inventory and finite outstanding orders.\n\nFor a fixed lead-time gap $L_r-L_e\\ge2$, characterize an optimal policy beyond the general full-pipeline Bellman formulation: identify and prove usable structural restrictions or sufficient statistics. A policy optimal only as a parameter diverges does not answer the finite-parameter question. Any algorithmic hardness assertion must specify an input representation rather than infer hardness from a large state space.",
+    "known_results": "Consecutive lead times admit order-up-to structure. For larger gaps, the optimal decision generally depends on the outstanding-order pipeline. Linwei Xin and David A. Goldberg prove asymptotic optimality of tailored base-surge (TBS) policies as the regular lead time grows with the expedited lead time fixed.\n\nPoulad Moradi, Melvin Drent, Joachim Arts, and Collin Drent, arXiv:2207.12182v2 (October 2, 2026), extend the projected expedited inventory position (PEIP) theory. Under finite nonzero demand variance, Theorems 5.7 and 5.9 give exponential-in-gap cost comparisons and optimality-gap bounds with other parameters fixed. Theorem 6.3 gives relative asymptotic optimality when backlog penalty and expedited premium grow at a fixed ratio below the lead-time gap, subject to Assumption 6.2 on cumulative-demand tails. The latter requires bounded cumulative demand or sublinear conditional mean excess; finite variance alone is not the stated condition.\n\nRemaining open problem. Characterize exact optimal policies for fixed finite lead-time gaps. Asymptotic guarantees and good numerical performance do not imply exact optimality at moderate parameters.",
     "where_posed": {
       "text": "The long-standing finite-gap structural problem is discussed in the dual-sourcing inventory literature; Xin and Goldberg identify the model as having resisted exact solution for more than forty years while resolving the large-regular-lead-time TBS asymptotic question.",
       "url": "https://arxiv.org/abs/1503.01071",
@@ -4264,13 +4334,20 @@
         "year": 2021,
         "venue": "Production and Operations Management 30(6):1718-1750",
         "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/poms.13339"
+      },
+      {
+        "authors": "Poulad Moradi, Melvin Drent, Joachim Arts, Collin Drent",
+        "title": "Asymptotic Optimality of Inventory Projection in Dual-Sourcing Systems",
+        "year": 2026,
+        "venue": "arXiv, October revision",
+        "url": "https://arxiv.org/abs/2207.12182v2"
       }
     ],
     "enabled": true,
     "background": "Dual sourcing is a classic supply-chain model where a firm can replenish from a slow cheap supplier and a fast expensive supplier. The model is simple to state but hard because orders placed today arrive after different deterministic lead times, so the state includes a multi-period pipeline from each supplier. When the lead-time difference is one, the dynamic program has much more tractable structure. When the gap is two or more periods, the exact optimal policy has resisted a clean characterization for decades. This makes the problem a good fit for ORdős Problems: the modelling choices are already settled, the objective is a standard infinite-horizon inventory cost, and there are strong heuristic and asymptotic policies. Xin and Goldberg gave theoretical support for Tailored Base-Surge policies by proving asymptotic optimality when the regular-source lead time grows while the express-source lead time is fixed. That result resolves an important large-lead-time question, but it does not characterize the exact finite-lead-time optimal policy. The remaining open problem is structural: describe the optimal policy, or prove sharp non-asymptotic guarantees for a simple policy class, when the two lead times differ by at least two.",
     "progress": {
       "state": "partial",
-      "summary": "Tailored Base-Surge is now known to be asymptotically optimal in a large-lead-time regime, but no exact finite-gap optimal-policy characterization is known for lead-time differences at least two.",
+      "summary": "The October revision adds PEIP guarantees in long-lead-time and high-service regimes; fixed-parameter exact structure remains unresolved.",
       "links": [
         {
           "title": "Xin and Goldberg, Asymptotic optimality of Tailored Base-Surge policies",
@@ -4279,6 +4356,10 @@
         {
           "title": "Xin and Goldberg, Management Science version",
           "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2016.2607"
+        },
+        {
+          "title": "Poulad Moradi, Melvin Drent, Joachim Arts, Collin Drent: Asymptotic Optimality of Inventory Projection in Dual-Sourcing Systems",
+          "url": "https://arxiv.org/abs/2207.12182v2"
         }
       ]
     },
@@ -4289,7 +4370,7 @@
     "alphaevolve_suitability": "medium",
     "alphaevolve_rationale": "Search can map optimal actions in truncated dynamic programs, infer switching surfaces, and locate counterexamples to proposed structures. It is less suited to proving asymptotic or infinite-state optimality without analytic support.",
     "literature": {
-      "synthesis": "Dual-sourcing inventory has a clean economic interpretation and an unusually difficult state space. Earlier work proposed dual-index and Tailored Base-Surge policies and demonstrated strong computational performance. Xin and Goldberg supplied the major theoretical advance by proving TBS asymptotically optimal as the regular lead time grows. Their result supports the intuition that a constant slow-source base flow plus a fast-source order-up-to correction becomes nearly optimal when the slow pipeline is long. The open finite-gap problem remains because optimality for $L_r \\to \\infty$ does not tell us the exact Bellman structure for fixed $L_r-L_e \\ge 2$, where pipeline imbalances and expediting decisions interact. A successful solution would likely identify monotonicity, convexity, or low-dimensional sufficient statistics for the dynamic program, or else show that no simple threshold/index form can be exact.",
+      "synthesis": "TBS deliberately simplifies the regular pipeline, whereas projection policies use it to control expected future inventory positions. Comparing these policies gives rigorous performance guarantees, but does not establish that a chosen heuristic is exactly optimal at fixed parameters.",
       "reviewed": [
         {
           "ref": "Xin and Goldberg, 'Asymptotic Optimality of Tailored Base-Surge Policies in Dual-Sourcing Inventory Systems', Management Science 2018 / arXiv 2015",
@@ -4314,16 +4395,22 @@
           "result": "Surveys large-lead-time asymptotic methods and remaining inventory-control gaps.",
           "relevance": "survey",
           "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/poms.13339"
+        },
+        {
+          "ref": "Poulad Moradi, Melvin Drent, Joachim Arts, Collin Drent, 'Asymptotic Optimality of Inventory Projection in Dual-Sourcing Systems', arXiv, October revision, 2026",
+          "result": "Theorems 5.7, 5.9, and 6.3 supply asymptotic guarantees, not exact finite-gap policy structure.",
+          "relevance": "partial-progress",
+          "url": "https://arxiv.org/abs/2207.12182v2"
         }
       ]
     },
     "agent_guidance": {
       "suitable_approaches": "Begin with two- or three-period lead-time gaps and finite-support demand, compute truncated Bellman equations, and look for monotone comparative statics or switching-curve regularity. Analytic approaches may use L-convexity, pipeline-state aggregation, vanishing-discount limits, or lower bounds tied to lost-sales/queueing asymptotics.",
-      "verification_notes": "A claimed exact policy must be checked against Bellman optimality for the infinite-horizon discounted or average-cost problem with explicit state variables. A claimed non-asymptotic guarantee must state the parameter regime and compare to the true optimal policy, not only to another heuristic.",
+      "verification_notes": "A claimed exact policy must be checked against Bellman optimality for the specified infinite-horizon average-cost problem with explicit state variables. A claimed non-asymptotic guarantee must state the parameter regime and compare to the true optimal policy, not only to another heuristic.",
       "machine_checkable": true
     },
-    "notes_for_maintainer": "Deepened from primary Xin-Goldberg source. This is an older Operations Management structural problem, not a new modelling proposal.",
-    "open_problem": "Characterize the exact optimal policy for the periodic-review dual-sourcing inventory model with deterministic regular and express lead times whose gap is at least two, or prove sharp finite-lead-time optimality-gap guarantees for Tailored Base-Surge or related simple policies."
+    "notes_for_maintainer": "2026-11-09: fixed the average-cost model and removed unsupported blanket claims that only one asymptotic result exists or that a large state space proves computational hardness. SSRN download was blocked; the same paper's current arXiv revision was read.",
+    "open_problem": "For the fixed periodic-review average-cost model and lead-time gap at least two, prove an exact structural characterization of optimal replenishment decisions beyond an unrestricted full-pipeline dynamic program."
   },
   {
     "id": "optimal-policy-one-warehouse-multi-retailer",
@@ -6835,7 +6922,7 @@
     "title": "Graph Balancing (Restricted Two-Machine Makespan)",
     "short_statement": "Graph balancing is unrelated-machine scheduling where each job can go on only two machines (same time on either). It is NP-hard to beat $3/2$ and the best ratio is below $1.75$, but the exact threshold is open.",
     "full_statement": "Given an undirected weighted multigraph $G=(V,E)$ with edge weights $w_e\\ge 0$, orient every edge toward one of its two endpoints. The load of a vertex is the total weight of edges oriented into it, and the objective is to minimize the maximum vertex load. Equivalently, each job has exactly two eligible machines, its endpoints, and processing time $w_e$ on either endpoint. Determine the best polynomial-time approximation ratio for this graph-balancing problem. In particular, does there exist a polynomial-time algorithm with guarantee strictly below $7/4$, can the nonconstructive configuration-LP/local-search bound around $1.749$ be made constructive, or is there hardness above the known $3/2$ threshold?",
-    "known_results": "Ebenlendr, Krcal, and Sgall established the classical picture: graph balancing is NP-hard to approximate within any factor below $3/2$, and there is a polynomial-time $7/4$ approximation based on LP rounding and structural handling of large and small edges. This left the interval between $3/2$ and $7/4$ open. Verschae and Wiese studied configuration-LP behavior for broader unrelated-machine scheduling settings and showed that some natural relaxations still have significant gaps. Jansen and Rohwedder later proved that, for graph balancing, a configuration-LP/local-search analysis obtains an integrality-gap or estimation bound of about $1.749$, strictly below $7/4$. However, they explicitly note that polynomial-time termination of the local search is unclear, so this does not settle the existence of a polynomial-time sub-$7/4$ approximation. The open problem is to convert this evidence into an efficient algorithm, improve hardness above $3/2$, or identify the exact threshold.",
+    "known_results": "Ebenlendr, Krcal, and Sgall established the classical picture: graph balancing is NP-hard to approximate within any factor below $3/2$, and there is a polynomial-time $7/4$ approximation based on LP rounding and structural handling of large and small edges. This left the interval between $3/2$ and $7/4$ open. Verschae and Wiese studied configuration-LP behavior for broader unrelated-machine scheduling settings and showed that some natural relaxations still have significant gaps. Jansen and Rohwedder later proved that, for graph balancing, a configuration-LP/local-search analysis obtains an integrality-gap or estimation bound of about $1.749$, strictly below $7/4$. However, they explicitly note that polynomial-time termination of the local search is unclear, so this does not settle the existence of a polynomial-time sub-$7/4$ approximation. The open problem is to convert this evidence into an efficient algorithm, improve hardness above $3/2$, or identify the exact threshold.\n\nAdam Y. Shavit, 'A minimum witness for the 3/2 configuration-linear-program gap in two-weight graph balancing, unique at its size' (arXiv:2608.13318v1), gives a six-job witness: $K_4$ with weight-one edges on a Hamiltonian cycle and weight-two edges on its complementary perfect matching. Theorem 1 certifies integer optimum $3$ and configuration-LP value $2$; Theorems 4-5 address minimality and uniqueness within the specified two-weight class. This improves the size/classification of a witness, not the known $3/2$ lower bound or the polynomial-time approximation ratio.\n\nRemaining open problem. Obtain a polynomial-time sub-$7/4$ algorithm or stronger approximation hardness. Small-instance LP certificates alone do not settle either.",
     "where_posed": {
       "text": "Gap left by Ebenlendr-Krcal-Sgall and later local-search/LP progress of Jansen-Rohwedder.",
       "url": "https://arxiv.org/abs/1811.00955",
@@ -6856,6 +6943,13 @@
         "year": 2019,
         "venue": "ICALP",
         "url": "https://arxiv.org/abs/1811.00955"
+      },
+      {
+        "authors": "Adam Y. Shavit",
+        "title": "A minimum witness for the 3/2 configuration-linear-program gap in two-weight graph balancing, unique at its size",
+        "year": 2026,
+        "venue": "arXiv preprint",
+        "url": "https://arxiv.org/abs/2608.13318v1"
       }
     ],
     "enabled": true,
@@ -6871,6 +6965,10 @@
         {
           "title": "Verschae and Wiese, configuration LP on unrelated machines",
           "url": "https://arxiv.org/abs/1011.4957"
+        },
+        {
+          "title": "Adam Y. Shavit: A minimum witness for the 3/2 configuration-linear-program gap in two-weight graph balancing, unique at its size",
+          "url": "https://arxiv.org/abs/2608.13318v1"
         }
       ]
     },
@@ -6900,6 +6998,12 @@
           "result": "Shows limitations of configuration LPs in broader unrelated-machine graph balancing.",
           "relevance": "related-tool",
           "url": "https://arxiv.org/abs/1011.4957"
+        },
+        {
+          "ref": "Adam Y. Shavit, 'A minimum witness for the 3/2 configuration-linear-program gap in two-weight graph balancing, unique at its size', arXiv preprint, 2026",
+          "result": "Theorems 1, 4, and 5 identify and classify a minimal six-job gap witness; no improved general ratio.",
+          "relevance": "related-tool",
+          "url": "https://arxiv.org/abs/2608.13318v1"
         }
       ]
     },
@@ -6908,7 +7012,7 @@
       "verification_notes": "Distinguish graph balancing from full unrelated-machine scheduling, from restricted assignment with arbitrary eligibility sets, and from broader variants sometimes called unrelated graph balancing. A claimed sub-$7/4$ result must output an orientation in polynomial time and prove the load bound against the optimum orientation. If the proof goes through the configuration LP, check whether the LP can be solved or approximated in the required time and whether the local search has polynomially many steps. For counterexamples, verify both the optimal orientation value and any claimed LP or algorithmic lower bound on a finite weighted multigraph.",
       "machine_checkable": true
     },
-    "open_problem": "Determine the exact approximability of graph balancing, including whether there is a polynomial-time approximation ratio below $7/4$ and whether the threshold is $3/2$."
+    "open_problem": "Determine the optimal polynomial-time approximation ratio for graph balancing, in particular whether $7/4$ can be improved. Distinguish constructive algorithms from configuration-LP existence bounds."
   },
   {
     "id": "restricted-assignment-makespan",
@@ -6925,7 +7029,7 @@
     "title": "Restricted Assignment Makespan (Polynomial-Time Below 2)",
     "short_statement": "In restricted-assignment makespan, each job has a fixed size and a set of allowed machines. The general $2$-approximation applies and the configuration LP estimates the optimum within $\\approx 1.94$, but producing an actual schedule below $2$ in polynomial time is open.",
     "full_statement": "In restricted-assignment makespan minimization, there are machines $M$ and jobs $J$. Each job $j$ has a processing time $p_j$ and an eligibility set $M_j\\subseteq M$; assigning $j$ to a machine outside $M_j$ is forbidden, equivalently $p_{ij}=\\infty$, while assigning it to any eligible machine takes time $p_j$. A schedule assigns every job to one eligible machine and has makespan $\\max_{i\\in M}\\sum_{j\\text{ assigned to }i}p_j$. The Lenstra-Shmoys-Tardos rounding gives a polynomial-time factor $2$ approximation even for general unrelated machines. The open restricted-assignment problem is to construct, in polynomial time, a schedule with approximation ratio $2-\\varepsilon$ for some absolute $\\varepsilon>0$, or to prove that no such algorithm exists under standard assumptions. The problem remains open even though the configuration LP can estimate the optimum below factor $2$ and quasi-polynomial rounding is known.",
-    "known_results": "The Lenstra-Shmoys-Tardos algorithm gives a polynomial-time $2$-approximation for unrelated-machine makespan and therefore for restricted assignment. The standard hardness barrier is $3/2$: no polynomial-time approximation below $3/2$ exists unless $P=NP$. Svensson proved that, for restricted assignment, the configuration LP has integrality gap at most $33/17\\approx1.9412$, so the LP value estimates the optimum below factor $2$. Jansen and Rohwedder simplified and strengthened this analysis to $2-1/6=11/6\\approx1.8333$, and their extended work gives a constructive $1.8334$-approximation in quasi-polynomial time. These results leave a precise open issue: sub-$2$ structure is present in the relaxation, but no general polynomial-time algorithm is known to turn it into a schedule. Closing this constructive gap, or proving that it cannot be closed, is the core open problem.",
+    "known_results": "The Lenstra-Shmoys-Tardos algorithm gives a polynomial-time $2$-approximation for unrelated-machine makespan and therefore for restricted assignment. The standard hardness barrier is $3/2$: no polynomial-time approximation below $3/2$ exists unless $P=NP$. Svensson proved that, for restricted assignment, the configuration LP has integrality gap at most $33/17\\approx1.9412$, so the LP value estimates the optimum below factor $2$. Jansen and Rohwedder simplified and strengthened this analysis to $2-1/6=11/6\\approx1.8333$, and their extended work gives a constructive $1.8334$-approximation in quasi-polynomial time. These results leave a precise open issue: sub-$2$ structure is present in the relaxation, but no general polynomial-time algorithm is known to turn it into a schedule. Closing this constructive gap, or proving that it cannot be closed, is the core open problem.\n\nKoppány István Encz, Monaldo Mastrolilli, and Eleonora Vercesi, 'Integrality gap preserving reductions' (arXiv:2609.19967v1), Theorems 7-8, prove configuration-LP integrality for two-machine instances and for unit processing times. Their Conjecture 10 asks for a half-integral optimal configuration solution in every restricted-assignment instance. The proposed reduction to graph balancing, and the resulting $1.749$ general gap bound, are conditional on that unproved conjecture.\n\nRemaining open problem. Construct a polynomial-time sub-2 schedule for arbitrary restricted-assignment instances. An LP gap theorem, even an improved one, is not automatically a polynomial-time rounding algorithm.",
     "where_posed": {
       "text": "Constructive gap left by Svensson and Jansen-Rohwedder configuration-LP results for restricted assignment.",
       "url": "https://arxiv.org/abs/1701.07208",
@@ -6946,6 +7050,13 @@
         "year": 2017,
         "venue": "IPCO (SIAM J. Computing)",
         "url": "https://arxiv.org/abs/1701.07208"
+      },
+      {
+        "authors": "Koppány István Encz, Monaldo Mastrolilli, Eleonora Vercesi",
+        "title": "Integrality gap preserving reductions",
+        "year": 2026,
+        "venue": "arXiv preprint",
+        "url": "https://arxiv.org/abs/2609.19967v1"
       }
     ],
     "enabled": true,
@@ -6965,6 +7076,10 @@
         {
           "title": "Jansen and Rohwedder, configuration LP simplification",
           "url": "https://arxiv.org/abs/1611.01934"
+        },
+        {
+          "title": "Koppány István Encz, Monaldo Mastrolilli, Eleonora Vercesi: Integrality gap preserving reductions",
+          "url": "https://arxiv.org/abs/2609.19967v1"
         }
       ]
     },
@@ -6975,7 +7090,7 @@
     "alphaevolve_suitability": "medium",
     "alphaevolve_rationale": "Search can identify bottlenecks in local-search rounding and produce hard eligibility graphs. Proof of polynomial termination or hardness is the key.",
     "literature": {
-      "synthesis": "Restricted assignment lies between graph balancing and full unrelated machines. The configuration LP is strong enough to beat $2$ existentially, unlike the full unrelated case, but the known rounding/local-search arguments have quasi-polynomial or nonconstructive aspects. The challenge is not simply proving a better LP gap; it is turning that structure into a polynomial schedule. This makes the problem a useful test of whether hypergraph matching/local-search ideas can be made efficiently constructive for scheduling.",
+      "synthesis": "Restricted assignment lies between graph balancing and full unrelated machines. The configuration LP is strong enough to beat $2$ existentially, unlike the full unrelated case, but the known rounding/local-search arguments have quasi-polynomial or nonconstructive aspects. The challenge is not simply proving a better LP gap; it is turning that structure into a polynomial schedule. This makes the problem a useful test of whether hypergraph matching/local-search ideas can be made efficiently constructive for scheduling. New integrality results for easy subclasses and a half-integrality conjecture suggest structural routes, but the conjectural reduction must not be counted as an established general improvement.",
       "reviewed": [
         {
           "ref": "Ola Svensson, 'Santa Claus Schedules Jobs on Unrelated Machines', SIAM Journal on Computing 2012 / STOC 2011",
@@ -6994,6 +7109,12 @@
           "result": "Gives a constructive $11/6$ approximation in quasi-polynomial time.",
           "relevance": "partial-progress",
           "url": "https://arxiv.org/abs/1701.07208"
+        },
+        {
+          "ref": "Koppány István Encz, Monaldo Mastrolilli, Eleonora Vercesi, 'Integrality gap preserving reductions', arXiv preprint, 2026",
+          "result": "Theorems 7-8 settle restricted LP subclasses. The general half-integral reduction in Conjecture 10 remains unproved.",
+          "relevance": "related-tool",
+          "url": "https://arxiv.org/abs/2609.19967v1"
         }
       ]
     },
@@ -7002,7 +7123,7 @@
       "verification_notes": "A valid algorithmic resolution must produce a schedule, not merely estimate the optimum or certify feasibility of the configuration LP. The running time must be polynomial in the number of jobs, machines, and encoding length of processing times; quasi-polynomial dependence is not enough for this problem record. The approximation ratio should be measured against the integral optimum. If the claim uses an LP, verify the separation/solving assumptions, the conversion from fractional configurations to integral schedules, and the treatment of large jobs. A lower-bound claim should distinguish NP-hardness of approximation from lower bounds on particular LPs or local-search procedures.",
       "machine_checkable": false
     },
-    "open_problem": "Find a polynomial-time approximation algorithm with ratio strictly below $2$ for restricted-assignment makespan, or prove that no such polynomial-time algorithm exists under standard assumptions."
+    "open_problem": "Find a polynomial-time algorithm returning a schedule of makespan at most $(2-\\varepsilon)\\mathrm{OPT}$ for some absolute $\\varepsilon>0$ in general restricted assignment."
   },
   {
     "id": "santa-claus-best-approximation",
@@ -10580,12 +10701,12 @@
       "planted structures",
       "computer science"
     ],
-    "status": "open",
+    "status": "partially resolved",
     "confidence": "medium",
     "short_statement": "Can polynomial-time algorithms recover the hidden matching in correlated Erdos-Renyi graphs down to the information-theoretic threshold?",
-    "open_problem": "Close the computational gap for unseeded correlated Erdos-Renyi graph matching: either design polynomial-time exact/almost-exact recovery algorithms matching the information-theoretic thresholds, or prove a computational barrier under a standard average-case hardness framework.",
-    "full_statement": "Let $G_0\\sim G(n,p)$ be a parent Erdos-Renyi graph. Generate two observed graphs $G_1$ and $G_2$ by independently retaining parent edges so that their marginal edge density and edge-correlation parameter are $q$ and $\\rho$, then relabel $G_2$ by an unknown uniform permutation $\\pi$. Given only the unlabeled pair $(G_1,G_2)$, recover $\\pi$ exactly, recover all but $o(n)$ vertices, or recover a positive fraction of vertices, depending on the regime. Information-theoretic thresholds are known sharply in dense models and increasingly sharply in sparse models, often by maximum-likelihood achievability and second-moment lower bounds. The open problem is to determine the polynomial-time threshold for unseeded correlated Erdos-Renyi graph matching: can an efficient algorithm succeed down to the information-theoretic boundary, including the sparse regimes below existing chandelier/tree-count guarantees, or is there a principled computational gap?",
-    "known_results": "Wu, Xu, and Yu established sharp reconstruction thresholds for dense correlated random graph matching and sparse thresholds up to constant factors; their positive results are information-theoretic and rely on maximum-likelihood-type arguments rather than efficient algorithms. Ding and Du sharpened the positive-overlap recovery threshold in sparse correlated Erdos-Renyi graphs. Wu, Xu, and Yu also characterized testing thresholds for unlabeled graph correlation in dense settings and within constant factors in sparse settings. On the algorithmic side, Mao, Wu, Xu, and Yu introduced chandelier-count statistics and obtained a polynomial-time algorithm that almost exactly matches when $nq\\to\\infty$ and $\\rho^2$ exceeds Otter's tree-counting constant $\\alpha\\approx0.338$, with exact recovery under an additional information-theoretically necessary condition. Seeded and structured variants are better understood. The unresolved gap is whether unseeded efficient algorithms can reach the full information-theoretic recovery boundary.",
+    "open_problem": "Determine the polynomial-time thresholds for unseeded correlated Erdos-Renyi graph matching, separately for exact, almost-exact and positive-overlap recovery. Reconcile the achievable region with existing conditional sparse-regime and local-algorithm barriers; these do not settle all densities or provide unconditional general hardness.",
+    "full_statement": "Let $G_0\\sim G(n,p)$ be a parent Erdos-Renyi graph with $0<p<1$. Independently retain each parent edge in each of two observations with probability $s\\in(0,1]$, and relabel the second observation by an independent uniform permutation $\\pi$. The marginal edge probability is $q=ps$ and the Pearson correlation of corresponding edge indicators is $\\rho=s(1-p)/(1-ps)$. Only the two observed graphs are given; there are no seeds.\n\nSpecify a sequence of parameters as $n\\to\\infty$ and one recovery objective: exact recovery with probability $1-o(1)$, almost-exact recovery with $o(n)$ mismatches with probability $1-o(1)$, or positive-overlap recovery of at least $\\varepsilon n$ correct vertices for fixed $\\varepsilon>0$. For the last objective, distinguish constant success probability from high probability. These are different thresholds.\n\nDetermine the polynomial-time recovery region for each objective, and compare it with the corresponding information-theoretic region. The main gap is in sparse, weakly correlated regimes. A sharp result may consist of an efficient algorithm and a matching computational lower bound under an explicitly stated average-case conjecture. Conditional low-degree barriers are already known in a sparse regime; they are not unconditional impossibility results for all polynomial-time algorithms.",
+    "known_results": "Wu, Xu, and Yu established sharp reconstruction thresholds for dense correlated random graph matching and sparse thresholds up to constant factors; their positive results are information-theoretic and rely on maximum-likelihood-type arguments rather than efficient algorithms. Ding and Du sharpened the positive-overlap recovery threshold in sparse correlated Erdos-Renyi graphs. Wu, Xu, and Yu also characterized testing thresholds for unlabeled graph correlation in dense settings and within constant factors in sparse settings. On the algorithmic side, Mao, Wu, Xu, and Yu introduced chandelier-count statistics and obtained a polynomial-time algorithm that almost exactly matches when $nq\\to\\infty$ and $\\rho^2$ exceeds Otter's tree-counting constant $\\alpha\\approx0.338$, with exact recovery under an additional information-theoretically necessary condition. Seeded and structured variants are better understood. The unresolved gap is whether unseeded efficient algorithms can reach the full information-theoretic recovery boundary.\n\nConditional computational barrier. Zhangsong Li's 'Computational Lower Bounds for Correlated Random Graphs via Algorithmic Contiguity' (arXiv:2502.09832v4), Theorem 3.3(1), assumes the low-degree conjecture (Conjecture 2.2). In the sparse regime $q=n^{-1+o(1)}$ and $\\rho<\\sqrt{\\alpha}-\\delta$ for fixed $\\delta>0$, it rules out weak partial matching in the running-time range specified by equation (3.4). Here weak partial matching means recovering a positive fraction with constant probability. This strengthens evidence for a computational gap; it is not an unconditional lower bound or a theorem about all graph densities.\n\nLaurent Massoulie's '2025 survey' (arXiv:2510.24914v1), Theorem 2.10, explains a separate bounded-degree, local-algorithm boundary in terms of divergence of a correlated-tree relative entropy. Its converse applies to the specified depth-local class, not every polynomial-time algorithm. The survey's subsampling parameter $s$ should not be identified exactly with $\\rho$.\n\nRemaining open problem. Determine the efficient thresholds outside these scoped results, including the precise recovery objective and whether any claimed barrier is unconditional, conjecture-dependent, or algorithm-class-specific.",
     "where_posed": {
       "text": "Raised by the gap between information-theoretic thresholds and efficient algorithms in Wu, Xu, and Yu, 'Settling the Sharp Reconstruction Thresholds of Random Graph Matching'.",
       "url": "https://arxiv.org/abs/2102.00082",
@@ -10606,13 +10727,27 @@
         "year": 2018,
         "venue": "arXiv:1807.10262",
         "url": "https://arxiv.org/abs/1807.10262"
+      },
+      {
+        "authors": "Zhangsong Li",
+        "title": "Computational Lower Bounds for Correlated Random Graphs via Algorithmic Contiguity",
+        "year": 2025,
+        "venue": "arXiv preprint, version 4",
+        "url": "https://arxiv.org/abs/2502.09832v4"
+      },
+      {
+        "authors": "Laurent Massoulie",
+        "title": "Computational thresholds in high-dimensional statistics: the case of graph alignment",
+        "year": 2025,
+        "venue": "ICM 2026 survey preprint",
+        "url": "https://arxiv.org/abs/2510.24914v1"
       }
     ],
     "enabled": true,
     "background": "Graph matching asks whether two observed networks have the same hidden vertex labels. In the correlated Erdos-Renyi model, two graphs are generated from a common random parent graph and then independently subsampled, with one graph's labels permuted. The statistical question is whether the hidden permutation can be recovered exactly or approximately; the algorithmic question is whether this can be done in polynomial time at the same parameter values where recovery is information-theoretically possible. This model captures a clean version of entity resolution, network alignment, and average-case inference. Wu, Xu, and Yu determined sharp reconstruction thresholds in dense regimes and near-sharp thresholds in sparse regimes using information-theoretic and maximum-likelihood arguments. Subsequent work sharpened sparse thresholds and designed polynomial-time algorithms based on trees and chandeliers in some regimes. The central remaining issue is whether efficient algorithms can match the information-theoretic thresholds, or whether there is a genuine statistical-computational gap.",
     "progress": {
       "state": "partial",
-      "summary": "Information-theoretic thresholds are now sharp or nearly sharp in major regimes, and polynomial-time motif/tree algorithms succeed in some parameter ranges. The full efficient recovery threshold for unseeded matching remains unresolved.",
+      "summary": "Chandelier algorithms give positive results, while Li's December 2025 revision gives a sparse-regime barrier conditional on the low-degree conjecture. Local-algorithm thresholds are also understood in specified bounded-degree regimes. The full efficient recovery region remains unresolved.",
       "links": [
         {
           "title": "Settling the Sharp Reconstruction Thresholds of Random Graph Matching",
@@ -10621,6 +10756,14 @@
         {
           "title": "Matching recovery threshold for correlated random graphs",
           "url": "https://arxiv.org/abs/2205.14650"
+        },
+        {
+          "title": "Zhangsong Li: Computational Lower Bounds for Correlated Random Graphs via Algorithmic Contiguity",
+          "url": "https://arxiv.org/abs/2502.09832v4"
+        },
+        {
+          "title": "Laurent Massoulie: Computational thresholds in high-dimensional statistics: the case of graph alignment",
+          "url": "https://arxiv.org/abs/2510.24914v1"
         }
       ]
     },
@@ -10631,7 +10774,7 @@
     "alphaevolve_suitability": "high",
     "alphaevolve_rationale": "Automated search can explore graph statistics, motif families, and message-passing updates that correlate with the hidden permutation near threshold. Candidate algorithms can be tested extensively before proof.",
     "literature": {
-      "synthesis": "The statistical side of correlated graph matching has advanced rapidly. Wu, Xu, and Yu used mutual-information and second-moment methods to locate reconstruction thresholds in dense models and approximate sparse thresholds, while maximum likelihood gives information-theoretic achievability. Ding and Du sharpened sparse recovery thresholds. Algorithmically, seeded matching and motif-counting methods provide efficient procedures in favorable regimes, and chandelier/tree statistics show that local structures carry exploitable correlation. The remaining gap is to determine whether such efficient statistics can be pushed to the full information-theoretic boundary, or whether low-degree or other average-case evidence points to inherent computational hardness.",
+      "synthesis": "Information-theoretic recovery, efficient recovery, and detection are distinct questions. Chandelier methods give efficient recovery above an explicit correlation boundary. Li's version-4 Theorem 3.3 supplies a conditional negative result below Otter's boundary in a sparse regime, rather than merely suggesting that low-degree analysis might help. Massoulie's survey explains additional limits for local methods. The remaining task is to identify the efficient phase diagram with explicit density, correlation, recovery and complexity assumptions; none of these results supplies an unconditional barrier for every polynomial-time algorithm.",
       "reviewed": [
         {
           "ref": "Yihong Wu, Jiaming Xu, and Sophie H. Yu, 'Settling the Sharp Reconstruction Thresholds of Random Graph Matching', arXiv 2021",
@@ -10656,14 +10799,27 @@
           "result": "Gives polynomial-time algorithms based on chandelier counts reaching an explicit correlation threshold in sparse graph matching/testing regimes.",
           "relevance": "partial-progress",
           "url": "https://arxiv.org/abs/2209.12313"
+        },
+        {
+          "ref": "Zhangsong Li, 'Computational Lower Bounds for Correlated Random Graphs via Algorithmic Contiguity', arXiv preprint, version 4, 2025",
+          "result": "Theorem 3.3(1) gives a sparse-regime weak-partial-matching barrier conditional on Conjecture 2.2, with a fixed margin below sqrt(Otter's constant) and the running-time restrictions of (3.4).",
+          "relevance": "hardness",
+          "url": "https://arxiv.org/abs/2502.09832v4"
+        },
+        {
+          "ref": "Laurent Massoulie, 'Computational thresholds in high-dimensional statistics: the case of graph alignment', ICM 2026 survey preprint, 2025",
+          "result": "Surveys statistical and computational boundaries; Theorem 2.10 states a correlated-tree criterion for a specified depth-local algorithm class in the bounded-degree model, not arbitrary polynomial-time hardness.",
+          "relevance": "survey",
+          "url": "https://arxiv.org/abs/2510.24914v1"
         }
       ]
     },
     "agent_guidance": {
       "suitable_approaches": "Good directions include low-degree analysis, motif-count algorithms, belief propagation, seeded-to-unseeded bootstrapping, and careful experiments near the information-theoretic threshold. Search can optimize motif libraries or initialization schemes.",
-      "verification_notes": "A claimed algorithmic solution must specify the parent density, marginal density, correlation parameter, exact/almost-exact/positive-overlap target, running time, and high-probability success statement. Check whether the result is unseeded or seeded; seeded graph matching is a different problem. The proof should compare directly with the relevant information-theoretic threshold, not merely with prior algorithms. For motif or message-passing algorithms, verify that the statistic remains concentrated and discriminative at the claimed parameters and that final cleanup from almost-exact to exact recovery uses only information-theoretically available signal.",
+      "verification_notes": "A claimed algorithmic solution must specify the parent density, marginal density, correlation parameter, exact/almost-exact/positive-overlap target, running time, and high-probability success statement. Check whether the result is unseeded or seeded; seeded graph matching is a different problem. The proof should compare directly with the relevant information-theoretic threshold, not merely with prior algorithms. For motif or message-passing algorithms, verify that the statistic remains concentrated and discriminative at the claimed parameters and that final cleanup from almost-exact to exact recovery uses only information-theoretically available signal. Use q=ps and rho=s(1-p)/(1-ps) consistently. Li's Theorem 3.3 assumes Conjecture 2.2, a fixed correlation margin and equation (3.4); do not drop these. A local-algorithm lower bound must not be presented as a bound on all polynomial-time estimators.",
       "machine_checkable": true
-    }
+    },
+    "notes_for_maintainer": "2026-11-09 deep sweep: read Li v4 model, Conjecture 2.2 and Theorem 3.3; read Massoulie's model, local-class definition and Theorem 2.10. Conditional and local-class restrictions retained. Random-geometric graph matching papers concern another model and were not imported as Erdos-Renyi resolutions."
   },
   {
     "id": "planted-structure-computational-thresholds",
@@ -12030,12 +12186,12 @@
       "applied probability",
       "computer science"
     ],
-    "status": "open",
+    "status": "partially resolved",
     "confidence": "medium",
-    "short_statement": "Determine the exact satisfiability threshold for random $k$-SAT at small fixed $k$, especially $k=3$.",
-    "open_problem": "Prove the exact random $k$-SAT satisfiability threshold for fixed small $k$, in particular $k=3$. The open part is not sharpness of the transition in a qualitative sense, but the rigorous identification of the threshold value for these small $k$.",
-    "full_statement": "Let $F_k(n,m)$ be a uniformly random $k$-CNF formula on variables $x_1,\\ldots,x_n$, formed by choosing $m=\\lfloor \\alpha n\\rfloor$ clauses independently and uniformly from the $2^k\\binom n k$ possible $k$-clauses with distinct variables. A satisfiability threshold value $\\alpha_k$ would satisfy the following: for every fixed $\\varepsilon>0$, $F_k(n,\\lfloor(\\alpha_k-\\varepsilon)n\\rfloor)$ is satisfiable with probability tending to one, while $F_k(n,\\lfloor(\\alpha_k+\\varepsilon)n\\rfloor)$ is unsatisfiable with probability tending to one. Friedgut's theorem gives sharp-threshold behavior but does not identify a limiting value for each small $k$. The open problem is to prove the exact threshold for fixed small $k\\ge3$, especially $k=3$, either as an explicit constant or as a rigorous variational characterization matching the statistical-physics prediction, and to establish both the satisfiable and unsatisfiable sides of the transition at that same value.",
-    "known_results": "The $k=2$ threshold is exactly $1$. Friedgut proved that random $k$-SAT has a sharp threshold for each fixed $k$, but the theorem allows the threshold location to vary with $n$ and does not identify the limiting constant. Achlioptas, Moore, Coja-Oghlan, Panagiotou, and others developed increasingly sharp rigorous upper and lower bounds and established the correct asymptotic order in $k$. Ding, Sly, and Sun proved the satisfiability conjecture for all sufficiently large $k$, matching the one-step replica-symmetry-breaking prediction. For small $k$, especially $k=3$, the best rigorous numerical bounds are close to the predicted value, but the exact threshold and the full finite-$k$ condensation/satisfiability analysis are still not proved.",
+    "short_statement": "Random SAT has a sharp satisfiability transition. Recent manuscripts address existence and computability of its limiting density, while identifying the predicted small-clause value remains separate.",
+    "open_problem": "Identify the random 3-SAT threshold, and other small fixed-clause thresholds, by an explicit value or rigorous variational characterization. Distinguish this from the recently claimed limiting-threshold existence and 3-SAT computability results.",
+    "full_statement": "Let $F_k(n,m)$ be a uniformly random $k$-CNF formula on variables $x_1,\\ldots,x_n$, formed by choosing $m=\\lfloor \\alpha n\\rfloor$ clauses independently and uniformly from the $2^k\\binom n k$ possible $k$-clauses with distinct variables. A satisfiability threshold value $\\alpha_k$ would satisfy the following: for every fixed $\\varepsilon>0$, $F_k(n,\\lfloor(\\alpha_k-\\varepsilon)n\\rfloor)$ is satisfiable with probability tending to one, while $F_k(n,\\lfloor(\\alpha_k+\\varepsilon)n\\rfloor)$ is unsatisfiable with probability tending to one. Friedgut's sharp-threshold theorem alone does not establish convergence of its location. Recent preprints claim existence for every fixed $k\\ge3$ and computability for $k=3$. The open problem is to prove the exact threshold for fixed small $k\\ge3$, especially $k=3$, either as an explicit constant or as a rigorous variational characterization matching the statistical-physics prediction, and to establish both the satisfiable and unsatisfiable sides of the transition at that same value.",
+    "known_results": "Friedgut establishes a sharp transition about a size-dependent density. Ding, Sly, and Sun establish the predicted limiting threshold for all sufficiently large fixed clause sizes; the two-clause threshold is one.\n\nGaia Carenini, 'A polynomial scaling window for random k-SAT and a proof of the satisfiability conjecture' (ECCC TR26-229, October 5, 2026), Theorem 1.1 and Corollary 1.2, report an $O_{k,\\eta}(n^{1/2+1/k})$ window between fixed central probability levels and a limiting threshold for every fixed $k\\ge3$. This reported result concerns existence, not its numerical value. OpenAI's 'A Limiting Satisfiability Threshold for Every Fixed Clause Size', Theorem 1.1, gives an alternative claimed proof and credits Carenini's priority.\n\nOpenAI's 'Computing the Random 3-SAT Threshold' (September 27, 2026), Theorem 1.1, additionally claims a single deterministic machine approximating $\\alpha_3$ to any prescribed accuracy. It supplies no efficiency bound or identification with the predicted value near $4.267$. These recent proofs were not independently certified here.\n\nRemaining open problem. Identify the small-$k$ threshold by an explicit value or rigorous variational formula and establish agreement or disagreement with the physics prediction. Mere threshold existence should no longer be presented as the only missing step.",
     "where_posed": {
       "text": "Classical random CSP open problem; highlighted by the gap between Friedgut's sharp-threshold theorem and Ding-Sly-Sun's large-$k$ theorem.",
       "url": "https://arxiv.org/abs/1411.0650",
@@ -12063,13 +12219,34 @@
         "year": 2015,
         "venue": "Annals of Mathematics",
         "url": "https://arxiv.org/abs/1411.0650"
+      },
+      {
+        "authors": "Gaia Carenini",
+        "title": "A polynomial scaling window for random k-SAT and a proof of the satisfiability conjecture",
+        "year": 2026,
+        "venue": "ECCC TR26-229",
+        "url": "https://eccc.weizmann.ac.il/report/2026/229/"
+      },
+      {
+        "authors": "OpenAI",
+        "title": "A Limiting Satisfiability Threshold for Every Fixed Clause Size",
+        "year": 2026,
+        "venue": "OpenAI Math Release preprint",
+        "url": "https://github.com/openai/math/blob/main/preprints/A-Limiting-Satisfiability-Threshold-for-Every-Fixed-Clause-Size-September-25-2026/article.pdf"
+      },
+      {
+        "authors": "OpenAI",
+        "title": "Computing the Random 3-SAT Threshold",
+        "year": 2026,
+        "venue": "OpenAI Math Release preprint",
+        "url": "https://github.com/openai/math/blob/main/preprints/Computing-the-Random-3-SAT-Threshold-September-27-2026/article.pdf"
       }
     ],
     "enabled": true,
     "background": "Random $k$-SAT is a central model at the boundary of combinatorics, probability, statistical physics, and computational complexity. A formula on $n$ Boolean variables is formed by drawing $m=\\lfloor \\alpha n\\rfloor$ random clauses, each containing $k$ literals. For small clause density $\\alpha$, the formula is satisfiable with high probability; for large $\\alpha$, it is unsatisfiable with high probability. Physics predicts a detailed sequence of phase transitions, and the satisfiability threshold is the most basic one. For $k=2$, the exact threshold is $1$. For every fixed $k\\ge3$, Friedgut proved sharp-threshold behavior, but this theorem does not identify a clean limiting threshold value. Ding, Sly, and Sun proved the predicted threshold for all sufficiently large $k$, a major breakthrough. The historically famous remaining case is small fixed $k$, especially random 3-SAT, where rigorous upper and lower bounds are close numerically but the exact limiting threshold is still unknown.",
     "progress": {
       "state": "partial",
-      "summary": "The exact threshold is known for $k=2$ and for all sufficiently large $k$. The small fixed cases such as 3-SAT remain open despite extensive rigorous and physics-based work.",
+      "summary": "New manuscripts report threshold existence for every fixed clause size and computability for 3-SAT; identifying the predicted small-clause value remains a separate gap.",
       "links": [
         {
           "title": "Proof of the satisfiability conjecture for large k",
@@ -12082,6 +12259,18 @@
         {
           "title": "Achlioptas and Moore bounds",
           "url": "https://doi.org/10.1109/SFCS.2002.1181941"
+        },
+        {
+          "title": "Gaia Carenini: A polynomial scaling window for random k-SAT and a proof of the satisfiability conjecture",
+          "url": "https://eccc.weizmann.ac.il/report/2026/229/"
+        },
+        {
+          "title": "OpenAI: A Limiting Satisfiability Threshold for Every Fixed Clause Size",
+          "url": "https://github.com/openai/math/blob/main/preprints/A-Limiting-Satisfiability-Threshold-for-Every-Fixed-Clause-Size-September-25-2026/article.pdf"
+        },
+        {
+          "title": "OpenAI: Computing the Random 3-SAT Threshold",
+          "url": "https://github.com/openai/math/blob/main/preprints/Computing-the-Random-3-SAT-Threshold-September-27-2026/article.pdf"
         }
       ]
     },
@@ -12092,7 +12281,7 @@
     "alphaevolve_suitability": "medium",
     "alphaevolve_rationale": "Computational search may identify finite-size structures, interpolation inequalities, or survey-propagation-inspired certificates. A resolution requires rigorous asymptotic control of the random formula distribution.",
     "literature": {
-      "synthesis": "The qualitative transition picture is well established: below the threshold solutions exist with high probability and above it they do not. Friedgut's theorem supplies sharpness but not a usable formula for the threshold. The large-$k$ breakthrough of Ding, Sly, and Sun validates the physics prediction in a regime where the one-step replica-symmetry-breaking calculations can be made rigorous. Small $k$ is harder because error terms, local dependencies, and condensation effects cannot be hidden in asymptotic large-$k$ expansions. The concrete gap is to convert the physics prediction for $k=3$ and other small values into a rigorous threshold theorem.",
+      "synthesis": "There are three distinct tasks: prove a sharp transition, prove convergence to a constant, and identify that constant. The 2026 reports address the second and, for three clauses, computability. They do not by themselves validate the small-clause statistical-physics formula.",
       "reviewed": [
         {
           "ref": "Ehud Friedgut, 'Sharp thresholds of graph properties, and the k-SAT problem', Journal of the AMS 1999",
@@ -12111,6 +12300,24 @@
           "result": "Determines the satisfiability threshold for all sufficiently large $k$.",
           "relevance": "solves-special-case",
           "url": "https://arxiv.org/abs/1411.0650"
+        },
+        {
+          "ref": "Gaia Carenini, 'A polynomial scaling window for random k-SAT and a proof of the satisfiability conjecture', ECCC TR26-229, 2026",
+          "result": "Theorem 1.1 and Corollary 1.2 report a polynomial window and limiting-threshold existence for every fixed $k\\ge3$.",
+          "relevance": "partial-progress",
+          "url": "https://eccc.weizmann.ac.il/report/2026/229/"
+        },
+        {
+          "ref": "OpenAI, 'A Limiting Satisfiability Threshold for Every Fixed Clause Size', OpenAI Math Release preprint, 2026",
+          "result": "Theorem 1.1 gives an alternative reported existence proof; credits Carenini's priority.",
+          "relevance": "partial-progress",
+          "url": "https://github.com/openai/math/blob/main/preprints/A-Limiting-Satisfiability-Threshold-for-Every-Fixed-Clause-Size-September-25-2026/article.pdf"
+        },
+        {
+          "ref": "OpenAI, 'Computing the Random 3-SAT Threshold', OpenAI Math Release preprint, 2026",
+          "result": "Theorem 1.1 claims computability without an efficiency guarantee or evaluation of the threshold.",
+          "relevance": "partial-progress",
+          "url": "https://github.com/openai/math/blob/main/preprints/Computing-the-Random-3-SAT-Threshold-September-27-2026/article.pdf"
         }
       ]
     },
@@ -13498,10 +13705,10 @@
     "status": "open",
     "confidence": "high",
     "short_statement": "Find a deterministic polynomial-time algorithm for Exact Matching, the problem of deciding whether a graph has a perfect matching with exactly $k$ red edges.",
-    "full_statement": "In the Exact Matching problem, the input is a graph $G=(V,E)$, a color or weight function $c:E\\to\\{0,1\\}$, and an integer $k$. The question is whether $G$ has a perfect matching $M$ satisfying $$\\sum_{e\\in M} c(e)=k.$$ Equivalently, in a red-blue graph, decide whether there is a perfect matching containing exactly $k$ red edges. The problem is in randomized polynomial time by the Mulmuley-Vazirani-Vazirani algebraic isolation framework. The open problem is to give a deterministic polynomial-time algorithm for arbitrary graphs, or to prove a principled barrier showing why such a derandomization would imply a major breakthrough elsewhere. A satisfactory positive solution may derandomize the isolation step, avoid isolation through a different algebraic certificate, or exploit the matching polytope and exact-cardinality constraint in a new way.",
+    "full_statement": "In the Exact Matching problem, the input is a graph $G=(V,E)$, a color or weight function $c:E\\to\\{0,1\\}$, and an integer $k$. The question is whether $G$ has a perfect matching $M$ satisfying $$\\sum_{e\\in M} c(e)=k.$$ Equivalently, in a red-blue graph, decide whether there is a perfect matching containing exactly $k$ red edges. The problem is in randomized polynomial time by the Mulmuley-Vazirani-Vazirani algebraic isolation framework. The target concerns arbitrary graphs, not only bipartite graphs. The open problem is to give a deterministic polynomial-time algorithm for arbitrary graphs, or to prove a principled barrier showing why such a derandomization would imply a major breakthrough elsewhere. A satisfactory positive solution may derandomize the isolation step, avoid isolation through a different algebraic certificate, or exploit the matching polytope and exact-cardinality constraint in a new way.",
     "background": "Exact Matching is a deceptively small extension of ordinary perfect matching. Ordinary matching is one of the central polynomial-time problems in combinatorial optimization, but adding the exact cardinality constraint on one color class moves the known general algorithmic status into randomized polynomial time. The problem also appears as a hardness core inside robust and recoverable assignment models, so it is not just a complexity-theory curiosity. The randomized algorithm of Mulmuley, Vazirani, and Vazirani is based on algebraic isolation: assign random weights so that a relevant matching is isolated with good probability, then use determinant or Pfaffian computations. Derandomizing this step is a long-standing open problem connected to the broader project of derandomizing isolation lemmas. Recent deterministic fixed-parameter algorithms show that structure helps, but the unrestricted deterministic polynomial-time question remains open.",
-    "open_problem": "Find a deterministic polynomial-time algorithm for Exact Matching, or prove a barrier under a standard derandomization or complexity assumption.",
-    "known_results": "Mulmuley, Vazirani, and Vazirani gave a randomized polynomial-time algorithm via the isolation lemma and algebraic matching computations. The same isolation paradigm underlies many randomized matching algorithms and complexity-theoretic unique-witness reductions. Deterministic algorithms are known for ordinary perfect matching and for several structurally restricted Exact Matching instances. El Maalouly, Steiner, and Wulf gave deterministic FPT algorithms for bipartite graphs parameterized by bipartite independence number. Murakami and Yamaguchi extended deterministic FPT algorithms to more general graphs using odd-cycle-transversal and independence parameters. Fischer, Hartmann, Lendl, and Woeginger show that robust/recoverable assignment variants inherit the unresolved status of Exact Matching. None of these results yields a deterministic polynomial-time algorithm for unrestricted Exact Matching.",
+    "open_problem": "Find a verified deterministic polynomial-time algorithm for Exact Matching on arbitrary graphs. A 2026 bipartite claim is recorded below with a concrete issue in a subsidiary statement; it does not settle the general-graph problem.",
+    "known_results": "Mulmuley, Vazirani, and Vazirani gave a randomized polynomial-time algorithm via the isolation lemma and algebraic matching computations. The same isolation paradigm underlies many randomized matching algorithms and complexity-theoretic unique-witness reductions. Deterministic algorithms are known for ordinary perfect matching and for several structurally restricted Exact Matching instances. El Maalouly, Steiner, and Wulf gave deterministic FPT algorithms for bipartite graphs parameterized by bipartite independence number. Murakami and Yamaguchi extended deterministic FPT algorithms to more general graphs using odd-cycle-transversal and independence parameters. Fischer, Hartmann, Lendl, and Woeginger show that robust/recoverable assignment variants inherit the unresolved status of Exact Matching. None of these results yields a deterministic polynomial-time algorithm for unrestricted Exact Matching.\n\n2026 claim requiring scrutiny. Yuefeng Du's 'Bipartite Exact Matching in P' (arXiv:2604.01571v3) claims a deterministic algorithm for all bipartite graphs (Theorem 1.1, $O(n^6)$ arithmetic operations, not an $O(n^6)$ bit bound). Appendix A describes only a partial Lean verification, conditional on eight structural hypotheses.\n\nEditorial check. Theorem 2.7(iii) identifies exact-red-count perfect matchings with all vertices of an affine slice of the matching polytope. This identity fails for $K_{2,2}$ with its diagonal edges red and target $k=1$: its two perfect matchings have red counts $2$ and $0$, whereas the slice consists of the fractional matrix whose four entries are $1/2$. Thus the slice has a vertex but there is no exact matching. This refutes that subsidiary identity as stated, not the main algorithmic conclusion. The claimed bipartite resolution is not counted here as an established theorem pending clarification.\n\nRemaining open problem. Give a verified deterministic polynomial-time algorithm for arbitrary graphs. A bipartite-only algorithm, even if verified, would not settle this general-graph target.",
     "where_posed": {
       "text": "The derandomization gap goes back to Mulmuley, Vazirani, and Vazirani's randomized algorithm and is stated explicitly in later Exact Matching papers.",
       "url": "https://arxiv.org/abs/2405.02829",
@@ -13510,7 +13717,7 @@
     },
     "progress": {
       "state": "partial",
-      "summary": "Randomized polynomial time is known, and deterministic FPT algorithms exist under graph-structure parameters. The unrestricted deterministic polynomial-time problem remains open.",
+      "summary": "Randomized polynomial time and deterministic parameterized results remain established. A 2026 manuscript claims a bipartite algorithm, but a subsidiary polyhedral identity fails on K_{2,2}; the main claim is not accepted here as established progress. General deterministic polynomial time remains open.",
       "links": [
         {
           "title": "Murakami and Yamaguchi, FPT algorithms for Exact Matching",
@@ -13523,6 +13730,10 @@
         {
           "title": "Fischer et al., recoverable robust assignment and Exact Matching",
           "url": "https://arxiv.org/abs/2311.05696"
+        },
+        {
+          "title": "Yuefeng Du: Bipartite Exact Matching in P",
+          "url": "https://arxiv.org/abs/2604.01571v3"
         }
       ]
     },
@@ -13533,7 +13744,7 @@
     "alphaevolve_suitability": "medium",
     "alphaevolve_rationale": "Automated search can look for deterministic isolating weight families, small obstruction patterns for naive derandomizations, or algebraic identities for exact-cardinality matching. A final result needs a proof of polynomial-time correctness or a formal barrier.",
     "literature": {
-      "synthesis": "Exact Matching is close enough to ordinary matching that one expects combinatorial structure, but the exact red-edge constraint blocks direct use of standard augmenting-path algorithms. The randomized MVV approach succeeds by isolating a witness matching and detecting it algebraically; derandomizing this would require deterministic isolation for the relevant family of perfect matchings or a different certificate. Parameterized results show that deterministic algorithms can exploit low independence number or small odd-cycle-transversal structure, while robust assignment reductions show the problem's influence in operations-research models. The unresolved gap is the general graph case with no structural parameter.",
+      "synthesis": "Exact Matching is close enough to ordinary matching that one expects combinatorial structure, but the exact red-edge constraint blocks direct use of standard augmenting-path algorithms. The randomized MVV approach succeeds by isolating a witness matching and detecting it algebraically; derandomizing this would require deterministic isolation for the relevant family of perfect matchings or a different certificate. Parameterized results show that deterministic algorithms can exploit low independence number or small odd-cycle-transversal structure, while robust assignment reductions show the problem's influence in operations-research models. The unresolved gap is the general graph case with no structural parameter. A 2026 bipartite manuscript is a claim to investigate, not an established improvement in this entry: Theorem 2.7(iii) has the elementary affine-slice counterexample described above, and the Lean development assumes eight structural inputs. Neither the defect in that subsidiary identity nor the incomplete formalization alone proves the main theorem false.",
       "reviewed": [
         {
           "ref": "Mulmuley, Vazirani, Vazirani, 'Matching is as Easy as Matrix Inversion', Combinatorica 1987",
@@ -13558,12 +13769,18 @@
           "result": "Shows robust assignment variants are at least as hard as Exact Matching and calls its computational complexity long-standing and unresolved.",
           "relevance": "related-tool",
           "url": "https://arxiv.org/abs/2311.05696"
+        },
+        {
+          "ref": "Yuefeng Du, 'Bipartite Exact Matching in P', arXiv preprint, version 3, 2026",
+          "result": "Claims a bipartite O(n^6)-arithmetic algorithm. Theorem 2.7(iii) fails on the stated K_{2,2} affine-slice example; Appendix A is conditional on eight structural hypotheses. Main theorem not independently certified.",
+          "relevance": "related-tool",
+          "url": "https://arxiv.org/abs/2604.01571v3"
         }
       ]
     },
     "agent_guidance": {
       "suitable_approaches": "Look for deterministic families of edge weights that isolate every relevant exact-cardinality perfect matching family, or for algebraic certificates that distinguish the coefficient of the red-edge-count generating polynomial without random substitution. Another route is to exploit perfect-matching polytope structure plus exact cardinality through strongly polynomial separation or parity-style decompositions. For negative/barrier work, formalize what class of black-box isolation or polynomial-identity methods cannot derandomize the MVV algorithm.",
-      "verification_notes": "A proposed deterministic algorithm must run in polynomial time in $|V|+|E|$ and work for arbitrary graphs, not only bipartite, planar, bounded-treewidth, or bounded-parameter instances. The verifier should test whether the algorithm distinguishes exact red count $k$ rather than merely parity, minimum red count, or existence of some colored matching. If the proof uses isolation, it must show deterministic uniqueness or an equivalent certificate for all inputs.",
+      "verification_notes": "A proposed deterministic algorithm must run in polynomial time in $|V|+|E|$ and work for arbitrary graphs, not only bipartite, planar, bounded-treewidth, or bounded-parameter instances. The verifier should test whether the algorithm distinguishes exact red count $k$ rather than merely parity, minimum red count, or existence of some colored matching. If the proof uses isolation, it must show deterministic uniqueness or an equivalent certificate for all inputs. Do not infer integrality after intersecting a matching polytope with an exact-count hyperplane: the K_{2,2} example above disproves this step. For Du's claim, distinguish arithmetic from bit complexity and inspect the eight unformalized structural hypotheses.",
       "machine_checkable": false
     },
     "source": {
@@ -13587,9 +13804,17 @@
         "year": 2020,
         "venue": "arXiv:2010.11456",
         "url": "https://arxiv.org/abs/2010.11456"
+      },
+      {
+        "authors": "Yuefeng Du",
+        "title": "Bipartite Exact Matching in P",
+        "year": 2026,
+        "venue": "arXiv preprint, version 3",
+        "url": "https://arxiv.org/abs/2604.01571v3"
       }
     ],
-    "enabled": true
+    "enabled": true,
+    "notes_for_maintainer": "2026-11-09 deep sweep: read Du v3 Theorem 1.1, Theorem 2.7 and Appendix A. Independently checked a counterexample to Theorem 2.7(iii); not a refutation of the main theorem. Added a regression test of the four-vertex example. No claimed bipartite resolution is promoted to established progress."
   },
   {
     "id": "input-queued-switch-maxweight-heavy-traffic-distribution",
@@ -14193,13 +14418,13 @@
       "fixed machines",
       "Garey-Johnson"
     ],
-    "status": "open",
-    "confidence": "high",
-    "short_statement": "Determine whether $P3\\mid prec, p_j=1\\mid C_{\\max}$ is polynomial-time solvable or NP-hard.",
-    "full_statement": "An instance consists of a finite set $J$ of unit-processing-time jobs, three identical parallel machines, and a precedence partial order $\\prec$ on $J$. A feasible nonpreemptive schedule assigns each job $j\\in J$ to one of the three machines and to an integer time slot, with at most one job processed on each machine in each slot, and with $j$ completed before $k$ starts whenever $j\\prec k$. The objective is to minimize the makespan $C_{\\max}$, the time at which the last job completes. The open problem is the classical decision complexity of this clean fixed-machine model: given $T$, decide whether there is a feasible schedule of makespan at most $T$ for $P3\\mid prec,p_j=1\\mid C_{\\max}$. Prove that the problem is in P, prove that it is NP-hard, or identify a sharper structural complexity classification that resolves the Garey-Johnson open case.",
-    "background": "Precedence-constrained scheduling is one of the oldest bridges between operations research and theoretical computer science. Graham's list scheduling gives a simple constant-factor approximation for identical machines, and many variants with arbitrary processing times or many machines are known to be hard. The striking feature of this problem is how little structure remains: all jobs have unit length, the number of machines is fixed at three, and the only combinatorial object is a partial order. For two machines the problem has special structure; for unrestricted machine counts and broader variants there are hardness results. The three-machine case survived the original Garey-Johnson complexity list and remains a benchmark for whether the boundary between polynomial structure and NP-hardness in scheduling can be drawn exactly. Recent approximation work has made the optimization version much better understood for constant $m$, but it has not settled the exact decision complexity of the smallest unresolved fixed-machine case.",
-    "known_results": "Levey and Rothvoss proved a near-polynomial/quasi-polynomial-time $(1+\\epsilon)$-approximation framework for $P\\mid prec,p_j=1\\mid C_{\\max}$ with constant $m$ using LP hierarchies, substantially improving the approximation landscape but not resolving NP-hardness for $m=3$. Garg improved the hierarchy-based running time to quasi-polynomial, Li further improved the dependence, and Das and Wiese gave a simpler QPTAS-style approach. Kulkarni, Li, Tarnawski, and Ye extended hierarchy-based ideas to arbitrary processing lengths in a non-migratory relaxed setting and to communication-delay variants. These results show that constant-machine precedence scheduling is approximable extremely well in quasi-polynomial time, but as of the 2026 literature check they still leave open the exact P-versus-NP status of $P3\\mid prec,p_j=1\\mid C_{\\max}$.",
-    "open_problem": "Resolve the computational complexity of $P3\\mid prec,p_j=1\\mid C_{\\max}$.",
+    "status": "solution claimed",
+    "confidence": "medium",
+    "short_statement": "The classical three-machine, unit-job precedence scheduling question now has a reported polynomial-time exact algorithm awaiting independent verification.",
+    "full_statement": "An instance consists of a finite set $J$ of unit-processing-time jobs, three identical parallel machines, and a precedence partial order $\\prec$ on $J$. A feasible nonpreemptive schedule assigns each job $j\\in J$ to one of the three machines and to an integer time slot, with at most one job processed on each machine in each slot, and with $j$ completed before $k$ starts whenever $j\\prec k$. The objective is to minimize the makespan $C_{\\max}$, the time at which the last job completes. The original problem asks for the classical decision complexity of this clean fixed-machine model: given $T$, decide whether there is a feasible schedule of makespan at most $T$ for $P3\\mid prec,p_j=1\\mid C_{\\max}$. A September 2026 manuscript claims a polynomial-time exact solution of this model. The claim has not been independently certified in this audit.",
+    "background": "Precedence-constrained scheduling is a classical meeting point of operations research and algorithms. Jobs are all unit length and only their partial order creates difficulty. Two machines admit special polynomial structure; allowing the machine count to vary changes the complexity. For decades, the exact complexity with three machines remained a prominent question from Garey and Johnson's list. Quasi-polynomial approximation schemes improved the optimization picture without settling that exact question. A September 2026 manuscript now claims a polynomial-time exact algorithm for the original three-machine model. The reported bound is enormous, and the proof requires independent scrutiny; the historical question is therefore recorded as solution claimed rather than plainly open.",
+    "known_results": "Earlier hierarchy-based and combinatorial approximation schemes approximate fixed-machine precedence scheduling in quasi-polynomial time but do not decide exact feasibility.\n\nOpenAI, 'A Polynomial-Time Algorithm for Three-Machine Unit-Job Scheduling' (September 24, 2026), Theorem 1.1, claims a uniform deterministic algorithm producing an optimal schedule and deciding deadlines in $O((L+2)^{150020})$ Turing-machine steps, where $L$ is the complete binary input length. The input is an arbitrary explicitly listed precedence DAG, with three identical machines and unit, nonpreemptive jobs; there are no release dates or communication delays. The claimed exponent is constant but impractical.\n\nThis is a claimed full resolution of the original complexity target, not merely an approximation result. This audit checked the theorem and model, but did not independently certify the complete proof or a formalization.",
+    "open_problem": "Claimed resolution: the three-machine unit-job precedence scheduling problem is in P. Independently verify the reported algorithm and proof; this entry no longer presents the original complexity question as plainly open. Practical running time and extensions are separate questions.",
     "where_posed": {
       "text": "Listed as one of the remaining Garey-Johnson open problems and restated in Levey-Rothvoss and later precedence-scheduling papers.",
       "url": "https://arxiv.org/abs/1509.07808",
@@ -14224,9 +14449,9 @@
       {
         "authors": "Syamantak Das, Andreas Wiese",
         "title": "A simpler QPTAS for scheduling jobs with precedence constraints",
-        "year": 2025,
-        "venue": "ESA / arXiv",
-        "url": "https://arxiv.org/abs/2501.09091"
+        "year": 2022,
+        "venue": "ESA 2022 / arXiv 2025",
+        "url": "https://arxiv.org/abs/2501.09091v1"
       },
       {
         "authors": "Janardhan Kulkarni, Shi Li, Jakub Tarnawski, Minwei Ye",
@@ -14234,15 +14459,26 @@
         "year": 2020,
         "venue": "SODA / arXiv",
         "url": "https://arxiv.org/abs/2004.13891"
+      },
+      {
+        "authors": "OpenAI",
+        "title": "A Polynomial-Time Algorithm for Three-Machine Unit-Job Scheduling",
+        "year": 2026,
+        "venue": "OpenAI Math Release preprint",
+        "url": "https://github.com/openai/math/blob/main/preprints/A-polynomial-time-algorithm-for-three-machine-unit-job-scheduling-September-24-2026/paper.pdf"
       }
     ],
     "progress": {
-      "state": "partial",
-      "summary": "The optimization problem has quasi-polynomial approximation schemes for fixed $m$, but those algorithms do not imply an exact polynomial-time algorithm or NP-hardness for three machines.",
+      "state": "solution-claimed",
+      "summary": "An exact polynomial-time algorithm is claimed for the original model; independent proof verification remains outstanding.",
       "links": [
         {
           "title": "Das-Wiese simpler QPTAS",
           "url": "https://arxiv.org/abs/2501.09091"
+        },
+        {
+          "title": "OpenAI: A Polynomial-Time Algorithm for Three-Machine Unit-Job Scheduling",
+          "url": "https://github.com/openai/math/blob/main/preprints/A-polynomial-time-algorithm-for-three-machine-unit-job-scheduling-September-24-2026/paper.pdf"
         }
       ]
     },
@@ -14253,7 +14489,7 @@
     "alphaevolve_suitability": "medium",
     "alphaevolve_rationale": "Search over small posets, minimal unschedulable instances, and candidate reductions could expose useful gadgets or invariants. However, a final answer needs a formal complexity proof.",
     "literature": {
-      "synthesis": "The literature around this problem has shifted from exact complexity to approximation without eliminating the original complexity question. Levey and Rothvoss showed that a Sherali-Adams lift of the time-indexed LP gives a $(1+\\epsilon)$ approximation in slightly super-polylogarithmic hierarchy depth for constant $m$. Garg improved this to a cleaner quasi-polynomial-time approximation, and later work simplified the algorithmic template. These results are strong evidence that fixed-machine precedence scheduling has substantial hidden structure, but they are not exact algorithms. The 2020 hierarchy-based work also emphasizes that arbitrary processing lengths and communication delays remain harder variants. The remaining gap is qualitative rather than a constant-factor gap: determine whether the three-machine, unit-job decision problem is NP-hard or polynomial-time solvable.",
+      "synthesis": "Approximation schemes and exact complexity must be separated. The new manuscript addresses the original decision and optimization problems directly. Its correctness needs independent assessment; faster useful algorithms would be a follow-up target, not a reason to continue calling the original question open.",
       "reviewed": [
         {
           "ref": "Elaine Levey, Thomas Rothvoss, 'A (1+epsilon)-Approximation for Makespan Scheduling with Precedence Constraints using LP Hierarchies', SICOMP 2019 / arXiv",
@@ -14272,15 +14508,22 @@
           "result": "Gives a simpler QPTAS-style treatment and again notes that NP-hardness for $m=3$ remains open.",
           "relevance": "partial-progress",
           "url": "https://arxiv.org/abs/2501.09091"
+        },
+        {
+          "ref": "OpenAI, 'A Polynomial-Time Algorithm for Three-Machine Unit-Job Scheduling', OpenAI Math Release preprint, 2026",
+          "result": "Theorem 1.1 claims an exact deterministic polynomial-time algorithm for the original three-machine model.",
+          "relevance": "partial-progress",
+          "url": "https://github.com/openai/math/blob/main/preprints/A-polynomial-time-algorithm-for-three-machine-unit-job-scheduling-September-24-2026/paper.pdf"
         }
       ]
     },
     "agent_guidance": {
-      "suitable_approaches": "For hardness, search for reductions whose gadgets are naturally unit-time and precedence-only, perhaps from restricted SAT, poset dimension, or exact cover variants, while preserving the three-machine limit. For an algorithmic attack, study canonical decompositions of width, chains, antichains, and critical intervals in near-tight schedules. Exhaustive enumeration of small posets may be useful for guessing forbidden structures or validating dynamic-programming states.",
-      "verification_notes": "A hardness proof must use only three machines and unit processing times; reductions that rely on variable machine count or arbitrary processing times do not resolve the problem. A polynomial-time solution must optimize exact makespan, not merely approximate it, and should include a proof that the state space remains polynomial.",
+      "suitable_approaches": "Prioritize verification of the reported decomposition and dynamic program. Small-poset enumeration can test structural lemmas and schedule reconstruction, but cannot certify correctness for every input. Improving the enormous polynomial exponent or extending the model would be follow-up results, not a new resolution of the original decision question.",
+      "verification_notes": "Referee the bounded-description decomposition and its closure under recursion, completeness of the dynamic program, exact schedule reconstruction, and uniform bit complexity. Do not infer a practical algorithm or a result for release dates, arbitrary processing lengths, or communication delays. No formal certificate was replayed by this audit.",
       "machine_checkable": true
     },
-    "enabled": true
+    "enabled": true,
+    "notes_for_maintainer": "2026-11-09: primary PDF introduction and Theorem 1.1 checked; full proof and formalization not independently verified. Preserve the original model and classify as solution claimed."
   },
   {
     "id": "scheduling-communication-delays-constant-approximation",
@@ -16970,12 +17213,12 @@
       "NP intersect coNP",
       "tropical optimization"
     ],
-    "status": "open",
+    "status": "partially resolved",
     "confidence": "high",
     "short_statement": "Are finite two-player mean-payoff games solvable in polynomial time?",
-    "full_statement": "A mean-payoff game is played on a finite directed graph $G=(V,E)$ whose vertices are partitioned into $V_{\\max}$ and $V_{\\min}$. Each edge $e$ has an integer weight $w(e)$. A token starts at a designated vertex. When the token is at a vertex controlled by Max, Max chooses the outgoing edge; when it is at a vertex controlled by Min, Min chooses. This produces an infinite path $e_1,e_2,\\ldots$. Max seeks to maximize and Min seeks to minimize the long-run average payoff $\\liminf_{T\\to\\infty} T^{-1}\\sum_{t=1}^T w(e_t)$, or equivalently the game value. Mean-payoff games are positionally determined and lie in $NP\\cap coNP$ for the decision version asking whether the value is at least a threshold. The open problem is to give an algorithm running in time polynomial in the number of vertices, edges, and input bit length, or to prove an appropriate lower-bound/completeness result explaining why such an algorithm should not exist. Equivalent or closely related formulations include energy games, tropical linear programming, and certain policy-iteration/simplex questions.",
+    "full_statement": "A mean-payoff game is played on a finite directed graph $G=(V,E)$ whose vertices are partitioned into $V_{\\max}$ and $V_{\\min}$. Every vertex has an outgoing edge, and each edge $e$ has an integer weight $w(e)$ encoded in binary. A token starts at a designated vertex. When the token is at a vertex controlled by Max, Max chooses the outgoing edge; when it is at a vertex controlled by Min, Min chooses. This produces an infinite path $e_1,e_2,\\ldots$. Max seeks to maximize and Min seeks to minimize the long-run average payoff $\\liminf_{T\\to\\infty} T^{-1}\\sum_{t=1}^T w(e_t)$, or equivalently the game value. Mean-payoff games are positionally determined and lie in $NP\\cap coNP$ for the decision version asking whether the value is at least a threshold. The open problem is to give an algorithm running in time polynomial in the number of vertices, edges, and input bit length, or to prove an appropriate lower-bound/completeness result explaining why such an algorithm should not exist. Equivalent or closely related formulations include energy games, tropical linear programming, and certain policy-iteration/simplex questions.",
     "background": "Mean-payoff games are a basic model of infinite-horizon adversarial control. They sit between graph algorithms, optimization, formal verification, and dynamic programming. In verification, they model quantitative properties of reactive systems. In optimization, they are tied to tropical linear programming and policy-improvement methods. In game theory, they are a finite deterministic analogue of average-payoff stochastic games, with positional optimal strategies but unresolved computational complexity. The problem has the same flavor as several central operations-research algorithmic questions: the model is finite and clean, dynamic-programming and strategy-improvement algorithms work well in many cases, but no polynomial worst-case bound is known. The fact that the decision problem lies in $NP\\cap coNP$ makes it unlikely to be NP-complete under standard assumptions, yet this membership has not yielded a polynomial algorithm.",
-    "known_results": "Ehrenfeucht and Mycielski proved positional determinacy for mean-payoff games. Zwick and Paterson gave foundational pseudo-polynomial and exponential algorithms and clarified the complexity landscape. The problem is known to be in $NP\\cap coNP$ and is interreducible with energy games and closely related to parity games. Strategy-improvement and value-iteration algorithms are effective in practice but have no polynomial worst-case guarantee; subexponential algorithms are known for related parity/mean-payoff settings. Allamigeon, Benchimol, Gaubert, and Joswig showed that combinatorial simplex algorithms over tropical geometry can solve mean-payoff games, and that a strongly polynomial combinatorial simplex algorithm for linear programming would imply a strongly polynomial algorithm for mean-payoff games. Despite decades of progress on special graph classes and algorithmic frameworks, the general polynomial-time question remains open.",
+    "known_results": "Ehrenfeucht and Mycielski proved positional determinacy for mean-payoff games. Zwick and Paterson gave foundational pseudo-polynomial and exponential algorithms and clarified the complexity landscape. The problem is known to be in $NP\\cap coNP$ and is interreducible with energy games and closely related to parity games. Strategy-improvement and value-iteration algorithms are effective in practice but have no polynomial worst-case guarantee; subexponential algorithms are known for related parity/mean-payoff settings. Allamigeon, Benchimol, Gaubert, and Joswig showed that combinatorial simplex algorithms over tropical geometry can solve mean-payoff games, and that a strongly polynomial combinatorial simplex algorithm for linear programming would imply a strongly polynomial algorithm for mean-payoff games. Despite decades of progress on special graph classes and algorithmic frameworks, the general polynomial-time question remains open.\n\nOpenAI, 'Deterministic quasipolynomial-time mean-payoff games' (September 25, 2026), Theorem 1.1, claims deterministic $2^{O((\\log(L+2))^2)}$ bit time for the complete zero-threshold winning set, for total binary input length $L$. Section 7 derives exact values and optimal positional strategies. This is a reported quasipolynomial improvement for arbitrary signed binary weights, not the older pseudo-polynomial dependence on weight magnitude. The proof was not independently certified here.\n\nRemaining open problem. Obtain a polynomial-time bound in the full binary input length; quasipolynomial time does not resolve this target.",
     "where_posed": {
       "text": "Stated explicitly in Allamigeon, Benchimol, Gaubert, Joswig, 'Combinatorial simplex algorithms can solve mean payoff games', SIAM Journal on Optimization 2014.",
       "url": "https://arxiv.org/abs/1309.5925",
@@ -17010,16 +17253,27 @@
         "year": 2007,
         "venue": "Discrete Applied Mathematics",
         "url": "https://doi.org/10.1016/j.dam.2006.04.029"
+      },
+      {
+        "authors": "OpenAI",
+        "title": "Deterministic quasipolynomial-time mean-payoff games",
+        "year": 2026,
+        "venue": "OpenAI Math Release preprint",
+        "url": "https://github.com/openai/math/blob/main/preprints/Deterministic-quasipolynomial-time-mean-payoff-games-September-25-2026/paper.pdf"
       }
     ],
     "enabled": true,
     "progress": {
       "state": "partial",
-      "summary": "The problem is in $NP\\cap coNP$, has pseudo-polynomial and subexponential-style algorithms in related settings, and is polynomial on many restricted graph classes. No polynomial-time algorithm is known for general mean-payoff games.",
+      "summary": "A 2026 manuscript claims deterministic quasipolynomial bit complexity. The polynomial-time target remains open.",
       "links": [
         {
           "title": "Combinatorial simplex algorithms and mean-payoff games",
           "url": "https://arxiv.org/abs/1309.5925"
+        },
+        {
+          "title": "OpenAI: Deterministic quasipolynomial-time mean-payoff games",
+          "url": "https://github.com/openai/math/blob/main/preprints/Deterministic-quasipolynomial-time-mean-payoff-games-September-25-2026/paper.pdf"
         }
       ]
     },
@@ -17030,7 +17284,7 @@
     "alphaevolve_suitability": "medium",
     "alphaevolve_rationale": "Search can find hard instances for strategy-improvement rules, tropical simplex pivots, or value-iteration heuristics. It is less likely to discover a full polynomial-time algorithm without symbolic proof search.",
     "literature": {
-      "synthesis": "Mean-payoff games occupy a persistent complexity gap. Positional determinacy gives a compact certificate of optimal play, and the threshold decision problem has both NP and coNP certificates. Zwick and Paterson established the classical algorithms and complexity framework. Subsequent work has attacked the problem through strategy improvement, energy games, parity-game reductions, and tropical linear programming. The tropical-simplex connection is especially relevant to optimization: progress on strongly polynomial simplex-type algorithms would propagate to mean-payoff games, while hard mean-payoff instances inform the limits of pivoting methods. The remaining gap is conceptual as much as technical: existing algorithms exploit numerical weights or local improvement structure, but no proof shows that the number of improvement steps or the size of a certificate can be bounded polynomially in all instances.",
+      "synthesis": "Mean-payoff games occupy a persistent complexity gap. Positional determinacy gives a compact certificate of optimal play, and the threshold decision problem has both NP and coNP certificates. Zwick and Paterson established the classical algorithms and complexity framework. Subsequent work has attacked the problem through strategy improvement, energy games, parity-game reductions, and tropical linear programming. The tropical-simplex connection is especially relevant to optimization: progress on strongly polynomial simplex-type algorithms would propagate to mean-payoff games, while hard mean-payoff instances inform the limits of pivoting methods. The remaining gap is conceptual as much as technical: existing algorithms exploit numerical weights or local improvement structure, but no proof shows that the number of improvement steps or the size of a certificate can be bounded polynomially in all instances. The September 2026 manuscript targets binary-weight complexity directly; if correct, it improves the upper bound while leaving a polynomial-versus-quasipolynomial gap.",
       "reviewed": [
         {
           "ref": "Ehrenfeucht and Mycielski, 'Positional Strategies for Mean Payoff Games', IJGT 1979",
@@ -17049,6 +17303,12 @@
           "result": "Connects combinatorial simplex algorithms and tropical LP to mean-payoff games.",
           "relevance": "related-tool",
           "url": "https://arxiv.org/abs/1309.5925"
+        },
+        {
+          "ref": "OpenAI, 'Deterministic quasipolynomial-time mean-payoff games', OpenAI Math Release preprint, 2026",
+          "result": "Theorem 1.1 reports quasipolynomial bit complexity; Section 7 covers values and strategies.",
+          "relevance": "partial-progress",
+          "url": "https://github.com/openai/math/blob/main/preprints/Deterministic-quasipolynomial-time-mean-payoff-games-September-25-2026/paper.pdf"
         }
       ]
     },
@@ -17057,7 +17317,8 @@
       "verification_notes": "A claimed algorithm must be polynomial in graph size and weight bit length, not merely pseudo-polynomial in the magnitude of weights. A restricted-class result must state the graph or weight restrictions precisely. A lower-bound result for a heuristic should not be confused with a lower bound for all algorithms. A verifier should test proposed algorithms on known strategy-improvement hard instances and inspect whether arithmetic precision is polynomially bounded. For reductions, check direction carefully: showing that a polynomial LP pivot rule would solve mean-payoff games does not itself solve the game. A valid resolution must output values or winning regions, or decide threshold games, for arbitrary finite directed weighted arenas.",
       "machine_checkable": true
     },
-    "notes_for_maintainer": "This complements but does not duplicate the strongly-polynomial MDP record; it is a two-player infinite-horizon game complexity problem."
+    "notes_for_maintainer": "This complements but does not duplicate the strongly-polynomial MDP record; it is a two-player infinite-horizon game complexity problem.",
+    "open_problem": "Find a deterministic polynomial-time algorithm in the complete binary encoding length for arbitrary finite mean-payoff games. The reported quasipolynomial bound is partial progress, not a solution of this question."
   },
   {
     "id": "capacitated-k-median-constant-approximation",
@@ -18225,13 +18486,13 @@
       "approximation scheme",
       "routing"
     ],
-    "status": "open",
+    "status": "partially resolved",
     "confidence": "high",
     "short_statement": "Does Euclidean capacitated vehicle routing admit a polynomial-time approximation scheme for arbitrary vehicle capacity?",
     "full_statement": "In Euclidean capacitated vehicle routing, the input consists of a depot $r\\in\\mathbb R^2$, customer points $p_1,\\ldots,p_n\\in\\mathbb R^2$, and an integer vehicle capacity $Q$. In the unit-demand version, every customer has demand one; a feasible solution is a collection of tours, each starting and ending at $r$, such that every customer is visited by at least one tour and each tour visits at most $Q$ customers. The objective is to minimize total Euclidean tour length. More general splittable or unsplittable demand variants replace the cardinality bound by a capacity bound on total demand per tour, but the central geometric open problem is already present in the unit-demand arbitrary-$Q$ case. For fixed dimension, determine whether there is a PTAS: for every fixed $\\varepsilon>0$, an algorithm running in $n^{O_{\\varepsilon}(1)}$ time that returns a solution of cost at most $(1+\\varepsilon)\\operatorname{OPT}$ for every capacity $Q$. Quasi-polynomial approximation schemes are known, and recent work has reduced the exponent substantially, but a true polynomial-time approximation scheme for arbitrary capacity remains open.",
-    "open_problem": "Give a PTAS for Euclidean CVRP with arbitrary capacity, or prove that no PTAS exists under a standard complexity assumption.",
+    "open_problem": "Does planar unit-demand Euclidean CVRP admit a PTAS for arbitrary capacity $Q$, with polynomial running time for every fixed accuracy?",
     "background": "Capacitated vehicle routing is one of the signature models of operations research: a depot must serve geographically located customers using finite-capacity routes. In general metrics, CVRP has stubborn constant-factor approximation gaps, already represented elsewhere in the repository. The Euclidean case is different. For Euclidean TSP, Arora and Mitchell gave PTASs using recursive dissection and portal techniques. CVRP looks close to TSP but adds a global capacity constraint that forces many short tours and couples local geometric choices to depot returns. That capacity coupling is exactly what prevents the classical Euclidean TSP PTAS machinery from applying directly. The problem is therefore a clean test of whether geometric dynamic programming can handle vehicle capacity without paying quasi-polynomial state complexity.",
-    "known_results": "Dantzig and Ramser introduced vehicle routing in the 1950s, and CVRP has since become a central routing and logistics problem. Arora-style and Mitchell-style dissection methods give PTASs for Euclidean TSP and many geometric network-design problems, but CVRP resisted the same framework for arbitrary capacities. Das and Mathieu gave a quasi-polynomial-time approximation scheme for Euclidean CVRP in the plane, with running time of the form $n^{\\log^{O(1/\\varepsilon)} n}$. Jayaprakash and Salavatipour later developed QPTASs for bounded-treewidth, bounded-doubling, and highway-dimension graph metrics, implying another Euclidean-plane approximation scheme in quasi-polynomial time. Sitters recently improved the Euclidean-plane running time to $n^{O_\\varepsilon(\\log\\log n)}$ and reduced CVRP to an $m$-paths problem, explicitly framing the result as a major step toward a PTAS. No source-checked polynomial-time approximation scheme for arbitrary capacity is known as of this sweep.",
+    "known_results": "Dantzig and Ramser introduced vehicle routing in the 1950s, and CVRP has since become a central routing and logistics problem. Arora-style and Mitchell-style dissection methods give PTASs for Euclidean TSP and many geometric network-design problems, but CVRP resisted the same framework for arbitrary capacities. Das and Mathieu gave a quasi-polynomial-time approximation scheme for Euclidean CVRP in the plane, with running time of the form $n^{\\log^{O(1/\\varepsilon)} n}$. Jayaprakash and Salavatipour later developed QPTASs for bounded-treewidth, bounded-doubling, and highway-dimension graph metrics, implying another Euclidean-plane approximation scheme in quasi-polynomial time. Sitters recently improved the Euclidean-plane running time to $n^{O_\\varepsilon(\\log\\log n)}$ and reduced CVRP to an $m$-paths problem, explicitly framing the result as a major step toward a PTAS. Zachary Friggstad, Fabrizio Grandoni, and Ramin Mousavi, 'Breaching the 2-Approximation Barrier for Euclidean Capacitated Vehicle Routing' (SODA 2026), Theorem 1.2, give a polynomial-time $(2-\\tau)$-approximation for an absolute $\\tau>10^{-5}$. The result covers unit demands in the plane and unrestricted capacity; it is not a PTAS.\n\nRemaining open problem. Reduce the approximation factor to $1+\\varepsilon$ in polynomial time for each fixed $\\varepsilon$, uniformly over the capacity. A near-polynomial approximation scheme and a sub-2 constant approximation address different parts of this gap.",
     "where_posed": {
       "text": "The PTAS gap is stated in approximation-scheme work on Euclidean CVRP, including Sitters' improved QPTAS.",
       "url": "https://arxiv.org/abs/2507.15549",
@@ -18273,12 +18534,19 @@
         "year": 2025,
         "venue": "arXiv",
         "url": "https://arxiv.org/abs/2507.15549"
+      },
+      {
+        "authors": "Zachary Friggstad, Fabrizio Grandoni, Ramin Mousavi",
+        "title": "Breaching the 2-Approximation Barrier for Euclidean Capacitated Vehicle Routing",
+        "year": 2026,
+        "venue": "SODA",
+        "url": "https://people.idsia.ch/~grandoni/Pubblicazioni/FGM26soda.pdf"
       }
     ],
     "enabled": true,
     "progress": {
       "state": "partial",
-      "summary": "QPTASs are known, including a recent $n^{O_\\varepsilon(\\log\\log n)}$ scheme, but no $n^{O_\\varepsilon(1)}$ PTAS is known for arbitrary capacity.",
+      "summary": "A near-polynomial scheme and a 2026 polynomial-time sub-2 approximation are known; a PTAS for unrestricted capacity remains open.",
       "links": [
         {
           "title": "Das-Mathieu QPTAS",
@@ -18287,6 +18555,10 @@
         {
           "title": "Sitters improved QPTAS",
           "url": "https://arxiv.org/abs/2507.15549"
+        },
+        {
+          "title": "Zachary Friggstad, Fabrizio Grandoni, Ramin Mousavi: Breaching the 2-Approximation Barrier for Euclidean Capacitated Vehicle Routing",
+          "url": "https://people.idsia.ch/~grandoni/Pubblicazioni/FGM26soda.pdf"
         }
       ]
     },
@@ -18297,7 +18569,7 @@
     "alphaevolve_suitability": "medium",
     "alphaevolve_rationale": "Search can generate Euclidean point sets where known decompositions need many crossing patterns or many route fragments, helping identify the source of quasi-polynomial state complexity. A full PTAS still needs a structural compression theorem.",
     "literature": {
-      "synthesis": "The Euclidean CVRP gap is not about whether approximation schemes exist in principle: Das and Mathieu already proved a QPTAS. The question is whether the state space can be compressed to polynomial size as in Euclidean TSP. The obstacle is that capacity makes the number and composition of route pieces crossing a dissection boundary matter; a portal state must remember not only geometry but how partial tours aggregate demand and return to the depot. Sitters' $n^{O(\\log\\log n)}$ scheme shows that this state explosion can be reduced substantially and proposes the $m$-paths view as an intermediate target. A PTAS may come from a sharper structural theorem for route interactions, while a negative result would need to show that arbitrary capacity fundamentally encodes too much global information even in the plane.",
+      "synthesis": "The Euclidean CVRP gap is not about whether approximation schemes exist in principle: Das and Mathieu already proved a QPTAS. The question is whether the state space can be compressed to polynomial size as in Euclidean TSP. The obstacle is that capacity makes the number and composition of route pieces crossing a dissection boundary matter; a portal state must remember not only geometry but how partial tours aggregate demand and return to the depot. Sitters' $n^{O(\\log\\log n)}$ scheme shows that this state explosion can be reduced substantially and proposes the $m$-paths view as an intermediate target. A PTAS may come from a sharper structural theorem for route interactions, while a negative result would need to show that arbitrary capacity fundamentally encodes too much global information even in the plane. The 2026 sub-2 algorithm improves polynomial-time approximation quality without giving an approximation scheme. It must not be transferred to unsplittable arbitrary demands, whose hardness differs.",
       "reviewed": [
         {
           "ref": "Das and Mathieu, 'A quasi-polynomial time approximation scheme for Euclidean capacitated vehicle routing', Algorithmica 2015",
@@ -18316,6 +18588,12 @@
           "result": "Improves the Euclidean-plane QPTAS running time and reduces the problem to an $m$-paths formulation.",
           "relevance": "partial-progress",
           "url": "https://arxiv.org/abs/2507.15549"
+        },
+        {
+          "ref": "Zachary Friggstad, Fabrizio Grandoni, Ramin Mousavi, 'Breaching the 2-Approximation Barrier for Euclidean Capacitated Vehicle Routing', SODA, 2026",
+          "result": "Theorem 1.2: polynomial-time $(2-\\tau)$ approximation, $\\tau>10^{-5}$, for planar unit-demand CVRP.",
+          "relevance": "partial-progress",
+          "url": "https://people.idsia.ch/~grandoni/Pubblicazioni/FGM26soda.pdf"
         }
       ]
     },
@@ -19919,13 +20197,13 @@
       "geodesics",
       "applied probability"
     ],
-    "status": "conjecture",
-    "confidence": "high",
-    "short_statement": "For i.i.d. continuous first-passage percolation on $\\mathbb Z^2$, it is famously conjectured that there are almost surely no doubly infinite geodesics.",
-    "full_statement": "In nearest-neighbor first-passage percolation on $\\mathbb Z^2$, assign i.i.d. nonnegative continuous passage times $(t_e)$ to edges, with standard assumptions ensuring finite geodesics and a nondegenerate limit shape. For vertices $x,y$, let $$T(x,y)=\\inf_{\\gamma:x\\to y}\\sum_{e\\in\\gamma} t_e,$$ where the infimum is over nearest-neighbor paths. A finite or infinite path is a geodesic if every finite subpath realizes the passage time between its endpoints. A bigeodesic is a doubly infinite path $(v_i)_{i\\in\\mathbb Z}$ such that every segment $(v_i,\\ldots,v_j)$ is a geodesic between $v_i$ and $v_j$. The open problem is to prove that, under natural continuous i.i.d. edge-weight distributions in two dimensions, almost surely there are no bigeodesics. Equivalently, every infinite geodesic should have only one infinite end, and two-sided globally minimizing paths should not exist in the random metric. A solution should avoid assuming unproved curvature or differentiability properties of the limit shape unless those properties are also proved under the same distributional hypotheses.",
-    "open_problem": "Prove or refute the no-bigeodesics conjecture for two-dimensional i.i.d. continuous first-passage percolation under standard moment and nondegeneracy assumptions.",
+    "status": "solution claimed",
+    "confidence": "medium",
+    "short_statement": "A 2026 manuscript claims simultaneous absence of planar FPP bigeodesics under the standard minimum-of-four second-moment condition, without shape regularity.",
+    "full_statement": "On the nearest-neighbor edges of $\\mathbb Z^2$, assign independent identically distributed nonnegative passage times with a nonatomic law $G$. State the standard shape-theorem moment hypothesis explicitly: if $X_1,\\ldots,X_4$ are independent with law $G$, assume $$\\mathbb E[\\min(X_1,X_2,X_3,X_4)^2]<\\infty.$$ This is weaker than requiring an individual edge to have a finite second moment.\n\nLet $T(x,y)$ be the infimum of the summed edge weights over finite paths from $x$ to $y$. A bigeodesic is a doubly infinite self-avoiding nearest-neighbor path whose every finite segment realizes $T$ between its endpoints. The conjecture asserts that almost surely no such path exists, simultaneously over all paths, including ones with environment-dependent directions.\n\nA September 2026 manuscript claims this moment-bounded statement without curvature or differentiability assumptions. The moment-free formulation is a distinct stronger target.",
+    "open_problem": "Claimed resolution under the explicit minimum-of-four moment hypothesis: independently verify the simultaneous nonexistence theorem. The stronger assertion for every nonatomic law without that moment condition is not settled by the cited theorem.",
     "background": "First-passage percolation turns the lattice into a random metric and asks what large-scale geometry this metric has. The shape theorem gives first-order deterministic growth, but the structure of geodesics remains much less understood. Bigeodesics are especially important because they would be global two-sided minimizers, analogous to geodesic lines in deterministic geometry. In random media they are expected not to exist in two dimensions: geodesics from different points should coalesce, and random fluctuations should prevent a path from being globally optimal in both time directions. The conjecture is tied to Busemann functions, competition interfaces, spin-glass ground states, and the midpoint problem of Benjamini, Kalai, and Schramm. It is a clean fixed-model problem rather than a modeling question: the lattice, randomness, and object of study are all specified.",
-    "known_results": "Licea and Newman proved strong directional results under assumptions on curvature of the asymptotic shape, including absence of bigeodesics with prescribed directional behavior for a full-measure set of directions. Damron and Hanson proved that, if the boundary of the limit shape is differentiable, there are no bigeodesics with one end directed in any deterministic direction; their work also connects the question to the BKS midpoint problem. Ahlberg and Hoffman developed random coalescing geodesics and solved the midpoint problem, while Brito, Damron, and Hanson proved absence of backward infinite paths in geodesic graphs built from point-to-hyperplane limits in arbitrary dimension. These are substantial advances, but none proves the unconditional two-dimensional no-bigeodesics conjecture for general continuous i.i.d. passage-time distributions.",
+    "known_results": "Classical results rule out prescribed-direction bigeodesics or paths in selected geodesic forests under their respective hypotheses; they must not be mistaken for a simultaneous statement about all random directions. Ahlberg and Hoffman's random-coalescing-geodesic theory supplies important structural tools.\n\nOpenAI, 'No bigeodesics in planar first-passage percolation' (September 24, 2026), Theorem 1.1, claims the full simultaneous no-bigeodesics statement for nonatomic i.i.d. weights satisfying $\\mathbb E[\\min(X_1,X_2,X_3,X_4)^2]<\\infty$. No limit-shape regularity is assumed. The paper explicitly does not assert the moment-free version.\n\nThe catalogue's standard-moment target therefore has a claimed resolution, not just directional progress. This audit checked scope and assumptions but did not independently certify the proof. Removing the moment hypothesis is separate.",
     "where_posed": {
       "text": "Damron and Hanson describe the absence of bigeodesics as a famous conjecture in first-passage percolation.",
       "url": "https://arxiv.org/abs/1512.00804",
@@ -19960,13 +20238,25 @@
         "year": 2017,
         "venue": "AMS University Lecture Series / arXiv",
         "url": "https://arxiv.org/abs/1511.03262"
+      },
+      {
+        "authors": "OpenAI",
+        "title": "No bigeodesics in planar first-passage percolation",
+        "year": 2026,
+        "venue": "OpenAI Math Release preprint",
+        "url": "https://github.com/openai/math/blob/main/preprints/No-bigeodesics-in-planar-first-passage-percolation-September-24-2026/main.pdf"
       }
     ],
     "enabled": true,
     "progress": {
-      "state": "open",
-      "summary": "Directional and conditional nonexistence results are known, but the unconditional two-dimensional no-bigeodesics conjecture remains open.",
-      "links": []
+      "state": "solution-claimed",
+      "summary": "The standard-moment planar target has a reported full resolution; this is not a claim for every nonatomic edge-weight law.",
+      "links": [
+        {
+          "title": "OpenAI: No bigeodesics in planar first-passage percolation",
+          "url": "https://github.com/openai/math/blob/main/preprints/No-bigeodesics-in-planar-first-passage-percolation-September-24-2026/main.pdf"
+        }
+      ]
     },
     "importance": 8,
     "difficulty": 9,
@@ -19975,33 +20265,40 @@
     "alphaevolve_suitability": "medium",
     "alphaevolve_rationale": "Computation may help explore geodesic coalescence, midpoint behavior, and candidate finite obstructions, but a proof is likely analytic and probabilistic.",
     "literature": {
-      "synthesis": "The no-bigeodesics problem is part of the broader project of understanding geodesic geometry in FPP beyond the shape theorem. Busemann functions provide one route: if directional Busemann limits exist and geodesics coalesce, one can rule out many two-sided minimizers. Conditional results show that differentiability or curvature of the limit shape would be enough to exclude important classes of bigeodesics, but those shape regularity properties are themselves open for ordinary lattice FPP. Recent random-coalescing-geodesic methods avoid some deterministic shape assumptions and solve related midpoint questions, yet still do not eliminate all possible bigeodesics. A complete solution would likely need a robust coalescence theorem, a new way to control exceptional directions, or a proof that any bigeodesic would force a translation-invariant structure now known to be impossible.",
+      "synthesis": "The central quantifier issue is simultaneous exclusion: an exceptional direction may depend on the environment. The new claim addresses that issue in a precisely stated moment class. Its scope and verification status should remain visible rather than being conflated with the unrestricted formulation.",
       "reviewed": [
         {
           "ref": "Damron and Hanson, Bigeodesics in first-passage percolation, 2015",
           "result": "Rules out bigeodesics with deterministic directed end under differentiability of the limit shape.",
-          "relevance": "conditional-progress",
+          "relevance": "partial-progress",
           "url": "https://arxiv.org/abs/1512.00804"
         },
         {
           "ref": "Ahlberg and Hoffman, Random coalescing geodesics in first-passage percolation, 2016",
           "result": "Develops random coalescing geodesic machinery and solves the midpoint problem.",
-          "relevance": "geodesic-structure-progress",
+          "relevance": "partial-progress",
           "url": "https://arxiv.org/abs/1609.02447"
         },
         {
           "ref": "Brito, Damron, Hanson, Absence of backward infinite paths for first-passage percolation in arbitrary dimension, 2020",
           "result": "Shows absence of bigeodesics in certain geodesic graphs constructed from point-to-hyperplane limits.",
-          "relevance": "unconditional-partial-progress",
+          "relevance": "partial-progress",
           "url": "https://arxiv.org/abs/2003.03367"
+        },
+        {
+          "ref": "OpenAI, 'No bigeodesics in planar first-passage percolation', OpenAI Math Release preprint, 2026",
+          "result": "Theorem 1.1 claims simultaneous absence under the stated minimum-of-four moment assumption.",
+          "relevance": "partial-progress",
+          "url": "https://github.com/openai/math/blob/main/preprints/No-bigeodesics-in-planar-first-passage-percolation-September-24-2026/main.pdf"
         }
       ]
     },
     "agent_guidance": {
       "suitable_approaches": "Study Busemann-function constructions, geodesic coalescence, exceptional-direction arguments, and implications of limit-shape differentiability. Avoid relying on unproved KPZ exponents or curvature assumptions unless the proof explicitly makes the result conditional.",
-      "verification_notes": "A proof must specify distributional assumptions on edge weights and show almost-sure absence of every doubly infinite path whose finite subpaths are geodesics. A conditional result should state exactly which assumptions on the limit shape, curvature, differentiability, or Busemann limits are used, since many known results are conditional in precisely this way. A counterexample would require a passage-time distribution satisfying the standard hypotheses and a rigorous positive-probability construction of a bigeodesic, not only simulations or finite-box geodesic pictures.",
+      "verification_notes": "Check the exact minimum-of-four moment condition, nonatomic i.i.d. law, and simultaneous quantifier over all paths. Verify that fixed-direction probability-one statements are not silently intersected over uncountably many directions. A moment-free extension requires an additional argument. This audit did not certify the manuscript's complete proof.",
       "machine_checkable": false
-    }
+    },
+    "notes_for_maintainer": "2026-11-09: the previously vague standard assumptions are now explicit; status refers to that moment-bounded target. No independent full-proof validation."
   },
   {
     "id": "minor-free-flow-cut-gap-gnrs",

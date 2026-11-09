@@ -5,7 +5,7 @@
  "title": "Exact threshold for random k-SAT",
  "collection": "Computer Science",
  "area": "Random Structures",
- "status": "open",
+ "status": "partially resolved",
  "confidence": "medium",
  "tags": [
   "random structures",
@@ -15,14 +15,14 @@
   "applied probability",
   "computer science"
  ],
- "short_statement": "Determine the exact satisfiability threshold for random $k$-SAT at small fixed $k$, especially $k=3$.",
- "open_problem": "Prove the exact random $k$-SAT satisfiability threshold for fixed small $k$, in particular $k=3$. The open part is not sharpness of the transition in a qualitative sense, but the rigorous identification of the threshold value for these small $k$.",
+ "short_statement": "Random SAT has a sharp satisfiability transition. Recent manuscripts address existence and computability of its limiting density, while identifying the predicted small-clause value remains separate.",
+ "open_problem": "Identify the random 3-SAT threshold, and other small fixed-clause thresholds, by an explicit value or rigorous variational characterization. Distinguish this from the recently claimed limiting-threshold existence and 3-SAT computability results.",
  "background": "Random $k$-SAT is a central model at the boundary of combinatorics, probability, statistical physics, and computational complexity. A formula on $n$ Boolean variables is formed by drawing $m=\\lfloor \\alpha n\\rfloor$ random clauses, each containing $k$ literals. For small clause density $\\alpha$, the formula is satisfiable with high probability; for large $\\alpha$, it is unsatisfiable with high probability. Physics predicts a detailed sequence of phase transitions, and the satisfiability threshold is the most basic one. For $k=2$, the exact threshold is $1$. For every fixed $k\\ge3$, Friedgut proved sharp-threshold behavior, but this theorem does not identify a clean limiting threshold value. Ding, Sly, and Sun proved the predicted threshold for all sufficiently large $k$, a major breakthrough. The historically famous remaining case is small fixed $k$, especially random 3-SAT, where rigorous upper and lower bounds are close numerically but the exact limiting threshold is still unknown.",
- "full_statement": "Let $F_k(n,m)$ be a uniformly random $k$-CNF formula on variables $x_1,\\ldots,x_n$, formed by choosing $m=\\lfloor \\alpha n\\rfloor$ clauses independently and uniformly from the $2^k\\binom n k$ possible $k$-clauses with distinct variables. A satisfiability threshold value $\\alpha_k$ would satisfy the following: for every fixed $\\varepsilon>0$, $F_k(n,\\lfloor(\\alpha_k-\\varepsilon)n\\rfloor)$ is satisfiable with probability tending to one, while $F_k(n,\\lfloor(\\alpha_k+\\varepsilon)n\\rfloor)$ is unsatisfiable with probability tending to one. Friedgut's theorem gives sharp-threshold behavior but does not identify a limiting value for each small $k$. The open problem is to prove the exact threshold for fixed small $k\\ge3$, especially $k=3$, either as an explicit constant or as a rigorous variational characterization matching the statistical-physics prediction, and to establish both the satisfiable and unsatisfiable sides of the transition at that same value.",
- "known_results": "The $k=2$ threshold is exactly $1$. Friedgut proved that random $k$-SAT has a sharp threshold for each fixed $k$, but the theorem allows the threshold location to vary with $n$ and does not identify the limiting constant. Achlioptas, Moore, Coja-Oghlan, Panagiotou, and others developed increasingly sharp rigorous upper and lower bounds and established the correct asymptotic order in $k$. Ding, Sly, and Sun proved the satisfiability conjecture for all sufficiently large $k$, matching the one-step replica-symmetry-breaking prediction. For small $k$, especially $k=3$, the best rigorous numerical bounds are close to the predicted value, but the exact threshold and the full finite-$k$ condensation/satisfiability analysis are still not proved.",
+ "full_statement": "Let $F_k(n,m)$ be a uniformly random $k$-CNF formula on variables $x_1,\\ldots,x_n$, formed by choosing $m=\\lfloor \\alpha n\\rfloor$ clauses independently and uniformly from the $2^k\\binom n k$ possible $k$-clauses with distinct variables. A satisfiability threshold value $\\alpha_k$ would satisfy the following: for every fixed $\\varepsilon>0$, $F_k(n,\\lfloor(\\alpha_k-\\varepsilon)n\\rfloor)$ is satisfiable with probability tending to one, while $F_k(n,\\lfloor(\\alpha_k+\\varepsilon)n\\rfloor)$ is unsatisfiable with probability tending to one. Friedgut's sharp-threshold theorem alone does not establish convergence of its location. Recent preprints claim existence for every fixed $k\\ge3$ and computability for $k=3$. The open problem is to prove the exact threshold for fixed small $k\\ge3$, especially $k=3$, either as an explicit constant or as a rigorous variational characterization matching the statistical-physics prediction, and to establish both the satisfiable and unsatisfiable sides of the transition at that same value.",
+ "known_results": "Friedgut establishes a sharp transition about a size-dependent density. Ding, Sly, and Sun establish the predicted limiting threshold for all sufficiently large fixed clause sizes; the two-clause threshold is one.\n\nGaia Carenini, 'A polynomial scaling window for random k-SAT and a proof of the satisfiability conjecture' (ECCC TR26-229, October 5, 2026), Theorem 1.1 and Corollary 1.2, report an $O_{k,\\eta}(n^{1/2+1/k})$ window between fixed central probability levels and a limiting threshold for every fixed $k\\ge3$. This reported result concerns existence, not its numerical value. OpenAI's 'A Limiting Satisfiability Threshold for Every Fixed Clause Size', Theorem 1.1, gives an alternative claimed proof and credits Carenini's priority.\n\nOpenAI's 'Computing the Random 3-SAT Threshold' (September 27, 2026), Theorem 1.1, additionally claims a single deterministic machine approximating $\\alpha_3$ to any prescribed accuracy. It supplies no efficiency bound or identification with the predicted value near $4.267$. These recent proofs were not independently certified here.\n\nRemaining open problem. Identify the small-$k$ threshold by an explicit value or rigorous variational formula and establish agreement or disagreement with the physics prediction. Mere threshold existence should no longer be presented as the only missing step.",
  "progress": {
   "state": "partial",
-  "summary": "The exact threshold is known for $k=2$ and for all sufficiently large $k$. The small fixed cases such as 3-SAT remain open despite extensive rigorous and physics-based work.",
+  "summary": "New manuscripts report threshold existence for every fixed clause size and computability for 3-SAT; identifying the predicted small-clause value remains a separate gap.",
   "links": [
    {
     "title": "Proof of the satisfiability conjecture for large k",
@@ -35,6 +35,18 @@
    {
     "title": "Achlioptas and Moore bounds",
     "url": "https://doi.org/10.1109/SFCS.2002.1181941"
+   },
+   {
+    "title": "Gaia Carenini: A polynomial scaling window for random k-SAT and a proof of the satisfiability conjecture",
+    "url": "https://eccc.weizmann.ac.il/report/2026/229/"
+   },
+   {
+    "title": "OpenAI: A Limiting Satisfiability Threshold for Every Fixed Clause Size",
+    "url": "https://github.com/openai/math/blob/main/preprints/A-Limiting-Satisfiability-Threshold-for-Every-Fixed-Clause-Size-September-25-2026/article.pdf"
+   },
+   {
+    "title": "OpenAI: Computing the Random 3-SAT Threshold",
+    "url": "https://github.com/openai/math/blob/main/preprints/Computing-the-Random-3-SAT-Threshold-September-27-2026/article.pdf"
    }
   ]
  },
@@ -45,7 +57,7 @@
  "alphaevolve_suitability": "medium",
  "alphaevolve_rationale": "Computational search may identify finite-size structures, interpolation inequalities, or survey-propagation-inspired certificates. A resolution requires rigorous asymptotic control of the random formula distribution.",
  "literature": {
-  "synthesis": "The qualitative transition picture is well established: below the threshold solutions exist with high probability and above it they do not. Friedgut's theorem supplies sharpness but not a usable formula for the threshold. The large-$k$ breakthrough of Ding, Sly, and Sun validates the physics prediction in a regime where the one-step replica-symmetry-breaking calculations can be made rigorous. Small $k$ is harder because error terms, local dependencies, and condensation effects cannot be hidden in asymptotic large-$k$ expansions. The concrete gap is to convert the physics prediction for $k=3$ and other small values into a rigorous threshold theorem.",
+  "synthesis": "There are three distinct tasks: prove a sharp transition, prove convergence to a constant, and identify that constant. The 2026 reports address the second and, for three clauses, computability. They do not by themselves validate the small-clause statistical-physics formula.",
   "reviewed": [
    {
     "ref": "Ehud Friedgut, 'Sharp thresholds of graph properties, and the k-SAT problem', Journal of the AMS 1999",
@@ -64,6 +76,24 @@
     "result": "Determines the satisfiability threshold for all sufficiently large $k$.",
     "relevance": "solves-special-case",
     "url": "https://arxiv.org/abs/1411.0650"
+   },
+   {
+    "ref": "Gaia Carenini, 'A polynomial scaling window for random k-SAT and a proof of the satisfiability conjecture', ECCC TR26-229, 2026",
+    "result": "Theorem 1.1 and Corollary 1.2 report a polynomial window and limiting-threshold existence for every fixed $k\\ge3$.",
+    "relevance": "partial-progress",
+    "url": "https://eccc.weizmann.ac.il/report/2026/229/"
+   },
+   {
+    "ref": "OpenAI, 'A Limiting Satisfiability Threshold for Every Fixed Clause Size', OpenAI Math Release preprint, 2026",
+    "result": "Theorem 1.1 gives an alternative reported existence proof; credits Carenini's priority.",
+    "relevance": "partial-progress",
+    "url": "https://github.com/openai/math/blob/main/preprints/A-Limiting-Satisfiability-Threshold-for-Every-Fixed-Clause-Size-September-25-2026/article.pdf"
+   },
+   {
+    "ref": "OpenAI, 'Computing the Random 3-SAT Threshold', OpenAI Math Release preprint, 2026",
+    "result": "Theorem 1.1 claims computability without an efficiency guarantee or evaluation of the threshold.",
+    "relevance": "partial-progress",
+    "url": "https://github.com/openai/math/blob/main/preprints/Computing-the-Random-3-SAT-Threshold-September-27-2026/article.pdf"
    }
   ]
  },
@@ -99,6 +129,27 @@
    "year": 2015,
    "venue": "Annals of Mathematics",
    "url": "https://arxiv.org/abs/1411.0650"
+  },
+  {
+   "authors": "Gaia Carenini",
+   "title": "A polynomial scaling window for random k-SAT and a proof of the satisfiability conjecture",
+   "year": 2026,
+   "venue": "ECCC TR26-229",
+   "url": "https://eccc.weizmann.ac.il/report/2026/229/"
+  },
+  {
+   "authors": "OpenAI",
+   "title": "A Limiting Satisfiability Threshold for Every Fixed Clause Size",
+   "year": 2026,
+   "venue": "OpenAI Math Release preprint",
+   "url": "https://github.com/openai/math/blob/main/preprints/A-Limiting-Satisfiability-Threshold-for-Every-Fixed-Clause-Size-September-25-2026/article.pdf"
+  },
+  {
+   "authors": "OpenAI",
+   "title": "Computing the Random 3-SAT Threshold",
+   "year": 2026,
+   "venue": "OpenAI Math Release preprint",
+   "url": "https://github.com/openai/math/blob/main/preprints/Computing-the-Random-3-SAT-Threshold-September-27-2026/article.pdf"
   }
  ],
  "bibtex": "@misc{Bayati2013,\n  author = {Mohsen Bayati and David Gamarnik and Prasad Tetali},\n  title = {Combinatorial approach to the interpolation method and scaling limits in sparse random graphs},\n  year = {2013},\n  howpublished = {Annals of Probability},\n  url = {https://arxiv.org/abs/0912.2444},\n  note = {Source of ORdős Problem ORDOS-107}\n}",

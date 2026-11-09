@@ -5,7 +5,7 @@
  "title": "Polynomial-time algorithm for mean-payoff games",
  "collection": "Computer Science",
  "area": "Algorithmic Game Theory",
- "status": "open",
+ "status": "partially resolved",
  "confidence": "high",
  "tags": [
   "mean-payoff games",
@@ -15,17 +15,21 @@
   "tropical optimization"
  ],
  "short_statement": "Are finite two-player mean-payoff games solvable in polynomial time?",
- "open_problem": "The open problem is to give an algorithm running in time polynomial in the number of vertices, edges, and input bit length, or to prove an appropriate lower-bound/completeness result explaining why such an algorithm should not exist.",
+ "open_problem": "Find a deterministic polynomial-time algorithm in the complete binary encoding length for arbitrary finite mean-payoff games. The reported quasipolynomial bound is partial progress, not a solution of this question.",
  "background": "Mean-payoff games are a basic model of infinite-horizon adversarial control. They sit between graph algorithms, optimization, formal verification, and dynamic programming. In verification, they model quantitative properties of reactive systems. In optimization, they are tied to tropical linear programming and policy-improvement methods. In game theory, they are a finite deterministic analogue of average-payoff stochastic games, with positional optimal strategies but unresolved computational complexity. The problem has the same flavor as several central operations-research algorithmic questions: the model is finite and clean, dynamic-programming and strategy-improvement algorithms work well in many cases, but no polynomial worst-case bound is known. The fact that the decision problem lies in $NP\\cap coNP$ makes it unlikely to be NP-complete under standard assumptions, yet this membership has not yielded a polynomial algorithm.",
- "full_statement": "A mean-payoff game is played on a finite directed graph $G=(V,E)$ whose vertices are partitioned into $V_{\\max}$ and $V_{\\min}$. Each edge $e$ has an integer weight $w(e)$. A token starts at a designated vertex. When the token is at a vertex controlled by Max, Max chooses the outgoing edge; when it is at a vertex controlled by Min, Min chooses. This produces an infinite path $e_1,e_2,\\ldots$. Max seeks to maximize and Min seeks to minimize the long-run average payoff $\\liminf_{T\\to\\infty} T^{-1}\\sum_{t=1}^T w(e_t)$, or equivalently the game value. Mean-payoff games are positionally determined and lie in $NP\\cap coNP$ for the decision version asking whether the value is at least a threshold. The open problem is to give an algorithm running in time polynomial in the number of vertices, edges, and input bit length, or to prove an appropriate lower-bound/completeness result explaining why such an algorithm should not exist. Equivalent or closely related formulations include energy games, tropical linear programming, and certain policy-iteration/simplex questions.",
- "known_results": "Ehrenfeucht and Mycielski proved positional determinacy for mean-payoff games. Zwick and Paterson gave foundational pseudo-polynomial and exponential algorithms and clarified the complexity landscape. The problem is known to be in $NP\\cap coNP$ and is interreducible with energy games and closely related to parity games. Strategy-improvement and value-iteration algorithms are effective in practice but have no polynomial worst-case guarantee; subexponential algorithms are known for related parity/mean-payoff settings. Allamigeon, Benchimol, Gaubert, and Joswig showed that combinatorial simplex algorithms over tropical geometry can solve mean-payoff games, and that a strongly polynomial combinatorial simplex algorithm for linear programming would imply a strongly polynomial algorithm for mean-payoff games. Despite decades of progress on special graph classes and algorithmic frameworks, the general polynomial-time question remains open.",
+ "full_statement": "A mean-payoff game is played on a finite directed graph $G=(V,E)$ whose vertices are partitioned into $V_{\\max}$ and $V_{\\min}$. Every vertex has an outgoing edge, and each edge $e$ has an integer weight $w(e)$ encoded in binary. A token starts at a designated vertex. When the token is at a vertex controlled by Max, Max chooses the outgoing edge; when it is at a vertex controlled by Min, Min chooses. This produces an infinite path $e_1,e_2,\\ldots$. Max seeks to maximize and Min seeks to minimize the long-run average payoff $\\liminf_{T\\to\\infty} T^{-1}\\sum_{t=1}^T w(e_t)$, or equivalently the game value. Mean-payoff games are positionally determined and lie in $NP\\cap coNP$ for the decision version asking whether the value is at least a threshold. The open problem is to give an algorithm running in time polynomial in the number of vertices, edges, and input bit length, or to prove an appropriate lower-bound/completeness result explaining why such an algorithm should not exist. Equivalent or closely related formulations include energy games, tropical linear programming, and certain policy-iteration/simplex questions.",
+ "known_results": "Ehrenfeucht and Mycielski proved positional determinacy for mean-payoff games. Zwick and Paterson gave foundational pseudo-polynomial and exponential algorithms and clarified the complexity landscape. The problem is known to be in $NP\\cap coNP$ and is interreducible with energy games and closely related to parity games. Strategy-improvement and value-iteration algorithms are effective in practice but have no polynomial worst-case guarantee; subexponential algorithms are known for related parity/mean-payoff settings. Allamigeon, Benchimol, Gaubert, and Joswig showed that combinatorial simplex algorithms over tropical geometry can solve mean-payoff games, and that a strongly polynomial combinatorial simplex algorithm for linear programming would imply a strongly polynomial algorithm for mean-payoff games. Despite decades of progress on special graph classes and algorithmic frameworks, the general polynomial-time question remains open.\n\nOpenAI, 'Deterministic quasipolynomial-time mean-payoff games' (September 25, 2026), Theorem 1.1, claims deterministic $2^{O((\\log(L+2))^2)}$ bit time for the complete zero-threshold winning set, for total binary input length $L$. Section 7 derives exact values and optimal positional strategies. This is a reported quasipolynomial improvement for arbitrary signed binary weights, not the older pseudo-polynomial dependence on weight magnitude. The proof was not independently certified here.\n\nRemaining open problem. Obtain a polynomial-time bound in the full binary input length; quasipolynomial time does not resolve this target.",
  "progress": {
   "state": "partial",
-  "summary": "The problem is in $NP\\cap coNP$, has pseudo-polynomial and subexponential-style algorithms in related settings, and is polynomial on many restricted graph classes. No polynomial-time algorithm is known for general mean-payoff games.",
+  "summary": "A 2026 manuscript claims deterministic quasipolynomial bit complexity. The polynomial-time target remains open.",
   "links": [
    {
     "title": "Combinatorial simplex algorithms and mean-payoff games",
     "url": "https://arxiv.org/abs/1309.5925"
+   },
+   {
+    "title": "OpenAI: Deterministic quasipolynomial-time mean-payoff games",
+    "url": "https://github.com/openai/math/blob/main/preprints/Deterministic-quasipolynomial-time-mean-payoff-games-September-25-2026/paper.pdf"
    }
   ]
  },
@@ -36,7 +40,7 @@
  "alphaevolve_suitability": "medium",
  "alphaevolve_rationale": "Search can find hard instances for strategy-improvement rules, tropical simplex pivots, or value-iteration heuristics. It is less likely to discover a full polynomial-time algorithm without symbolic proof search.",
  "literature": {
-  "synthesis": "Mean-payoff games occupy a persistent complexity gap. Positional determinacy gives a compact certificate of optimal play, and the threshold decision problem has both NP and coNP certificates. Zwick and Paterson established the classical algorithms and complexity framework. Subsequent work has attacked the problem through strategy improvement, energy games, parity-game reductions, and tropical linear programming. The tropical-simplex connection is especially relevant to optimization: progress on strongly polynomial simplex-type algorithms would propagate to mean-payoff games, while hard mean-payoff instances inform the limits of pivoting methods. The remaining gap is conceptual as much as technical: existing algorithms exploit numerical weights or local improvement structure, but no proof shows that the number of improvement steps or the size of a certificate can be bounded polynomially in all instances.",
+  "synthesis": "Mean-payoff games occupy a persistent complexity gap. Positional determinacy gives a compact certificate of optimal play, and the threshold decision problem has both NP and coNP certificates. Zwick and Paterson established the classical algorithms and complexity framework. Subsequent work has attacked the problem through strategy improvement, energy games, parity-game reductions, and tropical linear programming. The tropical-simplex connection is especially relevant to optimization: progress on strongly polynomial simplex-type algorithms would propagate to mean-payoff games, while hard mean-payoff instances inform the limits of pivoting methods. The remaining gap is conceptual as much as technical: existing algorithms exploit numerical weights or local improvement structure, but no proof shows that the number of improvement steps or the size of a certificate can be bounded polynomially in all instances. The September 2026 manuscript targets binary-weight complexity directly; if correct, it improves the upper bound while leaving a polynomial-versus-quasipolynomial gap.",
   "reviewed": [
    {
     "ref": "Ehrenfeucht and Mycielski, 'Positional Strategies for Mean Payoff Games', IJGT 1979",
@@ -55,6 +59,12 @@
     "result": "Connects combinatorial simplex algorithms and tropical LP to mean-payoff games.",
     "relevance": "related-tool",
     "url": "https://arxiv.org/abs/1309.5925"
+   },
+   {
+    "ref": "OpenAI, 'Deterministic quasipolynomial-time mean-payoff games', OpenAI Math Release preprint, 2026",
+    "result": "Theorem 1.1 reports quasipolynomial bit complexity; Section 7 covers values and strategies.",
+    "relevance": "partial-progress",
+    "url": "https://github.com/openai/math/blob/main/preprints/Deterministic-quasipolynomial-time-mean-payoff-games-September-25-2026/paper.pdf"
    }
   ]
  },
@@ -97,6 +107,13 @@
    "year": 2007,
    "venue": "Discrete Applied Mathematics",
    "url": "https://doi.org/10.1016/j.dam.2006.04.029"
+  },
+  {
+   "authors": "OpenAI",
+   "title": "Deterministic quasipolynomial-time mean-payoff games",
+   "year": 2026,
+   "venue": "OpenAI Math Release preprint",
+   "url": "https://github.com/openai/math/blob/main/preprints/Deterministic-quasipolynomial-time-mean-payoff-games-September-25-2026/paper.pdf"
   }
  ],
  "bibtex": "@misc{Allamigeon2014,\n  author = {Xavier Allamigeon and Pascal Benchimol and Stephane Gaubert and Michael Joswig},\n  title = {Combinatorial simplex algorithms can solve mean payoff games},\n  year = {2014},\n  howpublished = {SIAM Journal on Optimization},\n  url = {https://arxiv.org/abs/1309.5925},\n  note = {Source of ORdős Problem ORDOS-154}\n}",

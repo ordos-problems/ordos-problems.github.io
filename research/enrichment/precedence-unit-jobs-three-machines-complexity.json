@@ -1,0 +1,120 @@
+{
+  "id": "precedence-unit-jobs-three-machines-complexity",
+  "title": "Complexity of Unit-Time Precedence Scheduling on Three Machines",
+  "collection": "Operations Research",
+  "area": "Scheduling Theory",
+  "tags": [
+    "scheduling",
+    "precedence constraints",
+    "complexity",
+    "makespan",
+    "fixed machines",
+    "Garey-Johnson"
+  ],
+  "status": "solution claimed",
+  "confidence": "medium",
+  "short_statement": "The classical three-machine, unit-job precedence scheduling question now has a reported polynomial-time exact algorithm awaiting independent verification.",
+  "full_statement": "An instance consists of a finite set $J$ of unit-processing-time jobs, three identical parallel machines, and a precedence partial order $\\prec$ on $J$. A feasible nonpreemptive schedule assigns each job $j\\in J$ to one of the three machines and to an integer time slot, with at most one job processed on each machine in each slot, and with $j$ completed before $k$ starts whenever $j\\prec k$. The objective is to minimize the makespan $C_{\\max}$, the time at which the last job completes. The original problem asks for the classical decision complexity of this clean fixed-machine model: given $T$, decide whether there is a feasible schedule of makespan at most $T$ for $P3\\mid prec,p_j=1\\mid C_{\\max}$. A September 2026 manuscript claims a polynomial-time exact solution of this model. The claim has not been independently certified in this audit.",
+  "background": "Precedence-constrained scheduling is a classical meeting point of operations research and algorithms. Jobs are all unit length and only their partial order creates difficulty. Two machines admit special polynomial structure; allowing the machine count to vary changes the complexity. For decades, the exact complexity with three machines remained a prominent question from Garey and Johnson's list. Quasi-polynomial approximation schemes improved the optimization picture without settling that exact question. A September 2026 manuscript now claims a polynomial-time exact algorithm for the original three-machine model. The reported bound is enormous, and the proof requires independent scrutiny; the historical question is therefore recorded as solution claimed rather than plainly open.",
+  "known_results": "Earlier hierarchy-based and combinatorial approximation schemes approximate fixed-machine precedence scheduling in quasi-polynomial time but do not decide exact feasibility.\n\nOpenAI, 'A Polynomial-Time Algorithm for Three-Machine Unit-Job Scheduling' (September 24, 2026), Theorem 1.1, claims a uniform deterministic algorithm producing an optimal schedule and deciding deadlines in $O((L+2)^{150020})$ Turing-machine steps, where $L$ is the complete binary input length. The input is an arbitrary explicitly listed precedence DAG, with three identical machines and unit, nonpreemptive jobs; there are no release dates or communication delays. The claimed exponent is constant but impractical.\n\nThis is a claimed full resolution of the original complexity target, not merely an approximation result. This audit checked the theorem and model, but did not independently certify the complete proof or a formalization.",
+  "open_problem": "Claimed resolution: the three-machine unit-job precedence scheduling problem is in P. Independently verify the reported algorithm and proof; this entry no longer presents the original complexity question as plainly open. Practical running time and extensions are separate questions.",
+  "where_posed": {
+    "text": "Listed as one of the remaining Garey-Johnson open problems and restated in Levey-Rothvoss and later precedence-scheduling papers.",
+    "url": "https://arxiv.org/abs/1509.07808",
+    "quote": "whether or not this problem is NP-hard for m=3",
+    "location": "Abstract"
+  },
+  "source": {
+    "authors": "Elaine Levey, Thomas Rothvoss",
+    "title": "A (1+epsilon)-Approximation for Makespan Scheduling with Precedence Constraints using LP Hierarchies",
+    "year": 2018,
+    "venue": "SIAM Journal on Computing / arXiv",
+    "url": "https://arxiv.org/abs/1509.07808"
+  },
+  "additional_refs": [
+    {
+      "authors": "Shashwat Garg",
+      "title": "Quasi-PTAS for Scheduling with Precedences using LP Hierarchies",
+      "year": 2018,
+      "venue": "ICALP / arXiv",
+      "url": "https://arxiv.org/abs/1708.04369"
+    },
+    {
+      "authors": "Syamantak Das, Andreas Wiese",
+      "title": "A simpler QPTAS for scheduling jobs with precedence constraints",
+      "year": 2022,
+      "venue": "ESA 2022 / arXiv 2025",
+      "url": "https://arxiv.org/abs/2501.09091v1"
+    },
+    {
+      "authors": "Janardhan Kulkarni, Shi Li, Jakub Tarnawski, Minwei Ye",
+      "title": "Hierarchy-Based Algorithms for Minimizing Makespan under Precedence and Communication Constraints",
+      "year": 2020,
+      "venue": "SODA / arXiv",
+      "url": "https://arxiv.org/abs/2004.13891"
+    },
+    {
+      "authors": "OpenAI",
+      "title": "A Polynomial-Time Algorithm for Three-Machine Unit-Job Scheduling",
+      "year": 2026,
+      "venue": "OpenAI Math Release preprint",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-polynomial-time-algorithm-for-three-machine-unit-job-scheduling-September-24-2026/paper.pdf"
+    }
+  ],
+  "progress": {
+    "state": "solution-claimed",
+    "summary": "An exact polynomial-time algorithm is claimed for the original model; independent proof verification remains outstanding.",
+    "links": [
+      {
+        "title": "Das-Wiese simpler QPTAS",
+        "url": "https://arxiv.org/abs/2501.09091"
+      },
+      {
+        "title": "OpenAI: A Polynomial-Time Algorithm for Three-Machine Unit-Job Scheduling",
+        "url": "https://github.com/openai/math/blob/main/preprints/A-polynomial-time-algorithm-for-three-machine-unit-job-scheduling-September-24-2026/paper.pdf"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "A hardness proof would likely require a finite gadget construction, and automated search might help discover small precedence gadgets. A polynomial-time resolution would probably require structural decomposition rather than a finite counterexample.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Search over small posets, minimal unschedulable instances, and candidate reductions could expose useful gadgets or invariants. However, a final answer needs a formal complexity proof.",
+  "literature": {
+    "synthesis": "Approximation schemes and exact complexity must be separated. The new manuscript addresses the original decision and optimization problems directly. Its correctness needs independent assessment; faster useful algorithms would be a follow-up target, not a reason to continue calling the original question open.",
+    "reviewed": [
+      {
+        "ref": "Elaine Levey, Thomas Rothvoss, 'A (1+epsilon)-Approximation for Makespan Scheduling with Precedence Constraints using LP Hierarchies', SICOMP 2019 / arXiv",
+        "result": "Gives a $(1+\\epsilon)$ approximation for fixed $m$ in $n^{O((\\log n)^{\\Theta(\\log\\log n)})}$ time and restates the $m=3$ complexity problem.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1509.07808"
+      },
+      {
+        "ref": "Shashwat Garg, 'Quasi-PTAS for Scheduling with Precedences using LP Hierarchies', ICALP 2018",
+        "result": "Improves the fixed-$m$ hierarchy approach to quasi-polynomial time.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1708.04369"
+      },
+      {
+        "ref": "Syamantak Das, Andreas Wiese, 'A simpler QPTAS for scheduling jobs with precedence constraints', ESA 2022 / arXiv 2025",
+        "result": "Gives a simpler QPTAS-style treatment and again notes that NP-hardness for $m=3$ remains open.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2501.09091"
+      },
+      {
+        "ref": "OpenAI, 'A Polynomial-Time Algorithm for Three-Machine Unit-Job Scheduling', OpenAI Math Release preprint, 2026",
+        "result": "Theorem 1.1 claims an exact deterministic polynomial-time algorithm for the original three-machine model.",
+        "relevance": "partial-progress",
+        "url": "https://github.com/openai/math/blob/main/preprints/A-polynomial-time-algorithm-for-three-machine-unit-job-scheduling-September-24-2026/paper.pdf"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Prioritize verification of the reported decomposition and dynamic program. Small-poset enumeration can test structural lemmas and schedule reconstruction, but cannot certify correctness for every input. Improving the enormous polynomial exponent or extending the model would be follow-up results, not a new resolution of the original decision question.",
+    "verification_notes": "Referee the bounded-description decomposition and its closure under recursion, completeness of the dynamic program, exact schedule reconstruction, and uniform bit complexity. Do not infer a practical algorithm or a result for release dates, arbitrary processing lengths, or communication delays. No formal certificate was replayed by this audit.",
+    "machine_checkable": true
+  },
+  "enabled": true,
+  "notes_for_maintainer": "2026-11-09: primary PDF introduction and Theorem 1.1 checked; full proof and formalization not independently verified. Preserve the original model and classify as solution claimed."
+}

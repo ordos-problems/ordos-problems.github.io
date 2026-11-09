@@ -5,7 +5,7 @@
  "title": "Efficient recovery at the random graph matching threshold",
  "collection": "Computer Science",
  "area": "Average-Case Inference",
- "status": "open",
+ "status": "partially resolved",
  "confidence": "medium",
  "tags": [
   "graph matching",
@@ -16,13 +16,13 @@
   "computer science"
  ],
  "short_statement": "Can polynomial-time algorithms recover the hidden matching in correlated Erdos-Renyi graphs down to the information-theoretic threshold?",
- "open_problem": "Close the computational gap for unseeded correlated Erdos-Renyi graph matching: either design polynomial-time exact/almost-exact recovery algorithms matching the information-theoretic thresholds, or prove a computational barrier under a standard average-case hardness framework.",
+ "open_problem": "Determine the polynomial-time thresholds for unseeded correlated Erdos-Renyi graph matching, separately for exact, almost-exact and positive-overlap recovery. Reconcile the achievable region with existing conditional sparse-regime and local-algorithm barriers; these do not settle all densities or provide unconditional general hardness.",
  "background": "Graph matching asks whether two observed networks have the same hidden vertex labels. In the correlated Erdos-Renyi model, two graphs are generated from a common random parent graph and then independently subsampled, with one graph's labels permuted. The statistical question is whether the hidden permutation can be recovered exactly or approximately; the algorithmic question is whether this can be done in polynomial time at the same parameter values where recovery is information-theoretically possible. This model captures a clean version of entity resolution, network alignment, and average-case inference. Wu, Xu, and Yu determined sharp reconstruction thresholds in dense regimes and near-sharp thresholds in sparse regimes using information-theoretic and maximum-likelihood arguments. Subsequent work sharpened sparse thresholds and designed polynomial-time algorithms based on trees and chandeliers in some regimes. The central remaining issue is whether efficient algorithms can match the information-theoretic thresholds, or whether there is a genuine statistical-computational gap.",
- "full_statement": "Let $G_0\\sim G(n,p)$ be a parent Erdos-Renyi graph. Generate two observed graphs $G_1$ and $G_2$ by independently retaining parent edges so that their marginal edge density and edge-correlation parameter are $q$ and $\\rho$, then relabel $G_2$ by an unknown uniform permutation $\\pi$. Given only the unlabeled pair $(G_1,G_2)$, recover $\\pi$ exactly, recover all but $o(n)$ vertices, or recover a positive fraction of vertices, depending on the regime. Information-theoretic thresholds are known sharply in dense models and increasingly sharply in sparse models, often by maximum-likelihood achievability and second-moment lower bounds. The open problem is to determine the polynomial-time threshold for unseeded correlated Erdos-Renyi graph matching: can an efficient algorithm succeed down to the information-theoretic boundary, including the sparse regimes below existing chandelier/tree-count guarantees, or is there a principled computational gap?",
- "known_results": "Wu, Xu, and Yu established sharp reconstruction thresholds for dense correlated random graph matching and sparse thresholds up to constant factors; their positive results are information-theoretic and rely on maximum-likelihood-type arguments rather than efficient algorithms. Ding and Du sharpened the positive-overlap recovery threshold in sparse correlated Erdos-Renyi graphs. Wu, Xu, and Yu also characterized testing thresholds for unlabeled graph correlation in dense settings and within constant factors in sparse settings. On the algorithmic side, Mao, Wu, Xu, and Yu introduced chandelier-count statistics and obtained a polynomial-time algorithm that almost exactly matches when $nq\\to\\infty$ and $\\rho^2$ exceeds Otter's tree-counting constant $\\alpha\\approx0.338$, with exact recovery under an additional information-theoretically necessary condition. Seeded and structured variants are better understood. The unresolved gap is whether unseeded efficient algorithms can reach the full information-theoretic recovery boundary.",
+ "full_statement": "Let $G_0\\sim G(n,p)$ be a parent Erdos-Renyi graph with $0<p<1$. Independently retain each parent edge in each of two observations with probability $s\\in(0,1]$, and relabel the second observation by an independent uniform permutation $\\pi$. The marginal edge probability is $q=ps$ and the Pearson correlation of corresponding edge indicators is $\\rho=s(1-p)/(1-ps)$. Only the two observed graphs are given; there are no seeds.\n\nSpecify a sequence of parameters as $n\\to\\infty$ and one recovery objective: exact recovery with probability $1-o(1)$, almost-exact recovery with $o(n)$ mismatches with probability $1-o(1)$, or positive-overlap recovery of at least $\\varepsilon n$ correct vertices for fixed $\\varepsilon>0$. For the last objective, distinguish constant success probability from high probability. These are different thresholds.\n\nDetermine the polynomial-time recovery region for each objective, and compare it with the corresponding information-theoretic region. The main gap is in sparse, weakly correlated regimes. A sharp result may consist of an efficient algorithm and a matching computational lower bound under an explicitly stated average-case conjecture. Conditional low-degree barriers are already known in a sparse regime; they are not unconditional impossibility results for all polynomial-time algorithms.",
+ "known_results": "Wu, Xu, and Yu established sharp reconstruction thresholds for dense correlated random graph matching and sparse thresholds up to constant factors; their positive results are information-theoretic and rely on maximum-likelihood-type arguments rather than efficient algorithms. Ding and Du sharpened the positive-overlap recovery threshold in sparse correlated Erdos-Renyi graphs. Wu, Xu, and Yu also characterized testing thresholds for unlabeled graph correlation in dense settings and within constant factors in sparse settings. On the algorithmic side, Mao, Wu, Xu, and Yu introduced chandelier-count statistics and obtained a polynomial-time algorithm that almost exactly matches when $nq\\to\\infty$ and $\\rho^2$ exceeds Otter's tree-counting constant $\\alpha\\approx0.338$, with exact recovery under an additional information-theoretically necessary condition. Seeded and structured variants are better understood. The unresolved gap is whether unseeded efficient algorithms can reach the full information-theoretic recovery boundary.\n\nConditional computational barrier. Zhangsong Li's 'Computational Lower Bounds for Correlated Random Graphs via Algorithmic Contiguity' (arXiv:2502.09832v4), Theorem 3.3(1), assumes the low-degree conjecture (Conjecture 2.2). In the sparse regime $q=n^{-1+o(1)}$ and $\\rho<\\sqrt{\\alpha}-\\delta$ for fixed $\\delta>0$, it rules out weak partial matching in the running-time range specified by equation (3.4). Here weak partial matching means recovering a positive fraction with constant probability. This strengthens evidence for a computational gap; it is not an unconditional lower bound or a theorem about all graph densities.\n\nLaurent Massoulie's '2025 survey' (arXiv:2510.24914v1), Theorem 2.10, explains a separate bounded-degree, local-algorithm boundary in terms of divergence of a correlated-tree relative entropy. Its converse applies to the specified depth-local class, not every polynomial-time algorithm. The survey's subsampling parameter $s$ should not be identified exactly with $\\rho$.\n\nRemaining open problem. Determine the efficient thresholds outside these scoped results, including the precise recovery objective and whether any claimed barrier is unconditional, conjecture-dependent, or algorithm-class-specific.",
  "progress": {
   "state": "partial",
-  "summary": "Information-theoretic thresholds are now sharp or nearly sharp in major regimes, and polynomial-time motif/tree algorithms succeed in some parameter ranges. The full efficient recovery threshold for unseeded matching remains unresolved.",
+  "summary": "Chandelier algorithms give positive results, while Li's December 2025 revision gives a sparse-regime barrier conditional on the low-degree conjecture. Local-algorithm thresholds are also understood in specified bounded-degree regimes. The full efficient recovery region remains unresolved.",
   "links": [
    {
     "title": "Settling the Sharp Reconstruction Thresholds of Random Graph Matching",
@@ -31,6 +31,14 @@
    {
     "title": "Matching recovery threshold for correlated random graphs",
     "url": "https://arxiv.org/abs/2205.14650"
+   },
+   {
+    "title": "Zhangsong Li: Computational Lower Bounds for Correlated Random Graphs via Algorithmic Contiguity",
+    "url": "https://arxiv.org/abs/2502.09832v4"
+   },
+   {
+    "title": "Laurent Massoulie: Computational thresholds in high-dimensional statistics: the case of graph alignment",
+    "url": "https://arxiv.org/abs/2510.24914v1"
    }
   ]
  },
@@ -41,7 +49,7 @@
  "alphaevolve_suitability": "high",
  "alphaevolve_rationale": "Automated search can explore graph statistics, motif families, and message-passing updates that correlate with the hidden permutation near threshold. Candidate algorithms can be tested extensively before proof.",
  "literature": {
-  "synthesis": "The statistical side of correlated graph matching has advanced rapidly. Wu, Xu, and Yu used mutual-information and second-moment methods to locate reconstruction thresholds in dense models and approximate sparse thresholds, while maximum likelihood gives information-theoretic achievability. Ding and Du sharpened sparse recovery thresholds. Algorithmically, seeded matching and motif-counting methods provide efficient procedures in favorable regimes, and chandelier/tree statistics show that local structures carry exploitable correlation. The remaining gap is to determine whether such efficient statistics can be pushed to the full information-theoretic boundary, or whether low-degree or other average-case evidence points to inherent computational hardness.",
+  "synthesis": "Information-theoretic recovery, efficient recovery, and detection are distinct questions. Chandelier methods give efficient recovery above an explicit correlation boundary. Li's version-4 Theorem 3.3 supplies a conditional negative result below Otter's boundary in a sparse regime, rather than merely suggesting that low-degree analysis might help. Massoulie's survey explains additional limits for local methods. The remaining task is to identify the efficient phase diagram with explicit density, correlation, recovery and complexity assumptions; none of these results supplies an unconditional barrier for every polynomial-time algorithm.",
   "reviewed": [
    {
     "ref": "Yihong Wu, Jiaming Xu, and Sophie H. Yu, 'Settling the Sharp Reconstruction Thresholds of Random Graph Matching', arXiv 2021",
@@ -66,12 +74,24 @@
     "result": "Gives polynomial-time algorithms based on chandelier counts reaching an explicit correlation threshold in sparse graph matching/testing regimes.",
     "relevance": "partial-progress",
     "url": "https://arxiv.org/abs/2209.12313"
+   },
+   {
+    "ref": "Zhangsong Li, 'Computational Lower Bounds for Correlated Random Graphs via Algorithmic Contiguity', arXiv preprint, version 4, 2025",
+    "result": "Theorem 3.3(1) gives a sparse-regime weak-partial-matching barrier conditional on Conjecture 2.2, with a fixed margin below sqrt(Otter's constant) and the running-time restrictions of (3.4).",
+    "relevance": "hardness",
+    "url": "https://arxiv.org/abs/2502.09832v4"
+   },
+   {
+    "ref": "Laurent Massoulie, 'Computational thresholds in high-dimensional statistics: the case of graph alignment', ICM 2026 survey preprint, 2025",
+    "result": "Surveys statistical and computational boundaries; Theorem 2.10 states a correlated-tree criterion for a specified depth-local algorithm class in the bounded-degree model, not arbitrary polynomial-time hardness.",
+    "relevance": "survey",
+    "url": "https://arxiv.org/abs/2510.24914v1"
    }
   ]
  },
  "agent_guidance": {
   "suitable_approaches": "Good directions include low-degree analysis, motif-count algorithms, belief propagation, seeded-to-unseeded bootstrapping, and careful experiments near the information-theoretic threshold. Search can optimize motif libraries or initialization schemes.",
-  "verification_notes": "A claimed algorithmic solution must specify the parent density, marginal density, correlation parameter, exact/almost-exact/positive-overlap target, running time, and high-probability success statement. Check whether the result is unseeded or seeded; seeded graph matching is a different problem. The proof should compare directly with the relevant information-theoretic threshold, not merely with prior algorithms. For motif or message-passing algorithms, verify that the statistic remains concentrated and discriminative at the claimed parameters and that final cleanup from almost-exact to exact recovery uses only information-theoretically available signal.",
+  "verification_notes": "A claimed algorithmic solution must specify the parent density, marginal density, correlation parameter, exact/almost-exact/positive-overlap target, running time, and high-probability success statement. Check whether the result is unseeded or seeded; seeded graph matching is a different problem. The proof should compare directly with the relevant information-theoretic threshold, not merely with prior algorithms. For motif or message-passing algorithms, verify that the statistic remains concentrated and discriminative at the claimed parameters and that final cleanup from almost-exact to exact recovery uses only information-theoretically available signal. Use q=ps and rho=s(1-p)/(1-ps) consistently. Li's Theorem 3.3 assumes Conjecture 2.2, a fixed correlation margin and equation (3.4); do not drop these. A local-algorithm lower bound must not be presented as a bound on all polynomial-time estimators.",
   "machine_checkable": true
  },
  "where_posed": {
@@ -94,6 +114,20 @@
    "year": 2018,
    "venue": "arXiv:1807.10262",
    "url": "https://arxiv.org/abs/1807.10262"
+  },
+  {
+   "authors": "Zhangsong Li",
+   "title": "Computational Lower Bounds for Correlated Random Graphs via Algorithmic Contiguity",
+   "year": 2025,
+   "venue": "arXiv preprint, version 4",
+   "url": "https://arxiv.org/abs/2502.09832v4"
+  },
+  {
+   "authors": "Laurent Massoulie",
+   "title": "Computational thresholds in high-dimensional statistics: the case of graph alignment",
+   "year": 2025,
+   "venue": "ICM 2026 survey preprint",
+   "url": "https://arxiv.org/abs/2510.24914v1"
   }
  ],
  "bibtex": "@misc{Wu2022,\n  author = {Yihong Wu and Jiaming Xu and Sophie H. Yu},\n  title = {Settling the Sharp Reconstruction Thresholds of Random Graph Matching},\n  year = {2022},\n  howpublished = {arXiv:2102.00082},\n  url = {https://arxiv.org/abs/2102.00082},\n  note = {Source of ORdős Problem ORDOS-092}\n}",

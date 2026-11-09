@@ -10,13 +10,13 @@
     "approximation scheme",
     "routing"
   ],
-  "status": "open",
+  "status": "partially resolved",
   "confidence": "high",
   "short_statement": "Does Euclidean capacitated vehicle routing admit a polynomial-time approximation scheme for arbitrary vehicle capacity?",
   "full_statement": "In Euclidean capacitated vehicle routing, the input consists of a depot $r\\in\\mathbb R^2$, customer points $p_1,\\ldots,p_n\\in\\mathbb R^2$, and an integer vehicle capacity $Q$. In the unit-demand version, every customer has demand one; a feasible solution is a collection of tours, each starting and ending at $r$, such that every customer is visited by at least one tour and each tour visits at most $Q$ customers. The objective is to minimize total Euclidean tour length. More general splittable or unsplittable demand variants replace the cardinality bound by a capacity bound on total demand per tour, but the central geometric open problem is already present in the unit-demand arbitrary-$Q$ case. For fixed dimension, determine whether there is a PTAS: for every fixed $\\varepsilon>0$, an algorithm running in $n^{O_{\\varepsilon}(1)}$ time that returns a solution of cost at most $(1+\\varepsilon)\\operatorname{OPT}$ for every capacity $Q$. Quasi-polynomial approximation schemes are known, and recent work has reduced the exponent substantially, but a true polynomial-time approximation scheme for arbitrary capacity remains open.",
-  "open_problem": "Give a PTAS for Euclidean CVRP with arbitrary capacity, or prove that no PTAS exists under a standard complexity assumption.",
+  "open_problem": "Does planar unit-demand Euclidean CVRP admit a PTAS for arbitrary capacity $Q$, with polynomial running time for every fixed accuracy?",
   "background": "Capacitated vehicle routing is one of the signature models of operations research: a depot must serve geographically located customers using finite-capacity routes. In general metrics, CVRP has stubborn constant-factor approximation gaps, already represented elsewhere in the repository. The Euclidean case is different. For Euclidean TSP, Arora and Mitchell gave PTASs using recursive dissection and portal techniques. CVRP looks close to TSP but adds a global capacity constraint that forces many short tours and couples local geometric choices to depot returns. That capacity coupling is exactly what prevents the classical Euclidean TSP PTAS machinery from applying directly. The problem is therefore a clean test of whether geometric dynamic programming can handle vehicle capacity without paying quasi-polynomial state complexity.",
-  "known_results": "Dantzig and Ramser introduced vehicle routing in the 1950s, and CVRP has since become a central routing and logistics problem. Arora-style and Mitchell-style dissection methods give PTASs for Euclidean TSP and many geometric network-design problems, but CVRP resisted the same framework for arbitrary capacities. Das and Mathieu gave a quasi-polynomial-time approximation scheme for Euclidean CVRP in the plane, with running time of the form $n^{\\log^{O(1/\\varepsilon)} n}$. Jayaprakash and Salavatipour later developed QPTASs for bounded-treewidth, bounded-doubling, and highway-dimension graph metrics, implying another Euclidean-plane approximation scheme in quasi-polynomial time. Sitters recently improved the Euclidean-plane running time to $n^{O_\\varepsilon(\\log\\log n)}$ and reduced CVRP to an $m$-paths problem, explicitly framing the result as a major step toward a PTAS. No source-checked polynomial-time approximation scheme for arbitrary capacity is known as of this sweep.",
+  "known_results": "Dantzig and Ramser introduced vehicle routing in the 1950s, and CVRP has since become a central routing and logistics problem. Arora-style and Mitchell-style dissection methods give PTASs for Euclidean TSP and many geometric network-design problems, but CVRP resisted the same framework for arbitrary capacities. Das and Mathieu gave a quasi-polynomial-time approximation scheme for Euclidean CVRP in the plane, with running time of the form $n^{\\log^{O(1/\\varepsilon)} n}$. Jayaprakash and Salavatipour later developed QPTASs for bounded-treewidth, bounded-doubling, and highway-dimension graph metrics, implying another Euclidean-plane approximation scheme in quasi-polynomial time. Sitters recently improved the Euclidean-plane running time to $n^{O_\\varepsilon(\\log\\log n)}$ and reduced CVRP to an $m$-paths problem, explicitly framing the result as a major step toward a PTAS. Zachary Friggstad, Fabrizio Grandoni, and Ramin Mousavi, 'Breaching the 2-Approximation Barrier for Euclidean Capacitated Vehicle Routing' (SODA 2026), Theorem 1.2, give a polynomial-time $(2-\\tau)$-approximation for an absolute $\\tau>10^{-5}$. The result covers unit demands in the plane and unrestricted capacity; it is not a PTAS.\n\nRemaining open problem. Reduce the approximation factor to $1+\\varepsilon$ in polynomial time for each fixed $\\varepsilon$, uniformly over the capacity. A near-polynomial approximation scheme and a sub-2 constant approximation address different parts of this gap.",
   "where_posed": {
     "text": "The PTAS gap is stated in approximation-scheme work on Euclidean CVRP, including Sitters' improved QPTAS.",
     "url": "https://arxiv.org/abs/2507.15549",
@@ -58,12 +58,19 @@
       "year": 2025,
       "venue": "arXiv",
       "url": "https://arxiv.org/abs/2507.15549"
+    },
+    {
+      "authors": "Zachary Friggstad, Fabrizio Grandoni, Ramin Mousavi",
+      "title": "Breaching the 2-Approximation Barrier for Euclidean Capacitated Vehicle Routing",
+      "year": 2026,
+      "venue": "SODA",
+      "url": "https://people.idsia.ch/~grandoni/Pubblicazioni/FGM26soda.pdf"
     }
   ],
   "enabled": true,
   "progress": {
     "state": "partial",
-    "summary": "QPTASs are known, including a recent $n^{O_\\varepsilon(\\log\\log n)}$ scheme, but no $n^{O_\\varepsilon(1)}$ PTAS is known for arbitrary capacity.",
+    "summary": "A near-polynomial scheme and a 2026 polynomial-time sub-2 approximation are known; a PTAS for unrestricted capacity remains open.",
     "links": [
       {
         "title": "Das-Mathieu QPTAS",
@@ -72,6 +79,10 @@
       {
         "title": "Sitters improved QPTAS",
         "url": "https://arxiv.org/abs/2507.15549"
+      },
+      {
+        "title": "Zachary Friggstad, Fabrizio Grandoni, Ramin Mousavi: Breaching the 2-Approximation Barrier for Euclidean Capacitated Vehicle Routing",
+        "url": "https://people.idsia.ch/~grandoni/Pubblicazioni/FGM26soda.pdf"
       }
     ]
   },
@@ -82,7 +93,7 @@
   "alphaevolve_suitability": "medium",
   "alphaevolve_rationale": "Search can generate Euclidean point sets where known decompositions need many crossing patterns or many route fragments, helping identify the source of quasi-polynomial state complexity. A full PTAS still needs a structural compression theorem.",
   "literature": {
-    "synthesis": "The Euclidean CVRP gap is not about whether approximation schemes exist in principle: Das and Mathieu already proved a QPTAS. The question is whether the state space can be compressed to polynomial size as in Euclidean TSP. The obstacle is that capacity makes the number and composition of route pieces crossing a dissection boundary matter; a portal state must remember not only geometry but how partial tours aggregate demand and return to the depot. Sitters' $n^{O(\\log\\log n)}$ scheme shows that this state explosion can be reduced substantially and proposes the $m$-paths view as an intermediate target. A PTAS may come from a sharper structural theorem for route interactions, while a negative result would need to show that arbitrary capacity fundamentally encodes too much global information even in the plane.",
+    "synthesis": "The Euclidean CVRP gap is not about whether approximation schemes exist in principle: Das and Mathieu already proved a QPTAS. The question is whether the state space can be compressed to polynomial size as in Euclidean TSP. The obstacle is that capacity makes the number and composition of route pieces crossing a dissection boundary matter; a portal state must remember not only geometry but how partial tours aggregate demand and return to the depot. Sitters' $n^{O(\\log\\log n)}$ scheme shows that this state explosion can be reduced substantially and proposes the $m$-paths view as an intermediate target. A PTAS may come from a sharper structural theorem for route interactions, while a negative result would need to show that arbitrary capacity fundamentally encodes too much global information even in the plane. The 2026 sub-2 algorithm improves polynomial-time approximation quality without giving an approximation scheme. It must not be transferred to unsplittable arbitrary demands, whose hardness differs.",
     "reviewed": [
       {
         "ref": "Das and Mathieu, 'A quasi-polynomial time approximation scheme for Euclidean capacitated vehicle routing', Algorithmica 2015",
@@ -101,6 +112,12 @@
         "result": "Improves the Euclidean-plane QPTAS running time and reduces the problem to an $m$-paths formulation.",
         "relevance": "partial-progress",
         "url": "https://arxiv.org/abs/2507.15549"
+      },
+      {
+        "ref": "Zachary Friggstad, Fabrizio Grandoni, Ramin Mousavi, 'Breaching the 2-Approximation Barrier for Euclidean Capacitated Vehicle Routing', SODA, 2026",
+        "result": "Theorem 1.2: polynomial-time $(2-\\tau)$ approximation, $\\tau>10^{-5}$, for planar unit-demand CVRP.",
+        "relevance": "partial-progress",
+        "url": "https://people.idsia.ch/~grandoni/Pubblicazioni/FGM26soda.pdf"
       }
     ]
   },

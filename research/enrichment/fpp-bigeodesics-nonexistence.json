@@ -10,13 +10,13 @@
     "geodesics",
     "applied probability"
   ],
-  "status": "conjecture",
-  "confidence": "high",
-  "short_statement": "For i.i.d. continuous first-passage percolation on $\\mathbb Z^2$, it is famously conjectured that there are almost surely no doubly infinite geodesics.",
-  "full_statement": "In nearest-neighbor first-passage percolation on $\\mathbb Z^2$, assign i.i.d. nonnegative continuous passage times $(t_e)$ to edges, with standard assumptions ensuring finite geodesics and a nondegenerate limit shape. For vertices $x,y$, let $$T(x,y)=\\inf_{\\gamma:x\\to y}\\sum_{e\\in\\gamma} t_e,$$ where the infimum is over nearest-neighbor paths. A finite or infinite path is a geodesic if every finite subpath realizes the passage time between its endpoints. A bigeodesic is a doubly infinite path $(v_i)_{i\\in\\mathbb Z}$ such that every segment $(v_i,\\ldots,v_j)$ is a geodesic between $v_i$ and $v_j$. The open problem is to prove that, under natural continuous i.i.d. edge-weight distributions in two dimensions, almost surely there are no bigeodesics. Equivalently, every infinite geodesic should have only one infinite end, and two-sided globally minimizing paths should not exist in the random metric. A solution should avoid assuming unproved curvature or differentiability properties of the limit shape unless those properties are also proved under the same distributional hypotheses.",
-  "open_problem": "Prove or refute the no-bigeodesics conjecture for two-dimensional i.i.d. continuous first-passage percolation under standard moment and nondegeneracy assumptions.",
+  "status": "solution claimed",
+  "confidence": "medium",
+  "short_statement": "A 2026 manuscript claims simultaneous absence of planar FPP bigeodesics under the standard minimum-of-four second-moment condition, without shape regularity.",
+  "full_statement": "On the nearest-neighbor edges of $\\mathbb Z^2$, assign independent identically distributed nonnegative passage times with a nonatomic law $G$. State the standard shape-theorem moment hypothesis explicitly: if $X_1,\\ldots,X_4$ are independent with law $G$, assume $$\\mathbb E[\\min(X_1,X_2,X_3,X_4)^2]<\\infty.$$ This is weaker than requiring an individual edge to have a finite second moment.\n\nLet $T(x,y)$ be the infimum of the summed edge weights over finite paths from $x$ to $y$. A bigeodesic is a doubly infinite self-avoiding nearest-neighbor path whose every finite segment realizes $T$ between its endpoints. The conjecture asserts that almost surely no such path exists, simultaneously over all paths, including ones with environment-dependent directions.\n\nA September 2026 manuscript claims this moment-bounded statement without curvature or differentiability assumptions. The moment-free formulation is a distinct stronger target.",
+  "open_problem": "Claimed resolution under the explicit minimum-of-four moment hypothesis: independently verify the simultaneous nonexistence theorem. The stronger assertion for every nonatomic law without that moment condition is not settled by the cited theorem.",
   "background": "First-passage percolation turns the lattice into a random metric and asks what large-scale geometry this metric has. The shape theorem gives first-order deterministic growth, but the structure of geodesics remains much less understood. Bigeodesics are especially important because they would be global two-sided minimizers, analogous to geodesic lines in deterministic geometry. In random media they are expected not to exist in two dimensions: geodesics from different points should coalesce, and random fluctuations should prevent a path from being globally optimal in both time directions. The conjecture is tied to Busemann functions, competition interfaces, spin-glass ground states, and the midpoint problem of Benjamini, Kalai, and Schramm. It is a clean fixed-model problem rather than a modeling question: the lattice, randomness, and object of study are all specified.",
-  "known_results": "Licea and Newman proved strong directional results under assumptions on curvature of the asymptotic shape, including absence of bigeodesics with prescribed directional behavior for a full-measure set of directions. Damron and Hanson proved that, if the boundary of the limit shape is differentiable, there are no bigeodesics with one end directed in any deterministic direction; their work also connects the question to the BKS midpoint problem. Ahlberg and Hoffman developed random coalescing geodesics and solved the midpoint problem, while Brito, Damron, and Hanson proved absence of backward infinite paths in geodesic graphs built from point-to-hyperplane limits in arbitrary dimension. These are substantial advances, but none proves the unconditional two-dimensional no-bigeodesics conjecture for general continuous i.i.d. passage-time distributions.",
+  "known_results": "Classical results rule out prescribed-direction bigeodesics or paths in selected geodesic forests under their respective hypotheses; they must not be mistaken for a simultaneous statement about all random directions. Ahlberg and Hoffman's random-coalescing-geodesic theory supplies important structural tools.\n\nOpenAI, 'No bigeodesics in planar first-passage percolation' (September 24, 2026), Theorem 1.1, claims the full simultaneous no-bigeodesics statement for nonatomic i.i.d. weights satisfying $\\mathbb E[\\min(X_1,X_2,X_3,X_4)^2]<\\infty$. No limit-shape regularity is assumed. The paper explicitly does not assert the moment-free version.\n\nThe catalogue's standard-moment target therefore has a claimed resolution, not just directional progress. This audit checked scope and assumptions but did not independently certify the proof. Removing the moment hypothesis is separate.",
   "where_posed": {
     "text": "Damron and Hanson describe the absence of bigeodesics as a famous conjecture in first-passage percolation.",
     "url": "https://arxiv.org/abs/1512.00804",
@@ -51,13 +51,25 @@
       "year": 2017,
       "venue": "AMS University Lecture Series / arXiv",
       "url": "https://arxiv.org/abs/1511.03262"
+    },
+    {
+      "authors": "OpenAI",
+      "title": "No bigeodesics in planar first-passage percolation",
+      "year": 2026,
+      "venue": "OpenAI Math Release preprint",
+      "url": "https://github.com/openai/math/blob/main/preprints/No-bigeodesics-in-planar-first-passage-percolation-September-24-2026/main.pdf"
     }
   ],
   "enabled": true,
   "progress": {
-    "state": "open",
-    "summary": "Directional and conditional nonexistence results are known, but the unconditional two-dimensional no-bigeodesics conjecture remains open.",
-    "links": []
+    "state": "solution-claimed",
+    "summary": "The standard-moment planar target has a reported full resolution; this is not a claim for every nonatomic edge-weight law.",
+    "links": [
+      {
+        "title": "OpenAI: No bigeodesics in planar first-passage percolation",
+        "url": "https://github.com/openai/math/blob/main/preprints/No-bigeodesics-in-planar-first-passage-percolation-September-24-2026/main.pdf"
+      }
+    ]
   },
   "importance": 8,
   "difficulty": 9,
@@ -66,31 +78,38 @@
   "alphaevolve_suitability": "medium",
   "alphaevolve_rationale": "Computation may help explore geodesic coalescence, midpoint behavior, and candidate finite obstructions, but a proof is likely analytic and probabilistic.",
   "literature": {
-    "synthesis": "The no-bigeodesics problem is part of the broader project of understanding geodesic geometry in FPP beyond the shape theorem. Busemann functions provide one route: if directional Busemann limits exist and geodesics coalesce, one can rule out many two-sided minimizers. Conditional results show that differentiability or curvature of the limit shape would be enough to exclude important classes of bigeodesics, but those shape regularity properties are themselves open for ordinary lattice FPP. Recent random-coalescing-geodesic methods avoid some deterministic shape assumptions and solve related midpoint questions, yet still do not eliminate all possible bigeodesics. A complete solution would likely need a robust coalescence theorem, a new way to control exceptional directions, or a proof that any bigeodesic would force a translation-invariant structure now known to be impossible.",
+    "synthesis": "The central quantifier issue is simultaneous exclusion: an exceptional direction may depend on the environment. The new claim addresses that issue in a precisely stated moment class. Its scope and verification status should remain visible rather than being conflated with the unrestricted formulation.",
     "reviewed": [
       {
         "ref": "Damron and Hanson, Bigeodesics in first-passage percolation, 2015",
         "result": "Rules out bigeodesics with deterministic directed end under differentiability of the limit shape.",
-        "relevance": "conditional-progress",
+        "relevance": "partial-progress",
         "url": "https://arxiv.org/abs/1512.00804"
       },
       {
         "ref": "Ahlberg and Hoffman, Random coalescing geodesics in first-passage percolation, 2016",
         "result": "Develops random coalescing geodesic machinery and solves the midpoint problem.",
-        "relevance": "geodesic-structure-progress",
+        "relevance": "partial-progress",
         "url": "https://arxiv.org/abs/1609.02447"
       },
       {
         "ref": "Brito, Damron, Hanson, Absence of backward infinite paths for first-passage percolation in arbitrary dimension, 2020",
         "result": "Shows absence of bigeodesics in certain geodesic graphs constructed from point-to-hyperplane limits.",
-        "relevance": "unconditional-partial-progress",
+        "relevance": "partial-progress",
         "url": "https://arxiv.org/abs/2003.03367"
+      },
+      {
+        "ref": "OpenAI, 'No bigeodesics in planar first-passage percolation', OpenAI Math Release preprint, 2026",
+        "result": "Theorem 1.1 claims simultaneous absence under the stated minimum-of-four moment assumption.",
+        "relevance": "partial-progress",
+        "url": "https://github.com/openai/math/blob/main/preprints/No-bigeodesics-in-planar-first-passage-percolation-September-24-2026/main.pdf"
       }
     ]
   },
   "agent_guidance": {
     "suitable_approaches": "Study Busemann-function constructions, geodesic coalescence, exceptional-direction arguments, and implications of limit-shape differentiability. Avoid relying on unproved KPZ exponents or curvature assumptions unless the proof explicitly makes the result conditional.",
-    "verification_notes": "A proof must specify distributional assumptions on edge weights and show almost-sure absence of every doubly infinite path whose finite subpaths are geodesics. A conditional result should state exactly which assumptions on the limit shape, curvature, differentiability, or Busemann limits are used, since many known results are conditional in precisely this way. A counterexample would require a passage-time distribution satisfying the standard hypotheses and a rigorous positive-probability construction of a bigeodesic, not only simulations or finite-box geodesic pictures.",
+    "verification_notes": "Check the exact minimum-of-four moment condition, nonatomic i.i.d. law, and simultaneous quantifier over all paths. Verify that fixed-direction probability-one statements are not silently intersected over uncountably many directions. A moment-free extension requires an additional argument. This audit did not certify the manuscript's complete proof.",
     "machine_checkable": false
-  }
+  },
+  "notes_for_maintainer": "2026-11-09: the previously vague standard assumptions are now explicit; status refers to that moment-bounded target. No independent full-proof validation."
 }

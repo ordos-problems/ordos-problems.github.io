@@ -1,0 +1,400 @@
+{
+  "audit_date": "2026-11-09",
+  "scope": "Deeper follow-up on selected remaining catalogue entries. This supplements, rather than replaces, the earlier November 9 audits.",
+  "method": "Read primary-paper theorem statements and formal models for changed entries, compare assumptions and objectives with the catalogue, inspect version and author metadata, and separate reported claims from independently checked arguments. Conducted additional source screening for selected unchanged entries.",
+  "coverage_counts": {
+    "catalogue_enabled_records": 182,
+    "changed_entries": 14,
+    "selected_theorem_or_model_reviews": 16,
+    "additional_abstract_or_search_screens": 9,
+    "entries_not_reassessed_in_this_pass": 157,
+    "independently_certified_full_paper_proofs": 0
+  },
+  "changed_problem_ids": [
+    "edge-weighted-matching-free-disposal",
+    "subsidy-envy-freeness-monotone",
+    "efx-existence-goods",
+    "efx-chores",
+    "precedence-unit-jobs-three-machines-complexity",
+    "fpp-bigeodesics-nonexistence",
+    "mean-payoff-games-polynomial-time",
+    "random-ksat-satisfiability-threshold",
+    "dual-sourcing-inventory-optimal-policy-structure",
+    "euclidean-cvrp-ptas-arbitrary-capacity",
+    "restricted-assignment-makespan",
+    "graph-balancing-makespan",
+    "exact-matching-derandomization",
+    "correlated-random-graph-matching-efficient-threshold"
+  ],
+  "limitations": [
+    "This is not a complete theorem-level reassessment of all 182 problems. Earlier search-only records do not become verified by association with this audit.",
+    "Theorems and assumptions were read, but complete new proofs and Lean developments were not independently certified.",
+    "No paper's exhaustive SAT/SMT certificate corpus was replayed. The two small executable checks in tests/test_catalogue.py are editorial sanity checks, not reproductions of entire papers.",
+    "Solution-claimed labels for three-machine scheduling and moment-bounded planar FPP record manuscript claims, not accepted or referee-certified resolutions.",
+    "Some sources were inaccessible or only abstract-screened; deferred leads are listed with the relevant entry.",
+    "No git push or live deployment is part of this pass."
+  ],
+  "editorial_checks": [
+    {
+      "problem_id": "exact-matching-derandomization",
+      "target": "Du v3, Theorem 2.7(iii)",
+      "result": "K_{2,2} with red diagonal and target one has no exact matching, but its Birkhoff-face slice is the singleton all-1/2 matrix. This disproves the subsidiary identity as stated, not the main algorithmic theorem.",
+      "test": "CatalogueRegressionTests.test_exact_matching_affine_slice_counterexample"
+    },
+    {
+      "problem_id": "graph-balancing-makespan",
+      "target": "Six-edge K4 witness",
+      "result": "Enumerate all 64 orientations to check integral optimum three; half-weighted configurations provide an LP solution of value two. Minimality and uniqueness for all smaller instances are not rechecked.",
+      "test": "CatalogueRegressionTests.test_graph_balancing_six_edge_witness"
+    }
+  ],
+  "validation": {
+    "build": "npm run build: 182 enabled records, zero compiler issues, zero KaTeX failures",
+    "regression_tests": "python3 -m unittest discover -s tests -v: 17 tests passed",
+    "changed_record_schema_errors": 0,
+    "preexisting_schema_errors_in_untouched_records": 80,
+    "source_diff": "Exactly the 14 listed problem records changed; no unrelated source records changed.",
+    "whitespace_check": "git diff --check: clean",
+    "proof_certification": "No full manuscript proof certified; two finite editorial checks passed."
+  },
+  "entries": [
+    {
+      "id": "edge-weighted-matching-free-disposal",
+      "review_level": "theorem-and-model",
+      "changed": true,
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2611.06896v1",
+          "sections": "Model and Theorem 1"
+        }
+      ],
+      "summary": "Updated ratio and fixed oblivious-adversary scope; no certificate replay."
+    },
+    {
+      "id": "subsidy-envy-freeness-monotone",
+      "review_level": "theorem-and-model",
+      "changed": true,
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2609.08272v1",
+          "sections": "Theorem 1; model; efficient-computation discussion"
+        }
+      ],
+      "summary": "Replaced quadratic frontier; added normalization and algorithmic caveat."
+    },
+    {
+      "id": "efx-existence-goods",
+      "review_level": "theorem-and-model",
+      "changed": true,
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2608.08590v1",
+          "sections": "Definition 1 and Theorem 1"
+        },
+        {
+          "url": "https://arxiv.org/abs/2410.13580v3",
+          "sections": "Bibliographic correction and abstract"
+        },
+        {
+          "url": "https://arxiv.org/abs/2406.12413v3",
+          "sections": "Current bibliographic metadata; no additional approximation claim imported"
+        }
+      ],
+      "summary": "Added bounded-size existence, distinguished EFX0, corrected authors/venue; no certificate replay."
+    },
+    {
+      "id": "efx-chores",
+      "review_level": "theorem-and-model",
+      "changed": true,
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2609.10585v2",
+          "sections": "Theorems 1.1-1.2; Definition 1"
+        },
+        {
+          "url": "https://arxiv.org/html/2606.08872v2",
+          "sections": "Results and model"
+        },
+        {
+          "url": "https://arxiv.org/html/2507.19461v1",
+          "sections": "Introduction and multiplicative definition"
+        }
+      ],
+      "summary": "Added finite-size results and corrected two substantive misstatements.",
+      "deferred": [
+        {
+          "url": "https://github.com/ipitchford/efx-nine-chores",
+          "reason": "Unrefereed nine-chores candidate located; certificate and manuscript not independently checked."
+        }
+      ]
+    },
+    {
+      "id": "precedence-unit-jobs-three-machines-complexity",
+      "review_level": "theorem-and-model",
+      "changed": true,
+      "sources": [
+        {
+          "url": "https://github.com/openai/math/blob/main/preprints/A-polynomial-time-algorithm-for-three-machine-unit-job-scheduling-September-24-2026/paper.pdf",
+          "sections": "Introduction and Theorem 1.1, pages 1-3"
+        },
+        {
+          "url": "https://arxiv.org/abs/2501.09091v1",
+          "sections": "Bibliographic metadata: ESA 2022, uploaded to arXiv in 2025"
+        }
+      ],
+      "summary": "Reported full complexity resolution; not independently proof-certified."
+    },
+    {
+      "id": "fpp-bigeodesics-nonexistence",
+      "review_level": "theorem-and-model",
+      "changed": true,
+      "sources": [
+        {
+          "url": "https://github.com/openai/math/blob/main/preprints/No-bigeodesics-in-planar-first-passage-percolation-September-24-2026/main.pdf",
+          "sections": "Theorem 1.1 and scope discussion, pages 1-3"
+        }
+      ],
+      "summary": "Clarified moment class; reported full claim for that target, not unrestricted laws."
+    },
+    {
+      "id": "mean-payoff-games-polynomial-time",
+      "review_level": "theorem-and-model",
+      "changed": true,
+      "sources": [
+        {
+          "url": "https://github.com/openai/math/blob/main/preprints/Deterministic-quasipolynomial-time-mean-payoff-games-September-25-2026/paper.pdf",
+          "sections": "Theorem 1.1; model and running-time discussion"
+        }
+      ],
+      "summary": "Added claimed quasipolynomial progress; polynomial target retained."
+    },
+    {
+      "id": "random-ksat-satisfiability-threshold",
+      "review_level": "theorem-and-model",
+      "changed": true,
+      "sources": [
+        {
+          "url": "https://eccc.weizmann.ac.il/report/2026/229/",
+          "sections": "Theorem 1.1 and Corollary 1.2"
+        },
+        {
+          "url": "https://github.com/openai/math/blob/main/preprints/A-Limiting-Satisfiability-Threshold-for-Every-Fixed-Clause-Size-September-25-2026/article.pdf",
+          "sections": "Theorem 1.1 and priority discussion"
+        },
+        {
+          "url": "https://github.com/openai/math/blob/main/preprints/Computing-the-Random-3-SAT-Threshold-September-27-2026/article.pdf",
+          "sections": "Theorem 1.1 and scope discussion, pages 1-3"
+        }
+      ],
+      "summary": "Separated existence, computability, and numerical/variational identification; preserved priority."
+    },
+    {
+      "id": "dual-sourcing-inventory-optimal-policy-structure",
+      "review_level": "theorem-and-model",
+      "changed": true,
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2207.12182v2",
+          "sections": "Model; Theorems 5.7, 5.9, 6.3; Assumption 6.2"
+        }
+      ],
+      "summary": "Updated projection guarantees with distinct variance and tail assumptions; made average-cost target precise.",
+      "deferred": [
+        {
+          "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7530818",
+          "reason": "Projected-bias policy abstract located; full paper unavailable, so no theorem claim imported."
+        }
+      ]
+    },
+    {
+      "id": "euclidean-cvrp-ptas-arbitrary-capacity",
+      "review_level": "theorem-and-model",
+      "changed": true,
+      "sources": [
+        {
+          "url": "https://people.idsia.ch/~grandoni/Pubblicazioni/FGM26soda.pdf",
+          "sections": "Model and Theorem 1.2, pages 1-2"
+        }
+      ],
+      "summary": "Added polynomial-time sub-2 result without mislabeling it a PTAS."
+    },
+    {
+      "id": "restricted-assignment-makespan",
+      "review_level": "theorem-and-model",
+      "changed": true,
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2609.19967v1",
+          "sections": "Section 6, Theorems 7-8, Proposition 9; Conjecture 10"
+        }
+      ],
+      "summary": "Added structural partial results; explicitly rejected conditional 1.749 as a proved general bound."
+    },
+    {
+      "id": "graph-balancing-makespan",
+      "review_level": "theorem-and-model",
+      "changed": true,
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2608.13318v1",
+          "sections": "Theorems 1, 4, 5; explicit witness; scope discussion"
+        }
+      ],
+      "summary": "Added compact witness context; exhaustive minimality certificates were not replayed."
+    },
+    {
+      "id": "exact-matching-derandomization",
+      "review_level": "theorem-and-model-plus-elementary-check",
+      "changed": true,
+      "sources": [
+        {
+          "url": "https://arxiv.org/pdf/2604.01571v3",
+          "sections": "Theorem 1.1, Theorem 2.7(iii), Appendix A"
+        }
+      ],
+      "summary": "Recorded but did not accept bipartite claim; independently found an elementary counterexample to a subsidiary affine-slice identity. This does not refute the main theorem. Partial Lean formalization is not end-to-end certification."
+    },
+    {
+      "id": "correlated-random-graph-matching-efficient-threshold",
+      "review_level": "theorem-and-model",
+      "changed": true,
+      "sources": [
+        {
+          "url": "https://arxiv.org/pdf/2502.09832v4",
+          "sections": "Definitions 1.1-1.2; Conjecture 2.2; Theorem 3.3(1) and equation (3.4)"
+        },
+        {
+          "url": "https://arxiv.org/html/2510.24914v1",
+          "sections": "Model, Definition 2.9, Theorem 2.10"
+        }
+      ],
+      "summary": "Added conditional sparse-regime hardness and scoped local-algorithm context; clarified subsampling versus Pearson correlation and recovery objectives."
+    },
+    {
+      "id": "steiner-tree-bidirected-cut-integrality-gap",
+      "review_level": "theorem-and-model",
+      "changed": false,
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2602.19879v1",
+          "sections": "Theorem 1.1 and introduction"
+        }
+      ],
+      "summary": "Existing 1.898 upper bound remains consistent with the checked paper. The 12/7 limitation discussed for a method is not a proved lower bound on the actual integrality gap."
+    },
+    {
+      "id": "steiner-tree-approximation-ratio-gap",
+      "review_level": "theorem-and-model",
+      "changed": false,
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2602.19879v1",
+          "sections": "Introduction and comparison with known algorithms"
+        }
+      ],
+      "summary": "Checked introduction retains ln(4)+epsilon algorithmic benchmark. No newly verified improvement imported."
+    },
+    {
+      "id": "adwords-general-bids",
+      "review_level": "abstract-and-model-screen",
+      "changed": false,
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2610.02479v2",
+          "sections": "Abstract and bibliographic metadata"
+        }
+      ],
+      "summary": "Flexible budgets across days change the resource model and use an inflexible offline benchmark. Not treated as a resolution of classical general-bid AdWords."
+    },
+    {
+      "id": "online-makespan-scheduling-gap",
+      "review_level": "abstract-and-model-screen",
+      "changed": false,
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2609.17343",
+          "sections": "Abstract"
+        }
+      ],
+      "summary": "Few-sample allocation work assumes additional information; not transferred to the classical no-preview deterministic competitive-ratio target."
+    },
+    {
+      "id": "randomized-list-update",
+      "review_level": "search-only",
+      "changed": false,
+      "sources": [
+        {
+          "url": "https://www.isa-afp.org/browser_info/current/AFP/List_Update/document.pdf",
+          "sections": "Search result and metadata only; no new theorem review"
+        }
+      ],
+      "summary": "Located formalization of classical COMB analysis, not a newly verified improved competitive ratio. Unsuccessful search is not evidence that no improvement exists."
+    },
+    {
+      "id": "ef1-po-polynomial-time",
+      "review_level": "abstract-and-model-screen",
+      "changed": false,
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2411.01810",
+          "sections": "Abstract and model screening"
+        }
+      ],
+      "summary": "Located fixed-agent-count progress already reflected in the catalogue; did not verify a new unrestricted polynomial algorithm."
+    },
+    {
+      "id": "weber-weiss-whittle-index-asymptotic-optimality",
+      "review_level": "search-only",
+      "changed": false,
+      "sources": [],
+      "summary": "Screened recent Whittle/restless-bandit results against the catalogue's general assumptions. Two-set-policy progress was already present. No new theorem-level conclusion from this pass."
+    },
+    {
+      "id": "unrelated-machines-makespan-below-2",
+      "review_level": "abstract-and-model-screen",
+      "changed": false,
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2606.13133",
+          "sections": "Abstract and metadata"
+        }
+      ],
+      "summary": "Learning-augmented scheduling uses extra information and retains robust factor two; not a sub-two guarantee for unrestricted unrelated-machine scheduling."
+    },
+    {
+      "id": "input-queued-switch-maxweight-heavy-traffic-distribution",
+      "review_level": "abstract-and-model-screen",
+      "changed": false,
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2206.06504",
+          "sections": "Abstract"
+        },
+        {
+          "url": "https://doi.org/10.1145/3649477.3649487",
+          "sections": "Metadata and abstract"
+        }
+      ],
+      "summary": "The general-dimensional distribution result located remains conditional on the transform-system uniqueness issue. No new full proof was reviewed."
+    },
+    {
+      "id": "supermarket-heavy-traffic-stationary-short-queue-profile",
+      "review_level": "abstract-and-model-screen",
+      "changed": false,
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/1610.03522",
+          "sections": "Abstract"
+        }
+      ],
+      "summary": "Separated fixed-choice heavy-traffic target from results with a growing number of sampled queues. No new theorem in the precise target model verified."
+    },
+    {
+      "id": "optimal-policy-one-warehouse-multi-retailer",
+      "review_level": "search-only",
+      "changed": false,
+      "sources": [],
+      "summary": "Screened later policy and learning papers; did not locate and verify a general exact-policy characterization. This is not a claim of exhaustive coverage."
+    }
+  ]
+}

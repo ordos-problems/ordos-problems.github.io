@@ -1,9 +1,9 @@
 {
   "id": "dual-sourcing-inventory-optimal-policy-structure",
   "background": "Dual sourcing is a classic supply-chain model where a firm can replenish from a slow cheap supplier and a fast expensive supplier. The model is simple to state but hard because orders placed today arrive after different deterministic lead times, so the state includes a multi-period pipeline from each supplier. When the lead-time difference is one, the dynamic program has much more tractable structure. When the gap is two or more periods, the exact optimal policy has resisted a clean characterization for decades. This makes the problem a good fit for ORdős Problems: the modelling choices are already settled, the objective is a standard infinite-horizon inventory cost, and there are strong heuristic and asymptotic policies. Xin and Goldberg gave theoretical support for Tailored Base-Surge policies by proving asymptotic optimality when the regular-source lead time grows while the express-source lead time is fixed. That result resolves an important large-lead-time question, but it does not characterize the exact finite-lead-time optimal policy. The remaining open problem is structural: describe the optimal policy, or prove sharp non-asymptotic guarantees for a simple policy class, when the two lead times differ by at least two.",
-  "open_problem": "Characterize the exact optimal policy for the periodic-review dual-sourcing inventory model with deterministic regular and express lead times whose gap is at least two, or prove sharp finite-lead-time optimality-gap guarantees for Tailored Base-Surge or related simple policies.",
-  "known_results": "For lead-time gap one, the state and dynamic program simplify enough to yield tractable structural results. For larger gaps, dual-index policies and Tailored Base-Surge policies have strong numerical performance. Xin and Goldberg prove that a simple Tailored Base-Surge policy is asymptotically optimal as the regular-source lead time tends to infinity with the express-source lead time fixed, giving a theoretical foundation for the heuristic in the regime where the dynamic program is most intractable. The exact optimal policy for fixed finite lead-time gaps at least two remains unknown. Later survey and inventory-asymptotics work clarifies why large-lead-time asymptotic optimality does not automatically provide a usable exact policy for moderate lead times.",
-  "status": "open",
+  "open_problem": "For the fixed periodic-review average-cost model and lead-time gap at least two, prove an exact structural characterization of optimal replenishment decisions beyond an unrestricted full-pipeline dynamic program.",
+  "known_results": "Consecutive lead times admit order-up-to structure. For larger gaps, the optimal decision generally depends on the outstanding-order pipeline. Linwei Xin and David A. Goldberg prove asymptotic optimality of tailored base-surge (TBS) policies as the regular lead time grows with the expedited lead time fixed.\n\nPoulad Moradi, Melvin Drent, Joachim Arts, and Collin Drent, arXiv:2207.12182v2 (October 2, 2026), extend the projected expedited inventory position (PEIP) theory. Under finite nonzero demand variance, Theorems 5.7 and 5.9 give exponential-in-gap cost comparisons and optimality-gap bounds with other parameters fixed. Theorem 6.3 gives relative asymptotic optimality when backlog penalty and expedited premium grow at a fixed ratio below the lead-time gap, subject to Assumption 6.2 on cumulative-demand tails. The latter requires bounded cumulative demand or sublinear conditional mean excess; finite variance alone is not the stated condition.\n\nRemaining open problem. Characterize exact optimal policies for fixed finite lead-time gaps. Asymptotic guarantees and good numerical performance do not imply exact optimality at moderate parameters.",
+  "status": "partially resolved",
   "where_posed": {
     "text": "The long-standing finite-gap structural problem is discussed in the dual-sourcing inventory literature; Xin and Goldberg identify the model as having resisted exact solution for more than forty years while resolving the large-regular-lead-time TBS asymptotic question.",
     "url": "https://arxiv.org/abs/1503.01071",
@@ -12,10 +12,20 @@
   },
   "progress": {
     "state": "partial",
-    "summary": "Tailored Base-Surge is now known to be asymptotically optimal in a large-lead-time regime, but no exact finite-gap optimal-policy characterization is known for lead-time differences at least two.",
+    "summary": "The October revision adds PEIP guarantees in long-lead-time and high-service regimes; fixed-parameter exact structure remains unresolved.",
     "links": [
-      {"title": "Xin and Goldberg, Asymptotic optimality of Tailored Base-Surge policies", "url": "https://arxiv.org/abs/1503.01071"},
-      {"title": "Xin and Goldberg, Management Science version", "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2016.2607"}
+      {
+        "title": "Xin and Goldberg, Asymptotic optimality of Tailored Base-Surge policies",
+        "url": "https://arxiv.org/abs/1503.01071"
+      },
+      {
+        "title": "Xin and Goldberg, Management Science version",
+        "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2016.2607"
+      },
+      {
+        "title": "Poulad Moradi, Melvin Drent, Joachim Arts, Collin Drent: Asymptotic Optimality of Inventory Projection in Dual-Sourcing Systems",
+        "url": "https://arxiv.org/abs/2207.12182v2"
+      }
     ]
   },
   "importance": 8,
@@ -25,18 +35,55 @@
   "alphaevolve_suitability": "medium",
   "alphaevolve_rationale": "Search can map optimal actions in truncated dynamic programs, infer switching surfaces, and locate counterexamples to proposed structures. It is less suited to proving asymptotic or infinite-state optimality without analytic support.",
   "literature": {
-    "synthesis": "Dual-sourcing inventory has a clean economic interpretation and an unusually difficult state space. Earlier work proposed dual-index and Tailored Base-Surge policies and demonstrated strong computational performance. Xin and Goldberg supplied the major theoretical advance by proving TBS asymptotically optimal as the regular lead time grows. Their result supports the intuition that a constant slow-source base flow plus a fast-source order-up-to correction becomes nearly optimal when the slow pipeline is long. The open finite-gap problem remains because optimality for $L_r \\to \\infty$ does not tell us the exact Bellman structure for fixed $L_r-L_e \\ge 2$, where pipeline imbalances and expediting decisions interact. A successful solution would likely identify monotonicity, convexity, or low-dimensional sufficient statistics for the dynamic program, or else show that no simple threshold/index form can be exact.",
+    "synthesis": "TBS deliberately simplifies the regular pipeline, whereas projection policies use it to control expected future inventory positions. Comparing these policies gives rigorous performance guarantees, but does not establish that a chosen heuristic is exactly optimal at fixed parameters.",
     "reviewed": [
-      {"ref": "Xin and Goldberg, 'Asymptotic Optimality of Tailored Base-Surge Policies in Dual-Sourcing Inventory Systems', Management Science 2018 / arXiv 2015", "result": "Proves TBS asymptotic optimality as the regular-source lead time grows with fixed express lead time.", "relevance": "partial-progress", "url": "https://arxiv.org/abs/1503.01071"},
-      {"ref": "Veeraraghavan and Scheller-Wolf, 'Now or later: A simple policy for effective dual sourcing', Operations Research 2008", "result": "Develops dual-index-style policies and computational evidence for dual sourcing.", "relevance": "related-tool", "url": "https://pubsonline.informs.org/doi/10.1287/opre.1080.0552"},
-      {"ref": "Janakiraman, Seshadri, Sheopuri, 'Analysis of Tailored Base-Surge Policies in Dual Sourcing Inventory Systems', Management Science 2015", "result": "Analyzes TBS-type policies before the large-lead-time asymptotic proof.", "relevance": "partial-progress", "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2014.1971"},
-      {"ref": "Goldberg, Reiman, Wang, 'A survey of recent progress in inventory models with positive lead times', Production and Operations Management 2021", "result": "Surveys large-lead-time asymptotic methods and remaining inventory-control gaps.", "relevance": "survey", "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/poms.13339"}
+      {
+        "ref": "Xin and Goldberg, 'Asymptotic Optimality of Tailored Base-Surge Policies in Dual-Sourcing Inventory Systems', Management Science 2018 / arXiv 2015",
+        "result": "Proves TBS asymptotic optimality as the regular-source lead time grows with fixed express lead time.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1503.01071"
+      },
+      {
+        "ref": "Veeraraghavan and Scheller-Wolf, 'Now or later: A simple policy for effective dual sourcing', Operations Research 2008",
+        "result": "Develops dual-index-style policies and computational evidence for dual sourcing.",
+        "relevance": "related-tool",
+        "url": "https://pubsonline.informs.org/doi/10.1287/opre.1080.0552"
+      },
+      {
+        "ref": "Janakiraman, Seshadri, Sheopuri, 'Analysis of Tailored Base-Surge Policies in Dual Sourcing Inventory Systems', Management Science 2015",
+        "result": "Analyzes TBS-type policies before the large-lead-time asymptotic proof.",
+        "relevance": "partial-progress",
+        "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2014.1971"
+      },
+      {
+        "ref": "Goldberg, Reiman, Wang, 'A survey of recent progress in inventory models with positive lead times', Production and Operations Management 2021",
+        "result": "Surveys large-lead-time asymptotic methods and remaining inventory-control gaps.",
+        "relevance": "survey",
+        "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/poms.13339"
+      },
+      {
+        "ref": "Poulad Moradi, Melvin Drent, Joachim Arts, Collin Drent, 'Asymptotic Optimality of Inventory Projection in Dual-Sourcing Systems', arXiv, October revision, 2026",
+        "result": "Theorems 5.7, 5.9, and 6.3 supply asymptotic guarantees, not exact finite-gap policy structure.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2207.12182v2"
+      }
     ]
   },
   "agent_guidance": {
     "suitable_approaches": "Begin with two- or three-period lead-time gaps and finite-support demand, compute truncated Bellman equations, and look for monotone comparative statics or switching-curve regularity. Analytic approaches may use L-convexity, pipeline-state aggregation, vanishing-discount limits, or lower bounds tied to lost-sales/queueing asymptotics.",
-    "verification_notes": "A claimed exact policy must be checked against Bellman optimality for the infinite-horizon discounted or average-cost problem with explicit state variables. A claimed non-asymptotic guarantee must state the parameter regime and compare to the true optimal policy, not only to another heuristic.",
+    "verification_notes": "A claimed exact policy must be checked against Bellman optimality for the specified infinite-horizon average-cost problem with explicit state variables. A claimed non-asymptotic guarantee must state the parameter regime and compare to the true optimal policy, not only to another heuristic.",
     "machine_checkable": true
   },
-  "notes_for_maintainer": "Deepened from primary Xin-Goldberg source. This is an older Operations Management structural problem, not a new modelling proposal."
+  "notes_for_maintainer": "2026-11-09: fixed the average-cost model and removed unsupported blanket claims that only one asymptotic result exists or that a large state space proves computational hardness. SSRN download was blocked; the same paper's current arXiv revision was read.",
+  "short_statement": "Two suppliers trade replenishment speed against cost. New guarantees support projection policies, while exact optimal control at a fixed lead-time gap remains poorly understood.",
+  "full_statement": "A single product is reviewed in discrete periods under i.i.d. nonnegative demand of finite positive mean and finite variance. Orders placed before demand arrive after deterministic lead times $L_r>L_e\\ge0$ from an uncapacitated regular supplier and an expedited supplier. There are no fixed order costs. Unit prices satisfy $c_e>c_r$; unmet demand is fully backlogged, and end-of-period net inventory $I_t$ incurs $h(I_t)^++b(-I_t)^+$, with $h,b>0$.\n\nA nonanticipating policy chooses nonnegative orders $(q_t^r,q_t^e)$ from current net inventory and outstanding orders. Under the long-run expected average-cost criterion, minimize $$J(\\pi)=\\limsup_{T\\to\\infty}\\frac1T\\mathbb E_\\pi\\!\\left[\\sum_{t=1}^T(c_rq_t^r+c_eq_t^e+h(I_t)^++b(-I_t)^+)\\right].$$ Fix an initial state with finite inventory and finite outstanding orders.\n\nFor a fixed lead-time gap $L_r-L_e\\ge2$, characterize an optimal policy beyond the general full-pipeline Bellman formulation: identify and prove usable structural restrictions or sufficient statistics. A policy optimal only as a parameter diverges does not answer the finite-parameter question. Any algorithmic hardness assertion must specify an input representation rather than infer hardness from a large state space.",
+  "additional_refs": [
+    {
+      "authors": "Poulad Moradi, Melvin Drent, Joachim Arts, Collin Drent",
+      "title": "Asymptotic Optimality of Inventory Projection in Dual-Sourcing Systems",
+      "year": 2026,
+      "venue": "arXiv, October revision",
+      "url": "https://arxiv.org/abs/2207.12182v2"
+    }
+  ]
 }

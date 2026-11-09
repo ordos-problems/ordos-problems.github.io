@@ -5,8 +5,8 @@
  "title": "Complexity of Unit-Time Precedence Scheduling on Three Machines",
  "collection": "Operations Research",
  "area": "Scheduling Theory",
- "status": "open",
- "confidence": "high",
+ "status": "solution claimed",
+ "confidence": "medium",
  "tags": [
   "scheduling",
   "precedence constraints",
@@ -15,18 +15,22 @@
   "fixed machines",
   "Garey-Johnson"
  ],
- "short_statement": "Determine whether $P3\\mid prec, p_j=1\\mid C_{\\max}$ is polynomial-time solvable or NP-hard.",
- "open_problem": "Resolve the computational complexity of $P3\\mid prec,p_j=1\\mid C_{\\max}$.",
- "background": "Precedence-constrained scheduling is one of the oldest bridges between operations research and theoretical computer science. Graham's list scheduling gives a simple constant-factor approximation for identical machines, and many variants with arbitrary processing times or many machines are known to be hard. The striking feature of this problem is how little structure remains: all jobs have unit length, the number of machines is fixed at three, and the only combinatorial object is a partial order. For two machines the problem has special structure; for unrestricted machine counts and broader variants there are hardness results. The three-machine case survived the original Garey-Johnson complexity list and remains a benchmark for whether the boundary between polynomial structure and NP-hardness in scheduling can be drawn exactly. Recent approximation work has made the optimization version much better understood for constant $m$, but it has not settled the exact decision complexity of the smallest unresolved fixed-machine case.",
- "full_statement": "An instance consists of a finite set $J$ of unit-processing-time jobs, three identical parallel machines, and a precedence partial order $\\prec$ on $J$. A feasible nonpreemptive schedule assigns each job $j\\in J$ to one of the three machines and to an integer time slot, with at most one job processed on each machine in each slot, and with $j$ completed before $k$ starts whenever $j\\prec k$. The objective is to minimize the makespan $C_{\\max}$, the time at which the last job completes. The open problem is the classical decision complexity of this clean fixed-machine model: given $T$, decide whether there is a feasible schedule of makespan at most $T$ for $P3\\mid prec,p_j=1\\mid C_{\\max}$. Prove that the problem is in P, prove that it is NP-hard, or identify a sharper structural complexity classification that resolves the Garey-Johnson open case.",
- "known_results": "Levey and Rothvoss proved a near-polynomial/quasi-polynomial-time $(1+\\epsilon)$-approximation framework for $P\\mid prec,p_j=1\\mid C_{\\max}$ with constant $m$ using LP hierarchies, substantially improving the approximation landscape but not resolving NP-hardness for $m=3$. Garg improved the hierarchy-based running time to quasi-polynomial, Li further improved the dependence, and Das and Wiese gave a simpler QPTAS-style approach. Kulkarni, Li, Tarnawski, and Ye extended hierarchy-based ideas to arbitrary processing lengths in a non-migratory relaxed setting and to communication-delay variants. These results show that constant-machine precedence scheduling is approximable extremely well in quasi-polynomial time, but as of the 2026 literature check they still leave open the exact P-versus-NP status of $P3\\mid prec,p_j=1\\mid C_{\\max}$.",
+ "short_statement": "The classical three-machine, unit-job precedence scheduling question now has a reported polynomial-time exact algorithm awaiting independent verification.",
+ "open_problem": "Claimed resolution: the three-machine unit-job precedence scheduling problem is in P. Independently verify the reported algorithm and proof; this entry no longer presents the original complexity question as plainly open. Practical running time and extensions are separate questions.",
+ "background": "Precedence-constrained scheduling is a classical meeting point of operations research and algorithms. Jobs are all unit length and only their partial order creates difficulty. Two machines admit special polynomial structure; allowing the machine count to vary changes the complexity. For decades, the exact complexity with three machines remained a prominent question from Garey and Johnson's list. Quasi-polynomial approximation schemes improved the optimization picture without settling that exact question. A September 2026 manuscript now claims a polynomial-time exact algorithm for the original three-machine model. The reported bound is enormous, and the proof requires independent scrutiny; the historical question is therefore recorded as solution claimed rather than plainly open.",
+ "full_statement": "An instance consists of a finite set $J$ of unit-processing-time jobs, three identical parallel machines, and a precedence partial order $\\prec$ on $J$. A feasible nonpreemptive schedule assigns each job $j\\in J$ to one of the three machines and to an integer time slot, with at most one job processed on each machine in each slot, and with $j$ completed before $k$ starts whenever $j\\prec k$. The objective is to minimize the makespan $C_{\\max}$, the time at which the last job completes. The original problem asks for the classical decision complexity of this clean fixed-machine model: given $T$, decide whether there is a feasible schedule of makespan at most $T$ for $P3\\mid prec,p_j=1\\mid C_{\\max}$. A September 2026 manuscript claims a polynomial-time exact solution of this model. The claim has not been independently certified in this audit.",
+ "known_results": "Earlier hierarchy-based and combinatorial approximation schemes approximate fixed-machine precedence scheduling in quasi-polynomial time but do not decide exact feasibility.\n\nOpenAI, 'A Polynomial-Time Algorithm for Three-Machine Unit-Job Scheduling' (September 24, 2026), Theorem 1.1, claims a uniform deterministic algorithm producing an optimal schedule and deciding deadlines in $O((L+2)^{150020})$ Turing-machine steps, where $L$ is the complete binary input length. The input is an arbitrary explicitly listed precedence DAG, with three identical machines and unit, nonpreemptive jobs; there are no release dates or communication delays. The claimed exponent is constant but impractical.\n\nThis is a claimed full resolution of the original complexity target, not merely an approximation result. This audit checked the theorem and model, but did not independently certify the complete proof or a formalization.",
  "progress": {
-  "state": "partial",
-  "summary": "The optimization problem has quasi-polynomial approximation schemes for fixed $m$, but those algorithms do not imply an exact polynomial-time algorithm or NP-hardness for three machines.",
+  "state": "solution-claimed",
+  "summary": "An exact polynomial-time algorithm is claimed for the original model; independent proof verification remains outstanding.",
   "links": [
    {
     "title": "Das-Wiese simpler QPTAS",
     "url": "https://arxiv.org/abs/2501.09091"
+   },
+   {
+    "title": "OpenAI: A Polynomial-Time Algorithm for Three-Machine Unit-Job Scheduling",
+    "url": "https://github.com/openai/math/blob/main/preprints/A-polynomial-time-algorithm-for-three-machine-unit-job-scheduling-September-24-2026/paper.pdf"
    }
   ]
  },
@@ -37,7 +41,7 @@
  "alphaevolve_suitability": "medium",
  "alphaevolve_rationale": "Search over small posets, minimal unschedulable instances, and candidate reductions could expose useful gadgets or invariants. However, a final answer needs a formal complexity proof.",
  "literature": {
-  "synthesis": "The literature around this problem has shifted from exact complexity to approximation without eliminating the original complexity question. Levey and Rothvoss showed that a Sherali-Adams lift of the time-indexed LP gives a $(1+\\epsilon)$ approximation in slightly super-polylogarithmic hierarchy depth for constant $m$. Garg improved this to a cleaner quasi-polynomial-time approximation, and later work simplified the algorithmic template. These results are strong evidence that fixed-machine precedence scheduling has substantial hidden structure, but they are not exact algorithms. The 2020 hierarchy-based work also emphasizes that arbitrary processing lengths and communication delays remain harder variants. The remaining gap is qualitative rather than a constant-factor gap: determine whether the three-machine, unit-job decision problem is NP-hard or polynomial-time solvable.",
+  "synthesis": "Approximation schemes and exact complexity must be separated. The new manuscript addresses the original decision and optimization problems directly. Its correctness needs independent assessment; faster useful algorithms would be a follow-up target, not a reason to continue calling the original question open.",
   "reviewed": [
    {
     "ref": "Elaine Levey, Thomas Rothvoss, 'A (1+epsilon)-Approximation for Makespan Scheduling with Precedence Constraints using LP Hierarchies', SICOMP 2019 / arXiv",
@@ -56,12 +60,18 @@
     "result": "Gives a simpler QPTAS-style treatment and again notes that NP-hardness for $m=3$ remains open.",
     "relevance": "partial-progress",
     "url": "https://arxiv.org/abs/2501.09091"
+   },
+   {
+    "ref": "OpenAI, 'A Polynomial-Time Algorithm for Three-Machine Unit-Job Scheduling', OpenAI Math Release preprint, 2026",
+    "result": "Theorem 1.1 claims an exact deterministic polynomial-time algorithm for the original three-machine model.",
+    "relevance": "partial-progress",
+    "url": "https://github.com/openai/math/blob/main/preprints/A-polynomial-time-algorithm-for-three-machine-unit-job-scheduling-September-24-2026/paper.pdf"
    }
   ]
  },
  "agent_guidance": {
-  "suitable_approaches": "For hardness, search for reductions whose gadgets are naturally unit-time and precedence-only, perhaps from restricted SAT, poset dimension, or exact cover variants, while preserving the three-machine limit. For an algorithmic attack, study canonical decompositions of width, chains, antichains, and critical intervals in near-tight schedules. Exhaustive enumeration of small posets may be useful for guessing forbidden structures or validating dynamic-programming states.",
-  "verification_notes": "A hardness proof must use only three machines and unit processing times; reductions that rely on variable machine count or arbitrary processing times do not resolve the problem. A polynomial-time solution must optimize exact makespan, not merely approximate it, and should include a proof that the state space remains polynomial.",
+  "suitable_approaches": "Prioritize verification of the reported decomposition and dynamic program. Small-poset enumeration can test structural lemmas and schedule reconstruction, but cannot certify correctness for every input. Improving the enormous polynomial exponent or extending the model would be follow-up results, not a new resolution of the original decision question.",
+  "verification_notes": "Referee the bounded-description decomposition and its closure under recursion, completeness of the dynamic program, exact schedule reconstruction, and uniform bit complexity. Do not infer a practical algorithm or a result for release dates, arbitrary processing lengths, or communication delays. No formal certificate was replayed by this audit.",
   "machine_checkable": true
  },
  "where_posed": {
@@ -88,9 +98,9 @@
   {
    "authors": "Syamantak Das, Andreas Wiese",
    "title": "A simpler QPTAS for scheduling jobs with precedence constraints",
-   "year": 2025,
-   "venue": "ESA / arXiv",
-   "url": "https://arxiv.org/abs/2501.09091"
+   "year": 2022,
+   "venue": "ESA 2022 / arXiv 2025",
+   "url": "https://arxiv.org/abs/2501.09091v1"
   },
   {
    "authors": "Janardhan Kulkarni, Shi Li, Jakub Tarnawski, Minwei Ye",
@@ -98,6 +108,13 @@
    "year": 2020,
    "venue": "SODA / arXiv",
    "url": "https://arxiv.org/abs/2004.13891"
+  },
+  {
+   "authors": "OpenAI",
+   "title": "A Polynomial-Time Algorithm for Three-Machine Unit-Job Scheduling",
+   "year": 2026,
+   "venue": "OpenAI Math Release preprint",
+   "url": "https://github.com/openai/math/blob/main/preprints/A-polynomial-time-algorithm-for-three-machine-unit-job-scheduling-September-24-2026/paper.pdf"
   }
  ],
  "bibtex": "@misc{Levey2018,\n  author = {Elaine Levey and Thomas Rothvoss},\n  title = {A (1+epsilon)-Approximation for Makespan Scheduling with Precedence Constraints using LP Hierarchies},\n  year = {2018},\n  howpublished = {SIAM Journal on Computing / arXiv},\n  url = {https://arxiv.org/abs/1509.07808},\n  note = {Source of ORdős Problem ORDOS-129}\n}",

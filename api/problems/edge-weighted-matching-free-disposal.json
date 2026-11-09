@@ -5,7 +5,7 @@
  "title": "Tight ratio for edge-weighted online matching with free disposal",
  "collection": "Online Algorithms & Learning",
  "area": "Online Algorithms",
- "status": "open",
+ "status": "partially resolved",
  "confidence": "high",
  "tags": [
   "online matching",
@@ -14,14 +14,14 @@
   "display ads",
   "OCS"
  ],
- "short_statement": "For edge-weighted online bipartite matching with free disposal, determine the optimal competitive ratio between the current $0.5368$ lower bound and the broad $1-1/e$ upper bound.",
- "open_problem": "Determine the tight competitive ratio for edge-weighted online bipartite matching with free disposal, or prove a substantially stronger upper or lower bound than the current $0.5368$ versus $1-1/e$ gap.",
+ "short_statement": "Online arrivals reveal arbitrary edge weights, while each offline vertex retains only its best assigned edge. The best checked guarantee is now $0.556195$.",
+ "open_problem": "Determine the optimal randomized competitive ratio against an oblivious adversary: close the gap between $0.556195$ and $1-1/e$.",
  "background": "Edge-weighted online bipartite matching with free disposal is a clean abstraction of display advertising and related allocation systems. Offline vertices are reusable only in the sense that they may keep the best offer seen so far: if a later online vertex gives a better edge weight, the old tentative match can be discarded without penalty. This free-disposal rule makes the problem easier than irrevocable edge-weighted matching, but still far harder than unweighted or vertex-weighted matching. The trivial greedy algorithm is $1/2$-competitive, and for years no algorithm beat that barrier. The breakthrough came from online correlated selection, a randomized subroutine that deliberately correlates choices across time. The exact competitive ratio remains wide open: the best algorithms are only slightly above $1/2$, while the natural upper bound remains the classical $1-1/e$ scale.",
- "full_statement": "Let $G=(L,R,E)$ be a bipartite graph. The offline side $L$ is known in advance, while vertices of $R$ arrive one at a time in an adversarial order. When online vertex $v\\in R$ arrives, all incident edge weights $w_{uv}\\ge 0$ for $u\\in L$ are revealed. The algorithm may either discard $v$ or assign it immediately to one offline vertex $u$. Assignments are irrevocable from the perspective of the arriving vertex, but offline vertices have free disposal: an offline vertex may receive many online vertices over time and contributes only $\\max\\{w_{uv}:v\\text{ assigned to }u\\}$ to the final objective, with value $0$ if no vertex is assigned to it. Equivalently, an advertiser may keep the best impression ever assigned and ignore lower-value previous assignments. The benchmark is the maximum-weight offline matching in $G$, which can assign at most one online vertex to each offline vertex after seeing the entire graph and arrival sequence. For randomized algorithms, the expectation is over the algorithm's internal randomness against an oblivious or adaptive adversarial arrival model as specified. Determine the supremum competitive ratio $\\alpha$ such that an online algorithm always obtains expected retained weight at least $\\alpha\\cdot\\mathrm{OPT}$.",
- "known_results": "Greedy, which assigns each arriving vertex to the offline vertex with the largest immediate marginal retained value, is $1/2$-competitive, matching the generic monotone-submodular-welfare guarantee. Without free disposal, no positive competitive ratio is possible for arbitrary edge weights: a single offline vertex and two possible second arrivals force an online algorithm either to reject useful early value or to be stuck with a dominated low edge. Fahrbach, Huang, Tao, and Zadimoghaddam showed that free disposal contains more structure than general online submodular welfare and gave the first improvement beyond $1/2$, achieving $0.5086$. Their algorithm uses the online primal-dual framework, a complementary-cumulative-distribution-function view of retained weights, and online correlated selection, a subroutine that selects from a sequence of pairs with negative correlation across repeated appearances. Blanc and Charikar generalized this to multiway online correlated selection, where each step may present more than two candidates, and improved the ratio to $0.5368$. They also proved that the earlier pairwise-OCS formulation cannot exceed $0.5239$, so further progress probably needs either stronger correlation primitives or a different proof architecture. Kapralov, Post, and Vondrak's hardness for online monotone submodular welfare explains why the broad superclass has a $1/2$ barrier, but it does not give a tight upper bound for this matching special case. No source-checked upper bound close to $0.5368$ is known for edge-weighted matching with free disposal itself.",
+ "full_statement": "Let $G=(L,R,E)$ be a bipartite graph. The offline side $L$ is known in advance, while vertices of $R$ arrive one at a time in an adversarial order. When online vertex $v\\in R$ arrives, all incident edge weights $w_{uv}\\ge 0$ for $u\\in L$ are revealed. The algorithm may either discard $v$ or assign it immediately to one offline vertex $u$. Assignments are irrevocable from the perspective of the arriving vertex, but offline vertices have free disposal: an offline vertex may receive many online vertices over time and contributes only $\\max\\{w_{uv}:v\\text{ assigned to }u\\}$ to the final objective, with value $0$ if no vertex is assigned to it. Equivalently, an advertiser may keep the best impression ever assigned and ignore lower-value previous assignments. The benchmark is the maximum-weight offline matching in $G$, which can assign at most one online vertex to each offline vertex after seeing the entire graph and arrival sequence. For randomized algorithms, the expectation is over the algorithm's internal randomness against an oblivious adversary that fixes the entire graph, edge weights, and arrival order independently of the random coins. Determine the supremum competitive ratio $\\alpha$ such that an online algorithm always obtains expected retained weight at least $\\alpha\\cdot\\mathrm{OPT}$.",
+ "known_results": "Greedy is $1/2$-competitive. Matthew Fahrbach, Zhiyi Huang, Runzhou Tao, and Morteza Zadimoghaddam first surpassed this with $0.5086$; Guy Blanc and Moses Charikar raised the guarantee to $0.5368$ using multiway online correlated selection.\n\nAlireza Farhadi and Mohammad Hajiaghayi, 'Online Edge-Weighted Matching Beyond 0.55' (arXiv:2611.06896v1, November 2026), Theorem 1, give $0.556195$ against an oblivious adversary for arbitrary nonnegative edge weights. Rational inputs admit an expected-polynomial-time implementation. Their tightness analysis concerns their algorithm, not every online policy; their formal certificates were not replayed in this audit.\n\nRemaining open problem. Determine the optimal ratio in $[0.556195,1-1/e]$. The upper endpoint follows already from unweighted online matching. Guarantees for product-structured weights or limitations of a particular correlation scheme do not close this general gap.",
  "progress": {
   "state": "partial",
-  "summary": "The lower bound has improved from $1/2$ to $0.5086$ and then $0.5368$. The broad upper bound is still far away, so the exact ratio is not close to settled.",
+  "summary": "A November 2026 preprint raises the general guarantee to $0.556195$; the optimal ratio remains unknown.",
   "links": [
    {
     "title": "Edge-weighted online bipartite matching",
@@ -30,6 +30,10 @@
    {
     "title": "Multiway online correlated selection",
     "url": "https://arxiv.org/abs/2106.05579"
+   },
+   {
+    "title": "Alireza Farhadi, Mohammad Hajiaghayi: Online Edge-Weighted Matching Beyond 0.55",
+    "url": "https://arxiv.org/abs/2611.06896v1"
    }
   ]
  },
@@ -40,12 +44,12 @@
  "alphaevolve_suitability": "high",
  "alphaevolve_rationale": "This is one of the more code-search-friendly online matching problems: factor-revealing programs, OCS parameter searches, and finite weighted hard instances are all computationally accessible.",
  "literature": {
-  "synthesis": "The edge-weighted free-disposal problem resisted progress because the usual Ranking-style monotonicity disappears when edge weights depend on both endpoints. In unweighted or vertex-weighted online matching, the algorithm can often reason about whether an offline vertex has already been used; in the edge-weighted free-disposal model, an offline vertex has a whole retained-value distribution, and a new edge may be valuable only above some weight levels. Fahrbach, Huang, Tao, and Zadimoghaddam's CCDF/primal-dual view decomposes the retained value of each offline vertex by thresholds and uses OCS to create negative correlation in repeated choices. Blanc and Charikar's multiway OCS broadens the selection primitive and gives the current best ratio without relying on the same factor-revealing LP. The upper limit for pairwise OCS is a useful barrier: simply optimizing the first OCS framework cannot close the gap. The absence of a matching impossibility result is just as important. Known $1/2$ barriers apply to online monotone submodular welfare, but edge-weighted matching has additional exchange and threshold structure; closing the problem requires either a more powerful algorithmic correlation/primal-dual method or a hard distribution that exploits edge weights while respecting matching-like structure.",
+  "synthesis": "Free disposal makes each offline vertex's contribution a retained maximum. Correlations across repeated choices and threshold-based primal-dual accounting have successively improved guarantees. The new bound belongs in that progression, while framework-specific tightness must remain separate from a universal impossibility result.",
   "reviewed": [
    {
     "ref": "Matthew Fahrbach, Zhiyi Huang, Runzhou Tao, Morteza Zadimoghaddam, 'Edge-Weighted Online Bipartite Matching', JACM 2022",
     "result": "First algorithm beating $1/2$, with competitive ratio $0.5086$.",
-    "relevance": "poses-problem",
+    "relevance": "partial-progress",
     "url": "https://arxiv.org/abs/2005.01929"
    },
    {
@@ -59,6 +63,12 @@
     "result": "Develops the advertising/free-disposal allocation perspective motivating the model.",
     "relevance": "related-tool",
     "url": "https://link.springer.com/chapter/10.1007/978-3-642-10841-9_34"
+   },
+   {
+    "ref": "Alireza Farhadi, Mohammad Hajiaghayi, 'Online Edge-Weighted Matching Beyond 0.55', arXiv preprint, 2026",
+    "result": "Theorem 1: $0.556195$ competitive in the general free-disposal model; not a matching universal upper bound.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2611.06896v1"
    }
   ]
  },
@@ -94,6 +104,13 @@
    "year": 2009,
    "venue": "WINE",
    "url": "https://link.springer.com/chapter/10.1007/978-3-642-10841-9_34"
+  },
+  {
+   "authors": "Alireza Farhadi, Mohammad Hajiaghayi",
+   "title": "Online Edge-Weighted Matching Beyond 0.55",
+   "year": 2026,
+   "venue": "arXiv preprint",
+   "url": "https://arxiv.org/abs/2611.06896v1"
   }
  ],
  "bibtex": "@misc{Fahrbach2020,\n  author = {Matthew Fahrbach and Zhiyi Huang and Runzhou Tao and Morteza Zadimoghaddam},\n  title = {Edge-Weighted Online Bipartite Matching},\n  year = {2020},\n  howpublished = {FOCS / JACM},\n  url = {https://arxiv.org/abs/2005.01929},\n  note = {Source of ORdős Problem ORDOS-007}\n}",

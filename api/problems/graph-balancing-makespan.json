@@ -14,10 +14,10 @@
   "restricted assignment"
  ],
  "short_statement": "Graph balancing is unrelated-machine scheduling where each job can go on only two machines (same time on either). It is NP-hard to beat $3/2$ and the best ratio is below $1.75$, but the exact threshold is open.",
- "open_problem": "Determine the exact approximability of graph balancing, including whether there is a polynomial-time approximation ratio below $7/4$ and whether the threshold is $3/2$.",
+ "open_problem": "Determine the optimal polynomial-time approximation ratio for graph balancing, in particular whether $7/4$ can be improved. Distinguish constructive algorithms from configuration-LP existence bounds.",
  "background": "Graph balancing is a clean special case of unrelated-machine scheduling. Jobs are edges of a weighted multigraph, machines are vertices, and assigning a job to one of its two allowed machines is orienting the edge toward that vertex. The load of a machine is the total weight of incoming edges, and the goal is to minimize maximum load. This model captures restricted two-machine choices while retaining enough structure for graph-theoretic methods. Ebenlendr, Krcal, and Sgall gave a $7/4$ approximation and $3/2$ hardness. Jansen and Rohwedder later showed that a configuration-LP/local-search approach can beat $1.75$ at the level of integrality gap or estimation, but polynomial constructive status and exact approximability remain unresolved.",
  "full_statement": "Given an undirected weighted multigraph $G=(V,E)$ with edge weights $w_e\\ge 0$, orient every edge toward one of its two endpoints. The load of a vertex is the total weight of edges oriented into it, and the objective is to minimize the maximum vertex load. Equivalently, each job has exactly two eligible machines, its endpoints, and processing time $w_e$ on either endpoint. Determine the best polynomial-time approximation ratio for this graph-balancing problem. In particular, does there exist a polynomial-time algorithm with guarantee strictly below $7/4$, can the nonconstructive configuration-LP/local-search bound around $1.749$ be made constructive, or is there hardness above the known $3/2$ threshold?",
- "known_results": "Ebenlendr, Krcal, and Sgall established the classical picture: graph balancing is NP-hard to approximate within any factor below $3/2$, and there is a polynomial-time $7/4$ approximation based on LP rounding and structural handling of large and small edges. This left the interval between $3/2$ and $7/4$ open. Verschae and Wiese studied configuration-LP behavior for broader unrelated-machine scheduling settings and showed that some natural relaxations still have significant gaps. Jansen and Rohwedder later proved that, for graph balancing, a configuration-LP/local-search analysis obtains an integrality-gap or estimation bound of about $1.749$, strictly below $7/4$. However, they explicitly note that polynomial-time termination of the local search is unclear, so this does not settle the existence of a polynomial-time sub-$7/4$ approximation. The open problem is to convert this evidence into an efficient algorithm, improve hardness above $3/2$, or identify the exact threshold.",
+ "known_results": "Ebenlendr, Krcal, and Sgall established the classical picture: graph balancing is NP-hard to approximate within any factor below $3/2$, and there is a polynomial-time $7/4$ approximation based on LP rounding and structural handling of large and small edges. This left the interval between $3/2$ and $7/4$ open. Verschae and Wiese studied configuration-LP behavior for broader unrelated-machine scheduling settings and showed that some natural relaxations still have significant gaps. Jansen and Rohwedder later proved that, for graph balancing, a configuration-LP/local-search analysis obtains an integrality-gap or estimation bound of about $1.749$, strictly below $7/4$. However, they explicitly note that polynomial-time termination of the local search is unclear, so this does not settle the existence of a polynomial-time sub-$7/4$ approximation. The open problem is to convert this evidence into an efficient algorithm, improve hardness above $3/2$, or identify the exact threshold.\n\nAdam Y. Shavit, 'A minimum witness for the 3/2 configuration-linear-program gap in two-weight graph balancing, unique at its size' (arXiv:2608.13318v1), gives a six-job witness: $K_4$ with weight-one edges on a Hamiltonian cycle and weight-two edges on its complementary perfect matching. Theorem 1 certifies integer optimum $3$ and configuration-LP value $2$; Theorems 4-5 address minimality and uniqueness within the specified two-weight class. This improves the size/classification of a witness, not the known $3/2$ lower bound or the polynomial-time approximation ratio.\n\nRemaining open problem. Obtain a polynomial-time sub-$7/4$ algorithm or stronger approximation hardness. Small-instance LP certificates alone do not settle either.",
  "progress": {
   "state": "partial",
   "summary": "$7/4$ polynomial approximation and $3/2$ hardness are classical. Sub-$1.75$ LP/local-search evidence exists, but exact polynomial-time approximability remains open.",
@@ -29,6 +29,10 @@
    {
     "title": "Verschae and Wiese, configuration LP on unrelated machines",
     "url": "https://arxiv.org/abs/1011.4957"
+   },
+   {
+    "title": "Adam Y. Shavit: A minimum witness for the 3/2 configuration-linear-program gap in two-weight graph balancing, unique at its size",
+    "url": "https://arxiv.org/abs/2608.13318v1"
    }
   ]
  },
@@ -58,6 +62,12 @@
     "result": "Shows limitations of configuration LPs in broader unrelated-machine graph balancing.",
     "relevance": "related-tool",
     "url": "https://arxiv.org/abs/1011.4957"
+   },
+   {
+    "ref": "Adam Y. Shavit, 'A minimum witness for the 3/2 configuration-linear-program gap in two-weight graph balancing, unique at its size', arXiv preprint, 2026",
+    "result": "Theorems 1, 4, and 5 identify and classify a minimal six-job gap witness; no improved general ratio.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/2608.13318v1"
    }
   ]
  },
@@ -86,6 +96,13 @@
    "year": 2019,
    "venue": "ICALP",
    "url": "https://arxiv.org/abs/1811.00955"
+  },
+  {
+   "authors": "Adam Y. Shavit",
+   "title": "A minimum witness for the 3/2 configuration-linear-program gap in two-weight graph balancing, unique at its size",
+   "year": 2026,
+   "venue": "arXiv preprint",
+   "url": "https://arxiv.org/abs/2608.13318v1"
   }
  ],
  "bibtex": "@misc{Ebenlendr2014,\n  author = {Tomas Ebenlendr and Marek Krcal and Jiri Sgall},\n  title = {Graph Balancing: A Special Case of Scheduling Unrelated Parallel Machines},\n  year = {2014},\n  howpublished = {Algorithmica (SODA 2008)},\n  url = {https://doi.org/10.1007/s00453-012-9668-9},\n  note = {Source of ORdős Problem ORDOS-055}\n}",

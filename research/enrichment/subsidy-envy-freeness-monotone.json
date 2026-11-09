@@ -2,9 +2,9 @@
   "id": "subsidy-envy-freeness-monotone",
   "background": "Indivisible goods often do not admit envy-free allocations, but cash transfers can compensate agents and restore envy-freeness. The subsidy question asks how much money is always sufficient. This is a clean hybrid of fair division and quasi-linear utility: allocate indivisible goods, then add nonnegative payments so every agent prefers its own bundle plus payment. For additive valuations with each item worth at most one dollar marginally, Brustle, Dippel, Narayan, Suzuki, and Vetta proved the striking tight result that total subsidy $n-1$ suffices. For general monotone valuations with bounded marginals, envy can still be eliminated with bounded subsidy independent of the number of items, but the best known bounds are much larger. The main open question is whether the additive one-dollar-each phenomenon extends to monotone valuations.",
   "short_statement": "For monotone valuations with item marginals at most one, determine the minimum subsidy needed to guarantee an envy-free allocation.",
-  "full_statement": "There are $n$ agents and a finite set $M$ of indivisible goods. Each agent $i$ has a monotone valuation $v_i:2^M\\to\\mathbb{R}_{\\ge0}$ with bounded marginal increments: $v_i(S\\cup\\{g\\})-v_i(S)\\le 1$ for all $S\\subseteq M$ and goods $g\\notin S$. An allocation $(X_1,\\ldots,X_n)$ partitions $M$. A subsidy vector $p\\in\\mathbb{R}_{\\ge0}^n$ makes the allocation envy-free if $$v_i(X_i)+p_i\\ge v_i(X_j)+p_j\\quad\\text{for all agents }i,j.$$ Let $S_{\\mathcal V}(n)$ be the smallest number such that every instance in valuation class $\\mathcal V$ admits some allocation and subsidies with $\\sum_i p_i\\le S_{\\mathcal V}(n)$. The additive case has the tight value $S_{\\mathrm{add}}(n)=n-1$. The open problem is to determine $S_{\\mathrm{mon}}(n)$ for arbitrary monotone valuations with unit marginals: does the $n-1$ total-subsidy bound still suffice, or can complementarities/substitutabilities force asymptotically larger total or per-agent subsidies?",
-  "known_results": "Halpern and Shah showed that subsidies can guarantee envy-freeness and conjectured a sharp $n-1$ total bound for additive valuations with unit marginal upper bounds. Brustle, Dippel, Narayan, Suzuki, and Vetta proved this additive conjecture: a total subsidy of $n-1$ suffices, equivalently at most one dollar per agent after normalizing one subsidy to zero, and this is tight. They also proved that for general monotone valuations an envy-free allocation always exists with subsidy at most $2(n-1)$ per agent, hence total subsidy $O(n^2)$ independent of the number of goods. Binary, identical, and other structured valuation classes admit stronger bounds in related work. The open gap is whether general monotone valuations require more than the additive $n-1$ total subsidy, and if so what the correct dependence on $n$ is.",
-  "open_problem": "Determine whether total subsidy $n-1$ suffices beyond additive valuations, or find the correct asymptotic subsidy bound for general monotone valuations with bounded marginals.",
+  "full_statement": "There are $n$ agents and a finite set $M$ of indivisible goods. Each agent $i$ has a monotone valuation $v_i:2^M\\to\\mathbb{R}_{\\ge0}$ normalized by $v_i(\\emptyset)=0$, with bounded marginal increments: $v_i(S\\cup\\{g\\})-v_i(S)\\le 1$ for all $S\\subseteq M$ and goods $g\\notin S$. An allocation $(X_1,\\ldots,X_n)$ partitions $M$. A subsidy vector $p\\in\\mathbb{R}_{\\ge0}^n$ makes the allocation envy-free if $$v_i(X_i)+p_i\\ge v_i(X_j)+p_j\\quad\\text{for all agents }i,j.$$ Let $S_{\\mathcal V}(n)$ be the smallest number such that every instance in valuation class $\\mathcal V$ admits some allocation and subsidies with $\\sum_i p_i\\le S_{\\mathcal V}(n)$. The additive case has the tight value $S_{\\mathrm{add}}(n)=n-1$. The open problem is to determine $S_{\\mathrm{mon}}(n)$ for arbitrary monotone valuations with unit marginals: does the $n-1$ total-subsidy bound still suffice, or can complementarities/substitutabilities force asymptotically larger total or per-agent subsidies?",
+  "known_results": "Johannes Brustle, Jack Dippel, Vishnu V. Narayan, Mashbat Suzuki, and Adrian Vetta proved the tight additive bound $n-1$ and a quadratic bound for monotone valuations. The lower bound $n-1$ comes from one good valued at one by every agent.\n\nMax Dupré la Tour and Mashbat Suzuki, 'Subquadratic Subsidies for Nonnegative or Nonpositive Valuations' (arXiv:2609.08272v1), Theorem 1, establish total subsidy at most $5\\sqrt{2}(n-1)^{3/2}\\sqrt{\\log(4n)}$ for every $n$. Their normalization is $v_i(\\emptyset)=0$ with absolute single-item marginals at most one. All valuations must be nonnegative on every bundle, or all nonpositive; monotone goods satisfy the first condition. This removes the earlier prime-power restriction on the number of agents. The argument is existential, not a polynomial-time algorithm.\n\nRemaining open problem. Does the sharp additive $n-1$ bound extend to arbitrary monotone valuations? More generally, close the linear-to-subquadratic worst-case gap.",
+  "open_problem": "For normalized monotone valuations with unit-bounded marginals, determine the minimum worst-case total subsidy. Is $n-1$ sufficient, or can one prove a superlinear lower bound?",
   "where_posed": {
     "text": "The monotone-valuations gap follows from Brustle et al., 'One Dollar Each Eliminates Envy', EC 2020.",
     "url": "https://arxiv.org/abs/1912.02797",
@@ -13,11 +13,15 @@
   },
   "progress": {
     "state": "partial",
-    "summary": "The additive case is tight at total subsidy $n-1$. General monotone valuations have bounded subsidies independent of item count, but the optimal dependence on $n$ is open.",
+    "summary": "A subquadratic bound now holds for every number of agents; the conjectured linear bound remains unresolved.",
     "links": [
       {
         "title": "One Dollar Each Eliminates Envy",
         "url": "https://arxiv.org/abs/1912.02797"
+      },
+      {
+        "title": "Max Dupré la Tour, Mashbat Suzuki: Subquadratic Subsidies for Nonnegative or Nonpositive Valuations",
+        "url": "https://arxiv.org/abs/2609.08272v1"
       }
     ]
   },
@@ -28,12 +32,12 @@
   "alphaevolve_suitability": "high",
   "alphaevolve_rationale": "Finite monotone valuations can be represented explicitly for small instances, and subsidy minimization can be solved by linear programming once an allocation is fixed.",
   "literature": {
-    "synthesis": "The subsidy approach changes indivisible fair division from an impossibility-heavy setting into a quantitative compensation problem. Halpern and Shah initiated the systematic study and gave broad guarantees. Brustle et al. resolved the additive conjecture with an elegant tight $n-1$ total subsidy bound, showing that the necessary money can be very small and independent of the number of goods. Their monotone result shows boundedness survives without additivity, but the proof loses much more in $n$. The open issue is whether complementarity/substitutability inside monotone valuations truly forces larger payments or merely defeats current allocation methods.",
+    "synthesis": "The additive case is sharp, whereas complementarities and substitutions make the monotone case harder. Recent existence bounds improve the dependence on the number of agents without settling either the optimal total subsidy or efficient construction.",
     "reviewed": [
       {
         "ref": "Johannes Brustle, Jack Dippel, Vishnu V. Narayan, Mashbat Suzuki, Adrian Vetta, 'One Dollar Each Eliminates Envy', EC 2020",
         "result": "Proves the tight additive $n-1$ subsidy bound and gives monotone upper bounds.",
-        "relevance": "poses-problem",
+        "relevance": "partial-progress",
         "url": "https://arxiv.org/abs/1912.02797"
       },
       {
@@ -43,10 +47,10 @@
         "url": "https://link.springer.com/chapter/10.1007/978-3-030-30473-7_25"
       },
       {
-        "ref": "Haris Aziz, Ioannis Caragiannis, Ayumi Igarashi, Toby Walsh, fair division with payments literature",
-        "result": "Provides related algorithmic context for fairness with transfers and indivisible goods.",
-        "relevance": "related-tool",
-        "url": "https://arxiv.org/search/cs?query=fair+division+subsidy+envy"
+        "ref": "Max Dupré la Tour, Mashbat Suzuki, 'Subquadratic Subsidies for Nonnegative or Nonpositive Valuations', arXiv preprint, 2026",
+        "result": "Theorem 1 removes the prime-power restriction and proves an existential subquadratic subsidy bound.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2609.08272v1"
       }
     ]
   },
@@ -54,5 +58,15 @@
     "suitable_approaches": "Search for small monotone valuation counterexamples to $n-1$ total subsidy, using LPs to compute minimum payments for each allocation. For upper bounds, try to extend additive envy-cycle or welfare-ordering arguments to submodular/XOS/monotone classes.",
     "verification_notes": "A claimed lower bound must specify a finite monotone unit-marginal valuation profile and prove that every allocation requires more than the proposed subsidy threshold; checking only one allocation is insufficient. A claimed upper bound must construct, or prove existence of, an allocation and nonnegative subsidies for arbitrary monotone valuations under the unit-marginal condition, with total subsidy measured after the usual normalization that at least one agent receives zero. Algorithmic claims should also state the valuation oracle model.",
     "machine_checkable": true
-  }
+  },
+  "status": "partially resolved",
+  "additional_refs": [
+    {
+      "authors": "Max Dupré la Tour, Mashbat Suzuki",
+      "title": "Subquadratic Subsidies for Nonnegative or Nonpositive Valuations",
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2609.08272v1"
+    }
+  ]
 }

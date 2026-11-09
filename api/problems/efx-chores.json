@@ -5,7 +5,7 @@
  "title": "Existence of EFX allocations for chores (three agents)",
  "collection": "Market & Mechanism Design",
  "area": "Fair Division",
- "status": "open",
+ "status": "partially resolved",
  "confidence": "high",
  "tags": [
   "fair division",
@@ -15,18 +15,18 @@
   "disutilities",
   "Pareto optimality"
  ],
- "short_statement": "For indivisible chores (which impose costs), an EFX allocation is one where any envy agent $i$ feels toward $j$ vanishes after dropping any single chore from $i$'s own bundle. Does an EFX allocation always exist for additive chores with three agents?",
- "open_problem": "The precise remaining gap: does an EFX allocation always exist for chores with (unrestricted) additive costs and exactly $n=3$ agents?",
- "background": "Once envy-freeness up to any good (EFX) was proposed for indivisible goods, it was natural to ask about its mirror image for chores — indivisible tasks or costs that agents dislike rather than desire, such as household duties, unwanted job assignments, or waste-disposal responsibilities. The chores setting is not a trivial relabeling of the goods setting: negating valuations flips incentives in ways that break many of the arguments that work for goods, and indeed the two settings have turned out to have surprisingly different answers. For goods, no EFX nonexistence example is known for additive valuations at any number of agents; for chores, by contrast, nonexistence had long been suspected and was confirmed for small cases, revealing a genuine asymmetry between the two models that is itself an interesting structural finding in fair division theory. This makes the chores side of EFX a natural stress-test for which techniques from the goods literature (envy-cycle elimination, rainbow cycle numbers, champion graphs) transfer and which break down, and why. Beyond its theoretical interest, chore division is arguably the more common real-world scenario — splitting caregiving duties, unpleasant shifts, or cost-sharing obligations among roommates, partners, or coworkers — so pinning down exactly where EFX allocations do and do not exist for chores has direct implications for designing fair task-assignment mechanisms. The problem also serves as a proving ground for the interaction between fairness and efficiency (Pareto-optimality), since a recurring theme in the chores literature is that EFX and Pareto-optimality can conflict even when EFX by itself is achievable, unlike in most known goods settings.",
- "full_statement": "Let $N=\\{1,\\dots,n\\}$ be a set of agents and $M$ a set of indivisible chores, with each agent $i$ having an additive cost function $c_i$ (chores impose costs / disutilities, $c_i(S)=\\sum_{e\\in S}c_i(\\{e\\})$). An allocation $(X_1,\\dots,X_n)$ partitioning $M$ is EFX (for chores) if for all agents $i,j$ and every chore $e\\in X_i$ with $c_i(\\{e\\})>0$: $c_i(X_i\\setminus\\{e\\})\\le c_i(X_j)$. In words, any envy agent $i$ feels toward agent $j$ vanishes upon dropping any single (positively costly) chore from $i$'s own bundle. Unlike the goods setting, the chores setting is harsher: with additive costs restricted to only three distinct values (tri-valued) and four or more agents, EFX allocations can provably fail to exist (He, Tao 2026), which — since tri-valued costs are a special case of unrestricted additive costs — resolves the general $n\\ge4$ additive-chores existence question in the negative. The precise remaining gap: does an EFX allocation always exist for chores with (unrestricted) additive costs and exactly $n=3$ agents?",
- "known_results": "The general chores analogue of the EFX-for-goods conjecture is now FALSE: He and Tao (arXiv, June 2026) prove that even for tri-valued additive cost functions (only three distinct positive cost levels), for every $n\\ge4$ there is an instance with no EFX allocation; since tri-valued costs are additive costs, this resolves the $n\\ge4$ general-additive-chores existence question negatively. Their construction is tight: EFX is known to always exist for chores with at most two distinct cost values (bi-valued), so three values is the minimum needed for a counterexample. They further show that even for bi-valued instances, EFX can be incompatible with Pareto-optimality once $n\\ge4$ (the first such example with strictly positive costs), while an EFX allocation itself is guaranteed to exist for every bi-valued 4-agent instance. Earlier, Christoforidis and Santorinaios (IJCAI 2024) had shown EFX can fail to exist for only $n=3$ agents under SUPERADDITIVE cost functions (six chores suffice), establishing the first goods/chores separation and NP-completeness of EFX-existence-checking for general monotone costs, but that result does not apply to additive costs. For (unrestricted) additive costs specifically, positive existence results hold when the number of chores is at most $n+2$, when all but one agent share an identical ordering over chores, and (via Kobayashi et al. 2025 and Garg et al. 2023) for three-agent personalized bi-valued costs. In general, a 2-EFX allocation (envy vanishes after removing the two costliest chores) always exists for additive chores (Zhou, Wu 2022/2024), and this approximation factor has since been sharpened further by several 2024-2026 papers (e.g., 'Existence of 2-EFX Allocations of Chores', 2025; 'Constant-Factor EFX Exists for Chores', 2024). As of July 2026, the single remaining open case that gives this problem its name — complete EFX existence for additive costs with exactly $n=3$ agents — has NOT been resolved by the He-Tao nonexistence result (which requires $n\\ge4$) and remains open.",
+ "short_statement": "For three agents dividing indivisible chores with additive costs, complete EFX is known for at most eight chores. The arbitrary-size existence question remains.",
+ "open_problem": "Does every three-agent instance with nonnegative additive chore costs admit a complete exact EFX allocation, for arbitrarily many chores?",
+ "background": "For chores, the envious agent hypothetically removes a task from its own bundle; for goods, removal is from the envied bundle. Negating utilities therefore does not simply transfer the known goods proofs. With additive costs, higher-agent counterexamples now rule out a universal existence theorem, while three-agent existence remains an important separate target. Recent bounded-size existence results, approximate fairness results, and incompatibility with Pareto efficiency each answer different questions. This entry fixes three agents, additive nonnegative costs, complete allocation, and exact EFX, so that progress can be compared within one model.",
+ "full_statement": "Let $N=\\{1,2,3\\}$ and let $M$ be a finite set of indivisible chores. Agent $i$ has nonnegative additive costs $c_i(S)=\\sum_{g\\in S}c_i(g)$. A complete allocation partitions $M$ into $(X_1,X_2,X_3)$, allowing empty bundles.\n\nUse the standard all-chores EFX convention: for every $i,j$ and every $g\\in X_i$, including $c_i(g)=0$, $$c_i(X_i\\setminus\\{g\\})\\le c_i(X_j).$$ Removing a chore is hypothetical, and from the envious agent's own bundle. This is stronger than checking only positive-cost deletions.\n\nDoes such an allocation always exist for three agents and an arbitrary number of chores? Counterexamples for four or more agents do not settle this question.",
+ "known_results": "Wentao He and Biaoshuai Tao (arXiv:2606.08872v2, July 2026), Theorems 1-3, give additive counterexamples for every $n\\ge4$, using three positive cost values. They also prove four-agent bi-valued EFX existence and bi-valued EFX/Pareto-optimality incompatibility for $n\\ge4$. This is not a bi-valued existence theorem for all $n$.\n\nXinkai Zhang, 'EFX Allocations for Three Agents and Seven or Eight Chores' (arXiv:2609.10585v2, October 2026), Theorems 1.1-1.2, handles seven and eight chores with arbitrary nonnegative additive costs. Together with the earlier $m\\le2n$ theorem, this covers three-agent instances with at most eight chores. The computer-assisted certificates were not replayed here.\n\nJugal Garg and Aniket Murhekar (arXiv:2507.19461v1) prove existence of multiplicative 2-EFX for any number of additive agents: after deleting any one owned chore, its remaining cost is at most twice the comparison bundle's cost. This does not mean deleting two chores.\n\nRemaining open problem. Prove complete exact EFX for three additive agents without bounding the number of chores, or give a counterexample.",
  "progress": {
   "state": "partial",
-  "summary": "Major 2026 development: He and Tao (arXiv 2606.08872, submitted 7 June 2026) proved that EFX allocations can fail to exist for additive chores whenever $n\\ge4$, using a tri-valued (hence additive) counterexample, and additionally proved every EFX allocation can fail to be Pareto-optimal for bi-valued chores when $n\\ge4$. This settles the general-$n$ question negatively but their construction explicitly requires $n\\ge4$; the specific $n=3$, fully general additive-costs case (the version this problem entry is about) is NOT addressed by their counterexample and remains open as of July 2026. Positive existence for the $n=4$ bi-valued special case was also newly shown by the same paper. No paper found claims to resolve $n=3$ additive chores either way.",
+  "summary": "The checked arXiv theorem covers up to eight chores. Neither higher-agent counterexamples nor multiplicative approximation resolves unrestricted three-agent existence.",
   "links": [
    {
     "title": "EFX for Additive Chores: Nonexistence, Pareto Incompatibility, and Bi-Valued Existence — He, Tao, 2026",
-    "url": "https://arxiv.org/abs/2606.08872"
+    "url": "https://arxiv.org/abs/2606.08872v2"
    },
    {
     "title": "On the Pursuit of EFX for Chores: Non-Existence and Approximations — Christoforidis, Santorinaios, IJCAI 2024",
@@ -34,7 +34,11 @@
    },
    {
     "title": "Existence of 2-EFX Allocations of Chores, 2025",
-    "url": "https://arxiv.org/abs/2507.19461"
+    "url": "https://arxiv.org/abs/2507.19461v1"
+   },
+   {
+    "title": "Xinkai Zhang: EFX Allocations for Three Agents and Seven or Eight Chores",
+    "url": "https://arxiv.org/abs/2609.10585v2"
    }
   ]
  },
@@ -45,7 +49,7 @@
  "alphaevolve_suitability": "high",
  "alphaevolve_rationale": "Because the remaining question is about one exact, small finite case ($n=3$), an evolutionary/LLM-guided search over cost matrices combined with a fast EFX-feasibility oracle (brute-force or SAT-based, since $n=3$ keeps the allocation space and the number of EFX inequalities small) is very well matched to this problem: it could either surface an $n=3$ counterexample (mirroring how He-Tao's $n\\ge4$ counterexample was found) or, by exhaustively failing to find one across systematically varied instances, build strong empirical evidence for an existence conjecture that a human could then try to prove.",
  "literature": {
-  "synthesis": "The chores side of EFX has followed a 'divide and conquer by number of distinct cost values' pattern: bi-valued instances are well understood (existence holds quite broadly, including for $n=3$ personalized bi-valued costs per Garg et al. 2023 and Kobayashi et al. 2025, and for $n=4$ per He-Tao 2026), while tri-valued and general additive instances are where the picture darkens. Christoforidis and Santorinaios (IJCAI 2024) first showed a goods/chores asymmetry by exhibiting nonexistence for $n=3$ under superadditive costs and proving NP-completeness of EFX-checking for monotone costs, but left the additive case open. The 2026 breakthrough by He and Tao closes the general-$n$ additive question by constructing a tri-valued (hence additive), $n\\ge4$ nonexistence example — tight in the sense that only two distinct cost values would not suffice — and separately shows EFX and Pareto-optimality can conflict for bi-valued costs once $n\\ge4$, extending known EFX/PO incompatibility results (which previously needed zero-cost items) to strictly positive costs. Crucially, their counterexample construction inherently needs at least four agents; nothing in the current literature settles whether $n=3$, unrestricted-additive-cost EFX allocations always exist. This leaves $n=3$ as a sharply delineated remaining gap: below it (bi-valued or $n\\le2$) existence is known, and just above it (tri-valued, $n\\ge4$) nonexistence is now known, so $n=3$ general additive costs is the precise unresolved boundary case. In parallel, the approximation literature has matured quickly, with 2-EFX (Zhou-Wu) and various constant-factor / conditional bounds (2024-2026) narrowing the practical gap even while exact existence remains unsettled for the hardest cases.",
+  "synthesis": "The direction of deletion matters: goods EFX removes from the envied bundle, whereas chores EFX removes from one's own bundle. Existence, approximate fairness, and compatibility with Pareto efficiency are separate questions. The unrestricted three-agent target survives both the higher-agent negative result and the recent bounded-size positive results.",
   "reviewed": [
    {
     "ref": "Vasilis Christoforidis, Christodoulos Santorinaios, 'On the Pursuit of EFX for Chores: Non-Existence and Approximations', IJCAI 2024",
@@ -54,34 +58,28 @@
     "url": "https://arxiv.org/abs/2406.10752"
    },
    {
-    "ref": "Wentao He, Biaoshuai Tao, 'EFX for Additive Chores: Nonexistence, Pareto Incompatibility, and Bi-Valued Existence', arXiv 2606.08872, 2026",
-    "result": "Resolves general-$n$ additive-chores EFX existence negatively via a tri-valued, $n\\ge4$ counterexample (tight in number of cost values); shows EFX/Pareto-optimality incompatibility for bi-valued costs at $n\\ge4$ (first with strictly positive costs); proves EFX always exists for $n=4$ bi-valued instances.",
+    "ref": "Wentao He, Biaoshuai Tao, 'EFX for Additive Chores: Nonexistence, Pareto Incompatibility, and Bi-Valued Existence', arXiv preprint, 2026",
+    "result": "Theorems 1-3 distinguish higher-agent nonexistence, efficiency incompatibility, and four-agent bi-valued existence.",
     "relevance": "hardness",
-    "url": "https://arxiv.org/abs/2606.08872"
+    "url": "https://arxiv.org/abs/2606.08872v2"
    },
    {
-    "ref": "Shengwei Zhou, Xiaowei Wu, 'Approximately EFX Allocations for Indivisible Chores', IJCAI 2022 / Artif. Intell. 2024",
-    "result": "Establishes a 2-EFX allocation (envy vanishes after dropping the two most costly chores) always exists for additive costs, and gives algorithms for computing it.",
+    "ref": "Jugal Garg, Aniket Murhekar, 'Existence of 2-EFX Allocations of Chores', arXiv preprint, 2025",
+    "result": "Proves multiplicative 2-EFX for additive costs; this is not a two-chore deletion guarantee.",
     "relevance": "partial-progress",
-    "url": "https://arxiv.org/abs/2109.07313"
+    "url": "https://arxiv.org/abs/2507.19461v1"
    },
    {
-    "ref": "'Existence of 2-EFX Allocations of Chores', arXiv 2507.19461, 2025",
-    "result": "Gives a simplified/strengthened approach to the 2-EFX existence guarantee for chores.",
-    "relevance": "partial-progress",
-    "url": "https://arxiv.org/abs/2507.19461"
-   },
-   {
-    "ref": "'Constant-Factor EFX Exists for Chores', arXiv 2407.03318, 2024",
-    "result": "Improves constant-factor approximate EFX guarantees for additive chores beyond the earlier 2-EFX bound in certain regimes.",
-    "relevance": "partial-progress",
-    "url": "https://arxiv.org/abs/2407.03318"
+    "ref": "Xinkai Zhang, 'EFX Allocations for Three Agents and Seven or Eight Chores', arXiv preprint, 2026",
+    "result": "Theorems 1.1-1.2 give three-agent exact existence for seven and eight chores, including zero costs.",
+    "relevance": "solves-special-case",
+    "url": "https://arxiv.org/abs/2609.10585v2"
    }
   ]
  },
  "agent_guidance": {
   "suitable_approaches": "Because the target case is fixed and small ($n=3$, unrestricted additive costs), the most promising approaches are: (1) adapt the He-Tao tri-valued construction technique — try to push their nonexistence gadget down to $n=3$, or prove structurally why it cannot go below $n=4$ (which would itself be informative); (2) exhaustive or SAT/ILP-based search over small 3-agent additive-cost instances (bounded number of chores, small integer costs) to find a counterexample directly, mirroring the SAT-solving methodology used for the analogous goods problem; (3) attempt to extend the existing $n=3$ positive results (bi-valued, personalized bi-valued, identical-ordering) toward general additive costs by relaxing their structural assumptions one at a time to see where the proof breaks.",
-  "verification_notes": "A nonexistence proof for $n=3$ must exhibit a fully specified instance (3 additive cost vectors over a finite chore set) and verify NO partition satisfies all EFX inequalities — for $n=3$ and a modest number of chores this is a finite check that a solver (SAT/ILP or brute force) can perform exactly, so numerics/computer verification suffice as long as the search is exhaustive over allocations (not just heuristic). A positive existence proof must give an algorithm (or nonconstructive argument) guaranteeing an EFX allocation for EVERY 3-agent additive instance; check especially that the construction does not implicitly assume bi-valued, superadditive-free, or other restricted cost structure, since nearly all current $n=3$ positive results rely on some such restriction. Any claimed resolution should be checked against the He-Tao paper's framing carefully, since their abstract's claim to 'resolve the long-standing open problem' refers to the general-$n$ (not $n=3$-specific) question.",
+  "verification_notes": "Verify completeness, additivity, nonnegative costs, and every owned-chore deletion, including zero-cost chores. A nonexistence proof must rule out all allocations, not only balanced bundle sizes. Do not confuse multiplicative 2-EFX with EF2X. Computational existence certificates require a correct encoding, exhaustive case coverage, and independently checkable unsatisfiability proofs. The higher-agent counterexamples do not settle the three-agent target.",
   "machine_checkable": true
  },
  "where_posed": {
@@ -109,8 +107,22 @@
    "authors": "Wentao He, Biaoshuai Tao",
    "title": "EFX for Additive Chores: Nonexistence, Pareto Incompatibility, and Bi-Valued Existence",
    "year": 2026,
-   "venue": "arXiv",
-   "url": "https://arxiv.org/abs/2606.08872"
+   "venue": "arXiv preprint",
+   "url": "https://arxiv.org/abs/2606.08872v2"
+  },
+  {
+   "authors": "Jugal Garg, Aniket Murhekar",
+   "title": "Existence of 2-EFX Allocations of Chores",
+   "year": 2025,
+   "venue": "arXiv preprint",
+   "url": "https://arxiv.org/abs/2507.19461v1"
+  },
+  {
+   "authors": "Xinkai Zhang",
+   "title": "EFX Allocations for Three Agents and Seven or Eight Chores",
+   "year": 2026,
+   "venue": "arXiv preprint",
+   "url": "https://arxiv.org/abs/2609.10585v2"
   }
  ],
  "bibtex": "@misc{Christoforidis2024,\n  author = {Vasilis Christoforidis and Christodoulos Santorinaios},\n  title = {On the Pursuit of EFX for Chores: Non-Existence and Approximations},\n  year = {2024},\n  howpublished = {IJCAI},\n  url = {https://arxiv.org/abs/2406.10752},\n  note = {Source of ORdős Problem ORDOS-018}\n}",

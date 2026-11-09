@@ -106,6 +106,8 @@ Include relevant new results in `known_results`, `progress`, and the bibliograph
 
 The November 9 follow-up is recorded in `research/status-audit-followup-2026-11-09.json`. It corrects a withdrawn decision-tree claim and supplements the earlier audit; it is not a certification of every proof in the catalogue.
 
+The subsequent deeper sweep is recorded in `research/status-audit-deep-sweep-2026-11-09.json`: 14 updated entries, two additional theorem/model checks, and nine abstract/search screens. It records exact theorem scope, versioned citations, deferred leads, and remaining gaps. Reported resolutions are labeled as claims until independently verified. Small regression checks include an affine-slice counterexample to a subsidiary Exact Matching statement and a six-edge graph-balancing witness; these do not certify entire papers.
+
 ### Presentation And Checks
 
 The catalogue uses EB Garamond headings, Figtree body text, a pale-yellow light theme, pink controls, and numbered problem cards. Five results appear per page; multiple selected tags use union semantics. Suitability rankings remain in the data for compatibility but are not displayed as the website's organizing principle.
