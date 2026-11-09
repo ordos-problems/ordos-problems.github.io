@@ -15,12 +15,67 @@
   "probability"
  ],
  "short_statement": "Does every bounded empirical process decompose into a non-cancellation part plus a generic-chaining part, as predicted by Talagrand's program?",
- "open_problem": "Talagrand's conjecture asks whether these are the only mechanisms: can one always find a decomposition $\\mathcal{F}\\subset \\mathcal{F}_1+\\mathcal{F}_2$ such that $$\\mathbb{E}\\sup_{f_1\\in\\mathcal{F}_1}\\sum_{i\\le N}|f_1(X_i)|\\le \\sqrt N\\,S_N(\\mathcal{F}),$$ $$\\gamma_2(\\mathcal{F}_2,d_2)\\le L S_N(\\mathcal{F}),\\qquad \\gamma_1(\\mathcal{F}_2,d_\\infty)\\le L\\sqrt N\\,S_N(\\mathcal{F})$$ for a universal constant $L$?",
+ "open_problem": "Prove or refute Talagrand's empirical-process decomposition conjecture: every bounded empirical process should split into a no-cancellation component and a generic-chaining component with universal constants.",
+ "background": "Talagrand's majorizing-measure program asks for structural explanations of why stochastic-process suprema are bounded. For Gaussian processes, generic chaining gives an exact answer. Bernoulli and empirical processes are harder because large coordinates can contribute without cancellation, while the remaining part may behave like a chaining process. Bednorz and Latała solved the Bernoulli conjecture by proving that bounded Bernoulli processes decompose into an $\\ell^1$ no-cancellation component and a Gaussian/chaining component. They also recorded broader Talagrand-style conjectures for selector and empirical processes. The empirical-process version is a clean applied-probability problem: given a bounded empirical-process supremum, can one always decompose the function class into a part controlled by pointwise absolute mass and a part controlled by $\\gamma_2$ and $\\gamma_1$ chaining functionals?",
  "full_statement": "Let $(X_i)_{i\\le N}$ be i.i.d. random variables on a measurable space and let $\\mathcal{F}$ be a countable class of measurable functions. Define the empirical-process supremum $$S_N(\\mathcal{F})=\\mathbb{E}\\sup_{f\\in\\mathcal{F}}\\left|\\frac{1}{\\sqrt N}\\sum_{i\\le N}(f(X_i)-\\mathbb{E}f(X_i))\\right|.$$ There are two basic mechanisms for controlling $S_N(\\mathcal{F})$: a pointwise/no-cancellation bound through $\\sum_i |f(X_i)|$, and a cancellation/chaining bound involving $\\gamma_2(\\mathcal{F},d_2)$ and $\\gamma_1(\\mathcal{F},d_\\infty)$, where $d_p(f,g)=\\|f-g\\|_p$. Talagrand's conjecture asks whether these are the only mechanisms: can one always find a decomposition $\\mathcal{F}\\subset \\mathcal{F}_1+\\mathcal{F}_2$ such that $$\\mathbb{E}\\sup_{f_1\\in\\mathcal{F}_1}\\sum_{i\\le N}|f_1(X_i)|\\le \\sqrt N\\,S_N(\\mathcal{F}),$$ $$\\gamma_2(\\mathcal{F}_2,d_2)\\le L S_N(\\mathcal{F}),\\qquad \\gamma_1(\\mathcal{F}_2,d_\\infty)\\le L\\sqrt N\\,S_N(\\mathcal{F})$$ for a universal constant $L$? A related selector-process version asks for an analogous decomposition for Bernoulli selectors $\\delta_i$.",
- "known_results": "Talagrand's majorizing-measure theorem fully characterizes Gaussian process suprema via generic chaining. Bednorz and Latała solved the Bernoulli conjecture, showing that a Bernoulli process decomposes into an $\\ell^1$ no-cancellation part and a Gaussian/chaining part. They identify this as one step in Talagrand's broader program and record the selector-process and empirical-process decomposition conjectures as open.",
+ "known_results": "Talagrand's majorizing-measure theorem characterizes Gaussian-process suprema. Bednorz and Latała prove the Bernoulli conjecture, giving a decomposition theorem for Bernoulli processes and resolving a major piece of Talagrand's program. Their paper explicitly discusses related open problems, including selector-process and empirical-process decomposition conjectures. These conjectures remain distinct from the solved Bernoulli case because empirical processes include sampling randomness and function-class geometry beyond independent signs.",
+ "progress": {
+  "state": "partial",
+  "summary": "The Bernoulli analogue is solved by Bednorz and Latała. The empirical-process and selector-process decompositions remain open as broader Talagrand-program questions.",
+  "links": [
+   {
+    "title": "Bednorz and Latala, On the boundedness of Bernoulli processes",
+    "url": "https://arxiv.org/abs/1305.4292"
+   },
+   {
+    "title": "Talagrand, Upper and Lower Bounds for Stochastic Processes",
+    "url": "https://doi.org/10.1007/978-3-642-54075-2"
+   },
+   {
+    "title": "Chu and Raginsky, A Chain Rule for Expected Suprema of Bernoulli Processes",
+    "url": "https://arxiv.org/abs/2304.14474"
+   }
+  ]
+ },
+ "importance": 9,
+ "difficulty": 10,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "Finite metric/function classes could refute overly strong formulations or constants. A full counterexample to the universal decomposition would require careful construction and proof.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Search may help find finite set systems or selector-process examples with extreme ratios between empirical suprema and candidate decomposition quantities. Proving the conjecture is mainly analytic.",
+ "literature": {
+  "synthesis": "Gaussian processes are governed by generic chaining, but Bernoulli and empirical processes have an additional sparse-coordinate mechanism. Talagrand conjectured that the correct theory should decompose these mechanisms rather than bound them separately with loose estimates. Bednorz and Latała's solution of the Bernoulli conjecture proves exactly this type of decomposition for Bernoulli signs. The empirical-process conjecture asks for an analogous structural statement for sampled function classes, with a no-cancellation term and $\\gamma_2/\\gamma_1$ chaining terms. Existing Bernoulli machinery is suggestive but does not directly handle empirical-process symmetrization, selectors, and the interaction between $L_2$ and $L_\\infty$ geometries.",
+  "reviewed": [
+   {
+    "ref": "Bednorz and Latała, 'On the boundedness of Bernoulli processes', Annals of Mathematics 2014",
+    "result": "Solves the Bernoulli conjecture and formulates related selector/empirical-process open problems.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1305.4292"
+   },
+   {
+    "ref": "Talagrand, 'Upper and Lower Bounds for Stochastic Processes', Springer 2014",
+    "result": "Develops the majorizing-measure and chaining framework underlying the conjecture.",
+    "relevance": "related-tool",
+    "url": "https://doi.org/10.1007/978-3-642-54075-2"
+   },
+   {
+    "ref": "Chu and Raginsky, 'A Chain Rule for the Expected Suprema of Bernoulli Processes', arXiv 2023",
+    "result": "Uses Bednorz-Latała machinery for new Bernoulli-process bounds, illustrating ongoing development around the solved Bernoulli case.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/2304.14474"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Work first on finite function classes and selector-process variants. Try to adapt Bernoulli decomposition arguments after symmetrization, tracking which steps fail for empirical processes. Search for finite classes where proposed $\\gamma_1/\\gamma_2$ decompositions require large constants.",
+  "verification_notes": "A proof must produce an actual decomposition with universal constants and control all three terms in the conjecture. A counterexample must specify the measurable space, distribution, function class, and show every allowed decomposition violates at least one required bound.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "Conjectures 9.1 and 9.2 in Bednorz and Latała, 'On the boundedness of Bernoulli processes', attributed to Talagrand's program and book.",
-  "url": "https://arxiv.org/abs/1305.4292"
+  "text": "Stated as related open conjectures in Bednorz and Latała, 'On the boundedness of Bernoulli processes', attributed to Talagrand's program.",
+  "url": "https://arxiv.org/abs/1305.4292",
+  "quote": "",
+  "location": "Conjectures 9.1 and 9.2 / related open problems section."
  },
  "source": {
   "authors": "Witold Bednorz, Rafał Latała",

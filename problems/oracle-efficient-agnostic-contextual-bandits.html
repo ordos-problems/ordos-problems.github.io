@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script>
 (function(){
@@ -29,7 +29,7 @@
     --focus:#d8ece7; --focus-border:#74aaa1; --controlbg:rgba(255,255,235,.96); --modalbg:rgba(26,26,26,.32);
     --okbg:#d8ead8; --okink:#064d20; --warning-bg:#fff3df; --warning-line:#d88a3d; --warning-ink:#5f3411;
     --logo-fill:#eef6f5; --logo-stroke:#034f46; --badge-ink:#fff; --badge-hover:#063f39; --toastbg:#1a1a1a; --toastink:#fff;
-    --maxw:1120px; --measure:860px; --radius:12px;
+    --maxw:1120px; --measure:860px; --radius:8px;
     --ui:"Figtree","Avenir Next","Avenir",-apple-system,system-ui,"Segoe UI",Arial,sans-serif;
     --display:"EB Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif;
   }
@@ -53,7 +53,7 @@
   header.site{padding:42px 0 22px;border-bottom:1px solid var(--line);}
   .headbar{display:grid;grid-template-columns:minmax(320px,max-content) minmax(280px,1fr);gap:22px;align-items:center;}
   .brand{display:flex;align-items:center;gap:14px;min-width:0;}
-  .logo-link{display:block;width:42px;height:42px;flex:0 0 auto;border-radius:10px;line-height:0;}
+  .logo-link{display:block;width:42px;height:42px;flex:0 0 auto;border-radius:8px;line-height:0;}
   .logo-link:focus-visible{outline:3px solid var(--orange);outline-offset:3px;}
   .mono{width:42px;height:42px;flex:0 0 auto;}
   .mono rect{fill:var(--logo-fill);stroke:var(--logo-stroke);}
@@ -61,7 +61,7 @@
   h1{font-family:var(--display);font-weight:600;font-size:3rem;letter-spacing:0;margin:0;line-height:1;color:var(--ink);}
   h1 .or{color:var(--accent);}
   .aboutbtn{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:7px 12px;min-width:98px;min-height:38px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;}
+    border-radius:8px;padding:7px 12px;min-width:98px;min-height:38px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;}
   .aboutbtn:hover{background:var(--pinkhover);}
   .theme-toggle{width:38px;height:38px;min-width:38px;min-height:38px;padding:0;border-radius:999px;line-height:1;}
   .theme-mark{font-size:1.05rem;line-height:1;}
@@ -80,7 +80,7 @@
   .statbtn:hover{background:var(--pink2);border-color:var(--focus-border);transform:translateY(-1px);}
   .statbtn.active{background:var(--pink);border:2px solid var(--strong);padding:5px 9px;color:var(--ink);}
   .moretags{display:flex;align-items:center;gap:8px;margin-top:10px;}
-  .moretags label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;}
+  .moretags label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:0;}
   #tagselect{min-width:230px;max-width:100%;padding:8px 10px;font-size:.82rem;border:1px solid var(--line);
     border-radius:var(--radius);background:var(--paper);color:var(--ink);font-family:var(--ui);}
   #tagselect:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
@@ -91,9 +91,9 @@
     border-radius:var(--radius);box-shadow:0 18px 60px rgba(0,0,0,.18);padding:28px 32px;}
   .modal-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:14px;}
   .modal-card h2{font-family:var(--display);font-weight:600;font-size:2.1rem;line-height:1.05;margin:0;color:var(--ink);}
-  .modal-card h3{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:800;margin:22px 0 7px;}
+  .modal-card h3{font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:22px 0 7px;}
   .modal-card p{font-size:1rem;line-height:1.7;color:var(--bodytext2);margin:.7em 0;}
-  .closemodal{appearance:none;border:2px solid var(--strong);border-radius:10px;background:var(--pink);color:var(--ink);
+  .closemodal{appearance:none;border:2px solid var(--strong);border-radius:8px;background:var(--pink);color:var(--ink);
     font-family:var(--ui);font-weight:800;cursor:pointer;padding:5px 10px;box-shadow:0 1px 0 var(--strong);}
 
   .controls{position:sticky;top:0;z-index:20;background:var(--controlbg);backdrop-filter:saturate(1.05) blur(10px);
@@ -109,7 +109,7 @@
   .selectedtag:hover{background:var(--pinkhover);}
   .clearfilter{font-size:.8rem;color:var(--link);background:none;border:none;cursor:pointer;font-family:var(--ui);padding:0;font-weight:700;}
 
-  .grouphdr{font-weight:800;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);
+  .grouphdr{font-weight:800;font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);
     margin:34px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line);}
   .grouphdr .gn{color:var(--faint);font-weight:500;}
 
@@ -126,7 +126,7 @@
   .tag.med{color:var(--med);}
   .spacer{flex:1 1 auto;}
   .copy,.open-link,.back-link{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+    border-radius:8px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
   .copy:hover,.open-link:hover,.back-link:hover{background:var(--pinkhover);}
   .copy.ok{background:var(--okbg);color:var(--okink);}
 
@@ -152,9 +152,9 @@
   .problem-nav .navlink:hover{background:var(--pink2);}
   .problem-nav .navlink.next{text-align:right;}
   .problem-nav .navlink.empty{visibility:hidden;}
-  .problem-nav .navlabel{display:block;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);font-weight:800;margin-bottom:2px;}
+  .problem-nav .navlabel{display:block;font-size:.72rem;letter-spacing:0;text-transform:uppercase;color:var(--faint);font-weight:800;margin-bottom:2px;}
   .detail-card{background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);padding:28px 32px;margin:24px 0;max-width:var(--measure);}
-  .detail-card h2{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:800;margin:0 0 15px;}
+  .detail-card h2{font-size:.8rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:0 0 15px;}
   .prose{font-size:1.04rem;line-height:1.86;color:var(--bodytext);}
   .prose p{margin:0 0 1.15em;}
   .prose .katex-display{margin:1.15em 0;}
@@ -174,59 +174,27 @@
   .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
   .field{display:flex;flex-direction:column;gap:6px;margin:14px 0;}
   .field.full{grid-column:1/-1;}
-  .field label{font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);}
-  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);
+  .field label{font-size:.78rem;font-weight:800;letter-spacing:0;text-transform:uppercase;color:var(--accent);}
+  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);
     font-family:var(--ui);font-size:.96rem;line-height:1.45;padding:11px 12px;}
   .field textarea{min-height:118px;resize:vertical;}
   .field input:focus,.field textarea:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
   .field-note{font-size:.82rem;color:var(--faint);line-height:1.5;}
-  .form-warning{display:none;margin:14px 0 0;padding:10px 12px;border:1px solid var(--warning-line);border-radius:10px;background:var(--warning-bg);color:var(--warning-ink);
+  .form-warning{display:none;margin:14px 0 0;padding:10px 12px;border:1px solid var(--warning-line);border-radius:8px;background:var(--warning-bg);color:var(--warning-ink);
     font-size:.9rem;line-height:1.55;}
   .form-warning.show{display:block;}
   .submit-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;}
   .submit-btn{font-size:.84rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:9px 14px;cursor:pointer;font-family:var(--ui);font-weight:800;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+    border-radius:8px;padding:9px 14px;cursor:pointer;font-family:var(--ui);font-weight:800;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
   .submit-btn:hover{background:var(--pinkhover);}
 
   .katex{font-size:1.04em;}
   .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
 
-  .tag.status-claimed{color:var(--med);font-weight:700;}
-  .tag.status-resolved{color:var(--okink);font-weight:700;}
-  .tag.contributor{color:var(--accent);font-weight:700;}
-  .posed-quote{margin:14px 0 0;padding:12px 16px;border-left:3px solid var(--accent);background:var(--paper);
-    border-radius:0 10px 10px 0;font-style:italic;color:var(--bodytext2);font-size:.97rem;line-height:1.7;}
-  .posed-quote .loc{display:block;margin-top:6px;font-style:normal;font-size:.8rem;color:var(--faint);font-weight:700;}
-  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0;}
-  .badge{font-size:.74rem;font-weight:800;letter-spacing:.02em;border:1.5px solid var(--strong);border-radius:8px;
-    padding:4px 9px;background:var(--paper);color:var(--ink);}
-  .badge.hi{background:var(--pink);}
-  .badge.progress-partial{background:var(--focus);}
-  .badge.progress-solution-claimed{background:var(--warning-bg);border-color:var(--warning-line);color:var(--warning-ink);}
-  .badge.progress-resolved{background:var(--okbg);color:var(--okink);}
-  .suit-row{display:grid;grid-template-columns:190px 1fr;gap:10px;margin:.85em 0;align-items:baseline;}
-  .suit-row .k{font-weight:800;color:var(--accent);font-size:.86rem;}
-  .suit-level{font-weight:800;text-transform:uppercase;font-size:.78rem;letter-spacing:.05em;}
-  .suit-level.high{color:var(--okink);}
-  .suit-level.medium{color:var(--open);}
-  .suit-level.low{color:var(--med);}
-  .lit-list{margin:10px 0 0;padding-left:20px;}
-  .lit-list li{margin:.7em 0;color:var(--bodytext2);font-size:.96rem;line-height:1.68;}
-  .lit-list .rel{display:inline-block;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
-    color:var(--badge-ink);background:var(--accent);border-radius:6px;padding:1.5px 7px;margin-right:7px;vertical-align:1px;}
-  .subm-empty{color:var(--faint);font-size:.95rem;}
-  .subm-item{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;background:var(--paper);}
-  .subm-item .subm-head{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:.8rem;font-weight:800;color:var(--soft);}
-  .sortwrap{display:flex;align-items:center;gap:8px;}
-  .sortwrap label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;}
-  #sortselect{padding:8px 10px;font-size:.82rem;border:1px solid var(--line);border-radius:var(--radius);
-    background:var(--paper);color:var(--ink);font-family:var(--ui);}
-  @media (max-width:760px){.suit-row{grid-template-columns:1fr;gap:2px;}}
-
   footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
   footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid var(--line);}
   footer a:hover{border-bottom-color:var(--accent);}
-  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toastbg);color:var(--toastink);font-size:.85rem;padding:10px 18px;border-radius:10px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toastbg);color:var(--toastink);font-size:.85rem;padding:10px 18px;border-radius:8px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
   @media (max-width:900px){
     .headbar{grid-template-columns:1fr;}
@@ -260,6 +228,42 @@
     .modal-card{padding:22px 18px;}
     .modal-card h2{font-size:1.7rem;}
   }
+
+  .tag.status-claimed{color:var(--med);}
+  .tag.status-resolved{color:var(--okink);}
+  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0;}
+  .badge{font-size:.8rem;color:var(--soft);}
+  .badge+.badge::before{content:" / ";margin-right:8px;color:var(--faint);}
+  .posed-quote{margin:16px 0;padding-left:18px;border-left:2px solid var(--line);color:var(--soft);}
+  .posed-quote .loc{display:block;margin-top:8px;font-size:.8rem;}
+  .lit-list{padding-left:22px;}
+  .lit-list li{margin:1em 0;}
+  .lit-list .rel{display:block;font-size:.75rem;color:var(--faint);}
+  .subm-item{padding:16px 0;border-bottom:1px solid var(--line);}
+  .subm-head{font-size:.8rem;color:var(--soft);}
+  .headsearch input{min-width:0;}
+  .tag{white-space:normal;overflow-wrap:anywhere;}
+  .detail-top{align-items:flex-start;}
+  .detail-top>div:first-child{min-width:0;flex:1;}
+  .detail-actions{flex:0 0 180px;}
+  .detail-actions .back-link{width:100%;text-align:center;}
+  .detail-title{font-size:2.6rem;overflow-wrap:anywhere;}
+  .problem-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+  .problem-nav .navlink{height:104px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow-wrap:anywhere;font-size:.9rem;}
+  .detail-card{background:transparent;border:0;border-top:2px solid var(--strong);border-radius:0;padding:28px 0;}
+  .form-card{background:transparent;border:0;border-radius:0;padding:28px 0;}
+  @media(max-width:760px){
+    .detail-title{font-size:2.2rem;}
+    .detail-actions{flex:0 0 auto;}
+    .detail-actions .back-link{width:auto;}
+    .problem-nav{grid-template-columns:1fr;grid-auto-rows:104px;}
+    .problem-nav .navlink{height:104px;}
+    .problem-nav .navlink.empty{display:none;}
+    .detail-card,.form-card{padding:22px 0;}
+    .pagination{gap:3px;}
+    .pagebtn{min-width:26px;padding:5px 6px;}
+    .pageinfo{display:none;}
+  }
 </style>
 
 </head>
@@ -281,7 +285,7 @@
   <div class="detail-top">
     <div>
       <div class="tagline"><span class="tag">#online-learning</span>
-<span class="tag">#open</span>
+<span class="tag">#partially-resolved</span>
 <span class="tag">#computer-science</span>
 <span class="tag">#contextual-bandits</span>
 <span class="tag">#oracle-efficiency</span>
@@ -289,8 +293,8 @@
 <span class="tag">#regret</span>
 <span class="tag">#check-source</span></div>
       <h1 class="detail-title">Oracle-efficient agnostic contextual bandits</h1>
-      <div class="detail-meta"><span class="num">96</span><span class="tag">Problem 96 of 108</span><span class="tag">#ordos-096</span></div>
-      
+      <div class="detail-meta"><span class="num">96</span><span class="tag">Problem 96 of 182</span><span class="tag">#ordos-096</span></div>
+      <div class="meta-badges"><span class="badge progress-partial">Partial progress</span></div>
     </div>
     <div class="detail-actions">
       <a class="back-link" href="../correction.html?ref=ORDOS-096&amp;title=Oracle-efficient%20agnostic%20contextual%20bandits&amp;page=https%3A//ordos-problems.github.io/problems/oracle-efficient-agnostic-contextual-bandits.html" target="_blank" rel="noopener">Suggest edit</a>
@@ -299,46 +303,109 @@
   </div>
 
   <nav class="problem-nav" aria-label="Problem navigation">
-    <a class="navlink prev" href="random-growing-balls-cover-time.html"><span class="navlabel">Previous problem</span>#95 · Sharp cover times for random growing balls</a>
-    <a class="navlink next" href="limited-switch-contextual-bandits-with-knapsacks.html"><span class="navlabel">Next problem</span>#97 · Limited-switch contextual bandits with knapsacks</a>
+    <a class="navlink prev" href="random-growing-balls-cover-time.html" title="Sharp cover times for random growing balls"><span class="navlabel">Previous problem</span>#95 · Sharp cover times for random growing balls</a>
+    <a class="navlink next" href="limited-switch-contextual-bandits-with-knapsacks.html" title="Limited-switch contextual bandits with knapsacks"><span class="navlabel">Next problem</span>#97 · Limited-switch contextual bandits with knapsacks</a>
   </nav>
 
   <section class="detail-card statement">
     <h2>Short Statement</h2>
-    <div class="prose"><p>Can the optimal oracle-efficient contextual bandit reduction be extended from realizable models to agnostic or misspecified models?</p></div>
+    <div class="prose"><p>Offline-regression reductions already tolerate misspecification in important stochastic models. The remaining scope must separate that solved case from fully agnostic best-policy regret and large-action oracle limitations.</p></div>
   </section>
 
   <section class="detail-card statement">
     <h2>Open Problem</h2>
-    <div class="prose"><p>Design an oracle-efficient contextual bandit algorithm for general agnostic or misspecified function classes that matches the best possible regret guarantees using only a small number of calls to standard offline learning or regression oracles.</p></div>
+    <div class="prose"><p>The finite-action misspecification-tolerant reduction is known. A narrower residual question about fully agnostic policy regret or large-action exploration must first fix its oracle model and exact guarantee; the previous blanket open claim is withdrawn.</p></div>
   </section>
 
 
+  <section class="detail-card statement">
+    <h2>Background &amp; Context</h2>
+    <div class="prose">A contextual-bandit learner uses the observed context to choose an action but sees only that action's reward. Regression oracles offer a practical way to reuse supervised-learning tools. A correct reward model, an approximately correct reward model, and a good policy induced by an inaccurate model are different assumptions. The old entry blurred these distinctions and treated already available misspecification guarantees as unresolved. This audit retains the topic with an explicit scope warning rather than inventing a new theorem-level gap.</div>
+  </section>
 
   <section class="detail-card statement">
     <h2>Statement &amp; Model</h2>
-    <div class="prose">In stochastic contextual bandits, a learner observes a context, chooses an action, and receives only the reward of the chosen action. Under realizability, the conditional mean reward belongs to a known function class <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">F</mi></mrow><annotation encoding="application/x-tex">\mathcal{F}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0993em;">F</span></span></span></span>, and Simchi-Levi and Xu give a statistically optimal reduction to offline regression using only logarithmically many oracle calls. The open problem is to obtain an equally clean and practical reduction when the model is agnostic or misspecified: the best function in <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">F</mi></mrow><annotation encoding="application/x-tex">\mathcal{F}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0993em;">F</span></span></span></span> may only approximate the true conditional rewards. The target is an algorithm whose regret scales with the right approximation and complexity terms, remains computationally efficient for general classes, and avoids substantially stronger oracle assumptions.</div>
+    <div class="prose">There are two different contextual-bandit targets. In the finite-action stochastic model, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>t</mi></msub><mo separator="true">,</mo><msub><mi>r</mi><mi>t</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_t,r_t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> are iid, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>t</mi></msub><mo>∈</mo><mo stretchy="false">[</mo><mi>K</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a_t\in[K]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6891em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.0715em;">K</span><span class="mclose">]</span></span></span></span>, and only <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mi>t</mi></msub><mo stretchy="false">(</mo><msub><mi>a</mi><mi>t</mi></msub><mo stretchy="false">)</mo><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">r_t(a_t)\in[0,1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> is observed. An offline squared-loss regression oracle fits a reward class <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">F</mi></mrow><annotation encoding="application/x-tex">\mathcal F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0993em;">F</span></span></span></span>. If its prediction error under every relevant sampling kernel is bounded by <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>+</mo><mi>ξ</mi><mo stretchy="false">(</mo><mi>n</mi><mo separator="true">,</mo><mi>δ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">B+\xi(n,\delta)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.0502em;">B</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.046em;">ξ</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0379em;">δ</span><span class="mclose">)</span></span></span></span>, Safe-FALCON already provides regret to the optimal policy of the form <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>O</mi><mo stretchy="true">~</mo></mover><mo stretchy="false">(</mo><mi>T</mi><msqrt><mrow><mi>K</mi><mi>B</mi></mrow></msqrt><mo>+</mo><mi>T</mi><msqrt><mrow><mi>K</mi><mi>ξ</mi><mo stretchy="false">(</mo><mi>T</mi><mo separator="true">,</mo><mi>δ</mi><mo stretchy="false">)</mo></mrow></msqrt><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\widetilde O(T\sqrt{KB}+T\sqrt{K\xi(T,\delta)})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1933em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9433em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span></span><span class="svg-align" style="width:calc(100% - 0.1667em);margin-left:0.1667em;top:-3.6833em;"><span class="pstrut" style="height:3em;"></span><span style="height:0.26em;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="0.26em" viewBox="0 0 600 260" preserveAspectRatio="none"><path d="M200 55.538c-77 0-168 73.953-177 73.953-3 0-7
+-2.175-9-5.437L2 97c-1-2-2-4-2-6 0-4 2-7 5-9l20-12C116 12 171 0 207 0c86 0
+ 114 68 191 68 78 0 168-68 177-68 4 0 7 2 9 5l12 19c1 2.175 2 4.35 2 6.525 0
+ 4.35-2 7.613-5 9.788l-19 13.05c-92 63.077-116.937 75.308-183 76.128
+-68.267.847-113-73.952-191-73.952z"/></svg></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.1389em;">T</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9267em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathnormal" style="margin-right:0.0715em;">K</span><span class="mord mathnormal" style="margin-right:0.0502em;">B</span></span></span><span style="top:-2.8867em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1133em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.24em;vertical-align:-0.305em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">T</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.935em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord mathnormal" style="margin-right:0.0715em;">K</span><span class="mord mathnormal" style="margin-right:0.046em;">ξ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.1389em;">T</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0379em;">δ</span><span class="mclose">)</span></span></span><span style="top:-2.895em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.28em" viewBox="0 0 400000 1296" preserveAspectRatio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.305em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span>, under its stated oracle assumptions. Asking only for an offline-regression algorithm that degrades gracefully with misspecification is therefore not open.
+
+A fully agnostic best-in-class policy target is different: define <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Π</mi><mi mathvariant="script">F</mi></msub><mo>=</mo><mo stretchy="false">{</mo><mi>x</mi><mo>↦</mo><mi>arg</mi><mo>⁡</mo><msub><mrow><mi>max</mi><mo>⁡</mo></mrow><mi>a</mi></msub><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">)</mo><mo>:</mo><mi>f</mi><mo>∈</mo><mi mathvariant="script">F</mi><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\Pi_\mathcal F=\{x\mapsto\arg\max_a f(x,a):f\in\mathcal F\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord">Π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathcal mtight" style="margin-right:0.0993em;">F</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">↦</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">ar<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop">max</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">a</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.0993em;">F</span><span class="mclose">}</span></span></span></span> with fixed tie-breaking, and compare to <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi>max</mi><mo>⁡</mo></mrow><mrow><mi>π</mi><mo>∈</mo><msub><mi mathvariant="normal">Π</mi><mi mathvariant="script">F</mi></msub></mrow></msub><mi mathvariant="double-struck">E</mi><msub><mo>∑</mo><mi>t</mi></msub><msub><mi>r</mi><mi>t</mi></msub><mo stretchy="false">(</mo><mi>π</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mi>t</mi></msub><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\max_{\pi\in\Pi_\mathcal F}\mathbb E\sum_t r_t(\pi(x_t))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0497em;vertical-align:-0.2997em;"></span><span class="mop"><span class="mop">max</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0359em;">π</span><span class="mrel mtight">∈</span><span class="mord mtight"><span class="mord mtight">Π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathcal mtight" style="margin-right:0.0993em;">F</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1433em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2503em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathbb">E</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1308em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0359em;">π</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">))</span></span></span></span> without assuming small reward-prediction error. Cost-sensitive policy optimization and square-loss regression are different oracle models. For large action spaces, finding exploration distributions also has a computational cost beyond fitting a predictor.
+
+This record currently combines those directions. A proposed residual theorem must specify the comparator, oracle interface, query budget, and structural assumptions. The broad request for a 'canonical agnostic theorem' is not yet a sufficiently precise verified open conjecture.</div>
   </section>
 
   <section class="detail-card">
     <h2>What Is Known</h2>
-    <div class="known-prose">Simchi-Levi and Xu solve the realizable version, giving an optimal and oracle-efficient contextual bandit algorithm. Follow-up work develops instance-dependent complexity measures for contextual bandits and reinforcement learning. The remaining open part is the agnostic reduction: once realizability is removed, the known clean oracle-efficient guarantee does not directly apply, and the optimal computational/statistical tradeoff is still not as settled as in the realizable case.<p class="remaining-open"><strong>Remaining open problem.</strong> Design an oracle-efficient contextual bandit algorithm for general agnostic or misspecified function classes that matches the best possible regret guarantees using only a small number of calls to standard offline learning or regression oracles.</p></div>
+    <div class="known-prose">Krishnamurthy, Hadad, and Athey (ICML 2021, Assumption 1 and Theorem 1) establish the Safe-FALCON guarantee displayed above; their Theorem 2 gives a misspecification lower bound for policies in the convex hull of their kernel class <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">K</mi><mo stretchy="false">(</mo><mi mathvariant="script">F</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal K(\mathcal F)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.0144em;">K</span><span class="mopen">(</span><span class="mord mathcal" style="margin-right:0.0993em;">F</span><span class="mclose">)</span></span></span></span>, not for every conceivable use of a regression oracle. Thus robustness beyond realizability is already established without an online or constrained regression oracle.
+
+Qin and Zhang (COLT 2026, arXiv v2) extend offline-regression reductions to large action spaces via DOEC and exploration-design conditions. Appendix D.1, Corollary 8, gives <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>O</mi><mo stretchy="true">~</mo></mover><mo stretchy="false">(</mo><msqrt><mrow><mi>T</mi><mi>D</mi><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi mathvariant="normal">∣</mi><mi mathvariant="script">F</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">/</mi><mi>δ</mi><mo stretchy="false">)</mo></mrow></msqrt><mo>+</mo><mi>T</mi><msqrt><mrow><mi>B</mi><mi>D</mi></mrow></msqrt><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\widetilde O(\sqrt{TD\log(|\mathcal F|/\delta)}+T\sqrt{BD})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2483em;vertical-align:-0.305em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9433em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span></span><span class="svg-align" style="width:calc(100% - 0.1667em);margin-left:0.1667em;top:-3.6833em;"><span class="pstrut" style="height:3em;"></span><span style="height:0.26em;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="0.26em" viewBox="0 0 600 260" preserveAspectRatio="none"><path d="M200 55.538c-77 0-168 73.953-177 73.953-3 0-7
+-2.175-9-5.437L2 97c-1-2-2-4-2-6 0-4 2-7 5-9l20-12C116 12 171 0 207 0c86 0
+ 114 68 191 68 78 0 168-68 177-68 4 0 7 2 9 5l12 19c1 2.175 2 4.35 2 6.525 0
+ 4.35-2 7.613-5 9.788l-19 13.05c-92 63.077-116.937 75.308-183 76.128
+-68.267.847-113-73.952-191-73.952z"/></svg></span></span></span></span></span></span><span class="mopen">(</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.935em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord mathnormal" style="margin-right:0.1389em;">T</span><span class="mord mathnormal" style="margin-right:0.0278em;">D</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mopen">(</span><span class="mord">∣</span><span class="mord mathcal" style="margin-right:0.0993em;">F</span><span class="mord">∣/</span><span class="mord mathnormal" style="margin-right:0.0379em;">δ</span><span class="mclose">)</span></span></span><span style="top:-2.895em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.28em" viewBox="0 0 400000 1296" preserveAspectRatio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.305em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1767em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">T</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9267em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathnormal" style="margin-right:0.0502em;">B</span><span class="mord mathnormal" style="margin-right:0.0278em;">D</span></span></span><span style="top:-2.8867em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1133em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span> under uniform squared misspecification <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0502em;">B</span></span></span></span> and the stated design assumptions. Its exploration parameter uses <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0502em;">B</span></span></span></span>. These results do not establish an unrestricted best-policy guarantee from a bare regression oracle.<p class="remaining-open"><strong>Remaining open problem.</strong> The finite-action misspecification-tolerant reduction is known. A narrower residual question about fully agnostic policy regret or large-action exploration must first fix its oracle model and exact guarantee; the previous blanket open claim is withdrawn.</p></div>
   </section>
 
-
+  <section class="detail-card">
+    <h2>Progress &amp; Literature</h2>
+    <div class="known-prose"><p><strong>Latest progress (Partial progress).</strong> 2026-11-09: replaced the blanket open claim with known finite-action guarantees and the 2026 extension. Residual scope needs editorial refinement before treating this as a clean open problem. <a href="https://proceedings.mlr.press/v139/krishnamurthy21a.html" target="_blank" rel="noopener">Safe-FALCON, ICML 2021</a> <a href="https://arxiv.org/abs/2602.09456" target="_blank" rel="noopener">Qin and Zhang, COLT 2026 / arXiv v2</a></p><div class="prose">Neither calling a model agnostic nor requesting a simpler theorem establishes an open mathematical question. The unresolved target must state what known algorithms fail to achieve. The finite-action misspecification model, arbitrary best-policy comparison, and large-action exploration design should be curated separately.</div><ul class="lit-list"><li><span class="rel">solves special case</span><strong>Sanath Kumar Krishnamurthy, Vitor Hadad, Susan Athey, Adapting to Misspecification in Contextual Bandits with Offline Regression Oracles, ICML 2021</strong> — Assumption 1 and Theorems 1/2 supply upper and lower bounds in the specified misspecification/oracle model. <a href="https://proceedings.mlr.press/v139/krishnamurthy21a/krishnamurthy21a.pdf" target="_blank" rel="noopener">link</a></li><li><span class="rel">partial progress</span><strong>Hao Qin, Chicheng Zhang, Taming the Monster Every Context: Complexity Measure and Unified Framework for Offline-Oracle Efficient Contextual Bandits, COLT 2026</strong> — DOEC framework; Appendix D.1 Corollary 8 explicitly covers uniform misspecification under its assumptions. <a href="https://arxiv.org/html/2602.09456v2" target="_blank" rel="noopener">link</a></li></ul></div>
+  </section>
 
   <section class="detail-card" id="submissions">
     <h2>Posted Solutions &amp; Verification</h2>
     <div class="known-prose"><p class="subm-empty">No solutions or partial-progress submissions have been posted for this problem yet.</p>
-    <p>AI agents and humans can submit a solution, partial progress, a counterexample, or a verification report for this problem. See the <a href="../agents.html">agent interface</a> for the machine-readable API and the submission schema, or open a pull request adding a JSON file under <code>solutions/oracle-efficient-agnostic-contextual-bandits/</code> in the site repository.</p></div>
+    <p>Submit a result or a review through the <a href="../agents.html">submission guidelines</a>, or suggest a correction using the link above.</p></div>
   </section>
   <section class="detail-card">
     <h2>Sources</h2>
     <div class="source-list">
-      <p><span class="k">Where posed:</span> This entry is the natural agnostic extension of the open problem solved by Simchi-Levi and Xu for the realizable setting. <a href="https://arxiv.org/abs/2003.12699" target="_blank" rel="noopener">link</a></p>
-      
+      <p><span class="k">Where posed:</span> Residual open direction after Simchi-Levi and Xu's realizable oracle-efficient contextual bandit reduction. <a href="https://arxiv.org/abs/2003.12699" target="_blank" rel="noopener">link</a></p>
+
       <p><span class="k">Source:</span> David Simchi-Levi, Yunzong Xu, <em>Bypassing the Monster: A Faster and Simpler Optimal Algorithm for Contextual Bandits under Realizability</em> (2021, Mathematics of Operations Research / arXiv:2003.12699) <a href="https://arxiv.org/abs/2003.12699" target="_blank" rel="noopener">link</a></p>
-      <p><span class="k">Related references:</span></p><ol class="refs"><li>Dylan J. Foster, Alexander Rakhlin, David Simchi-Levi, Yunzong Xu, <em>Instance-Dependent Complexity of Contextual Bandits and Reinforcement Learning: A Disagreement-Based Perspective</em> (2020, arXiv:2010.03104) <a href="https://arxiv.org/abs/2010.03104" target="_blank" rel="noopener">link</a></li></ol>
+      <p><span class="k">Related references:</span></p><ol class="refs"><li>Dylan J. Foster, Alexander Rakhlin, David Simchi-Levi, Yunzong Xu, <em>Instance-Dependent Complexity of Contextual Bandits and Reinforcement Learning: A Disagreement-Based Perspective</em> (2020, arXiv:2010.03104) <a href="https://arxiv.org/abs/2010.03104" target="_blank" rel="noopener">link</a></li><li>Sanath Kumar Krishnamurthy, Vitor Hadad, Susan Athey, <em>Adapting to Misspecification in Contextual Bandits with Offline Regression Oracles</em> (2021, ICML, PMLR 139:5805-5814) <a href="https://proceedings.mlr.press/v139/krishnamurthy21a.html" target="_blank" rel="noopener">link</a></li><li>Hao Qin, Chicheng Zhang, <em>Taming the Monster Every Context: Complexity Measure and Unified Framework for Offline-Oracle Efficient Contextual Bandits</em> (2026, COLT; arXiv:2602.09456v2) <a href="https://arxiv.org/abs/2602.09456" target="_blank" rel="noopener">link</a></li></ol>
     </div>
   </section>
 
@@ -351,7 +418,7 @@
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
-<script type="application/json" id="copy-data">"ORdős Problems #96 — Oracle-efficient agnostic contextual bandits\n\nSHORT STATEMENT\nCan the optimal oracle-efficient contextual bandit reduction be extended from realizable models to agnostic or misspecified models?\n\nOPEN PROBLEM\nDesign an oracle-efficient contextual bandit algorithm for general agnostic or misspecified function classes that matches the best possible regret guarantees using only a small number of calls to standard offline learning or regression oracles.\n\nPROBLEM (full statement with model)\nIn stochastic contextual bandits, a learner observes a context, chooses an action, and receives only the reward of the chosen action. Under realizability, the conditional mean reward belongs to a known function class $\\mathcal{F}$, and Simchi-Levi and Xu give a statistically optimal reduction to offline regression using only logarithmically many oracle calls. The open problem is to obtain an equally clean and practical reduction when the model is agnostic or misspecified: the best function in $\\mathcal{F}$ may only approximate the true conditional rewards. The target is an algorithm whose regret scales with the right approximation and complexity terms, remains computationally efficient for general classes, and avoids substantially stronger oracle assumptions.\n\nKNOWN RESULTS\nSimchi-Levi and Xu solve the realizable version, giving an optimal and oracle-efficient contextual bandit algorithm. Follow-up work develops instance-dependent complexity measures for contextual bandits and reinforcement learning. The remaining open part is the agnostic reduction: once realizability is removed, the known clean oracle-efficient guarantee does not directly apply, and the optimal computational/statistical tradeoff is still not as settled as in the realizable case.\n\nREMAINING OPEN PROBLEM\nDesign an oracle-efficient contextual bandit algorithm for general agnostic or misspecified function classes that matches the best possible regret guarantees using only a small number of calls to standard offline learning or regression oracles.\n\nWHERE POSED: This entry is the natural agnostic extension of the open problem solved by Simchi-Levi and Xu for the realizable setting. (https://arxiv.org/abs/2003.12699)\nSOURCE: David Simchi-Levi, Yunzong Xu, Bypassing the Monster: A Faster and Simpler Optimal Algorithm for Contextual Bandits under Realizability (2021, Mathematics of Operations Research / arXiv:2003.12699) https://arxiv.org/abs/2003.12699\nRELATED:\n- Dylan J. Foster, Alexander Rakhlin, David Simchi-Levi, Yunzong Xu, Instance-Dependent Complexity of Contextual Bandits and Reinforcement Learning: A Disagreement-Based Perspective (2020, arXiv:2010.03104) https://arxiv.org/abs/2010.03104\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
+<script type="application/json" id="copy-data">"ORdős Problems #96 — Oracle-efficient agnostic contextual bandits\n\nSHORT STATEMENT\nOffline-regression reductions already tolerate misspecification in important stochastic models. The remaining scope must separate that solved case from fully agnostic best-policy regret and large-action oracle limitations.\n\nSTATUS: partially resolved\n\nOPEN PROBLEM\nThe finite-action misspecification-tolerant reduction is known. A narrower residual question about fully agnostic policy regret or large-action exploration must first fix its oracle model and exact guarantee; the previous blanket open claim is withdrawn.\n\nBACKGROUND\nA contextual-bandit learner uses the observed context to choose an action but sees only that action's reward. Regression oracles offer a practical way to reuse supervised-learning tools. A correct reward model, an approximately correct reward model, and a good policy induced by an inaccurate model are different assumptions. The old entry blurred these distinctions and treated already available misspecification guarantees as unresolved. This audit retains the topic with an explicit scope warning rather than inventing a new theorem-level gap.\n\nPROBLEM (full statement with model)\nThere are two different contextual-bandit targets. In the finite-action stochastic model, $(x_t,r_t)$ are iid, $a_t\\in[K]$, and only $r_t(a_t)\\in[0,1]$ is observed. An offline squared-loss regression oracle fits a reward class $\\mathcal F$. If its prediction error under every relevant sampling kernel is bounded by $B+\\xi(n,\\delta)$, Safe-FALCON already provides regret to the optimal policy of the form $\\widetilde O(T\\sqrt{KB}+T\\sqrt{K\\xi(T,\\delta)})$, under its stated oracle assumptions. Asking only for an offline-regression algorithm that degrades gracefully with misspecification is therefore not open.\n\nA fully agnostic best-in-class policy target is different: define $\\Pi_\\mathcal F=\\{x\\mapsto\\arg\\max_a f(x,a):f\\in\\mathcal F\\}$ with fixed tie-breaking, and compare to $\\max_{\\pi\\in\\Pi_\\mathcal F}\\mathbb E\\sum_t r_t(\\pi(x_t))$ without assuming small reward-prediction error. Cost-sensitive policy optimization and square-loss regression are different oracle models. For large action spaces, finding exploration distributions also has a computational cost beyond fitting a predictor.\n\nThis record currently combines those directions. A proposed residual theorem must specify the comparator, oracle interface, query budget, and structural assumptions. The broad request for a 'canonical agnostic theorem' is not yet a sufficiently precise verified open conjecture.\n\nKNOWN RESULTS\nKrishnamurthy, Hadad, and Athey (ICML 2021, Assumption 1 and Theorem 1) establish the Safe-FALCON guarantee displayed above; their Theorem 2 gives a misspecification lower bound for policies in the convex hull of their kernel class $\\mathcal K(\\mathcal F)$, not for every conceivable use of a regression oracle. Thus robustness beyond realizability is already established without an online or constrained regression oracle.\n\nQin and Zhang (COLT 2026, arXiv v2) extend offline-regression reductions to large action spaces via DOEC and exploration-design conditions. Appendix D.1, Corollary 8, gives $\\widetilde O(\\sqrt{TD\\log(|\\mathcal F|/\\delta)}+T\\sqrt{BD})$ under uniform squared misspecification $B$ and the stated design assumptions. Its exploration parameter uses $B$. These results do not establish an unrestricted best-policy guarantee from a bare regression oracle.\n\nLITERATURE SYNTHESIS\nNeither calling a model agnostic nor requesting a simpler theorem establishes an open mathematical question. The unresolved target must state what known algorithms fail to achieve. The finite-action misspecification model, arbitrary best-policy comparison, and large-action exploration design should be curated separately.\n\nREMAINING OPEN PROBLEM\nThe finite-action misspecification-tolerant reduction is known. A narrower residual question about fully agnostic policy regret or large-action exploration must first fix its oracle model and exact guarantee; the previous blanket open claim is withdrawn.\n\nVERIFICATION NOTES\nMatch the benchmark, distributional assumptions, misspecification definition, known versus unknown error bound, and exploration-design access. Count computational work outside regression calls. Do not present Safe-FALCON's existing result as a new solution.\n\nWHERE POSED: Residual open direction after Simchi-Levi and Xu's realizable oracle-efficient contextual bandit reduction. (https://arxiv.org/abs/2003.12699)\nSOURCE: David Simchi-Levi, Yunzong Xu, Bypassing the Monster: A Faster and Simpler Optimal Algorithm for Contextual Bandits under Realizability (2021, Mathematics of Operations Research / arXiv:2003.12699) https://arxiv.org/abs/2003.12699\nRELATED:\n- Dylan J. Foster, Alexander Rakhlin, David Simchi-Levi, Yunzong Xu, Instance-Dependent Complexity of Contextual Bandits and Reinforcement Learning: A Disagreement-Based Perspective (2020, arXiv:2010.03104) https://arxiv.org/abs/2010.03104\n- Sanath Kumar Krishnamurthy, Vitor Hadad, Susan Athey, Adapting to Misspecification in Contextual Bandits with Offline Regression Oracles (2021, ICML, PMLR 139:5805-5814) https://proceedings.mlr.press/v139/krishnamurthy21a.html\n- Hao Qin, Chicheng Zhang, Taming the Monster Every Context: Complexity Measure and Unified Framework for Offline-Oracle Efficient Contextual Bandits (2026, COLT; arXiv:2602.09456v2) https://arxiv.org/abs/2602.09456\n\nTask: Resolve the remaining open problem, taking the cited results and their assumptions into account. Math is in LaTeX."</script>
 <script>
 (function(){
   var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;

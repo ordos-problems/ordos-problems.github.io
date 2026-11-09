@@ -1,0 +1,119 @@
+{
+  "id": "submodular-facility-location-constant-approximation",
+  "title": "Constant approximation for submodular facility location",
+  "collection": "Operations Research",
+  "area": "Approximation Algorithms",
+  "tags": [
+    "facility location",
+    "submodular costs",
+    "approximation algorithms",
+    "network design",
+    "stochastic facility location"
+  ],
+  "status": "solution claimed",
+  "confidence": "medium",
+  "short_statement": "For homogeneous submodular facility location, a 2026 preprint claims tight $\\Theta(\\log\\log n)$ value-oracle approximability; arbitrary facility-specific functions are a different, harder model.",
+  "full_statement": "Let $C$ be clients, $F$ facilities, and $d$ a metric on $C\\cup F$. An assignment $\\phi:C\\to F$ has cost $\\sum_c d(c,\\phi(c))+\\sum_f g_f(S_f)$, where $S_f=\\phi^{-1}(f)$ and each $g_f$ is nonnegative, monotone submodular and zero at the empty set. Model correction: the earlier record allowed arbitrary different $g_f$ but attributed homogeneous results to that generalization. The constant-approximation question posed by the cited literature is for a SINGLE common value-oracle function $g_f=g$ at every facility. Arbitrary facility-specific functions already contain Set Cover and have logarithmic hardness. For common $g$, Abbasi et al. give $O(\\log\\log|C|)$; their extensions allow $p_f+g(S)$ on nonempty sets or $w_f g(S)$, not arbitrary unrelated functions. The historical question asks for a constant-factor polynomial-query approximation in the homogeneous model. Elmachtoub, Natura, and Neuwohner (October 2026), Theorem 2, claim an $\\Omega(\\log\\log|C|)$ query lower bound even for common matroid-rank costs. This would answer that question negatively; it is a preprint claim, not independently proof-verified here.",
+  "background": "Facility location is a core operations research model for placing warehouses, servers, depots, and service centers. The classical fixed-charge model assumes a facility has one opening cost independent of which clients it serves. Many applications have richer economies of scale or shared-service effects: the marginal cost of serving an additional client may decrease, overlap with existing fixed costs, or depend on the mix of clients. Submodular facility location captures this by replacing a fixed opening charge with a monotone submodular function of the assigned client set. This is still a clean combinatorial optimization problem: the metric assignment term is classical, and submodularity is the standard mathematical abstraction for diminishing returns. The difficulty is that opening a facility and assigning clients are no longer separable. A local reassignment can change the submodular cost at many marginal scales, and the usual primal-dual and LP-rounding tools for fixed-charge facility location do not directly give constant factors. The exact model matters: the cited iterated-logarithmic guarantee assumes a common submodular function, with specified extensions; independent facility functions encode Set Cover. A 2026 preprint claims the homogeneous oracle threshold is also superconstant.",
+  "known_results": "Svitkina and Tardos developed hierarchical and submodular facility costs, logarithmic approximation, and constant-factor special cases. Abbasi et al. (ICALP 2024; preprint 2022), Theorems 1.1, 1.3 and 1.4, give $O(\\log\\log n)$ for a common function and its additive/multiplicative facility-weight extensions. They also improve universal stochastic facility location; classical metric facility location remains a related special case of the facility-weight variants. The unrestricted $g_f$ model already inherits Set Cover hardness. Elmachtoub, Natura, and Neuwohner (2026) claim matching oracle hardness for homogeneous SFL: polynomially many value queries cannot achieve $o(\\log\\log n)$ with constant success probability, even with unlimited computation. Version 2 (November 4, 2026), Appendix A, Corollary A.2, additionally reports computational hardness: unless $\\mathrm{NP}=\\mathrm{RP}$, no randomized polynomial-time algorithm with constant success probability attains $o(\\log\\log|F|)$ when the common matroid-rank function is supplied by a polynomial-size evaluation circuit. Note the facility-count parameter here, versus client count in Theorem 2. Neither statement automatically covers every specialized explicit representation.",
+  "where_posed": {
+    "text": "Historical constant-approximation question for homogeneous SFL in Abbasi et al., following Svitkina and Tardos.",
+    "url": "https://arxiv.org/abs/2211.05474",
+    "quote": "",
+    "location": "Abstract"
+  },
+  "source": {
+    "authors": "Fateme Abbasi, Marek Adamczyk, Miguel Bosch-Calvo, Jaroslaw Byrka, Fabrizio Grandoni, Krzysztof Sornat, Antoine Tinguely",
+    "title": "An O(loglog n)-Approximation for Submodular Facility Location",
+    "year": 2022,
+    "venue": "arXiv",
+    "url": "https://arxiv.org/abs/2211.05474"
+  },
+  "additional_refs": [
+    {
+      "authors": "Zoya Svitkina, Eva Tardos",
+      "title": "Facility Location with Hierarchical Facility Costs",
+      "year": 2006,
+      "venue": "SODA",
+      "url": "https://dl.acm.org/doi/10.5555/1109557.1109572"
+    },
+    {
+      "authors": "Moses Charikar, Sudipto Guha",
+      "title": "Improved Combinatorial Algorithms for Facility Location Problems",
+      "year": 2005,
+      "venue": "SIAM Journal on Computing",
+      "url": "https://doi.org/10.1137/S0097539701398594"
+    },
+    {
+      "authors": "Fateme Abbasi, Marek Adamczyk, Miguel Bosch-Calvo, Jaroslaw Byrka, Fabrizio Grandoni, Krzysztof Sornat, Antoine Tinguely",
+      "title": "An O(loglog n)-Approximation for Submodular Facility Location",
+      "year": 2022,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/2211.05474"
+    },
+    {
+      "authors": "Adam N. Elmachtoub, Bento Natura, Meike Neuwohner",
+      "title": "Settling the Approximability of Submodular Facility Location",
+      "year": 2026,
+      "venue": "arXiv:2610.18828v2",
+      "url": "https://arxiv.org/abs/2610.18828v2"
+    }
+  ],
+  "enabled": true,
+  "progress": {
+    "state": "solution-claimed",
+    "summary": "Corrected homogeneous versus facility-specific models. A 2026 preprint claims a matching $\\Omega(\\log\\log n)$ oracle lower bound for the homogeneous question.",
+    "links": [
+      {
+        "title": "Abbasi et al. O(loglog n) approximation",
+        "url": "https://arxiv.org/abs/2211.05474"
+      },
+      {
+        "title": "Elmachtoub, Natura, and Neuwohner, Settling the Approximability of Submodular Facility Location, arXiv:2610.18828 (2026)",
+        "url": "https://arxiv.org/abs/2610.18828v2"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Hardness or integrality-gap examples could be finite metric/submodular instances, but proving oracle lower bounds may require a more elaborate construction.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Search can explore small metric instances and submodular cost functions to test LP relaxations or rounding conjectures. It is less suited to proving a universal constant approximation.",
+  "literature": {
+    "synthesis": "The value-oracle lower bound and the circuit-representation hardness theorem require different access models. Version 2 covers both, under the qualifications in What Is Known. Arbitrary unrelated facility functions remain a separate, already harder generalization.",
+    "reviewed": [
+      {
+        "ref": "Svitkina and Tardos, 'Facility Location with Hierarchical Facility Costs', SODA 2006",
+        "result": "Introduced the submodular/hierarchical facility-cost framework and gave an $O(\\log n)$ approximation.",
+        "relevance": "partial-progress",
+        "url": "https://dl.acm.org/doi/10.5555/1109557.1109572"
+      },
+      {
+        "ref": "Abbasi et al., 'An O(loglog n)-Approximation for Submodular Facility Location', arXiv 2022",
+        "result": "Gives $O(\\log\\log n)$ for common $g$ and specified additive/multiplicative variants, not arbitrary independent $g_f$.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2211.05474"
+      },
+      {
+        "ref": "Charikar and Guha, 'Improved Combinatorial Algorithms for Facility Location Problems', SICOMP 2005",
+        "result": "Representative classical facility-location approximation machinery for the fixed-cost special case.",
+        "relevance": "related-tool",
+        "url": "https://doi.org/10.1137/S0097539701398594"
+      },
+      {
+        "ref": "Elmachtoub, Natura, and Neuwohner, Settling the Approximability of Submodular Facility Location, arXiv:2610.18828 (2026)",
+        "result": "Theorem 2 gives oracle hardness; Appendix A adds circuit-representation hardness under NP != RP. See What Is Known.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/html/2610.18828v2"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Verify the new oracle lower-bound proof and its symmetry-gap construction. For further algorithmic work, specify a stronger representation or restricted cost family that avoids the oracle obstruction.",
+    "verification_notes": "Distinguish common $g$ from unrelated $g_f$ and value queries from explicit descriptions or stronger oracles. The new preprint's Theorem 2 allows unlimited computation but polynomially many value queries and requires constant success probability. Check monotonicity, submodularity, metric costs, and the lifted matroid-rank construction; this audit did not independently verify the proof. For v2 Appendix A, check the polynomial-size circuit representation and NP != RP assumption; do not replace |F| by |C| without a reduction.",
+    "machine_checkable": true
+  },
+  "notes_for_maintainer": "Primary source checked via arXiv on 2026-07-02. Status audit 2026-11-09: Model and Theorems 1.1/1.3/1.4 of Abbasi et al. and Theorem 2 plus proof endpoint of the 2026 preprint read. Explicit model repair, with original broader model documented; preprint resolution not certified. Follow-up: current v2 Theorem 2 and Appendix A Corollary A.2 checked; updated circuit hardness.",
+  "open_problem": "Verify the 2026 claimed negative resolution for homogeneous value-oracle SFL. The previous arbitrary-$g_f$ formulation was already incompatible with a constant approximation under standard Set Cover hardness assumptions."
+}

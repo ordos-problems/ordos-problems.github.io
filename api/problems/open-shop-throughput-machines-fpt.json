@@ -1,0 +1,101 @@
+{
+ "number": 115,
+ "ref": "ORDOS-115",
+ "id": "open-shop-throughput-machines-fpt",
+ "title": "Open-shop unit-time throughput scheduling parameterized by machines",
+ "collection": "Operations Research",
+ "area": "Scheduling",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "scheduling",
+  "open-shop",
+  "throughput",
+  "parameterized-complexity",
+  "operations-research"
+ ],
+ "short_statement": "Is unit-processing-time open-shop throughput with release dates and weights fixed-parameter tractable when parameterized only by the number of machines?",
+ "open_problem": "Determine whether $O|p_{ij}=1,r_j|\\sum_j w_j U_j$ is fixed-parameter tractable parameterized by the number of machines $m$ alone, or prove an appropriate W-hardness/lower-bound barrier for this parameterization.",
+ "background": "Throughput scheduling asks which jobs should be accepted when not every deadline can be met. In open shop, this acceptance decision is coupled to a flexible routing problem: every accepted job must visit every machine, but the visit order is not fixed. Unit processing times remove one major source of numerical difficulty, so the remaining hardness is structural rather than a modeling artifact. Mnich and van Bevern isolate this as Open Problem 15 in their parameterized-scheduling list. The model is attractive for this repository because the question is not whether open shop is the right model for a factory; it is a clean complexity boundary for a standard shop-scheduling notation. The number of machines is one of the most natural parameters in applications, but the release dates, due dates, and job weights can still encode difficult subset-selection behavior.",
+ "full_statement": "In the problem $O|p_{ij}=1,r_j|\\sum_j w_j U_j$, each job $j$ has one unit-time operation on each of $m$ machines. The operations of a job may be processed in any order, but a job cannot be processed on two machines simultaneously and each machine can process at most one job at a time. Job $j$ is released at time $r_j$, has due date $d_j$, and has weight $w_j$. A schedule chooses start times for all operations and a job is counted on time only if all of its operations finish by $d_j$. The objective is to minimize the total weight of tardy jobs, equivalently to maximize the weighted throughput of jobs completed by their due dates. The open problem is whether the exact optimization problem admits an algorithm running in $f(m)\\mathrm{poly}(n,\\log P)$ time, where $m$ is the number of machines and $P$ denotes the numerical input size, with no additional parameter such as the number of due dates, release dates, weights, or the maximum time horizon.",
+ "known_results": "The open-shop throughput problem sits between several understood cases. Mnich and van Bevern note that $O|p_{ij}=1|\\sum_j w_jU_j$ without release dates is fixed-parameter tractable in the number of machines, while $O|p_{ij}=1,r_j|\\sum_j U_j$ is NP-hard when the number of machines is unbounded. Baptiste gave a polynomial-time algorithm for the weighted unit-time open-shop problem when the number of machines is fixed as a constant, which places the problem in XP with respect to $m$ but does not give an $f(m)\\mathrm{poly}(n)$ running time. The same survey observes an equivalence with a preemptive identical-parallel-machine throughput problem with equal processing times and integer-time preemption. Thus the open part is exactly the parameterized jump from polynomial time for each fixed $m$ to uniform fixed-parameter tractability in $m$.",
+ "progress": {
+  "state": "partial",
+  "summary": "The release-date-free weighted unit-time open-shop throughput problem is FPT by the number of machines, and the release-date variant is polynomial for each constant number of machines. No FPT algorithm in $m$ alone, and no matching W-hardness result for that exact open-shop formulation, is currently recorded in the cited sources.",
+  "links": [
+   {
+    "title": "Parameterized complexity of machine scheduling: 15 open problems",
+    "url": "https://arxiv.org/abs/1709.01670"
+   },
+   {
+    "title": "Baptiste, On minimizing the weighted number of late jobs in unit execution time open-shops",
+    "url": "https://doi.org/10.1016/S0377-2217(02)00735-2"
+   }
+  ]
+ },
+ "importance": 6,
+ "difficulty": 7,
+ "counterexample_suitability": "low",
+ "counterexample_rationale": "The question asks for a uniform FPT algorithm or a parameterized hardness proof. Individual instances can test proposed dynamic programs, but they cannot by themselves resolve the asymptotic classification.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Search can help discover compressed state representations for small $m$, or generate hard families that defeat natural dominance rules. A final answer needs a rigorous FPT algorithm, XP lower-bound separation, or W-hardness reduction.",
+ "literature": {
+  "synthesis": "This problem is a precise parameterized-complexity gap, not a vague call for better heuristics. The release-date-free weighted unit-time case suggests that the number of machines can be powerful enough to control open-shop throughput. Release dates add a temporal packing layer, and current results only give polynomial algorithms when $m$ is treated as a fixed constant. The open problem is therefore whether the exponent hidden in those constant-machine algorithms can be replaced by a dependence $f(m)$ outside the polynomial factor. A resolution would clarify whether unit-time open-shop throughput belongs with the machine-parameter FPT scheduling problems or with problems where release dates encode W-hardness.",
+  "reviewed": [
+   {
+    "ref": "Matthias Mnich and Rene van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems', Computers & Operations Research 2018",
+    "result": "States Open Problem 15: whether $O|p_{ij}=1,r_j|\\sum_j w_jU_j$ is FPT parameterized by the number of machines.",
+    "relevance": "poses-problem",
+    "url": "https://arxiv.org/abs/1709.01670"
+   },
+   {
+    "ref": "Philippe Baptiste, 'On minimizing the weighted number of late jobs in unit execution time open-shops', European Journal of Operational Research 2003",
+    "result": "Gives polynomial-time solvability for the weighted unit-time open-shop late-job objective when the number of machines is constant.",
+    "relevance": "partial-progress",
+    "url": "https://doi.org/10.1016/S0377-2217(02)00735-2"
+   },
+   {
+    "ref": "Peter Brucker, Sigrid Knust, and related coauthors, early 1990s work on unit-time open-shop throughput",
+    "result": "Cited by Mnich and van Bevern for the FPT result without release dates and the equivalence to preemptive equal-processing-time parallel-machine scheduling.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/pdf/1709.01670"
+   },
+   {
+    "ref": "Klaus Heeger and Hendrik Molter, 'Minimizing the Number of Tardy Jobs with Uniform Processing Times on Parallel Machines', arXiv 2024",
+    "result": "Resolves a related parallel-machine switching point by proving W[2]-hardness parameterized by machines for a uniform-processing-time tardy-job model.",
+    "relevance": "nearby-hardness",
+    "url": "https://arxiv.org/abs/2404.14208"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Work with the equivalent equal-processing-time preemptive parallel-machine formulation as well as the open-shop formulation. For algorithms, try bounded-machine dynamic programming over release/deadline event intervals, representative sets of accepted jobs, or fixed-dimension integer programming that avoids dependence on the time horizon. For lower bounds, attempt reductions where release-date windows encode set packing or multicolored selection while keeping the machine count as the only parameter.",
+  "verification_notes": "A positive result must have running time $f(m)\\mathrm{poly}(n,\\log P)$ and must handle arbitrary release dates, due dates, and weights; an algorithm whose exponent depends on $m$ is only XP. A negative result should target the exact unit-time open-shop model with release dates, not a more general processing-time model. Any claimed resolution should explicitly compare itself against the known release-date-free FPT case and Baptiste's constant-machine polynomial algorithm.",
+  "machine_checkable": false
+ },
+ "where_posed": {
+  "text": "Open Problem 15 in Mnich and van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems'.",
+  "url": "https://arxiv.org/pdf/1709.01670",
+  "quote": "",
+  "location": "Section 5.4, Open Problem 15"
+ },
+ "source": {
+  "authors": "Matthias Mnich, René van Bevern",
+  "title": "Parameterized complexity of machine scheduling: 15 open problems",
+  "year": 2018,
+  "venue": "Computers & Operations Research",
+  "url": "https://arxiv.org/abs/1709.01670"
+ },
+ "additional_refs": [],
+ "bibtex": "@misc{Mnich2018,\n  author = {Matthias Mnich and René van Bevern},\n  title = {Parameterized complexity of machine scheduling: 15 open problems},\n  year = {2018},\n  howpublished = {Computers & Operations Research},\n  url = {https://arxiv.org/abs/1709.01670},\n  note = {Source of ORdős Problem ORDOS-115}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/open-shop-throughput-machines-fpt.html",
+  "api": "https://ordos-problems.github.io/api/problems/open-shop-throughput-machines-fpt.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

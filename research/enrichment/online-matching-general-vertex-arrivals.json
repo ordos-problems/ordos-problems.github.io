@@ -1,0 +1,126 @@
+{
+ "id": "online-matching-general-vertex-arrivals",
+ "background": "Online bipartite matching began with Karp, Vazirani, and Vazirani (STOC 1990), who considered a bipartite graph whose offline side is known upfront while the other side arrives online, and showed that the randomized RANKING algorithm achieves the optimal competitive ratio $1-1/e \\approx 0.632$. Real markets, however, rarely have a static side: in ride-hailing, ride-sharing, and dynamic exchange platforms, agents on both sides of the market appear over time. Wang and Wong (ICALP 2015) therefore introduced the general (two-sided) vertex-arrival model, in which every vertex arrives online, revealing on arrival only its edges to previously arrived vertices, and the algorithm must decide immediately whether to match the newcomer to an unmatched earlier vertex or leave it for the future. The defining difficulty, absent from both the one-sided model and the related fully online model of Huang et al. (JACM 2020), is that the algorithm is never told when a vertex has seen its last edge, so it can never safely 'greedily finish' a vertex. Wang and Wong showed a fractional algorithm beating the trivial greedy ratio of $1/2$, and Gamlath, Kapralov, Maggiori, Svensson, and Wajc (FOCS 2019) resolved the qualitative question for integral matching, proving that randomization beats $1/2$ by an absolute constant — in sharp contrast to the even more general edge-arrival model, where they showed $1/2$ is optimal. The model has since become one of the canonical testbeds in online matching: it sits strictly between one-sided arrivals (ratio $1-1/e$) and edge arrivals (ratio $1/2$), it separates cleanly from the fully online model, and its analysis has driven the development of primal-dual techniques for two-sided markets and of online rounding methods for converting fractional matchings into integral ones. In February 2026 Zhihao Gavin Tang pinned down the exact optimal ratio for the fractional version, leaving the integral question as the central remaining open problem.",
+ "short_statement": "In the general-vertex-arrival model, vertices on both sides arrive online (each revealing its edges to already-arrived neighbors) and must be matched irrevocably upon some arrival. The optimal fractional competitive ratio was resolved at $\\Gamma^*\\approx 0.526$ (Tang 2026); the open question is the optimal ratio for integral (randomized) algorithms, currently known only to lie between $\\tfrac12+\\Omega(1)$ (a tiny constant above $1/2$) and $\\approx 0.526$.",
+ "full_statement": "Consider a graph $G=(V,E)$, initially unknown, whose vertices arrive online in adversarial order. Upon the arrival of a vertex $v$, its edges to previously arrived vertices are revealed; the algorithm must either match $v$ immediately to a currently unmatched, previously arrived neighbor, or leave $v$ unmatched (in which case $v$ may still be matched later, upon the arrival of a future neighbor $u$, at $u$'s arrival time). All matching decisions are irrevocable. The objective is the cardinality of the produced matching, compared against the maximum matching of the final graph; an algorithm is $\\Gamma$-competitive if it always attains at least $\\Gamma$ times the offline optimum (in expectation, for randomized algorithms). When $G$ is bipartite this is the two-sided online bipartite matching model of Wang and Wong (ICALP 2015); on general graphs it is called online matching with general vertex arrivals. In the fractional variant, edges may be matched fractionally subject to $\\sum_{u:(u,v)\\in E} x_{uv}\\le 1$ at every vertex, with all fractional increases on an edge $(u,v)$ made at the arrival of $u$ or $v$. Known: the optimal fractional ratio is exactly $\\Gamma^* := \\max_{k\\ge 1} \\big(\\big(\\tfrac{k+1}{2}\\big)^{\\frac{k+1}{2k}}\\big(\\tfrac{k-1}{2}\\big)^{\\frac{k-1}{2k}} + 1\\big)^{-1} \\approx 0.526$, achieved by Wang-Wong (2015) and Tang-Zhang (EC 2024) and shown tight by Tang (2026). Open question: determine the optimal competitive ratio of randomized integral algorithms, currently known only to lie in $[\\tfrac12+\\Omega(1),\\ \\Gamma^*\\approx 0.526]$, where the $\\Omega(1)$ of Gamlath et al. (FOCS 2019) is a tiny (unoptimized) constant.",
+ "known_results": "Zhihao Gavin Tang, 'Optimal Competitive Ratio of Two-sided Online Bipartite Matching' (arXiv:2602.18049v1, 2026), Theorem 1.1, proves a fractional impossibility bound of $\\Gamma^*\\approx0.526$. This matches the fractional algorithms of Wang and Wong (2015) and Tang and Zhang (2024), resolving that variant.\n\nFor randomized integral matching, Gamlath, Kapralov, Maggiori, Svensson, and Wajc (2019) achieve $1/2+\\varepsilon$ for an absolute constant $\\varepsilon>0$ on general graphs. The reviewed results leave the integral optimum between this guarantee and $\\Gamma^*$. Tang's upper bound applies because the expected edge indicators of a randomized integral algorithm form a feasible fractional matching.\n\nThe fractional theorem does not supply a lossless online rounding algorithm. Nor should guarantees from fully online matching be transferred here: that model reveals departure deadlines and permits decisions until departure. In the present model, an edge must be selected when its later endpoint arrives.",
+ "status": "partially resolved",
+ "where_posed": {
+  "text": "The model and the problem originate in Wang, Wong, 'Two-sided Online Bipartite Matching and Vertex Cover: Beating the Greedy Algorithm', ICALP 2015. The integral question was highlighted and partially answered in Gamlath, Kapralov, Maggiori, Svensson, Wajc, 'Online Matching with General Arrivals', FOCS 2019; the fractional question was closed by Tang (arXiv:2602.18049, 2026).",
+  "url": "https://arxiv.org/abs/1904.08255",
+  "quote": "In comparison, more general arrival models, such as edge arrivals and general vertex arrivals, have proven more challenging and positive results are known only for various relaxations of the problem. In particular, even the basic question of whether randomization allows one to beat the trivially-optimal deterministic competitive ratio of 1/2 for either of these models was open. ... For general vertex arrivals, randomization helps --- there exists a randomized (1/2+Omega(1))-competitive online matching algorithm.",
+  "location": "Abstract (arXiv:1904.08255)"
+ },
+ "progress": {
+  "state": "partial",
+  "summary": "Tang (2026) closes the fractional gap. The randomized integral problem remains open; the fractional upper bound also restricts integral algorithms.",
+  "links": [
+   {
+    "title": "Optimal Competitive Ratio of Two-sided Online Bipartite Matching — Tang, Feb 2026 (resolves fractional version)",
+    "url": "https://arxiv.org/abs/2602.18049v1"
+   },
+   {
+    "title": "Improved Bounds for Fractional Online Matching Problems — Tang, Zhang, EC 2024",
+    "url": "https://arxiv.org/abs/2202.02948"
+   },
+   {
+    "title": "Online Matching with General Arrivals — Gamlath, Kapralov, Maggiori, Svensson, Wajc, FOCS 2019",
+    "url": "https://arxiv.org/abs/1904.08255"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "The hardness side works through explicit recursive adversary constructions whose value against all (fractional or integral) algorithms can be certified by finite LP/minimax computations — indeed Tang's 2026 tight bound is exactly such a recursive gadget construction. For the remaining integral question, a search for adversary trees that push integral algorithms below $0.526$ (or for better rounding schemes) is well-defined on small instances, though the current gap is between two constants rather than a yes/no structure question.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Both frontiers are governed by optimizable continuous objects — the Wang-Wong/Tang-Zhang algorithms are specified by one-dimensional functions $a(\\cdot), g(\\cdot)$ satisfying integral inequalities, and hardness constructions are parameterized recursive gadgets — so an evolutionary loop over such functions/gadgets with numeric LP verification could plausibly rediscover or refine the constants; however, the fractional side is now provably closed, and improving the integral side requires new online rounding ideas where automated search has less traction.",
+ "literature": {
+  "synthesis": "Work on general vertex arrivals has proceeded on three fronts. (1) Fractional algorithms: Wang and Wong (ICALP 2015) introduced the model and beat greedy with a dual-based $0.526$-competitive fractional algorithm; Tang and Zhang (EC 2024) matched this with a cleaner primal water-filling-style algorithm characterized by a non-increasing threshold function $a(\\cdot)$ and a primal-dual certificate $g(\\cdot)$. (2) Hardness: successive adversary constructions lowered the ceiling from $0.625$ (Wang-Wong) to $0.5914$ (Buchbinder, Segev, Tkach) to $0.584$ (Tang-Zhang EC 2024), and finally Tang (arXiv:2602.18049, 2026) built a recursive construction — repeatedly confronting the algorithm with the dilemma of matching now versus waiting for perfect partners that may never come — proving the Tang-Zhang certificate optimal and pinning the fractional optimum at exactly $\\Gamma^*\\approx0.526$. (3) Integral algorithms: Gamlath, Kapralov, Maggiori, Svensson, and Wajc (FOCS 2019) rounded the Wang-Wong algorithm online to get $\\tfrac12+\\Omega(1)$, the only non-trivial integral result to date; their rounding is lossy and the resulting constant is minuscule. The remaining gap is therefore $[\\tfrac12+\\Omega(1), 0.526]$ for randomized integral algorithms. New ideas seem needed on both sides: either lossless-style online rounding adapted to two-sided arrivals (the rounding barriers studied by Buchbinder, Naor, and Wajc, SODA 2023, are directly relevant), or integral-specific hardness beating $0.526$, which cannot come from fractional constructions. The Huang-Tang-Wajc survey (SIGecom Exchanges 2024) gives the standard overview of the model hierarchy.",
+  "reviewed": [
+   {
+    "ref": "Wang, Wong, 'Two-sided Online Bipartite Matching and Vertex Cover: Beating the Greedy Algorithm', ICALP 2015",
+    "result": "Introduces the general (two-sided) vertex-arrival model; gives a $0.526$-competitive fractional algorithm (constant $\\Gamma^*$) and a $0.625$ impossibility bound.",
+    "relevance": "partial-progress",
+    "url": "https://link.springer.com/chapter/10.1007/978-3-662-47672-7_85"
+   },
+   {
+    "ref": "Gamlath, Kapralov, Maggiori, Svensson, Wajc, 'Online Matching with General Arrivals', FOCS 2019",
+    "result": "First (and still only) integral algorithm beating $1/2$: a randomized $\\tfrac12+\\Omega(1)$-competitive algorithm for general vertex arrivals, via online rounding of Wang-Wong; also proves randomization does NOT help under edge arrivals (ratio $1/2$ is tight there).",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1904.08255"
+   },
+   {
+    "ref": "Tang, Zhang, 'Improved Bounds for Fractional Online Matching Problems', EC 2024 (arXiv 2022)",
+    "result": "A simpler primal-based $0.526$-competitive fractional algorithm for general vertex arrivals, and an improved impossibility bound of $0.584$ (also improves fully online matching: $0.6$ fractional algorithm and $0.613$ hardness).",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2202.02948"
+   },
+   {
+    "ref": "Zhihao Gavin Tang, 'Optimal Competitive Ratio of Two-sided Online Bipartite Matching', arXiv:2602.18049v1 (2026)",
+    "result": "Theorem 1.1 resolves the fractional variant; it does not resolve the integral variant.",
+    "relevance": "solves-special-case",
+    "url": "https://arxiv.org/abs/2602.18049v1"
+   },
+   {
+    "ref": "Huang, Tang, Wajc, 'Online Matching: A Brief Survey', SIGecom Exchanges 22(1), 2024",
+    "result": "Survey placing general vertex arrivals in the model hierarchy (one-sided $1-1/e$; fully online $[0.6,0.613]$ fractional; general vertex arrival; edge arrival $1/2$); tabulates the pre-2026 state of the art.",
+    "relevance": "survey",
+    "url": "https://arxiv.org/abs/2407.05381"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "For the remaining integral question: (1) design better online rounding schemes for the (now provably optimal) $0.526$ fractional algorithms — study why the Gamlath et al. rounding is lossy and whether the structure of the Tang-Zhang primal algorithm (water-filling against the least-matched neighbor, thresholded by $a(x_v)$) admits a less lossy correlated rounding; (2) integral-specific hardness: search (possibly computationally, via minimax/LP evaluation of adversary trees on small instances) for constructions separating randomized integral algorithms from the fractional optimum $0.526$; (3) optimize the unspecified $\\Omega(1)$ constant in Gamlath et al. to make the integral lower bound quantitative.",
+  "verification_notes": "A claimed improved integral algorithm must specify irrevocable matching decisions made only at vertex arrivals (no deadline information — do not confuse with the fully online model, where deferring to departures is allowed and $0.569$ is known), and its competitive ratio must hold against adversarial arrival orders on all graphs (or explicitly restrict to bipartite). Verify that any primal-dual/charging analysis handles the model's signature difficulty: the algorithm never learns that a vertex has no future neighbors. A claimed hardness improvement must present an adversary strategy and prove a bound on EVERY randomized integral algorithm; for finite adversary trees this reduces to an LP/minimax computation that a verifier can re-run. Any claimed fractional-ratio improvement above $0.526$ is necessarily WRONG (contradicts Tang 2026, arXiv:2602.18049); check claims against that paper first. Numerics can support but not replace proofs for algorithmic guarantees, since instances are unbounded; exact constants like $\\Gamma^*$ should be checked symbolically ($\\Gamma^*=\\max_{k\\ge1}((\\frac{k+1}{2})^{\\frac{k+1}{2k}}(\\frac{k-1}{2})^{\\frac{k-1}{2k}}+1)^{-1}$).",
+  "machine_checkable": false
+ },
+ "additional_refs": [
+  {
+   "authors": "Buddhima Gamlath, Michael Kapralov, Andreas Maggiori, Ola Svensson, David Wajc",
+   "title": "Online Matching with General Arrivals",
+   "year": 2019,
+   "venue": "FOCS",
+   "url": "https://arxiv.org/abs/1904.08255"
+  },
+  {
+   "authors": "Zhihao Gavin Tang, Yuhao Zhang",
+   "title": "Improved Bounds for Fractional Online Matching Problems",
+   "year": 2024,
+   "venue": "EC",
+   "url": "https://arxiv.org/abs/2202.02948"
+  },
+  {
+   "authors": "Zhihao Gavin Tang",
+   "title": "Optimal Competitive Ratio of Two-sided Online Bipartite Matching",
+   "year": 2026,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2602.18049v1"
+  },
+  {
+   "authors": "Zhiyi Huang, Zhihao Gavin Tang, David Wajc",
+   "title": "Online Matching: A Brief Survey",
+   "year": 2024,
+   "venue": "SIGecom Exchanges",
+   "url": "https://www.sigecom.org/exchanges/volume_22/1/HUANG.pdf"
+  },
+  {
+   "authors": "Niv Buchbinder, Danny Segev, Yevgeny Tkach",
+   "title": "Online Algorithms for Maximum Cardinality Matching with Edge Arrivals",
+   "year": 2019,
+   "venue": "Algorithmica (ESA 2017)",
+   "url": "https://doi.org/10.1007/s00453-018-0505-7"
+  }
+ ],
+ "tags": [
+  "online matching",
+  "competitive analysis",
+  "vertex arrivals",
+  "two-sided markets",
+  "primal-dual",
+  "online rounding"
+ ],
+ "notes_for_maintainer": "STATUS CHANGE vs old batch record: the FRACTIONAL version of this problem was RESOLVED in February 2026 by Zhihao Gavin Tang (arXiv:2602.18049, single-author): tight upper bound $\\Gamma^*\\approx0.526$ matching Wang-Wong (2015) and Tang-Zhang (EC 2024). I verified this by fetching the full HTML of the paper (theorem statement, exact constant formula, and construction all read directly). I therefore set status to 'partially resolved': the integral question remains open, now with bounds $[1/2+\\Omega(1), 0.526]$. Two corrections to the old record: (a) the old record attributed '0.583 hardness' to Gamlath et al. — per the primary sources the pre-2026 hardness chain was 0.625 (Wang-Wong) -> 0.5914 (Buchbinder-Segev-Tkach) -> 0.584 (Tang-Zhang EC 2024); the Huang-Tang-Wajc survey's '0.583' appears to be a rounding/typo of the same Tang-Zhang bound, and it is now superseded anyway. (b) 'Improved Bounds for Fractional Online Matching Problems' (arXiv:2202.02948) was published at EC 2024 (confirmed by the reference list of arXiv:2602.18049: 'In EC, pages 279-307. ACM, 2024'), not EC 2022. The Buchbinder-Segev-Tkach DOI link is the standard Springer DOI cited from Tang's bibliography (Algorithmica 81(5):1781-1799); I did not fetch that page directly.",
+ "confidence": "high",
+ "open_problem": "Determine the optimal randomized integral competitive ratio between $1/2+\\varepsilon$ and $\\Gamma^*\\approx0.526$. Can integral algorithms reach the fractional optimum? Distinguish bipartite from general graphs."
+}

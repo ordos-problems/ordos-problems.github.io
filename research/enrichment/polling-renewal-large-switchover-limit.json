@@ -1,0 +1,70 @@
+{
+  "id": "polling-renewal-large-switchover-limit",
+  "background": "Polling systems model a single server cycling among several queues, with applications in manufacturing, communication systems, maintenance, and traffic control. Many exact polling results rely heavily on Poisson arrivals, because Poisson arrivals interact cleanly with branching-type service disciplines and switch-over periods. Boon, Boxma, and Winands highlighted a clean open problem where the model is already fixed: keep the cyclic polling structure and branching-type disciplines, let deterministic switch-over times become large, and replace Poisson arrivals by general renewal arrivals. For Poisson arrivals, the large switch-over-time limit is well understood and the system behaves like a deterministic fluid cycle plus a simple residual-cycle effect. The conjecture is that the same deterministic-cycle limit should survive renewal arrivals. The challenge is that renewal arrivals break the branching and independence identities used in the Poisson proof.",
+  "short_statement": "Prove the large switch-over deterministic-cycle limit for branching-type polling systems with renewal arrivals.",
+  "full_statement": "Consider an $N$-queue cyclic polling system. A single server visits queues in the fixed order $1,2,\\ldots,N,1,\\ldots$; queue $i$ has iid service times with finite mean, a branching-type service discipline such as gated or exhaustive service, and renewal arrivals with rate $\\lambda_i$. Switch-over time from queue $i$ to queue $i+1$ is deterministic and equals $r s_i$, where $s_i>0$ is fixed and $r\\to\\infty$. Assume the usual stability condition that total load is less than one. For Poisson arrivals, the scaled waiting-time and queue-length processes converge to a deterministic fluid cycle plus a residual-cycle term. The open problem asks whether the same large-switch-over limit holds for independent renewal arrivals, and if not, to identify the additional renewal-age or residual-life terms that change the limit.",
+  "open_problem": "Prove or disprove that cyclic branching-type polling systems with general renewal arrivals have the same large deterministic switch-over-time limit as the corresponding Poisson-arrival systems.",
+  "known_results": "For branching-type polling systems with Poisson arrivals, Winands proves the large deterministic switch-over-time asymptotics: as switch-over times grow proportionally, waiting times and queue lengths converge after scaling to a deterministic cyclic limit with a residual-cycle component. Boon, Boxma, and Winands identify the renewal-arrival extension as an open problem, because the Poisson proof uses branching and independence identities that are not available for general renewal processes. Approximation work for renewal-arrival polling systems combines light-traffic, heavy-traffic, and interpolation ideas, giving useful formulas but not a rigorous exact large-switch-over limit. The open question is therefore whether renewal variability washes out at the large-switch-over scale, or whether residual-life effects can change the limiting cycle.",
+  "status": "open",
+  "where_posed": {
+    "text": "Stated as the second open problem in Boon, Boxma, and Winands, 'On open problems in polling systems'.",
+    "url": "https://arxiv.org/abs/1408.0142",
+    "quote": "",
+    "location": "Open Problem 2"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The Poisson-arrival large switch-over limit is solved. Renewal-arrival approximations exist, but the exact deterministic-cycle limit remains open.",
+    "links": [
+      {
+        "title": "On open problems in polling systems",
+        "url": "https://arxiv.org/abs/1408.0142"
+      },
+      {
+        "title": "Closed-Form Waiting Time Approximations for Polling Systems",
+        "url": "https://arxiv.org/abs/1408.0134"
+      }
+    ]
+  },
+  "importance": 7,
+  "difficulty": 8,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "A renewal-arrival distribution with persistent scaled fluctuations could disprove the conjecture. Finite simulations may suggest such distributions but cannot prove the asymptotic behavior alone.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Search can test renewal distributions with high variability, lattice effects, or long-range residual-life behavior. The proof likely needs renewal-process functional laws of large numbers and polling fluid limits.",
+  "literature": {
+    "synthesis": "The Poisson model benefits from distributional identities that make queue lengths at polling epochs behave like a branching process with immigration. Renewal arrivals remove that exact structure because counts in future intervals depend on the current renewal age. On the other hand, when switch-over times scale like $r$, each cycle contains many renewals, so a law-of-large-numbers fluid picture should dominate local renewal variability. The conjecture is plausible but not automatic: a proof must control renewal ages, visit lengths, and service-generated cycle-length randomness uniformly over the whole cycle. The remaining gap is to replace Poisson branching machinery with renewal-fluid or regenerative arguments strong enough to produce the same deterministic-cycle limit.",
+    "reviewed": [
+      {
+        "ref": "Marko Boon, Onno Boxma, and Erik Winands, 'On open problems in polling systems', Queueing Systems 2011 / arXiv 2014",
+        "result": "Poses the renewal-arrival large switch-over limit problem and explains why Poisson techniques do not directly apply.",
+        "relevance": "poses-problem",
+        "url": "https://arxiv.org/abs/1408.0142"
+      },
+      {
+        "ref": "Erik M. M. Winands, 'Branching-type polling systems with large switch-over times', Queueing Systems 2011",
+        "result": "Solves the large switch-over asymptotics for Poisson arrivals and branching-type disciplines.",
+        "relevance": "solves-special-case",
+        "url": "https://doi.org/10.1007/s11134-011-9247-9"
+      },
+      {
+        "ref": "Marko Boon, Erik Winands, Ivo Adan, and Sandra van Wijk, 'Closed-Form Waiting Time Approximations for Polling Systems', arXiv 2014",
+        "result": "Develops approximations for polling systems with renewal arrivals using light- and heavy-traffic limits.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/1408.0134"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Try to formulate a fluid limit at polling epochs under renewal arrivals and prove state-space collapse to a deterministic cycle. Stress-test the conjecture with renewal distributions having high variability or lattice structure.",
+    "verification_notes": "A proof must state the allowed renewal assumptions, such as nonlattice or finite-variance conditions, and must handle renewal-age effects explicitly. Results for Poisson, phase-type, or Markovian-arrival processes do not settle the stated renewal problem unless they include a density or approximation argument with uniform error as $r\\to\\infty$. The scaling should be specified for waiting times, queue lengths, and cycle position. A counterexample must produce a renewal input satisfying the stated stability and moment assumptions and show a nonvanishing discrepancy in the scaled large-switch-over limit rather than only a finite-$r$ simulation effect.",
+    "machine_checkable": true
+  },
+  "tags": [
+    "queueing",
+    "polling systems",
+    "renewal arrivals",
+    "fluid limits",
+    "applied probability"
+  ]
+}

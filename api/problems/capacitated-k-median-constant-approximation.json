@@ -1,0 +1,134 @@
+{
+ "number": 155,
+ "ref": "ORDOS-155",
+ "id": "capacitated-k-median-constant-approximation",
+ "title": "Polynomial-time constant approximation for capacitated $k$-median",
+ "collection": "Operations Research",
+ "area": "Facility Location",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "capacitated k-median",
+  "facility location",
+  "clustering",
+  "approximation algorithms",
+  "capacity constraints"
+ ],
+ "short_statement": "Does hard-capacitated metric $k$-median admit a polynomial-time constant-factor approximation that violates neither capacities nor the number of open facilities?",
+ "open_problem": "Bicriteria algorithms that open more than $k$ facilities or exceed capacities do not resolve the problem, and fixed-parameter algorithms whose running time is exponential in $k$ do not resolve the polynomial-time question.",
+ "background": "Facility location and clustering are core operations research models. The uncapacitated $k$-median problem has a well-developed constant-approximation theory, but realistic service systems often impose capacities: a warehouse, clinic, server, or school cannot serve arbitrarily many clients. Hard capacities are the most natural version when a location can be opened only once. They also create the main algorithmic obstacle. In uncapacitated clustering, one can move clients independently once centers are chosen; in hard-capacitated clustering, moving a client into one facility may force a chain of reassignment moves because capacity slots are scarce. Many algorithms obtain constants by slightly violating capacities or opening extra centers, which is often unacceptable in planning applications. The unresolved problem is therefore exactly aligned with OR practice: can one preserve both operational constraints and still obtain a constant worst-case guarantee in polynomial time?",
+ "full_statement": "In the hard-capacitated metric $k$-median problem, the input consists of clients $C$, candidate facility locations $F$, a metric distance $d$ on $C\\cup F$, an integer $k$, and capacities $u_f$ for facilities. A feasible solution opens at most $k$ facilities, opens each facility location at most once, and assigns every client $c\\in C$ to an open facility $f$ so that no facility receives more than $u_f$ clients. The objective is to minimize total assignment cost $\\sum_{c\\in C} d(c,\\phi(c))$. Uniform capacitated $k$-median is the special case $u_f=U$ for all $f$; nonuniform capacities allow arbitrary $u_f$. The open problem is to give a polynomial-time $O(1)$-approximation for general metric hard-capacitated $k$-median without violating either the capacity constraints or the cardinality constraint, or prove that no such approximation exists under a standard complexity assumption. Bicriteria algorithms that open more than $k$ facilities or exceed capacities do not resolve the problem, and fixed-parameter algorithms whose running time is exponential in $k$ do not resolve the polynomial-time question.",
+ "known_results": "Uniform hard-capacitated $k$-median has been called a notorious open problem. Shi Li went beyond the natural LP relaxation, whose integrality gap is unbounded even with substantial cardinality or capacity violation, and obtained an algorithm with a $(1+\\varepsilon)$ violation of the number of open facilities and an approximation factor exponential in $1/\\varepsilon^2$. Adamczyk, Byrka, Marcinkowski, Meesum, and Wlodarczyk gave a fixed-parameter constant approximation running in $2^{O(k\\log k)}n^{O(1)}$ time and preserving both capacities and cardinality, with ratio $7+\\varepsilon$. Cohen-Addad and Li improved the FPT approximation to $3+\\varepsilon$ for capacitated $k$-median in general metrics and obtained PTAS-type results for high-dimensional Euclidean inputs in FPT time. These results show that constant approximation is possible when exponential dependence on $k$ is allowed. However, the best polynomial-time approximation for general metrics remains logarithmic in $k$ for the hard-capacitated setting without violations, and no matching hardness result rules out a constant. Dai and Shi Li's October 2026 preprint gives hard-capacity bicriteria algorithms in $\\operatorname{poly}(n,1/\\epsilon)$ time: factor $O(\\epsilon^{-5})$ with at most $(1+\\epsilon)k$ distinct facilities and exact capacities, or factor $O(\\epsilon^{-6})$ with at most $k$ facilities and capacity ceiling $\\lceil(1+\\epsilon)u_f\\rceil$. Neither satisfies both original constraints.",
+ "progress": {
+  "state": "partial",
+  "summary": "FPT constant-factor algorithms now preserve both capacities and cardinality, and bicriteria polynomial-time algorithms are known. The unresolved target is a truly polynomial-time constant approximation for general metric hard-capacitated $k$-median with no violations. New 2026 hard-capacity bicriteria results do not settle this target.",
+  "links": [
+   {
+    "title": "FPT constant approximation",
+    "url": "https://arxiv.org/abs/1809.05791"
+   },
+   {
+    "title": "FPT capacitated clustering improvements",
+    "url": "https://arxiv.org/abs/2208.14129"
+   },
+   {
+    "title": "Dai and Li, Simpler Algorithms for Capacitated k-Median with (1+epsilon)-Violations Using New Inequalities, arXiv:2610.23348 (2026)",
+    "url": "https://arxiv.org/html/2610.23348v1"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Integrality gaps and bad examples for candidate relaxations are finite metric-capacity instances. Small instance search can directly test LPs, local-search neighborhoods, and rounding conjectures.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Automated search can generate capacitated clustering instances, solve exact IPs for small cases, and compare LP relaxations or local-search moves to discover new gap structures.",
+ "literature": {
+  "synthesis": "The capacitated $k$-median literature splits into bicriteria polynomial-time algorithms, stronger relaxations, and fixed-parameter algorithms. The natural LP fails badly; Shi Li's work demonstrated that one can move beyond it, but still pays with cardinality violation. FPT algorithms show that the combinatorial difficulty can be controlled when $k$ is treated as a parameter, culminating in constant factors that preserve all constraints. These results leave a sharp algorithmic gap: the known constant factors are not polynomial in $k$, while the known polynomial-time guarantees either violate constraints or are not constant. A breakthrough may require a relaxation whose extreme points have enough transfer structure to rebalance capacities globally, or a new hardness reduction that explains why exact preservation of both constraints is qualitatively harder than uncapacitated $k$-median. Dai and Shi Li's October 2026 preprint gives hard-capacity bicriteria algorithms in $\\operatorname{poly}(n,1/\\epsilon)$ time: factor $O(\\epsilon^{-5})$ with at most $(1+\\epsilon)k$ distinct facilities and exact capacities, or factor $O(\\epsilon^{-6})$ with at most $k$ facilities and capacity ceiling $\\lceil(1+\\epsilon)u_f\\rceil$. Neither satisfies both original constraints.",
+  "reviewed": [
+   {
+    "ref": "Li, 'On Uniform Capacitated k-Median Beyond the Natural LP Relaxation', TALG 2016",
+    "result": "Gives algorithms beyond the natural LP and shows severe limitations of the natural relaxation.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1409.6739"
+   },
+   {
+    "ref": "Adamczyk et al., 'Constant factor FPT approximation for capacitated k-median', APPROX/RANDOM 2019",
+    "result": "Gives a $7+\\varepsilon$ FPT-time approximation preserving both constraints.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1809.05791"
+   },
+   {
+    "ref": "Cohen-Addad and Li, 'On the Fixed-Parameter Tractability of Capacitated Clustering', arXiv 2022",
+    "result": "Improves FPT approximations to $3+\\varepsilon$ for metric capacitated $k$-median.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2208.14129"
+   },
+   {
+    "ref": "Dai and Li, Simpler Algorithms for Capacitated k-Median with (1+epsilon)-Violations Using New Inequalities, arXiv:2610.23348 (2026)",
+    "result": "Section 1.1 gives explicit hard-capacity bicriteria guarantees; prior soft-capacity results are separately tabulated.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/html/2610.23348v1"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Explore strengthened configuration or transportation relaxations that encode reassignment chains among saturated facilities. Search for finite gap instances for natural LPs and for local-search algorithms with bounded swap sizes. Try decomposing the instance into clusters where capacity deficits can be routed through a sparse exchange graph.",
+  "verification_notes": "A claimed algorithm must run in polynomial time in the full input size, including $k$, and must open at most $k$ facilities while respecting every capacity exactly. A verifier should distinguish hard capacities from soft capacities, and exact feasibility from bicriteria violations. For lower bounds, check whether the reduction rules out constant approximation without violations or only rules out PTAS-type guarantees. For LP-gap claims, provide exact metric distances, capacities, and rational primal/dual certificates.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "Stated in Adamczyk et al., 'Constant factor FPT approximation for capacitated k-median', and reiterated by Cohen-Addad and Li, 'On the Fixed-Parameter Tractability of Capacitated Clustering'.",
+  "url": "https://arxiv.org/abs/1809.05791",
+  "quote": "Capacitated k-median is one of the few outstanding optimization problems for which the existence of a polynomial time constant factor approximation algorithm remains an open problem.",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Marek Adamczyk, Jaroslaw Byrka, Jan Marcinkowski, Syed M. Meesum, Michal Wlodarczyk",
+  "title": "Constant factor FPT approximation for capacitated k-median",
+  "year": 2019,
+  "venue": "APPROX/RANDOM",
+  "url": "https://arxiv.org/abs/1809.05791"
+ },
+ "additional_refs": [
+  {
+   "authors": "Shi Li",
+   "title": "On Uniform Capacitated k-Median Beyond the Natural LP Relaxation",
+   "year": 2016,
+   "venue": "ACM Transactions on Algorithms",
+   "url": "https://arxiv.org/abs/1409.6739"
+  },
+  {
+   "authors": "Vincent Cohen-Addad, Jason Li",
+   "title": "On the Fixed-Parameter Tractability of Capacitated Clustering",
+   "year": 2022,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2208.14129"
+  },
+  {
+   "authors": "Ameet Gadekar, Suhas Thejaswi",
+   "title": "Capacitated Fair-Range Clustering: Hardness and Approximation Algorithms",
+   "year": 2025,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2505.15905"
+  },
+  {
+   "authors": "Han Dai, Shi Li",
+   "title": "Simpler Algorithms for Capacitated k-Median with (1 + epsilon)-Violations Using New Inequalities",
+   "year": 2026,
+   "venue": "arXiv preprint",
+   "url": "https://arxiv.org/abs/2610.23348"
+  }
+ ],
+ "bibtex": "@misc{Adamczyk2019,\n  author = {Marek Adamczyk and Jaroslaw Byrka and Jan Marcinkowski and Syed M. Meesum and Michal Wlodarczyk},\n  title = {Constant factor FPT approximation for capacitated k-median},\n  year = {2019},\n  howpublished = {APPROX/RANDOM},\n  url = {https://arxiv.org/abs/1809.05791},\n  note = {Source of ORdős Problem ORDOS-155}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/capacitated-k-median-constant-approximation.html",
+  "api": "https://ordos-problems.github.io/api/problems/capacitated-k-median-constant-approximation.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

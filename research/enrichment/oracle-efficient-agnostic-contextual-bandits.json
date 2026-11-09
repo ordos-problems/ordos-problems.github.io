@@ -1,0 +1,82 @@
+{
+  "id": "oracle-efficient-agnostic-contextual-bandits",
+  "background": "A contextual-bandit learner uses the observed context to choose an action but sees only that action's reward. Regression oracles offer a practical way to reuse supervised-learning tools. A correct reward model, an approximately correct reward model, and a good policy induced by an inaccurate model are different assumptions. The old entry blurred these distinctions and treated already available misspecification guarantees as unresolved. This audit retains the topic with an explicit scope warning rather than inventing a new theorem-level gap.",
+  "short_statement": "Offline-regression reductions already tolerate misspecification in important stochastic models. The remaining scope must separate that solved case from fully agnostic best-policy regret and large-action oracle limitations.",
+  "full_statement": "There are two different contextual-bandit targets. In the finite-action stochastic model, $(x_t,r_t)$ are iid, $a_t\\in[K]$, and only $r_t(a_t)\\in[0,1]$ is observed. An offline squared-loss regression oracle fits a reward class $\\mathcal F$. If its prediction error under every relevant sampling kernel is bounded by $B+\\xi(n,\\delta)$, Safe-FALCON already provides regret to the optimal policy of the form $\\widetilde O(T\\sqrt{KB}+T\\sqrt{K\\xi(T,\\delta)})$, under its stated oracle assumptions. Asking only for an offline-regression algorithm that degrades gracefully with misspecification is therefore not open.\n\nA fully agnostic best-in-class policy target is different: define $\\Pi_\\mathcal F=\\{x\\mapsto\\arg\\max_a f(x,a):f\\in\\mathcal F\\}$ with fixed tie-breaking, and compare to $\\max_{\\pi\\in\\Pi_\\mathcal F}\\mathbb E\\sum_t r_t(\\pi(x_t))$ without assuming small reward-prediction error. Cost-sensitive policy optimization and square-loss regression are different oracle models. For large action spaces, finding exploration distributions also has a computational cost beyond fitting a predictor.\n\nThis record currently combines those directions. A proposed residual theorem must specify the comparator, oracle interface, query budget, and structural assumptions. The broad request for a 'canonical agnostic theorem' is not yet a sufficiently precise verified open conjecture.",
+  "open_problem": "The finite-action misspecification-tolerant reduction is known. A narrower residual question about fully agnostic policy regret or large-action exploration must first fix its oracle model and exact guarantee; the previous blanket open claim is withdrawn.",
+  "known_results": "Krishnamurthy, Hadad, and Athey (ICML 2021, Assumption 1 and Theorem 1) establish the Safe-FALCON guarantee displayed above; their Theorem 2 gives a misspecification lower bound for policies in the convex hull of their kernel class $\\mathcal K(\\mathcal F)$, not for every conceivable use of a regression oracle. Thus robustness beyond realizability is already established without an online or constrained regression oracle.\n\nQin and Zhang (COLT 2026, arXiv v2) extend offline-regression reductions to large action spaces via DOEC and exploration-design conditions. Appendix D.1, Corollary 8, gives $\\widetilde O(\\sqrt{TD\\log(|\\mathcal F|/\\delta)}+T\\sqrt{BD})$ under uniform squared misspecification $B$ and the stated design assumptions. Its exploration parameter uses $B$. These results do not establish an unrestricted best-policy guarantee from a bare regression oracle.",
+  "status": "partially resolved",
+  "where_posed": {
+    "text": "Residual open direction after Simchi-Levi and Xu's realizable oracle-efficient contextual bandit reduction.",
+    "url": "https://arxiv.org/abs/2003.12699",
+    "quote": "",
+    "location": "Discussion of realizability assumption and follow-up directions"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "2026-11-09: replaced the blanket open claim with known finite-action guarantees and the 2026 extension. Residual scope needs editorial refinement before treating this as a clean open problem.",
+    "links": [
+      {
+        "title": "Safe-FALCON, ICML 2021",
+        "url": "https://proceedings.mlr.press/v139/krishnamurthy21a.html"
+      },
+      {
+        "title": "Qin and Zhang, COLT 2026 / arXiv v2",
+        "url": "https://arxiv.org/abs/2602.09456"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Finite contextual bandit instances can refute overly strong oracle reductions or expose unavoidable oracle assumptions. Lower bounds still need formal oracle or statistical models.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Search can test reductions on synthetic misspecified classes and identify failure modes of realizable algorithms. The core resolution requires regret proofs and possibly oracle lower bounds.",
+  "literature": {
+    "synthesis": "Neither calling a model agnostic nor requesting a simpler theorem establishes an open mathematical question. The unresolved target must state what known algorithms fail to achieve. The finite-action misspecification model, arbitrary best-policy comparison, and large-action exploration design should be curated separately.",
+    "reviewed": [
+      {
+        "ref": "Sanath Kumar Krishnamurthy, Vitor Hadad, Susan Athey, Adapting to Misspecification in Contextual Bandits with Offline Regression Oracles, ICML 2021",
+        "result": "Assumption 1 and Theorems 1/2 supply upper and lower bounds in the specified misspecification/oracle model.",
+        "relevance": "solves-special-case",
+        "url": "https://proceedings.mlr.press/v139/krishnamurthy21a/krishnamurthy21a.pdf"
+      },
+      {
+        "ref": "Hao Qin, Chicheng Zhang, Taming the Monster Every Context: Complexity Measure and Unified Framework for Offline-Oracle Efficient Contextual Bandits, COLT 2026",
+        "result": "DOEC framework; Appendix D.1 Corollary 8 explicitly covers uniform misspecification under its assumptions.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/html/2602.09456v2"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "First formulate a specific separation from the cited theorems. A lower bound should formalize the learner's oracle access, not merely show failure of one algorithm.",
+    "verification_notes": "Match the benchmark, distributional assumptions, misspecification definition, known versus unknown error bound, and exploration-design access. Count computational work outside regression calls. Do not present Safe-FALCON's existing result as a new solution.",
+    "machine_checkable": false
+  },
+  "tags": [
+    "contextual bandits",
+    "oracle efficiency",
+    "online learning",
+    "misspecification",
+    "regret"
+  ],
+  "confidence": "low",
+  "notes_for_maintainer": "2026-11-09: full-text checks of Safe-FALCON Assumption 1 and Theorems 1/2, OE2D Appendix D.1 Corollary 8. Confidence lowered because the residual broad 'canonical theorem' is underspecified, not because the cited positive results are uncertain.",
+  "additional_refs": [
+    {
+      "authors": "Sanath Kumar Krishnamurthy, Vitor Hadad, Susan Athey",
+      "title": "Adapting to Misspecification in Contextual Bandits with Offline Regression Oracles",
+      "year": 2021,
+      "venue": "ICML, PMLR 139:5805-5814",
+      "url": "https://proceedings.mlr.press/v139/krishnamurthy21a.html"
+    },
+    {
+      "authors": "Hao Qin, Chicheng Zhang",
+      "title": "Taming the Monster Every Context: Complexity Measure and Unified Framework for Offline-Oracle Efficient Contextual Bandits",
+      "year": 2026,
+      "venue": "COLT; arXiv:2602.09456v2",
+      "url": "https://arxiv.org/abs/2602.09456"
+    }
+  ]
+}

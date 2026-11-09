@@ -2,25 +2,98 @@
  "number": 83,
  "ref": "ORDOS-083",
  "id": "dynamic-barter-kidney-exchange-optimal-policy",
- "title": "Optimal dynamic policy for kidney exchange with long cycles and chains",
+ "title": "Optimal dynamic policy for kidney exchange with heterogeneous cycles and chains",
  "collection": "Operations Management",
  "area": "Dynamic Matching",
- "status": "open",
+ "status": "partially resolved",
  "confidence": "medium",
  "tags": [
   "kidney exchange",
   "dynamic barter",
   "matching",
   "greedy",
-  "operations"
+  "operations",
+  "greedy policies",
+  "operations management",
+  "kidney-exchange",
+  "dynamic-barter",
+  "greedy-policies",
+  "operations-management"
  ],
- "short_statement": "In a dynamically arriving kidney-exchange pool, is matching immediately (greedily) optimal once exchanges via cycles of length $\\ge 3$ or altruistic-donor chains are allowed - and if not, what is the optimal or best competitive policy?",
- "open_problem": "determine the optimal (or best competitive) dynamic policy when cycles of length $\\ge 3$ and/or chains are allowed in general graphs, and quantify when batching/waiting strictly beats greedy.",
- "full_statement": "Incompatible patient–donor pairs arrive over time to an exchange pool; a directed compatibility graph forms among present pairs. A transplant is realized by clearing a directed cycle of length at most $L$ (e.g. $L=2$ pairwise swaps or $L=3$ three-way exchanges) or a chain initiated by a non-directed (altruistic) donor; cleared pairs leave. Pairs may also depart/perish if unmatched. The planner chooses when to match and which cycles/chains to clear, to maximize the number (or weighted value) of transplants, or minimize average waiting. Anderson–Ashlagi–Gamarnik–Kanoria (2017) show in a random-graph dynamic model that, for $L=2$, greedy (immediate) matching minimizes average waiting, and for $L=3$ greedy is optimal within a broad class. Question: determine the optimal (or best competitive) dynamic policy when cycles of length $\\ge 3$ and/or chains are allowed in general graphs, and quantify when batching/waiting strictly beats greedy.",
- "known_results": "For 2-way exchange, greedy minimizes waiting (Ünver 2010; Anderson et al. 2017). For 3-way, greedy is optimal within a broad policy class. With longer cycles, chains, heterogeneous types, or general compatibility structure, the optimal policy and its competitive ratio are open; recent work studies cost-balancing and 'when to match' principles.",
+ "short_statement": "Greedy clearing is near optimal in homogeneous dynamic barter; characterize optimality and guarantees under heterogeneous kidney-exchange structure, chains, failures, and finite pools.",
+ "open_problem": "Extend the near-optimality theory for greedy dynamic barter exchange beyond homogeneous random graphs: characterize when greedy, batching, threshold, or priority policies are optimal or constant-competitive in heterogeneous kidney-exchange models with cycles, chains, departures, and failures.",
+ "background": "Dynamic kidney exchange is a canonical operational matching problem with a clean mathematical core. Static exchange already involves difficult cycle-packing constraints, while dynamics add the choice of whether to clear immediately or wait for a thicker market. Anderson, Ashlagi, Gamarnik, and Kanoria studied a homogeneous sparse random-graph barter model and found a striking conclusion: for two-way cycles, for two- and three-way cycles, and for chains initiated by altruistic agents, the cost of waiting to thicken the market outweighs the benefit, so greedy clearing is near optimal for average waiting time. Real kidney-exchange pools, however, are not homogeneous. They include easy- and hard-to-match pairs, blood/tissue compatibility structure, logistical cycle caps, edge failures after crossmatch, and fairness constraints for highly sensitized patients. Later work on sparse heterogeneous pools and imbalanced markets shows that these features can change the value of waiting, chains, and batching. The remaining problem is to retain clean policy theorems while moving beyond the homogeneous random graph.",
+ "full_statement": "Consider a dynamic kidney-exchange or barter pool. Patient-donor pairs arrive over time. A directed compatibility edge $i\\to j$ means the donor of pair $i$ can donate to the patient of pair $j$. At a clearing time, the platform may select vertex-disjoint directed cycles of length at most $L$, and possibly chains initiated by altruistic donors or non-directed donors. Cleared pairs leave; unmatched pairs wait and may depart or fail depending on the model. The objective may be to maximize expected transplants, minimize average waiting time, minimize patient loss, or optimize a weighted fairness objective. In homogeneous sparse random barter graphs, greedy clearing is near optimal for several exchange technologies. The open problem is to characterize the optimal policy, or tight approximation/asymptotic guarantees, in heterogeneous type-based kidney-exchange models with hard-to-match patients, finite pool sizes, stochastic edge failures, and mixed cycle-chain technologies.",
+ "known_results": "Unver introduced dynamic kidney exchange and early timing principles. Anderson, Ashlagi, Gamarnik, and Kanoria prove that in a homogeneous random barter model, greedy policies are near optimal for two-way cycles, two/three-way cycles, and chains, and that allowing three-way cycles or chains can sharply reduce waiting when compatibility is sparse. Ashlagi, Jaillet, and Manshadi analyze dynamic sparse heterogeneous pools with highly sensitized patients and show that the value of waiting depends strongly on whether only two-way cycles are allowed, whether three-way cycles are allowed, and whether even one non-simultaneous chain is available. Ashlagi, Nikzad, and Strack show that in large imbalanced dynamic exchange markets, greedy can beat batching by giving shorter waits and at least as many matches. These papers leave open a unified finite, heterogeneous, failure-aware policy theory with sharp guarantees.",
+ "progress": {
+  "state": "partial",
+  "summary": "The homogeneous sparse random barter model is largely understood: greedy is near optimal and chains/three-way cycles reduce waiting. Heterogeneous, finite, failure-aware, and weighted variants still lack a unified optimal-policy theory.",
+  "links": [
+   {
+    "title": "Efficient Dynamic Barter Exchange",
+    "url": "https://pubsonline.informs.org/doi/10.1287/opre.2017.1644"
+   },
+   {
+    "title": "Kidney Exchange in Dynamic Sparse Heterogenous Pools",
+    "url": "https://arxiv.org/abs/1301.3509"
+   },
+   {
+    "title": "Matching in Dynamic Imbalanced Markets",
+    "url": "https://arxiv.org/abs/1809.06824"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Small typed compatibility graphs can refute proposed greedy or batching optimality claims. Exact dynamic programs can verify finite counterexamples in small state spaces.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Search can generate hard type systems, departure rates, or edge-failure patterns where greedy performs poorly, and can test priority rules against dynamic-programming or simulation benchmarks.",
+ "literature": {
+  "synthesis": "The initial homogeneous model gives a strong positive benchmark: delay to thicken the market often costs more than it helps, and greedy clearing is near optimal. That lesson is not automatically universal. Kidney exchange pools are heterogeneous, hard-to-match patients create bottlenecks, chains are operationally different from cycles, and compatibility edges can fail after screening. Sparse heterogeneous-pool results and imbalanced-market results show that these details affect waiting and match rates. The remaining gap is to preserve the clean model-based style while incorporating enough heterogeneity to obtain robust policy theorems and finite-pool guidance.",
+  "reviewed": [
+   {
+    "ref": "M. Utku Unver, 'Dynamic Kidney Exchange', Review of Economic Studies 2010",
+    "result": "Introduces dynamic kidney-exchange timing and matching issues.",
+    "relevance": "related-tool",
+    "url": "https://doi.org/10.1111/j.1467-937X.2009.00575.x"
+   },
+   {
+    "ref": "Ross Anderson, Itai Ashlagi, David Gamarnik, and Yash Kanoria, 'Efficient Dynamic Barter Exchange', Operations Research 2017",
+    "result": "Shows greedy clearing is near optimal in homogeneous sparse random barter models with two-way cycles, three-way cycles, and chains.",
+    "relevance": "partial-progress",
+    "url": "https://pubsonline.informs.org/doi/10.1287/opre.2017.1644"
+   },
+   {
+    "ref": "Itai Ashlagi, Patrick Jaillet, and Vahideh H. Manshadi, 'Kidney Exchange in Dynamic Sparse Heterogenous Pools', arXiv 2013",
+    "result": "Analyzes dynamic sparse heterogeneous kidney-exchange pools and shows the role of waiting, three-way cycles, and chains.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1301.3509"
+   },
+   {
+    "ref": "Itai Ashlagi, Afshin Nikzad, and Philipp Strack, 'Matching in Dynamic Imbalanced Markets', Review of Economic Studies 2023 / arXiv 2018",
+    "result": "Shows that in large imbalanced exchange markets greedy can lead to shorter waits and more matches than batching-style policies.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1809.06824"
+   },
+   {
+    "ref": "David Abraham, Avrim Blum, and Tuomas Sandholm, 'Clearing algorithms for barter exchange markets: Enabling nationwide kidney exchanges', EC 2007",
+    "result": "Provides the algorithmic cycle-packing foundation for static kidney-exchange clearing.",
+    "relevance": "background",
+    "url": "https://doi.org/10.1145/1250910.1250919"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Start with finite typed random graph models and compare greedy, batching, threshold, and priority policies by exact dynamic programming. For asymptotic work, use fluid limits by type, branching-process approximations for sparse compatibility, and queueing arguments for patient abandonment. To study failures, separate ex ante compatibility from realized successful transplants and analyze whether chains create option value that greedy ignores.",
+  "verification_notes": "A claimed policy theorem must specify cycle length, chain rules, type distribution, departure/failure model, and objective. Do not claim the homogeneous Anderson-Ashlagi-Gamarnik-Kanoria case as new progress; it is already largely resolved. A finite counterexample should list the type graph, arrival/departure rates, chain/cycle technology, and exact value comparison between greedy, batching, and the proposed policy.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "Open beyond the cases settled in Anderson, Ashlagi, Gamarnik, Kanoria, 'Efficient Dynamic Barter Exchange' (Operations Research 2017; SODA 2015).",
-  "url": "https://pubsonline.informs.org/doi/10.1287/opre.2017.1644"
+  "text": "Residual gap after Anderson, Ashlagi, Gamarnik, and Kanoria's homogeneous dynamic barter model and later heterogeneous kidney-exchange work.",
+  "url": "https://pubsonline.informs.org/doi/10.1287/opre.2017.1644",
+  "quote": "",
+  "location": "Abstract and discussion of model extensions"
  },
  "source": {
   "authors": "Ross Anderson, Itai Ashlagi, David Gamarnik, Yash Kanoria",

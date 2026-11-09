@@ -2,7 +2,7 @@
  "number": 75,
  "ref": "ORDOS-075",
  "id": "bhh-tsp-constant",
- "title": "The exact value of the Beardwood–Halton–Hammersley TSP constant",
+ "title": "The exact value of the Beardwood-Halton-Hammersley TSP constant",
  "collection": "Operations Research",
  "area": "Probabilistic Combinatorial Optimization",
  "status": "open",
@@ -11,15 +11,84 @@
   "traveling salesman problem",
   "BHH constant",
   "random Euclidean",
-  "asymptotics"
+  "asymptotics",
+  "random Euclidean optimization",
+  "probabilistic combinatorial optimization",
+  "traveling-salesman-problem",
+  "bhh-constant",
+  "random-euclidean-optimization",
+  "probabilistic-combinatorial-optimization"
  ],
- "short_statement": "For $n$ points drawn uniformly at random in the unit square, the shortest tour length divided by $\\sqrt{n}$ converges to a universal constant $\\beta$. What is the exact value of $\\beta$?",
- "open_problem": "Determine the exact value of $\\beta$ (or give matching rigorous upper and lower bounds).",
- "full_statement": "Let $X_1,\\dots,X_n$ be independent and uniformly distributed in the unit square $[0,1]^2$, and let $L_n$ denote the length of the shortest closed tour (the optimal Euclidean Traveling Salesman tour) visiting all of them. Beardwood, Halton, and Hammersley (1959) proved that there is a constant $\\beta>0$ with $L_n/\\sqrt{n}\\to\\beta$ almost surely as $n\\to\\infty$. Determine the exact value of $\\beta$ (or give matching rigorous upper and lower bounds).",
- "known_results": "Monte-Carlo estimates give $\\beta\\approx 0.7124$. The best rigorous bounds are roughly $0.6277 \\le \\beta \\le 0.9038$ (lower bound via Gaudio–Jaillet 2019 / Steele-type arguments; upper bound Carlsson–Yu 2023), with arguments suggesting the current upper-bound technique cannot go below $\\approx 0.88$. The exact value is unknown.",
+ "short_statement": "Determine the exact Beardwood-Halton-Hammersley constant for the random Euclidean TSP, or close the large gap between rigorous upper and lower bounds.",
+ "open_problem": "Compute the exact planar BHH/TSP constant $\\beta_{TSP}$, or develop new proof techniques that close the rigorous gap between lower bounds near $0.6277$ and upper bounds near $0.9037$.",
+ "background": "The Beardwood-Halton-Hammersley theorem is a foundational result in probabilistic combinatorial optimization. It says that the optimal tour length through many random planar points has a deterministic first-order growth constant, so random Euclidean TSP is asymptotically governed by geometry rather than arbitrary instance details. This constant matters as a benchmark for Euclidean optimization, vehicle routing, stochastic routing approximations, and subadditive Euclidean functionals. The difficulty is that the existence proof relies on subadditivity and coarse geometric partitioning, while the value of the constant depends on fine local structure of optimal tours. Lower bounds must certify that every tour has enough length, and upper bounds must construct tours with rigorously bounded expected length. Existing proof templates have moved slowly, and the newest band-crossover upper-bound work suggests that one well-developed band-traversal approach has limited headroom.",
+ "full_statement": "Let $X_1,\\ldots,X_n$ be independent uniform random points in $[0,1]^2$, and let $L_n$ be the length of the shortest Euclidean traveling-salesman tour through those points. Beardwood, Halton, and Hammersley proved that $L_n/\\sqrt n$ converges almost surely to a universal constant $\\beta_{TSP}$, now called the planar Euclidean TSP constant. The theorem proves existence but not the exact value. Simulations place the constant near $0.71$, while the best rigorous bounds remain much wider: recent lower bounds are around $0.6277$ and recent upper bounds are around $0.9037$. The open problem is to determine $\\beta_{TSP}$ exactly, or at least to produce substantially sharper certified upper and lower bounds with rigorous asymptotic error control. Natural variants ask the same question in other dimensions or for related Euclidean functionals, but this record focuses on the two-dimensional TSP constant.",
+ "known_results": "Beardwood, Halton, and Hammersley proved almost-sure convergence and gave early bounds. Later computational experiments, including the Concorde-era numerical study by Applegate, Bixby, Chvatal, and Cook, estimate the constant near $0.712$. Gaudio and Jaillet improved the rigorous lower bound to $0.6277$ by building on geometric lower-bound ideas. Carlsson and Yu improved the rigorous upper bound to about $0.9038$ using a computer-aided band construction. Gaudio and Guan improved the upper bound slightly to $0.90367$ using band crossovers and also gave evidence that the current band-traversal paradigm may not go much below about $0.88$. The exact constant remains unknown, and the rigorous bounds are still far from the simulated value.",
+ "progress": {
+  "state": "partial",
+  "summary": "Recent certified bounds improved slightly, with the best 2026 upper bound reported as $0.90367$. The gap to numerical estimates remains large.",
+  "links": [
+   {
+    "title": "An Improved Lower Bound for the Traveling Salesman Constant",
+    "url": "https://arxiv.org/abs/1907.02390"
+   },
+   {
+    "title": "An Improved Upper Bound for the Euclidean TSP Constant Using Band Crossovers",
+    "url": "https://arxiv.org/abs/2602.11250"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 9,
+ "counterexample_suitability": "low",
+ "counterexample_rationale": "The problem asks for an asymptotic constant, not a universal conjecture refutable by one finite instance. Computations can improve candidate bounds but do not themselves determine the limit.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Search can discover better constructive tour templates, partitions, local crossing patterns, or lower-bound certificates. Computer-aided proof is already part of the best upper-bound literature.",
+ "literature": {
+  "synthesis": "The BHH theorem converts random Euclidean TSP into the study of a universal constant. The lower-bound side uses geometric inequalities that every tour must satisfy, while the upper-bound side constructs tours by partitioning the square and bounding expected connection costs. Both approaches have improved slowly. The 2026 band-crossover work is useful because it both nudges the upper bound and diagnoses limitations of the current band-traversal method. The main remaining gap is methodological: existing certified bounds are far from the simulated value, so progress likely needs new local geometric inequalities, richer constructive schemes, or a computer-assisted proof architecture with much tighter certified error.",
+  "reviewed": [
+   {
+    "ref": "Jillian Beardwood, J. H. Halton, and J. M. Hammersley, 'The shortest path through many points', Proceedings of the Cambridge Philosophical Society 1959",
+    "result": "Proves almost-sure convergence of $L_n/\\sqrt n$ to a universal TSP constant.",
+    "relevance": "poses-problem",
+    "url": "https://doi.org/10.1017/S0305004100034095"
+   },
+   {
+    "ref": "David L. Applegate, Robert E. Bixby, Vasek Chvatal, and William J. Cook, 'The Traveling Salesman Problem: A Computational Study', Princeton University Press 2011",
+    "result": "Reports high-quality computational estimates for random Euclidean TSP constants, placing the planar constant near $0.71$.",
+    "relevance": "numerical-evidence",
+    "url": "https://press.princeton.edu/books/hardcover/9780691129938/the-traveling-salesman-problem"
+   },
+   {
+    "ref": "Julia Gaudio and Patrick Jaillet, 'An Improved Lower Bound for the Traveling Salesman Constant', Operations Research Letters 2020",
+    "result": "Improves the rigorous lower bound for the planar TSP constant to $0.6277$.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1907.02390"
+   },
+   {
+    "ref": "John Gunnar Carlsson and Julien Yu, 'A New Upper Bound for the Euclidean TSP Constant', INFORMS Journal on Computing 2023",
+    "result": "Gives a computer-aided upper bound around $0.9038$ using a refined band-based construction.",
+    "relevance": "partial-progress",
+    "url": "https://optimization-online.org/2023/06/a-new-upper-bound-of-the-euclidean-tsp-constant/"
+   },
+   {
+    "ref": "Julia Gaudio and Charlie K. Guan, 'An Improved Upper Bound for the Euclidean TSP Constant Using Band Crossovers', arXiv 2026",
+    "result": "Reports a rigorous upper bound $0.90367$ and analyzes limitations of current band-traversal methods.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2602.11250"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "For upper bounds, search constructive tour schemes that go beyond simple bands: adaptive partitions, local crossovers, patching rules, and certified dynamic programs over Poissonized cells. For lower bounds, look for local constraints on degrees, crossings, matching structure, or transport that every TSP tour must satisfy. Poissonization and subadditive Euclidean-functional techniques are likely necessary to pass from finite computation to asymptotic constants.",
+  "verification_notes": "A claimed bound must include rigorous error control for the asymptotic limit, not just Monte Carlo estimates. Computer-assisted proofs should expose code, interval arithmetic or certified quadrature, concentration bounds, and a derivation connecting finite-cell calculations to $\\beta_{TSP}$. Numerical estimates near $0.71$ are evidence but are not a proof of the constant.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "Originates in Beardwood–Halton–Hammersley (1959); a long-standing open problem highlighted in Steele, 'Probability Theory and Combinatorial Optimization' (1997).",
-  "url": "https://doi.org/10.1017/S0305004100034095"
+  "text": "Implicit in Beardwood-Halton-Hammersley's theorem, which proves existence of the constant without identifying it.",
+  "url": "https://doi.org/10.1017/S0305004100034095",
+  "quote": "",
+  "location": "Asymptotic constant in the main theorem"
  },
  "source": {
   "authors": "Jillian Beardwood, J. H. Halton, J. M. Hammersley",

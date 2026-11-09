@@ -1,0 +1,138 @@
+{
+  "id": "correlation-clustering-complete-graph-threshold",
+  "title": "Approximation threshold for complete-graph correlation clustering",
+  "collection": "Approximation & Discrepancy",
+  "area": "Clustering and Approximation Algorithms",
+  "tags": [
+    "correlation clustering",
+    "clustering",
+    "approximation algorithms",
+    "linear programming",
+    "data mining"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "Close the gap between the best approximation algorithms and hardness/integrality lower bounds for complete-graph correlation clustering.",
+  "full_statement": "In unweighted complete-graph correlation clustering, the input is a complete graph $K_n$ whose edges are labeled $+$ or $-$. A clustering is a partition $\\Pi$ of the vertices. Its disagreement cost is the number of positive edges whose endpoints lie in different parts of $\\Pi$ plus the number of negative edges whose endpoints lie in the same part. The objective is to minimize this disagreement cost, with no prescribed number of clusters. The open problem is to determine the polynomial-time approximability threshold of this problem. Published algorithms give constant factors well below the old factor-$2$ barrier, with recent cluster-LP/Sherali-Adams methods reaching about $1.437+\\varepsilon$. Known hardness is far weaker, around $24/23$ in the recent cluster-LP work, and the cluster-LP itself has integrality gap at least $4/3$. Close the gap: improve the approximation factor toward the true LP/hardness threshold, strengthen hardness beyond the current small constant, or identify a relaxation whose integrality gap matches the optimal achievable ratio. A July 2026 preprint by Garcia-Soriano and Schohn claims a $(1.3865+\\varepsilon)$ algorithm in this same unweighted complete-graph model; the exact threshold remains unresolved.",
+  "open_problem": "Determine the optimal approximation ratio for complete-graph correlation clustering, or substantially close the current algorithmic/hardness gap.",
+  "background": "Correlation clustering is a clean model for clustering from inconsistent pairwise similarity data. It does not require choosing the number of clusters in advance, which is why it has become a useful abstraction in data mining, record linkage, entity resolution, computational biology, and consensus clustering. The complete-graph version is the canonical model: every pair of items is labeled similar or dissimilar, and the algorithm chooses the clustering that violates as few labels as possible. The problem is also a crisp combinatorial optimization question about partition metrics, multicut polytopes, and rounding of strong relaxations. Its practical relevance makes fast algorithms important, but the repository-worthy open problem is the theorem gap: the exact approximation threshold is not known.",
+  "known_results": "Bansal, Blum, and Chawla introduced correlation clustering and gave early approximation results. Ailon, Charikar, and Newman developed the influential randomized Pivot algorithm and a $3$-approximation framework. Chawla, Makarychev, Schramm, and Yaroslavtsev gave a $2.06$-approximation for complete graphs by rounding the standard LP, nearly matching that LP's integrality gap of $2$. Cohen-Addad, Lee, and Newman, followed by Cohen-Addad, Lee, Li, and Newman, broke the factor-$2$ barrier using Sherali-Adams and preclustering ideas, reaching about $1.73$. Cao, Cohen-Addad, Lee, Li, Newman, and Vogl introduced the cluster LP, gave rounding analyses with factors $1.49$ and computationally certified $1.437$, proved a $4/3$ integrality-gap lower bound for the cluster LP, and obtained an NP-hardness ratio of $24/23$. Later work made the cluster-LP approach much faster. The central approximation gap remains: $1.437$ is far above the $24/23$ hardness and above the $4/3$ cluster-LP gap. Garcia-Soriano and Schohn (2026), Theorems 1.1-1.2 and Corollary 1.3, claim a $(1.3865+\\varepsilon)$ polynomial-time algorithm. This is a preprint improvement, not independently proof-verified here.",
+  "where_posed": {
+    "text": "The recent cluster-LP paper frames its relaxation as a candidate for capturing the approximability of correlation clustering and leaves a gap between its upper bound, integrality gap, and hardness.",
+    "url": "https://arxiv.org/abs/2404.17509",
+    "quote": "might tightly capture the approximability",
+    "location": "Abstract"
+  },
+  "source": {
+    "authors": "Nikhil Bansal, Avrim Blum, Shuchi Chawla",
+    "title": "Correlation Clustering",
+    "year": 2004,
+    "venue": "Machine Learning",
+    "url": "https://doi.org/10.1023/B:MACH.0000033116.57574.95"
+  },
+  "additional_refs": [
+    {
+      "authors": "Nir Ailon, Moses Charikar, Alantha Newman",
+      "title": "Aggregating inconsistent information: ranking and clustering",
+      "year": 2008,
+      "venue": "Journal of the ACM",
+      "url": "https://doi.org/10.1145/1391289.1391293"
+    },
+    {
+      "authors": "Shuchi Chawla, Konstantin Makarychev, Tselil Schramm, Grigory Yaroslavtsev",
+      "title": "Near Optimal LP Rounding Algorithm for Correlation Clustering on Complete and Complete k-partite Graphs",
+      "year": 2015,
+      "venue": "STOC",
+      "url": "https://arxiv.org/abs/1412.0681"
+    },
+    {
+      "authors": "Vincent Cohen-Addad, Euiwoong Lee, Shi Li, Alantha Newman",
+      "title": "Handling Correlated Rounding Error via Preclustering: A 1.73-approximation for Correlation Clustering",
+      "year": 2023,
+      "venue": "FOCS",
+      "url": "https://arxiv.org/abs/2309.17243"
+    },
+    {
+      "authors": "Nairen Cao, Vincent Cohen-Addad, Euiwoong Lee, Shi Li, Alantha Newman, Lukas Vogl",
+      "title": "Understanding the Cluster LP for Correlation Clustering",
+      "year": 2024,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/2404.17509"
+    },
+    {
+      "authors": "Nairen Cao, Vincent Cohen-Addad, Shi Li, Euiwoong Lee, David Rasmussen Lolck, Alantha Newman, Mikkel Thorup, Lukas Vogl, Shuyi Yan, Hanwen Zhang",
+      "title": "Solving the Correlation Cluster LP in Sublinear Time",
+      "year": 2025,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/2503.20883"
+    },
+    {
+      "authors": "David Garcia-Soriano, Antoine Schohn",
+      "title": "Approximate Dual Separation for the Cluster LP: a 1.387-approximation for Correlation Clustering",
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2607.27829"
+    }
+  ],
+  "enabled": true,
+  "progress": {
+    "state": "partial",
+    "summary": "Published benchmark $1.437+\\varepsilon$; July 2026 preprint claims $1.3865+\\varepsilon$. The $4/3$ cluster-LP value is a lower bound, not a proved exact gap; the threshold remains open.",
+    "links": [
+      {
+        "title": "Cluster LP",
+        "url": "https://arxiv.org/abs/2404.17509"
+      },
+      {
+        "title": "Sublinear cluster LP implementation",
+        "url": "https://arxiv.org/abs/2503.20883"
+      },
+      {
+        "title": "Garcia-Soriano and Schohn, 2026 correlation-clustering preprint, arXiv:2607.27829",
+        "url": "https://arxiv.org/html/2607.27829v1"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Integrality gaps and bad rounding examples are finite signed complete graphs with certifiable LP and integral values. Small instances can be searched exhaustively or by integer programming.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Automated search can evolve signed graphs that maximize the ratio between cluster-LP or Sherali-Adams values and true optima, or find hard instances for proposed rounding rules.",
+  "literature": {
+    "synthesis": "Correlation clustering has seen a sequence of barrier breaks. Pivot-style algorithms gave simple constant factors. The standard LP stalled near its integrality gap of $2$, and Sherali-Adams/preclustering methods pushed through that barrier to $1.73$. The cluster LP is the current organizing object: it unifies previous relaxations, gives a much better rounding factor, and has a known $4/3$ integrality-gap lower bound. Yet the algorithmic factor, LP gap, and hardness ratio are all separated. This makes the next target precise: either improve rounding closer to $4/3$, find stronger cluster-LP gap examples, or prove hardness that explains why ratios near $1$ are impossible. A 2026 preprint claims improved rounding and approximate separation, narrowing but not closing this gap.",
+    "reviewed": [
+      {
+        "ref": "Bansal, Blum, Chawla, 'Correlation Clustering', Machine Learning 2004",
+        "result": "Introduces the model and early approximation algorithms.",
+        "relevance": "related-tool",
+        "url": "https://doi.org/10.1023/B:MACH.0000033116.57574.95",
+        "relevance_detail": "background"
+      },
+      {
+        "ref": "Cohen-Addad, Lee, Li, Newman, 'Handling Correlated Rounding Error via Preclustering', FOCS 2023",
+        "result": "Improves the complete-graph approximation factor to about $1.73$.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2309.17243"
+      },
+      {
+        "ref": "Cao et al., 'Understanding the Cluster LP for Correlation Clustering', arXiv 2024",
+        "result": "Introduces the cluster LP, gives $1.49$ and $1.437$ rounding analyses, proves $4/3$ gap and $24/23$ hardness.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2404.17509"
+      },
+      {
+        "ref": "Garcia-Soriano and Schohn, 2026 correlation-clustering preprint, arXiv:2607.27829",
+        "result": "Theorems 1.1-1.2 and Corollary 1.3 claim improved approximation for unweighted complete signed graphs.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/html/2607.27829v1"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Search for cluster-LP integrality gaps, improve factor-revealing SDP analyses, or develop rounding schemes that exploit larger local structures than triangles. For hardness, try reductions that preserve complete signed-graph structure and amplify disagreement cost gaps. Computational agents can enumerate small signed graphs and solve exact IP/LP relaxations.",
+    "verification_notes": "State whether the result applies to complete graphs, complete weighted graphs, general graphs with missing edges, or constrained variants; these have different approximation landscapes. An algorithmic claim must be polynomial time for fixed $\\varepsilon$ and should specify whether it uses exponentially large LPs, Sherali-Adams rounds, or sampling. A lower-bound instance should report the exact integral optimum and relaxation value. A hardness claim must state whether it is NP-hardness, UGC-hardness, or another assumption, and the reduction must preserve the complete-graph correlation-clustering objective.",
+    "machine_checkable": true
+  },
+  "notes_for_maintainer": "Status audit 2026-11-09: Main theorem statements read. Retained the published 1.437 benchmark despite an inconsistent historical 1.485 comparison in the preprint. No certificate run."
+}

@@ -1,0 +1,117 @@
+{
+ "number": 130,
+ "ref": "ORDOS-130",
+ "id": "scheduling-communication-delays-constant-approximation",
+ "title": "Constant-Factor Approximation for Scheduling with Uniform Communication Delays",
+ "collection": "Operations Research",
+ "area": "Scheduling Theory",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "scheduling",
+  "communication delays",
+  "precedence constraints",
+  "approximation algorithms",
+  "LP hierarchies"
+ ],
+ "short_statement": "Does $P\\mid prec,c\\mid C_{\\max}$ admit a polynomial-time constant-factor approximation independent of the number of machines and the delay $c$?",
+ "open_problem": "Find a polynomial-time constant-factor approximation for $P\\mid prec,c\\mid C_{\\max}$ with uniform communication delay, or prove that no such approximation exists under a standard complexity assumption.",
+ "background": "Communication-delay scheduling models parallel computation and distributed production systems in which a successor task can start quickly if it stays on the same processor but must wait if intermediate data, materials, or setup information crosses processors. This is a natural extension of precedence-constrained scheduling, but the delay constraint couples assignment and sequencing in a way that breaks many classical list-scheduling arguments. The problem appears in longstanding scheduling open-problem lists, including the Schuurman-Woeginger list and later updates discussed by Bansal and subsequent approximation papers. It is attractive for the ORdos collection because the model is extremely crisp: a precedence DAG, identical machines, and one scalar delay. The difficulty lies not in modeling but in finding an approximation method that avoids paying a factor growing with $c$ or $m$.",
+ "full_statement": "An instance consists of jobs $J$ with processing times, $m$ identical parallel machines, a precedence DAG on $J$, and a uniform communication delay $c\\ge 0$. A nonpreemptive schedule assigns each job to a machine and start time. If $i\\prec j$ and $i,j$ are scheduled on the same machine, then $j$ may start after $i$ completes; if they are scheduled on different machines, then $j$ may start only at least $c$ time units after $i$ completes. The objective is to minimize $C_{\\max}$. The open problem is whether there is a polynomial-time $O(1)$-approximation for $P\\mid prec,c\\mid C_{\\max}$, where the approximation factor is independent of $m$, $n$, and $c$. A stronger resolution would identify the correct asymptotic approximability, perhaps matching a hardness threshold.",
+ "known_results": "Graham-style list scheduling gives factors that grow with the communication delay. Davies, Kulkarni, Rothvoss, Tarnawski, and Zhang gave a polynomial-time $O(\\log c\\cdot \\log m)$ approximation using Sherali-Adams liftings and randomized clustering, a major improvement over delay-linear bounds but still not constant. For non-uniform communication delays, Davies, Kulkarni, Rothvoss, Sandeep, Tarnawski, and Zhang proved logarithmic hardness under standard quasi-polynomial-time assumptions, showing that the broader delay model cannot have the same constant-factor behavior. Kulkarni, Li, Tarnawski, and Ye developed hierarchy-based algorithms for related precedence and communication-constrained settings. As of the 2026 check, the uniform-delay constant-factor question remains the clean unresolved target.",
+ "progress": {
+  "state": "partial",
+  "summary": "The best source-checked guarantee here is polylogarithmic in $c$ and $m$ for uniform delays. Non-uniform delays have logarithmic hardness, so the uniform case is the meaningful remaining constant-factor target.",
+  "links": [
+   {
+    "title": "O(log c log m) approximation",
+    "url": "https://arxiv.org/abs/2004.09682"
+   },
+   {
+    "title": "Non-uniform delay hardness",
+    "url": "https://arxiv.org/abs/2105.00111"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "Lower bounds and integrality-gap examples may be expressible as finite precedence DAGs with delay values, so computational search could help. A full impossibility result would still need a complexity-theoretic reduction.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Search can test LP gaps, clustering failures, and small hard precedence structures. It may also suggest rounding rules that beat known logarithmic dependence.",
+ "literature": {
+  "synthesis": "The central line of progress uses lift-and-round methods: a Sherali-Adams solution induces a semimetric over jobs, and randomized clustering turns fractional precedence/assignment information into a schedule. This yields $O(\\log c\\log m)$, which is qualitatively different from old delay-linear guarantees but still falls short of the open constant factor. The non-uniform-delay hardness paper clarifies that arbitrary edge delays are substantially harder and introduces UMPS as a hardness engine. That negative result sharpens the uniform-delay problem rather than resolving it: the remaining question is whether a single common delay contains enough structure for constant approximation, or whether a different hardness construction can survive the uniformity constraint.",
+  "reviewed": [
+   {
+    "ref": "Sami Davies, Janardhan Kulkarni, Thomas Rothvoss, Jakub Tarnawski, Yihao Zhang, 'Scheduling with Communication Delays via LP Hierarchies and Clustering', arXiv 2020",
+    "result": "Gives an $O(\\log c\\cdot\\log m)$ approximation for uniform delay scheduling.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2004.09682"
+   },
+   {
+    "ref": "Sami Davies, Janardhan Kulkarni, Thomas Rothvoss, Sai Sandeep, Jakub Tarnawski, Yihao Zhang, 'On the Hardness of Scheduling With Non-Uniform Communication Delays', arXiv 2021",
+    "result": "Proves logarithmic hardness for non-uniform communication delays under standard assumptions.",
+    "relevance": "hardness",
+    "url": "https://arxiv.org/abs/2105.00111"
+   },
+   {
+    "ref": "Janardhan Kulkarni, Shi Li, Jakub Tarnawski, Minwei Ye, 'Hierarchy-Based Algorithms for Minimizing Makespan under Precedence and Communication Constraints', SODA 2020",
+    "result": "Develops related hierarchy-based methods for precedence scheduling with arbitrary processing lengths and communication constraints.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/2004.13891"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Study whether the clustering analysis can be made scale-free when all delays are equal, perhaps by replacing general metric decompositions with precedence-aware decompositions. Search for integrality gaps of natural time-indexed and hierarchy relaxations with small $c$ and $m$. A hardness route should try to encode UMPS-like structure while forcing all communication delays to be identical.",
+  "verification_notes": "A claimed algorithm must have a factor bounded by an absolute constant and run in polynomial time for arbitrary $m,c,n$. A claimed lower bound must apply to the uniform-delay model, not just the non-uniform model already known to be harder.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "Restated as an outstanding Schuurman-Woeginger/Bansal open problem in Davies et al., 'Scheduling with Communication Delays via LP Hierarchies and Clustering'.",
+  "url": "https://arxiv.org/abs/2004.09682",
+  "quote": "asks whether there exists a constant-factor approximation algorithm",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Sami Davies, Janardhan Kulkarni, Thomas Rothvoss, Jakub Tarnawski, Yihao Zhang",
+  "title": "Scheduling with Communication Delays via LP Hierarchies and Clustering",
+  "year": 2020,
+  "venue": "arXiv",
+  "url": "https://arxiv.org/abs/2004.09682"
+ },
+ "additional_refs": [
+  {
+   "authors": "Sami Davies, Janardhan Kulkarni, Thomas Rothvoss, Sai Sandeep, Jakub Tarnawski, Yihao Zhang",
+   "title": "On the Hardness of Scheduling With Non-Uniform Communication Delays",
+   "year": 2021,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2105.00111"
+  },
+  {
+   "authors": "Janardhan Kulkarni, Shi Li, Jakub Tarnawski, Minwei Ye",
+   "title": "Hierarchy-Based Algorithms for Minimizing Makespan under Precedence and Communication Constraints",
+   "year": 2020,
+   "venue": "SODA",
+   "url": "https://arxiv.org/abs/2004.13891"
+  },
+  {
+   "authors": "Petra Schuurman, Gerhard J. Woeginger",
+   "title": "Polynomial time approximation algorithms for machine scheduling: ten open problems",
+   "year": 1999,
+   "venue": "Journal of Scheduling",
+   "url": "https://doi.org/10.1023/A:1009985106628"
+  }
+ ],
+ "bibtex": "@misc{Davies2020,\n  author = {Sami Davies and Janardhan Kulkarni and Thomas Rothvoss and Jakub Tarnawski and Yihao Zhang},\n  title = {Scheduling with Communication Delays via LP Hierarchies and Clustering},\n  year = {2020},\n  howpublished = {arXiv},\n  url = {https://arxiv.org/abs/2004.09682},\n  note = {Source of ORdős Problem ORDOS-130}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/scheduling-communication-delays-constant-approximation.html",
+  "api": "https://ordos-problems.github.io/api/problems/scheduling-communication-delays-constant-approximation.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

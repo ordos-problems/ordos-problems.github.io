@@ -1,0 +1,26 @@
+{
+  "id": "optimal-dynamic-pricing-combinatorial-market-frontier",
+  "additional_refs": [
+    {
+      "authors": "Kristof Bérczi, Erika R. Bérczi-Kovács, Evelin Szögi",
+      "title": "A dual approach for dynamic pricing in multi-demand markets",
+      "year": 2021,
+      "venue": "arXiv:2107.05131",
+      "url": "https://arxiv.org/abs/2107.05131"
+    },
+    {
+      "authors": "Faruk Gul, Ennio Stacchetti",
+      "title": "Walrasian Equilibrium with Gross Substitutes",
+      "year": 1999,
+      "venue": "Journal of Economic Theory",
+      "url": "https://doi.org/10.1006/jeth.1999.2531"
+    },
+    {
+      "authors": "Vincent Cohen-Addad, Alon Eden, Michal Feldman, Amos Fiat",
+      "title": "Optimal Dynamic Pricing for Welfare Maximization",
+      "year": 2016,
+      "venue": "ACM Conference on Economics and Computation",
+      "url": "https://dl.acm.org/doi/10.1145/2940716.2940757"
+    }
+  ]
+}

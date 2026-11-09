@@ -1,0 +1,104 @@
+{
+ "number": 132,
+ "ref": "ORDOS-132",
+ "id": "ggm-fcfs-stationary-ergodic-tv-convergence",
+ "title": "Total-variation convergence for stationary-ergodic FCFS $G/G/m$ queues",
+ "collection": "Applied Probability",
+ "area": "Queueing Theory",
+ "status": "conjecture",
+ "confidence": "medium",
+ "tags": [
+  "queueing theory",
+  "multi-server queues",
+  "stability",
+  "stationary ergodic input",
+  "Kiefer-Wolfowitz recursion",
+  "applied probability"
+ ],
+ "short_statement": "For a stable FCFS $G/G/m$ queue driven only by stationary ergodic interarrival and service sequences, does the Kiefer-Wolfowitz workload vector started empty converge in total variation to the minimal stationary distribution?",
+ "open_problem": "Prove or refute total-variation convergence to the minimal stationary distribution for the stable FCFS $G/G/m$ queue under stationary ergodic input alone.",
+ "background": "Single-server queues have an unusually clean stability theory. For a stable $G/G/1$ FCFS queue with stationary ergodic input, Loynes' construction gives a unique stationary waiting-time distribution and convergence in total variation from every deterministic initial delay. The natural multi-server analogue is much harder because the state is the ordered vector of residual workloads, not a scalar Lindley recursion. Kiefer and Wolfowitz introduced the workload-vector recursion for the $G/G/m$ queue, and the empty-start recursion is monotone enough to yield weak convergence to the minimal stationary distribution under stability. What is missing is the stronger coupling/total-variation conclusion under only stationary ergodicity. Extra assumptions such as iid, regenerative, or Markovian input allow Harris or renovation arguments, but those assumptions change the theorem. Foss singled this out as a long-standing open problem because it asks whether the classical one-server robustness extends to the most basic many-server FCFS model without any hidden mixing hypothesis.",
+ "full_statement": "Fix an integer $m\\ge 2$. Let $(t_n,\\sigma_n)_{n\\in\\mathbb Z}$ be a stationary ergodic sequence, where $t_n$ is the interarrival time between customers $n$ and $n+1$ and $\\sigma_n$ is the service requirement of customer $n$. Consider the FCFS $G/G/m$ queue with $m$ identical servers and ordered workload vector $W_n=(W_{n,1},\\ldots,W_{n,m})$, arranged in nondecreasing order immediately before customer $n$ arrives. The Kiefer-Wolfowitz recursion is $$W_{n+1}=R\\left((W_{n,1}+\\sigma_n-t_{n+1})^+,(W_{n,2}-t_{n+1})^+,\\ldots,(W_{n,m}-t_{n+1})^+\\right),$$ where $R$ sorts coordinates increasingly. Assume the standard stability condition $\\mathbb E[\\sigma_1]<m\\mathbb E[t_1]$ and start from $W_0=0$. The empty-start Loynes construction gives weak convergence to the minimal stationary distribution $\\pi_{\\min}$. The open problem is to prove or refute that this convergence is in total variation under no assumptions beyond stationarity, ergodicity, and stability: $$\\|\\mathcal L(W_n)-\\pi_{\\min}\\|_{\\mathrm{TV}}\\to 0.$$ A stronger resolution would characterize when uniqueness of the stationary workload-vector distribution and convergence from arbitrary deterministic initial workload vectors hold under stationary ergodic input.",
+ "known_results": "For $m=1$, Loynes' scheme proves existence, uniqueness, and total-variation convergence for the stationary ergodic $G/G/1$ queue under the negative-drift stability condition. For $m\\ge2$, the Kiefer-Wolfowitz recursion gives a monotone empty-start construction and weak convergence to the minimal stationary distribution, but not total-variation convergence. Foss notes that multi-server queues can have multiple stationary regimes in general, while iid, regenerative, or Markovian assumptions restore uniqueness and total-variation convergence through Harris recurrence or renovation techniques. The precise stationary-ergodic theorem remains open.",
+ "progress": {
+  "state": "partial",
+  "summary": "Weak convergence from the empty state and total-variation convergence under stronger mixing assumptions are known. The unresolved point is whether stationary ergodicity plus stability is enough.",
+  "links": [
+   {
+    "title": "Foss, Some Open Problems Related to Stability",
+    "url": "https://arxiv.org/abs/0909.0462"
+   },
+   {
+    "title": "General G/G/k queue background",
+    "url": "https://en.wikipedia.org/wiki/G/G/1_queue"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "A counterexample might be a carefully constructed stationary ergodic input process with stable load but non-coupling workload vectors. Finite-state simulations can suggest mechanisms but cannot by themselves certify nonconvergence.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Automated search over periodic, hidden-Markov, or rank-one ergodic inputs could test candidate obstructions and generate examples with slow coupling. A proof or disproof still requires rigorous ergodic and queueing arguments.",
+ "literature": {
+  "synthesis": "The one-server proof works because the workload is the running maximum of a negative-drift stationary ergodic random walk; finite coupling follows from the backward maximum being attained at a finite time. In the multi-server case, the Kiefer-Wolfowitz map preserves enough order to define a minimal stationary workload vector from the empty start, but coordinate sorting and parallel service destroy the scalar random-walk representation. Additional stochastic regularity gives regeneration or small sets, so the issue is not stability itself but whether ergodicity alone forces enough forgetting of initial conditions. The remaining gap is a sharp ergodic theorem for the workload-vector recursion, or an explicit stable stationary ergodic input where weak convergence does not strengthen to total variation.",
+  "reviewed": [
+   {
+    "ref": "Kiefer and Wolfowitz, 'On the Theory of Queues with Many Servers', Transactions of the American Mathematical Society 1955",
+    "result": "Introduced the workload-vector recursion for many-server FCFS queues.",
+    "relevance": "related-tool",
+    "url": "https://www.ams.org/journals/tran/1955-078-01/"
+   },
+   {
+    "ref": "Brandt, 'On Stationary Waiting Times and Limiting Behaviour of Queues with Many Servers II', 1985",
+    "result": "Studies stationary regimes and limiting behavior for many-server queues.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/0909.0462"
+   },
+   {
+    "ref": "Foss, 'Some Open Problems Related to Stability', 2009",
+    "result": "Formulates the stationary-ergodic total-variation convergence conjecture and contrasts it with known iid/regenerative cases.",
+    "relevance": "open-problem-source",
+    "url": "https://arxiv.org/abs/0909.0462"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Try to adapt Loynes backward coupling to the vector recursion by finding a finite random time at which the empty-start vector dominates or coalesces with all finite initial vectors. For a counterexample, search for stationary ergodic inputs with long-range dependence that preserve different workload phases despite negative drift. Another route is to prove convergence in a stronger-than-weak metric first, then upgrade under additional tightness/minorization conditions.",
+  "verification_notes": "A positive solution must work for arbitrary stationary ergodic input, not just iid or regenerative processes. A counterexample must prove stationarity, ergodicity, stability, and failure of total-variation convergence; numerical evidence is only exploratory.",
+  "machine_checkable": false
+ },
+ "where_posed": {
+  "text": "Stated by Sergey Foss, 'Some Open Problems Related to Stability', 2009, Section 1.1.",
+  "url": "https://arxiv.org/abs/0909.0462",
+  "quote": "",
+  "location": "Section 1.1, convergence in total variation for multi-server FCFS queues"
+ },
+ "source": {
+  "authors": "Sergey Foss",
+  "title": "Some Open Problems Related to Stability",
+  "year": 2009,
+  "venue": "arXiv:0909.0462",
+  "url": "https://arxiv.org/abs/0909.0462"
+ },
+ "additional_refs": [
+  {
+   "authors": "J. Kiefer and J. Wolfowitz",
+   "title": "On the Theory of Queues with Many Servers",
+   "year": 1955,
+   "venue": "Transactions of the American Mathematical Society",
+   "url": "https://www.ams.org/journals/tran/1955-078-01/"
+  }
+ ],
+ "bibtex": "@misc{Foss2009,\n  author = {Sergey Foss},\n  title = {Some Open Problems Related to Stability},\n  year = {2009},\n  howpublished = {arXiv:0909.0462},\n  url = {https://arxiv.org/abs/0909.0462},\n  note = {Source of ORdős Problem ORDOS-132}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/ggm-fcfs-stationary-ergodic-tv-convergence.html",
+  "api": "https://ordos-problems.github.io/api/problems/ggm-fcfs-stationary-ergodic-tv-convergence.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

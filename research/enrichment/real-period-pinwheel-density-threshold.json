@@ -1,0 +1,33 @@
+{
+  "id": "real-period-pinwheel-density-threshold",
+  "full_statement": "In classical pinwheel scheduling, each task $i$ has an integer period $a_i$ and a feasible infinite schedule executes one task per day so that task $i$ appears at least once in every block of $a_i$ consecutive days. The density is $\\sum_i 1/a_i$. The integer-period $5/6$ conjecture says that density at most $5/6$ guarantees schedulability, and Kawamura has recently proved this integer version. Kawamura's real-period extension assigns each task a positive real period $a_i$ and requires that for every positive integer $\\ell$, task $i$ is executed at least $\\ell$ times in every block of $\\lceil \\ell a_i\\rceil$ consecutive days. The open problem is whether every finite real-period instance with density $\\sum_i 1/a_i\\le5/6$ is schedulable under this stronger all-$\\ell$ condition.",
+  "known_results": "The classical Chan-Chin $5/6$ density conjecture for integer-period pinwheel scheduling is reported as settled affirmatively by Kawamura, using a reduction to finite cases and computer-assisted ingredients. Before that resolution, Gasieniec, Smith, and Wild verified the integer-period conjecture for all instances with at most 12 tasks and developed Pareto-surface methods. Fujiwara, Miyagi, and Ouchi study Kawamura's real-period extension, where each task with real period $a_i$ must be executed at least $\\ell$ times in every block of $\\lceil \\ell a_i\\rceil$ days for every positive integer $\\ell$. They prove the real-period conjecture when the periods take three distinct real values and explicitly conjecture the full $5/6$ threshold for arbitrary real periods. Thus the integer-period problem should no longer be listed as open here; the remaining target is the real-period extension.",
+  "literature": {
+    "synthesis": "Kawamura's integer-period proof changes the status of the classical Chan-Chin conjecture: the clean remaining problem is the real-period extension. The all-$\\ell$ condition is stronger than simply rounding each real period once, because it controls execution frequencies in every long window. Fujiwara, Miyagi, and Ouchi's three-distinct-period theorem suggests that the integer proof's finite-reduction ideas may extend, but arbitrary real period spectra introduce approximation and limiting issues that are absent in the integer problem. A solution must explain whether real periods can be discretized without increasing density beyond the $5/6$ threshold or whether genuinely irrational period ratios create new obstructions.",
+    "reviewed": [
+      {
+        "ref": "Akitoshi Kawamura, 'Proof of the Density Threshold Conjecture for Pinwheel Scheduling', arXiv 2026",
+        "result": "Proves the classical integer-period $5/6$ density threshold and introduces useful real-period ideas.",
+        "relevance": "solves-special-case",
+        "url": "https://arxiv.org/abs/2606.27104"
+      },
+      {
+        "ref": "Fujiwara, Miyagi, Ouchi, 'Pinwheel Scheduling with Real Periods', arXiv 2025",
+        "result": "Proves the real-period $5/6$ conjecture when periods take three distinct real values and conjectures the full real-period theorem.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2510.24068"
+      },
+      {
+        "ref": "Gasieniec, Smith, Wild, 'Towards the 5/6-Density Conjecture of Pinwheel Scheduling', arXiv 2021",
+        "result": "Develops Pareto-surface methods and verifies the integer-period conjecture for bounded task counts before Kawamura's full proof.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2111.01784"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Study whether Kawamura's finite reduction for integer periods can be made robust under real-period perturbations. Search for discretization lemmas preserving the all-$\\ell$ window constraints, and test irrational period ratios where naive rounding changes density or feasibility.",
+    "verification_notes": "A claimed solution must address arbitrary finite sets of real periods and the all-$\\ell$ window condition, not just integer periods, rational periods with bounded denominators, or a single rounded deadline. A reduction from real to integer periods must control density and all window constraints uniformly. A counterexample must exhibit real periods with total density at most $5/6$ and prove that no infinite schedule satisfies the all-$\\ell$ requirements. Computer-assisted finite reductions should include enough certificates to verify both the reduction and the finite schedule enumeration.",
+    "machine_checkable": true
+  }
+}

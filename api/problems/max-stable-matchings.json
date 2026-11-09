@@ -6,7 +6,7 @@
  "collection": "Market & Mechanism Design",
  "area": "Matching Markets",
  "status": "open",
- "confidence": "high",
+ "confidence": "medium",
  "tags": [
   "stable matching",
   "stable marriage",
@@ -14,13 +14,74 @@
   "combinatorics",
   "Knuth"
  ],
- "short_statement": "Let $f(n)$ be the largest possible number of stable matchings over all $n\\times n$ stable-marriage instances. It grows exponentially, but the exact base is unknown, with bounds between about $2.28^n$ and $3.55^n$.",
- "open_problem": "Determine $\\lim_{n\\to\\infty} f(n)^{1/n}$, the growth base of this exponential.",
- "full_statement": "Consider the stable-marriage problem with $n$ men and $n$ women, each having a strict preference ordering over the members of the opposite side; a matching is stable if no man-woman pair both prefer each other to their assigned partners. A single instance can admit many stable matchings simultaneously. Let $f(n)$ be the maximum, over all $n\\times n$ stable-marriage instances $I$, of the number of stable matchings $|S(I)|$. It is known that $f(n)=2^{\\Theta(n)}$. Determine $\\lim_{n\\to\\infty} f(n)^{1/n}$, the growth base of this exponential. Currently it is known that $\\Omega(2.28^n)\\le f(n)\\le O(3.55^n)$. This problem was first posed by Knuth in the 1970s.",
- "known_results": "Lower bound $\\Omega(2.28^n)$ (Irving-Leather; extended by Thurber). Upper bound $O(3.55^n)$ (Palmer-Palvolgyi 2021), improving the first simply-exponential bound of Karlin-Oveis Gharan-Weber 2018. Exact base open; gap [2.28, 3.55].",
+ "short_statement": "Determine the exponential growth base of the maximum possible number of stable matchings in an $n\\times n$ stable-marriage instance.",
+ "open_problem": "Determine the sharp exponential base between the known lower construction and the new upper bound.",
+ "background": "Stable matching is usually taught as an algorithmic existence theorem: Gale and Shapley guarantee at least one stable matching and find it efficiently. But a single instance can have many stable matchings, forming a distributive lattice. Counting them is computationally hard, and the extremal question asks how large this lattice can be as a function of market size. Knuth posed this in the 1970s. The problem is mathematically clean: preferences are strict and complete, stability has its standard blocking-pair definition, and the objective is just the largest possible number of stable matchings among all $n\\times n$ instances. The answer is known to be exponential, but the base remains unknown despite major progress on both lower and upper bounds.",
+ "full_statement": "For an instance of the stable-marriage problem with $n$ men and $n$ women, each agent has a strict complete preference order over the opposite side. A perfect matching is stable if there is no blocking pair, meaning no man and woman who both prefer each other to their assigned partners. Let $s(I)$ be the number of stable matchings in instance $I$, and let $$f(n)=\\max_I s(I),$$ where the maximum ranges over all strict complete $n\\times n$ preference profiles. Determine the sharp asymptotic growth of $f(n)$. In particular, determine the exponential growth rate, or matching upper and lower exponential bounds. Equivalently, characterize the richest possible rotation posets that can arise from stable-marriage instances and the largest possible number of downsets they can have.",
+ "known_results": "Irving and Leather proved that counting stable matchings is hard and gave early exponential lower-bound constructions. Later gadget constructions give lower bounds with base about $2.28$. Before 2018, the best general upper bounds were superexponential of the form $2^{n\\log n-O(n)}$. Karlin, Oveis Gharan, and Weber gave the first simply exponential upper bound, proving $f(n)\\le c^n$ for a universal constant $c$ by reducing to downsets of mixing posets. Palmer and Palvolgyi then improved the upper bound from the large Karlin-Oveis Gharan-Weber constant to $3.55^n+O(1)$ using an entropy formulation. This was the prior exponential gap. Ghorbani and Mnich, 'A 2.81^n upper bound on the number of stable matchings' (arXiv:2611.06494v1, November 4, 2026), Theorem 1, improve the upper bound to $f(n)<2.81^n$ for strict complete preferences. The lower bound is more precisely $2.28^n/\\mathrm{poly}(n)$ for all n. The exact exponential base is not determined.",
+ "progress": {
+  "state": "partial",
+  "summary": "A November preprint lowers the upper base; no matching lower construction is supplied.",
+  "links": [
+   {
+    "title": "Simply exponential upper bound",
+    "url": "https://arxiv.org/abs/1711.01032"
+   },
+   {
+    "title": "At most 3.55^n stable matchings",
+    "url": "https://arxiv.org/abs/2011.00915"
+   },
+   {
+    "title": "A 2.81^n upper bound on the number of stable matchings",
+    "url": "https://arxiv.org/abs/2611.06494"
+   }
+  ]
+ },
+ "importance": 7,
+ "difficulty": 8,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Improved lower bounds come from explicit preference gadgets. Automated construction search could find instances with more stable matchings for moderate $n$ and suggest recursive gadgets.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "This is highly amenable to search over finite preference profiles with exact stable-matching counters, though upper bounds require human-level combinatorial proof.",
+ "literature": {
+  "synthesis": "Rotation-poset and entropy methods established the earlier upper bounds. The new stable-partner-weight analysis improves them; the extremal growth rate is still not identified by the reviewed results.",
+  "reviewed": [
+   {
+    "ref": "Anna R. Karlin, Shayan Oveis Gharan, Robbie Weber, 'A Simply Exponential Upper Bound on the Maximum Number of Stable Matchings', STOC 2018",
+    "result": "Proves $f(n)\\le c^n$ for a universal constant $c$.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1711.01032"
+   },
+   {
+    "ref": "Cory Palmer, Domotor Palvolgyi, 'At most $3.55^n$ stable matchings', arXiv 2021",
+    "result": "Improves the upper bound to $3.55^n+O(1)$.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2011.00915"
+   },
+   {
+    "ref": "Robert W. Irving, Paul Leather, 'The Complexity of Counting Stable Marriages', SIAM Journal on Computing 1986",
+    "result": "Establishes counting hardness and early exponential lower-bound constructions.",
+    "relevance": "related-tool",
+    "url": "https://epubs.siam.org/doi/10.1137/0215048"
+   },
+   {
+    "ref": "Ebrahim Ghorbani, Matthias Mnich, 'A 2.81^n upper bound on the number of stable matchings' (2026)",
+    "result": "Theorem 1 improves the strict-complete stable-marriage upper bound.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2611.06494"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Use exact enumeration to search for high-density rotation structures and recursive preference gadgets. For upper bounds, study entropy constraints on rotation posets and forbidden substructures forced by realizability as a stable-marriage instance.",
+  "verification_notes": "A lower-bound improvement must provide an explicit infinite family of preference profiles or rotation-poset-realizable gadgets, together with a rigorous count or recurrence for the number of stable matchings. A claimed upper bound must apply to all strict complete preference profiles; bounding all abstract posets or all downset families is sufficient only if the reduction direction is correct. Computer searches should output verifiable preference lists and exact stable-matching counts, not just sampled estimates.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "First posed by Knuth (1970s); simply-exponential upper bound in Karlin, Oveis Gharan, Weber, 'A Simply Exponential Upper Bound on the Maximum Number of Stable Matchings', 2018, STOC.",
-  "url": "https://arxiv.org/abs/1711.01032"
+  "text": "First posed by Knuth and revisited in Karlin, Oveis Gharan, and Weber, 'A Simply Exponential Upper Bound on the Maximum Number of Stable Matchings'.",
+  "url": "https://arxiv.org/abs/1711.01032",
+  "quote": "long-standing open problem",
+  "location": "Abstract"
  },
  "source": {
   "authors": "Anna R. Karlin, Shayan Oveis Gharan, Robbie Weber",
@@ -43,6 +104,13 @@
    "year": 1986,
    "venue": "SIAM J. Computing",
    "url": "https://epubs.siam.org/doi/10.1137/0215048"
+  },
+  {
+   "authors": "Ebrahim Ghorbani, Matthias Mnich",
+   "title": "A 2.81^n upper bound on the number of stable matchings",
+   "year": 2026,
+   "venue": "arXiv preprint",
+   "url": "https://arxiv.org/abs/2611.06494"
   }
  ],
  "bibtex": "@misc{Karlin2018,\n  author = {Anna R. Karlin and Shayan Oveis Gharan and Robbie Weber},\n  title = {A Simply Exponential Upper Bound on the Maximum Number of Stable Matchings},\n  year = {2018},\n  howpublished = {STOC},\n  url = {https://arxiv.org/abs/1711.01032},\n  note = {Source of ORdős Problem ORDOS-024}\n}",

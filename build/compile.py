@@ -6,6 +6,7 @@ BASE = Path(__file__).resolve().parent
 ROOT = BASE.parent
 
 SRC = BASE / "problems_source.json"
+ENRICH_DIR = ROOT / "research" / "enrichment"
 REQ = ["id","title","collection","area","status","short_statement","full_statement","source"]
 
 OPEN_OVERRIDES = {
@@ -77,11 +78,72 @@ def derive_open_problem(p):
     return "Resolve the open question stated in the model above."
 
 source_records = json.load(open(SRC))
+
+
+def merge_refs(base_refs, extra_refs):
+    merged = []
+    by_title = {}
+
+    def richness(ref):
+        return sum(1 for v in ref.values() if v not in (None, "", [], {}))
+
+    for ref in list(base_refs or []) + list(extra_refs or []):
+        if not isinstance(ref, dict):
+            continue
+        key = str(ref.get("title", "")).strip().lower()
+        if not key:
+            merged.append(ref)
+            continue
+        if key not in by_title:
+            by_title[key] = len(merged)
+            merged.append(ref)
+            continue
+        i = by_title[key]
+        current = dict(merged[i])
+        for k, v in ref.items():
+            if v not in (None, "", [], {}) and (not current.get(k) or richness(ref) >= richness(current)):
+                current[k] = v
+        merged[i] = current
+    return merged
+
+
+def merge_problem(base, enrichment):
+    merged = dict(base)
+    for key, value in enrichment.items():
+        if key == "id":
+            continue
+        if key == "tags":
+            tags = []
+            for tag in list(base.get("tags") or []) + list(value or []):
+                if tag and tag not in tags:
+                    tags.append(tag)
+            merged["tags"] = tags
+        elif key == "additional_refs":
+            merged["additional_refs"] = merge_refs(base.get("additional_refs", []), value)
+        elif value not in (None, "", [], {}):
+            merged[key] = value
+    return merged
+
+
+enrichments = {}
+if ENRICH_DIR.exists():
+    for f in sorted(ENRICH_DIR.glob("*.json")):
+        try:
+            rec = json.load(open(f))
+        except Exception as e:
+            raise SystemExit(f"{f}: invalid enrichment JSON: {e}")
+        pid = rec.get("id") or f.stem
+        if pid in enrichments:
+            raise SystemExit(f"duplicate enrichment for {pid}")
+        enrichments[pid] = rec
+
 problems, seen, errors, disabled = [], {}, [], []
 for p in source_records:
     if p.get("enabled") is False:
         disabled.append(p)
         continue
+    if p.get("id") in enrichments:
+        p = merge_problem(p, enrichments[p["id"]])
     miss=[k for k in REQ if not p.get(k)]
     if miss: errors.append(f"{SRC.name}:{p.get('id','?')} missing {miss}")
     wp=p.get("where_posed")
@@ -92,6 +154,10 @@ for p in source_records:
     p.setdefault("tags",[]); p.setdefault("additional_refs",[])
     p.setdefault("known_results",""); p.setdefault("confidence","medium")
     problems.append(p)
+
+missing_enrichments = sorted(set(enrichments) - {p.get("id") for p in source_records})
+for pid in missing_enrichments:
+    errors.append(f"enrichment target missing from {SRC.name}: {pid}")
 
 for i,p in enumerate(problems,1):
     p["number"]=i; p["ref"]=f"ORDOS-{i:03d}"
@@ -129,6 +195,7 @@ out={"metadata":{
    "status_breakdown":dict(st),
    "confidence_breakdown":dict(cf),
    "discipline_rollup":dict(disc),
+   "enriched_count":sum(1 for p in problems if p.get("background") or p.get("literature") or p.get("agent_guidance")),
    "schema_version":"2.0"
   },"problems":problems}
 json.dump(out,open(ROOT / "problems.json","w"),indent=2,ensure_ascii=False)

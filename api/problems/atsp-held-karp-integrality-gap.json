@@ -13,13 +13,74 @@
   "integrality gap",
   "Held-Karp"
  ],
- "short_statement": "For asymmetric metric TSP, the Held-Karp LP integrality gap is now known to be a constant, but the exact value is open: known examples force it to be at least $2$, while the best proof only shows it is at most $22$.",
- "open_problem": "Determine the exact integrality gap of the Held-Karp LP for asymmetric metric TSP, closing the gap between the lower bound $2$ and the upper bound $22$.",
- "full_statement": "In asymmetric TSP, the distance from A to B need not equal the distance from B to A (but the triangle inequality still holds). The Held-Karp LP lower-bounds the optimal tour. For asymmetric metric TSP, let $\\gamma = \\sup_I \\frac{\\mathrm{OPT}(I)}{\\mathrm{LP}(I)}$ be the integrality gap of the Held-Karp relaxation, where $\\mathrm{OPT}(I)$ is the optimal tour length and $\\mathrm{LP}(I)$ the LP optimum on instance $I$. Known: $2 \\le \\gamma \\le 22$. \\textbf{Determine $\\gamma$ exactly.} It is widely believed $\\gamma$ is much smaller than 22.",
- "known_results": "Charikar, Goemans, and Karloff gave instances showing that the Held-Karp relaxation has integrality gap at least $2$. Svensson, Tarnawski, and Vegh proved the first constant upper bound, $319$, resolving the earlier question of whether the gap was bounded at all. Traub and Vygen later improved the upper bound to $22$. The exact value is still unknown, and the large separation between $2$ and $22$ suggests that either sharper rounding or stronger lower-bound constructions are needed.",
+ "short_statement": "The asymmetric metric TSP Held-Karp integrality gap lies between $2$ and $17$; its exact value remains open.",
+ "open_problem": "Determine the exact integrality gap of the Held-Karp LP for asymmetric metric TSP, closing the gap between the lower bound $2$ and the best known upper bound $17$.",
+ "background": "Asymmetric TSP replaces undirected metrics by directed metrics, and this destroys the parity structure that makes Christofides' algorithm work. The standard Held-Karp LP is still the central relaxation: it enforces one unit of in-flow and out-flow at each vertex plus subtour-elimination constraints. For many years it was not even known whether this relaxation had a constant integrality gap. Svensson, Tarnawski, and Vegh proved the breakthrough constant-factor approximation, analyzed against the LP, thereby establishing a bounded gap. Traub and Vygen improved the bound first to $22$ and then to $17$ in their 2024 book. The lower bound remains only $2$. The exact integrality gap is therefore a major open quantitative question in directed network design.",
+ "full_statement": "Let $(V,d)$ be a finite directed metric: $d(u,u)=0$ and $d(u,w)\\le d(u,v)+d(v,w)$, but $d(u,v)$ need not equal $d(v,u)$. The asymmetric traveling salesperson problem asks for a minimum-cost directed Hamiltonian cycle. The Held-Karp relaxation has variables $x_{uv}\\ge0$ for ordered pairs $u\\ne v$, imposes one unit of outgoing and incoming flow at each vertex, and enforces subtour-elimination constraints $x(\\delta^+(S))\\ge1$ and $x(\\delta^-(S))\\ge1$ for every nonempty proper $S\\subset V$. Its value is at most the optimum tour cost. The integrality gap is $$\\sup_{(V,d)} \\frac{\\mathrm{OPT}_{\\mathrm{ATSP}}(V,d)}{\\mathrm{HK}(V,d)}.$$ Determine this supremum exactly. Current evidence leaves a broad interval: explicit directed metrics give gap at least $2$, while the best general rounding/approximation analysis gives gap at most $17$.",
+ "known_results": "Charikar, Goemans, and Karloff constructed ATSP instances with Held-Karp integrality gap at least $2$, establishing the main lower-bound benchmark. Before 2018, general ATSP had only logarithmic approximation guarantees, and it was unknown whether the Held-Karp relaxation had any constant gap. Svensson, Tarnawski, and Vegh gave the first constant-factor approximation for general ATSP, implying a constant Held-Karp gap; their analysis yields an integrality-ratio upper bound of $319$ and an approximation factor $506$. Traub and Vygen simplified and strengthened the framework, improving the approximation ratio to $22+\\epsilon$ and the Held-Karp integrality-gap upper bound to $22$. Traub and Vygen's 2024 book strengthens this to gap at most $17$ (Corollary 8.26), via a $(17+\\epsilon)$-approximation relative to the LP (Theorem 8.25). The remaining interval is $[2,17]$.",
+ "progress": {
+  "state": "partial",
+  "summary": "The published Held-Karp gap interval is $[2,17]$; boundedness is resolved but the exact constant is not.",
+  "links": [
+   {
+    "title": "Svensson, Tarnawski, Vegh, constant-factor ATSP",
+    "url": "https://arxiv.org/abs/1708.04215"
+   },
+   {
+    "title": "Traub and Vygen, improved ATSP approximation",
+    "url": "https://arxiv.org/abs/1912.00670"
+   },
+   {
+    "title": "Traub and Vygen, Approximation Algorithms for Traveling Salesman Problems, 2024, Theorem 8.25 and Corollary 8.26",
+    "url": "https://www.or.uni-bonn.de/tspbook/book.pdf"
+   }
+  ]
+ },
+ "importance": 9,
+ "difficulty": 9,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Improved lower bounds are explicit directed metrics with large tour-to-LP ratio, and can be certified by LP and exact ATSP computations for finite instances.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Search over small directed metrics or gadget compositions may find larger lower-bound instances. Algorithmic improvement requires proof-oriented rounding or connectivity-augmentation ideas.",
+ "literature": {
+  "synthesis": "The modern ATSP algorithms reduce global directed connectivity requirements to more local covering and augmentation problems, such as Subtour Partition Cover and structured vertebrate-pair instances. These reductions finally proved that the Held-Karp relaxation is constant-factor roundable, but the constants are far from the lower bound. The gap may reflect inefficiency in the decomposition/augmentation framework, or it may indicate missing lower-bound gadgets with much larger ratio than $2$. Progress likely requires either a sharper rounding of thin directed structures or a new family of directed metrics that exposes limitations of Held-Karp.",
+  "reviewed": [
+   {
+    "ref": "Moses Charikar, Michel X. Goemans, Howard Karloff, 'On the Integrality Ratio for the Asymmetric Traveling Salesman Problem', Mathematics of Operations Research 2006",
+    "result": "Gives Held-Karp integrality-gap lower bound at least $2$ for ATSP.",
+    "relevance": "hardness",
+    "url": "https://doi.org/10.1287/moor.1060.0191"
+   },
+   {
+    "ref": "Ola Svensson, Jakub Tarnawski, Laszlo A. Vegh, 'A Constant-Factor Approximation Algorithm for the Asymmetric Traveling Salesman Problem', JACM 2020 / STOC 2018",
+    "result": "First constant-factor approximation for general ATSP, implying bounded Held-Karp integrality gap.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1708.04215"
+   },
+   {
+    "ref": "Vera Traub, Jens Vygen, 'An Improved Approximation Algorithm for ATSP', STOC 2020",
+    "result": "Improves the ATSP approximation ratio to $22+\\epsilon$ and the Held-Karp integrality-gap upper bound to $22$.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1912.00670"
+   },
+   {
+    "ref": "Traub and Vygen, Approximation Algorithms for Traveling Salesman Problems, 2024, Theorem 8.25 and Corollary 8.26",
+    "result": "Proves gap at most $17$ for the standard ATSP LP, not merely a special directed-TSP model.",
+    "relevance": "partial-progress",
+    "url": "https://www.or.uni-bonn.de/tspbook/book.pdf"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "For lower bounds, search directed metrics generated by layered gadgets, circulations, and asymmetric cuts. For upper bounds, focus on improving vertebrate-pair reductions or finding stronger augmentations of thin Eulerian subgraphs.",
+  "verification_notes": "A lower-bound instance must be a directed metric, not an arbitrary arc-cost digraph, and must certify both the Held-Karp LP value and the optimum tour cost. For finite computational lower bounds, the verifier should check the metric closure, solve or certify the LP, and certify optimal tour cost exactly or with rigorous bounds. An upper bound must round arbitrary feasible Held-Karp solutions for general ATSP; analyses for special cases such as graphic, node-weighted, or bounded-genus ATSP do not settle the standard gap.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "The constant-factor upper bound (and the open exact-value question) is established in Svensson, Tarnawski, Vegh, 'A Constant-Factor Approximation Algorithm for the Asymmetric Traveling Salesman Problem,' JACM (STOC 2018); lower bound 2 from Charikar-Goemans-Karloff (2006).",
-  "url": "https://arxiv.org/abs/1708.04215"
+  "text": "Exact-value gap left by Svensson, Tarnawski, Vegh and Traub-Vygen constant-factor analyses of the Held-Karp relaxation for ATSP.",
+  "url": "https://arxiv.org/abs/1912.00670",
+  "quote": "This also improves the upper bound on the integrality ratio from 319 to 22.",
+  "location": "Abstract"
  },
  "source": {
   "authors": "Ola Svensson, Jakub Tarnawski, Laszlo A. Vegh",
@@ -42,6 +103,13 @@
    "year": 2006,
    "venue": "Mathematics of Operations Research (FOCS 2004)",
    "url": "https://doi.org/10.1287/moor.1060.0191"
+  },
+  {
+   "authors": "Vera Traub, Jens Vygen",
+   "title": "Approximation Algorithms for Traveling Salesman Problems",
+   "year": 2024,
+   "venue": "Cambridge University Press",
+   "url": "https://www.or.uni-bonn.de/tspbook/book.pdf"
   }
  ],
  "bibtex": "@misc{Svensson2020,\n  author = {Ola Svensson and Jakub Tarnawski and Laszlo A. Vegh},\n  title = {A Constant-Factor Approximation Algorithm for the Asymmetric Traveling Salesman Problem},\n  year = {2020},\n  howpublished = {Journal of the ACM (STOC 2018)},\n  url = {https://arxiv.org/abs/1708.04215},\n  note = {Source of ORdős Problem ORDOS-044}\n}",

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Constant approximation for submodular facility location | ORdős Problems</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script>
+(function(){
+  try{
+    var saved=localStorage.getItem('ordos-theme');
+    var theme=saved||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+    document.documentElement.dataset.theme=theme;
+  }catch(e){document.documentElement.dataset.theme='light';}
+})();
+</script>
+<style>
+  :root{
+    color-scheme:light;
+    --bg:#ffffeb; --paper:#fffef6; --card:#fffdf2; --paper2:#fff9fd; --ink:#1a1a1a; --soft:#4b514d; --faint:#7b7d6f;
+    --line:#e4e4d0; --line2:#eeeedd; --strong:#1a1a1a; --accent:#034f46; --accent2:#0f675d;
+    --pink:#f0d7ff; --pink2:#f8edff; --pinkhover:#f5e5ff; --orange:#ffa946; --link:#034f46; --tagink:#46514d;
+    --short:#27302c; --bodytext:#252b28; --bodytext2:#303633; --open:#7a5400; --partial:#155879; --med:#97402d;
+    --focus:#d8ece7; --focus-border:#74aaa1; --controlbg:rgba(255,255,235,.96); --modalbg:rgba(26,26,26,.32);
+    --okbg:#d8ead8; --okink:#064d20; --warning-bg:#fff3df; --warning-line:#d88a3d; --warning-ink:#5f3411;
+    --logo-fill:#eef6f5; --logo-stroke:#034f46; --badge-ink:#fff; --badge-hover:#063f39; --toastbg:#1a1a1a; --toastink:#fff;
+    --maxw:1120px; --measure:860px; --radius:8px;
+    --ui:"Figtree","Avenir Next","Avenir",-apple-system,system-ui,"Segoe UI",Arial,sans-serif;
+    --display:"EB Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  }
+  html[data-theme="dark"]{
+    color-scheme:dark;
+    --bg:#18170f; --paper:#232217; --card:#202016; --paper2:#2a2330; --ink:#f4f0df; --soft:#c9c2a8; --faint:#9e967d;
+    --line:#3b3928; --line2:#343224; --strong:#f4f0df; --accent:#8fd8cc; --accent2:#b4ebe3;
+    --pink:#5c365f; --pink2:#33213b; --pinkhover:#6b426f; --orange:#ffbd69; --link:#9be2d6; --tagink:#c9c2a8;
+    --short:#e4ddc7; --bodytext:#e7e0cc; --bodytext2:#d9d0b8; --open:#f5c66a; --partial:#87c8ef; --med:#efaa94;
+    --focus:#24564f; --focus-border:#8fd8cc; --controlbg:rgba(24,23,15,.94); --modalbg:rgba(0,0,0,.56);
+    --okbg:#21452c; --okink:#c7f0cf; --warning-bg:#3a2a18; --warning-line:#d1934f; --warning-ink:#ffd8a5;
+    --logo-fill:#202f2c; --logo-stroke:#8fd8cc; --badge-ink:#18170f; --badge-hover:#b4ebe3; --toastbg:#f4f0df; --toastink:#18170f;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ui);font-size:17px;line-height:1.62;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;}
+  a{color:var(--link);text-decoration-thickness:1px;text-underline-offset:3px;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px 96px;}
+
+  header.site{padding:42px 0 22px;border-bottom:1px solid var(--line);}
+  .headbar{display:grid;grid-template-columns:minmax(320px,max-content) minmax(280px,1fr);gap:22px;align-items:center;}
+  .brand{display:flex;align-items:center;gap:14px;min-width:0;}
+  .logo-link{display:block;width:42px;height:42px;flex:0 0 auto;border-radius:8px;line-height:0;}
+  .logo-link:focus-visible{outline:3px solid var(--orange);outline-offset:3px;}
+  .mono{width:42px;height:42px;flex:0 0 auto;}
+  .mono rect{fill:var(--logo-fill);stroke:var(--logo-stroke);}
+  .mono text{fill:var(--logo-stroke);}
+  h1{font-family:var(--display);font-weight:600;font-size:3rem;letter-spacing:0;margin:0;line-height:1;color:var(--ink);}
+  h1 .or{color:var(--accent);}
+  .aboutbtn{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
+    border-radius:8px;padding:7px 12px;min-width:98px;min-height:38px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;}
+  .aboutbtn:hover{background:var(--pinkhover);}
+  .theme-toggle{width:38px;height:38px;min-width:38px;min-height:38px;padding:0;border-radius:999px;line-height:1;}
+  .theme-mark{font-size:1.05rem;line-height:1;}
+  .simple-headbar{display:flex;align-items:center;justify-content:space-between;gap:18px;}
+  .sub{color:var(--soft);font-size:1.03rem;margin:16px 0 0;max-width:78ch;font-weight:450;}
+  .headsearch{display:flex;justify-content:flex-end;align-items:center;gap:10px;flex-wrap:wrap;}
+  .headsearch input{flex:1 1 260px;min-width:220px;max-width:460px;}
+
+  .tagfilters{margin-top:20px;}
+  .statbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+  .statbtn{appearance:none;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:6px 10px;min-height:34px;min-width:0;display:flex;align-items:center;gap:6px;cursor:pointer;
+    color:var(--faint);font-family:var(--ui);transition:background .15s,border-color .15s,transform .15s;}
+  .statbtn b{display:block;color:var(--ink);font-size:.78rem;line-height:1;font-weight:800;}
+  .statbtn span{font-size:.78rem;line-height:1;color:var(--tagink);overflow-wrap:anywhere;}
+  .statbtn:hover{background:var(--pink2);border-color:var(--focus-border);transform:translateY(-1px);}
+  .statbtn.active{background:var(--pink);border:2px solid var(--strong);padding:5px 9px;color:var(--ink);}
+  .moretags{display:flex;align-items:center;gap:8px;margin-top:10px;}
+  .moretags label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:0;}
+  #tagselect{min-width:230px;max-width:100%;padding:8px 10px;font-size:.82rem;border:1px solid var(--line);
+    border-radius:var(--radius);background:var(--paper);color:var(--ink);font-family:var(--ui);}
+  #tagselect:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
+
+  .modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:24px;background:var(--modalbg);}
+  .modal.open{display:flex;}
+  .modal-card{width:min(760px,100%);max-height:min(86vh,760px);overflow:auto;background:var(--card);border:2px solid var(--strong);
+    border-radius:var(--radius);box-shadow:0 18px 60px rgba(0,0,0,.18);padding:28px 32px;}
+  .modal-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:14px;}
+  .modal-card h2{font-family:var(--display);font-weight:600;font-size:2.1rem;line-height:1.05;margin:0;color:var(--ink);}
+  .modal-card h3{font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:22px 0 7px;}
+  .modal-card p{font-size:1rem;line-height:1.7;color:var(--bodytext2);margin:.7em 0;}
+  .closemodal{appearance:none;border:2px solid var(--strong);border-radius:8px;background:var(--pink);color:var(--ink);
+    font-family:var(--ui);font-weight:800;cursor:pointer;padding:5px 10px;box-shadow:0 1px 0 var(--strong);}
+
+  .controls{position:sticky;top:0;z-index:20;background:var(--controlbg);backdrop-filter:saturate(1.05) blur(10px);
+    border-bottom:1px solid var(--line);padding:11px 0;margin:18px 0 14px;}
+  #q{width:100%;padding:12px 14px;font-size:.94rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);color:var(--ink);font-family:var(--ui);}
+  #q:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
+  .ctl-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;}
+  .filterstate{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .count{font-size:.8rem;color:var(--faint);}
+  .selectedtags{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+  .selectedtag{appearance:none;border:1px solid var(--strong);background:var(--pink);border-radius:999px;padding:4px 8px;
+    font-family:var(--ui);font-size:.74rem;font-weight:750;color:var(--ink);cursor:pointer;}
+  .selectedtag:hover{background:var(--pinkhover);}
+  .clearfilter{font-size:.8rem;color:var(--link);background:none;border:none;cursor:pointer;font-family:var(--ui);padding:0;font-weight:700;}
+
+  .grouphdr{font-weight:800;font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);
+    margin:34px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+  .grouphdr .gn{color:var(--faint);font-weight:500;}
+
+  article.p{background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);
+    padding:20px 22px 19px;margin:12px 0;scroll-margin-top:96px;}
+  article.p:target{box-shadow:0 0 0 3px var(--focus);}
+  .p .top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px;}
+  .num{font-weight:800;font-size:.76rem;color:var(--badge-ink);background:var(--accent);padding:3px 9px;border-radius:7px;text-decoration:none;}
+  .num:hover{background:var(--badge-hover);}
+  .tagline{display:flex;gap:9px;flex-wrap:wrap;align-items:center;min-width:0;color:var(--tagink);font-size:.9rem;}
+  .tag{color:var(--tagink);white-space:nowrap;}
+  .tag.status-open{color:var(--open);}
+  .tag.status-partial{color:var(--partial);}
+  .tag.med{color:var(--med);}
+  .spacer{flex:1 1 auto;}
+  .copy,.open-link,.back-link{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
+    border-radius:8px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+  .copy:hover,.open-link:hover,.back-link:hover{background:var(--pinkhover);}
+  .copy.ok{background:var(--okbg);color:var(--okink);}
+
+  .problem-title{font-family:var(--display);font-size:1.42rem;line-height:1.18;font-weight:600;margin:0 0 8px;color:var(--ink);letter-spacing:0;}
+  .problem-title a{text-decoration:none;color:inherit;}
+  .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
+  .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:var(--short);max-width:88ch;letter-spacing:0;}
+  .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:nowrap;margin:24px 0 0;overflow-x:auto;padding-bottom:3px;}
+  .pagebtn{font-size:.76rem;color:var(--ink);background:var(--card);border:2px solid var(--strong);border-radius:8px;
+    padding:5px 8px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:30px;box-shadow:0 1px 0 var(--strong);white-space:nowrap;}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pagegap,.pageinfo{font-size:.76rem;color:var(--faint);font-weight:750;padding:0 3px;white-space:nowrap;}
+
+  .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
+  .detail-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end;}
+  .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
+  .detail-meta{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0;}
+  .problem-nav{display:flex;gap:10px;align-items:stretch;justify-content:space-between;margin:22px 0 24px;max-width:var(--measure);}
+  .problem-nav .navlink{flex:1 1 0;background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);padding:12px 14px;
+    text-decoration:none;color:var(--ink);font-weight:750;min-width:0;}
+  .problem-nav .navlink:hover{background:var(--pink2);}
+  .problem-nav .navlink.next{text-align:right;}
+  .problem-nav .navlink.empty{visibility:hidden;}
+  .problem-nav .navlabel{display:block;font-size:.72rem;letter-spacing:0;text-transform:uppercase;color:var(--faint);font-weight:800;margin-bottom:2px;}
+  .detail-card{background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);padding:28px 32px;margin:24px 0;max-width:var(--measure);}
+  .detail-card h2{font-size:.8rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:0 0 15px;}
+  .prose{font-size:1.04rem;line-height:1.86;color:var(--bodytext);}
+  .prose p{margin:0 0 1.15em;}
+  .prose .katex-display{margin:1.15em 0;}
+  .known-prose{font-size:1rem;line-height:1.8;color:var(--bodytext2);}
+  .remaining-open{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);}
+  .remaining-open strong{color:var(--accent);}
+  .source-list{font-size:.94rem;line-height:1.7;color:var(--soft);}
+  .source-list p{margin:.65em 0;}
+  .source-list .k{font-weight:800;color:var(--accent);}
+  .refs{margin:8px 0 0;padding-left:21px;}
+  .refs li{margin:.55em 0;color:var(--soft);}
+
+  .form-shell{max-width:var(--measure);margin:28px 0 0;}
+  .form-card{background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);padding:28px 32px;margin:20px 0;}
+  .form-card h2{font-family:var(--display);font-size:2.35rem;line-height:1.06;font-weight:600;margin:0 0 8px;color:var(--ink);}
+  .form-card p{font-size:1rem;line-height:1.7;color:var(--bodytext2);margin:.7em 0 1.2em;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .field{display:flex;flex-direction:column;gap:6px;margin:14px 0;}
+  .field.full{grid-column:1/-1;}
+  .field label{font-size:.78rem;font-weight:800;letter-spacing:0;text-transform:uppercase;color:var(--accent);}
+  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);
+    font-family:var(--ui);font-size:.96rem;line-height:1.45;padding:11px 12px;}
+  .field textarea{min-height:118px;resize:vertical;}
+  .field input:focus,.field textarea:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
+  .field-note{font-size:.82rem;color:var(--faint);line-height:1.5;}
+  .form-warning{display:none;margin:14px 0 0;padding:10px 12px;border:1px solid var(--warning-line);border-radius:8px;background:var(--warning-bg);color:var(--warning-ink);
+    font-size:.9rem;line-height:1.55;}
+  .form-warning.show{display:block;}
+  .submit-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;}
+  .submit-btn{font-size:.84rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
+    border-radius:8px;padding:9px 14px;cursor:pointer;font-family:var(--ui);font-weight:800;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+  .submit-btn:hover{background:var(--pinkhover);}
+
+  .katex{font-size:1.04em;}
+  .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
+
+  footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
+  footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid var(--line);}
+  footer a:hover{border-bottom-color:var(--accent);}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toastbg);color:var(--toastink);font-size:.85rem;padding:10px 18px;border-radius:8px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+  @media (max-width:900px){
+    .headbar{grid-template-columns:1fr;}
+    .headsearch{justify-content:flex-start;}
+    .headsearch input{max-width:none;}
+  }
+  @media (max-width:760px){
+    .wrap{padding:0 16px 72px;}
+    header.site{padding-top:30px;}
+    .brand{align-items:flex-start;}
+    .brand h1{min-width:0;overflow-wrap:anywhere;}
+    .simple-headbar{align-items:flex-start;}
+    h1{font-size:2.15rem}
+    .about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
+    .statbar{gap:6px;}
+    .statbtn{padding:5px 8px;}
+    .moretags{align-items:flex-start;flex-direction:column;}
+    .ctl-meta{align-items:flex-start;gap:8px;flex-direction:column;}
+    article.p{padding:17px 15px;}
+    .copy,.open-link{width:100%;text-align:center;}
+    .detail-title{font-size:2.2rem;}
+    .detail-top{align-items:flex-start;flex-direction:column;}
+    .detail-actions{width:100%;justify-content:flex-start;}
+    .problem-nav{flex-direction:column;}
+    .problem-nav .navlink{width:100%;}
+    .problem-nav .navlink.next{text-align:left;}
+    .detail-card{padding:22px 18px;}
+    .form-grid{grid-template-columns:1fr;}
+    .form-card{padding:22px 18px;}
+    .modal{padding:14px;}
+    .modal-card{padding:22px 18px;}
+    .modal-card h2{font-size:1.7rem;}
+  }
+
+  .tag.status-claimed{color:var(--med);}
+  .tag.status-resolved{color:var(--okink);}
+  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0;}
+  .badge{font-size:.8rem;color:var(--soft);}
+  .badge+.badge::before{content:" / ";margin-right:8px;color:var(--faint);}
+  .posed-quote{margin:16px 0;padding-left:18px;border-left:2px solid var(--line);color:var(--soft);}
+  .posed-quote .loc{display:block;margin-top:8px;font-size:.8rem;}
+  .lit-list{padding-left:22px;}
+  .lit-list li{margin:1em 0;}
+  .lit-list .rel{display:block;font-size:.75rem;color:var(--faint);}
+  .subm-item{padding:16px 0;border-bottom:1px solid var(--line);}
+  .subm-head{font-size:.8rem;color:var(--soft);}
+  .headsearch input{min-width:0;}
+  .tag{white-space:normal;overflow-wrap:anywhere;}
+  .detail-top{align-items:flex-start;}
+  .detail-top>div:first-child{min-width:0;flex:1;}
+  .detail-actions{flex:0 0 180px;}
+  .detail-actions .back-link{width:100%;text-align:center;}
+  .detail-title{font-size:2.6rem;overflow-wrap:anywhere;}
+  .problem-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+  .problem-nav .navlink{height:104px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow-wrap:anywhere;font-size:.9rem;}
+  .detail-card{background:transparent;border:0;border-top:2px solid var(--strong);border-radius:0;padding:28px 0;}
+  .form-card{background:transparent;border:0;border-radius:0;padding:28px 0;}
+  @media(max-width:760px){
+    .detail-title{font-size:2.2rem;}
+    .detail-actions{flex:0 0 auto;}
+    .detail-actions .back-link{width:auto;}
+    .problem-nav{grid-template-columns:1fr;grid-auto-rows:104px;}
+    .problem-nav .navlink{height:104px;}
+    .problem-nav .navlink.empty{display:none;}
+    .detail-card,.form-card{padding:22px 0;}
+    .pagination{gap:3px;}
+    .pagebtn{min-width:26px;padding:5px 6px;}
+    .pageinfo{display:none;}
+  }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <div class="simple-headbar">
+      <div class="brand">
+        <a class="logo-link" href="../index.html" aria-label="ORdős Problems home"><svg class="mono" viewBox="0 0 100 100" aria-hidden="true">
+        <rect x="3" y="3" width="94" height="94" rx="18" fill="#eef6f5" stroke="#034f46" stroke-width="5"/>
+        <text x="50" y="63" text-anchor="middle" font-family="Figtree, Arial, sans-serif" font-size="36" font-weight="800" fill="#034f46">OP</text>
+      </svg></a>
+        <h1><a href="../index.html" style="color:inherit;text-decoration:none"><span class="or">OR</span>dős Problems</a></h1>
+      </div>
+      <button class="aboutbtn theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme" title="Switch color theme"><span class="theme-mark" aria-hidden="true">☾</span></button>
+    </div>
+  </header>
+
+  <div class="detail-top">
+    <div>
+      <div class="tagline"><span class="tag">#approximation-algorithms</span>
+<span class="tag">#solution-claimed</span>
+<span class="tag">#operations-research</span>
+<span class="tag">#facility-location</span>
+<span class="tag">#submodular-costs</span>
+<span class="tag">#network-design</span>
+<span class="tag">#stochastic-facility-location</span>
+<span class="tag">#check-source</span></div>
+      <h1 class="detail-title">Constant approximation for submodular facility location</h1>
+      <div class="detail-meta"><span class="num">151</span><span class="tag">Problem 151 of 182</span><span class="tag">#ordos-151</span></div>
+      <div class="meta-badges"><span class="badge progress-solution-claimed">Solution claimed</span></div>
+    </div>
+    <div class="detail-actions">
+      <a class="back-link" href="../correction.html?ref=ORDOS-151&amp;title=Constant%20approximation%20for%20submodular%20facility%20location&amp;page=https%3A//ordos-problems.github.io/problems/submodular-facility-location-constant-approximation.html" target="_blank" rel="noopener">Suggest edit</a>
+      <a class="back-link" href="../index.html">Back to all problems</a>
+    </div>
+  </div>
+
+  <nav class="problem-nav" aria-label="Problem navigation">
+    <a class="navlink prev" href="stochastic-probing-subadditive-adaptivity-gap.html" title="Tight adaptivity gap for subadditive stochastic probing"><span class="navlabel">Previous problem</span>#150 · Tight adaptivity gap for subadditive stochastic probing</a>
+    <a class="navlink next" href="goemans-linial-sparsest-cut-gap.html" title="Exact integrality gap of the Goemans-Linial SDP for uniform Sparsest Cut"><span class="navlabel">Next problem</span>#152 · Exact integrality gap of the Goemans-Linial SDP for uniform Sparsest Cut</a>
+  </nav>
+
+  <section class="detail-card statement">
+    <h2>Short Statement</h2>
+    <div class="prose"><p>For homogeneous submodular facility location, a 2026 preprint claims tight <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Θ</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Theta(\log\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">Θ</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> value-oracle approximability; arbitrary facility-specific functions are a different, harder model.</p></div>
+  </section>
+
+  <section class="detail-card statement">
+    <h2>Claimed Resolution</h2>
+    <div class="prose"><p>Verify the 2026 claimed negative resolution for homogeneous value-oracle SFL. The previous arbitrary-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>f</mi></msub></mrow><annotation encoding="application/x-tex">g_f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1076em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> formulation was already incompatible with a constant approximation under standard Set Cover hardness assumptions.</p></div>
+  </section>
+
+
+  <section class="detail-card statement">
+    <h2>Background &amp; Context</h2>
+    <div class="prose">Facility location is a core operations research model for placing warehouses, servers, depots, and service centers. The classical fixed-charge model assumes a facility has one opening cost independent of which clients it serves. Many applications have richer economies of scale or shared-service effects: the marginal cost of serving an additional client may decrease, overlap with existing fixed costs, or depend on the mix of clients. Submodular facility location captures this by replacing a fixed opening charge with a monotone submodular function of the assigned client set. This is still a clean combinatorial optimization problem: the metric assignment term is classical, and submodularity is the standard mathematical abstraction for diminishing returns. The difficulty is that opening a facility and assigning clients are no longer separable. A local reassignment can change the submodular cost at many marginal scales, and the usual primal-dual and LP-rounding tools for fixed-charge facility location do not directly give constant factors. The exact model matters: the cited iterated-logarithmic guarantee assumes a common submodular function, with specified extensions; independent facility functions encode Set Cover. A 2026 preprint claims the homogeneous oracle threshold is also superconstant.</div>
+  </section>
+
+  <section class="detail-card statement">
+    <h2>Statement &amp; Model</h2>
+    <div class="prose">Let <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span></span></span></span> be clients, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">F</span></span></span></span> facilities, and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span> a metric on <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>∪</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">C\cup F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∪</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">F</span></span></span></span>. An assignment <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>:</mo><mi>C</mi><mo>→</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">\phi:C\to F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ϕ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">F</span></span></span></span> has cost <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mi>c</mi></msub><mi>d</mi><mo stretchy="false">(</mo><mi>c</mi><mo separator="true">,</mo><mi>ϕ</mi><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>+</mo><msub><mo>∑</mo><mi>f</mi></msub><msub><mi>g</mi><mi>f</mi></msub><mo stretchy="false">(</mo><msub><mi>S</mi><mi>f</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\sum_c d(c,\phi(c))+\sum_f g_f(S_f)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0497em;vertical-align:-0.2997em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.0017em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord mathnormal">c</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">ϕ</span><span class="mopen">(</span><span class="mord mathnormal">c</span><span class="mclose">))</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1858em;vertical-align:-0.4358em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1864em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1076em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4358em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1076em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1076em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>, where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>f</mi></msub><mo>=</mo><msup><mi>ϕ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">S_f=\phi^{-1}(f)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1076em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span><span class="mclose">)</span></span></span></span> and each <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>f</mi></msub></mrow><annotation encoding="application/x-tex">g_f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1076em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> is nonnegative, monotone submodular and zero at the empty set. Model correction: the earlier record allowed arbitrary different <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>f</mi></msub></mrow><annotation encoding="application/x-tex">g_f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1076em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> but attributed homogeneous results to that generalization. The constant-approximation question posed by the cited literature is for a SINGLE common value-oracle function <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>f</mi></msub><mo>=</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">g_f=g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1076em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">g</span></span></span></span> at every facility. Arbitrary facility-specific functions already contain Set Cover and have logarithmic hardness. For common <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">g</span></span></span></span>, Abbasi et al. give <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>log</mi><mo>⁡</mo><mi mathvariant="normal">∣</mi><mi>C</mi><mi mathvariant="normal">∣</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log\log|C|)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="mord">∣</span><span class="mclose">)</span></span></span></span>; their extensions allow <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>f</mi></msub><mo>+</mo><mi>g</mi><mo stretchy="false">(</mo><mi>S</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p_f+g(S)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1076em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">g</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="mclose">)</span></span></span></span> on nonempty sets or <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mi>f</mi></msub><mi>g</mi><mo stretchy="false">(</mo><mi>S</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">w_f g(S)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1076em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.0359em;">g</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="mclose">)</span></span></span></span>, not arbitrary unrelated functions. The historical question asks for a constant-factor polynomial-query approximation in the homogeneous model. Elmachtoub, Natura, and Neuwohner (October 2026), Theorem 2, claim an <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>log</mi><mo>⁡</mo><mi mathvariant="normal">∣</mi><mi>C</mi><mi mathvariant="normal">∣</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Omega(\log\log|C|)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">Ω</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="mord">∣</span><span class="mclose">)</span></span></span></span> query lower bound even for common matroid-rank costs. This would answer that question negatively; it is a preprint claim, not independently proof-verified here.</div>
+  </section>
+
+  <section class="detail-card">
+    <h2>What Is Known</h2>
+    <div class="known-prose">Svitkina and Tardos developed hierarchical and submodular facility costs, logarithmic approximation, and constant-factor special cases. Abbasi et al. (ICALP 2024; preprint 2022), Theorems 1.1, 1.3 and 1.4, give <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> for a common function and its additive/multiplicative facility-weight extensions. They also improve universal stochastic facility location; classical metric facility location remains a related special case of the facility-weight variants. The unrestricted <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>f</mi></msub></mrow><annotation encoding="application/x-tex">g_f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1076em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> model already inherits Set Cover hardness. Elmachtoub, Natura, and Neuwohner (2026) claim matching oracle hardness for homogeneous SFL: polynomially many value queries cannot achieve <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>o</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">o(\log\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">o</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> with constant success probability, even with unlimited computation. Version 2 (November 4, 2026), Appendix A, Corollary A.2, additionally reports computational hardness: unless <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">N</mi><mi mathvariant="normal">P</mi></mrow><mo>=</mo><mrow><mi mathvariant="normal">R</mi><mi mathvariant="normal">P</mi></mrow></mrow><annotation encoding="application/x-tex">\mathrm{NP}=\mathrm{RP}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord mathrm">NP</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord mathrm">RP</span></span></span></span></span>, no randomized polynomial-time algorithm with constant success probability attains <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>o</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>log</mi><mo>⁡</mo><mi mathvariant="normal">∣</mi><mi>F</mi><mi mathvariant="normal">∣</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">o(\log\log|F|)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">o</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.1389em;">F</span><span class="mord">∣</span><span class="mclose">)</span></span></span></span> when the common matroid-rank function is supplied by a polynomial-size evaluation circuit. Note the facility-count parameter here, versus client count in Theorem 2. Neither statement automatically covers every specialized explicit representation.<p class="remaining-open"><strong>Claim under review.</strong> Verify the 2026 claimed negative resolution for homogeneous value-oracle SFL. The previous arbitrary-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>f</mi></msub></mrow><annotation encoding="application/x-tex">g_f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1076em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> formulation was already incompatible with a constant approximation under standard Set Cover hardness assumptions.</p></div>
+  </section>
+
+  <section class="detail-card">
+    <h2>Progress &amp; Literature</h2>
+    <div class="known-prose"><p><strong>Latest progress (Solution claimed).</strong> Corrected homogeneous versus facility-specific models. A 2026 preprint claims a matching <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Omega(\log\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">Ω</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> oracle lower bound for the homogeneous question. <a href="https://arxiv.org/abs/2211.05474" target="_blank" rel="noopener">Abbasi et al. O(loglog n) approximation</a> <a href="https://arxiv.org/abs/2610.18828v2" target="_blank" rel="noopener">Elmachtoub, Natura, and Neuwohner, Settling the Approximability of Submodular Facility Location, arXiv:2610.18828 (2026)</a></p><div class="prose">The value-oracle lower bound and the circuit-representation hardness theorem require different access models. Version 2 covers both, under the qualifications in What Is Known. Arbitrary unrelated facility functions remain a separate, already harder generalization.</div><ul class="lit-list"><li><span class="rel">partial progress</span><strong>Svitkina and Tardos, &#x27;Facility Location with Hierarchical Facility Costs&#x27;, SODA 2006</strong> — Introduced the submodular/hierarchical facility-cost framework and gave an <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> approximation. <a href="https://dl.acm.org/doi/10.5555/1109557.1109572" target="_blank" rel="noopener">link</a></li><li><span class="rel">partial progress</span><strong>Abbasi et al., &#x27;An O(loglog n)-Approximation for Submodular Facility Location&#x27;, arXiv 2022</strong> — Gives <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> for common <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">g</span></span></span></span> and specified additive/multiplicative variants, not arbitrary independent <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>f</mi></msub></mrow><annotation encoding="application/x-tex">g_f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1076em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>. <a href="https://arxiv.org/abs/2211.05474" target="_blank" rel="noopener">link</a></li><li><span class="rel">related tool</span><strong>Charikar and Guha, &#x27;Improved Combinatorial Algorithms for Facility Location Problems&#x27;, SICOMP 2005</strong> — Representative classical facility-location approximation machinery for the fixed-cost special case. <a href="https://doi.org/10.1137/S0097539701398594" target="_blank" rel="noopener">link</a></li><li><span class="rel">partial progress</span><strong>Elmachtoub, Natura, and Neuwohner, Settling the Approximability of Submodular Facility Location, arXiv:2610.18828 (2026)</strong> — Theorem 2 gives oracle hardness; Appendix A adds circuit-representation hardness under NP != RP. See What Is Known. <a href="https://arxiv.org/html/2610.18828v2" target="_blank" rel="noopener">link</a></li></ul></div>
+  </section>
+
+  <section class="detail-card" id="submissions">
+    <h2>Posted Solutions &amp; Verification</h2>
+    <div class="known-prose"><p class="subm-empty">No solutions or partial-progress submissions have been posted for this problem yet.</p>
+    <p>Submit a result or a review through the <a href="../agents.html">submission guidelines</a>, or suggest a correction using the link above.</p></div>
+  </section>
+  <section class="detail-card">
+    <h2>Sources</h2>
+    <div class="source-list">
+      <p><span class="k">Where posed:</span> Historical constant-approximation question for homogeneous SFL in Abbasi et al., following Svitkina and Tardos. <a href="https://arxiv.org/abs/2211.05474" target="_blank" rel="noopener">link</a></p>
+
+      <p><span class="k">Source:</span> Fateme Abbasi, Marek Adamczyk, Miguel Bosch-Calvo, Jaroslaw Byrka, Fabrizio Grandoni, Krzysztof Sornat, Antoine Tinguely, <em>An O(loglog n)-Approximation for Submodular Facility Location</em> (2022, arXiv) <a href="https://arxiv.org/abs/2211.05474" target="_blank" rel="noopener">link</a></p>
+      <p><span class="k">Related references:</span></p><ol class="refs"><li>Zoya Svitkina, Eva Tardos, <em>Facility Location with Hierarchical Facility Costs</em> (2006, SODA) <a href="https://dl.acm.org/doi/10.5555/1109557.1109572" target="_blank" rel="noopener">link</a></li><li>Moses Charikar, Sudipto Guha, <em>Improved Combinatorial Algorithms for Facility Location Problems</em> (2005, SIAM Journal on Computing) <a href="https://doi.org/10.1137/S0097539701398594" target="_blank" rel="noopener">link</a></li><li>Fateme Abbasi, Marek Adamczyk, Miguel Bosch-Calvo, Jaroslaw Byrka, Fabrizio Grandoni, Krzysztof Sornat, Antoine Tinguely, <em>An O(loglog n)-Approximation for Submodular Facility Location</em> (2022, arXiv) <a href="https://arxiv.org/abs/2211.05474" target="_blank" rel="noopener">link</a></li><li>Adam N. Elmachtoub, Bento Natura, Meike Neuwohner, <em>Settling the Approximability of Submodular Facility Location</em> (2026, arXiv:2610.18828v2) <a href="https://arxiv.org/abs/2610.18828v2" target="_blank" rel="noopener">link</a></li></ol>
+    </div>
+  </section>
+
+  <section class="detail-card">
+    <h2>Copy</h2>
+    <p class="known-prose">Copy the full statement, known results, and source information as plain text.</p>
+    <button class="copy" id="copybtn">Copy</button>
+  </section>
+
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
+</div>
+<div class="toast" id="toast">Copied</div>
+<script type="application/json" id="copy-data">"ORdős Problems #151 — Constant approximation for submodular facility location\n\nSHORT STATEMENT\nFor homogeneous submodular facility location, a 2026 preprint claims tight $\\Theta(\\log\\log n)$ value-oracle approximability; arbitrary facility-specific functions are a different, harder model.\n\nSTATUS: solution claimed\n\nCLAIMED RESOLUTION\nVerify the 2026 claimed negative resolution for homogeneous value-oracle SFL. The previous arbitrary-$g_f$ formulation was already incompatible with a constant approximation under standard Set Cover hardness assumptions.\n\nBACKGROUND\nFacility location is a core operations research model for placing warehouses, servers, depots, and service centers. The classical fixed-charge model assumes a facility has one opening cost independent of which clients it serves. Many applications have richer economies of scale or shared-service effects: the marginal cost of serving an additional client may decrease, overlap with existing fixed costs, or depend on the mix of clients. Submodular facility location captures this by replacing a fixed opening charge with a monotone submodular function of the assigned client set. This is still a clean combinatorial optimization problem: the metric assignment term is classical, and submodularity is the standard mathematical abstraction for diminishing returns. The difficulty is that opening a facility and assigning clients are no longer separable. A local reassignment can change the submodular cost at many marginal scales, and the usual primal-dual and LP-rounding tools for fixed-charge facility location do not directly give constant factors. The exact model matters: the cited iterated-logarithmic guarantee assumes a common submodular function, with specified extensions; independent facility functions encode Set Cover. A 2026 preprint claims the homogeneous oracle threshold is also superconstant.\n\nPROBLEM (full statement with model)\nLet $C$ be clients, $F$ facilities, and $d$ a metric on $C\\cup F$. An assignment $\\phi:C\\to F$ has cost $\\sum_c d(c,\\phi(c))+\\sum_f g_f(S_f)$, where $S_f=\\phi^{-1}(f)$ and each $g_f$ is nonnegative, monotone submodular and zero at the empty set. Model correction: the earlier record allowed arbitrary different $g_f$ but attributed homogeneous results to that generalization. The constant-approximation question posed by the cited literature is for a SINGLE common value-oracle function $g_f=g$ at every facility. Arbitrary facility-specific functions already contain Set Cover and have logarithmic hardness. For common $g$, Abbasi et al. give $O(\\log\\log|C|)$; their extensions allow $p_f+g(S)$ on nonempty sets or $w_f g(S)$, not arbitrary unrelated functions. The historical question asks for a constant-factor polynomial-query approximation in the homogeneous model. Elmachtoub, Natura, and Neuwohner (October 2026), Theorem 2, claim an $\\Omega(\\log\\log|C|)$ query lower bound even for common matroid-rank costs. This would answer that question negatively; it is a preprint claim, not independently proof-verified here.\n\nKNOWN RESULTS\nSvitkina and Tardos developed hierarchical and submodular facility costs, logarithmic approximation, and constant-factor special cases. Abbasi et al. (ICALP 2024; preprint 2022), Theorems 1.1, 1.3 and 1.4, give $O(\\log\\log n)$ for a common function and its additive/multiplicative facility-weight extensions. They also improve universal stochastic facility location; classical metric facility location remains a related special case of the facility-weight variants. The unrestricted $g_f$ model already inherits Set Cover hardness. Elmachtoub, Natura, and Neuwohner (2026) claim matching oracle hardness for homogeneous SFL: polynomially many value queries cannot achieve $o(\\log\\log n)$ with constant success probability, even with unlimited computation. Version 2 (November 4, 2026), Appendix A, Corollary A.2, additionally reports computational hardness: unless $\\mathrm{NP}=\\mathrm{RP}$, no randomized polynomial-time algorithm with constant success probability attains $o(\\log\\log|F|)$ when the common matroid-rank function is supplied by a polynomial-size evaluation circuit. Note the facility-count parameter here, versus client count in Theorem 2. Neither statement automatically covers every specialized explicit representation.\n\nLITERATURE SYNTHESIS\nThe value-oracle lower bound and the circuit-representation hardness theorem require different access models. Version 2 covers both, under the qualifications in What Is Known. Arbitrary unrelated facility functions remain a separate, already harder generalization.\n\nCLAIM UNDER REVIEW\nVerify the 2026 claimed negative resolution for homogeneous value-oracle SFL. The previous arbitrary-$g_f$ formulation was already incompatible with a constant approximation under standard Set Cover hardness assumptions.\n\nVERIFICATION NOTES\nDistinguish common $g$ from unrelated $g_f$ and value queries from explicit descriptions or stronger oracles. The new preprint's Theorem 2 allows unlimited computation but polynomially many value queries and requires constant success probability. Check monotonicity, submodularity, metric costs, and the lifted matroid-rank construction; this audit did not independently verify the proof. For v2 Appendix A, check the polynomial-size circuit representation and NP != RP assumption; do not replace |F| by |C| without a reduction.\n\nWHERE POSED: Historical constant-approximation question for homogeneous SFL in Abbasi et al., following Svitkina and Tardos. (https://arxiv.org/abs/2211.05474)\nSOURCE: Fateme Abbasi, Marek Adamczyk, Miguel Bosch-Calvo, Jaroslaw Byrka, Fabrizio Grandoni, Krzysztof Sornat, Antoine Tinguely, An O(loglog n)-Approximation for Submodular Facility Location (2022, arXiv) https://arxiv.org/abs/2211.05474\nRELATED:\n- Zoya Svitkina, Eva Tardos, Facility Location with Hierarchical Facility Costs (2006, SODA) https://dl.acm.org/doi/10.5555/1109557.1109572\n- Moses Charikar, Sudipto Guha, Improved Combinatorial Algorithms for Facility Location Problems (2005, SIAM Journal on Computing) https://doi.org/10.1137/S0097539701398594\n- Fateme Abbasi, Marek Adamczyk, Miguel Bosch-Calvo, Jaroslaw Byrka, Fabrizio Grandoni, Krzysztof Sornat, Antoine Tinguely, An O(loglog n)-Approximation for Submodular Facility Location (2022, arXiv) https://arxiv.org/abs/2211.05474\n- Adam N. Elmachtoub, Bento Natura, Meike Neuwohner, Settling the Approximability of Submodular Facility Location (2026, arXiv:2610.18828v2) https://arxiv.org/abs/2610.18828v2\n\nTask: Verify the cited resolution claim and its assumptions. The claim has not been independently certified by this repository. Math is in LaTeX."</script>
+<script>
+(function(){
+  var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;
+  function show(m){toast.textContent=m;toast.classList.add('show');clearTimeout(timer);timer=setTimeout(function(){toast.classList.remove('show');},1500);}
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText(JSON.parse(document.getElementById('copy-data').textContent)).then(function(){
+      btn.textContent='Copied';btn.classList.add('ok');show('Full problem copied');
+      setTimeout(function(){btn.textContent='Copy';btn.classList.remove('ok');},1500);
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  function setTheme(theme){
+    document.documentElement.dataset.theme=theme;
+    try{localStorage.setItem('ordos-theme',theme);}catch(e){}
+    document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+      var dark=theme==='dark';
+      var mark=btn.querySelector('.theme-mark');
+      if(mark)mark.textContent=dark?'☀':'☾';
+      btn.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');
+      btn.setAttribute('title',dark?'Switch to light mode':'Switch to dark mode');
+    });
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    var current=document.documentElement.dataset.theme==='dark'?'dark':'light';
+    setTheme(current);
+    document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

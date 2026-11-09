@@ -1,0 +1,73 @@
+{
+  "id": "bayesian-mab-switching-costs-optimal-policy",
+  "title": "Optimal policy for the Bayesian multi-armed bandit with switching costs",
+  "short_statement": "Switching costs destroy the classical Gittins-index decomposition; characterize the exact optimal policy or a provably near-optimal tractable policy.",
+  "full_statement": "There are $n$ independent Markov reward processes, one for each arm. At each time $t$, the decision maker chooses an arm $a_t$, receives the reward from that arm, and only the chosen arm's state evolves. Future rewards are discounted by $\\beta\\in(0,1)$. If $a_t\\ne a_{t-1}$, the decision maker pays a switching cost $c_{a_{t-1},a_t}\\ge0$, often specialized to a constant cost or an arm-dependent matrix. The objective is to maximize expected discounted reward net of switching costs. Without switching costs, the Gittins-index theorem gives an optimal policy that computes an index for each arm separately and plays the arm with the largest index. With positive switching costs, the current arm becomes part of the state, arms are coupled through future switching opportunities, and ordinary separability fails. The open problem is to characterize the exact optimal policy for general finite-state discounted arms, or to prove a uniform approximation guarantee for a tractable continuation/switching-index policy.",
+  "background": "The classical discounted Bayesian multi-armed bandit is one of the cleanest success stories in dynamic allocation: Gittins indices reduce a high-dimensional dynamic program to independent single-arm calculations. Switching costs are a tiny modeling change with large structural consequences. If moving from one project, treatment, or machine setting to another incurs a cost, then the value of an arm depends not only on its own posterior state but also on which arm is currently active and how expensive it will be to return. Banks and Sundaram showed that a standard per-arm Gittins index is not generally optimal once switching is costly. Asawa and Teneketzis introduced continuation and switching indices that partially characterize decisions. Nino-Mora later gave much faster computation for those indices and found strong empirical near-optimality. What is still missing is a theorem that either fully describes the optimal policy or explains, with worst-case guarantees, why an index-like approximation is the right tractable substitute.",
+  "open_problem": "Characterize the optimal policy for discounted Bayesian multi-armed bandits with switching costs beyond partial continuation/switching-index descriptions, or prove a general approximation theorem for a tractable index-like policy.",
+  "known_results": "Banks and Sundaram showed that positive switching costs destroy ordinary Gittins-index optimality: no index depending only on each arm's own state can be optimal in general. Asawa and Teneketzis introduced a pair of indices, a continuation index and a switching index, that partially characterize optimal policies and can be computed by reducing to a doubled-state Gittins-index problem. Nino-Mora developed a faster decoupled computation method for the Asawa-Teneketzis indices and reported near-optimal performance across many randomly generated two- and three-project instances. Related restless-bandit index theory supplies computational tools, but it does not yield a general exact optimality theorem for switching-cost Bayesian bandits. The remaining gap is a structural theorem or a worst-case approximation guarantee.",
+  "status": "open",
+  "where_posed": {
+    "text": "The open structural issue follows from Banks-Sundaram's impossibility of a Gittins-style index and Asawa-Teneketzis's partial-index characterization.",
+    "url": "https://arxiv.org/abs/2304.01871",
+    "quote": "",
+    "location": "Abstract and introduction describing the intractable MAB with switching costs"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "Partial indices and efficient computations exist, and they perform well computationally. The gap is an exact general structural theorem or a rigorous approximation guarantee.",
+    "links": [
+      {
+        "title": "A faster index algorithm and a computational study for bandits with switching costs",
+        "url": "https://arxiv.org/abs/2304.01871"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Small finite-state bandits can refute proposed index rules or structural conjectures. Exact value iteration can verify optimal actions for small examples.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Automated search can generate small bandit instances that separate candidate policies from the optimum, or discover regularities in optimal switching regions. These examples are machine-checkable by dynamic programming.",
+  "literature": {
+    "synthesis": "This problem is a clean case where a classical solved model becomes hard under a minimal operational friction. Gittins indices rely on separability: the value of working on one arm can be compared to a retirement option independently of other arms. Switching costs couple arms through the currently active project, so optimality regions depend on relative states and past action. Asawa and Teneketzis recover part of the lost structure through continuation and switching indices, and Nino-Mora improves the computational side enough to make large numerical studies feasible. The unresolved gap is whether those partial indices can be elevated into a complete theorem, or whether the best possible general result is approximation rather than exact optimality.",
+    "reviewed": [
+      {
+        "ref": "Jeffrey S. Banks and Rangarajan K. Sundaram, 'Switching Costs and the Gittins Index', Econometrica 1994",
+        "result": "Shows that standard per-arm Gittins-index optimality fails when switching costs are present.",
+        "relevance": "hardness",
+        "url": "https://doi.org/10.2307/2951660"
+      },
+      {
+        "ref": "M. Asawa and D. Teneketzis, 'Multi-armed bandits with switching penalties', IEEE Transactions on Automatic Control 1996",
+        "result": "Introduces continuation and switching indices that partially characterize optimal switching decisions.",
+        "relevance": "partial-progress",
+        "url": "https://doi.org/10.1109/9.486316"
+      },
+      {
+        "ref": "Jose Nino-Mora, 'A faster index algorithm and a computational study for bandits with switching costs', INFORMS Journal on Computing 2008 / arXiv 2023",
+        "result": "Develops faster computation for the Asawa-Teneketzis indices and reports strong computational performance on random finite-state instances.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2304.01871"
+      },
+      {
+        "ref": "Peter Whittle, 'Restless bandits: Activity allocation in a changing world', Journal of Applied Probability 1988",
+        "result": "Introduces Whittle-index ideas for restless bandits, a nearby framework used in later index computations for switching-cost bandits.",
+        "relevance": "related-tool",
+        "url": "https://doi.org/10.1017/S0021900200116719"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Search finite-state examples, characterize optimal switching regions symbolically, and test continuation/switching-index policies against exact dynamic programming. Look for monotone comparative statics in switching cost, discount factor, and posterior state. Approximation approaches may use metric switching-cost embeddings, Lagrangian relaxation, or reductions to restless-bandit index policies with explicit performance loss.",
+    "verification_notes": "A claimed exact rule must be checked against finite-state counterexamples where ordinary Gittins indices fail. If the rule is index-like, state precisely what information the index may use, including whether it depends on the current active arm. Approximation claims need a uniform bound over all finite-state arms and switching-cost matrices, not only simulations on random two- or three-project instances.",
+    "machine_checkable": true
+  },
+  "tags": [
+    "multi-armed-bandits",
+    "gittins-index",
+    "switching-costs",
+    "dynamic-programming",
+    "index-policies"
+  ]
+}

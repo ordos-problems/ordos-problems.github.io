@@ -1,0 +1,42 @@
+{
+  "id": "unrelated-machines-makespan-below-2",
+  "full_statement": "In unrelated parallel-machine makespan minimization, an instance consists of machines $i\\in[m]$, jobs $j\\in[n]$, and processing times $p_{ij}\\in\\mathbb R_{\\ge0}\\cup\\{\\infty\\}$ specifying the time required if job $j$ is assigned to machine $i$. A schedule assigns every job to one machine with finite processing time, and the load of machine $i$ is $\\sum_{j\\mapsto i}p_{ij}$. The objective is to minimize $C_{\\max}=\\max_i\\sum_{j\\mapsto i}p_{ij}$. Lenstra-Shmoys-Tardos gave a polynomial-time $2$-approximation and proved NP-hardness below $3/2$. The open problem is to determine whether there is a polynomial-time $(2-\\epsilon)$-approximation for some universal $\\epsilon>0$, or conversely to prove hardness of approximation strictly above $3/2$ for general unrelated processing matrices. The approximation must be with respect to the optimal integral makespan for the same processing-time matrix, not a relaxation value.",
+  "background": "Scheduling on unrelated machines is the most general classical parallel-machine makespan model: each job has an arbitrary processing time on each machine. Lenstra, Shmoys, and Tardos gave a $2$-approximation in 1990 by rounding a natural assignment LP after guessing the makespan, and proved NP-hardness below $3/2$. The $[3/2,2]$ gap has survived for decades. Many special cases, such as restricted assignment and graph balancing, have seen progress below $2$ in LP estimation or quasi-polynomial algorithms, but the full unrelated-machines problem has resisted any polynomial-time ratio strictly below $2$. This is one of the cleanest approximation gaps in scheduling and a central test of whether stronger configuration relaxations or local-search methods can beat assignment-LP rounding.",
+  "open_problem": "Find a polynomial-time approximation algorithm with ratio strictly below $2$ for $R||C_{\\max}$, or prove hardness above $3/2$.",
+  "known_results": "Lenstra, Shmoys, and Tardos gave the classic polynomial-time $2$-approximation and proved NP-hardness of any ratio below $3/2$. Their algorithm rounds the assignment LP after discarding assignments longer than a guessed makespan. The configuration LP has gap $2$ for full unrelated machines, even for unrelated graph balancing, by Verschae and Wiese, so this strongest standard LP does not by itself beat the barrier in full generality. Important special cases behave better: restricted assignment has configuration-LP gap below $2$, and graph balancing admits nonconstructive/local-search estimates below $1.75$. None of these results gives a polynomial-time approximation below $2$ for general unrelated machines, and no stronger hardness has closed the gap.",
+  "status": "open",
+  "where_posed": {
+    "text": "Classical approximation gap left by Lenstra, Shmoys, and Tardos, 'Approximation algorithms for scheduling unrelated parallel machines'.",
+    "url": "https://doi.org/10.1007/BF01585745",
+    "quote": "",
+    "location": "Approximation and hardness results"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The general problem remains at $2$ versus $3/2$. Configuration-LP and local-search progress applies to special cases but not to full unrelated machines.",
+    "links": [
+      {"title": "Verschae and Wiese, configuration LP for unrelated machines", "url": "https://arxiv.org/abs/1011.4957"},
+      {"title": "Jansen and Rohwedder, restricted assignment configuration LP", "url": "https://arxiv.org/abs/1611.01934"},
+      {"title": "Jansen and Rohwedder, graph balancing below 1.75", "url": "https://arxiv.org/abs/1811.00955"}
+    ]
+  },
+  "importance": 9,
+  "difficulty": 9,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "LP gap examples and algorithm lower-bound instances are finite and searchable, but proving hardness above $3/2$ or an algorithm below $2$ requires reductions or rounding theorems.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Search can find hard instances for candidate relaxations and local-search rules. Full algorithmic progress needs a structural proof that works for arbitrary processing matrices.",
+  "literature": {
+    "synthesis": "The assignment-LP rounding of Lenstra-Shmoys-Tardos is tight for its relaxation, and configuration-LP gaps show that simply strengthening to configurations cannot solve the full problem. The special-case successes suggest that restricted processing structure enables local-search or hypergraph-matching style arguments, but arbitrary unrelated processing times can encode much more complex conflicts. The remaining gap is therefore not only quantitative; it asks what relaxation or algorithmic structure can see beyond the known $2$ barrier for arbitrary matrices.",
+    "reviewed": [
+      {"ref": "Jan Karel Lenstra, David B. Shmoys, Eva Tardos, 'Approximation algorithms for scheduling unrelated parallel machines', Mathematical Programming 1990", "result": "Gives the $2$-approximation and $3/2$ hardness that define the classical gap.", "relevance": "partial-progress", "url": "https://doi.org/10.1007/BF01585745"},
+      {"ref": "Jose Verschae, Andreas Wiese, 'On the Configuration-LP for Scheduling on Unrelated Machines', arXiv 2010", "result": "Shows configuration-LP gap $2$ even for unrelated graph balancing, limiting a natural LP approach.", "relevance": "hardness", "url": "https://arxiv.org/abs/1011.4957"},
+      {"ref": "Klaus Jansen, Lars Rohwedder, 'On the Configuration-LP of the Restricted Assignment Problem', arXiv 2016", "result": "Improves restricted-assignment configuration-LP bound to $2-1/6$, illustrating special-case progress below $2$.", "relevance": "related-tool", "url": "https://arxiv.org/abs/1611.01934"}
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Investigate relaxations beyond the configuration LP, or algorithms that exploit machine/job grouping without assuming restricted assignment. Hardness attempts should try to amplify the $3/2$ gap using gadgets with arbitrary processing matrices.",
+    "verification_notes": "A claimed algorithm must be polynomial-time for arbitrary unrelated-machine processing matrices and must output an actual schedule, not only estimate the optimum. A verifier should check that the ratio is strictly below $2$ by a fixed constant independent of $m,n$, and that assumptions such as restricted assignment, graph balancing, bounded processing times, or quasi-polynomial running time are not being used to solve only a special case.",
+    "machine_checkable": false
+  }
+}

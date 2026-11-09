@@ -1,0 +1,42 @@
+{
+  "id": "metric-tsp-four-thirds-integrality-gap",
+  "background": "The metric traveling-salesman problem is one of the central problems in combinatorial optimization. The subtour-elimination LP, also called the Held-Karp relaxation, is the standard relaxation behind both exact TSP solvers and approximation algorithms. The famous $4/3$ conjecture says that every feasible subtour LP solution can be rounded to a tour of cost at most $4/3$ times the LP value, and this would be tight. For decades the best general upper bound was the $3/2$ Christofides-Serdyukov ratio. Karlin, Klein, and Oveis Gharan finally broke the $3/2$ barrier by an extremely small amount using maximum-entropy tree sampling, but the result is still nowhere near $4/3$. This makes the problem a clean benchmark for whether modern probabilistic rounding can fully capture the structure of the subtour polytope.",
+  "full_statement": "Let $I=(V,c)$ be a finite metric TSP instance: $c_{uv}=c_{vu}\\ge 0$, $c_{uu}=0$, and $c_{uv}\\le c_{uw}+c_{wv}$ for all vertices $u,v,w$. A tour is a Hamiltonian cycle, or equivalently a connected Eulerian multigraph whose shortcutting gives a Hamiltonian cycle, and $\\operatorname{OPT}(I)$ is its minimum cost. The subtour-elimination, or Held-Karp, relaxation has variables $x_e$ for unordered pairs $e\\in {V\\choose 2}$, degree constraints $x(\\delta(v))=2$ for every $v\\in V$, subtour constraints $x(\\delta(S))\\ge 2$ for every nonempty proper $S\\subset V$, and $x_e\\ge0$. Let $\\operatorname{LP}(I)$ be the minimum cost of this relaxation and define $\\gamma=\\sup_I \\operatorname{OPT}(I)/\\operatorname{LP}(I)$ over all finite metric instances. The $4/3$ conjecture asserts that $\\gamma=4/3$. The lower bound comes from explicit families whose optimal tours cost asymptotically $4/3$ times the subtour LP value. The open problem is to prove a universal rounding theorem that converts every feasible subtour solution into a tour of cost at most $(4/3)\\,c\\cdot x$, or to exhibit and certify a metric instance whose gap is strictly larger than $4/3$.",
+  "open_problem": "Prove or refute that the integrality gap of the subtour-elimination LP for metric TSP is exactly $4/3$.",
+  "known_results": "Families of metric TSP instances give subtour-LP integrality gap approaching $4/3$, so the conjectured value would be tight. Christofides-Serdyukov gives a $3/2$ tour relative to the optimum, and the same ratio was the best known general upper bound for the subtour LP for roughly forty years. Karlin, Klein, and Oveis Gharan proved that the gap is at most $3/2-\\epsilon$ for an absolute $\\epsilon>10^{-36}$, the first general improvement below $3/2$. Half-integral instances, often conjectured to be extremal, have seen incremental progress: Karlin-Klein-Oveis Gharan obtained $1.49993$, later work improves special half-integral classes, and exact computational verification now supports the $4/3$ conjecture for small subtour-polytope instances. The full gap remains open between $4/3$ and just below $3/2$.",
+  "status": "open",
+  "where_posed": {
+    "text": "Long-standing subtour LP integrality-gap conjecture surveyed in Traub and Vygen, 'Approximation Algorithms for Traveling Salesman Problems'.",
+    "url": "https://www.or.uni-bonn.de/tspbook/book.pdf",
+    "quote": "",
+    "location": "TSP approximation and subtour-relaxation discussion"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The general upper bound is now strictly below $3/2$, but only by a tiny constant. Special half-integral and cycle-cut cases have stronger results, and exact small-instance computations support the conjecture.",
+    "links": [
+      {"title": "Karlin, Klein, Oveis Gharan, subtour LP gap below 3/2", "url": "https://arxiv.org/abs/2105.10043"},
+      {"title": "Jin, Klein, Williamson, 4/3 for cycle-cut half-integral instances", "url": "https://arxiv.org/abs/2211.04639"},
+      {"title": "Cook, Hougardy, Petrich, exact gap computations", "url": "https://arxiv.org/abs/2603.12995"}
+    ]
+  },
+  "importance": 10,
+  "difficulty": 10,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "A refutation could be a finite metric instance with subtour LP gap exceeding $4/3$. Such a candidate can be checked by solving the LP and TSP exactly for moderate sizes.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Search over small metrics, graph metrics, and subtour-polytope extreme points can find hard instances or support structural conjectures. Positive progress still requires a proof of a rounding theorem.",
+  "literature": {
+    "synthesis": "The main lines of attack are probabilistic tree rounding, structure of subtour extreme points, and reductions to half-integral or graph-like instances. Christofides-style arguments naturally stop at $3/2$ because they build a spanning tree and then pay for a parity-correction matching that can be charged by half the LP. The maximum-entropy approach perturbs this charge in favorable cases and gives the first nonzero improvement, but its constants are far from the $4/3$ target. Half-integral instances remain central because many hard examples and conjectural extremal structures live there, and exact computations suggest that small extreme points do not violate the conjecture. The gap is therefore not a lack of examples; it is a missing structural theorem showing that every subtour solution has enough negative dependence, parity slack, or decomposability to support $4/3$ rounding. A counterexample would have to beat decades of half-integral and graph-metric searches with a rigorously certified LP/tour gap.",
+    "reviewed": [
+      {"ref": "Anna Karlin, Nathan Klein, Shayan Oveis Gharan, 'A (Slightly) Improved Bound on the Integrality Gap of the Subtour LP for TSP', FOCS 2021", "result": "Proves integrality gap at most $3/2-\\epsilon$ for $\\epsilon>10^{-36}$.", "relevance": "partial-progress", "url": "https://arxiv.org/abs/2105.10043"},
+      {"ref": "Billy Jin, Nathan Klein, David P. Williamson, 'A 4/3-Approximation Algorithm for Half-Integral Cycle Cut Instances of the TSP', arXiv 2022", "result": "Proves the $4/3$ bound for a large class of half-integral instances matching known bad examples.", "relevance": "solves-special-case", "url": "https://arxiv.org/abs/2211.04639"},
+      {"ref": "William Cook, Stefan Hougardy, Moritz Petrich, 'Extending Exact Integrality Gap Computations for the Metric TSP', arXiv 2026", "result": "Extends exact small-instance verification of the $4/3$ conjecture and enumerates additional subtour-polytope extreme points.", "relevance": "partial-progress", "url": "https://arxiv.org/abs/2603.12995"}
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Search for extreme points with large gap, especially half-integral support graphs, and test candidate rounding distributions. For proof attempts, study parity-correction costs under maximum-entropy or negative-dependence tree distributions.",
+    "verification_notes": "A counterexample must specify the finite metric exactly, usually by integer edge lengths or by a weighted graph plus metric completion, and must certify both $\\operatorname{LP}(I)$ and $\\operatorname{OPT}(I)$. The subtour LP certificate should include a feasible primal solution and, preferably, a dual lower bound matching its value; the TSP optimum certificate should rule out all cheaper tours, for example by exact branch-and-cut or a complete enumeration argument for small instances. A positive solution must apply to arbitrary finite metrics and arbitrary feasible subtour-LP points, not only graph-TSP, graphic TSP, half-integral extreme points, cycle-cut instances, or bounded-size computations. Check carefully whether a claimed $4/3$ theorem is relative to the LP value or only to the optimum tour, since those are different statements.",
+    "machine_checkable": true
+  }
+}

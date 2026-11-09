@@ -17,12 +17,73 @@
   "asymptotic-optimality"
  ],
  "short_statement": "In network revenue management, the deterministic LP upper-bounds optimal revenue and re-solving heuristics achieve $O(1)$ regret under non-degeneracy in the independent-demand case. For choice-based NRM, no policy is known to achieve constant ($T$-independent) regret without a non-degeneracy assumption, and the tight relaxation gap and best simple-policy regret are uncharacterized.",
- "open_problem": "Find a tractable policy with $O(1)$ regret for general choice-based network revenue management, including degenerate CDLP instances, or prove such regret is impossible.",
+ "open_problem": "Find a tractable policy with $O(1)$ regret for general choice-based network revenue management, including degenerate CDLP instances, or prove that such uniformly bounded regret is impossible.",
+ "background": "Network revenue management is a foundational model for selling products that consume shared limited resources, such as airline itineraries, hotel stays, or ad inventory. The exact dynamic program is usually intractable, so much of the theory compares online policies against deterministic linear-program relaxations and asks for small regret as the horizon and capacities scale. In quantity-based NRM with accept/reject decisions, re-solving and bid-price policies now have strong guarantees, including uniformly bounded loss in important nondegenerate settings. Degeneracy matters because the deterministic LP can have multiple optimal bases or flat directions; then small demand noise can change the right acceptance mix. Choice-based NRM adds another difficulty: the decision is an assortment or offer set, and customers choose according to a demand model, so the CDLP may be nonlinear or have a more complicated feasible structure. The open problem is clean: obtain $O(1)$ regret, or prove it impossible, for general choice-based NRM including degenerate instances.",
  "full_statement": "Quantity-based NRM: $T$ periods, $m$ resources with integer capacities $c \\in \\mathbb{Z}_{+}^m$, $n$ products; product $j$ consumes bundle $A_{\\cdot j} \\in \\{0,1\\}^m$ and yields revenue $r_j$; demand is stochastic. In the choice-based model, at each period the firm offers an assortment $S \\subseteq \\{1,\\dots,n\\}$ and an arriving customer chooses $j \\in S$ with probability $P_j(S)$ (e.g. MNL). Let $V^*$ be the optimal DP value and $V^{\\mathrm{CDLP}} = \\max_{\\lambda \\geq 0} \\sum_S \\lambda_S (\\sum_j P_j(S) r_j)$ s.t. $\\sum_S \\lambda_S \\sum_j P_j(S) A_{ij} \\leq c_i\\ \\forall i$, $\\sum_S \\lambda_S \\leq T$, so $V^{\\mathrm{CDLP}} \\geq V^*$ (the choice-based deterministic LP). Define the regret of policy $\\pi$ as $V^* - V^\\pi$ under fluid scaling $c \\to k c$, $T \\to kT$, $k \\to \\infty$. $$\\textbf{Open: } \\text{Is there a tractable policy } \\pi \\text{ (e.g. CDLP-based re-solving/decomposition) with regret } O(1) \\text{ (independent of } k,T\\text{) for } \\textit{all} \\text{ choice-based instances, including degenerate CDLP?}$$ Equivalently, characterize $\\inf_\\pi \\sup_{\\text{instances}} \\mathrm{Regret}(\\pi)$ and the tightest bound on $V^{\\mathrm{CDLP}} - V^*$ as a function of $m,n,T$ without a non-degeneracy assumption. For independent demand, re-solving achieves O(1) regret under non-degeneracy, and recent work removes non-degeneracy for continuous-value models.",
- "known_results": "Independent-demand quantity-based NRM: Talluri & van Ryzin (1998) proved DLP bid-price controls are asymptotically optimal; naive frequent re-solving incurs $O(\\sqrt{T})$ loss. Jasin & Kumar (2012) gave a re-solving heuristic with $O(1)$ loss under non-degeneracy. Bumpensanti & Wang (2020) achieve uniformly bounded $O(1)$ regret independent of T and capacities via infrequent re-solving with probability thresholding, under non-degeneracy. Vera & Banerjee (2021) obtain constant regret for online allocation with finite types. For degenerate LP / continuous-value models, Jiang-Ma-Zhang (2025) prove $O(\\log ^2 T)$ regret with only densities bounded away from 0 ($O(\\log T)$ under a growth condition), removing non-degeneracy for that formulation; whether $O(1)$ is achievable for general degenerate discrete instances is unsettled. Choice-based NRM: Liu & van Ryzin (2008) showed the CDLP and its decomposition heuristic are asymptotically optimal as demand/capacity scale; Jasin & Kumar (2012) handle choice but rely on non-degeneracy. The non-linear structure of choice makes the fluid relaxation non-linear, and no policy is currently proven to achieve constant (T-independent) regret for general/degenerate choice-based instances, nor is the tight relaxation gap characterized — the genuinely open piece as of 2024-2025.",
+ "known_results": "Talluri and van Ryzin introduced deterministic LP and randomized linear-programming methods for NRM. Liu and van Ryzin developed the choice-based deterministic linear program for assortment-based revenue management. Bumpensanti and Wang prove that for canonical quantity-based NRM, a carefully timed re-solving heuristic with probability thresholds has uniformly bounded loss independent of horizon and capacities. Jiang, Ma, and Zhang show that degeneracy is not fatal in a continuous-value quantity-based NRM model: they obtain $O(\\log^2 T)$ regret without nondegeneracy assumptions and $O(\\log T)$ under second-order growth. These results do not yet give a general $O(1)$ regret theorem for choice-based NRM under degenerate CDLP structure.",
+ "progress": {
+  "state": "partial",
+  "summary": "Quantity-based NRM has bounded-loss and logarithmic-regret guarantees in increasingly broad settings. General choice-based NRM with degenerate CDLP remains the unresolved frontier.",
+  "links": [
+   {
+    "title": "Bumpensanti and Wang, A Re-solving Heuristic with Uniformly Bounded Loss",
+    "url": "https://arxiv.org/abs/1802.06192"
+   },
+   {
+    "title": "Jiang, Ma, Zhang, Degeneracy is OK",
+    "url": "https://arxiv.org/abs/2210.07996"
+   },
+   {
+    "title": "Liu and van Ryzin, On the choice-based linear programming model for network revenue management",
+    "url": "https://pubsonline.informs.org/doi/10.1287/msom.1070.0169"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "Small choice models and resource networks could show that $O(1)$ regret is impossible under degeneracy, or refute proposed policies. Certifying impossibility requires lower-bound arguments over all online policies.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Automated search can generate small degenerate CDLP instances where re-solving, bid-price, or assortment heuristics incur growing regret. It may also discover factor-revealing examples for lower bounds.",
+ "literature": {
+  "synthesis": "The NRM literature has made sharp progress by understanding when deterministic relaxations are accurate enough for online control. Bumpensanti and Wang show that naive frequent re-solving is not enough, but a sparse re-solving schedule plus thresholding can obtain bounded loss in canonical NRM. Jiang, Ma, and Zhang weaken nondegeneracy requirements for continuous-value quantity-based NRM and introduce tools such as semi-fluid relaxations and dual-convergence bounds. Choice-based NRM is structurally harder because decisions alter a customer's substitution set rather than accept or reject a fixed request, and CDLP degeneracy can interact with substitution in ways not covered by quantity-based analyses. The live problem is to decide whether the bounded-loss paradigm survives this combination.",
+  "reviewed": [
+   {
+    "ref": "Talluri and van Ryzin, 'An Analysis of Bid-Price Controls for Network Revenue Management', Management Science 1998",
+    "result": "Classical deterministic LP and bid-price framework for NRM.",
+    "relevance": "related-tool",
+    "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.44.11.1577"
+   },
+   {
+    "ref": "Liu and van Ryzin, 'On the choice-based linear programming model for network revenue management', Manufacturing & Service Operations Management 2008",
+    "result": "Introduces and analyzes the choice-based CDLP.",
+    "relevance": "related-tool",
+    "url": "https://pubsonline.informs.org/doi/10.1287/msom.1070.0169"
+   },
+   {
+    "ref": "Bumpensanti and Wang, 'A Re-solving Heuristic with Uniformly Bounded Loss for Network Revenue Management', Management Science 2020 / arXiv 2018",
+    "result": "Gives a quantity-based re-solving policy with uniformly bounded loss.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1802.06192"
+   },
+   {
+    "ref": "Jiang, Ma, Zhang, 'Degeneracy is OK: Logarithmic Regret for Network Revenue Management with Indiscrete Distributions', arXiv 2022/2025",
+    "result": "Obtains logarithmic-level regret without nondegeneracy assumptions for a continuous-value quantity-based NRM model.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2210.07996"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Try to isolate the smallest choice-based degenerate CDLP examples and compare CDLP dual behavior under re-solving. Positive approaches may combine inventory-balancing, randomized assortments, and semi-fluid relaxations. Lower-bound approaches should build instances where multiple CDLP optima require different future protection levels.",
+  "verification_notes": "A claimed $O(1)$ result must specify the choice model, scaling regime, and benchmark, and must hold uniformly over degenerate instances. A lower bound must rule out all admissible online policies, not only CDLP re-solving heuristics. Check whether assumptions secretly impose nondegeneracy or unique optimal dual prices.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "The O(1)-regret re-solving result (independent demand, non-degenerate) is in Bumpensanti & Wang, 'A Re-Solving Heuristic with Uniformly Bounded Loss for Network Revenue Management,' Management Science 66(7):2993-3009, 2020; the residual choice-based/degenerate open question is framed in the surrounding literature (Liu-van Ryzin 2008; Jiang-Ma-Zhang 2025).",
-  "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2019.3365"
+  "text": "The quantity-based bounded-loss benchmark is Bumpensanti and Wang; the remaining degenerate and choice-based gap is visible from the contrast with Liu-van Ryzin choice-based CDLP and the Jiang-Ma-Zhang degeneracy results.",
+  "url": "https://arxiv.org/abs/1802.06192",
+  "quote": "",
+  "location": "NRM re-solving and degeneracy literature; open synthesis as of July 2026."
  },
  "source": {
   "authors": "Pornpawee Bumpensanti, He Wang",

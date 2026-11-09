@@ -11,15 +11,64 @@
   "linear programming",
   "computational complexity",
   "strongly polynomial",
-  "Smale"
+  "Smale",
+  "continuous optimization",
+  "smale"
  ],
- "short_statement": "Is there an algorithm that solves every linear program using a number of arithmetic operations bounded by a polynomial in the number of variables and constraints alone — independent of the bit-length of the data?",
- "open_problem": "Question (Smale's 9th problem): does a strongly polynomial algorithm for general linear programming exist?",
- "full_statement": "Consider a linear program $\\max\\{c^\\top x : Ax \\le b\\}$ with rational data $A \\in \\mathbb{Q}^{m\\times n}$, $b\\in\\mathbb{Q}^m$, $c\\in\\mathbb{Q}^n$. An algorithm is \\emph{strongly polynomial} if (i) it uses a number of elementary arithmetic operations $(+,-,\\times,\\div,\\le)$ bounded by a polynomial in $m$ and $n$ only, and (ii) the numbers occurring in the computation have bit-size bounded by a polynomial in the input size. Khachiyan's ellipsoid method (1979) and Karmarkar's interior-point method (1984) are \\emph{weakly} polynomial: their operation count depends on the bit-length $L$ of the data. Question (Smale's 9th problem): does a strongly polynomial algorithm for general linear programming exist?",
- "known_results": "Strongly polynomial algorithms are known for important special cases: combinatorial LPs where entries of $A$ are bounded (Tardos 1986, depending only on $A$), LPs with at most two nonzeros per row or column, and fixed dimension (Megiddo). Recent layered/interior-point advances (e.g., Dadush–Huiberts–Natura–Végh) give bounds depending on the constraint-matrix condition number. The general case is open.",
+ "short_statement": "Does every linear program admit a strongly polynomial algorithm, with operation count bounded polynomially in only the number of variables and constraints?",
+ "open_problem": "Construct a strongly polynomial algorithm for general rational linear programming, or prove that no such algorithm exists in a standard algebraic/bit model. The open part is not polynomial-time solvability of LP, but the removal of all dependence on numerical magnitudes, encoding length, or condition measures from the iteration count.",
+ "background": "Linear programming is one of the core algorithmic models of Operations Research: production planning, flows, matching, auctions, statistical estimation, and many relaxations for hard discrete problems are all expressed as LPs. The ellipsoid method and interior-point methods show that LP is solvable in time polynomial in the input bit length, but this is a weakly polynomial guarantee. A strongly polynomial algorithm would use a number of arithmetic operations polynomial only in the numbers of variables and constraints, and would keep intermediate numbers under polynomial bit control. This distinction matters because LP is also the canonical test case for whether continuous optimization admits a genuinely combinatorial complexity theory. Many special LP families have strongly polynomial algorithms, and Tardos's framework explains why bounded-coefficient combinatorial LPs behave better than arbitrary rational LPs. Smale listed the general problem as one of his mathematical problems for the next century. Despite decades of progress in scaling, conditioning, and interior-point methods, no algorithm is known whose worst-case complexity removes all dependence on coefficient magnitudes or condition numbers.",
+ "full_statement": "Given a rational linear program, for example $\\min\\{c^\\top x: Ax \\ge b\\}$ with $A \\in \\mathbb{Q}^{m \\times n}$, $b \\in \\mathbb{Q}^m$, and $c \\in \\mathbb{Q}^n$, decide feasibility and, when bounded, return an optimal solution. Is there an algorithm whose number of arithmetic operations is bounded by $\\operatorname{poly}(m,n)$ and whose intermediate numbers have bit length polynomial in the input bit length? Equivalently, can general LP be solved in strongly polynomial time rather than merely weakly polynomial time?",
+ "known_results": "Khachiyan's ellipsoid method and Karmarkar/interior-point methods give weakly polynomial algorithms. Tardos (1986) gave strongly polynomial algorithms for LPs whose constraint matrix has small integral entries, covering many combinatorial optimization problems. Fixed-dimensional LP and several structured network and matrix classes are also strongly polynomial. Modern work by Dadush, Huiberts, Natura, and Vegh gives scaling-invariant algorithms whose complexity depends on geometric condition measures of the constraint matrix, which is important progress but still not a general strongly polynomial bound. As of 2026, the unrestricted problem remains open.",
+ "progress": {
+  "state": "partial",
+  "summary": "Special structured LPs have strongly polynomial algorithms, and recent condition-based algorithms reduce the role of data scaling. The remaining open problem is the fully general LP with no condition-number or coefficient-size dependence in the arithmetic count.",
+  "links": [
+   {
+    "title": "A scaling-invariant algorithm for linear programming whose running time depends only on the constraint matrix",
+    "url": "https://arxiv.org/abs/1912.06252"
+   }
+  ]
+ },
+ "importance": 10,
+ "difficulty": 10,
+ "counterexample_suitability": "low",
+ "counterexample_rationale": "This is an algorithm-existence problem for an infinite class of LP instances. A finite counterexample can refute a proposed algorithm or pivot rule, but cannot by itself resolve the general existence question.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Search might discover hard families for candidate algorithms, improved scaling rules, or low-dimensional geometric gadgets. A full solution would still require a proof of a global polynomial bound or a formal lower-bound framework.",
+ "literature": {
+  "synthesis": "The main positive line is to identify LP families whose arithmetic complexity is controlled by combinatorial structure rather than coefficient size. Tardos's bounded-coefficient framework remains the most influential strongly polynomial theorem for broad combinatorial LP classes. Interior-point and ellipsoid algorithms solve general LP in weakly polynomial time, but their iteration and bit-complexity analyses still depend on input encoding or conditioning. Dadush, Huiberts, Natura, and Vegh developed a scaling-invariant approach whose running time depends on the constraint matrix through geometric condition measures; this clarifies why some numerical instances are tractable, but it does not eliminate all instance-geometry dependence. The remaining gap is therefore very crisp: no known method gives a $\\operatorname{poly}(m,n)$ arithmetic bound for arbitrary rational LP, and no lower-bound theory rules such an algorithm out.",
+  "reviewed": [
+   {
+    "ref": "Steve Smale, 'Mathematical Problems for the Next Century', The Mathematical Intelligencer 1998",
+    "result": "Lists the strongly polynomial LP problem as one of the central mathematical problems for the next century.",
+    "relevance": "poses-problem",
+    "url": "https://link.springer.com/article/10.1007/BF03025291"
+   },
+   {
+    "ref": "Eva Tardos, 'A strongly polynomial algorithm to solve combinatorial linear programs', Operations Research 1986",
+    "result": "Gives strongly polynomial algorithms for LPs with small integral constraint matrices.",
+    "relevance": "solves-special-case",
+    "url": "https://doi.org/10.1287/opre.34.2.250"
+   },
+   {
+    "ref": "Daniel Dadush, Sophie Huiberts, Bento Natura, and Laszlo A. Vegh, 'A scaling-invariant algorithm for linear programming whose running time depends only on the constraint matrix', arXiv 2019",
+    "result": "Develops a scaling-invariant LP algorithm with complexity controlled by a condition measure of the constraint matrix.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1912.06252"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Useful attack routes include condition-number removal, reductions from LP to special structured LP classes, new pivot or interior-point potentials with combinatorial iteration bounds, and lower-bound frameworks for natural algebraic algorithms. Agents can also search for small pathological LP families that break proposed potentials.",
+  "verification_notes": "A claimed positive solution must give a complete algorithm, prove a $\\operatorname{poly}(m,n)$ arithmetic bound, and control intermediate bit length. A claimed negative result must specify a formal model of algorithms; informal numerical bad examples are not enough.",
+  "machine_checkable": false
+ },
  "where_posed": {
-  "text": "Posed as Problem 9 in S. Smale, 'Mathematical problems for the next century' (1998); long studied since Tardos (1986).",
-  "url": "https://link.springer.com/article/10.1007/BF03025291"
+  "text": "Listed as Smale's ninth problem in Steve Smale, 'Mathematical Problems for the Next Century', The Mathematical Intelligencer, 1998.",
+  "url": "https://link.springer.com/article/10.1007/BF03025291",
+  "quote": "",
+  "location": "Problem 9"
  },
  "source": {
   "authors": "Steve Smale",

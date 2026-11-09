@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Approximation threshold for complete-graph correlation clustering | ORdős Problems</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script>
+(function(){
+  try{
+    var saved=localStorage.getItem('ordos-theme');
+    var theme=saved||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+    document.documentElement.dataset.theme=theme;
+  }catch(e){document.documentElement.dataset.theme='light';}
+})();
+</script>
+<style>
+  :root{
+    color-scheme:light;
+    --bg:#ffffeb; --paper:#fffef6; --card:#fffdf2; --paper2:#fff9fd; --ink:#1a1a1a; --soft:#4b514d; --faint:#7b7d6f;
+    --line:#e4e4d0; --line2:#eeeedd; --strong:#1a1a1a; --accent:#034f46; --accent2:#0f675d;
+    --pink:#f0d7ff; --pink2:#f8edff; --pinkhover:#f5e5ff; --orange:#ffa946; --link:#034f46; --tagink:#46514d;
+    --short:#27302c; --bodytext:#252b28; --bodytext2:#303633; --open:#7a5400; --partial:#155879; --med:#97402d;
+    --focus:#d8ece7; --focus-border:#74aaa1; --controlbg:rgba(255,255,235,.96); --modalbg:rgba(26,26,26,.32);
+    --okbg:#d8ead8; --okink:#064d20; --warning-bg:#fff3df; --warning-line:#d88a3d; --warning-ink:#5f3411;
+    --logo-fill:#eef6f5; --logo-stroke:#034f46; --badge-ink:#fff; --badge-hover:#063f39; --toastbg:#1a1a1a; --toastink:#fff;
+    --maxw:1120px; --measure:860px; --radius:8px;
+    --ui:"Figtree","Avenir Next","Avenir",-apple-system,system-ui,"Segoe UI",Arial,sans-serif;
+    --display:"EB Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  }
+  html[data-theme="dark"]{
+    color-scheme:dark;
+    --bg:#18170f; --paper:#232217; --card:#202016; --paper2:#2a2330; --ink:#f4f0df; --soft:#c9c2a8; --faint:#9e967d;
+    --line:#3b3928; --line2:#343224; --strong:#f4f0df; --accent:#8fd8cc; --accent2:#b4ebe3;
+    --pink:#5c365f; --pink2:#33213b; --pinkhover:#6b426f; --orange:#ffbd69; --link:#9be2d6; --tagink:#c9c2a8;
+    --short:#e4ddc7; --bodytext:#e7e0cc; --bodytext2:#d9d0b8; --open:#f5c66a; --partial:#87c8ef; --med:#efaa94;
+    --focus:#24564f; --focus-border:#8fd8cc; --controlbg:rgba(24,23,15,.94); --modalbg:rgba(0,0,0,.56);
+    --okbg:#21452c; --okink:#c7f0cf; --warning-bg:#3a2a18; --warning-line:#d1934f; --warning-ink:#ffd8a5;
+    --logo-fill:#202f2c; --logo-stroke:#8fd8cc; --badge-ink:#18170f; --badge-hover:#b4ebe3; --toastbg:#f4f0df; --toastink:#18170f;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ui);font-size:17px;line-height:1.62;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;}
+  a{color:var(--link);text-decoration-thickness:1px;text-underline-offset:3px;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px 96px;}
+
+  header.site{padding:42px 0 22px;border-bottom:1px solid var(--line);}
+  .headbar{display:grid;grid-template-columns:minmax(320px,max-content) minmax(280px,1fr);gap:22px;align-items:center;}
+  .brand{display:flex;align-items:center;gap:14px;min-width:0;}
+  .logo-link{display:block;width:42px;height:42px;flex:0 0 auto;border-radius:8px;line-height:0;}
+  .logo-link:focus-visible{outline:3px solid var(--orange);outline-offset:3px;}
+  .mono{width:42px;height:42px;flex:0 0 auto;}
+  .mono rect{fill:var(--logo-fill);stroke:var(--logo-stroke);}
+  .mono text{fill:var(--logo-stroke);}
+  h1{font-family:var(--display);font-weight:600;font-size:3rem;letter-spacing:0;margin:0;line-height:1;color:var(--ink);}
+  h1 .or{color:var(--accent);}
+  .aboutbtn{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
+    border-radius:8px;padding:7px 12px;min-width:98px;min-height:38px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;}
+  .aboutbtn:hover{background:var(--pinkhover);}
+  .theme-toggle{width:38px;height:38px;min-width:38px;min-height:38px;padding:0;border-radius:999px;line-height:1;}
+  .theme-mark{font-size:1.05rem;line-height:1;}
+  .simple-headbar{display:flex;align-items:center;justify-content:space-between;gap:18px;}
+  .sub{color:var(--soft);font-size:1.03rem;margin:16px 0 0;max-width:78ch;font-weight:450;}
+  .headsearch{display:flex;justify-content:flex-end;align-items:center;gap:10px;flex-wrap:wrap;}
+  .headsearch input{flex:1 1 260px;min-width:220px;max-width:460px;}
+
+  .tagfilters{margin-top:20px;}
+  .statbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+  .statbtn{appearance:none;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:6px 10px;min-height:34px;min-width:0;display:flex;align-items:center;gap:6px;cursor:pointer;
+    color:var(--faint);font-family:var(--ui);transition:background .15s,border-color .15s,transform .15s;}
+  .statbtn b{display:block;color:var(--ink);font-size:.78rem;line-height:1;font-weight:800;}
+  .statbtn span{font-size:.78rem;line-height:1;color:var(--tagink);overflow-wrap:anywhere;}
+  .statbtn:hover{background:var(--pink2);border-color:var(--focus-border);transform:translateY(-1px);}
+  .statbtn.active{background:var(--pink);border:2px solid var(--strong);padding:5px 9px;color:var(--ink);}
+  .moretags{display:flex;align-items:center;gap:8px;margin-top:10px;}
+  .moretags label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:0;}
+  #tagselect{min-width:230px;max-width:100%;padding:8px 10px;font-size:.82rem;border:1px solid var(--line);
+    border-radius:var(--radius);background:var(--paper);color:var(--ink);font-family:var(--ui);}
+  #tagselect:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
+
+  .modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:24px;background:var(--modalbg);}
+  .modal.open{display:flex;}
+  .modal-card{width:min(760px,100%);max-height:min(86vh,760px);overflow:auto;background:var(--card);border:2px solid var(--strong);
+    border-radius:var(--radius);box-shadow:0 18px 60px rgba(0,0,0,.18);padding:28px 32px;}
+  .modal-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:14px;}
+  .modal-card h2{font-family:var(--display);font-weight:600;font-size:2.1rem;line-height:1.05;margin:0;color:var(--ink);}
+  .modal-card h3{font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:22px 0 7px;}
+  .modal-card p{font-size:1rem;line-height:1.7;color:var(--bodytext2);margin:.7em 0;}
+  .closemodal{appearance:none;border:2px solid var(--strong);border-radius:8px;background:var(--pink);color:var(--ink);
+    font-family:var(--ui);font-weight:800;cursor:pointer;padding:5px 10px;box-shadow:0 1px 0 var(--strong);}
+
+  .controls{position:sticky;top:0;z-index:20;background:var(--controlbg);backdrop-filter:saturate(1.05) blur(10px);
+    border-bottom:1px solid var(--line);padding:11px 0;margin:18px 0 14px;}
+  #q{width:100%;padding:12px 14px;font-size:.94rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);color:var(--ink);font-family:var(--ui);}
+  #q:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
+  .ctl-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;}
+  .filterstate{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .count{font-size:.8rem;color:var(--faint);}
+  .selectedtags{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+  .selectedtag{appearance:none;border:1px solid var(--strong);background:var(--pink);border-radius:999px;padding:4px 8px;
+    font-family:var(--ui);font-size:.74rem;font-weight:750;color:var(--ink);cursor:pointer;}
+  .selectedtag:hover{background:var(--pinkhover);}
+  .clearfilter{font-size:.8rem;color:var(--link);background:none;border:none;cursor:pointer;font-family:var(--ui);padding:0;font-weight:700;}
+
+  .grouphdr{font-weight:800;font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);
+    margin:34px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+  .grouphdr .gn{color:var(--faint);font-weight:500;}
+
+  article.p{background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);
+    padding:20px 22px 19px;margin:12px 0;scroll-margin-top:96px;}
+  article.p:target{box-shadow:0 0 0 3px var(--focus);}
+  .p .top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px;}
+  .num{font-weight:800;font-size:.76rem;color:var(--badge-ink);background:var(--accent);padding:3px 9px;border-radius:7px;text-decoration:none;}
+  .num:hover{background:var(--badge-hover);}
+  .tagline{display:flex;gap:9px;flex-wrap:wrap;align-items:center;min-width:0;color:var(--tagink);font-size:.9rem;}
+  .tag{color:var(--tagink);white-space:nowrap;}
+  .tag.status-open{color:var(--open);}
+  .tag.status-partial{color:var(--partial);}
+  .tag.med{color:var(--med);}
+  .spacer{flex:1 1 auto;}
+  .copy,.open-link,.back-link{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
+    border-radius:8px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+  .copy:hover,.open-link:hover,.back-link:hover{background:var(--pinkhover);}
+  .copy.ok{background:var(--okbg);color:var(--okink);}
+
+  .problem-title{font-family:var(--display);font-size:1.42rem;line-height:1.18;font-weight:600;margin:0 0 8px;color:var(--ink);letter-spacing:0;}
+  .problem-title a{text-decoration:none;color:inherit;}
+  .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
+  .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:var(--short);max-width:88ch;letter-spacing:0;}
+  .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:nowrap;margin:24px 0 0;overflow-x:auto;padding-bottom:3px;}
+  .pagebtn{font-size:.76rem;color:var(--ink);background:var(--card);border:2px solid var(--strong);border-radius:8px;
+    padding:5px 8px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:30px;box-shadow:0 1px 0 var(--strong);white-space:nowrap;}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pagegap,.pageinfo{font-size:.76rem;color:var(--faint);font-weight:750;padding:0 3px;white-space:nowrap;}
+
+  .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
+  .detail-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end;}
+  .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
+  .detail-meta{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0;}
+  .problem-nav{display:flex;gap:10px;align-items:stretch;justify-content:space-between;margin:22px 0 24px;max-width:var(--measure);}
+  .problem-nav .navlink{flex:1 1 0;background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);padding:12px 14px;
+    text-decoration:none;color:var(--ink);font-weight:750;min-width:0;}
+  .problem-nav .navlink:hover{background:var(--pink2);}
+  .problem-nav .navlink.next{text-align:right;}
+  .problem-nav .navlink.empty{visibility:hidden;}
+  .problem-nav .navlabel{display:block;font-size:.72rem;letter-spacing:0;text-transform:uppercase;color:var(--faint);font-weight:800;margin-bottom:2px;}
+  .detail-card{background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);padding:28px 32px;margin:24px 0;max-width:var(--measure);}
+  .detail-card h2{font-size:.8rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:0 0 15px;}
+  .prose{font-size:1.04rem;line-height:1.86;color:var(--bodytext);}
+  .prose p{margin:0 0 1.15em;}
+  .prose .katex-display{margin:1.15em 0;}
+  .known-prose{font-size:1rem;line-height:1.8;color:var(--bodytext2);}
+  .remaining-open{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);}
+  .remaining-open strong{color:var(--accent);}
+  .source-list{font-size:.94rem;line-height:1.7;color:var(--soft);}
+  .source-list p{margin:.65em 0;}
+  .source-list .k{font-weight:800;color:var(--accent);}
+  .refs{margin:8px 0 0;padding-left:21px;}
+  .refs li{margin:.55em 0;color:var(--soft);}
+
+  .form-shell{max-width:var(--measure);margin:28px 0 0;}
+  .form-card{background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);padding:28px 32px;margin:20px 0;}
+  .form-card h2{font-family:var(--display);font-size:2.35rem;line-height:1.06;font-weight:600;margin:0 0 8px;color:var(--ink);}
+  .form-card p{font-size:1rem;line-height:1.7;color:var(--bodytext2);margin:.7em 0 1.2em;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .field{display:flex;flex-direction:column;gap:6px;margin:14px 0;}
+  .field.full{grid-column:1/-1;}
+  .field label{font-size:.78rem;font-weight:800;letter-spacing:0;text-transform:uppercase;color:var(--accent);}
+  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);
+    font-family:var(--ui);font-size:.96rem;line-height:1.45;padding:11px 12px;}
+  .field textarea{min-height:118px;resize:vertical;}
+  .field input:focus,.field textarea:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
+  .field-note{font-size:.82rem;color:var(--faint);line-height:1.5;}
+  .form-warning{display:none;margin:14px 0 0;padding:10px 12px;border:1px solid var(--warning-line);border-radius:8px;background:var(--warning-bg);color:var(--warning-ink);
+    font-size:.9rem;line-height:1.55;}
+  .form-warning.show{display:block;}
+  .submit-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;}
+  .submit-btn{font-size:.84rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
+    border-radius:8px;padding:9px 14px;cursor:pointer;font-family:var(--ui);font-weight:800;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+  .submit-btn:hover{background:var(--pinkhover);}
+
+  .katex{font-size:1.04em;}
+  .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
+
+  footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
+  footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid var(--line);}
+  footer a:hover{border-bottom-color:var(--accent);}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toastbg);color:var(--toastink);font-size:.85rem;padding:10px 18px;border-radius:8px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+  @media (max-width:900px){
+    .headbar{grid-template-columns:1fr;}
+    .headsearch{justify-content:flex-start;}
+    .headsearch input{max-width:none;}
+  }
+  @media (max-width:760px){
+    .wrap{padding:0 16px 72px;}
+    header.site{padding-top:30px;}
+    .brand{align-items:flex-start;}
+    .brand h1{min-width:0;overflow-wrap:anywhere;}
+    .simple-headbar{align-items:flex-start;}
+    h1{font-size:2.15rem}
+    .about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
+    .statbar{gap:6px;}
+    .statbtn{padding:5px 8px;}
+    .moretags{align-items:flex-start;flex-direction:column;}
+    .ctl-meta{align-items:flex-start;gap:8px;flex-direction:column;}
+    article.p{padding:17px 15px;}
+    .copy,.open-link{width:100%;text-align:center;}
+    .detail-title{font-size:2.2rem;}
+    .detail-top{align-items:flex-start;flex-direction:column;}
+    .detail-actions{width:100%;justify-content:flex-start;}
+    .problem-nav{flex-direction:column;}
+    .problem-nav .navlink{width:100%;}
+    .problem-nav .navlink.next{text-align:left;}
+    .detail-card{padding:22px 18px;}
+    .form-grid{grid-template-columns:1fr;}
+    .form-card{padding:22px 18px;}
+    .modal{padding:14px;}
+    .modal-card{padding:22px 18px;}
+    .modal-card h2{font-size:1.7rem;}
+  }
+
+  .tag.status-claimed{color:var(--med);}
+  .tag.status-resolved{color:var(--okink);}
+  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0;}
+  .badge{font-size:.8rem;color:var(--soft);}
+  .badge+.badge::before{content:" / ";margin-right:8px;color:var(--faint);}
+  .posed-quote{margin:16px 0;padding-left:18px;border-left:2px solid var(--line);color:var(--soft);}
+  .posed-quote .loc{display:block;margin-top:8px;font-size:.8rem;}
+  .lit-list{padding-left:22px;}
+  .lit-list li{margin:1em 0;}
+  .lit-list .rel{display:block;font-size:.75rem;color:var(--faint);}
+  .subm-item{padding:16px 0;border-bottom:1px solid var(--line);}
+  .subm-head{font-size:.8rem;color:var(--soft);}
+  .headsearch input{min-width:0;}
+  .tag{white-space:normal;overflow-wrap:anywhere;}
+  .detail-top{align-items:flex-start;}
+  .detail-top>div:first-child{min-width:0;flex:1;}
+  .detail-actions{flex:0 0 180px;}
+  .detail-actions .back-link{width:100%;text-align:center;}
+  .detail-title{font-size:2.6rem;overflow-wrap:anywhere;}
+  .problem-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+  .problem-nav .navlink{height:104px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow-wrap:anywhere;font-size:.9rem;}
+  .detail-card{background:transparent;border:0;border-top:2px solid var(--strong);border-radius:0;padding:28px 0;}
+  .form-card{background:transparent;border:0;border-radius:0;padding:28px 0;}
+  @media(max-width:760px){
+    .detail-title{font-size:2.2rem;}
+    .detail-actions{flex:0 0 auto;}
+    .detail-actions .back-link{width:auto;}
+    .problem-nav{grid-template-columns:1fr;grid-auto-rows:104px;}
+    .problem-nav .navlink{height:104px;}
+    .problem-nav .navlink.empty{display:none;}
+    .detail-card,.form-card{padding:22px 0;}
+    .pagination{gap:3px;}
+    .pagebtn{min-width:26px;padding:5px 6px;}
+    .pageinfo{display:none;}
+  }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <div class="simple-headbar">
+      <div class="brand">
+        <a class="logo-link" href="../index.html" aria-label="ORdős Problems home"><svg class="mono" viewBox="0 0 100 100" aria-hidden="true">
+        <rect x="3" y="3" width="94" height="94" rx="18" fill="#eef6f5" stroke="#034f46" stroke-width="5"/>
+        <text x="50" y="63" text-anchor="middle" font-family="Figtree, Arial, sans-serif" font-size="36" font-weight="800" fill="#034f46">OP</text>
+      </svg></a>
+        <h1><a href="../index.html" style="color:inherit;text-decoration:none"><span class="or">OR</span>dős Problems</a></h1>
+      </div>
+      <button class="aboutbtn theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme" title="Switch color theme"><span class="theme-mark" aria-hidden="true">☾</span></button>
+    </div>
+  </header>
+
+  <div class="detail-top">
+    <div>
+      <div class="tagline"><span class="tag">#clustering-and-approximation-algorithms</span>
+<span class="tag">#open</span>
+<span class="tag">#approximation-discrepancy</span>
+<span class="tag">#correlation-clustering</span>
+<span class="tag">#clustering</span>
+<span class="tag">#approximation-algorithms</span>
+<span class="tag">#linear-programming</span>
+<span class="tag">#data-mining</span></div>
+      <h1 class="detail-title">Approximation threshold for complete-graph correlation clustering</h1>
+      <div class="detail-meta"><span class="num">163</span><span class="tag">Problem 163 of 182</span><span class="tag">#ordos-163</span></div>
+      <div class="meta-badges"><span class="badge progress-partial">Partial progress</span></div>
+    </div>
+    <div class="detail-actions">
+      <a class="back-link" href="../correction.html?ref=ORDOS-163&amp;title=Approximation%20threshold%20for%20complete-graph%20correlation%20clustering&amp;page=https%3A//ordos-problems.github.io/problems/correlation-clustering-complete-graph-threshold.html" target="_blank" rel="noopener">Suggest edit</a>
+      <a class="back-link" href="../index.html">Back to all problems</a>
+    </div>
+  </div>
+
+  <nav class="problem-nav" aria-label="Problem navigation">
+    <a class="navlink prev" href="simple-stochastic-games-polynomial-time.html" title="Polynomial-time algorithm for simple stochastic games"><span class="navlabel">Previous problem</span>#162 · Polynomial-time algorithm for simple stochastic games</a>
+    <a class="navlink next" href="euclidean-cvrp-ptas-arbitrary-capacity.html" title="PTAS for Euclidean capacitated vehicle routing with arbitrary capacity"><span class="navlabel">Next problem</span>#164 · PTAS for Euclidean capacitated vehicle routing with arbitrary capacity</a>
+  </nav>
+
+  <section class="detail-card statement">
+    <h2>Short Statement</h2>
+    <div class="prose"><p>Close the gap between the best approximation algorithms and hardness/integrality lower bounds for complete-graph correlation clustering.</p></div>
+  </section>
+
+  <section class="detail-card statement">
+    <h2>Open Problem</h2>
+    <div class="prose"><p>Determine the optimal approximation ratio for complete-graph correlation clustering, or substantially close the current algorithmic/hardness gap.</p></div>
+  </section>
+
+
+  <section class="detail-card statement">
+    <h2>Background &amp; Context</h2>
+    <div class="prose">Correlation clustering is a clean model for clustering from inconsistent pairwise similarity data. It does not require choosing the number of clusters in advance, which is why it has become a useful abstraction in data mining, record linkage, entity resolution, computational biology, and consensus clustering. The complete-graph version is the canonical model: every pair of items is labeled similar or dissimilar, and the algorithm chooses the clustering that violates as few labels as possible. The problem is also a crisp combinatorial optimization question about partition metrics, multicut polytopes, and rounding of strong relaxations. Its practical relevance makes fast algorithms important, but the repository-worthy open problem is the theorem gap: the exact approximation threshold is not known.</div>
+  </section>
+
+  <section class="detail-card statement">
+    <h2>Statement &amp; Model</h2>
+    <div class="prose">In unweighted complete-graph correlation clustering, the input is a complete graph <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">K_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> whose edges are labeled <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo></mrow><annotation encoding="application/x-tex">+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">+</span></span></span></span> or <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo></mrow><annotation encoding="application/x-tex">-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">−</span></span></span></span>. A clustering is a partition <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Π</mi></mrow><annotation encoding="application/x-tex">\Pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Π</span></span></span></span> of the vertices. Its disagreement cost is the number of positive edges whose endpoints lie in different parts of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Π</mi></mrow><annotation encoding="application/x-tex">\Pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Π</span></span></span></span> plus the number of negative edges whose endpoints lie in the same part. The objective is to minimize this disagreement cost, with no prescribed number of clusters. The open problem is to determine the polynomial-time approximability threshold of this problem. Published algorithms give constant factors well below the old factor-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> barrier, with recent cluster-LP/Sherali-Adams methods reaching about <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.437</mn><mo>+</mo><mi>ε</mi></mrow><annotation encoding="application/x-tex">1.437+\varepsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1.437</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">ε</span></span></span></span>. Known hardness is far weaker, around <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>24</mn><mi mathvariant="normal">/</mi><mn>23</mn></mrow><annotation encoding="application/x-tex">24/23</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">24/23</span></span></span></span> in the recent cluster-LP work, and the cluster-LP itself has integrality gap at least <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi mathvariant="normal">/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">4/3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4/3</span></span></span></span>. Close the gap: improve the approximation factor toward the true LP/hardness threshold, strengthen hardness beyond the current small constant, or identify a relaxation whose integrality gap matches the optimal achievable ratio. A July 2026 preprint by Garcia-Soriano and Schohn claims a <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>1.3865</mn><mo>+</mo><mi>ε</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1.3865+\varepsilon)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1.3865</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">ε</span><span class="mclose">)</span></span></span></span> algorithm in this same unweighted complete-graph model; the exact threshold remains unresolved.</div>
+  </section>
+
+  <section class="detail-card">
+    <h2>What Is Known</h2>
+    <div class="known-prose">Bansal, Blum, and Chawla introduced correlation clustering and gave early approximation results. Ailon, Charikar, and Newman developed the influential randomized Pivot algorithm and a <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span>-approximation framework. Chawla, Makarychev, Schramm, and Yaroslavtsev gave a <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2.06</mn></mrow><annotation encoding="application/x-tex">2.06</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2.06</span></span></span></span>-approximation for complete graphs by rounding the standard LP, nearly matching that LP's integrality gap of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span>. Cohen-Addad, Lee, and Newman, followed by Cohen-Addad, Lee, Li, and Newman, broke the factor-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> barrier using Sherali-Adams and preclustering ideas, reaching about <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.73</mn></mrow><annotation encoding="application/x-tex">1.73</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.73</span></span></span></span>. Cao, Cohen-Addad, Lee, Li, Newman, and Vogl introduced the cluster LP, gave rounding analyses with factors <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.49</mn></mrow><annotation encoding="application/x-tex">1.49</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.49</span></span></span></span> and computationally certified <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.437</mn></mrow><annotation encoding="application/x-tex">1.437</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.437</span></span></span></span>, proved a <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi mathvariant="normal">/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">4/3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4/3</span></span></span></span> integrality-gap lower bound for the cluster LP, and obtained an NP-hardness ratio of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>24</mn><mi mathvariant="normal">/</mi><mn>23</mn></mrow><annotation encoding="application/x-tex">24/23</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">24/23</span></span></span></span>. Later work made the cluster-LP approach much faster. The central approximation gap remains: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.437</mn></mrow><annotation encoding="application/x-tex">1.437</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.437</span></span></span></span> is far above the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>24</mn><mi mathvariant="normal">/</mi><mn>23</mn></mrow><annotation encoding="application/x-tex">24/23</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">24/23</span></span></span></span> hardness and above the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi mathvariant="normal">/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">4/3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4/3</span></span></span></span> cluster-LP gap. Garcia-Soriano and Schohn (2026), Theorems 1.1-1.2 and Corollary 1.3, claim a <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>1.3865</mn><mo>+</mo><mi>ε</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1.3865+\varepsilon)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1.3865</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">ε</span><span class="mclose">)</span></span></span></span> polynomial-time algorithm. This is a preprint improvement, not independently proof-verified here.<p class="remaining-open"><strong>Remaining open problem.</strong> Determine the optimal approximation ratio for complete-graph correlation clustering, or substantially close the current algorithmic/hardness gap.</p></div>
+  </section>
+
+  <section class="detail-card">
+    <h2>Progress &amp; Literature</h2>
+    <div class="known-prose"><p><strong>Latest progress (Partial progress).</strong> Published benchmark <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.437</mn><mo>+</mo><mi>ε</mi></mrow><annotation encoding="application/x-tex">1.437+\varepsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1.437</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">ε</span></span></span></span>; July 2026 preprint claims <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.3865</mn><mo>+</mo><mi>ε</mi></mrow><annotation encoding="application/x-tex">1.3865+\varepsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1.3865</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">ε</span></span></span></span>. The <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi mathvariant="normal">/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">4/3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4/3</span></span></span></span> cluster-LP value is a lower bound, not a proved exact gap; the threshold remains open. <a href="https://arxiv.org/abs/2404.17509" target="_blank" rel="noopener">Cluster LP</a> <a href="https://arxiv.org/abs/2503.20883" target="_blank" rel="noopener">Sublinear cluster LP implementation</a> <a href="https://arxiv.org/html/2607.27829v1" target="_blank" rel="noopener">Garcia-Soriano and Schohn, 2026 correlation-clustering preprint, arXiv:2607.27829</a></p><div class="prose">Correlation clustering has seen a sequence of barrier breaks. Pivot-style algorithms gave simple constant factors. The standard LP stalled near its integrality gap of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span>, and Sherali-Adams/preclustering methods pushed through that barrier to <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.73</mn></mrow><annotation encoding="application/x-tex">1.73</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.73</span></span></span></span>. The cluster LP is the current organizing object: it unifies previous relaxations, gives a much better rounding factor, and has a known <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi mathvariant="normal">/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">4/3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4/3</span></span></span></span> integrality-gap lower bound. Yet the algorithmic factor, LP gap, and hardness ratio are all separated. This makes the next target precise: either improve rounding closer to <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi mathvariant="normal">/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">4/3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4/3</span></span></span></span>, find stronger cluster-LP gap examples, or prove hardness that explains why ratios near <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> are impossible. A 2026 preprint claims improved rounding and approximate separation, narrowing but not closing this gap.</div><ul class="lit-list"><li><span class="rel">related tool</span><strong>Bansal, Blum, Chawla, &#x27;Correlation Clustering&#x27;, Machine Learning 2004</strong> — Introduces the model and early approximation algorithms. <a href="https://doi.org/10.1023/B:MACH.0000033116.57574.95" target="_blank" rel="noopener">link</a></li><li><span class="rel">partial progress</span><strong>Cohen-Addad, Lee, Li, Newman, &#x27;Handling Correlated Rounding Error via Preclustering&#x27;, FOCS 2023</strong> — Improves the complete-graph approximation factor to about <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.73</mn></mrow><annotation encoding="application/x-tex">1.73</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.73</span></span></span></span>. <a href="https://arxiv.org/abs/2309.17243" target="_blank" rel="noopener">link</a></li><li><span class="rel">partial progress</span><strong>Cao et al., &#x27;Understanding the Cluster LP for Correlation Clustering&#x27;, arXiv 2024</strong> — Introduces the cluster LP, gives <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.49</mn></mrow><annotation encoding="application/x-tex">1.49</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.49</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.437</mn></mrow><annotation encoding="application/x-tex">1.437</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.437</span></span></span></span> rounding analyses, proves <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi mathvariant="normal">/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">4/3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4/3</span></span></span></span> gap and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>24</mn><mi mathvariant="normal">/</mi><mn>23</mn></mrow><annotation encoding="application/x-tex">24/23</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">24/23</span></span></span></span> hardness. <a href="https://arxiv.org/abs/2404.17509" target="_blank" rel="noopener">link</a></li><li><span class="rel">partial progress</span><strong>Garcia-Soriano and Schohn, 2026 correlation-clustering preprint, arXiv:2607.27829</strong> — Theorems 1.1-1.2 and Corollary 1.3 claim improved approximation for unweighted complete signed graphs. <a href="https://arxiv.org/html/2607.27829v1" target="_blank" rel="noopener">link</a></li></ul></div>
+  </section>
+
+  <section class="detail-card" id="submissions">
+    <h2>Posted Solutions &amp; Verification</h2>
+    <div class="known-prose"><p class="subm-empty">No solutions or partial-progress submissions have been posted for this problem yet.</p>
+    <p>Submit a result or a review through the <a href="../agents.html">submission guidelines</a>, or suggest a correction using the link above.</p></div>
+  </section>
+  <section class="detail-card">
+    <h2>Sources</h2>
+    <div class="source-list">
+      <p><span class="k">Where posed:</span> The recent cluster-LP paper frames its relaxation as a candidate for capturing the approximability of correlation clustering and leaves a gap between its upper bound, integrality gap, and hardness. <a href="https://arxiv.org/abs/2404.17509" target="_blank" rel="noopener">link</a></p>
+      <blockquote class="posed-quote">&ldquo;might tightly capture the approximability&rdquo;<span class="loc">&mdash; Abstract</span></blockquote>
+      <p><span class="k">Source:</span> Nikhil Bansal, Avrim Blum, Shuchi Chawla, <em>Correlation Clustering</em> (2004, Machine Learning) <a href="https://doi.org/10.1023/B:MACH.0000033116.57574.95" target="_blank" rel="noopener">link</a></p>
+      <p><span class="k">Related references:</span></p><ol class="refs"><li>Nir Ailon, Moses Charikar, Alantha Newman, <em>Aggregating inconsistent information: ranking and clustering</em> (2008, Journal of the ACM) <a href="https://doi.org/10.1145/1391289.1391293" target="_blank" rel="noopener">link</a></li><li>Shuchi Chawla, Konstantin Makarychev, Tselil Schramm, Grigory Yaroslavtsev, <em>Near Optimal LP Rounding Algorithm for Correlation Clustering on Complete and Complete k-partite Graphs</em> (2015, STOC) <a href="https://arxiv.org/abs/1412.0681" target="_blank" rel="noopener">link</a></li><li>Vincent Cohen-Addad, Euiwoong Lee, Shi Li, Alantha Newman, <em>Handling Correlated Rounding Error via Preclustering: A 1.73-approximation for Correlation Clustering</em> (2023, FOCS) <a href="https://arxiv.org/abs/2309.17243" target="_blank" rel="noopener">link</a></li><li>Nairen Cao, Vincent Cohen-Addad, Euiwoong Lee, Shi Li, Alantha Newman, Lukas Vogl, <em>Understanding the Cluster LP for Correlation Clustering</em> (2024, arXiv) <a href="https://arxiv.org/abs/2404.17509" target="_blank" rel="noopener">link</a></li><li>Nairen Cao, Vincent Cohen-Addad, Shi Li, Euiwoong Lee, David Rasmussen Lolck, Alantha Newman, Mikkel Thorup, Lukas Vogl, Shuyi Yan, Hanwen Zhang, <em>Solving the Correlation Cluster LP in Sublinear Time</em> (2025, arXiv) <a href="https://arxiv.org/abs/2503.20883" target="_blank" rel="noopener">link</a></li><li>David Garcia-Soriano, Antoine Schohn, <em>Approximate Dual Separation for the Cluster LP: a 1.387-approximation for Correlation Clustering</em> (2026, arXiv preprint) <a href="https://arxiv.org/abs/2607.27829" target="_blank" rel="noopener">link</a></li></ol>
+    </div>
+  </section>
+
+  <section class="detail-card">
+    <h2>Copy</h2>
+    <p class="known-prose">Copy the full statement, known results, and source information as plain text.</p>
+    <button class="copy" id="copybtn">Copy</button>
+  </section>
+
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
+</div>
+<div class="toast" id="toast">Copied</div>
+<script type="application/json" id="copy-data">"ORdős Problems #163 — Approximation threshold for complete-graph correlation clustering\n\nSHORT STATEMENT\nClose the gap between the best approximation algorithms and hardness/integrality lower bounds for complete-graph correlation clustering.\n\nSTATUS: open\n\nOPEN PROBLEM\nDetermine the optimal approximation ratio for complete-graph correlation clustering, or substantially close the current algorithmic/hardness gap.\n\nBACKGROUND\nCorrelation clustering is a clean model for clustering from inconsistent pairwise similarity data. It does not require choosing the number of clusters in advance, which is why it has become a useful abstraction in data mining, record linkage, entity resolution, computational biology, and consensus clustering. The complete-graph version is the canonical model: every pair of items is labeled similar or dissimilar, and the algorithm chooses the clustering that violates as few labels as possible. The problem is also a crisp combinatorial optimization question about partition metrics, multicut polytopes, and rounding of strong relaxations. Its practical relevance makes fast algorithms important, but the repository-worthy open problem is the theorem gap: the exact approximation threshold is not known.\n\nPROBLEM (full statement with model)\nIn unweighted complete-graph correlation clustering, the input is a complete graph $K_n$ whose edges are labeled $+$ or $-$. A clustering is a partition $\\Pi$ of the vertices. Its disagreement cost is the number of positive edges whose endpoints lie in different parts of $\\Pi$ plus the number of negative edges whose endpoints lie in the same part. The objective is to minimize this disagreement cost, with no prescribed number of clusters. The open problem is to determine the polynomial-time approximability threshold of this problem. Published algorithms give constant factors well below the old factor-$2$ barrier, with recent cluster-LP/Sherali-Adams methods reaching about $1.437+\\varepsilon$. Known hardness is far weaker, around $24/23$ in the recent cluster-LP work, and the cluster-LP itself has integrality gap at least $4/3$. Close the gap: improve the approximation factor toward the true LP/hardness threshold, strengthen hardness beyond the current small constant, or identify a relaxation whose integrality gap matches the optimal achievable ratio. A July 2026 preprint by Garcia-Soriano and Schohn claims a $(1.3865+\\varepsilon)$ algorithm in this same unweighted complete-graph model; the exact threshold remains unresolved.\n\nKNOWN RESULTS\nBansal, Blum, and Chawla introduced correlation clustering and gave early approximation results. Ailon, Charikar, and Newman developed the influential randomized Pivot algorithm and a $3$-approximation framework. Chawla, Makarychev, Schramm, and Yaroslavtsev gave a $2.06$-approximation for complete graphs by rounding the standard LP, nearly matching that LP's integrality gap of $2$. Cohen-Addad, Lee, and Newman, followed by Cohen-Addad, Lee, Li, and Newman, broke the factor-$2$ barrier using Sherali-Adams and preclustering ideas, reaching about $1.73$. Cao, Cohen-Addad, Lee, Li, Newman, and Vogl introduced the cluster LP, gave rounding analyses with factors $1.49$ and computationally certified $1.437$, proved a $4/3$ integrality-gap lower bound for the cluster LP, and obtained an NP-hardness ratio of $24/23$. Later work made the cluster-LP approach much faster. The central approximation gap remains: $1.437$ is far above the $24/23$ hardness and above the $4/3$ cluster-LP gap. Garcia-Soriano and Schohn (2026), Theorems 1.1-1.2 and Corollary 1.3, claim a $(1.3865+\\varepsilon)$ polynomial-time algorithm. This is a preprint improvement, not independently proof-verified here.\n\nLITERATURE SYNTHESIS\nCorrelation clustering has seen a sequence of barrier breaks. Pivot-style algorithms gave simple constant factors. The standard LP stalled near its integrality gap of $2$, and Sherali-Adams/preclustering methods pushed through that barrier to $1.73$. The cluster LP is the current organizing object: it unifies previous relaxations, gives a much better rounding factor, and has a known $4/3$ integrality-gap lower bound. Yet the algorithmic factor, LP gap, and hardness ratio are all separated. This makes the next target precise: either improve rounding closer to $4/3$, find stronger cluster-LP gap examples, or prove hardness that explains why ratios near $1$ are impossible. A 2026 preprint claims improved rounding and approximate separation, narrowing but not closing this gap.\n\nREMAINING OPEN PROBLEM\nDetermine the optimal approximation ratio for complete-graph correlation clustering, or substantially close the current algorithmic/hardness gap.\n\nVERIFICATION NOTES\nState whether the result applies to complete graphs, complete weighted graphs, general graphs with missing edges, or constrained variants; these have different approximation landscapes. An algorithmic claim must be polynomial time for fixed $\\varepsilon$ and should specify whether it uses exponentially large LPs, Sherali-Adams rounds, or sampling. A lower-bound instance should report the exact integral optimum and relaxation value. A hardness claim must state whether it is NP-hardness, UGC-hardness, or another assumption, and the reduction must preserve the complete-graph correlation-clustering objective.\n\nPOSED AS: \"might tightly capture the approximability\"\n\nWHERE POSED: The recent cluster-LP paper frames its relaxation as a candidate for capturing the approximability of correlation clustering and leaves a gap between its upper bound, integrality gap, and hardness. (https://arxiv.org/abs/2404.17509)\nSOURCE: Nikhil Bansal, Avrim Blum, Shuchi Chawla, Correlation Clustering (2004, Machine Learning) https://doi.org/10.1023/B:MACH.0000033116.57574.95\nRELATED:\n- Nir Ailon, Moses Charikar, Alantha Newman, Aggregating inconsistent information: ranking and clustering (2008, Journal of the ACM) https://doi.org/10.1145/1391289.1391293\n- Shuchi Chawla, Konstantin Makarychev, Tselil Schramm, Grigory Yaroslavtsev, Near Optimal LP Rounding Algorithm for Correlation Clustering on Complete and Complete k-partite Graphs (2015, STOC) https://arxiv.org/abs/1412.0681\n- Vincent Cohen-Addad, Euiwoong Lee, Shi Li, Alantha Newman, Handling Correlated Rounding Error via Preclustering: A 1.73-approximation for Correlation Clustering (2023, FOCS) https://arxiv.org/abs/2309.17243\n- Nairen Cao, Vincent Cohen-Addad, Euiwoong Lee, Shi Li, Alantha Newman, Lukas Vogl, Understanding the Cluster LP for Correlation Clustering (2024, arXiv) https://arxiv.org/abs/2404.17509\n- Nairen Cao, Vincent Cohen-Addad, Shi Li, Euiwoong Lee, David Rasmussen Lolck, Alantha Newman, Mikkel Thorup, Lukas Vogl, Shuyi Yan, Hanwen Zhang, Solving the Correlation Cluster LP in Sublinear Time (2025, arXiv) https://arxiv.org/abs/2503.20883\n- David Garcia-Soriano, Antoine Schohn, Approximate Dual Separation for the Cluster LP: a 1.387-approximation for Correlation Clustering (2026, arXiv preprint) https://arxiv.org/abs/2607.27829\n\nTask: Resolve the remaining open problem, taking the cited results and their assumptions into account. Math is in LaTeX."</script>
+<script>
+(function(){
+  var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;
+  function show(m){toast.textContent=m;toast.classList.add('show');clearTimeout(timer);timer=setTimeout(function(){toast.classList.remove('show');},1500);}
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText(JSON.parse(document.getElementById('copy-data').textContent)).then(function(){
+      btn.textContent='Copied';btn.classList.add('ok');show('Full problem copied');
+      setTimeout(function(){btn.textContent='Copy';btn.classList.remove('ok');},1500);
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  function setTheme(theme){
+    document.documentElement.dataset.theme=theme;
+    try{localStorage.setItem('ordos-theme',theme);}catch(e){}
+    document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+      var dark=theme==='dark';
+      var mark=btn.querySelector('.theme-mark');
+      if(mark)mark.textContent=dark?'☀':'☾';
+      btn.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');
+      btn.setAttribute('title',dark?'Switch to light mode':'Switch to dark mode');
+    });
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    var current=document.documentElement.dataset.theme==='dark'?'dark':'light';
+    setTheme(current);
+    document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

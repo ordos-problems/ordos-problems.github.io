@@ -1,0 +1,95 @@
+{
+ "number": 120,
+ "ref": "ORDOS-120",
+ "id": "total-weighted-tardiness-pmax-fpt",
+ "title": "FPT algorithms for single-machine total weighted tardiness parameterized by maximum processing time",
+ "collection": "Operations Research",
+ "area": "Scheduling",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "scheduling",
+  "parameterized-complexity",
+  "weighted-tardiness",
+  "single-machine",
+  "operations-research"
+ ],
+ "short_statement": "Is single-machine total weighted tardiness fixed-parameter tractable when parameterized by the maximum processing time?",
+ "open_problem": "Classify $1||\\sum_j w_jT_j$ parameterized by $p_{\\max}$: either give an FPT algorithm in $p_{\\max}$ alone or prove a W-hardness/ETH-type lower bound under the standard parameterized-complexity assumptions.",
+ "background": "Total weighted tardiness is a core single-machine objective in deterministic scheduling. It measures how badly due dates are missed, with job-specific weights representing priority or penalty rates. The model is deliberately parsimonious: one machine, no release dates, no precedence constraints, and a linear tardiness penalty. Despite this simplicity, the weighted problem is strongly NP-hard, while several nearby special cases have dynamic programs or polynomial algorithms. This makes it a useful stress test for parameterized scheduling. Bounding all processing times by a small number seems powerful because it limits the possible job lengths, but it leaves an unbounded number of jobs, due-date positions, and weight tradeoffs. Mnich and van Bevern pose exactly this boundary as Open Problem 1 in their Computers & Operations Research list.",
+ "full_statement": "In the single-machine scheduling problem $1||\\sum_j w_jT_j$, each job $j$ has integer processing time $p_j$, due date $d_j$, and nonnegative weight $w_j$. A feasible schedule is a permutation of all jobs on one machine. If $C_j$ is the completion time of job $j$, its tardiness is $T_j=\\max\\{0,C_j-d_j\\}$ and the objective is to minimize $\\sum_j w_jT_j$. Let $p_{\\max}=\\max_j p_j$. The open problem asks whether the exact optimization problem is fixed-parameter tractable with respect to $p_{\\max}$: does there exist an algorithm with running time $f(p_{\\max})\\operatorname{poly}(n,L)$, where $L$ is the bit length of the due dates and weights, for arbitrary weights and due dates? The question is not about pseudo-polynomial algorithms in the total processing time or largest due date; those dependencies are too large to establish FPT in $p_{\\max}$ alone.",
+ "known_results": "The single-machine total weighted tardiness problem $1||\\sum w_jT_j$ is strongly NP-hard. When all processing times are equal, $1|p_j=p|\\sum w_jT_j$ is polynomial-time solvable by reduction to the classical linear assignment problem. The unweighted total tardiness problem $1||\\sum T_j$ is pseudo-polynomial, and Lawler's dynamic program can be interpreted as fixed-parameter tractable in $p_{\\max}$ for the unweighted case; it also works for the weighted case under agreeable processing times and weights, where $p_i<p_j$ implies $w_i\\ge w_j$. Mnich and van Bevern highlight the remaining gap: the general weighted problem with arbitrary weights and due dates may or may not be FPT in $p_{\\max}$. Bounding $p_{\\max}$ does not bound the total processing time, the number of distinct due dates, or the range of weights, so existing pseudo-polynomial algorithms do not settle the parameterized question.",
+ "progress": {
+  "state": "partial",
+  "summary": "Polynomial/FPT behavior is known for equal processing times, unweighted tardiness, and agreeable weighted instances. The general weighted arbitrary-due-date case remains the cited open boundary.",
+  "links": [
+   {
+    "title": "Mnich and van Bevern, 15 open problems",
+    "url": "https://arxiv.org/abs/1709.01670"
+   },
+   {
+    "title": "Lawler, A pseudopolynomial algorithm for sequencing jobs to minimize total tardiness",
+    "url": "https://doi.org/10.1016/S0167-5060(08)70742-8"
+   }
+  ]
+ },
+ "importance": 6,
+ "difficulty": 7,
+ "counterexample_suitability": "low",
+ "counterexample_rationale": "The question is algorithmic complexity, not a conjecture about a finite object.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Search may identify dynamic-programming state compressions for small $p_{\\max}$ or reductions suggesting hardness, but a resolution requires a formal FPT algorithm or parameterized lower bound.",
+ "literature": {
+  "synthesis": "The known results separate three effects. Equal processing times remove most ordering complexity and lead to an assignment formulation. Dropping weights gives a pseudo-polynomial dynamic program that can exploit bounded processing times. Agreeable weights and processing times impose a monotone structure that also makes Lawler-style dynamic programming effective. The open problem asks whether arbitrary weights reintroduce enough combinatorial freedom to make bounded processing times insufficient. A positive result would likely need a compact representation of partial schedules by counts of each processing time plus a small amount of due-date/weight information. A negative result would need encode a W-hard selection problem while keeping every job length at most $p_{\\max}$.",
+  "reviewed": [
+   {
+    "ref": "Matthias Mnich and Rene van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems', Computers & Operations Research 2018",
+    "result": "States Open Problem 1 asking whether $1||\\sum w_jT_j$ is FPT parameterized by $p_{\\max}$.",
+    "relevance": "poses-problem",
+    "url": "https://arxiv.org/abs/1709.01670"
+   },
+   {
+    "ref": "Eugene L. Lawler, 'A pseudopolynomial algorithm for sequencing jobs to minimize total tardiness', Studies in Integer Programming 1977",
+    "result": "Gives pseudo-polynomial dynamic-programming machinery for total tardiness and special weighted cases.",
+    "relevance": "partial-progress",
+    "url": "https://doi.org/10.1016/S0167-5060(08)70742-8"
+   },
+   {
+    "ref": "Jan Karel Lenstra, Alexander H. G. Rinnooy Kan, Peter Brucker, 'Complexity of machine scheduling problems', Annals of Discrete Mathematics 1977",
+    "result": "Establishes foundational NP-hardness classifications for classical scheduling objectives including tardiness variants.",
+    "relevance": "hardness",
+    "url": "https://doi.org/10.1016/S0167-5060(08)70743-X"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "For algorithms, try bounded-dimension integer programming over processing-time classes, dynamic programs indexed by a compressed due-date frontier, or dominance rules that collapse jobs with similar due-date/weight profiles. For lower bounds, try reductions from multicolored clique or multidimensional knapsack in which many unit or short jobs encode choices through weights and due dates.",
+  "verification_notes": "An FPT claim must have all non-polynomial dependence confined to $p_{\\max}$; dependence on total processing time, largest due date, total weight, or number of distinct due dates is not enough unless those quantities are polynomially bounded by the ordinary input length. A pseudo-polynomial dynamic program should be checked carefully for hidden dependence on the numerical horizon. A hardness claim should preserve the single-machine, no-release-date, total weighted tardiness model and state whether numbers are binary or unary encoded.",
+  "machine_checkable": false
+ },
+ "where_posed": {
+  "text": "Listed in Mnich and van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems', 2017.",
+  "url": "https://arxiv.org/abs/1709.01670",
+  "quote": "",
+  "location": "Open-problems list for parameterized scheduling."
+ },
+ "source": {
+  "authors": "Matthias Mnich, René van Bevern",
+  "title": "Parameterized complexity of machine scheduling: 15 open problems",
+  "year": 2018,
+  "venue": "Computers & Operations Research",
+  "url": "https://arxiv.org/abs/1709.01670"
+ },
+ "additional_refs": [],
+ "bibtex": "@misc{Mnich2018,\n  author = {Matthias Mnich and René van Bevern},\n  title = {Parameterized complexity of machine scheduling: 15 open problems},\n  year = {2018},\n  howpublished = {Computers & Operations Research},\n  url = {https://arxiv.org/abs/1709.01670},\n  note = {Source of ORdős Problem ORDOS-120}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/total-weighted-tardiness-pmax-fpt.html",
+  "api": "https://ordos-problems.github.io/api/problems/total-weighted-tardiness-pmax-fpt.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

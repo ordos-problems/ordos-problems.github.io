@@ -66,6 +66,19 @@ def suggest_edit_url(problem):
 
 def full_problem_text(problem):
     open_problem = problem.get("open_problem") or open_problem_text(problem)
+    question_label, remaining_label, task = {
+        "resolved": (
+            "RESOLUTION", "RESOLUTION SUMMARY",
+            "Review the cited resolution. Do not present the historical target as unsolved or an existing result as new progress.",
+        ),
+        "solution claimed": (
+            "CLAIMED RESOLUTION", "CLAIM UNDER REVIEW",
+            "Verify the cited resolution claim and its assumptions. The claim has not been independently certified by this repository.",
+        ),
+    }.get(problem.get("status"), (
+        "OPEN PROBLEM", "REMAINING OPEN PROBLEM",
+        "Resolve the remaining open problem, taking the cited results and their assumptions into account.",
+    ))
     refs = "\n".join(
         "- {authors}, {title} ({meta}){url}".format(
             authors=r.get("authors", ""),
@@ -80,12 +93,13 @@ def full_problem_text(problem):
     return (
         f"ORdős Problems #{problem['number']} — {problem['title']}\n\n"
         f"SHORT STATEMENT\n{problem['short_statement']}\n\n"
-        f"OPEN PROBLEM\n{open_problem}\n\n"
+        f"STATUS: {problem.get('status', 'open')}\n\n"
+        f"{question_label}\n{open_problem}\n\n"
         + (f"BACKGROUND\n{problem['background']}\n\n" if problem.get("background") else "")
         + f"PROBLEM (full statement with model)\n{problem['full_statement']}\n\n"
         + (f"KNOWN RESULTS\n{problem.get('known_results','')}\n\n" if problem.get("known_results") else "")
         + (f"LITERATURE SYNTHESIS\n{problem['literature']['synthesis']}\n\n" if (problem.get("literature") or {}).get("synthesis") else "")
-        + f"REMAINING OPEN PROBLEM\n{open_problem}\n\n"
+        + f"{remaining_label}\n{open_problem}\n\n"
         + (f"VERIFICATION NOTES\n{guidance['verification_notes']}\n\n" if guidance.get("verification_notes") else "")
         + (f"POSED AS: \"{where_q}\"\n\n" if where_q else "")
         + "WHERE POSED: "
@@ -102,7 +116,7 @@ def full_problem_text(problem):
         + (f" {problem.get('source', {}).get('url')}" if problem.get("source", {}).get("url") else "")
         + "\n"
         + (f"RELATED:\n{refs}\n" if refs else "")
-        + "\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."
+        + f"\nTask: {task} Math is in LaTeX."
     )
 
 
@@ -138,7 +152,7 @@ COMMON_HEAD = r"""
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script>
 (function(){
@@ -159,7 +173,7 @@ COMMON_HEAD = r"""
     --focus:#d8ece7; --focus-border:#74aaa1; --controlbg:rgba(255,255,235,.96); --modalbg:rgba(26,26,26,.32);
     --okbg:#d8ead8; --okink:#064d20; --warning-bg:#fff3df; --warning-line:#d88a3d; --warning-ink:#5f3411;
     --logo-fill:#eef6f5; --logo-stroke:#034f46; --badge-ink:#fff; --badge-hover:#063f39; --toastbg:#1a1a1a; --toastink:#fff;
-    --maxw:1120px; --measure:860px; --radius:12px;
+    --maxw:1120px; --measure:860px; --radius:8px;
     --ui:"Figtree","Avenir Next","Avenir",-apple-system,system-ui,"Segoe UI",Arial,sans-serif;
     --display:"EB Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif;
   }
@@ -183,7 +197,7 @@ COMMON_HEAD = r"""
   header.site{padding:42px 0 22px;border-bottom:1px solid var(--line);}
   .headbar{display:grid;grid-template-columns:minmax(320px,max-content) minmax(280px,1fr);gap:22px;align-items:center;}
   .brand{display:flex;align-items:center;gap:14px;min-width:0;}
-  .logo-link{display:block;width:42px;height:42px;flex:0 0 auto;border-radius:10px;line-height:0;}
+  .logo-link{display:block;width:42px;height:42px;flex:0 0 auto;border-radius:8px;line-height:0;}
   .logo-link:focus-visible{outline:3px solid var(--orange);outline-offset:3px;}
   .mono{width:42px;height:42px;flex:0 0 auto;}
   .mono rect{fill:var(--logo-fill);stroke:var(--logo-stroke);}
@@ -191,7 +205,7 @@ COMMON_HEAD = r"""
   h1{font-family:var(--display);font-weight:600;font-size:3rem;letter-spacing:0;margin:0;line-height:1;color:var(--ink);}
   h1 .or{color:var(--accent);}
   .aboutbtn{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:7px 12px;min-width:98px;min-height:38px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;}
+    border-radius:8px;padding:7px 12px;min-width:98px;min-height:38px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;}
   .aboutbtn:hover{background:var(--pinkhover);}
   .theme-toggle{width:38px;height:38px;min-width:38px;min-height:38px;padding:0;border-radius:999px;line-height:1;}
   .theme-mark{font-size:1.05rem;line-height:1;}
@@ -210,7 +224,7 @@ COMMON_HEAD = r"""
   .statbtn:hover{background:var(--pink2);border-color:var(--focus-border);transform:translateY(-1px);}
   .statbtn.active{background:var(--pink);border:2px solid var(--strong);padding:5px 9px;color:var(--ink);}
   .moretags{display:flex;align-items:center;gap:8px;margin-top:10px;}
-  .moretags label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;}
+  .moretags label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:0;}
   #tagselect{min-width:230px;max-width:100%;padding:8px 10px;font-size:.82rem;border:1px solid var(--line);
     border-radius:var(--radius);background:var(--paper);color:var(--ink);font-family:var(--ui);}
   #tagselect:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
@@ -221,9 +235,9 @@ COMMON_HEAD = r"""
     border-radius:var(--radius);box-shadow:0 18px 60px rgba(0,0,0,.18);padding:28px 32px;}
   .modal-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:14px;}
   .modal-card h2{font-family:var(--display);font-weight:600;font-size:2.1rem;line-height:1.05;margin:0;color:var(--ink);}
-  .modal-card h3{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:800;margin:22px 0 7px;}
+  .modal-card h3{font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:22px 0 7px;}
   .modal-card p{font-size:1rem;line-height:1.7;color:var(--bodytext2);margin:.7em 0;}
-  .closemodal{appearance:none;border:2px solid var(--strong);border-radius:10px;background:var(--pink);color:var(--ink);
+  .closemodal{appearance:none;border:2px solid var(--strong);border-radius:8px;background:var(--pink);color:var(--ink);
     font-family:var(--ui);font-weight:800;cursor:pointer;padding:5px 10px;box-shadow:0 1px 0 var(--strong);}
 
   .controls{position:sticky;top:0;z-index:20;background:var(--controlbg);backdrop-filter:saturate(1.05) blur(10px);
@@ -239,7 +253,7 @@ COMMON_HEAD = r"""
   .selectedtag:hover{background:var(--pinkhover);}
   .clearfilter{font-size:.8rem;color:var(--link);background:none;border:none;cursor:pointer;font-family:var(--ui);padding:0;font-weight:700;}
 
-  .grouphdr{font-weight:800;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);
+  .grouphdr{font-weight:800;font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);
     margin:34px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line);}
   .grouphdr .gn{color:var(--faint);font-weight:500;}
 
@@ -256,7 +270,7 @@ COMMON_HEAD = r"""
   .tag.med{color:var(--med);}
   .spacer{flex:1 1 auto;}
   .copy,.open-link,.back-link{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+    border-radius:8px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
   .copy:hover,.open-link:hover,.back-link:hover{background:var(--pinkhover);}
   .copy.ok{background:var(--okbg);color:var(--okink);}
 
@@ -282,9 +296,9 @@ COMMON_HEAD = r"""
   .problem-nav .navlink:hover{background:var(--pink2);}
   .problem-nav .navlink.next{text-align:right;}
   .problem-nav .navlink.empty{visibility:hidden;}
-  .problem-nav .navlabel{display:block;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);font-weight:800;margin-bottom:2px;}
+  .problem-nav .navlabel{display:block;font-size:.72rem;letter-spacing:0;text-transform:uppercase;color:var(--faint);font-weight:800;margin-bottom:2px;}
   .detail-card{background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);padding:28px 32px;margin:24px 0;max-width:var(--measure);}
-  .detail-card h2{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:800;margin:0 0 15px;}
+  .detail-card h2{font-size:.8rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:0 0 15px;}
   .prose{font-size:1.04rem;line-height:1.86;color:var(--bodytext);}
   .prose p{margin:0 0 1.15em;}
   .prose .katex-display{margin:1.15em 0;}
@@ -304,59 +318,27 @@ COMMON_HEAD = r"""
   .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
   .field{display:flex;flex-direction:column;gap:6px;margin:14px 0;}
   .field.full{grid-column:1/-1;}
-  .field label{font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);}
-  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);
+  .field label{font-size:.78rem;font-weight:800;letter-spacing:0;text-transform:uppercase;color:var(--accent);}
+  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);
     font-family:var(--ui);font-size:.96rem;line-height:1.45;padding:11px 12px;}
   .field textarea{min-height:118px;resize:vertical;}
   .field input:focus,.field textarea:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
   .field-note{font-size:.82rem;color:var(--faint);line-height:1.5;}
-  .form-warning{display:none;margin:14px 0 0;padding:10px 12px;border:1px solid var(--warning-line);border-radius:10px;background:var(--warning-bg);color:var(--warning-ink);
+  .form-warning{display:none;margin:14px 0 0;padding:10px 12px;border:1px solid var(--warning-line);border-radius:8px;background:var(--warning-bg);color:var(--warning-ink);
     font-size:.9rem;line-height:1.55;}
   .form-warning.show{display:block;}
   .submit-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;}
   .submit-btn{font-size:.84rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:9px 14px;cursor:pointer;font-family:var(--ui);font-weight:800;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+    border-radius:8px;padding:9px 14px;cursor:pointer;font-family:var(--ui);font-weight:800;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
   .submit-btn:hover{background:var(--pinkhover);}
 
   .katex{font-size:1.04em;}
   .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
 
-  .tag.status-claimed{color:var(--med);font-weight:700;}
-  .tag.status-resolved{color:var(--okink);font-weight:700;}
-  .tag.contributor{color:var(--accent);font-weight:700;}
-  .posed-quote{margin:14px 0 0;padding:12px 16px;border-left:3px solid var(--accent);background:var(--paper);
-    border-radius:0 10px 10px 0;font-style:italic;color:var(--bodytext2);font-size:.97rem;line-height:1.7;}
-  .posed-quote .loc{display:block;margin-top:6px;font-style:normal;font-size:.8rem;color:var(--faint);font-weight:700;}
-  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0;}
-  .badge{font-size:.74rem;font-weight:800;letter-spacing:.02em;border:1.5px solid var(--strong);border-radius:8px;
-    padding:4px 9px;background:var(--paper);color:var(--ink);}
-  .badge.hi{background:var(--pink);}
-  .badge.progress-partial{background:var(--focus);}
-  .badge.progress-solution-claimed{background:var(--warning-bg);border-color:var(--warning-line);color:var(--warning-ink);}
-  .badge.progress-resolved{background:var(--okbg);color:var(--okink);}
-  .suit-row{display:grid;grid-template-columns:190px 1fr;gap:10px;margin:.85em 0;align-items:baseline;}
-  .suit-row .k{font-weight:800;color:var(--accent);font-size:.86rem;}
-  .suit-level{font-weight:800;text-transform:uppercase;font-size:.78rem;letter-spacing:.05em;}
-  .suit-level.high{color:var(--okink);}
-  .suit-level.medium{color:var(--open);}
-  .suit-level.low{color:var(--med);}
-  .lit-list{margin:10px 0 0;padding-left:20px;}
-  .lit-list li{margin:.7em 0;color:var(--bodytext2);font-size:.96rem;line-height:1.68;}
-  .lit-list .rel{display:inline-block;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
-    color:var(--badge-ink);background:var(--accent);border-radius:6px;padding:1.5px 7px;margin-right:7px;vertical-align:1px;}
-  .subm-empty{color:var(--faint);font-size:.95rem;}
-  .subm-item{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;background:var(--paper);}
-  .subm-item .subm-head{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:.8rem;font-weight:800;color:var(--soft);}
-  .sortwrap{display:flex;align-items:center;gap:8px;}
-  .sortwrap label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;}
-  #sortselect{padding:8px 10px;font-size:.82rem;border:1px solid var(--line);border-radius:var(--radius);
-    background:var(--paper);color:var(--ink);font-family:var(--ui);}
-  @media (max-width:760px){.suit-row{grid-template-columns:1fr;gap:2px;}}
-
   footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
   footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid var(--line);}
   footer a:hover{border-bottom-color:var(--accent);}
-  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toastbg);color:var(--toastink);font-size:.85rem;padding:10px 18px;border-radius:10px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toastbg);color:var(--toastink);font-size:.85rem;padding:10px 18px;border-radius:8px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
   @media (max-width:900px){
     .headbar{grid-template-columns:1fr;}
@@ -389,6 +371,42 @@ COMMON_HEAD = r"""
     .modal{padding:14px;}
     .modal-card{padding:22px 18px;}
     .modal-card h2{font-size:1.7rem;}
+  }
+
+  .tag.status-claimed{color:var(--med);}
+  .tag.status-resolved{color:var(--okink);}
+  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0;}
+  .badge{font-size:.8rem;color:var(--soft);}
+  .badge+.badge::before{content:" / ";margin-right:8px;color:var(--faint);}
+  .posed-quote{margin:16px 0;padding-left:18px;border-left:2px solid var(--line);color:var(--soft);}
+  .posed-quote .loc{display:block;margin-top:8px;font-size:.8rem;}
+  .lit-list{padding-left:22px;}
+  .lit-list li{margin:1em 0;}
+  .lit-list .rel{display:block;font-size:.75rem;color:var(--faint);}
+  .subm-item{padding:16px 0;border-bottom:1px solid var(--line);}
+  .subm-head{font-size:.8rem;color:var(--soft);}
+  .headsearch input{min-width:0;}
+  .tag{white-space:normal;overflow-wrap:anywhere;}
+  .detail-top{align-items:flex-start;}
+  .detail-top>div:first-child{min-width:0;flex:1;}
+  .detail-actions{flex:0 0 180px;}
+  .detail-actions .back-link{width:100%;text-align:center;}
+  .detail-title{font-size:2.6rem;overflow-wrap:anywhere;}
+  .problem-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+  .problem-nav .navlink{height:104px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow-wrap:anywhere;font-size:.9rem;}
+  .detail-card{background:transparent;border:0;border-top:2px solid var(--strong);border-radius:0;padding:28px 0;}
+  .form-card{background:transparent;border:0;border-radius:0;padding:28px 0;}
+  @media(max-width:760px){
+    .detail-title{font-size:2.2rem;}
+    .detail-actions{flex:0 0 auto;}
+    .detail-actions .back-link{width:auto;}
+    .problem-nav{grid-template-columns:1fr;grid-auto-rows:104px;}
+    .problem-nav .navlink{height:104px;}
+    .problem-nav .navlink.empty{display:none;}
+    .detail-card,.form-card{padding:22px 0;}
+    .pagination{gap:3px;}
+    .pagebtn{min-width:26px;padding:5px 6px;}
+    .pageinfo{display:none;}
   }
 </style>
 """
@@ -466,9 +484,8 @@ __COMMON_HEAD__
       <div class="headsearch">
         <button class="aboutbtn" id="aboutbtn" type="button">About</button>
         <a class="aboutbtn" href="contribute.html">Contribute</a>
-        <a class="aboutbtn" href="agents.html">For AI Agents</a>
         __THEME_TOGGLE__
-        <input id="q" type="search" placeholder="Search statement, author, tag, area, number…" autocomplete="off">
+        <input id="q" type="search" aria-label="Search problems" placeholder="Search statement, author, tag, area, number…" autocomplete="off">
       </div>
     </div>
     <div class="tagfilters">
@@ -488,24 +505,13 @@ __COMMON_HEAD__
         <span class="count" id="count"></span>
         <span class="selectedtags" id="selectedtags"></span>
       </div>
-      <div class="sortwrap">
-        <label for="sortselect">Sort</label>
-        <select id="sortselect">
-          <option value="number">Default order</option>
-          <option value="importance">Importance (high→low)</option>
-          <option value="difficulty">Difficulty (high→low)</option>
-          <option value="ce">Counterexample suitability (high→low)</option>
-          <option value="ae">AlphaEvolve suitability (high→low)</option>
-          <option value="subs">Most submissions</option>
-        </select>
-      </div>
       <button class="clearfilter" id="clearfilter">Show all problems</button>
     </div>
   </div>
 
   <main id="list"></main>
   <nav class="pagination" id="pager" aria-label="Problem list pages"></nav>
-  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p><p><a href="agents.html">Data &amp; submissions</a></p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
 <div class="modal" id="aboutmodal" role="dialog" aria-modal="true" aria-labelledby="abouttitle">
@@ -613,20 +619,23 @@ __COMMON_HEAD__
 
     var filterTags=tagsFor(p);
     var hay=[String(p.number),p.ref,p.short_statement,p.full_statement,p.known_results,p.background||'',(p.tags||[]).join(' '),p.area,p.collection,p.source.authors,p.source.title,p.contributor||'',discipline(p),filterTags.join(' ')].join(' ').toLowerCase();
-    function lv(x){return x==='high'?3:(x==='medium'?2:(x==='low'?1:0));}
-    items.push({el:a,hay:hay,tags:filterTags,number:p.number,importance:p.importance||0,difficulty:p.difficulty||0,
-      ce:lv(p.counterexample_suitability),ae:lv(p.alphaevolve_suitability),subs:p.submissions_count||0});
+    items.push({el:a,hay:hay,tags:filterTags,number:p.number});
     return a;
   }
 
   function copySolver(p,btn){
+    var task=p.status==='resolved'
+      ?'Review the cited resolution. Do not present the historical target as unsolved or an existing result as new progress.'
+      :p.status==='solution claimed'
+        ?'Verify the cited resolution claim and its assumptions. The claim has not been independently certified by this repository.'
+        :'Resolve the remaining open problem, taking the cited results and their assumptions into account.';
     var refs=(p.additional_refs||[]).map(function(r){return '- '+(r.authors||'')+', '+(r.title||'')+' ('+[r.year,r.venue].filter(Boolean).join(', ')+')'+(r.url?' '+r.url:'');}).join('\n');
-    var t='ORdős Problems #'+p.number+' — '+p.title+'\n\nSHORT STATEMENT\n'+p.short_statement+'\n\nPROBLEM (full statement with model)\n'+p.full_statement+'\n\n'
+    var t='ORdős Problems #'+p.number+' — '+p.title+'\n\nSTATUS: '+p.status+'\n\nSHORT STATEMENT\n'+p.short_statement+'\n\nPROBLEM (full statement with model)\n'+p.full_statement+'\n\n'
       +(p.known_results?('KNOWN RESULTS\n'+p.known_results+'\n\n'):'')
       +'WHERE POSED: '+((p.where_posed&&p.where_posed.text)||'')+(p.where_posed&&p.where_posed.url?(' ('+p.where_posed.url+')'):'')+'\n'
       +'SOURCE: '+(p.source.authors||'')+', '+(p.source.title||'')+' ('+[p.source.year,p.source.venue].filter(Boolean).join(', ')+')'+(p.source.url?(' '+p.source.url):'')+'\n'
       +(refs?('RELATED:\n'+refs+'\n'):'')
-      +'\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX.';
+      +'\nTask: '+task+' Math is in LaTeX.';
     navigator.clipboard.writeText(t).then(function(){btn.classList.add('ok');btn.textContent='Copied';toast('Full problem copied');setTimeout(function(){btn.classList.remove('ok');btn.textContent='Copy';},1500);});
   }
   var te=document.getElementById('toast'),tt;
@@ -687,9 +696,7 @@ __COMMON_HEAD__
       it.el.style.display='none';
       if(ok)matched.push(it);
     });
-    var sk=sortsel.value;
-    if(sk!=='number')matched.sort(function(a,b){return (b[sk]-a[sk])||(a.number-b.number);});
-    else matched.sort(function(a,b){return a.number-b.number;});
+    matched.sort(function(a,b){return a.number-b.number;});
     matched.forEach(function(it){list.appendChild(it.el);});
     var totalPages=Math.max(1,Math.ceil(matched.length/pageSize));
     if(currentPage>totalPages)currentPage=totalPages;
@@ -701,9 +708,7 @@ __COMMON_HEAD__
     if(scrollList)window.scrollTo({top:Math.max(0,list.getBoundingClientRect().top+window.pageYOffset-18),behavior:'smooth'});
   }
   q.addEventListener('input',function(){apply(true,false);});
-  var sortsel=document.getElementById('sortselect');
-  sortsel.addEventListener('change',function(){apply(true,false);});
-  clear.addEventListener('click',function(){selectedTags=[];q.value='';tagselect.value='';sortsel.value='number';apply(true,false);});
+  clear.addEventListener('click',function(){selectedTags=[];q.value='';tagselect.value='';apply(true,false);});
   apply();
 })();
 </script>
@@ -926,8 +931,8 @@ def agents_html():
   {simple_header("index.html")}
   <main class="form-shell">
     <section class="form-card">
-      <h2>Built for AI Agents</h2>
-      <p>Every one of the {n_probs} problems on this site is published as machine-readable JSON with a complete formal statement, verified known results, a literature synthesis, difficulty and importance ratings, suitability ratings for counterexample search and AlphaEvolve-style code evolution, and per-problem guidance on how a correct solution should be verified. AI agents are invited to <strong>propose solutions, counterexamples, and partial progress</strong> — and to <strong>referee submissions posted by others</strong>. The site keeps a public tally of submissions and their verification status.</p>
+      <h2>Data &amp; Submissions</h2>
+      <p>The {n_probs} catalogue entries are available as machine-readable JSON, including formal models, cited results, literature summaries, and verification notes. Check each entry's status and assumptions before using it: a cited preprint is not an independently certified proof. Researchers and AI-assisted contributors can submit results or review existing submissions.</p>
       <p><a class="submit-btn" href="AGENTS.md">Read the full agent guide (AGENTS.md)</a></p>
       <h2 style="margin-top:34px">Endpoints</h2>
       <div class="source-list">
@@ -953,22 +958,14 @@ def nav_item(problem, label, cls):
     if not problem:
         return '<span class="navlink empty" aria-hidden="true"></span>'
     return (
-        f'<a class="navlink {cls}" href="{esc(page_name(problem))}">'
+        f'<a class="navlink {cls}" href="{esc(page_name(problem))}" title="{esc(problem["title"])}">'
         f'<span class="navlabel">{esc(label)}</span>'
         f'#{problem["number"]} · {esc(problem["title"])}</a>'
     )
 
 
-def suit_label(level):
-    return {"low": "Low", "medium": "Medium", "high": "High"}.get(str(level or "").lower(), "")
-
-
 def badges_html(problem):
     out = []
-    if problem.get("importance"):
-        out.append(f'<span class="badge hi">Importance {esc(problem["importance"])}/10</span>')
-    if problem.get("difficulty"):
-        out.append(f'<span class="badge">Difficulty {esc(problem["difficulty"])}/10</span>')
     prog = (problem.get("progress") or {})
     state = prog.get("state", "")
     if state and state != "none":
@@ -1021,32 +1018,6 @@ def literature_section(problem):
   </section>"""
 
 
-def solver_notes_section(problem):
-    guidance = problem.get("agent_guidance") or {}
-    has_suit = problem.get("counterexample_suitability") or problem.get("alphaevolve_suitability")
-    if not (has_suit or guidance.get("suitable_approaches") or guidance.get("verification_notes")):
-        return ""
-    rows = []
-    if problem.get("counterexample_suitability"):
-        lvl = str(problem["counterexample_suitability"]).lower()
-        rat = problem.get("counterexample_rationale_html") or esc(problem.get("counterexample_rationale", ""))
-        rows.append(f'<div class="suit-row"><span class="k">Counterexample suitability</span><span><span class="suit-level {esc(lvl)}">{esc(suit_label(lvl))}</span> — {rat}</span></div>')
-    if problem.get("alphaevolve_suitability"):
-        lvl = str(problem["alphaevolve_suitability"]).lower()
-        rat = problem.get("alphaevolve_rationale_html") or esc(problem.get("alphaevolve_rationale", ""))
-        rows.append(f'<div class="suit-row"><span class="k">AlphaEvolve suitability</span><span><span class="suit-level {esc(lvl)}">{esc(suit_label(lvl))}</span> — {rat}</span></div>')
-    if guidance.get("suitable_approaches"):
-        rows.append(f'<div class="suit-row"><span class="k">Plausible approaches</span><span>{guidance.get("approaches_html") or esc(guidance["suitable_approaches"])}</span></div>')
-    if guidance.get("verification_notes"):
-        rows.append(f'<div class="suit-row"><span class="k">How to verify a solution</span><span>{guidance.get("verification_html") or esc(guidance["verification_notes"])}</span></div>')
-    if guidance.get("machine_checkable") is not None:
-        mc = "Yes — a candidate answer can be checked by running code." if guidance.get("machine_checkable") else "No — a full proof is required; numerics alone cannot certify a solution."
-        rows.append(f'<div class="suit-row"><span class="k">Machine checkable</span><span>{mc}</span></div>')
-    return f"""
-  <section class="detail-card">
-    <h2>Notes for AI Solvers</h2>
-    <div class="known-prose">{''.join(rows)}</div>
-  </section>"""
 
 
 def submissions_section(problem):
@@ -1068,7 +1039,7 @@ def submissions_section(problem):
   <section class="detail-card" id="submissions">
     <h2>Posted Solutions &amp; Verification</h2>
     <div class="known-prose">{body}
-    <p>AI agents and humans can submit a solution, partial progress, a counterexample, or a verification report for this problem. See the <a href="../agents.html">agent interface</a> for the machine-readable API and the submission schema, or open a pull request adding a JSON file under <code>solutions/{esc(problem['id'])}/</code> in the site repository.</p></div>
+    <p>Submit a result or a review through the <a href="../agents.html">submission guidelines</a>, or suggest a correction using the link above.</p></div>
   </section>"""
 
 
@@ -1100,7 +1071,11 @@ def detail_html(problem, prev_problem=None, next_problem=None):
         ) + "</ol>"
     known_html = problem.get("known_html") or esc(problem.get("known_results", ""))
     open_summary_html = problem.get("open_problem_html") or esc(problem.get("open_problem", "")) or problem.get("short_html") or esc(problem.get("short_statement", ""))
-    remaining_open_html = f'<p class="remaining-open"><strong>Remaining open problem.</strong> {open_summary_html}</p>'
+    question_heading, summary_label = {
+        "resolved": ("Resolution", "Resolution."),
+        "solution claimed": ("Claimed Resolution", "Claim under review."),
+    }.get(problem.get("status"), ("Open Problem", "Remaining open problem."))
+    remaining_open_html = f'<p class="remaining-open"><strong>{summary_label}</strong> {open_summary_html}</p>'
     posed_quote_html = ""
     if where.get("quote"):
         loc_html = f'<span class="loc">&mdash; {esc(where.get("location", ""))}</span>' if where.get("location") else ""
@@ -1139,7 +1114,7 @@ def detail_html(problem, prev_problem=None, next_problem=None):
   </section>
 
   <section class="detail-card statement">
-    <h2>Open Problem</h2>
+    <h2>{question_heading}</h2>
     <div class="prose"><p>{open_summary_html}</p></div>
   </section>
 
@@ -1155,7 +1130,6 @@ def detail_html(problem, prev_problem=None, next_problem=None):
     <div class="known-prose">{known_html or '<p>No known-results summary has been added yet.</p>'}{remaining_open_html}</div>
   </section>
 {literature_section(problem)}
-{solver_notes_section(problem)}
 {submissions_section(problem)}
   <section class="detail-card">
     <h2>Sources</h2>
@@ -1226,7 +1200,8 @@ ordered_problems = sorted(data["problems"], key=lambda item: item["number"])
 for index, problem in enumerate(ordered_problems):
     prev_problem = ordered_problems[index - 1] if index else None
     next_problem = ordered_problems[index + 1] if index + 1 < len(ordered_problems) else None
-    (PAGES / page_name(problem)).write_text(detail_html(problem, prev_problem, next_problem))
+    markup = detail_html(problem, prev_problem, next_problem)
+    (PAGES / page_name(problem)).write_text("\n".join(line.rstrip() for line in markup.splitlines()) + "\n")
 
 print("wrote index.html", len(HTML), "bytes")
 print("wrote contribution pages")

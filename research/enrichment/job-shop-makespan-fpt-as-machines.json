@@ -1,0 +1,41 @@
+{
+  "id": "job-shop-makespan-fpt-as-machines",
+  "background": "Job-shop scheduling is one of the canonical hard models in operations research. Each job has its own ordered route through machines, and the scheduler must interleave all routes while respecting both machine capacity and within-job precedence. The model captures a standard manufacturing abstraction, but the open question here is purely algorithmic: the routes, processing times, and makespan objective are already fully specified. For a fixed number of machines, approximation schemes are known for open shop and flow shop, and job shop also has approximation schemes when the maximum number of operations in a job is treated as an additional parameter. Mnich and van Bevern isolate the sharper question of whether that route-length parameter is genuinely necessary. A positive answer would say that a small number of machines is enough to obtain a true fixed-parameter approximation scheme for arbitrary job routes; a negative answer would identify a rare barrier for approximation schemes in a fixed-machine shop model.",
+  "full_statement": "In the job-shop makespan problem $J||C_{\\max}$, the input consists of $m$ machines and $n$ jobs. Job $j$ is a sequence of operations $(o_{j1},\\ldots,o_{j\\ell_j})$; operation $o_{jh}$ must be processed nonpreemptively for processing time $p_{jh}$ on a specified machine $\\mu_{jh}$, and operation $o_{j,h+1}$ may start only after $o_{jh}$ completes. A machine can process at most one operation at a time, and a job can process at most one operation at a time through its prescribed route. The objective is to minimize $C_{\\max}$, the completion time of the last operation. The open problem asks whether, for every $\\epsilon>0$, there is an algorithm returning a schedule with makespan at most $(1+\\epsilon)C^*_{\\max}$ in time $f(m,\\epsilon)\\operatorname{poly}(N)$, where $N$ is the ordinary input length and the non-polynomial factor is independent of $n$, the processing-time magnitudes, and especially $n_{\\max}=\\max_j\\ell_j$, the maximum route length.",
+  "open_problem": "Does $J||C_{\\max}$ admit a $(1+\\epsilon)$-approximation in time $f(m,\\epsilon)\\mathrm{poly}(n)$, with no exponential dependence on the maximum number of operations per job?",
+  "known_results": "Three-machine flow shop and three-machine open shop are already strongly NP-hard, so exact polynomial algorithms are not expected even for very small fixed shop environments. Nevertheless, approximation behaves better. Sevastianov and Woeginger give a fixed-parameter approximation scheme for open-shop makespan with dependence $f(m,\\epsilon)+O(n\\log n)$, and Hall gives an analogous approximation scheme for flow-shop makespan. For job shop, Jansen, Solis-Oba, and Sviridenko give a $(1+\\epsilon)$ approximation in time depending on $m$, $\\epsilon$, and $n_{\\max}$, plus linear or near-linear input dependence. Mnich and van Bevern pose Open Problem 13: remove the dependence on $n_{\\max}$. The usual route to a negative answer is not straightforward, because showing W-hardness parameterized by $C_{\\max}+m$ cannot work: with both $C_{\\max}$ and $m$ bounded, the number of operation slots is bounded and the problem is trivially fixed-parameter tractable.",
+  "status": "open",
+  "where_posed": {
+    "text": "Open Problem 13 in Mnich and van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems'.",
+    "url": "https://arxiv.org/abs/1709.01670",
+    "quote": "Is there an algorithm that yields a ... approximation for ... in ... time?",
+    "location": "Section 5.2, Open Problem 13"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "Approximation schemes are known with extra dependence on route length or related job-structure parameters. A machine-only FPT approximation scheme remains open.",
+    "links": [
+      {"title": "Mnich and van Bevern, 15 open problems", "url": "https://arxiv.org/abs/1709.01670"},
+      {"title": "Jansen, Solis-Oba, Sviridenko, job-shop approximation scheme", "url": "https://doi.org/10.1137/S0895480199363908"}
+    ]
+  },
+  "importance": 7,
+  "difficulty": 8,
+  "counterexample_suitability": "low",
+  "counterexample_rationale": "This is an approximation-algorithm existence question; a single instance cannot refute it.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Search may find compact schedule representations or hard route gadgets for small $m$. A resolution needs a formal approximation scheme or a conditional lower bound.",
+  "literature": {
+    "synthesis": "The positive results for open shop and flow shop show that fixed-machine shop scheduling is not automatically hostile to FPT approximation schemes. The obstruction in job shop is route complexity: a single job may revisit machines many times, so the schedule is not just an ordering of jobs on each machine but an interleaving of many route segments. Existing approximation schemes control this by including $n_{\\max}$ in the parameter dependence. The open problem asks whether long routes can be compressed after rounding, perhaps by aggregating repeated visits or by proving that only a bounded set of critical operations matters for a $(1+\\epsilon)$ schedule. A lower bound would need a subtler framework than standard EPTAS impossibility through optimum-parameter hardness, because bounded makespan and bounded machines already bound the number of operations that can appear in a yes-instance.",
+    "reviewed": [
+      {"ref": "Matthias Mnich and René van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems', Computers & Operations Research 2018", "result": "States Open Problem 13 on a machine-parameterized approximation scheme for job-shop makespan.", "relevance": "poses-problem", "url": "https://arxiv.org/abs/1709.01670"},
+      {"ref": "Klaus Jansen, Roberto Solis-Oba, Maxim Sviridenko, 'Makespan minimization in job shops: a linear time approximation scheme', SIAM Journal on Discrete Mathematics 2003", "result": "Provides an approximation scheme with dependence on additional job-shop structure, especially route length.", "relevance": "partial-progress", "url": "https://doi.org/10.1137/S0895480199363908"},
+      {"ref": "Schuurman and Woeginger, 'Polynomial time approximation algorithms for machine scheduling: ten open problems', Journal of Scheduling 1999", "result": "Classical open-problems context for approximation in scheduling.", "relevance": "survey", "url": "https://doi.org/10.1002/(SICI)1099-1425(199906)2:5%3C203::AID-JOS26%3E3.0.CO;2-W"}
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Investigate whether repeated visits to the same machine can be compressed into bounded-size route summaries after rounding. Compare with open-shop and flow-shop approximation schemes to identify exactly where arbitrary routes break.",
+    "verification_notes": "A claimed positive result must return an explicit schedule whose makespan is at most $(1+\\epsilon)C^*_{\\max}$ and must have running time $f(m,\\epsilon)\\operatorname{poly}(N)$ under ordinary binary encoding. Any hidden dependence such as $N^{g(m,\\epsilon)}$ is acceptable only if the exponent is independent of $m$ and $1/\\epsilon$; any exponential or superpolynomial dependence on $n_{\\max}$ is the known type of result and does not resolve the problem. A hardness submission must state the approximation-preserving or parameterized assumption carefully and must not rely only on NP-hardness for fixed $m$, since PTAS/FPT-AS results can coexist with such hardness.",
+    "machine_checkable": false
+  }
+}

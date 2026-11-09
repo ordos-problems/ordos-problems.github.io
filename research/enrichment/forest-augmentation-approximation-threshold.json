@@ -1,0 +1,118 @@
+{
+  "id": "forest-augmentation-approximation-threshold",
+  "title": "Approximation threshold for the Forest Augmentation Problem",
+  "collection": "Operations Research",
+  "area": "Survivable Network Design",
+  "tags": [
+    "forest augmentation",
+    "survivable network design",
+    "network design",
+    "approximation algorithms",
+    "connectivity augmentation"
+  ],
+  "status": "open",
+  "confidence": "medium",
+  "short_statement": "Forest Augmentation now has a better-than-2 approximation, but the correct approximation threshold for this basic survivable-network-design problem is still unknown.",
+  "full_statement": "In the unweighted Forest Augmentation Problem, the input is an undirected forest $F=(V,E_F)$ and a set $L$ of additional candidate links on the same vertex set. The goal is to choose a minimum-cardinality subset $S\\subseteq L$ such that the graph $(V,E_F\\cup S)$ is 2-edge-connected. This is one of the cleanest survivable-network-design augmentation models beyond Tree Augmentation. Jain's iterative-rounding framework gives a factor-2 approximation for broad survivable network design problems, and for years this was the benchmark for Forest Augmentation. Grandoni, Jabal Ameli, and Traub breached the factor-2 barrier for FAP by reducing to and solving a path-augmentation core. The open problem is to determine the true polynomial-time approximation threshold for Forest Augmentation, and more broadly to understand how far below the Jain factor $2$ one can go for basic augmentation problems whose starting graph is disconnected.",
+  "open_problem": "Determine the best possible polynomial-time approximation ratio for unweighted Forest Augmentation, or prove a strong hardness/integrality-gap barrier matching the best algorithms.",
+  "background": "Survivable network design asks for cheap networks that remain connected after failures. The general framework is broad, but augmentation problems isolate the essential combinatorics: start with a graph that is almost connected enough and add links to reach the desired connectivity. Tree Augmentation, where the initial graph is connected, has seen increasingly refined algorithms, including improvements for weighted variants. Forest Augmentation is only a small step away syntactically, but disconnected components remove structural tools that rely on a single tree. The 2021 breakthrough showed that factor 2 is not intrinsic even here, using a reduction to path augmentation and a credit argument. That leaves a clean OR-style approximation problem: identify the actual constant and the right relaxation or hard family.",
+  "known_results": "Jain's iterative rounding gives a 2-approximation for broad survivable network design settings, and this bound applied to Forest Augmentation. Better-than-2 algorithms were known for Tree Augmentation and related connected-start cases, but those methods did not transfer directly to forests. Grandoni, Jabal Ameli, and Traub give the first better-than-2 approximation for Forest Augmentation and also solve a better-than-2 Path Augmentation subproblem that had been open. The exact achieved constant is not presented as a tight threshold, and known hardness for the clean unweighted FAP model is far from a matching barrier. Thus the remaining open part is to pin down the approximability constant or identify a relaxation whose gap explains the limit. The earlier FAP ratio is $1.9973$. Hommelsheim's 2025 preprint improves it to $1.9955$ (Theorem 2), using a $1.9412$ Path Augmentation guarantee (Theorem 1). The exact unweighted FAP threshold remains open.",
+  "where_posed": {
+    "text": "The paper identifies FAP and PAP as basic open better-than-2 augmentation questions and resolves the first barrier, leaving the threshold open.",
+    "url": "https://arxiv.org/abs/2112.11799",
+    "quote": "nothing better is known even for very basic special cases",
+    "location": "Abstract and introduction."
+  },
+  "source": {
+    "authors": "Fabrizio Grandoni, Afrouz Jabal Ameli, Vera Traub",
+    "title": "Breaching the 2-Approximation Barrier for the Forest Augmentation Problem",
+    "year": 2021,
+    "venue": "arXiv",
+    "url": "https://arxiv.org/abs/2112.11799"
+  },
+  "additional_refs": [
+    {
+      "authors": "Kamal Jain",
+      "title": "A factor 2 approximation algorithm for the generalized Steiner network problem",
+      "year": 2001,
+      "venue": "Combinatorica",
+      "url": "https://doi.org/10.1007/s004930170004"
+    },
+    {
+      "authors": "Fabrizio Grandoni, Christos Kalaitzis, Rico Zenklusen",
+      "title": "Improved approximation for tree augmentation: saving by rewiring",
+      "year": 2018,
+      "venue": "STOC",
+      "url": "https://doi.org/10.1145/3188745.3188928"
+    },
+    {
+      "authors": "Vera Traub, Rico Zenklusen",
+      "title": "A better-than-2 approximation for weighted tree augmentation",
+      "year": 2021,
+      "venue": "FOCS",
+      "url": "https://doi.org/10.1109/FOCS52979.2021.00045"
+    },
+    {
+      "authors": "Felix Hommelsheim",
+      "title": "Improved Approximation Algorithms for Path and Forest Augmentation via a Novel Relaxation",
+      "year": 2025,
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2505.15324"
+    }
+  ],
+  "enabled": true,
+  "progress": {
+    "state": "partial",
+    "summary": "Better-than-$2$ is already known; the reviewed 2025 preprint improves FAP from $1.9973$ to $1.9955$. The tight threshold remains open.",
+    "links": [
+      {
+        "title": "Felix Hommelsheim, Improved Approximation Algorithms for Path and Forest Augmentation via a Novel Relaxation, arXiv:2505.15324 (2025)",
+        "url": "https://arxiv.org/html/2505.15324v1"
+      }
+    ]
+  },
+  "importance": 7,
+  "difficulty": 8,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Small forests and link sets can witness integrality gaps or failures of proposed credit schemes, and they are easy to verify exactly with integer programming.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Automated search can generate hard augmentation instances, candidate gap families, and counterexamples to local-search or LP-rounding conjectures.",
+  "literature": {
+    "synthesis": "Forest Augmentation is valuable because it is neither an arbitrary survivable-network-design problem nor merely Tree Augmentation in disguise. Jain's 2-approximation sets the general benchmark. The connected-tree case has a richer structure based on shadows, stems, compound witnesses, and rewiring; the disconnected forest case requires controlling how links simultaneously repair different components. Grandoni, Jabal Ameli, and Traub's path-augmentation reduction is the first evidence that the disconnected-start case still has exploitable structure below factor 2. What remains unclear is whether this is a modest improvement or the beginning of a much lower threshold. A tight answer would likely clarify the limits of iterative rounding and credit-based methods across survivable network design. Hommelsheim refines the path core via a new relaxation; distinguish the PAP $1.9412$ factor from the FAP $1.9955$ factor.",
+    "reviewed": [
+      {
+        "ref": "Grandoni, Jabal Ameli, Traub, Breaching the 2-Approximation Barrier for the Forest Augmentation Problem, 2021",
+        "result": "Gives the first better-than-2 approximation for FAP.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2112.11799",
+        "relevance_detail": "best-current-upper-bound"
+      },
+      {
+        "ref": "Jain, A factor 2 approximation algorithm for the generalized Steiner network problem, 2001",
+        "result": "Provides the broad iterative-rounding factor-2 benchmark.",
+        "relevance": "related-tool",
+        "url": "https://doi.org/10.1007/s004930170004",
+        "relevance_detail": "baseline"
+      },
+      {
+        "ref": "Traub and Zenklusen, A better-than-2 approximation for weighted tree augmentation, 2021",
+        "result": "Shows better-than-2 is possible for weighted TAP, highlighting the forest/tree distinction.",
+        "relevance": "related-tool",
+        "url": "https://doi.org/10.1109/FOCS52979.2021.00045",
+        "relevance_detail": "related-progress"
+      },
+      {
+        "ref": "Felix Hommelsheim, Improved Approximation Algorithms for Path and Forest Augmentation via a Novel Relaxation, arXiv:2505.15324 (2025)",
+        "result": "Theorems 1-2: $1.9412$ for PAP and $1.9955$ for FAP.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/html/2505.15324v1"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Enumerate small forests and link systems to test natural LP relaxations; search for recurring gap gadgets; study whether tree-augmentation rewiring can be localized componentwise; attempt stronger reductions from path augmentation or decomposition into component interaction graphs.",
+    "verification_notes": "A claimed approximation must define the exact FAP variant, including feasibility conditions for disconnected forests, and prove the factor for every unweighted instance. A lower bound should distinguish NP-hardness, LP gap, and algorithm-family barriers. Do not treat weighted TAP or connected tree augmentation as resolving FAP unless there is an approximation-preserving reduction in the correct direction.",
+    "machine_checkable": true
+  },
+  "notes_for_maintainer": "Status audit 2026-11-09: Main theorem statements and FAP proof section read; publication beyond preprint not established. Corrected feasibility to one spanning 2-edge-connected graph."
+}

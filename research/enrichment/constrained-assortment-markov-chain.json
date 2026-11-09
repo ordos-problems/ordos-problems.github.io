@@ -1,0 +1,66 @@
+{
+  "id": "constrained-assortment-markov-chain",
+  "background": "Assortment optimization asks which products to offer when customers substitute among unavailable items. The Markov-chain choice model of Blanchet, Gallego, and Goyal represents substitution by a Markov chain: a customer begins at an initial product and, if that product is unavailable, transitions among alternatives until purchasing an offered item or exiting. The unconstrained revenue-maximization problem has favorable structure, but practical assortments often face cardinality, shelf-space, or capacity constraints. Desir, Goyal, Segev, and Ye showed that the constrained version is algorithmically much harder: the revenue function is nonlinear, nonsubmodular, and nonmonotone, yet constant-factor approximations are possible through an externality-adjustment framework. They also prove APX-hardness, so a PTAS is impossible unless $P=NP$. The current open problem is the approximation threshold: how close can polynomial-time algorithms get to optimal revenue under cardinality or knapsack constraints, and can hardness be strengthened to match the best achievable constants?",
+  "short_statement": "For capacity-constrained assortment under Markov-chain choice, close the gap between constant-factor algorithms and APX-hardness.",
+  "full_statement": "There are products $1,\\ldots,n$ with revenues $r_i$, initial arrival probabilities $\\lambda_i$, and Markov transition probabilities $\\rho_{ij}$ among products and the no-purchase state $0$. Given an offered set $S$, a customer purchases the first offered product hit by the chain or leaves at state $0$, producing expected revenue $R(S)$. Under a feasibility constraint such as $|S|\\le k$ or $\\sum_{i\\in S}w_i\\le W$, choose $S$ maximizing $R(S)$. Determine the best possible polynomial-time approximation ratio for this constrained Markov-chain assortment problem.",
+  "open_problem": "Close the approximation gap for cardinality- and capacity-constrained assortment optimization under the Markov-chain choice model: improve the best constant-factor algorithms or prove matching inapproximability.",
+  "known_results": "Blanchet, Gallego, and Goyal introduced the Markov-chain choice model and showed that the unconstrained assortment problem has tractable structure, making the model attractive for revenue-management applications. The constrained setting is much harder: Desir, Goyal, Segev, and Ye prove that cardinality- and capacity-constrained Markov-chain assortment is APX-hard even in restricted uniform-price cases, so a PTAS is impossible unless $P=NP$. They also give constant-factor approximation algorithms based on externality adjustment and reductions to better-behaved surrogate objectives. What remains open is the exact approximation threshold: the known APX-hardness does not match the algorithmic constants, and no tight integrality-gap or inapproximability result is known for the natural constrained variants.",
+  "status": "open",
+  "where_posed": {
+    "text": "Natural gap left by Desir, Goyal, Segev, and Ye's constant-factor algorithms and APX-hardness theorem.",
+    "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2018.3230",
+    "quote": "",
+    "location": "Abstract and approximation/hardness results"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "Constant-factor approximation and APX-hardness are known. The remaining gap is the optimal approximation ratio for cardinality and knapsack/capacity constraints.",
+    "links": [
+      {
+        "title": "Constrained Assortment Optimization Under the Markov Chain-based Choice Model",
+        "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2018.3230"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Finite Markov-chain instances can refute proposed approximation analyses or reveal integrality gaps. Approximation lower bounds still require infinite reductions.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Search can find hard finite instances for LP relaxations, greedy rules, or externality-adjustment variants. These instances are directly machine-checkable by exact revenue computation.",
+  "literature": {
+    "synthesis": "The constrained Markov-chain assortment problem has the right shape for this repository: the model is fixed and clean, the unconstrained baseline is understood, and the hard part is a precise approximation gap. The revenue function lacks monotonicity and submodularity, so standard constrained-submodular tools do not apply directly. Desir, Goyal, Segev, and Ye's externality adjustment gives a way to linearize marginal effects enough to obtain constant approximations, while their APX-hardness result rules out arbitrarily close approximation. The missing theorem is either a stronger algorithmic idea that improves the constant or a reduction showing that the current constant is essentially best possible.",
+    "reviewed": [
+      {
+        "ref": "Jose Blanchet, Guillermo Gallego, and Vineet Goyal, 'A Markov Chain Approximation to Choice Modeling', Operations Research 2016",
+        "result": "Introduces the Markov-chain choice model and establishes tractable assortment optimization properties in the base model.",
+        "relevance": "related-tool",
+        "url": "https://pubsonline.informs.org/doi/10.1287/opre.2016.1505"
+      },
+      {
+        "ref": "Antoine Desir, Vineet Goyal, Danny Segev, and Chun Ye, 'Constrained Assortment Optimization Under the Markov Chain-based Choice Model', Management Science 2020",
+        "result": "Gives constant-factor approximation algorithms and proves APX-hardness for constrained Markov-chain assortment.",
+        "relevance": "partial-progress",
+        "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2018.3230"
+      },
+      {
+        "ref": "Vivek Farias, Srikanth Jagabathula, and Devavrat Shah, 'Assortment Optimization Under General Choice', Operations Research 2013",
+        "result": "Develops algorithmic approaches for assortment optimization under broad choice-prediction oracles.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/1108.3596"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Search for integrality gaps, hard instances for natural greedy/externality algorithms, and alternative LP or configuration relaxations. Algorithmic attempts may exploit hitting probabilities, absorbing Markov-chain formulas, and submodular-surrogate decompositions.",
+    "verification_notes": "A claimed approximation algorithm must prove its ratio for arbitrary transition matrices and constraints. A hard instance should compute exact optimal revenue and algorithm/relaxation value, preferably with rational transition probabilities.",
+    "machine_checkable": true
+  },
+  "tags": [
+    "assortment optimization",
+    "Markov-chain choice model",
+    "approximation algorithms",
+    "revenue management",
+    "APX-hardness"
+  ]
+}

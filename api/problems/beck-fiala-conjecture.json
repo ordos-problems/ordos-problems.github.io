@@ -5,21 +5,113 @@
  "title": "Beck-Fiala Conjecture (Discrepancy of Bounded-Degree Set Systems)",
  "collection": "Approximation & Discrepancy",
  "area": "Discrepancy",
- "status": "open",
- "confidence": "high",
+ "status": "solution claimed",
+ "confidence": "medium",
  "tags": [
   "discrepancy",
   "Beck-Fiala",
   "set systems",
   "combinatorial discrepancy"
  ],
- "short_statement": "Color elements of a set system red/blue to minimize the worst set imbalance (discrepancy). If every element lies in at most $t$ sets, the Beck-Fiala theorem gives at most $2t-1$; the conjecture is that the truth is only $O(\\sqrt{t})$, independent of the number of sets or elements.",
- "open_problem": "Prove or refute the Beck-Fiala conjecture that every degree-$t$ set system has discrepancy $O(\\sqrt t)$.",
- "full_statement": "Color the elements of a set system red and blue so that every set is as balanced as possible; the discrepancy is the worst imbalance over all sets. Let $\\mathcal{S}$ be a set system in which every element belongs to at most $t$ sets (equivalently, a matrix $A \\in \\{0,1\\}^{m \\times n}$ with at most $t$ ones per column). \\textbf{Conjecture (Beck-Fiala):} $\\mathrm{disc}(\\mathcal{S}) = \\min_{x \\in \\{\\pm 1\\}^n}\\|Ax\\|_\\infty = O(\\sqrt{t})$, independent of $m$ and $n$. The Beck-Fiala theorem guarantees discrepancy at most $2t-1$.",
- "known_results": "Beck and Fiala proved the original $2t-1$ discrepancy bound, and Bukh later improved this slightly to $2t-O(\\log^* t)$. A different line of work based on Banaszczyk's vector-balancing theorem gives $O(\\sqrt{t\\log n})$, which has the conjectured dependence on $t$ but still depends on the number of elements. Bansal and Jiang prove the conjectured $O(\\sqrt{t})$ bound in the regime $t\\ge \\log^2 n$. The remaining open case is the full, dimension-free $O(\\sqrt{t})$ bound for every $t$.",
+ "short_statement": "The dimension-free $O(\\sqrt t)$ Beck-Fiala bound is claimed by September 2026 Komlos preprints. Status: solution claimed, not independently verified here.",
+ "open_problem": "Verify the claimed resolution of the original conjecture. Historical target: Prove or refute the Beck-Fiala conjecture: every degree-$t$ set system has discrepancy $O(\\sqrt t)$.",
+ "background": "Historical context before the 2026 full-resolution claims: Combinatorial discrepancy asks whether a set system can be two-colored so that every set sees nearly the same number of red and blue elements. Beck-Fiala studies the sparse case where each element appears in at most $t$ sets. The original theorem gives discrepancy at most $2t-1$, while the conjecture predicts the much smaller bound $O(\\sqrt t)$ independent of the number of sets and elements. This is a central problem because it sits between sparse set systems, vector balancing, rounding, and discrepancy algorithms. It is also implied by the more general Komlos conjecture. Recent work by Bansal and Jiang goes beyond the Banaszczyk bound and resolves the conjecture for high-degree regimes such as $t\\ge \\log^2 n$, but the full range of $t$ was not settled by those earlier results. Status at 2026-11-09: Guo, Fang, and Lu's September 2026 preprint claims the full Beck-Fiala conjecture via its Komlos theorem and Corollary 1.2.",
+ "full_statement": "Let $\\mathcal S=\\{S_1,\\ldots,S_m\\}$ be a set system on ground set $[n]$, and suppose every element belongs to at most $t$ sets. Equivalently, let $A\\in\\{0,1\\}^{m\\times n}$ be an incidence matrix whose columns have at most $t$ ones. A signing $x\\in\\{-1,+1\\}^n$ colors the elements red and blue, and its discrepancy is $\\|Ax\\|_\\infty=\\max_{r\\le m}|\\sum_{j\\in S_r}x_j|$. Beck and Fiala proved discrepancy at most $2t-1$. The Beck-Fiala conjecture asks whether there is a universal constant $C$ such that every degree-$t$ set system has a signing with discrepancy at most $C\\sqrt t$, independent of $m$ and $n$. The historically open problem is to prove this dimension-free $O(\\sqrt t)$ bound for every relation among $t,m,n$, or to construct a family of degree-$t$ set systems with discrepancy $\\omega(\\sqrt t)$. Results that work only when $t$ is large compared with $n$, or that retain a residual $\\sqrt{\\log n}$ term, are partial progress but do not settle the conjecture. Status at 2026-11-09: Guo, Fang, and Lu's September 2026 preprint claims the full Beck-Fiala conjecture via its Komlos theorem and Corollary 1.2. This record flags a claimed resolution, pending verification.",
+ "known_results": "Historical context before the 2026 full-resolution claims: Beck and Fiala proved the original $2t-1$ bound. Bukh slightly improved the linear bound to $2t-O(\\log^*t)$, but this remains far from square-root behavior. Banaszczyk's vector-balancing theorem implies $O(\\sqrt{t\\log n})$, which has the conjectured dependence on $t$ but retains a dimension factor. Bansal-Dadush-Garg made Banaszczyk-type bounds algorithmic. Bansal and Jiang recently improved the landscape: they resolve Beck-Fiala for $t\\ge\\log^2 n$ and give bounds of the form $\\widetilde O(\\sqrt t+\\sqrt{\\log n})$ in the remaining regime, improving on $O(\\sqrt{t\\log n})$. These results also provide efficient algorithms for the colorings they guarantee. The dimension-free $O(\\sqrt t)$ statement for every $t$, especially small and intermediate $t$ relative to $n$, was not settled by those earlier results. Status at 2026-11-09: Guo, Fang, and Lu's September 2026 preprint claims the full Beck-Fiala conjecture via its Komlos theorem and Corollary 1.2.\n\nAlgorithmic follow-up: Guo, Fang, and Lu, arXiv:2609.23540v2, Corollary 1.2, report a deterministic real-RAM algorithm with discrepancy below $16544\\sqrt t$. Xiaoyu Li, arXiv:2609.30044v1, Corollary 1.2, improves this to below $99\\sqrt t$, with a polynomial-bit implementation on rational inputs. These are algorithmic square-root guarantees for all degree regimes, not only existential or high-degree results. The full proofs have not been independently certified here.",
+ "progress": {
+  "state": "solution-claimed",
+  "summary": "Full-resolution preprints are accompanied by deterministic algorithmic results. This entry is retained for verification and historical context, not treated as an untouched conjecture.",
+  "links": [
+   {
+    "title": "Bansal and Jiang, Decoupling via Affine Spectral-Independence",
+    "url": "https://arxiv.org/abs/2508.03961"
+   },
+   {
+    "title": "Bansal, Dadush, Garg, algorithmic Banaszczyk",
+    "url": "https://arxiv.org/abs/1605.02882"
+   },
+   {
+    "title": "Guo, Fang, and Lu, Vector Balancing via Directional Total Variation, arXiv:2609.11189 (2026)",
+    "url": "https://arxiv.org/html/2609.11189v1"
+   },
+   {
+    "title": "Karingula and Lovett, An elementary proof of the Komlos conjecture, arXiv:2609.20979 (2026)",
+    "url": "https://arxiv.org/html/2609.20979v2"
+   },
+   {
+    "title": "Vector Balancing in Polynomial Time",
+    "url": "https://arxiv.org/abs/2609.23540v2"
+   },
+   {
+    "title": "Fast Spectral Signing for Vector Balancing",
+    "url": "https://arxiv.org/abs/2609.30044v1"
+   }
+  ]
+ },
+ "importance": 9,
+ "difficulty": 9,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "A counterexample would be a finite set system with discrepancy super-$\\sqrt t$, but the conjecture is believed true and finite searches mostly test constants or special families.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Search can identify hard sparse set systems and test algorithmic coloring heuristics, but a proof likely needs probabilistic, SDP, or random-walk discrepancy techniques.",
+ "literature": {
+  "synthesis": "The original dimension-free target has reported full solutions, with subsequent algorithmic results described in What Is Known. Historical logarithmic losses should not be presented as the current existential or algorithmic frontier. Sharp constants and implementation complexity are distinct follow-up questions, not substitutes for this historical target.",
+  "reviewed": [
+   {
+    "ref": "Jozsef Beck, Tibor Fiala, 'Integer-making theorems', Discrete Applied Mathematics 1981",
+    "result": "Proves discrepancy at most $2t-1$ and poses the bounded-degree conjectural improvement.",
+    "relevance": "related-tool",
+    "url": "https://doi.org/10.1016/0166-218X(81)90022-6",
+    "relevance_detail": "poses-problem"
+   },
+   {
+    "ref": "Wojciech Banaszczyk, 'Balancing vectors and Gaussian measures of n-dimensional convex bodies', Random Structures & Algorithms 1998",
+    "result": "Implies $O(\\sqrt{t\\log n})$ for Beck-Fiala and $O(\\sqrt{\\log n})$ for Komlos.",
+    "relevance": "partial-progress",
+    "url": "https://doi.org/10.1002/(SICI)1098-2418(199807)12:4<351::AID-RSA3>3.0.CO;2-S"
+   },
+   {
+    "ref": "Nikhil Bansal, Haotian Jiang, 'Decoupling via Affine Spectral-Independence: Beck-Fiala and Komlos Bounds Beyond Banaszczyk', arXiv 2025",
+    "result": "Resolves Beck-Fiala for $t\\ge\\log^2 n$ and improves general bounds beyond Banaszczyk.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2508.03961"
+   },
+   {
+    "ref": "Guo, Fang, and Lu, Vector Balancing via Directional Total Variation, arXiv:2609.11189 (2026)",
+    "result": "Corollary 1.2 claims discrepancy below $3\\sqrt{2\\pi t}$ for every degree-$t$ set system.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/html/2609.11189v1"
+   },
+   {
+    "ref": "Karingula and Lovett, An elementary proof of the Komlos conjecture, arXiv:2609.20979 (2026)",
+    "result": "Theorem 1.2 claims constant $36$ for arbitrary real unit-column matrices. Subsequent preprint, not independent certification by this audit.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/html/2609.20979v2"
+   },
+   {
+    "ref": "Shengtao Guo, Ethan X. Fang, Junwei Lu, Vector Balancing in Polynomial Time (arXiv:2609.23540v2)",
+    "result": "Algorithmic follow-up; see the computational models and guarantees in What Is Known.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2609.23540v2"
+   },
+   {
+    "ref": "Xiaoyu Li, Fast Spectral Signing for Vector Balancing (arXiv:2609.30044v1)",
+    "result": "Algorithmic follow-up; see the computational models and guarantees in What Is Known.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2609.30044v1"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Check the cited full-resolution and algorithmic theorems, including precision and computational-model assumptions. Treat any new target about sharp constants as a separate question.",
+  "verification_notes": "A proof must give a bound $C\\sqrt t$ with a universal constant $C$ independent of $m,n$, row sizes, and any distributional assumption on the set system. The signing must color all elements, not merely give a partial coloring unless the iteration is fully specified without accumulating extra logarithmic loss. A verifier should check quantifiers carefully: results assuming $t\\ge\\log^2 n$, bounds such as $\\widetilde O(\\sqrt t+\\sqrt{\\log n})$, smoothed/random incidence matrices, hereditary discrepancy under extra assumptions, or algorithms whose failure probability is only over a restricted input distribution are partial progress. A counterexample must prove a worst-case lower bound $\\omega(\\sqrt t)$ for degree-$t$ set systems, not merely show that a particular algorithm fails. The relevant theorem statements and proof framework were read, but this audit is not an independent proof verification; no peer-reviewed publication was established.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "Conjectured in Beck & Fiala, 'Integer-making theorems,' Discrete Applied Mathematics, 1981, which also proves the 2t-1 bound.",
-  "url": "https://doi.org/10.1016/0166-218X(81)90022-6"
+  "text": "Conjectured in Beck and Fiala, 'Integer-making theorems'.",
+  "url": "https://doi.org/10.1016/0166-218X(81)90022-6",
+  "quote": "",
+  "location": "Bounded-degree discrepancy theorem and conjecture"
  },
  "source": {
   "authors": "Jozsef Beck, Tibor Fiala",
@@ -42,6 +134,34 @@
    "year": 2026,
    "venue": "STOC",
    "url": "https://arxiv.org/abs/2508.03961"
+  },
+  {
+   "authors": "Shengtao Guo, Ethan X. Fang, Junwei Lu",
+   "title": "Vector Balancing via Directional Total Variation",
+   "year": 2026,
+   "venue": "arXiv preprint; resolution claim not independently verified",
+   "url": "https://arxiv.org/abs/2609.11189"
+  },
+  {
+   "authors": "Sankeerth Rao Karingula, Shachar Lovett",
+   "title": "An elementary proof of the Komlos conjecture",
+   "year": 2026,
+   "venue": "arXiv preprint; resolution claim not independently verified",
+   "url": "https://arxiv.org/abs/2609.20979"
+  },
+  {
+   "authors": "Shengtao Guo, Ethan X. Fang, Junwei Lu",
+   "title": "Vector Balancing in Polynomial Time",
+   "year": 2026,
+   "venue": "arXiv:2609.23540v2",
+   "url": "https://arxiv.org/abs/2609.23540v2"
+  },
+  {
+   "authors": "Xiaoyu Li",
+   "title": "Fast Spectral Signing for Vector Balancing",
+   "year": 2026,
+   "venue": "arXiv:2609.30044v1",
+   "url": "https://arxiv.org/abs/2609.30044v1"
   }
  ],
  "bibtex": "@misc{Beck1981,\n  author = {Jozsef Beck and Tibor Fiala},\n  title = {Integer-making theorems},\n  year = {1981},\n  howpublished = {Discrete Applied Mathematics},\n  url = {https://doi.org/10.1016/0166-218X(81)90022-6},\n  note = {Source of ORdős Problem ORDOS-049}\n}",

@@ -1,0 +1,113 @@
+{
+ "number": 128,
+ "ref": "ORDOS-128",
+ "id": "minsum-single-machine-scheduling-lp-gap",
+ "title": "Integrality Gap for Min-Sum Single-Machine Scheduling",
+ "collection": "Operations Research",
+ "area": "Scheduling and Approximation Algorithms",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "scheduling",
+  "single machine",
+  "integrality gap",
+  "approximation algorithms",
+  "knapsack-cover"
+ ],
+ "short_statement": "Determine whether the natural knapsack-cover strengthened LP for $1\\mid\\mid\\sum_j f_j(C_j)$ has integrality gap strictly below $4$.",
+ "open_problem": "Close the integrality-gap and approximation gap for the knapsack-cover strengthened LP for $1\\mid\\mid\\sum_j f_j(C_j)$, especially whether the gap is strictly less than $4$.",
+ "background": "The model $1\\mid\\mid\\sum_j f_j(C_j)$ packages many single-machine sequencing objectives into a single clean abstraction. By choosing the functions $f_j$, one obtains weighted completion-time variants, weighted tardiness-like penalties, deadline penalties, and other nonlinear delay costs. The model is simple enough to state in one line but broad enough that approximation algorithms need ideas beyond Smith's rule or elementary dynamic programming. The key modern approach strengthens a time-indexed LP by knapsack-cover inequalities and rounds it with primal-dual or covering arguments. The open problem is therefore not about finding a model; it is about understanding a very concrete relaxation and whether the factor $4$ is an artifact of analysis or a real barrier.",
+ "full_statement": "In the min-sum single-machine scheduling problem $1\\mid\\mid\\sum_j f_j(C_j)$, there are $n$ jobs. Job $j$ has integral processing time $p_j$, and its cost is a nondecreasing nonnegative function $f_j(C_j)$ of its completion time $C_j$. A feasible schedule is a nonpreemptive ordering of the jobs on one machine, and the objective is to minimize $\\sum_{j=1}^n f_j(C_j)$. The known constant-approximation algorithms use time-indexed linear-programming relaxations strengthened by knapsack-cover inequalities. Cheung, Mestre, Shmoys, and Verschae gave a primal-dual analysis whose schedule has cost at most four times the constructed dual bound and asked whether the LP's true integrality gap is less than $4$. The open problem is to prove a bound $4-\\delta$ for some universal $\\delta>0$, construct instances with gap approaching $4$, or otherwise identify the exact gap/approximability threshold for this LP family.",
+ "known_results": "Bansal and Pruhs gave the first constant approximation for this general min-sum problem with factor $16$. Cheung, Mestre, Shmoys, and Verschae improved the algorithmic guarantee to $(4+\\epsilon)$ and showed that their particular primal-dual analysis is tight at factor $4$, while explicitly leaving open whether the LP integrality gap is actually below $4$. Kurpisz, Leppanen, and Mastrolilli studied Lasserre relaxations for related formulations and showed that some natural hierarchy approaches can still have severe gaps. The lower bound inherited from min-knapsack gives gap at least $2$ for relevant relaxations, but the source-checked gap between $2$ and $4$ remains unresolved.",
+ "progress": {
+  "state": "partial",
+  "summary": "The best source-checked general approximation is $(4+\\epsilon)$, and the specific primal-dual proof cannot beat $4$. The open issue is the LP's real gap and whether a different rounding or strengthening improves the constant.",
+  "links": [
+   {
+    "title": "Cheung-Mestre-Shmoys-Verschae primal-dual paper",
+    "url": "https://arxiv.org/abs/1612.03339"
+   }
+  ]
+ },
+ "importance": 7,
+ "difficulty": 7,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "An integrality-gap lower bound can be witnessed by an explicit finite scheduling instance and fractional LP solution, making computational search directly relevant.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Evolutionary or MILP-guided search can try to generate small instances with large LP gap, while symbolic analysis can inspect the patterns of fractional solutions.",
+ "literature": {
+  "synthesis": "This problem is a focused LP-gap question inside a broad scheduling model. The 16-approximation of Bansal and Pruhs established that general nondecreasing completion-time costs are approximable by a constant. Cheung-Mestre-Shmoys-Verschae and the related Mestre-Verschae line brought the guarantee to essentially $4$ using knapsack-cover inequalities. The key nuance is that tightness of an analysis is not the same as tightness of the relaxation. Lasserre lower-bound work warns that stronger-looking hierarchies may not automatically solve the problem. The remaining gap is concrete: either find an instance family whose fractional value is nearly one-fourth of the integer optimum, or prove that every fractional solution can be rounded with loss $4-\\delta$.",
+  "reviewed": [
+   {
+    "ref": "Maurice Cheung, Julian Mestre, David B. Shmoys, Jose Verschae, 'A Primal-Dual Approximation Algorithm for Min-Sum Single-Machine Scheduling Problems', arXiv 2016",
+    "result": "Gives a primal-dual route to a $(4+\\epsilon)$ approximation and poses the LP-gap question.",
+    "relevance": "poses-problem",
+    "url": "https://arxiv.org/abs/1612.03339"
+   },
+   {
+    "ref": "Julian Mestre, Jose Verschae, 'A 4-approximation for scheduling on a single machine with general cost functions', arXiv 2014",
+    "result": "Develops the 4-approximation framework for general single-machine cost functions.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1403.0298"
+   },
+   {
+    "ref": "Adam Kurpisz, Samuli Leppanen, Monaldo Mastrolilli, 'A Lasserre Lower Bound for the Min-Sum Single Machine Scheduling Problem', arXiv 2015",
+    "result": "Shows severe lower bounds for a natural Lasserre formulation, clarifying limits of hierarchy-based strengthening.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/1511.08644"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "For lower bounds, formulate the LP and search over small processing times, step cost functions, and deadline-like penalties for high fractional/integral ratios. For upper bounds, revisit the knapsack-cover dual fitting and ask which tight examples are artifacts of local charging. It may be useful to isolate special cost classes where the gap is provably below $4$.",
+  "verification_notes": "A lower-bound submission should include the full instance, a feasible fractional LP solution, and an exact or certified lower bound on every integral schedule. An upper-bound proof must specify exactly which LP is being rounded, including all knapsack-cover inequalities used.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "Explicitly posed in Cheung, Mestre, Shmoys, and Verschae, 'A Primal-Dual Approximation Algorithm for Min-Sum Single-Machine Scheduling Problems'.",
+  "url": "https://arxiv.org/abs/1612.03339",
+  "quote": "whether the integrality gap of the LP is less than 4",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Maurice Cheung, Julian Mestre, David B. Shmoys, Jose Verschae",
+  "title": "A Primal-Dual Approximation Algorithm for Min-Sum Single-Machine Scheduling Problems",
+  "year": 2016,
+  "venue": "arXiv / APPROX preliminary version",
+  "url": "https://arxiv.org/abs/1612.03339"
+ },
+ "additional_refs": [
+  {
+   "authors": "Nikhil Bansal, Kirk Pruhs",
+   "title": "The geometry of scheduling",
+   "year": 2010,
+   "venue": "FOCS",
+   "url": "https://doi.org/10.1109/FOCS.2010.48"
+  },
+  {
+   "authors": "Julian Mestre, Jose Verschae",
+   "title": "A 4-approximation for scheduling on a single machine with general cost functions",
+   "year": 2014,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/1403.0298"
+  },
+  {
+   "authors": "Adam Kurpisz, Samuli Leppanen, Monaldo Mastrolilli",
+   "title": "A Lasserre Lower Bound for the Min-Sum Single Machine Scheduling Problem",
+   "year": 2015,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/1511.08644"
+  }
+ ],
+ "bibtex": "@misc{Cheung2016,\n  author = {Maurice Cheung and Julian Mestre and David B. Shmoys and Jose Verschae},\n  title = {A Primal-Dual Approximation Algorithm for Min-Sum Single-Machine Scheduling Problems},\n  year = {2016},\n  howpublished = {arXiv / APPROX preliminary version},\n  url = {https://arxiv.org/abs/1612.03339},\n  note = {Source of ORdős Problem ORDOS-128}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/minsum-single-machine-scheduling-lp-gap.html",
+  "api": "https://ordos-problems.github.io/api/problems/minsum-single-machine-scheduling-lp-gap.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

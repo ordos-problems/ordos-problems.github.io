@@ -1,0 +1,139 @@
+{
+ "number": 141,
+ "ref": "ORDOS-141",
+ "id": "contextual-bandit-model-selection-optimal-regret",
+ "title": "Optimal model selection for contextual bandits",
+ "collection": "Online Algorithms & Learning",
+ "area": "Bandits",
+ "status": "resolved",
+ "confidence": "medium",
+ "tags": [
+  "contextual bandits",
+  "model selection",
+  "oracle-efficient learning",
+  "regret bounds",
+  "online learning",
+  "COLT open problem"
+ ],
+ "short_statement": "Can a contextual-bandit learner adapt to the smallest useful class without paying a model-selection penalty? The unrestricted nested-class guarantee has a negative answer; additional structure can permit adaptation.",
+ "open_problem": "Resolved for the unrestricted nested-policy-class target: the requested universal adaptation guarantee is impossible. Structured realizable-class refinements are distinct questions and need their own explicit assumptions.",
+ "background": "Model selection tries to avoid paying for an unnecessarily rich hypothesis class. In full-information learning, the same observations can evaluate many alternatives. In a bandit problem, choosing actions also determines which alternatives can be tested. This creates a tension between exploiting a simple model and collecting evidence for a larger one.\n\nThe earlier entry mixed policy classes, reward-function classes, and linear dimensions in one claim. These are not interchangeable. It also treated an arbitrary-class costless guarantee as still open without citing the negative answer. A fixed known-class learning theorem is a baseline, not a model-selection result.",
+ "full_statement": "Historical target. Let $\\Pi_1\\subset\\cdots\\subset\\Pi_M$ be finite classes of policies $\\mathcal X\\to[K]$. At round $t$, the learner observes $x_t$, chooses $a_t$, and observes only the loss $\\ell_t(a_t)\\in[0,1]$. Define $$R_T(\\Pi_m)=\\mathbb E\\!\\left[\\sum_{t=1}^T\\ell_t(a_t)\\right]-\\min_{\\pi\\in\\Pi_m}\\mathbb E\\!\\left[\\sum_{t=1}^T\\ell_t(\\pi(x_t))\\right].$$ The COLT 2020 note asks whether, for some fixed $\\alpha\\in[1/2,1)$, a learner can guarantee simultaneously for all $m$ a bound of order $T^\\alpha(\\log|\\Pi_m|)^{1-\\alpha}$, with the stated polynomial dependence on $K,M,\\log\\log|\\Pi_M|$. It also poses a stochastic realizable regression-class version.\n\nThe general policy-class question is resolved negatively by Marinov and Zimmert (NeurIPS 2021, Theorem 5). The paper separately states a proper-algorithm stochastic lower bound (Theorem 4) and explains its relation to the realizable variant in footnote 3. Do not infer that every structured realizable or linear subclass is impossible. This record archives the general target, rather than claiming that all questions about adaptive model selection have been settled.",
+ "known_results": "Marinov and Zimmert (NeurIPS 2021) disprove the general COLT policy-class guarantee, even for stochastic data and unrestricted algorithms (Theorem 5). Their matching Pareto-frontier results have a proper-algorithm qualification in the stochastic setting (Theorem 4); this distinction matters when describing what is tight.\n\nPositive results require additional structure. Foster, Krishnamurthy, and Luo's 2019 paper studies nested linear models. Krishnamurthy, Propp, and Athey's revised 2023 manuscript obtains costless adaptation under conditions on class-complexity growth and improvement in policy value. It explicitly treats the unrestricted COLT question as answered negatively. These refinements do not reopen the general conjecture.",
+ "progress": {
+  "state": "resolved",
+  "summary": "The general policy-class target was answered negatively in NeurIPS 2021. Corrected on 2026-11-09; this does not claim that all structured realizable variants are settled.",
+  "links": [
+   {
+    "title": "Teodor Marinov and Julian Zimmert, NeurIPS 2021",
+    "url": "https://proceedings.neurips.cc/paper/2021/file/9570efef719d705326f0ff817ef084e6-Paper.pdf"
+   },
+   {
+    "title": "Krishnamurthy, Propp, Athey, revised 2023 manuscript",
+    "url": "https://arxiv.org/abs/2106.06483"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "low",
+ "counterexample_rationale": "The general impossibility is already known; a finite simulation does not establish a new asymptotic lower bound.",
+ "alphaevolve_suitability": "low",
+ "alphaevolve_rationale": "Do not spend search effort on a universal positive guarantee that has been disproved. Computational experiments can only inform explicitly restricted follow-up models.",
+ "literature": {
+  "synthesis": "The missing result was an impossibility theorem, not an improved positive algorithm. The general guarantee should therefore be archived. Further entries should fix a structured family and an exact residual gap, rather than repeat the unrestricted target with a vague complexity parameter.",
+  "reviewed": [
+   {
+    "ref": "Dylan J. Foster, Akshay Krishnamurthy, Haipeng Luo, Open Problem: Model Selection for Contextual Bandits, COLT 2020",
+    "result": "Poses separate general-policy and realizable-function-class targets.",
+    "relevance": "related-tool",
+    "url": "https://proceedings.mlr.press/v125/foster20a.html"
+   },
+   {
+    "ref": "Teodor Marinov, Julian Zimmert, The Pareto Frontier of Model Selection for General Contextual Bandits, NeurIPS 2021",
+    "result": "Theorem 5 rules out the unrestricted stochastic policy target; Theorem 4 and footnote 3 delimit the proper-algorithm result.",
+    "relevance": "hardness",
+    "url": "https://proceedings.neurips.cc/paper/2021/file/9570efef719d705326f0ff817ef084e6-Paper.pdf"
+   },
+   {
+    "ref": "Sanath Kumar Krishnamurthy, Adrienne Margaret Propp, Susan Athey, Towards Costless Model Selection in Contextual Bandits: A Bias-Variance Perspective, arXiv 2021, revised 2023",
+    "result": "Gives structured sufficient conditions for costless adaptation, not an arbitrary-class guarantee.",
+    "relevance": "solves-special-case",
+    "url": "https://arxiv.org/html/2106.06483v3"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Verify the negative result or formulate a genuinely narrower class before seeking an algorithm. A universal positive claim must identify how it avoids the existing obstruction.",
+  "verification_notes": "Check policy-class versus regression-class quantifiers, proper versus unrestricted algorithms, stochastic versus adversarial data, and the factors permitted in the bound. For structured refinements specify assumptions quantitatively and compare against the cited positive results.",
+  "machine_checkable": false
+ },
+ "where_posed": {
+  "text": "Stated in Foster, Krishnamurthy, and Luo, 'Open Problem: Model Selection for Contextual Bandits'.",
+  "url": "https://arxiv.org/abs/2006.10940",
+  "quote": "We ask whether similar guarantees are possible for contextual bandit learning.",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Dylan J. Foster, Akshay Krishnamurthy, Haipeng Luo",
+  "title": "Open Problem: Model Selection for Contextual Bandits",
+  "year": 2020,
+  "venue": "COLT open-problem note / arXiv:2006.10940",
+  "url": "https://arxiv.org/abs/2006.10940"
+ },
+ "additional_refs": [
+  {
+   "authors": "Dylan J. Foster, Akshay Krishnamurthy, Haipeng Luo",
+   "title": "Model selection for contextual bandits",
+   "year": 2019,
+   "venue": "NeurIPS / arXiv:1906.00531",
+   "url": "https://arxiv.org/abs/1906.00531"
+  },
+  {
+   "authors": "David Simchi-Levi, Yunzong Xu",
+   "title": "Bypassing the Monster: A Faster and Simpler Optimal Algorithm for Contextual Bandits under Realizability",
+   "year": 2020,
+   "venue": "arXiv:2003.12699",
+   "url": "https://arxiv.org/abs/2003.12699"
+  },
+  {
+   "authors": "Alekh Agarwal, Miroslav Dudik, Satyen Kale, John Langford, Lihong Li, Robert Schapire",
+   "title": "Taming the Monster: A Fast and Simple Algorithm for Contextual Bandits",
+   "year": 2014,
+   "venue": "ICML",
+   "url": "https://arxiv.org/abs/1402.0555"
+  },
+  {
+   "authors": "Dylan J. Foster, Alexander Rakhlin",
+   "title": "Beyond UCB: Optimal and Efficient Contextual Bandits with Regression Oracles",
+   "year": 2020,
+   "venue": "ICML",
+   "url": "https://arxiv.org/abs/2002.04926"
+  },
+  {
+   "authors": "Teodor Marinov, Julian Zimmert",
+   "title": "The Pareto Frontier of Model Selection for General Contextual Bandits",
+   "year": 2021,
+   "venue": "NeurIPS 34",
+   "url": "https://proceedings.neurips.cc/paper/2021/file/9570efef719d705326f0ff817ef084e6-Paper.pdf"
+  },
+  {
+   "authors": "Sanath Kumar Krishnamurthy, Adrienne Margaret Propp, Susan Athey",
+   "title": "Towards Costless Model Selection in Contextual Bandits: A Bias-Variance Perspective",
+   "year": 2023,
+   "venue": "arXiv:2106.06483v3 (first posted 2021)",
+   "url": "https://arxiv.org/abs/2106.06483"
+  }
+ ],
+ "bibtex": "@misc{Foster2020,\n  author = {Dylan J. Foster and Akshay Krishnamurthy and Haipeng Luo},\n  title = {Open Problem: Model Selection for Contextual Bandits},\n  year = {2020},\n  howpublished = {COLT open-problem note / arXiv:2006.10940},\n  url = {https://arxiv.org/abs/2006.10940},\n  note = {Source of ORdős Problem ORDOS-141}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/contextual-bandit-model-selection-optimal-regret.html",
+  "api": "https://ordos-problems.github.io/api/problems/contextual-bandit-model-selection-optimal-regret.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

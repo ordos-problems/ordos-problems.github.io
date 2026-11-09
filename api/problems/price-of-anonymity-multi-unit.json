@@ -14,13 +14,64 @@
   "price of anonymity",
   "multi-unit"
  ],
- "short_statement": "An anonymous mechanism must offer every buyer the same price; how much revenue does that cost versus the optimal (Myerson) mechanism? For a single item the tight gap is $\\approx 2.62$; for selling multiple identical units the exact gap is not fully pinned down.",
- "open_problem": "the exact constants $\\rho_k$ for finite $k>1$ beyond the regular / large-market regime, and the multi-item analogues. Determine these.",
- "full_statement": "Consider revenue maximization with $n$ buyers whose value distributions differ. The optimal (Myerson) mechanism may charge different buyers different prices, whereas an anonymous mechanism must offer everyone the same price. For $k$ identical units and $n$ independent, non-identical regular value distributions, the price of anonymity is $$\\rho_k=\\sup_F \\frac{\\mathrm{OPT}(F)}{\\mathrm{AP}(F)},$$ where $\\mathrm{OPT}(F)$ is the optimal (Myerson) revenue and $\\mathrm{AP}(F)$ is the best anonymous posted-price revenue, and the supremum is over all valid instances $F$. For a single item ($k=1$) the tight value is $\\rho_1\\approx 2.62$. Open: the exact constants $\\rho_k$ for finite $k>1$ beyond the regular / large-market regime, and the multi-item analogues. Determine these.",
- "known_results": "For one item, the price of anonymity is known exactly up to numerical evaluation: $\\rho_1\\approx 2.6202$. In multi-unit settings with general regular distributions, the cross-group gap has order $\\Theta(\\log k)$, while in large regular markets the ratio is $2+O(1/\\sqrt{k})$ and converges to $2$. The open problem is to determine the exact constants for finite $k$ outside the large-market regime and to understand the corresponding anonymity loss for multi-item mechanisms.",
+ "short_statement": "For multi-unit auctions with non-identical regular buyers, sharpen the exact finite-$k$ revenue gap between optimal discriminating mechanisms and anonymous pricing/reserves.",
+ "open_problem": "Determine the exact finite-$k$ price of anonymity for multi-unit auctions and identify which hard distributions determine the constants.",
+ "background": "The price of anonymity measures the revenue lost when a seller cannot discriminate among buyers. In Bayesian auction theory, Myerson's optimal auction may use distribution-specific reserve prices and allocation rules. Anonymous pricing is much simpler: post one common price and sell while supply lasts. The question is important both practically and conceptually because anonymous mechanisms are transparent, easy to implement, and often legally or institutionally preferable. For one item, the basic approximation gap is now essentially resolved: anonymous pricing loses a factor about $2.62$ relative to optimal discriminating auctions. Multi-unit environments are subtler. Supply $k$ changes the role of market thickness, and the gap between anonymous and discriminating mechanisms can depend on whether one compares exact finite-$k$ constants, asymptotic rates, or within-group versus cross-group mechanism classes.",
+ "full_statement": "There are $n$ unit-demand buyers with independent, not necessarily identical, regular value distributions and a seller with $k$ identical units. Let $\\mathrm{OPT}(F)$ be the optimal expected revenue over all Bayesian incentive-compatible mechanisms. Let $\\mathrm{AP}(F)$ be the best anonymous posted-price revenue: the seller posts one common price $p$ to all buyers, buyers with value at least $p$ may purchase, and at most $k$ units are sold. Define $$\\rho_k=\\sup_F \\frac{\\mathrm{OPT}(F)}{\\mathrm{AP}(F)},$$ where the supremum ranges over all independent regular distributions and all numbers of buyers. The single-item case $k=1$ has a tight constant about $2.62$. The open problem is to determine the sharp finite-$k$ constants $\\rho_k$, identify extremal distribution families, and reconcile these constants with the known asymptotic gap structure among Myerson auctions, sequential posted pricing, anonymous reserves, and anonymous posted prices as $k$ grows.",
+ "known_results": "Alaei, Hartline, Niazadeh, Pountourakis, and Yuan showed that anonymous pricing gives an $e$-approximation to the ex-ante relaxation for single-item auctions, improving earlier four-approximation bounds for anonymous reserves. Jin, Lu, Qi, Tang, and Xiao settled the single-item anonymous-pricing ratio at about $2.62$ and gave matching lower-bound examples. Jin, Jiang, Lu, and Zhang studied multi-unit revenue gaps among Myerson auctions, sequential posted pricing, anonymous reserves, and anonymous pricing. They proved asymptotically tight $1+\\Theta(1/\\sqrt{k})$ gaps within discriminating or anonymous groups and $\\Theta(\\log k)$ gaps across the two groups, depending on which mechanism classes are compared. These results give the right asymptotic scale for several comparisons, but they do not pin down the exact finite-supply constants $\\rho_k$ for anonymous pricing versus the optimal auction.",
+ "progress": {
+  "state": "partial",
+  "summary": "The single-item constant is tight, and asymptotic multi-unit group gaps are known. Exact finite-supply constants and broader multi-item anonymity losses remain open.",
+  "links": [
+   {
+    "title": "Tight single-item anonymous pricing",
+    "url": "https://arxiv.org/abs/1811.00763"
+   },
+   {
+    "title": "Multi-unit revenue gaps",
+    "url": "https://arxiv.org/abs/2102.07454"
+   }
+  ]
+ },
+ "importance": 7,
+ "difficulty": 7,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Hard instances are finite collections of distributions, often with few distributional shapes. Numerical optimization over discrete distributions can suggest tight examples for small $k$.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "The problem is well suited to computational search over distribution families and revenue-ratio certificates, followed by analytic proof of extremality.",
+ "literature": {
+  "synthesis": "The literature separates two questions: how well anonymous prices approximate optimal auctions, and how revenue gaps scale among broader mechanism classes. Alaei et al. showed that anonymous pricing is within an $e$ factor of an ex-ante benchmark for single-item settings. Jin et al. later solved the exact single-item constant at about $2.62$, showing the $e$ bound was not tight. Multi-unit work reveals that supply can either wash out or amplify anonymity losses depending on the comparison class. In particular, within anonymous mechanisms or within discriminating mechanisms the gap tends to one with growing $k$, while cross-group gaps grow like $\\Theta(\\log k)$. What remains is the exact finite-$k$ picture and the extension to richer feasibility constraints.",
+  "reviewed": [
+   {
+    "ref": "Saeed Alaei, Jason Hartline, Rad Niazadeh, Emmanouil Pountourakis, Yang Yuan, 'Optimal Auctions vs. Anonymous Pricing', FOCS 2015",
+    "result": "Proves an $e$ approximation for anonymous pricing against the ex-ante relaxation.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1507.02615"
+   },
+   {
+    "ref": "Yaonan Jin, Pinyan Lu, Qi Qi, Zhihao Gavin Tang, Tao Xiao, 'Tight Approximation Ratio of Anonymous Pricing', STOC 2019",
+    "result": "Settles the single-item anonymous-pricing gap at about $2.62$.",
+    "relevance": "solves-special-case",
+    "url": "https://arxiv.org/abs/1811.00763"
+   },
+   {
+    "ref": "Yaonan Jin, Shunhua Jiang, Pinyan Lu, Hengjie Zhang, 'Tight Revenue Gaps among Multi-Unit Mechanisms', arXiv 2022",
+    "result": "Gives asymptotically tight multi-unit revenue gaps among major mechanism classes.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2102.07454"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "For small $k$, formulate the worst-case ratio as an optimization over discrete distributions and use duality to identify candidate extremal distributions. For general $k$, try to interpolate between known single-item extremals and logarithmic multi-unit constructions.",
+  "verification_notes": "A claimed constant must specify the mechanism benchmark, buyer utility model, distribution class, and whether the mechanism is anonymous pricing, anonymous reserve, sequential posted pricing, or Myerson. A lower-bound example needs exact distributions and exact revenue calculations for both $\\mathrm{OPT}$ and $\\mathrm{AP}$, or certified numerical optimization with rigorous error bounds. An upper bound must cover arbitrary independent regular distributions and arbitrary $n$, not only iid or large-market limits.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "Stated in Alaei, Hartline, Niazadeh, Pountourakis, Yan, 'Optimal Auctions vs. Anonymous Pricing', 2015, FOCS (GEB 2019).",
-  "url": "https://arxiv.org/abs/1507.02615"
+  "text": "The single-item anonymous-pricing gap originates in Alaei et al.; finite multi-unit gaps are sharpened but not completely pinned down by Jin, Jiang, Lu, and Zhang.",
+  "url": "https://arxiv.org/abs/2102.07454",
+  "quote": "",
+  "location": "Multi-unit revenue-gap formulation"
  },
  "source": {
   "authors": "Saeed Alaei, Jason D. Hartline, Rad Niazadeh, Emmanouil Pountourakis, Yang Yan",

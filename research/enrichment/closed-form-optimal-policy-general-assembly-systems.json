@@ -1,0 +1,66 @@
+{
+  "id": "closed-form-optimal-policy-general-assembly-systems",
+  "background": "Multi-echelon inventory theory asks how to coordinate replenishment across components, subassemblies, and finished goods when demand is random and lead times are positive. Assembly systems are especially difficult because one missing component can block a finished unit even when other components are abundant. Rosling's classic 1989 paper showed that, under a long-run-balance condition on the initial state, a stochastic assembly system can be transformed into an equivalent serial system, leading to optimal balanced echelon base-stock policies. Chen and Muharremoglu later removed the restrictive initial-condition assumption: from any starting state, the optimal policy remains a balanced echelon base-stock policy, but the base-stock levels evolve dynamically with time and state. This means the qualitative structural question is mostly solved. The remaining research-level gap is more computational and explicit: can the dynamic levels be characterized in a form that is usable without solving a large dynamic program, and what happens once fixed ordering costs or more general assembly topologies destroy the clean serial reduction?",
+  "short_statement": "For stochastic assembly systems, the optimal balanced base-stock structure is known under broad conditions; can the time-varying levels be computed explicitly, and does comparable structure survive fixed ordering costs?",
+  "full_statement": "Consider an assembly system in which $M$ components are procured with deterministic lead times, one unit of each component is required to assemble one finished product, demand for the finished product is stochastic over time, holding costs are linear at component or echelon levels, and unmet finished-good demand is backlogged or penalized. In the no-fixed-ordering-cost model, decisions are replenishment quantities for each component at each review epoch, subject to lead times and assembly balance. Rosling's serial reduction and Chen-Muharremoglu's extension imply that the optimal policy is a balanced echelon base-stock policy, possibly with base-stock levels that evolve dynamically from arbitrary imbalanced initial states. The open question is to give a closed-form or polynomial-time characterization of these dynamic levels without solving the full high-dimensional dynamic program, and to determine whether an analogous tractable optimal-policy structure exists when component orders incur fixed costs $K_j>0$ or when the assembly network is generalized beyond the in-tree case.",
+  "open_problem": "Develop an explicit, efficiently computable characterization of the time-varying balanced echelon base-stock levels for arbitrary initial imbalance, and characterize the optimal policy when fixed ordering costs are added to the same stochastic assembly model.",
+  "known_results": "Clark and Scarf introduced the echelon-stock dynamic-programming structure for serial multi-echelon systems. Rosling proved that, under a long-run balance condition, an assembly system can be remodeled as an equivalent serial system and simple reorder policies are optimal. Chen and Muharremoglu completed the no-fixed-cost structural characterization for arbitrary initial states, showing that the optimal policy remains balanced echelon base-stock with dynamically evolving levels. Thus the broad qualitative structure for the classical in-tree no-fixed-cost model is no longer open. The unresolved part is the explicit computation or closed-form description of the evolving levels and the fixed-ordering-cost extension, where inventory control typically moves toward $(s,S)$-type regions and balanced base-stock optimality is not established.",
+  "status": "partially resolved",
+  "where_posed": {
+    "text": "Residual gap following Rosling's assembly-system reduction and Chen-Muharremoglu's completion of the arbitrary-initial-state case.",
+    "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2475218",
+    "quote": "",
+    "location": "Abstract and concluding structural discussion"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The qualitative optimal-policy structure for the no-fixed-cost in-tree model is largely known. The remaining open part is narrower: efficient explicit computation from arbitrary initial states and fixed-cost/general-topology structure.",
+    "links": [
+      {
+        "title": "Optimal Policies for Assembly Systems: Completing Rosling's Characterization",
+        "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2475218"
+      }
+    ]
+  },
+  "importance": 7,
+  "difficulty": 7,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Small assembly networks with fixed ordering costs could refute natural base-stock or $(s,S)$-type conjectures. The closed-form computation question itself is unlikely to be settled by one finite counterexample.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Search over small dynamic programs can identify patterns in the evolving base-stock levels and fixed-cost policy regions. Any discovered structure would need exact proof through dynamic-programming convexity or lattice arguments.",
+  "literature": {
+    "synthesis": "The important correction for this record is that the main Rosling initial-imbalance issue has already been structurally resolved. Rosling established the serial-system equivalence under long-run balance and thereby reduced an assembly inventory problem to a tractable echelon base-stock policy. Chen and Muharremoglu showed that arbitrary starting states do not destroy balanced base-stock optimality, but they introduce time-varying levels. The open gap is therefore not whether a balanced policy exists in the no-fixed-cost model; it is whether the dynamic levels admit a parsimonious formula or polynomial-time description and whether similar structure survives fixed costs, where inventory control usually shifts from base-stock to $(s,S)$-type policies and coupling across components becomes more delicate.",
+    "reviewed": [
+      {
+        "ref": "Kaj Rosling, 'Optimal Inventory Policies for Assembly Systems Under Random Demands', Operations Research 1989",
+        "result": "Reduces balanced assembly systems to serial systems and proves optimality of simple reorder policies under the long-run-balance assumption.",
+        "relevance": "partial-progress",
+        "url": "https://pubsonline.informs.org/doi/10.1287/opre.37.4.565"
+      },
+      {
+        "ref": "Shaokuan Chen and Alp Muharremoglu, 'Optimal Policies for Assembly Systems: Completing Rosling's Characterization', SSRN 2014",
+        "result": "Extends the optimal balanced echelon base-stock characterization to arbitrary initial states with dynamically evolving levels.",
+        "relevance": "partial-progress",
+        "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2475218"
+      },
+      {
+        "ref": "Andrew J. Clark and Herbert Scarf, 'Optimal Policies for a Multi-Echelon Inventory Problem', Management Science 1960",
+        "result": "Introduces the echelon-stock dynamic-programming structure underlying much of multi-echelon inventory theory.",
+        "relevance": "related-tool",
+        "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.6.4.475"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Work from small component counts and exact dynamic programs, looking for monotone/lattice structure in the moving thresholds. For the fixed-cost case, test whether $K$-convexity or multimodularity survives the assembly coupling.",
+    "verification_notes": "A valid solution must distinguish the already-solved no-fixed-cost structural theorem from the remaining computational or fixed-cost questions. A closed-form or polynomial-time characterization should state the input encoding, horizon or discounted/average-cost criterion, lead-time assumptions, demand model, and how the dynamic base-stock levels are computed. A fixed-cost theorem must specify whether fixed costs apply per component, per joint order, or per echelon and must prove the claimed policy structure globally, not only for two components or zero lead times. Finite examples should be checked by exact dynamic programming and should report lead times, costs, demand distributions, and boundary/truncation error if the state space is truncated.",
+    "machine_checkable": true
+  },
+  "tags": [
+    "multi-echelon inventory",
+    "assembly systems",
+    "base-stock policies",
+    "dynamic programming",
+    "fixed ordering costs"
+  ]
+}

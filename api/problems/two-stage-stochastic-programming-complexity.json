@@ -5,21 +5,100 @@
  "title": "Complexity and approximability of two-stage stochastic programming",
  "collection": "Operations Research",
  "area": "Stochastic Programming",
- "status": "open",
+ "status": "partially resolved",
  "confidence": "medium",
  "tags": [
   "stochastic programming",
   "computational complexity",
   "sample average approximation",
-  "#P-hardness"
+  "#P-hardness",
+  "approximation algorithms",
+  "stochastic-programming",
+  "computational-complexity",
+  "sample-average-approximation",
+  "sharp-boundary",
+  "approximation-algorithms"
  ],
- "short_statement": "What is the exact computational complexity of evaluating/optimizing a two-stage stochastic linear program, and does it admit an efficient (e.g. fully polynomial randomized) approximation scheme?",
- "open_problem": "pin down the exact complexity of approximating the optimal value — in particular, does the problem admit a fully polynomial randomized approximation scheme (FPRAS), or is approximation itself #P-hard? Relatedly, characterize the tight sample size needed by Sample Average Approximation (SAA) to guarantee an $\\epsilon$-optimal solution with high probability.",
- "full_statement": "A two-stage stochastic linear program is $\\min_{x\\in X}\\; c^\\top x + \\mathbb{E}_{\\xi}\\,[\\,Q(x,\\xi)\\,]$, where the recourse cost is $Q(x,\\xi)=\\min\\{q^\\top y : Wy \\ge h(\\xi)-T(\\xi)x,\\ y\\ge 0\\}$ and $\\xi$ is a random vector with a known distribution (e.g. independent components). The difficulty is evaluating the expectation $\\mathbb{E}_\\xi[Q(x,\\xi)]$, a high-dimensional integral. Question: pin down the exact complexity of approximating the optimal value — in particular, does the problem admit a fully polynomial randomized approximation scheme (FPRAS), or is approximation itself #P-hard? Relatedly, characterize the tight sample size needed by Sample Average Approximation (SAA) to guarantee an $\\epsilon$-optimal solution with high probability.",
- "known_results": "Dyer–Stougie (2006) argued two-stage stochastic programming is #P-hard and multistage is PSPACE-hard under explicit independent distributions (a subsequent note by Hanasusanto–Kuhn–Wiesemann (2016) corrected/clarified parts of the two-stage argument). SAA enjoys exponential convergence of the probability of a bad solution in the sample size, with sample complexity polynomial in dimension and $1/\\epsilon^2$ for fixed classes (Kleywegt–Shapiro–Homem-de-Mello; Shapiro–Nemirovski). The precise complexity/approximability and tight sample bounds for general two-stage problems remain unsettled.",
+ "short_statement": "General compactly represented two-stage stochastic programming is #P-hard even approximately in broad settings; the open task is to classify the exact tractable boundary.",
+ "open_problem": "Classify the approximability and sample-complexity boundary for two-stage stochastic programs after known #P-hardness results: give natural maximal tractable classes with efficient algorithms and matching lower bounds showing when compact expectation evaluation remains #P-hard.",
+ "background": "Two-stage stochastic programming is a standard framework for decisions under uncertainty: choose a first-stage decision now, observe random data later, and then pay an optimal recourse cost. If all scenarios are explicitly listed, the deterministic equivalent may be large but conceptually ordinary. The deeper algorithmic issue appears when uncertainty is represented compactly, since the expectation can encode an exponentially large sum or integral. Dyer and Stougie gave a foundational complexity analysis for two-stage and multistage stochastic programs. Hanasusanto, Kuhn, and Wiesemann later showed that part of the original two-stage proof was incorrect and supplied a stronger corrected result: approximate solution is still #P-hard at sufficiently high accuracy for important linear two-stage models. Therefore the broad question 'is there a general FPRAS?' should not be presented as open. The research-level question is now a taxonomy problem: which structural assumptions genuinely remove the counting hardness, and how do those assumptions interact with SAA, decomposition, and approximation algorithms used in OR practice?",
+ "full_statement": "Consider a two-stage stochastic program of the form $\\min_{x\\in X} c^\\top x+\\mathbb{E}_{\\xi}[Q(x,\\xi)]$, where $x$ is chosen before the random vector $\\xi$ is observed and $Q(x,\\xi)$ is the optimal recourse value, for example $Q(x,\\xi)=\\min\\{q(\\xi)^\\top y: W(\\xi)y\\ge h(\\xi)-T(\\xi)x, y\\ge0\\}$. The distribution of $\\xi$ is part of the input and may be represented compactly, such as by independent random variables or other succinct descriptions rather than by explicitly listing all scenarios. Broad general formulations are known to be #P-hard, including high-accuracy approximate solution in corrected fixed-recourse settings. The open problem is to draw the sharp boundary: identify the largest natural restrictions on $X$, recourse structure, distributional representation, dimension, separability, and sampling access that admit polynomial-time approximation or an FPRAS, and prove matching hardness outside those regimes. In the positive regimes, also determine tight nonasymptotic sample sizes for sample-average approximation to output an $\\varepsilon$-optimal first-stage decision with high probability.",
+ "known_results": "Dyer and Stougie proved #P-hardness for two-stage stochastic programming under compact independent distributions and PSPACE-hardness for certain multistage variants, although the two-stage proof later required correction. Hanasusanto, Kuhn, and Wiesemann identified the flaw and proved that even approximate solution of linear two-stage stochastic programs with fixed recourse is #P-hard for sufficiently high accuracy; they also gave evidence that random recourse can be still more difficult. Kleywegt, Shapiro, and Homem-de-Mello developed SAA convergence and finite-sample theory for stochastic discrete optimization, while Shapiro and Nemirovski studied complexity phenomena for stochastic programming more broadly. Swamy and Shmoys and subsequent approximation work show that many named two-stage stochastic optimization problems do admit useful approximation algorithms under specific structural assumptions. The open part is not the existence of worst-case hardness; it is the sharp classification of which assumptions buy tractability and which still hide #P-hard expectation computation. Buchheim's May 2026 preprint refines the boundary for fixed recourse with coefficients affine in a uniformly distributed box vector. Strong #P-hardness persists with one random coordinate, or with one standard-form second-stage constraint; fixing the number of second-stage variables leaves weak #P-hardness and pseudopolynomial high-accuracy algorithms. Fixing both random dimension and the number of second-stage constraints permits polynomial-time approximation to arbitrary accuracy, with logarithmic dependence on $1/\\varepsilon$.",
+ "progress": {
+  "state": "partial",
+  "summary": "Broad compactly represented formulations are known to be #P-hard, including high-accuracy approximation in corrected two-stage fixed-recourse settings. Many structured stochastic optimization models have approximation or SAA guarantees. The remaining problem is a boundary theorem aligning hardness, distributional representation, and positive approximation/SAA conditions. A 2026 preprint supplies a finer fixed-dimension/second-stage-size classification; this is not a universal SAA or FPRAS result.",
+  "links": [
+   {
+    "title": "A comment on computational complexity of stochastic programming problems",
+    "url": "https://link.springer.com/article/10.1007/s10107-015-0958-2"
+   },
+   {
+    "title": "Computational complexity of stochastic programming problems",
+    "url": "https://link.springer.com/article/10.1007/s10107-005-0597-0"
+   },
+   {
+    "title": "Christoph Buchheim, A note on the complexity of two-stage stochastic linear optimization with small second stage, arXiv:2605.25028 (2026)",
+    "url": "https://arxiv.org/html/2605.25028v1"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "Compact distributions or recourse matrices can refute proposed tractability claims by embedding a counting problem. A full classification, however, requires asymptotic reductions and algorithms rather than one finite counterexample.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Automated search may find small hard distributions, bad SAA examples, or structural decompositions that suggest tractable subclasses. Formal complexity reductions and sample-complexity proofs remain essential.",
+ "literature": {
+  "synthesis": "The right open problem is a classification theorem, not a rediscovery of general hardness. The Dyer-Stougie paper established the complexity agenda, and the Hanasusanto-Kuhn-Wiesemann correction shows that compactly represented linear two-stage programs remain #P-hard even approximately at high accuracy. On the other hand, the OR literature contains many positive results for named stochastic optimization problems and SAA consistency under regularity assumptions. These two facts coexist because the input model matters: explicit scenarios, sampling oracles, fixed recourse, random recourse, bounded dimension, separability, and distributional succinctness are different computational regimes. A useful resolution would state, for each natural regime, whether the barrier is expectation evaluation, first-stage optimization, sample complexity, or all three. Buchheim's May 2026 preprint refines the boundary for fixed recourse with coefficients affine in a uniformly distributed box vector. Strong #P-hardness persists with one random coordinate, or with one standard-form second-stage constraint; fixing the number of second-stage variables leaves weak #P-hardness and pseudopolynomial high-accuracy algorithms. Fixing both random dimension and the number of second-stage constraints permits polynomial-time approximation to arbitrary accuracy, with logarithmic dependence on $1/\\varepsilon$.",
+  "reviewed": [
+   {
+    "ref": "Martin Dyer and Leen Stougie, 'Computational complexity of stochastic programming problems', Mathematical Programming 2006",
+    "result": "Initiates the formal complexity analysis and proves #P-hardness/PSPACE-hardness results for stochastic programming formulations under compactly represented uncertainty.",
+    "relevance": "hardness",
+    "url": "https://link.springer.com/article/10.1007/s10107-005-0597-0"
+   },
+   {
+    "ref": "Grani A. Hanasusanto, Daniel Kuhn, and Wolfram Wiesemann, 'A comment on computational complexity of stochastic programming problems', Mathematical Programming 2016",
+    "result": "Corrects the original two-stage proof and establishes stronger approximate #P-hardness for sufficiently high accuracy.",
+    "relevance": "hardness",
+    "url": "https://link.springer.com/article/10.1007/s10107-015-0958-2"
+   },
+   {
+    "ref": "Anton J. Kleywegt, Alexander Shapiro, and Tito Homem-de-Mello, 'The Sample Average Approximation Method for Stochastic Discrete Optimization', SIAM Journal on Optimization 2002",
+    "result": "Develops SAA convergence and finite-sample tools for stochastic discrete optimization.",
+    "relevance": "related-tool",
+    "url": "https://doi.org/10.1137/S1052623499363220"
+   },
+   {
+    "ref": "Alexander Shapiro and Arkadi Nemirovski, 'On complexity of stochastic programming problems', Continuous Optimization: Current Trends and Applications 2005",
+    "result": "Surveys and develops complexity distinctions for stochastic programming models, including the role of information and sampling.",
+    "relevance": "survey",
+    "url": "https://doi.org/10.1007/0-387-26771-9_4"
+   },
+   {
+    "ref": "Chaitanya Swamy and David B. Shmoys, 'Approximation Algorithms for 2-Stage Stochastic Optimization Problems', ACM SIGACT News 2006",
+    "result": "Surveys positive approximation algorithms for structured two-stage stochastic optimization problems.",
+    "relevance": "solves-special-case",
+    "url": "https://doi.org/10.1145/1147370.1147396"
+   },
+   {
+    "ref": "Christoph Buchheim, A note on the complexity of two-stage stochastic linear optimization with small second stage, arXiv:2605.25028 (2026)",
+    "result": "Theorems 6-10 give parameter-specific hardness and algorithms; not a complete classification of stochastic programming.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/html/2605.25028v1"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Separate the expectation-evaluation problem from the first-stage optimization problem. For lower bounds, try reductions from #P-complete counting, reliability, volume, or linear-extension counting under explicit restrictions on the distribution representation. For positive results, isolate assumptions such as fixed dimension, separable recourse, bounded support size, total unimodularity, Lipschitz recourse, or pure sampling-oracle access, and then prove both optimization and statistical guarantees.",
+  "verification_notes": "A claimed FPRAS must specify the distribution input model and must not contradict the corrected #P-hardness results for compact fixed-recourse linear models. A claimed SAA theorem must give nonasymptotic sample complexity, distinguish statistical error from optimization error, and state whether scenario optimization is itself polynomial. A claimed hardness result should identify whether it rules out exact solution, high-accuracy approximation, or sampling-based approximation.",
+  "machine_checkable": false
+ },
  "where_posed": {
-  "text": "Complexity questions posed in Dyer & Stougie, 'Computational complexity of stochastic programming problems' (Math. Programming 2006); see also the comment of Hanasusanto–Kuhn–Wiesemann (2016).",
-  "url": "https://link.springer.com/article/10.1007/s10107-005-0597-0"
+  "text": "Complexity program initiated by Dyer and Stougie and sharpened by Hanasusanto, Kuhn, and Wiesemann.",
+  "url": "https://link.springer.com/article/10.1007/s10107-015-0958-2",
+  "quote": "",
+  "location": "Abstract and correction of the two-stage hardness proof"
  },
  "source": {
   "authors": "Martin Dyer, Leen Stougie",
@@ -42,6 +121,13 @@
    "year": 2002,
    "venue": "SIAM J. Optimization",
    "url": "https://doi.org/10.1137/S1052623499363220"
+  },
+  {
+   "authors": "Christoph Buchheim",
+   "title": "A note on the complexity of two-stage stochastic linear optimization with small second stage",
+   "year": 2026,
+   "venue": "arXiv preprint",
+   "url": "https://arxiv.org/abs/2605.25028"
   }
  ],
  "bibtex": "@misc{Dyer2006,\n  author = {Martin Dyer and Leen Stougie},\n  title = {Computational complexity of stochastic programming problems},\n  year = {2006},\n  howpublished = {Mathematical Programming},\n  url = {https://link.springer.com/article/10.1007/s10107-005-0597-0},\n  note = {Source of ORdős Problem ORDOS-076}\n}",

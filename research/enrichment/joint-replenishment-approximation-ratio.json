@@ -1,0 +1,105 @@
+{
+  "id": "joint-replenishment-approximation-ratio",
+  "title": "Tight approximation ratio for the Joint Replenishment Problem",
+  "collection": "Operations Management",
+  "area": "Supply Chain Optimization",
+  "tags": [
+    "joint replenishment",
+    "inventory",
+    "supply chain",
+    "approximation algorithms",
+    "lot sizing"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "Determine the best possible approximation ratio for the deterministic Joint Replenishment Problem with arbitrary waiting costs, and close the gap between APX-hardness, LP gaps, and the best known constant algorithms.",
+  "full_statement": "In the deterministic Joint Replenishment Problem (JRP), a supplier ships goods to a warehouse and then to retailers. There is a fixed warehouse ordering cost $C$ for each order epoch. If retailer $\\rho$ is included in that order, an additional retailer-specific ordering cost $c_\\rho$ is paid. Customer demands arrive over time at retailers. In the waiting-cost version, demand $j$ for retailer $\\rho(j)$ arrives at time $r_j$ and, if served at time $t\\ge r_j$, incurs waiting cost $h_j(t-r_j)$, where $h_j$ is a nondecreasing function. A feasible schedule chooses order times and assigns each demand to an order containing its retailer. The objective is to minimize total warehouse ordering cost plus retailer ordering cost plus waiting cost. In the deadline version JRP-D, each demand must be served by a deadline and has no waiting cost before that deadline. The open problem is to determine the optimal polynomial-time approximation ratio for offline JRP, and in particular whether the general arbitrary-waiting-cost problem or the JRP-D special case admits ratios substantially below the current $1.791$ and $1.574$-type bounds, or whether stronger hardness or LP-gap constructions rule this out.",
+  "background": "Joint replenishment is a classical deterministic inventory model. It captures economies of scale in procurement: placing one warehouse order can serve many retailers, but each participating retailer also has its own setup cost. This two-level fixed-charge structure appears in distribution, retail replenishment, spare-parts logistics, and coordinated ordering. The model is simple enough to be a crisp combinatorial optimization problem, yet rich enough that power-of-two policies and natural LP relaxations leave real gaps. For operations management, the approximation ratio matters because it quantifies the worst-case value of coordination beyond simple periodic policies. For approximation algorithms, JRP is a structured network-design and lot-sizing problem with time, deadlines, and nested fixed charges. The remaining gap is not about choosing a model: the model has been standard for decades. The hard part is understanding the exact algorithmic price of two-level aggregation.",
+  "known_results": "For the discrete-time JRP with arbitrary waiting cost functions, Bienkowski, Byrka, Chrobak, Jez, and Sgall improved the best offline approximation from $1.8$ to $1.791$. For JRP-D, Bienkowski, Byrka, Chrobak, Dobbs, Nowicki, Sviridenko, Swirszcz, and Young gave a $1.574$ approximation and proved LP lower bounds of $1.207$ and a computer-assisted $1.245$ for the standard relaxation; they also showed APX-hardness, including equal-length demand-period cases with a $1.5$ upper bound and $1.2$ lower bound. Online JRP has separate bounds: the best known upper and lower bounds for arbitrary waiting costs are around $3$ and $2.754$ for the linear-waiting-cost lower-bound regime, while online JRP-D has optimal competitive ratio $2$. In continuous time, Segev recently gave the first quantitative improvements over power-of-two-type guarantees for several long-standing variants. None of these results gives the exact offline approximation threshold for general JRP or JRP-D.",
+  "where_posed": {
+    "text": "The approximation gaps are explicit in Bienkowski et al., 'Better Approximation Bounds for the Joint Replenishment Problem', 2013, and in Bienkowski et al., 'Approximation Algorithms for the Joint Replenishment Problem with Deadlines', Journal of Scheduling 2015.",
+    "url": "https://arxiv.org/abs/1307.2531",
+    "quote": "For arbitrary waiting cost functions, the best known approximation ratio is 1.8. This ratio can be reduced to 1.574 for the JRP-D model... As for hardness results, it is known that the problem is APX-hard and that the natural linear program for JRP has integrality gap at least 1.245.",
+    "location": "Abstract"
+  },
+  "source": {
+    "authors": "Marcin Bienkowski, Jaroslaw Byrka, Marek Chrobak, Lukasz Jez, Jiri Sgall",
+    "title": "Better Approximation Bounds for the Joint Replenishment Problem",
+    "year": 2013,
+    "venue": "arXiv",
+    "url": "https://arxiv.org/abs/1307.2531"
+  },
+  "additional_refs": [
+    {
+      "authors": "Marcin Bienkowski, Jaroslaw Byrka, Marek Chrobak, Neil Dobbs, Tomasz Nowicki, Maxim Sviridenko, Grzegorz Swirszcz, Neal E. Young",
+      "title": "Approximation Algorithms for the Joint Replenishment Problem with Deadlines",
+      "year": 2015,
+      "venue": "Journal of Scheduling",
+      "url": "https://arxiv.org/abs/1212.3233"
+    },
+    {
+      "authors": "Retsef Levi, Robin O. Roundy, David B. Shmoys, Maxim Sviridenko",
+      "title": "A Constant Approximation Algorithm for the One-Warehouse Multiretailer Problem",
+      "year": 2008,
+      "venue": "Management Science",
+      "url": "https://doi.org/10.1287/mnsc.1070.0787"
+    },
+    {
+      "authors": "Danny Segev",
+      "title": "Improved Approximation Guarantees for Joint Replenishment in Continuous Time",
+      "year": 2025,
+      "venue": "Mathematics of Operations Research",
+      "url": "https://arxiv.org/abs/2408.05443"
+    }
+  ],
+  "enabled": true,
+  "progress": {
+    "state": "partial",
+    "summary": "General offline JRP has a $1.791$ approximation; JRP-D has a $1.574$ approximation and standard-LP gap at least $1.245$. Recent continuous-time work improves several power-of-two-style guarantees but does not close the discrete offline approximation threshold.",
+    "links": [
+      {
+        "title": "Better Approximation Bounds for JRP",
+        "url": "https://arxiv.org/abs/1307.2531"
+      },
+      {
+        "title": "JRP with deadlines",
+        "url": "https://arxiv.org/abs/1212.3233"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Integrality gaps and hard instances are finite demand/retailer/time constructions. Computer-assisted LP gap search has already improved known lower bounds.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Automated search can generate small JRP-D instances, solve the integer optimum and LP relaxation, and optimize gap examples or factor-revealing constraints.",
+  "literature": {
+    "synthesis": "The JRP approximation literature has two parallel tracks: arbitrary waiting costs and deadline-only demand periods. Power-of-two policies and one-warehouse multiretailer approximations give broad constant guarantees, but their constants are not tight. The 2013 and 2015 approximation papers improved the constants and, importantly, began quantifying lower bounds for the standard LP relaxation. The known APX-hardness only rules out a PTAS, while the LP gaps remain far below the best algorithms. Segev's continuous-time work shows that power-of-two barriers can be beaten in related formulations, suggesting that the discrete constants may also be improvable. A full solution would either find a new rounding/charging method below the current constants or construct stronger hardness/gap families explaining why the known algorithms are near-optimal.",
+    "reviewed": [
+      {
+        "ref": "Bienkowski, Byrka, Chrobak, Jez, Sgall, 'Better Approximation Bounds for the Joint Replenishment Problem', arXiv 2013",
+        "result": "Improves offline arbitrary-waiting-cost JRP approximation to $1.791$ and online lower bounds.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1307.2531"
+      },
+      {
+        "ref": "Bienkowski et al., 'Approximation Algorithms for the Joint Replenishment Problem with Deadlines', Journal of Scheduling 2015",
+        "result": "Gives a $1.574$ approximation for JRP-D and LP lower bounds up to $1.245$.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1212.3233"
+      },
+      {
+        "ref": "Segev, 'Improved Approximation Guarantees for Joint Replenishment in Continuous Time', Mathematics of Operations Research 2025",
+        "result": "Improves several long-standing continuous-time joint-replenishment guarantees beyond power-of-two policies.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2408.05443"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "For upper bounds, inspect the primal-dual/LP-rounding analyses for where the constants are lost, especially in interval clustering and retailer-charge sharing. For lower bounds, search over small deadline instances and solve both integer and LP optima exactly to identify reusable gadgets.",
+    "verification_notes": "A claimed approximation must state whether it applies to arbitrary waiting costs, JRP-D, continuous time, or a restricted policy class. A lower-bound or gap certificate must specify all demands, retailers, costs, and deadlines/waiting functions, then compute the integer optimum and relaxation value exactly. A verifier should not accept a continuous-time improvement as resolving the discrete JRP-D constant unless the reduction is explicit and approximation-preserving. Check whether the claimed ratio is against the true optimum or against a power-of-two policy benchmark. For LP-based claims, verify the exact relaxation, because the $1.245$ lower bound is for a standard LP and may not apply to strengthened formulations.",
+    "machine_checkable": true
+  },
+  "notes_for_maintainer": "This is distinct from the broader one-warehouse multi-retailer stochastic policy-structure record; it targets deterministic JRP approximation constants."
+}

@@ -12,10 +12,10 @@ ENR = ROOT / "research" / "enrichment"
 NEW = ROOT / "research" / "new"
 
 ENRICH_FIELDS = [
-    "background", "known_results", "status", "progress", "importance", "difficulty",
+    "background", "known_results", "status", "confidence", "progress", "importance", "difficulty",
     "counterexample_suitability", "counterexample_rationale",
     "alphaevolve_suitability", "alphaevolve_rationale",
-    "literature", "agent_guidance", "notes_for_maintainer", "contributor",
+    "literature", "agent_guidance", "notes_for_maintainer", "contributor", "source",
 ]
 OPTIONAL_IMPROVE = ["short_statement", "full_statement", "open_problem", "title"]
 NEW_REQUIRED = ["id", "title", "collection", "area", "short_statement", "full_statement",
@@ -25,13 +25,27 @@ VALID_SUIT = {"low", "medium", "high"}
 
 
 def merge_refs(old, new):
-    seen = {(r.get("title") or "").strip().lower() for r in old}
-    out = list(old)
-    for r in new or []:
+    out = []
+    by_title = {}
+
+    def richness(ref):
+        return sum(1 for v in ref.values() if v not in (None, "", [], {}))
+
+    for r in (old or []) + (new or []):
         key = (r.get("title") or "").strip().lower()
-        if key and key not in seen:
-            seen.add(key)
+        if not key:
             out.append(r)
+            continue
+        if key not in by_title:
+            by_title[key] = len(out)
+            out.append(r)
+            continue
+        i = by_title[key]
+        merged = dict(out[i])
+        for k, v in r.items():
+            if v not in (None, "", [], {}) and (not merged.get(k) or richness(r) >= richness(merged)):
+                merged[k] = v
+        out[i] = merged
     return out
 
 
@@ -77,7 +91,7 @@ def main():
         if e.get("where_posed"):
             wp = dict(base.get("where_posed") or {})
             for k, v in e["where_posed"].items():
-                if v:
+                if v or (k == "quote" and v == ""):
                     wp[k] = v
             base["where_posed"] = wp
         if e.get("additional_refs"):

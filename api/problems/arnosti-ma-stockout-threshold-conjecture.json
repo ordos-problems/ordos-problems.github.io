@@ -14,22 +14,69 @@
   "k-unit",
   "revenue management",
   "will-ma-notes",
-  "permission-pending"
+  "contributed by Will Ma"
  ],
  "short_statement": "For the $k$-unit IID prophet problem, Arnosti and Ma conjecture (and verify numerically) that setting a single static threshold so the stockout probability $\\Pr[D \\ge k]$ equals $\\Pr[\\mathrm{Pois}(k) \\ge k]$ achieves the tight correlation-gap guarantee. The open problem is to prove this or find a counterexample.",
- "open_problem": "Prove this (e.g. via Bernoulli optimization) or find a counterexample.",
- "full_statement": "In the $k$-unit IID setting (T values arrive i.i.d.; accept up to $k$), consider static-threshold policies indexed by the threshold's induced demand distribution $D$ (the number of values above the threshold). \\textbf{Conjecture (Arnosti-Ma):} setting the threshold so that $\\Pr[D \\ge k] = \\Pr[\\mathrm{Pois}(k) \\ge k]$ achieves the tight guarantee $c_k^{\\mathrm{CG}} = 1 - e^{-k}k^k/k!$ under random order. \\textbf{Open:} Prove this (e.g. via Bernoulli optimization) or find a counterexample.",
- "known_results": "Arnosti and Ma formulate this threshold rule and verify it numerically for the relevant Bernoulli-optimization problem. Their evidence supports the conjecture that the stockout-probability threshold achieves the tight correlation-gap guarantee $c_k^{\\mathrm{CG}}$ for every $k$. What is missing is a proof that this particular threshold is always worst-case optimal, or a counterexample showing that the numerical pattern eventually breaks.",
+ "open_problem": "The open problem is the stronger operational conjecture from Will Ma's notes: prove or disprove that there is always an optimal static threshold satisfying the stockout-probability calibration $\\mathbb P(D(\\tau)\\ge k)=\\mathbb P(\\mathrm{Pois}(k)\\ge k)$, or the appropriate boundary/interpolation version when no threshold attains equality.",
+ "background": "Static thresholds are attractive in prophet secretary problems because they are simple, distribution-aware, and robust to limited information. In the $k$-unit setting, a threshold induces a random demand $D$: the number of arrivals whose values exceed the threshold. If too few values exceed the threshold, the policy leaves capacity unused; if too many exceed it, the policy stocks out and loses some high values. Arnosti and Ma analyze this tradeoff and identify the correlation-gap constant $c_k^{\\mathrm{CG}}=1-e^{-k}k^k/k!$ as the exact best guarantee attainable by static thresholds. Will Ma's course-note conjecture asks for a sharper structural statement: a particular stockout-probability rule should achieve the tight guarantee. Namely, choose the threshold so that $\\mathbb{P}(D\\ge k)$ matches the Poisson benchmark $\\mathbb{P}(\\mathrm{Pois}(k)\\ge k)$. This rule is natural from revenue-management intuition: tune the threshold so the chance of exhausting inventory matches the canonical Poissonized $k$-unit load. The conjecture is appealing because it would turn an optimization over threshold-induced Bernoulli sums into a one-line operational prescription.",
+ "full_statement": "In the $k$-unit prophet secretary problem, independent nonnegative values $V_1,\\ldots,V_n$ are drawn from known distributions and then revealed in a uniformly random order. A policy may accept at most $k$ realized values and seeks expected accepted value compared with the expected sum of the largest $k$ realized values. A static threshold policy fixes a number $\\tau$ before arrivals and accepts the first $k$ values exceeding $\\tau$. For a chosen threshold, let $D(\\tau)=\\sum_i \\mathbf 1\\{V_i\\ge\\tau\\}$ be the random number of threshold exceedances. Arnosti and Ma prove the best possible guarantee for the class of static thresholds is $c_k^{\\mathrm{CG}}=1-e^{-k}k^k/k!$. The open problem is the stronger operational conjecture from Will Ma's notes: prove or disprove that there is always an optimal static threshold satisfying the stockout-probability calibration $\\mathbb P(D(\\tau)\\ge k)=\\mathbb P(\\mathrm{Pois}(k)\\ge k)$, or the appropriate boundary/interpolation version when no threshold attains equality. Equivalently, show that this Poisson-stockout rule always achieves the tight $c_k^{\\mathrm{CG}}$ guarantee, or give an explicit instance where it falls short.",
+ "known_results": "Arnosti and Ma prove that some static threshold achieves $c_k^{\\mathrm{CG}}$ and that no static threshold can guarantee more. They give two simple threshold-setting prescriptions: one chooses a threshold so that the expected number accepted is $k c_k^{\\mathrm{CG}}$ and gives the optimal guarantee for every $k$; another chooses a threshold with expected exceedance count equal to $k$, which is optimal for $k>4$ but suboptimal for small $k$. Their proof relies on a Bernoulli-sum extremal inequality extending Hoeffding's 1956 theorem. The stockout-probability rule is more refined: instead of calibrating the expectation of $D(\\tau)$ or the expected number accepted, it calibrates the tail event that capacity is exhausted. This rule is supported by numerical Bernoulli-optimization evidence in Will Ma's notes and is operationally appealing, but a general proof that it always attains the tight static-threshold guarantee is not known from the site sources. The problem is therefore not to recover the known existence of an optimal threshold; it is to prove that this particular stockout-tail calibration is always sufficient.",
+ "progress": {
+  "state": "partial",
+  "summary": "The optimal static-threshold value is known, but the specific stockout-probability threshold rule remains conjectural.",
+  "links": [
+   {
+    "title": "Arnosti and Ma, Tight Guarantees for Static Threshold Policies",
+    "url": "https://arxiv.org/abs/2108.12893"
+   }
+  ]
+ },
+ "importance": 6,
+ "difficulty": 6,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "The conjecture can be tested by finite Bernoulli-sum optimization for fixed $k$ and discretized exceedance probabilities. A counterexample would likely be explicit.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "This is a good target for automated inequality discovery: search over Bernoulli vectors, inspect extremizers, and try to infer a Schur-convexity or majorization certificate.",
+ "literature": {
+  "synthesis": "The static-threshold literature reduces a prophet-secretary policy question to understanding sums of independent Bernoulli indicators above a threshold, plus the expected excess value above the threshold. Arnosti and Ma's contribution is to optimize this reduction tightly for all $k$, recovering the correlation-gap expression $1-e^{-k}k^k/k!$. Their theorem already proves that static thresholds are fully characterized in value, so the live conjecture must be stated carefully: it is about a simple rule for choosing the threshold, not about the existence of some good threshold. The stockout conjecture asks whether the optimal threshold can be selected by matching the tail probability of filling all $k$ slots to the Poissonized benchmark. This resembles classical extremal results for Poisson-binomial sums, including Hoeffding-style theorems, but tail calibration is subtler than mean calibration. A solution likely needs an inequality showing that, among threshold-induced Bernoulli vectors with a fixed stockout probability, the reward loss is maximized by the Poisson or another explicitly controlled extremal vector.",
+  "reviewed": [
+   {
+    "ref": "Nick Arnosti, Will Ma, 'Tight Guarantees for Static Threshold Policies in the Prophet Secretary Problem', Operations Research 2023",
+    "result": "Proves the tight static-threshold guarantee $c_k^{\\mathrm{CG}}$ and supplies threshold-setting methods.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2108.12893"
+   },
+   {
+    "ref": "Wassily Hoeffding, 'On the distribution of the number of successes in independent trials', Annals of Mathematical Statistics 1956",
+    "result": "Classical extremal inequality for sums of independent Bernoulli variables; related to the Bernoulli optimization used in static-threshold analysis.",
+    "relevance": "related-tool",
+    "url": "https://doi.org/10.1214/aoms/1177728260"
+   },
+   {
+    "ref": "Robert Kleinberg and S. Matthew Weinberg, 'Matroid Prophet Inequalities', STOC 2012",
+    "result": "Provides the broader prophet-inequality framework for constraints beyond rank one, including threshold-style reasoning under feasibility constraints.",
+    "relevance": "background",
+    "url": "https://arxiv.org/abs/1201.4764"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Focus on the induced Bernoulli variables above the threshold. Search for majorization, log-concavity, or Poisson-binomial extremal inequalities that imply the reward lower bound when the stockout probability is fixed.",
+  "verification_notes": "A proof must show the stockout-probability threshold works for every distribution and every $k$, not merely that some static threshold achieves $c_k^{\\mathrm{CG}}$. The verifier should check how the proof handles thresholds at atoms, cases where $\\mathbb P(D(\\tau)\\ge k)$ jumps over the Poisson target, and randomized/interpolated thresholds if they are allowed. A counterexample should give the value distributions or an equivalent finite-support threshold decomposition, compute the exceedance probabilities, compute the stockout-calibrated threshold, and compare its expected accepted value with the offline expected top-$k$ value. Numerical counterexamples need certified error bounds because the conjectured constant can be close to the computed ratio.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #4).",
-  "url": ""
+  "text": "Posed in Will Ma's Online Resource Allocation course notes, Appendix C, Open Problems about Prophet Inequalities, Problem 4.",
+  "url": "",
+  "quote": "",
+  "location": "Appendix C, Prophet Inequalities #4"
  },
  "source": {
-  "authors": "Will Ma",
-  "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #4)",
-  "year": 2024,
-  "venue": "Lecture notes (uploaded)",
-  "url": ""
+  "authors": "Nick Arnosti, Will Ma",
+  "title": "Tight Guarantees for Static Threshold Policies in the Prophet Secretary Problem",
+  "year": 2023,
+  "venue": "Operations Research / arXiv:2108.12893",
+  "url": "https://arxiv.org/abs/2108.12893"
  },
  "additional_refs": [
   {
@@ -40,7 +87,7 @@
    "url": "https://arxiv.org/abs/2108.12893"
   }
  ],
- "bibtex": "@misc{Ma2024,\n  author = {Will Ma},\n  title = {Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #4)},\n  year = {2024},\n  howpublished = {Lecture notes (uploaded)},\n  note = {Source of ORdős Problem ORDOS-061}\n}",
+ "bibtex": "@misc{Arnosti2023,\n  author = {Nick Arnosti and Will Ma},\n  title = {Tight Guarantees for Static Threshold Policies in the Prophet Secretary Problem},\n  year = {2023},\n  howpublished = {Operations Research / arXiv:2108.12893},\n  url = {https://arxiv.org/abs/2108.12893},\n  note = {Source of ORdős Problem ORDOS-061}\n}",
  "urls": {
   "human": "https://ordos-problems.github.io/problems/arnosti-ma-stockout-threshold-conjecture.html",
   "api": "https://ordos-problems.github.io/api/problems/arnosti-ma-stockout-threshold-conjecture.json",

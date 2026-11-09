@@ -1,0 +1,94 @@
+{
+ "number": 110,
+ "ref": "ORDOS-110",
+ "id": "prophet-cancellation-costs-small-buyback",
+ "title": "Tight prophet inequality with cancellation costs for small buyback cost",
+ "collection": "Online Algorithms & Learning",
+ "area": "Prophet Inequalities",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "prophet inequalities",
+  "recourse",
+  "buyback",
+  "online selection",
+  "optimal stopping",
+  "market design",
+  "Rad Niazadeh",
+  "Pranav Nuti"
+ ],
+ "short_statement": "In prophet inequalities with linear cancellation cost $f$, the optimal competitive ratio is known for $f\\ge 1$ and asymptotically understood as $f\\downarrow0$. Determine the exact tight ratio for every $0<f<1$.",
+ "open_problem": "Determine the exact optimal prophet-inequality competitive ratio with buyback/cancellation cost $fX$ in the unresolved regime $0<f<1$.",
+ "background": "Classical prophet inequalities force irrevocable decisions: once a value is accepted, the online decision maker stops or is committed. Many allocation markets are less rigid. A platform may tentatively allocate inventory, a seller may accept an offer and later cancel at a penalty, or an online algorithm may replace a current solution by paying a buyback cost. Prophet inequalities with cancellation costs formalize this recourse in the cleanest one-item model. The algorithm sees independent nonnegative random variables sequentially. It may hold one accepted value at a time, replace it later, and pays a linear penalty $f$ times the discarded value whenever it cancels. The payoff is the final kept value minus all cancellation costs. Ekbatani, Niazadeh, Nuti, and Vondrak solve the regime $f\\ge1$ exactly and show that small $f$ has ratio $1-\\Theta(f\\log(1/f))$. The remaining interval $0<f<1$ is a precise constant-factor problem, not a modeling issue: the benchmark, policy class, and penalty rule are all fixed.",
+ "full_statement": "Let $X_1,\\ldots,X_n$ be independent nonnegative random variables with known distributions, revealed one by one to an online algorithm. At each time the algorithm may reject the current value, accept it if it holds no value, or replace the currently held accepted value $Y$ by the new value $X_t$, paying cancellation cost $fY$. At the end, the algorithm receives the value of its final held item minus the sum of cancellation costs paid. Let $\\mathrm{OPT}=\\mathbb{E}[\\max_t X_t]$ be the offline prophet benchmark that sees all values and keeps the maximum without cancellation costs. For a fixed $f\\in(0,1)$, determine the largest constant $\\alpha(f)$ such that for every finite independent instance there is an online policy with expected net reward at least $\\alpha(f)\\mathrm{OPT}$. Equivalently, characterize the exact minimax competitive ratio for prophet inequalities with linear buyback cost in the small-cost regime.",
+ "known_results": "Ekbatani, Niazadeh, Nuti, and Vondrak prove the exact optimal ratio $(1+f)/(1+2f)$ when $f\\ge1$. For $0<f<1$, their paper explicitly states that the problem is still open. They give partial results for this regime, including almost matching asymptotic upper and lower bounds showing that as $f\\downarrow0$, the optimal ratio is $1-\\Theta(f\\log(1/f))$. Classical prophet inequalities solve the no-recourse irrevocable case with ratio $1/2$, while secretary/buyback and online matching recourse models give related techniques but not this exact independent-values prophet benchmark. Thus the qualitative small-cost behavior is known, but the exact function $\\alpha(f)$ for fixed $f\\in(0,1)$ is not.",
+ "progress": {
+  "state": "partial",
+  "summary": "The high-cost regime $f\\ge1$ is solved exactly. The low-cost endpoint is understood asymptotically up to constant factors in the loss term $f\\log(1/f)$, but the exact minimax curve for fixed $0<f<1$ remains open.",
+  "links": [
+   {
+    "title": "Ekbatani, Niazadeh, Nuti, Vondrak, Prophet Inequalities with Cancellation Costs",
+    "url": "https://arxiv.org/abs/2404.00527"
+   }
+  ]
+ },
+ "importance": 7,
+ "difficulty": 7,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Upper bounds are finite independent prophet instances and can often be reduced to small discrete distributions. A proposed exact formula can be stress-tested by optimizing over finite-support instances.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "For fixed $f$, discretized instances can be evaluated by dynamic programming. Search can discover extremal distributions, candidate threshold/flow policies, and dual certificates.",
+ "literature": {
+  "synthesis": "The cancellation-cost model interpolates between irrevocable prophet selection and near-free recourse. The source paper develops two complementary proof styles: threshold arguments inspired by classical prophet inequalities, and combinatorial-optimization methods based on LP duality, flows, and cuts. The exact $f\\ge1$ ratio suggests a clean minimax structure, while the small-$f$ asymptotics show that very cheap cancellation nearly recovers the prophet but pays a logarithmic penalty. The unresolved regime is the interpolation between these behaviors. A solution likely needs either an exact factor-revealing program whose dual can be solved for every $f$, or a family of hard instances proving that a candidate policy is tight.",
+  "reviewed": [
+   {
+    "ref": "Farbod Ekbatani, Rad Niazadeh, Pranav Nuti, Jan Vondrak, 'Prophet Inequalities with Cancellation Costs', arXiv 2024",
+    "result": "Solves the regime $f\\ge1$ with exact ratio $(1+f)/(1+2f)$ and proves small-$f$ asymptotics $1-\\Theta(f\\log(1/f))$; leaves exact $0<f<1$ open.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2404.00527"
+   },
+   {
+    "ref": "Krengel and Sucheston, 'Semiamarts and finite values', Bulletin of the AMS 1977",
+    "result": "Classical source for prophet inequality ideas underlying the no-recourse benchmark.",
+    "relevance": "related-tool",
+    "url": "https://doi.org/10.1090/S0002-9904-1977-14379-0"
+   },
+   {
+    "ref": "Babaioff, Immorlica, Kempe, Kleinberg, 'A Knapsack Secretary Problem with Applications', APPROX 2007",
+    "result": "Representative online-selection work with recourse/secretary-style methods adjacent to buyback prophet models.",
+    "relevance": "related-tool",
+    "url": "https://doi.org/10.1007/978-3-540-74208-1_2"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Discretize values and solve the optimal online dynamic program for fixed $f$ to search for extremal instances. Try to fit the resulting values to a factor-revealing LP or to threshold policies with cancellation intervals. Dual-fitting and cut/flow formulations from the source paper are likely the right proof language.",
+  "verification_notes": "A claimed lower bound must handle arbitrary independent nonnegative distributions and account for all cancellation costs, including multiple replacements. A claimed upper bound must specify distributions and prove that no online replacement policy beats the stated ratio; simulation alone is not enough. A theorem for $f\\ge1$, asymptotic $f\\downarrow0$, secretary arrivals, adversarial values, or multi-item buyback does not resolve the fixed-$0<f<1$ prophet benchmark unless an explicit reduction is given.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "Explicitly stated in Ekbatani, Niazadeh, Nuti, and Vondrak, 'Prophet Inequalities with Cancellation Costs', 2024.",
+  "url": "https://arxiv.org/abs/2404.00527",
+  "quote": "The problem is still open for $0<f<1$ and we give some partial results in this regime.",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Farbod Ekbatani, Rad Niazadeh, Pranav Nuti, Jan Vondrak",
+  "title": "Prophet Inequalities with Cancellation Costs",
+  "year": 2024,
+  "venue": "arXiv:2404.00527",
+  "url": "https://arxiv.org/abs/2404.00527"
+ },
+ "additional_refs": [],
+ "bibtex": "@misc{Ekbatani2024,\n  author = {Farbod Ekbatani and Rad Niazadeh and Pranav Nuti and Jan Vondrak},\n  title = {Prophet Inequalities with Cancellation Costs},\n  year = {2024},\n  howpublished = {arXiv:2404.00527},\n  url = {https://arxiv.org/abs/2404.00527},\n  note = {Source of ORdős Problem ORDOS-110}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/prophet-cancellation-costs-small-buyback.html",
+  "api": "https://ordos-problems.github.io/api/problems/prophet-cancellation-costs-small-buyback.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

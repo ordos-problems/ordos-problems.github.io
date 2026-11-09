@@ -1,0 +1,107 @@
+{
+ "number": 123,
+ "ref": "ORDOS-123",
+ "id": "input-queued-switch-maxweight-heavy-traffic-distribution",
+ "title": "Heavy-Traffic Queue-Length Distribution for MaxWeight Input-Queued Switches",
+ "collection": "Applied Probability",
+ "area": "Queueing Networks",
+ "status": "conjecture",
+ "confidence": "high",
+ "tags": [
+  "queueing",
+  "heavy traffic",
+  "MaxWeight",
+  "input-queued switches",
+  "state-space collapse",
+  "stochastic processing networks"
+ ],
+ "short_statement": "For a general $n\\times n$ input-queued switch under MaxWeight, prove the conjectured uniqueness of the transform equation that identifies the steady-state heavy-traffic joint queue-length distribution.",
+ "open_problem": "The open problem is to prove, for the general $n\\times n$ switch, that the relevant functional equation has a unique admissible solution.",
+ "background": "Input-queued switches are a canonical stochastic-processing-network model for packet switches, data-center fabrics, and constrained service systems. Each scheduling decision must be a matching, so resource sharing is combinatorial rather than separable across queues. MaxWeight is throughput optimal and has become a central policy in queueing theory, wireless networks, and cloud scheduling. For systems satisfying complete resource pooling, heavy-traffic limits often collapse to one-dimensional reflected Brownian motion, and mean-delay formulas can be comparatively explicit. Input-queued switches under general loads are more subtle: the bottleneck structure can have several active constraints, producing multidimensional state-space collapse and a much harder stationary distribution problem. Mean queue lengths have been characterized in important regimes, but a full joint distribution would be much sharper: it would describe correlations between ports, enable tail approximations, and test whether transform methods can replace more ad hoc interchange-of-limits arguments in non-CRP networks.",
+ "full_statement": "Consider an $n\\times n$ input-queued switch with queues indexed by input-output pairs $(i,j)$. In each time slot, arrivals $A_{ij}(t)$ join queue $(i,j)$, and the scheduler chooses a matching $M(t)$ between inputs and outputs; queues in the matching receive one unit of service if nonempty. The MaxWeight policy chooses a feasible matching maximizing $\\sum_{(i,j)\\in M(t)} Q_{ij}(t)$, where $Q_{ij}(t)$ is the queue length. Let the arrival-rate matrix approach the boundary of the switch capacity region in heavy traffic, and consider the steady-state queue-length vector under the usual diffusion/heavy-traffic scaling. For non-complete-resource-pooling regimes, the limiting state-space collapse is multidimensional rather than one-dimensional. Jhunjhunwala and Maguluri derive a candidate Laplace transform for the limiting joint distribution of the collapsed queue-length vector by solving an implicit functional equation, and they obtain a closed-form distribution for special cases. The open problem is to prove, for the general $n\\times n$ switch, that the relevant functional equation has a unique admissible solution. Equivalently, prove that the proposed nonlinear function of $2n$ independent exponential random variables is indeed the exact heavy-traffic steady-state joint queue-length distribution for the general MaxWeight input-queued switch, or find a counterexample.",
+ "known_results": "Maguluri and Srikant proved heavy-traffic mean queue-length behavior for MaxWeight input-queued switches when all ports are saturated, settling one version of an earlier conjecture and showing optimal scaling up to a constant factor. Jhunjhunwala and Maguluri introduced a transform method for non-CRP stochastic processing networks. They solved the heavy-traffic joint distribution for the $\\mathcal{N}$-system and for a special three-queue input-queued-switch case, and for the general $n\\times n$ switch they derived a candidate transform and distribution conditional on a uniqueness conjecture for an implicit functional equation. As of the 2026 literature check, the general uniqueness theorem and hence the full distributional characterization for arbitrary $n$ remain open.",
+ "progress": {
+  "state": "partial",
+  "summary": "The candidate distribution is known and verified in special non-CRP systems. The missing step is not a better model but a proof that the transform equation admits only the proposed admissible solution in the general switch.",
+  "links": [
+   {
+    "title": "Jhunjhunwala-Maguluri transform method",
+    "url": "https://arxiv.org/abs/2206.06504"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "A counterexample would likely be an admissible second solution of the functional equation or a small switch whose simulated/scaled stationary distribution contradicts the proposed transform. Numerics could guide such a search, but a valid refutation would still need rigorous control of the heavy-traffic limit.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Symbolic or computational search may help discover identities, boundary conditions, or small-dimensional transform solutions. The final resolution is likely analytic, but search could expose the structure needed for uniqueness.",
+ "literature": {
+  "synthesis": "The literature has a clear progression from throughput optimality and mean heavy-traffic behavior toward distributional characterization. Maguluri and Srikant gave exact heavy-traffic mean formulas in saturated input-queued switches and established optimal scaling properties of MaxWeight. Jhunjhunwala and Maguluri then developed a transform approach aimed at the full joint distribution in non-CRP systems, where one-dimensional Brownian approximations are insufficient. Their special-case solutions show that explicit distributional answers are possible, but the general switch reduces to uniqueness of an implicit Laplace-transform functional equation. Related BAR methods in multiclass queueing networks suggest that stationary equations can sometimes yield sharp distributional limits, but they also show how delicate truncation, boundary terms, and state-space collapse verification become in multidimensional networks. The remaining gap is a rigorous uniqueness or counterexample theorem for the switch transform.",
+  "reviewed": [
+   {
+    "ref": "Prakirt Raj Jhunjhunwala, Siva Theja Maguluri, 'Heavy Traffic Joint Queue Length Distribution without Resource Pooling', arXiv 2023",
+    "result": "Derives the transform equation and candidate distribution; proves exact joint distributions in special cases.",
+    "relevance": "poses-problem",
+    "url": "https://arxiv.org/abs/2206.06504"
+   },
+   {
+    "ref": "Siva Theja Maguluri, R. Srikant, 'Queue Length Behavior in a Switch under the MaxWeight Algorithm', arXiv 2015",
+    "result": "Characterizes heavy-traffic mean queue lengths under MaxWeight for saturated switches.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1503.05872"
+   },
+   {
+    "ref": "Anton Braverman, J. G. Dai, Masakiyo Miyazawa, 'The BAR approach for multiclass queueing networks with SBP service policies', arXiv 2024",
+    "result": "Develops stationary-equation methods for heavy-traffic steady-state limits in multiclass queueing networks.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/2302.05791"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Attack the functional equation directly: identify a class of admissible analytic transforms, prove boundary regularity, and use monotonicity or convexity to rule out multiple solutions. Another route is to derive the limiting stationary BAR independently and show it pins down the same transform. Computational experiments on $3\\times 3$ and $4\\times 4$ switches may suggest missing identities or reveal nonuniqueness.",
+  "verification_notes": "A proof must specify the function class in which uniqueness is claimed and verify that the proposed transform lies in it. Simulations alone are not a solution; a verifier should check that all heavy-traffic interchange and state-space-collapse assumptions are handled or explicitly imported from prior theorems.",
+  "machine_checkable": false
+ },
+ "where_posed": {
+  "text": "Stated as a conjectural step in Jhunjhunwala and Maguluri, 'Heavy Traffic Joint Queue Length Distribution without Resource Pooling', arXiv 2022/2023.",
+  "url": "https://arxiv.org/abs/2206.06504",
+  "quote": "under a conjecture on uniqueness of the solution",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Prakirt Raj Jhunjhunwala, Siva Theja Maguluri",
+  "title": "Heavy Traffic Joint Queue Length Distribution without Resource Pooling",
+  "year": 2023,
+  "venue": "arXiv",
+  "url": "https://arxiv.org/abs/2206.06504"
+ },
+ "additional_refs": [
+  {
+   "authors": "Siva Theja Maguluri, R. Srikant",
+   "title": "Queue Length Behavior in a Switch under the MaxWeight Algorithm",
+   "year": 2015,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/1503.05872"
+  },
+  {
+   "authors": "Anton Braverman, J. G. Dai, Masakiyo Miyazawa",
+   "title": "The BAR approach for multiclass queueing networks with SBP service policies",
+   "year": 2024,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2302.05791"
+  }
+ ],
+ "bibtex": "@misc{Jhunjhunwala2023,\n  author = {Prakirt Raj Jhunjhunwala and Siva Theja Maguluri},\n  title = {Heavy Traffic Joint Queue Length Distribution without Resource Pooling},\n  year = {2023},\n  howpublished = {arXiv},\n  url = {https://arxiv.org/abs/2206.06504},\n  note = {Source of ORdős Problem ORDOS-123}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/input-queued-switch-maxweight-heavy-traffic-distribution.html",
+  "api": "https://ordos-problems.github.io/api/problems/input-queued-switch-maxweight-heavy-traffic-distribution.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

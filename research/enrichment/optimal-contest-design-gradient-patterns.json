@@ -1,0 +1,58 @@
+{
+  "id": "optimal-contest-design-gradient-patterns",
+  "background": "Rank-based contests are mechanisms for eliciting effort when direct contracting on effort is impossible. A designer allocates a prize budget across ranks, contestants choose costly effort, and the induced equilibrium quality profile determines the designer's objective. Classical contest-design results often focus on simple objectives such as maximum quality, total quality, or welfare and yield simple prize structures. Golrezaei, Hajiaghayi, and Shin study much broader nonconvex objectives motivated by recommender systems and content platforms. Their main insight is that the pattern of gradients of the designer objective can force a simple optimal prize structure even when the objective is nonconvex. The open frontier is structural: which gradient patterns still imply low-dimensional prize rules, and which require genuinely complex prize vectors?",
+  "short_statement": "Characterize optimal rank-prize structures for contest objectives whose gradient patterns fall outside the quasiconvex regimes currently understood.",
+  "full_statement": "There are $n$ strategic contestants. A rank-prize mechanism chooses prizes $p_1\\ge p_2\\ge\\cdots\\ge p_n\\ge0$ with budget $\\sum_i p_i=B$, where $p_r$ is paid to the contestant ranked $r$ by realized quality. Contestants choose costly effort, the effort profile induces an equilibrium distribution or deterministic vector of qualities, and the designer maximizes a smooth objective $\\Phi(q_1,\\ldots,q_n)$ of the induced quality vector. Golrezaei, Hajiaghayi, and Shin connect the number of transitions in an optimal prize vector to sign/shape patterns in gradient sequences of $\\Phi$ and prove that broad nonconvex objective classes have an optimal prize vector of the form $$p_1\\ge p_2=\\cdots=p_{n-1}\\ge p_n=0.$$ The open problem is to classify what happens for objectives outside the covered gradient-pattern regimes: which patterns imply one, two, or finitely many prize levels, and which force genuinely high-dimensional or instance-specific prize vectors?",
+  "known_results": "Classical contest-design work identifies simple structures such as winner-take-all, uniform-but-last, or hard-max prizes for special objectives and cost functions. Chawla, Hartline, and Sivan gave influential algorithmic contest-design results for crowdsourcing settings. Golrezaei, Hajiaghayi, and Shin extend structural characterization beyond convexity: for convex combinations of user welfare and average quality, arbitrary posynomials over quality, and related nonconvex objectives, the optimal mechanism has possibly larger first prize, equal intermediate prizes, and zero last prize. Their reduction from high-dimensional nonconvex optimization to one-dimensional optimization yields an FPTAS with a value oracle. The proof uses Schur-convexity, Bernstein basis polynomials, total positivity, variation diminishing properties, and restrictions on gradient-sequence transition patterns. General gradient patterns remain unclassified.",
+  "open_problem": "Develop a general theory mapping objective-gradient patterns to optimal rank-prize structures, especially beyond the quasiconvex/nonconvex classes already covered.",
+  "where_posed": {
+    "text": "Open directions in Golrezaei, Hajiaghayi, and Shin, 'Optimal Contest Beyond Convexity'.",
+    "url": "https://arxiv.org/abs/2604.04844",
+    "quote": "optimal mechanism is highly structured",
+    "location": "Abstract and concluding directions"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "A broad class of nonconvex objectives now has a simple optimal prize form and an FPTAS. General gradient patterns remain unclassified.",
+    "links": [
+      {
+        "title": "Optimal Contest Beyond Convexity",
+        "url": "https://arxiv.org/abs/2604.04844"
+      }
+    ]
+  },
+  "importance": 6,
+  "difficulty": 7,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "A counterexample to simple prize structure could be a finite objective/cost specification whose optimal prize vector has several distinct interior levels. Such examples can be searched numerically.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "The structural question is well suited to automated optimization over synthetic objectives and gradient patterns, followed by exact proof of candidate examples.",
+  "literature": {
+    "synthesis": "Contest design has a long tradition of simple rank-prize rules arising from special objectives. The recent nonconvex work shows that simplicity is not limited to convex objectives: gradient structure can imply a uniform-middle prize vector and reduce computation dramatically. This suggests a broader classification program. The unresolved question is whether more complicated gradient sign/curvature patterns lead to a finite menu of prize-vector templates, or whether the optimization problem becomes genuinely high-dimensional. A resolution would clarify both contest theory and algorithm design for platform incentives.",
+    "reviewed": [
+      {
+        "ref": "Negin Golrezaei, MohammadTaghi Hajiaghayi, Suho Shin, 'Optimal Contest Beyond Convexity', arXiv 2026",
+        "result": "Characterizes optimal prize vectors for broad nonconvex objective classes and gives an FPTAS.",
+        "relevance": "poses-problem",
+        "url": "https://arxiv.org/abs/2604.04844"
+      },
+      {
+        "ref": "Shuchi Chawla, Jason D. Hartline, Balasubramanian Sivan, 'Optimal Crowdsourcing Contests', Games and Economic Behavior 2019",
+        "result": "Provides classical structural results for contest design objectives.",
+        "relevance": "related-tool",
+        "url": "https://doi.org/10.1016/j.geb.2018.11.006"
+      },
+      {
+        "ref": "Moldovanu and Sela, contest prize-structure literature",
+        "result": "Develops foundational rank-order contest models and prize-allocation tradeoffs.",
+        "relevance": "related-tool",
+        "url": "https://www.sciencedirect.com/science/article/pii/S0022053100926857"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Generate objectives with controlled gradient patterns and solve the induced prize optimization numerically to identify candidate structural phases. Then prove necessary optimality conditions or construct examples requiring multiple interior prize levels.",
+    "verification_notes": "A claimed classification must state assumptions on effort costs, equilibrium existence and uniqueness, the mapping from prizes to qualities, and objective smoothness or oracle access. Numerical examples should include global optimality certificates for the prize vector, such as KKT conditions plus convexity/duality where available, not merely local search output. A counterexample to simple prize structure should specify the objective and cost primitives and prove that every optimal prize vector has the asserted number of distinct interior levels.",
+    "machine_checkable": true
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "id": "fully-online-matching",
+  "background": "Fully online matching sits between classical one-sided online bipartite matching and genuinely dynamic matching markets. In the Karp-Vazirani-Vazirani model, one side is known in advance and the other side arrives online; in fully online matching, every vertex arrives online and later reaches a deadline. This captures settings such as ride-sharing, kidney exchange, ad allocation with expiring opportunities, and peer-to-peer platforms where participants can be matched after arrival but cannot wait forever. The model is clean because the graph and timing rules are fixed: every edge is revealed once both endpoints have arrived, matching is irrevocable, and an unmatched vertex must be matched or discarded at its deadline. The difficulty is that the algorithm must balance two hazards simultaneously: matching too early can waste future opportunities, while waiting can lose expiring vertices. The exact competitive ratio is unknown even in the bipartite case.",
+  "short_statement": "In fully online matching, all vertices arrive online and later expire. Determine the optimal competitive ratio against the maximum matching of the full graph, even for bipartite graphs.",
+  "full_statement": "In the fully online matching model, vertices of a graph $G=(V,E)$ arrive one at a time. When a vertex $v$ arrives, all edges from $v$ to previously arrived vertices are revealed. Each vertex has a deadline after all of its neighbors have arrived. At any time before $v$'s deadline, an online algorithm may irrevocably match $v$ to any currently unmatched neighbor whose deadline has not passed; if $v$ is still unmatched at its deadline, the algorithm must either match it immediately or discard it. The benchmark is a maximum-cardinality matching in the full graph. Define the competitive ratio as $\\inf_G \\mathbb{E}[|\\mathrm{ALG}(G)|]/|\\mathrm{OPT}(G)|$. Determine the exact optimal ratio for randomized algorithms, first for bipartite fully online graphs and then for general graphs.",
+  "known_results": "Huang, Kang, Tang, Wu, Zhang, and Zhu introduced the model and generalized Ranking and Water-filling. For bipartite fully online matching, Ranking achieves the Omega constant $\\Omega\\approx 0.567$ where $\\Omega e^{\\Omega}=1$. Huang, Tang, Wu, and Zhang later designed Balanced Ranking, a $0.569$-competitive integral algorithm, and Eager Water-filling, a $0.592$-competitive fractional algorithm for general graphs. Tang and Zhang subsequently improved the fractional bipartite guarantee to $0.6$. Eckl, Kirschbaum, Leichter, and Schewior proved that no fractional algorithm can exceed $0.6297$ on bipartite fully online instances. Huang, Tang, Wu, and Zhang, 'Fractional Fully Online Matching' (arXiv:2607.23415v1), Theorems 1.1-1.4, improve the general-graph fractional guarantee to $0.599$ and the impossibility bound to $0.6132$ even for bipartite fractional algorithms. The separate bipartite fractional lower bound remains $0.6$ in this comparison; the new $0.599$ is not an integral guarantee. The exact ratios are not determined by these bounds.",
+  "open_problem": "Determine the tight integral and fractional ratios separately; the reviewed bipartite fractional bounds are $0.6$ and $0.6132$.",
+  "where_posed": {
+    "text": "Introduced in Huang, Kang, Tang, Wu, Zhang, and Zhu, 'Fully Online Matching', JACM 2020.",
+    "url": "https://dl.acm.org/doi/10.1145/3390890",
+    "quote": "",
+    "location": "Problem formulation and competitive-ratio results"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The 2026 fractional paper improves both the general-graph algorithm and bipartite hardness. The integral problem remains distinct.",
+    "links": [
+      {
+        "title": "Balanced Ranking and Eager Water-filling",
+        "url": "https://arxiv.org/abs/2005.06311"
+      },
+      {
+        "title": "Stronger impossibility result",
+        "url": "https://arxiv.org/abs/2102.09432"
+      },
+      {
+        "title": "Fractional Fully Online Matching",
+        "url": "https://arxiv.org/abs/2607.23415"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Upper bounds are usually finite adversarial gadgets with optimized parameters, so computer search over deadline-arrival graphs may find stronger hard instances. Such a candidate still needs a rigorous adversarial distribution or factor-revealing proof.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "The problem has a strong finite-instance and factor-revealing-LP component. Automated search can explore deadline graphs, randomized adversaries, and primal-dual gain-sharing functions.",
+  "literature": {
+    "synthesis": "Integral and fractional fully online matching have separate frontiers. Earlier Ranking and Water-filling results are historical precursors to the new fractional bounds in the What Is Known section.",
+    "reviewed": [
+      {
+        "ref": "Zhiyi Huang, Ning Kang, Zhihao Gavin Tang, Xiaowei Wu, Yuhao Zhang, Xue Zhu, 'Fully Online Matching', JACM 2020",
+        "result": "Introduces the model and analyzes generalized Ranking and Water-filling.",
+        "relevance": "related-tool",
+        "url": "https://dl.acm.org/doi/10.1145/3390890"
+      },
+      {
+        "ref": "Zhiyi Huang, Zhihao Gavin Tang, Xiaowei Wu, Yuhao Zhang, 'Fully Online Matching II: Beating Ranking and Water-filling', arXiv 2020",
+        "result": "Gives a $0.569$-competitive integral algorithm for bipartite graphs and a $0.592$ fractional algorithm for general graphs.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2005.06311"
+      },
+      {
+        "ref": "Alexander Eckl, Anja Kirschbaum, Marilena Leichter, Kevin Schewior, 'A Stronger Impossibility for Fully Online Matching', Operations Research Letters 2021",
+        "result": "Proves an upper bound of $0.6297$ for fractional algorithms on bipartite fully online graphs.",
+        "relevance": "hardness",
+        "url": "https://arxiv.org/abs/2102.09432"
+      },
+      {
+        "ref": "Zhiyi Huang, Zhihao Gavin Tang, Xiaowei Wu, Yuhao Zhang, 'Fractional Fully Online Matching' (2026)",
+        "result": "Theorems 1.1-1.4: improved fractional bounds, not an integral algorithm.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2607.23415"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Promising routes include stronger primal-dual gain-sharing functions, factor-revealing nonlinear programs, and automated search for hard deadline-arrival gadgets. For fractional matching, characterize the optimal online allocation rule on small canonical graphs and lift it to a continuous-time analysis.",
+    "verification_notes": "A lower-bound proof must handle every fully online arrival/deadline instance and compare to the full offline maximum matching. An upper-bound proof should give an explicit distribution over instances and prove that every deterministic/fractional algorithm is bounded by the claimed ratio.",
+    "machine_checkable": true
+  },
+  "confidence": "medium",
+  "additional_refs": [
+    {
+      "authors": "Zhiyi Huang, Zhihao Gavin Tang, Xiaowei Wu, Yuhao Zhang",
+      "title": "Fractional Fully Online Matching",
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2607.23415"
+    }
+  ]
+}

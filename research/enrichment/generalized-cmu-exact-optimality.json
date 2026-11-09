@@ -1,0 +1,43 @@
+{
+  "id": "generalized-cmu-exact-optimality",
+  "background": "The generalized $c\\mu$ rule is the convex-cost analogue of the classical priority rule for multiclass queues. When holding costs are linear, a fixed priority index $c_i\\mu_i$ is exactly optimal in the single-server Markovian model. With nonlinear delay costs, the natural index becomes state dependent: serve the class with largest marginal holding cost times service rate, $C_i'(Q_i)\\mu_i$. Van Mieghem proved that this generalized rule is asymptotically optimal in heavy traffic, and Mandelbaum and Stolyar extended the heavy-traffic picture to flexible-server systems. These theorems are powerful but asymptotic. The exact finite-system stochastic control problem remains open in general, and recent work on time-varying holding costs underscores that nonasymptotic optimal index structure is still hard even in seemingly simple two-class special cases.",
+  "full_statement": "Consider a multiclass single-server or flexible-server Markovian queue. Class $i$ jobs arrive according to a renewal or Poisson input process, have exponential or otherwise specified service requirements with rate parameter $\\mu_i$ at the relevant server, and incur holding cost $C_i(q_i)$ when $q_i$ class-$i$ jobs are present, where $C_i$ is increasing and convex. A scheduling policy observes the queue-length vector and chooses which nonempty class to serve, possibly subject to server-compatibility constraints. The classical linear-cost case $C_i(q_i)=c_iq_i$ is solved by the $c\\mu$ rule: serve a class maximizing $c_i\\mu_i$. The generalized rule serves a class maximizing a marginal-cost index such as $\\mu_i(C_i(q_i)-C_i(q_i-1))$ or its smooth analogue $\\mu_i C_i'(q_i)$. Heavy-traffic theory proves this rule is asymptotically optimal in important regimes. The open problem is to determine whether a generalized $c\\mu$-type marginal index is exactly optimal for finite stochastic systems with convex holding costs, and if not, to characterize the exact optimal policy or the smallest additional state/lookahead information needed.",
+  "open_problem": "Determine whether the generalized $c\\mu$ rule, or another explicit state-dependent index policy, is exactly optimal for multiclass queues with convex delay costs outside heavy traffic; if not, characterize the exact optimal policy.",
+  "known_results": "For linear holding costs and exponential service, the classical $c\\mu$ rule is exactly optimal in the standard multiclass single-server setting. Van Mieghem introduced the generalized $c\\mu$ rule for convex delay costs and proved heavy-traffic asymptotic optimality: after diffusion scaling, the policy minimizes the limiting Brownian control problem and is asymptotically optimal for the original queueing system. Mandelbaum and Stolyar extended the heavy-traffic optimality picture to flexible-server systems with convex delay costs. These results do not prove Bellman optimality for a fixed finite system away from heavy traffic. Exact optimality for general strictly convex queue-length or age-based costs is known only in special cases. Gurushankar, Li, Harchol-Balter, and Scheller-Wolf's 2026 LookAhead paper shows how delicate the nonasymptotic question is: even in a two-class M/M/1 model with one age-dependent cost class and one constant-cost class, no prior nonasymptotic optimality result was known; their optimal nondecreasing index looks ahead by an exponential amount rather than simply using current holding cost. This supports the view that generalized $c\\mu$ may need refinement for exact finite-system optimality.",
+  "status": "open",
+  "where_posed": {
+    "text": "The asymptotic-vs-exact gap originates from Van Mieghem's generalized $c\\mu$ heavy-traffic theorem and subsequent scheduling literature.",
+    "url": "https://projecteuclid.org/euclid.aoap/1177004706",
+    "quote": "",
+    "location": "Van Mieghem 1995; later flexible-server and time-varying-cost work."
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "Heavy-traffic optimality is established for single and flexible-server settings. Exact nonasymptotic index optimality is only known in special cases, with recent progress for a two-class time-varying holding-cost model.",
+    "links": [
+      {"title": "Van Mieghem, Dynamic Scheduling with Convex Delay Costs", "url": "https://projecteuclid.org/euclid.aoap/1177004706"},
+      {"title": "Mandelbaum and Stolyar, Scheduling Flexible Servers with Convex Delay Costs", "url": "https://doi.org/10.1287/opre.1040.0125"},
+      {"title": "Gurushankar et al., LookAhead", "url": "https://arxiv.org/abs/2601.08960"}
+    ]
+  },
+  "importance": 7,
+  "difficulty": 8,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Small two-class finite-state truncations can test whether the generalized $c\\mu$ action violates Bellman optimality. Counterexamples to exact optimality are plausible and machine-verifiable.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Search can discover convex cost functions and rate parameters where the marginal-cost rule fails, or infer lookahead/index forms that repair it.",
+  "literature": {
+    "synthesis": "The generalized $c\\mu$ literature shows how far heavy-traffic analysis can go: state-space collapse and Brownian control problems lead naturally to marginal-cost priority rules. In a diffusion limit, serving the largest marginal holding-cost rate is the right local action because the system state is close to a lower-dimensional workload manifold. Exact dynamic programming in the original Markov chain is more demanding. A service decision changes the future queue-length vector, and with convex costs the value of reducing one class now depends on how quickly that class's marginal cost will grow relative to other classes. The 2026 LookAhead paper makes this issue concrete in a related time-varying holding-cost model: the optimal nondecreasing index uses future cost rather than current cost. That does not disprove generalized $c\\mu$ for queue-length convex costs, but it shows why current marginal cost alone may be insufficient outside asymptotic regimes. The remaining task is to determine whether there is an exact finite-system index theorem, a class of convex costs where generalized $c\\mu$ is exactly optimal, or explicit counterexamples showing that Bellman-optimal policies require richer state dependence.",
+    "reviewed": [
+      {"ref": "Van Mieghem, 'Dynamic Scheduling with Convex Delay Costs: The Generalized c-mu Rule', Annals of Applied Probability 1995", "result": "Proves heavy-traffic asymptotic optimality of generalized $c\\mu$.", "relevance": "partial-progress", "url": "https://projecteuclid.org/euclid.aoap/1177004706"},
+      {"ref": "Mandelbaum and Stolyar, 'Scheduling Flexible Servers with Convex Delay Costs', Operations Research 2004", "result": "Extends heavy-traffic optimality to flexible-server systems.", "relevance": "partial-progress", "url": "https://doi.org/10.1287/opre.1040.0125"},
+      {"ref": "Gurushankar, Li, Harchol-Balter, Scheller-Wolf, 'LookAhead', arXiv 2026", "result": "Derives an optimal nondecreasing index policy for a special two-class time-varying holding-cost queue.", "relevance": "solves-special-case", "url": "https://arxiv.org/abs/2601.08960"}
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Use Bellman-difference analysis for two-class M/M/1 queues with polynomial or piecewise-linear convex costs. Search for conditions under which marginal-cost priority is monotone optimal, and compare against lookahead-type indices.",
+    "verification_notes": "A claimed exact theorem must define the queueing model precisely: arrivals, service distributions, preemption, cost criterion, stability assumptions, and whether costs depend on queue length, waiting time, or age. It must prove Bellman optimality inequalities for all states of the original Markov chain, not just a Brownian or fluid limit. A counterexample should state arrival rates, service rates, cost functions, discount or average-cost criterion, and a state where the generalized $c\\mu$ action is strictly suboptimal; value comparisons should be certified by exact dynamic programming on a truncated chain with error bounds or by analytic inequalities. Heavy-traffic optimality, simulation, or optimality within a restricted index class should not be reported as exact global optimality unless the restriction is part of the problem statement.",
+    "machine_checkable": true
+  },
+  "notes_for_maintainer": "This is adjacent to, but distinct from, the abandonment $c\\mu/\\theta$ problem."
+}

@@ -6,7 +6,7 @@
  "collection": "Market & Mechanism Design",
  "area": "Matching Markets",
  "status": "open",
- "confidence": "high",
+ "confidence": "medium",
  "tags": [
   "online matching",
   "bipartite matching",
@@ -14,13 +14,74 @@
   "RANKING",
   "competitive ratio"
  ],
- "short_statement": "With offline vertices known in advance and online vertices arriving in uniformly random order (matched immediately and irrevocably), what is the exact best-possible competitive ratio, and what is the exact ratio of the canonical RANKING algorithm?",
- "open_problem": "Determine the optimal competitive ratio for online bipartite matching under uniformly random arrivals, and the exact ratio of RANKING in this model.",
- "full_statement": "Let $G=(L,R,E)$ be a bipartite graph in which the vertices $L$ are offline (known in advance) and the vertices of $R$ arrive online one at a time in uniformly random order. Upon arrival, each online vertex reveals its edges to $L$ and must be matched immediately and irrevocably to an available offline neighbor (or left unmatched). The objective is to maximize the cardinality of the matching, compared against the maximum matching $\\mathrm{OPT}(G)$. In the worst-case (adversarial) arrival model the optimal competitive ratio is exactly $1-1/e$; with uniformly random arrival order, randomness provably helps. Define $$\\rho^*=\\inf_G\\sup_{\\text{online algs}}\\frac{\\mathbb{E}[|\\text{ALG}|]}{|\\text{OPT}(G)|}.$$ Determine $\\rho^*$ (and the sub-question: the exact competitive ratio of the canonical RANKING algorithm in this random-order model). Known: $0.696\\le\\rho^*\\le 0.8206$.",
- "known_results": "Lower bound: RANKING achieves >= 0.696 in random order (Mahdian-Yan 2011). Upper bound: ~0.8206 (Chierichetti et al., ICALP 2025, improving 0.823 of Manshadi-Oveis Gharan-Saberi). Exact optimal ratio open with a large gap.",
+ "short_statement": "For unweighted online bipartite matching with uniformly random online arrival order, determine the optimal competitive ratio and the exact ratio of Ranking.",
+ "open_problem": "Determine the optimal ratio between the updated lower bound and the retained impossibility bound; ordinary Ranking's exact ratio is a separate question.",
+ "background": "Random-order online bipartite matching asks how much of the classical adversarial barrier is caused by worst-case order rather than irrevocability. The graph is still worst-case, but online vertices arrive in a uniformly random permutation. This model is relevant to ad allocation, recommendation, and platform matching when demand is not controlled by an adversary but the underlying compatibility graph may be highly structured. The canonical Ranking algorithm is optimal in adversarial order at $1-1/e$, but random order allows better performance. The exact optimal ratio is a long-standing constant-factor question: the updated lower bound is given below, while the strongest upper bounds are above $0.82$. Even the exact ratio of Ranking in this model is not fully pinned down.",
+ "full_statement": "Let $G=(L,R,E)$ be a bipartite graph. The offline side $L$ and the full set of possible online vertices $R$ are fixed by an adversary, but vertices of $R$ arrive in a uniformly random order. When $v\\in R$ arrives, the algorithm observes its incident edges to $L$ and must either match $v$ irrevocably to an unmatched neighbor in $L$ or discard it forever. The objective is the expected cardinality of the final matching, compared with $\\nu(G)$, the maximum matching size in $G$. Define $$\\rho^*=\\sup_A \\inf_G \\frac{\\mathbb{E}[|A(G,\\pi)|]}{\\nu(G)},$$ where the supremum is over online algorithms without advance knowledge of the unrevealed graph and the expectation is over the random permutation $\\pi$ and any internal randomness. Determine $\\rho^*$. A second concrete target is to determine the exact worst-case random-arrival competitive ratio of the Ranking algorithm, which chooses a random priority order on $L$ and greedily matches each arrival to its highest-priority available neighbor. The new guarantee below assumes the number of online arrivals is known.",
+ "known_results": "Karp, Vazirani, and Vazirani proved the tight $1-1/e$ ratio for adversarial arrival order. Mahdian and Yan showed that Ranking achieves at least $0.696$ in the random-order model using strongly factor-revealing LPs. Manshadi, Oveis Gharan, and Saberi gave a $0.823$ upper bound that applies to related known-distribution and permutation models. Chierichetti, Giacchini, Panconesi, and Vattani improved this impossibility to $1-e/e^e=0.82062\\ldots$ in 2025. Peng and Tang revisited Ranking's primal-dual analysis and showed that within the current primal-dual framework Ranking is pinned between roughly $0.686$ and $0.703$, with the classical $0.696$ value essentially the limit of that analysis. The exact optimal ratio, and the exact ratio of Ranking, remain open. Peng and Tang, 'Harmonic Ranking for Edge-Weighted Oblivious Matching' (arXiv:2608.12176), Corollary 1.2, gives $0.698015475248$ in the vertex-weighted random-arrival model, hence also in this unweighted special case, assuming the number of arrivals is known. This is not a determination of ordinary Ranking's exact ratio.",
+ "progress": {
+  "state": "partial",
+  "summary": "The weighted corollary improves the unweighted achievable guarantee. The minimax quantifiers have also been corrected to prevent instance-specific algorithms from knowing the hidden graph.",
+  "links": [
+   {
+    "title": "Mahdian-Yan random-arrival Ranking analysis",
+    "url": "https://dl.acm.org/doi/10.1145/1993636.1993716"
+   },
+   {
+    "title": "New 2025 impossibility result",
+    "url": "https://arxiv.org/abs/2504.14251"
+   },
+   {
+    "title": "Harmonic Ranking for Edge-Weighted Oblivious Matching",
+    "url": "https://arxiv.org/abs/2608.12176"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Upper-bound constructions are finite graphs or distributions over graphs and can be searched for computationally. The challenge is proving that every online algorithm fails on the candidate distribution.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "The problem is a strong fit for finite-instance search, factor-revealing LPs, and computer-assisted primal-dual analyses of Ranking.",
+ "literature": {
+  "synthesis": "The earlier Ranking guarantee remains historical context. The new corollary improves the optimal-algorithm lower bound without settling either exact-ratio question.",
+  "reviewed": [
+   {
+    "ref": "Mohammad Mahdian, Qiqi Yan, 'Online Bipartite Matching with Random Arrivals: Strongly Factor-Revealing LPs', STOC 2011",
+    "result": "Proves Ranking is at least $0.696$-competitive in the random-order model.",
+    "relevance": "partial-progress",
+    "url": "https://dl.acm.org/doi/10.1145/1993636.1993716"
+   },
+   {
+    "ref": "Flavio Chierichetti, Mirko Giacchini, Alessandro Panconesi, Andrea Vattani, 'A New Impossibility Result for Online Bipartite Matching Problems', arXiv 2025",
+    "result": "Improves the upper bound to $1-e/e^e=0.82062\\ldots$.",
+    "relevance": "hardness",
+    "url": "https://arxiv.org/abs/2504.14251"
+   },
+   {
+    "ref": "Bo Peng, Zhihao Gavin Tang, 'Revisiting Ranking for Online Bipartite Matching with Random Arrivals: the Primal-Dual Analysis', arXiv 2025",
+    "result": "Analyzes limitations and potential of current primal-dual approaches for Ranking.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/2503.04196"
+   },
+   {
+    "ref": "Bo Peng, Zhihao Gavin Tang, 'Harmonic Ranking for Edge-Weighted Oblivious Matching' (2026)",
+    "result": "Corollary 1.2 also applies to the unweighted special case.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2608.12176"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "For lower bounds, refine factor-revealing LPs or primal-dual Ranking analysis. For upper bounds, search for compact random-order hard instances and prove algorithm-independent limitations via Yao's principle.",
+  "verification_notes": "A proposed lower bound must hold for every fixed bipartite graph under uniformly random arrival order and must compare against the maximum matching size in that same graph. A proposed upper bound should be a distribution over fixed graphs or instances analyzed via Yao's principle, with the arrival permutation still random rather than adversarial. For claims about Ranking, the verifier should distinguish the algorithm's true ratio from the guarantee obtainable by a particular primal-dual analysis.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "Model and adversarial-optimal result from Karp, Vazirani, Vazirani, 'An Optimal Algorithm for On-line Bipartite Matching', 1990, STOC.",
-  "url": "https://dl.acm.org/doi/10.1145/100216.100262"
+  "text": "The random-order gap is developed in Mahdian and Yan, 'Online Bipartite Matching with Random Arrivals: Strongly Factor-Revealing LPs', STOC 2011, building on Karp-Vazirani-Vazirani.",
+  "url": "https://dl.acm.org/doi/10.1145/1993636.1993716",
+  "quote": "",
+  "location": "Competitive-ratio gap after random-arrival analysis"
  },
  "source": {
   "authors": "Richard M. Karp, Umesh V. Vazirani, Vijay V. Vazirani",
@@ -43,6 +104,13 @@
    "year": 2011,
    "venue": "SODA (Math. Oper. Res. 2012)",
    "url": "https://arxiv.org/abs/1007.1673"
+  },
+  {
+   "authors": "Bo Peng, Zhihao Gavin Tang",
+   "title": "Harmonic Ranking for Edge-Weighted Oblivious Matching",
+   "year": 2026,
+   "venue": "arXiv preprint",
+   "url": "https://arxiv.org/abs/2608.12176"
   }
  ],
  "bibtex": "@misc{Karp1990,\n  author = {Richard M. Karp and Umesh V. Vazirani and Vijay V. Vazirani},\n  title = {An Optimal Algorithm for On-line Bipartite Matching},\n  year = {1990},\n  howpublished = {STOC},\n  url = {https://dl.acm.org/doi/10.1145/100216.100262},\n  note = {Source of ORdős Problem ORDOS-027}\n}",

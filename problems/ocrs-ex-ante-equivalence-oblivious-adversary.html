@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script>
 (function(){
@@ -29,7 +29,7 @@
     --focus:#d8ece7; --focus-border:#74aaa1; --controlbg:rgba(255,255,235,.96); --modalbg:rgba(26,26,26,.32);
     --okbg:#d8ead8; --okink:#064d20; --warning-bg:#fff3df; --warning-line:#d88a3d; --warning-ink:#5f3411;
     --logo-fill:#eef6f5; --logo-stroke:#034f46; --badge-ink:#fff; --badge-hover:#063f39; --toastbg:#1a1a1a; --toastink:#fff;
-    --maxw:1120px; --measure:860px; --radius:12px;
+    --maxw:1120px; --measure:860px; --radius:8px;
     --ui:"Figtree","Avenir Next","Avenir",-apple-system,system-ui,"Segoe UI",Arial,sans-serif;
     --display:"EB Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif;
   }
@@ -53,7 +53,7 @@
   header.site{padding:42px 0 22px;border-bottom:1px solid var(--line);}
   .headbar{display:grid;grid-template-columns:minmax(320px,max-content) minmax(280px,1fr);gap:22px;align-items:center;}
   .brand{display:flex;align-items:center;gap:14px;min-width:0;}
-  .logo-link{display:block;width:42px;height:42px;flex:0 0 auto;border-radius:10px;line-height:0;}
+  .logo-link{display:block;width:42px;height:42px;flex:0 0 auto;border-radius:8px;line-height:0;}
   .logo-link:focus-visible{outline:3px solid var(--orange);outline-offset:3px;}
   .mono{width:42px;height:42px;flex:0 0 auto;}
   .mono rect{fill:var(--logo-fill);stroke:var(--logo-stroke);}
@@ -61,7 +61,7 @@
   h1{font-family:var(--display);font-weight:600;font-size:3rem;letter-spacing:0;margin:0;line-height:1;color:var(--ink);}
   h1 .or{color:var(--accent);}
   .aboutbtn{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:7px 12px;min-width:98px;min-height:38px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;}
+    border-radius:8px;padding:7px 12px;min-width:98px;min-height:38px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;}
   .aboutbtn:hover{background:var(--pinkhover);}
   .theme-toggle{width:38px;height:38px;min-width:38px;min-height:38px;padding:0;border-radius:999px;line-height:1;}
   .theme-mark{font-size:1.05rem;line-height:1;}
@@ -80,7 +80,7 @@
   .statbtn:hover{background:var(--pink2);border-color:var(--focus-border);transform:translateY(-1px);}
   .statbtn.active{background:var(--pink);border:2px solid var(--strong);padding:5px 9px;color:var(--ink);}
   .moretags{display:flex;align-items:center;gap:8px;margin-top:10px;}
-  .moretags label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;}
+  .moretags label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:0;}
   #tagselect{min-width:230px;max-width:100%;padding:8px 10px;font-size:.82rem;border:1px solid var(--line);
     border-radius:var(--radius);background:var(--paper);color:var(--ink);font-family:var(--ui);}
   #tagselect:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
@@ -91,9 +91,9 @@
     border-radius:var(--radius);box-shadow:0 18px 60px rgba(0,0,0,.18);padding:28px 32px;}
   .modal-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:14px;}
   .modal-card h2{font-family:var(--display);font-weight:600;font-size:2.1rem;line-height:1.05;margin:0;color:var(--ink);}
-  .modal-card h3{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:800;margin:22px 0 7px;}
+  .modal-card h3{font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:22px 0 7px;}
   .modal-card p{font-size:1rem;line-height:1.7;color:var(--bodytext2);margin:.7em 0;}
-  .closemodal{appearance:none;border:2px solid var(--strong);border-radius:10px;background:var(--pink);color:var(--ink);
+  .closemodal{appearance:none;border:2px solid var(--strong);border-radius:8px;background:var(--pink);color:var(--ink);
     font-family:var(--ui);font-weight:800;cursor:pointer;padding:5px 10px;box-shadow:0 1px 0 var(--strong);}
 
   .controls{position:sticky;top:0;z-index:20;background:var(--controlbg);backdrop-filter:saturate(1.05) blur(10px);
@@ -109,7 +109,7 @@
   .selectedtag:hover{background:var(--pinkhover);}
   .clearfilter{font-size:.8rem;color:var(--link);background:none;border:none;cursor:pointer;font-family:var(--ui);padding:0;font-weight:700;}
 
-  .grouphdr{font-weight:800;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);
+  .grouphdr{font-weight:800;font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);
     margin:34px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line);}
   .grouphdr .gn{color:var(--faint);font-weight:500;}
 
@@ -126,7 +126,7 @@
   .tag.med{color:var(--med);}
   .spacer{flex:1 1 auto;}
   .copy,.open-link,.back-link{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+    border-radius:8px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
   .copy:hover,.open-link:hover,.back-link:hover{background:var(--pinkhover);}
   .copy.ok{background:var(--okbg);color:var(--okink);}
 
@@ -152,9 +152,9 @@
   .problem-nav .navlink:hover{background:var(--pink2);}
   .problem-nav .navlink.next{text-align:right;}
   .problem-nav .navlink.empty{visibility:hidden;}
-  .problem-nav .navlabel{display:block;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);font-weight:800;margin-bottom:2px;}
+  .problem-nav .navlabel{display:block;font-size:.72rem;letter-spacing:0;text-transform:uppercase;color:var(--faint);font-weight:800;margin-bottom:2px;}
   .detail-card{background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);padding:28px 32px;margin:24px 0;max-width:var(--measure);}
-  .detail-card h2{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:800;margin:0 0 15px;}
+  .detail-card h2{font-size:.8rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:0 0 15px;}
   .prose{font-size:1.04rem;line-height:1.86;color:var(--bodytext);}
   .prose p{margin:0 0 1.15em;}
   .prose .katex-display{margin:1.15em 0;}
@@ -174,59 +174,27 @@
   .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
   .field{display:flex;flex-direction:column;gap:6px;margin:14px 0;}
   .field.full{grid-column:1/-1;}
-  .field label{font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);}
-  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);
+  .field label{font-size:.78rem;font-weight:800;letter-spacing:0;text-transform:uppercase;color:var(--accent);}
+  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);
     font-family:var(--ui);font-size:.96rem;line-height:1.45;padding:11px 12px;}
   .field textarea{min-height:118px;resize:vertical;}
   .field input:focus,.field textarea:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
   .field-note{font-size:.82rem;color:var(--faint);line-height:1.5;}
-  .form-warning{display:none;margin:14px 0 0;padding:10px 12px;border:1px solid var(--warning-line);border-radius:10px;background:var(--warning-bg);color:var(--warning-ink);
+  .form-warning{display:none;margin:14px 0 0;padding:10px 12px;border:1px solid var(--warning-line);border-radius:8px;background:var(--warning-bg);color:var(--warning-ink);
     font-size:.9rem;line-height:1.55;}
   .form-warning.show{display:block;}
   .submit-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;}
   .submit-btn{font-size:.84rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:9px 14px;cursor:pointer;font-family:var(--ui);font-weight:800;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+    border-radius:8px;padding:9px 14px;cursor:pointer;font-family:var(--ui);font-weight:800;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
   .submit-btn:hover{background:var(--pinkhover);}
 
   .katex{font-size:1.04em;}
   .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
 
-  .tag.status-claimed{color:var(--med);font-weight:700;}
-  .tag.status-resolved{color:var(--okink);font-weight:700;}
-  .tag.contributor{color:var(--accent);font-weight:700;}
-  .posed-quote{margin:14px 0 0;padding:12px 16px;border-left:3px solid var(--accent);background:var(--paper);
-    border-radius:0 10px 10px 0;font-style:italic;color:var(--bodytext2);font-size:.97rem;line-height:1.7;}
-  .posed-quote .loc{display:block;margin-top:6px;font-style:normal;font-size:.8rem;color:var(--faint);font-weight:700;}
-  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0;}
-  .badge{font-size:.74rem;font-weight:800;letter-spacing:.02em;border:1.5px solid var(--strong);border-radius:8px;
-    padding:4px 9px;background:var(--paper);color:var(--ink);}
-  .badge.hi{background:var(--pink);}
-  .badge.progress-partial{background:var(--focus);}
-  .badge.progress-solution-claimed{background:var(--warning-bg);border-color:var(--warning-line);color:var(--warning-ink);}
-  .badge.progress-resolved{background:var(--okbg);color:var(--okink);}
-  .suit-row{display:grid;grid-template-columns:190px 1fr;gap:10px;margin:.85em 0;align-items:baseline;}
-  .suit-row .k{font-weight:800;color:var(--accent);font-size:.86rem;}
-  .suit-level{font-weight:800;text-transform:uppercase;font-size:.78rem;letter-spacing:.05em;}
-  .suit-level.high{color:var(--okink);}
-  .suit-level.medium{color:var(--open);}
-  .suit-level.low{color:var(--med);}
-  .lit-list{margin:10px 0 0;padding-left:20px;}
-  .lit-list li{margin:.7em 0;color:var(--bodytext2);font-size:.96rem;line-height:1.68;}
-  .lit-list .rel{display:inline-block;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
-    color:var(--badge-ink);background:var(--accent);border-radius:6px;padding:1.5px 7px;margin-right:7px;vertical-align:1px;}
-  .subm-empty{color:var(--faint);font-size:.95rem;}
-  .subm-item{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;background:var(--paper);}
-  .subm-item .subm-head{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:.8rem;font-weight:800;color:var(--soft);}
-  .sortwrap{display:flex;align-items:center;gap:8px;}
-  .sortwrap label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;}
-  #sortselect{padding:8px 10px;font-size:.82rem;border:1px solid var(--line);border-radius:var(--radius);
-    background:var(--paper);color:var(--ink);font-family:var(--ui);}
-  @media (max-width:760px){.suit-row{grid-template-columns:1fr;gap:2px;}}
-
   footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
   footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid var(--line);}
   footer a:hover{border-bottom-color:var(--accent);}
-  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toastbg);color:var(--toastink);font-size:.85rem;padding:10px 18px;border-radius:10px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toastbg);color:var(--toastink);font-size:.85rem;padding:10px 18px;border-radius:8px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
   @media (max-width:900px){
     .headbar{grid-template-columns:1fr;}
@@ -260,6 +228,42 @@
     .modal-card{padding:22px 18px;}
     .modal-card h2{font-size:1.7rem;}
   }
+
+  .tag.status-claimed{color:var(--med);}
+  .tag.status-resolved{color:var(--okink);}
+  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0;}
+  .badge{font-size:.8rem;color:var(--soft);}
+  .badge+.badge::before{content:" / ";margin-right:8px;color:var(--faint);}
+  .posed-quote{margin:16px 0;padding-left:18px;border-left:2px solid var(--line);color:var(--soft);}
+  .posed-quote .loc{display:block;margin-top:8px;font-size:.8rem;}
+  .lit-list{padding-left:22px;}
+  .lit-list li{margin:1em 0;}
+  .lit-list .rel{display:block;font-size:.75rem;color:var(--faint);}
+  .subm-item{padding:16px 0;border-bottom:1px solid var(--line);}
+  .subm-head{font-size:.8rem;color:var(--soft);}
+  .headsearch input{min-width:0;}
+  .tag{white-space:normal;overflow-wrap:anywhere;}
+  .detail-top{align-items:flex-start;}
+  .detail-top>div:first-child{min-width:0;flex:1;}
+  .detail-actions{flex:0 0 180px;}
+  .detail-actions .back-link{width:100%;text-align:center;}
+  .detail-title{font-size:2.6rem;overflow-wrap:anywhere;}
+  .problem-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+  .problem-nav .navlink{height:104px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow-wrap:anywhere;font-size:.9rem;}
+  .detail-card{background:transparent;border:0;border-top:2px solid var(--strong);border-radius:0;padding:28px 0;}
+  .form-card{background:transparent;border:0;border-radius:0;padding:28px 0;}
+  @media(max-width:760px){
+    .detail-title{font-size:2.2rem;}
+    .detail-actions{flex:0 0 auto;}
+    .detail-actions .back-link{width:auto;}
+    .problem-nav{grid-template-columns:1fr;grid-auto-rows:104px;}
+    .problem-nav .navlink{height:104px;}
+    .problem-nav .navlink.empty{display:none;}
+    .detail-card,.form-card{padding:22px 0;}
+    .pagination{gap:3px;}
+    .pagebtn{min-width:26px;padding:5px 6px;}
+    .pageinfo{display:none;}
+  }
 </style>
 
 </head>
@@ -288,10 +292,10 @@
 <span class="tag">#ex-ante</span>
 <span class="tag">#oblivious-adversary</span>
 <span class="tag">#will-ma-notes</span>
-<span class="tag">#permission-pending</span></div>
+<span class="tag">#contributed-by-will-ma</span></div>
       <h1 class="detail-title">Are ex-ante prophet inequalities and OCRS equivalent under oblivious adversarial order?</h1>
-      <div class="detail-meta"><span class="num">64</span><span class="tag">Problem 64 of 108</span><span class="tag">#ordos-064</span></div>
-      <div class="meta-badges"><span class="badge hi">Contributed by Will Ma</span></div>
+      <div class="detail-meta"><span class="num">64</span><span class="tag">Problem 64 of 182</span><span class="tag">#ordos-064</span></div>
+      <div class="meta-badges"><span class="badge progress-partial">Partial progress</span><span class="badge hi">Contributed by Will Ma</span></div>
     </div>
     <div class="detail-actions">
       <a class="back-link" href="../correction.html?ref=ORDOS-064&amp;title=Are%20ex-ante%20prophet%20inequalities%20and%20OCRS%20equivalent%20under%20oblivious%20adversarial%20order%3F&amp;page=https%3A//ordos-problems.github.io/problems/ocrs-ex-ante-equivalence-oblivious-adversary.html" target="_blank" rel="noopener">Suggest edit</a>
@@ -300,8 +304,8 @@
   </div>
 
   <nav class="problem-nav" aria-label="Problem navigation">
-    <a class="navlink prev" href="random-order-vs-worst-case-known-order.html"><span class="navlabel">Previous problem</span>#63 · Is unknown uniformly random order ever worse than worst-case known order?</a>
-    <a class="navlink next" href="ocrs-rank1-almighty-adversary.html"><span class="navlabel">Next problem</span>#65 · A 1/2-selectable OCRS for rank-1 matroids against the almighty adversary</a>
+    <a class="navlink prev" href="random-order-vs-worst-case-known-order.html" title="Is unknown uniformly random order ever worse than worst-case known order?"><span class="navlabel">Previous problem</span>#63 · Is unknown uniformly random order ever worse than worst-case known order?</a>
+    <a class="navlink next" href="ocrs-rank1-almighty-adversary.html" title="Rank-1 OCRS selectability against an almighty adversary"><span class="navlabel">Next problem</span>#65 · Rank-1 OCRS selectability against an almighty adversary</a>
   </nav>
 
   <section class="detail-card statement">
@@ -311,34 +315,41 @@
 
   <section class="detail-card statement">
     <h2>Open Problem</h2>
-    <div class="prose"><p>For a feasibility family <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">F</mi></mrow><annotation encoding="application/x-tex">\mathcal F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0993em;">F</span></span></span></span>, a standard polytope relaxation <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">P</mi></mrow><annotation encoding="application/x-tex">\mathcal P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0822em;">P</span></span></span></span>, and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold">x</mi><mo>∈</mo><mi mathvariant="script">P</mi></mrow><annotation encoding="application/x-tex">\mathbf x \in \mathcal P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathbf">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0822em;">P</span></span></span></span>, are the best ex-ante prophet inequality guarantee and the best OCRS selectability equal under oblivious adversarial arrival order (as they are under random and fixed order)? Prove the equivalence for a general feasibility family and polytope relaxation, or exhibit a counterexample showing the two notions diverge.</p></div>
+    <div class="prose"><p>The open problem is whether this equivalence continues to hold when the order is chosen adversarially but obliviously to the active set and values: for every feasibility family and every target guarantee, does an ex-ante prophet inequality in the oblivious-adversarial-order model imply an OCRS with the same guarantee, and conversely?</p></div>
   </section>
 
 
+  <section class="detail-card statement">
+    <h2>Background &amp; Context</h2>
+    <div class="prose">Online contention resolution schemes (OCRS) are rounding procedures for random active sets subject to feasibility constraints. They were introduced as a generic way to convert fractional solutions into online feasible selections, and they now form a bridge between prophet inequalities, stochastic probing, posted pricing, and submodular optimization. A parallel viewpoint is the ex-ante prophet inequality, where the benchmark is a relaxation that constrains each element's selection probability before values are realized. Lee and Singla showed that, in random and fixed arrival orders, optimal ex-ante prophet inequalities can be used to design optimal OCRSs. Will Ma's problem asks whether this equivalence survives under an oblivious adversarial order. This adversary chooses the order without seeing realizations, so it is weaker than an adaptive adversary but stronger than random order. The question is structural: are OCRSs and ex-ante prophet inequalities still the same object in this intermediate model, or can their guarantees diverge?</div>
+  </section>
 
   <section class="detail-card statement">
     <h2>Statement &amp; Model</h2>
-    <div class="prose">Online contention resolution schemes (OCRS) and ex-ante prophet inequalities are known to give equivalent guarantees under random order and under fixed order. \textbf{Open:} For a feasibility family <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">F</mi></mrow><annotation encoding="application/x-tex">\mathcal F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0993em;">F</span></span></span></span>, a standard polytope relaxation <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">P</mi></mrow><annotation encoding="application/x-tex">\mathcal P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0822em;">P</span></span></span></span>, and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold">x</mi><mo>∈</mo><mi mathvariant="script">P</mi></mrow><annotation encoding="application/x-tex">\mathbf x \in \mathcal P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathbf">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0822em;">P</span></span></span></span>, are the best ex-ante prophet inequality guarantee and the best OCRS selectability equal under oblivious adversarial arrival order (as they are under random and fixed order)? Prove the equivalence for a general feasibility family and polytope relaxation, or exhibit a counterexample showing the two notions diverge.</div>
+    <div class="prose">Let <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">N</span></span></span></span> be a ground set and let <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">F</mi><mo>⊆</mo><msup><mn>2</mn><mi>N</mi></msup></mrow><annotation encoding="application/x-tex">\mathcal F\subseteq2^N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathcal" style="margin-right:0.0993em;">F</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊆</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.109em;">N</span></span></span></span></span></span></span></span></span></span></span> be a downward-closed feasibility family, such as a matroid. An ex-ante fractional point <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><msub><mi>P</mi><mi mathvariant="script">F</mi></msub></mrow><annotation encoding="application/x-tex">x\in P_{\mathcal F}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathcal mtight" style="margin-right:0.0993em;">F</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> specifies activation probabilities: each element <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> is active independently with probability <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">x_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, and active elements are revealed online. An online contention resolution scheme must decide immediately whether to accept each revealed active element while maintaining an accepted set in <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">F</mi></mrow><annotation encoding="application/x-tex">\mathcal F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0993em;">F</span></span></span></span>. A scheme is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span>-selectable if every element <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> is accepted with probability at least <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><msub><mi>x</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">c x_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord mathnormal">c</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, possibly under assumptions on the arrival order. An ex-ante prophet inequality instead assigns independent values to elements and compares an online selection policy with an ex-ante relaxation that maximizes expected value subject to marginal probabilities in <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi mathvariant="script">F</mi></msub></mrow><annotation encoding="application/x-tex">P_{\mathcal F}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathcal mtight" style="margin-right:0.0993em;">F</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>. Lee and Singla show that, in fixed-order and random-order models, optimal ex-ante prophet inequalities can be converted into optimal OCRSs. The open problem is whether this equivalence continues to hold when the order is chosen adversarially but obliviously to the active set and values: for every feasibility family and every target guarantee, does an ex-ante prophet inequality in the oblivious-adversarial-order model imply an OCRS with the same guarantee, and conversely?</div>
   </section>
 
   <section class="detail-card">
     <h2>What Is Known</h2>
-    <div class="known-prose">Lee and Singla established the equivalence between ex-ante prophet inequalities and online contention resolution schemes under random order and under fixed order. The oblivious-adversarial-order model sits between these regimes: the order is not adaptive to the realizations, but it is not random either. It is open whether the same reduction still goes through in this setting or whether the two notions separate.<p class="remaining-open"><strong>Remaining open problem.</strong> For a feasibility family <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">F</mi></mrow><annotation encoding="application/x-tex">\mathcal F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0993em;">F</span></span></span></span>, a standard polytope relaxation <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">P</mi></mrow><annotation encoding="application/x-tex">\mathcal P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0822em;">P</span></span></span></span>, and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold">x</mi><mo>∈</mo><mi mathvariant="script">P</mi></mrow><annotation encoding="application/x-tex">\mathbf x \in \mathcal P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathbf">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0822em;">P</span></span></span></span>, are the best ex-ante prophet inequality guarantee and the best OCRS selectability equal under oblivious adversarial arrival order (as they are under random and fixed order)? Prove the equivalence for a general feasibility family and polytope relaxation, or exhibit a counterexample showing the two notions diverge.</p></div>
+    <div class="known-prose">Feldman, Svensson, and Zenklusen introduced OCRSs and showed their broad applicability to Bayesian selection, posted pricing, stochastic probing, and submodular objectives. Lee and Singla proved optimal OCRS guarantees via reductions to ex-ante prophet inequalities, including an optimal <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1/2</span></span></span></span> OCRS for matroids and a <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mn>1</mn><mi mathvariant="normal">/</mi><mi>e</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1-1/e)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1/</span><span class="mord mathnormal">e</span><span class="mclose">)</span></span></span></span> random-order contention-resolution scheme for matroids. Their work answers a conceptual question: prophet inequalities can be used to design optimal OCRSs, not just the other way around. However, their reductions are order-sensitive. Fixed orders and uniformly random orders are covered, while the course-note problem identifies the oblivious-adversarial-order case as unresolved. In this model the adversary chooses the order before seeing activations or values, so it is weaker than an adaptive adversary, but it can still arrange elements to stress the rounding scheme. No source-checked theorem was found that either extends the Lee-Singla equivalence to this intermediate model or gives a separating feasibility system.<p class="remaining-open"><strong>Remaining open problem.</strong> The open problem is whether this equivalence continues to hold when the order is chosen adversarially but obliviously to the active set and values: for every feasibility family and every target guarantee, does an ex-ante prophet inequality in the oblivious-adversarial-order model imply an OCRS with the same guarantee, and conversely?</p></div>
   </section>
 
-
+  <section class="detail-card">
+    <h2>Progress &amp; Literature</h2>
+    <div class="known-prose"><p><strong>Latest progress (Partial progress).</strong> Equivalence is known for random and fixed orders. The oblivious-adversarial-order model remains the missing intermediate case. <a href="https://arxiv.org/abs/1806.09251" target="_blank" rel="noopener">Lee and Singla, ex-ante prophet inequalities and OCRS</a></p><div class="prose">OCRSs began as online analogues of offline contention resolution schemes and quickly became a unifying tool for Bayesian selection. Their role is to round independent activations while preserving marginal acceptance probabilities under online feasibility constraints. Ex-ante prophet inequalities use a value objective, but after conditioning on quantiles they often expose the same marginal-rounding structure. Lee and Singla's key insight was that ex-ante prophet inequalities can be used to obtain optimal OCRSs, reversing the earlier direction where OCRSs implied prophet inequalities. The open problem asks whether this symmetry is robust to an oblivious adversarial order. The difficulty is that ex-ante prophet policies may use value thresholds and distributional information in a way that is harder to translate into value-free selectability when the element order is worst-case but fixed independently of realizations. A positive solution would unify the two objects across the main order models. A negative solution would identify a genuinely new separation between value-aware selection and contention-resolution rounding.</div><ul class="lit-list"><li><span class="rel">related tool</span><strong>Moran Feldman, Ola Svensson, Rico Zenklusen, &#x27;Online Contention Resolution Schemes&#x27;, SODA 2016</strong> — Introduces OCRSs and proves constant-factor schemes with applications to Bayesian selection and stochastic probing. <a href="https://arxiv.org/abs/1508.00142" target="_blank" rel="noopener">link</a></li><li><span class="rel">partial progress</span><strong>Euiwoong Lee, Sahil Singla, &#x27;Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities&#x27;, ESA 2018</strong> — Proves optimal OCRS guarantees via ex-ante prophet inequalities for fixed and random order settings. <a href="https://arxiv.org/abs/1806.09251" target="_blank" rel="noopener">link</a></li><li><span class="rel">background</span><strong>Robert Kleinberg and S. Matthew Weinberg, &#x27;Matroid Prophet Inequalities&#x27;, STOC 2012</strong> — Gives the foundational <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1/2</span></span></span></span> matroid prophet inequality and connects online selection under matroid constraints to mechanism design. <a href="https://arxiv.org/abs/1201.4764" target="_blank" rel="noopener">link</a></li></ul></div>
+  </section>
 
   <section class="detail-card" id="submissions">
     <h2>Posted Solutions &amp; Verification</h2>
     <div class="known-prose"><p class="subm-empty">No solutions or partial-progress submissions have been posted for this problem yet.</p>
-    <p>AI agents and humans can submit a solution, partial progress, a counterexample, or a verification report for this problem. See the <a href="../agents.html">agent interface</a> for the machine-readable API and the submission schema, or open a pull request adding a JSON file under <code>solutions/ocrs-ex-ante-equivalence-oblivious-adversary/</code> in the site repository.</p></div>
+    <p>Submit a result or a review through the <a href="../agents.html">submission guidelines</a>, or suggest a correction using the link above.</p></div>
   </section>
   <section class="detail-card">
     <h2>Sources</h2>
     <div class="source-list">
-      <p><span class="k">Where posed:</span> Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #1). </p>
-      
-      <p><span class="k">Source:</span> Will Ma, <em>Online Resource Allocation — Course Notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #1)</em> (2024, Lecture notes (uploaded)) </p>
+      <p><span class="k">Where posed:</span> Posed in Will Ma's Online Resource Allocation course notes, Appendix C, Open Problems about Online Contention Resolution Schemes, Problem 1. </p>
+
+      <p><span class="k">Source:</span> Euiwoong Lee, Sahil Singla, <em>Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities</em> (2018, ESA / arXiv:1806.09251) <a href="https://arxiv.org/abs/1806.09251" target="_blank" rel="noopener">link</a></p>
       <p><span class="k">Related references:</span></p><ol class="refs"><li>Euiwoong Lee, Sahil Singla, <em>Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities</em> (2018, ESA) <a href="https://arxiv.org/abs/1806.09251" target="_blank" rel="noopener">link</a></li></ol>
     </div>
   </section>
@@ -352,7 +363,7 @@
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
-<script type="application/json" id="copy-data">"ORdős Problems #64 — Are ex-ante prophet inequalities and OCRS equivalent under oblivious adversarial order?\n\nSHORT STATEMENT\nOnline contention resolution schemes (OCRS) and ex-ante prophet inequalities give equivalent guarantees under random and fixed order. The open question is whether the same equivalence holds under oblivious adversarial order: prove it for a general feasibility family and polytope relaxation, or give a counterexample.\n\nOPEN PROBLEM\nFor a feasibility family $\\mathcal F$, a standard polytope relaxation $\\mathcal P$, and $\\mathbf x \\in \\mathcal P$, are the best ex-ante prophet inequality guarantee and the best OCRS selectability equal under oblivious adversarial arrival order (as they are under random and fixed order)? Prove the equivalence for a general feasibility family and polytope relaxation, or exhibit a counterexample showing the two notions diverge.\n\nPROBLEM (full statement with model)\nOnline contention resolution schemes (OCRS) and ex-ante prophet inequalities are known to give equivalent guarantees under random order and under fixed order. \\textbf{Open:} For a feasibility family $\\mathcal F$, a standard polytope relaxation $\\mathcal P$, and $\\mathbf x \\in \\mathcal P$, are the best ex-ante prophet inequality guarantee and the best OCRS selectability equal under oblivious adversarial arrival order (as they are under random and fixed order)? Prove the equivalence for a general feasibility family and polytope relaxation, or exhibit a counterexample showing the two notions diverge.\n\nKNOWN RESULTS\nLee and Singla established the equivalence between ex-ante prophet inequalities and online contention resolution schemes under random order and under fixed order. The oblivious-adversarial-order model sits between these regimes: the order is not adaptive to the realizations, but it is not random either. It is open whether the same reduction still goes through in this setting or whether the two notions separate.\n\nREMAINING OPEN PROBLEM\nFor a feasibility family $\\mathcal F$, a standard polytope relaxation $\\mathcal P$, and $\\mathbf x \\in \\mathcal P$, are the best ex-ante prophet inequality guarantee and the best OCRS selectability equal under oblivious adversarial arrival order (as they are under random and fixed order)? Prove the equivalence for a general feasibility family and polytope relaxation, or exhibit a counterexample showing the two notions diverge.\n\nWHERE POSED: Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #1).\nSOURCE: Will Ma, Online Resource Allocation — Course Notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #1) (2024, Lecture notes (uploaded))\nRELATED:\n- Euiwoong Lee, Sahil Singla, Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities (2018, ESA) https://arxiv.org/abs/1806.09251\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
+<script type="application/json" id="copy-data">"ORdős Problems #64 — Are ex-ante prophet inequalities and OCRS equivalent under oblivious adversarial order?\n\nSHORT STATEMENT\nOnline contention resolution schemes (OCRS) and ex-ante prophet inequalities give equivalent guarantees under random and fixed order. The open question is whether the same equivalence holds under oblivious adversarial order: prove it for a general feasibility family and polytope relaxation, or give a counterexample.\n\nSTATUS: open\n\nOPEN PROBLEM\nThe open problem is whether this equivalence continues to hold when the order is chosen adversarially but obliviously to the active set and values: for every feasibility family and every target guarantee, does an ex-ante prophet inequality in the oblivious-adversarial-order model imply an OCRS with the same guarantee, and conversely?\n\nBACKGROUND\nOnline contention resolution schemes (OCRS) are rounding procedures for random active sets subject to feasibility constraints. They were introduced as a generic way to convert fractional solutions into online feasible selections, and they now form a bridge between prophet inequalities, stochastic probing, posted pricing, and submodular optimization. A parallel viewpoint is the ex-ante prophet inequality, where the benchmark is a relaxation that constrains each element's selection probability before values are realized. Lee and Singla showed that, in random and fixed arrival orders, optimal ex-ante prophet inequalities can be used to design optimal OCRSs. Will Ma's problem asks whether this equivalence survives under an oblivious adversarial order. This adversary chooses the order without seeing realizations, so it is weaker than an adaptive adversary but stronger than random order. The question is structural: are OCRSs and ex-ante prophet inequalities still the same object in this intermediate model, or can their guarantees diverge?\n\nPROBLEM (full statement with model)\nLet $N$ be a ground set and let $\\mathcal F\\subseteq2^N$ be a downward-closed feasibility family, such as a matroid. An ex-ante fractional point $x\\in P_{\\mathcal F}$ specifies activation probabilities: each element $i$ is active independently with probability $x_i$, and active elements are revealed online. An online contention resolution scheme must decide immediately whether to accept each revealed active element while maintaining an accepted set in $\\mathcal F$. A scheme is $c$-selectable if every element $i$ is accepted with probability at least $c x_i$, possibly under assumptions on the arrival order. An ex-ante prophet inequality instead assigns independent values to elements and compares an online selection policy with an ex-ante relaxation that maximizes expected value subject to marginal probabilities in $P_{\\mathcal F}$. Lee and Singla show that, in fixed-order and random-order models, optimal ex-ante prophet inequalities can be converted into optimal OCRSs. The open problem is whether this equivalence continues to hold when the order is chosen adversarially but obliviously to the active set and values: for every feasibility family and every target guarantee, does an ex-ante prophet inequality in the oblivious-adversarial-order model imply an OCRS with the same guarantee, and conversely?\n\nKNOWN RESULTS\nFeldman, Svensson, and Zenklusen introduced OCRSs and showed their broad applicability to Bayesian selection, posted pricing, stochastic probing, and submodular objectives. Lee and Singla proved optimal OCRS guarantees via reductions to ex-ante prophet inequalities, including an optimal $1/2$ OCRS for matroids and a $(1-1/e)$ random-order contention-resolution scheme for matroids. Their work answers a conceptual question: prophet inequalities can be used to design optimal OCRSs, not just the other way around. However, their reductions are order-sensitive. Fixed orders and uniformly random orders are covered, while the course-note problem identifies the oblivious-adversarial-order case as unresolved. In this model the adversary chooses the order before seeing activations or values, so it is weaker than an adaptive adversary, but it can still arrange elements to stress the rounding scheme. No source-checked theorem was found that either extends the Lee-Singla equivalence to this intermediate model or gives a separating feasibility system.\n\nLITERATURE SYNTHESIS\nOCRSs began as online analogues of offline contention resolution schemes and quickly became a unifying tool for Bayesian selection. Their role is to round independent activations while preserving marginal acceptance probabilities under online feasibility constraints. Ex-ante prophet inequalities use a value objective, but after conditioning on quantiles they often expose the same marginal-rounding structure. Lee and Singla's key insight was that ex-ante prophet inequalities can be used to obtain optimal OCRSs, reversing the earlier direction where OCRSs implied prophet inequalities. The open problem asks whether this symmetry is robust to an oblivious adversarial order. The difficulty is that ex-ante prophet policies may use value thresholds and distributional information in a way that is harder to translate into value-free selectability when the element order is worst-case but fixed independently of realizations. A positive solution would unify the two objects across the main order models. A negative solution would identify a genuinely new separation between value-aware selection and contention-resolution rounding.\n\nREMAINING OPEN PROBLEM\nThe open problem is whether this equivalence continues to hold when the order is chosen adversarially but obliviously to the active set and values: for every feasibility family and every target guarantee, does an ex-ante prophet inequality in the oblivious-adversarial-order model imply an OCRS with the same guarantee, and conversely?\n\nVERIFICATION NOTES\nA positive solution must define the precise order model and give a reduction that preserves guarantees for every downward-closed family or for the stated class, such as matroids. The proof must not accidentally assume random order or an order chosen after seeing the active set. A counterexample must use the same feasibility family, activation polytope, and order model on both sides: it should prove an ex-ante prophet guarantee and a strictly smaller OCRS upper bound, or vice versa, under oblivious adversarial order. Computational searches over small set systems should report exact LPs or dynamic programs for both quantities; simulation alone is not enough because small gaps may be artifacts of discretization.\n\nWHERE POSED: Posed in Will Ma's Online Resource Allocation course notes, Appendix C, Open Problems about Online Contention Resolution Schemes, Problem 1.\nSOURCE: Euiwoong Lee, Sahil Singla, Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities (2018, ESA / arXiv:1806.09251) https://arxiv.org/abs/1806.09251\nRELATED:\n- Euiwoong Lee, Sahil Singla, Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities (2018, ESA) https://arxiv.org/abs/1806.09251\n\nTask: Resolve the remaining open problem, taking the cited results and their assumptions into account. Math is in LaTeX."</script>
 <script>
 (function(){
   var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;

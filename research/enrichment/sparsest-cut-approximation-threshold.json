@@ -1,0 +1,118 @@
+{
+  "id": "sparsest-cut-approximation-threshold",
+  "title": "The true approximation threshold for Sparsest Cut",
+  "collection": "Approximation & Discrepancy",
+  "area": "Graph Partitioning and Metric Embeddings",
+  "tags": [
+    "sparsest cut",
+    "graph partitioning",
+    "metric embeddings",
+    "semidefinite programming",
+    "approximation algorithms"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "For nonuniform Sparsest Cut, the $O(\\sqrt{\\log n}\\log\\log n)$ algorithm and $\\Omega(\\sqrt{\\log n})$ SDP gap do not establish the computational threshold.",
+  "full_statement": "In the nonuniform Sparsest Cut problem, the input consists of an undirected graph or complete demand network on vertex set $V$, nonnegative capacities $c_{uv}$, and nonnegative demands $d_{uv}$. For a nontrivial cut $S\\subset V$, define its sparsity by $$\\Phi(S)=\\frac{\\sum_{u\\in S,v\\notin S} c_{uv}}{\\sum_{u\\in S,v\\notin S} d_{uv}}.$$ The goal is to find a cut minimizing $\\Phi(S)$. The uniform case has demands $d_{uv}=1$ for all pairs. Sparsest Cut is central to graph partitioning, multicommodity flow-cut gaps, and metric embeddings. The Arora-Rao-Vazirani framework gives an $O(\\sqrt{\\log n})$ approximation for uniform sparsest cut and balanced separator, and later work simplified and accelerated this guarantee. Naor and Young proved an $\\Omega(\\sqrt{\\log n})$ integrality gap for the Goemans-Linial SDP relaxation, for nonuniform demands, so that relaxation cannot have smaller gap in that model. The general-demand upper bound is $O(\\sqrt{\\log n}\\log\\log n)$; the uniform-demand ARV bound must not be paired with the nonuniform lower bound as an exact match. The open problem is to determine whether polynomial-time algorithms can beat $O(\\sqrt{\\log n})$ by using stronger relaxations or non-SDP ideas, or whether a comparable hardness result holds under a standard assumption.",
+  "open_problem": "Determine the nonuniform Sparsest Cut approximation threshold, improving the general-demand upper bound or proving matching computational hardness; distinguish the separate uniform-demand question.",
+  "background": "Sparsest Cut is a clean mathematical abstraction of partitioning a network while preserving demand pairs. It is also the algorithmic face of a deep metric-embedding question: the flow-cut gap for a demand graph corresponds to how well certain metrics embed into $\\ell_1$. Leighton-Rao type methods gave logarithmic approximations through multicommodity flow. The ARV theorem improved this to $O(\\sqrt{\\log n})$ for uniform demands using a geometric structure theorem for negative-type metrics from semidefinite programming. This was a conceptual breakthrough because it linked graph partitioning to high-dimensional geometry. The $\\Omega(\\sqrt{\\log n})$ lower bound is for nonuniform demands, not a matching uniform ARV gap. A better algorithm would need stronger convex relaxations, hierarchy rounds with new rounding, or a combinatorial method that avoids the known embedding obstruction.",
+  "known_results": "ARV gives $O(\\sqrt{\\log n})$ approximation for uniform Sparsest Cut and Balanced Separator. Arora, Lee, and Naor obtained related $O(\\sqrt{\\log k}\\log\\log k)$ guarantees for general-demand instances supported on $k$ demand vertices through embeddings of negative-type metrics. Sherman and Kolmogorov give faster and more parallelizable ways to realize essentially the same $O(\\sqrt{\\log n})$ approximation tradeoff. On the lower-bound side, Khot and Vishnoi refuted the constant-distortion Goemans-Linial conjecture and gave superconstant SDP gaps; Naor and Young later proved an $\\Omega(\\sqrt{\\log n})$ gap for the Goemans-Linial SDP. For general demands these upper and lower bounds leave a $\\log\\log n$ factor, and an SDP gap is not hardness against all algorithms. The nonuniform Naor-Young construction does not give the same uniform-demand gap.",
+  "where_posed": {
+    "text": "General computational threshold after the distinct uniform and nonuniform SDP results; see Naor-Young Section 1.7.3 for the model distinction.",
+    "url": "https://web.math.princeton.edu/~naor/homepage%20files/GL-SDP-SQRT-LOG-CAMERA.pdf",
+    "quote": "",
+    "location": "Abstract and related work around ARV/Sherman-style algorithms."
+  },
+  "source": {
+    "authors": "Vladimir Kolmogorov",
+    "title": "A simpler and parallelizable O(sqrt(log n))-approximation algorithm for Sparsest Cut",
+    "year": 2023,
+    "venue": "arXiv",
+    "url": "https://arxiv.org/abs/2307.00115"
+  },
+  "additional_refs": [
+    {
+      "authors": "Assaf Naor, Robert Young",
+      "title": "The integrality gap of the Goemans--Linial SDP relaxation for Sparsest Cut is at least a constant multiple of sqrt(log n)",
+      "year": 2017,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/1704.01200"
+    },
+    {
+      "authors": "Subhash A. Khot, Nisheeth K. Vishnoi",
+      "title": "The Unique Games Conjecture, Integrality Gap for Cut Problems and Embeddability of Negative Type Metrics into l1",
+      "year": 2013,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/1305.4581"
+    },
+    {
+      "authors": "Sanjeev Arora, James R. Lee, Assaf Naor",
+      "title": "Euclidean distortion and the Sparsest Cut",
+      "year": 2005,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/math/0508154"
+    },
+    {
+      "authors": "Assaf Naor, Robert Young",
+      "title": "The integrality gap of the Goemans-Linial SDP relaxation for Sparsest Cut is at least a constant multiple of sqrt(log n)",
+      "year": 2017,
+      "venue": "STOC",
+      "url": "https://web.math.princeton.edu/~naor/homepage%20files/GL-SDP-SQRT-LOG-CAMERA.pdf"
+    }
+  ],
+  "enabled": true,
+  "progress": {
+    "state": "partial",
+    "summary": "Corrected uniform/nonuniform conflation. Nonuniform upper bound $O(\\sqrt{\\log n}\\log\\log n)$ and SDP lower bound $\\Omega(\\sqrt{\\log n})$ leave a gap; true computational threshold is not established here.",
+    "links": [
+      {
+        "title": "Naor and Young, The integrality gap of the Goemans-Linial SDP relaxation for Sparsest Cut is at least a constant multiple of sqrt(log n), STOC 2017",
+        "url": "https://web.math.princeton.edu/~naor/homepage%20files/GL-SDP-SQRT-LOG-CAMERA.pdf"
+      }
+    ]
+  },
+  "importance": 9,
+  "difficulty": 9,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Finite graph and demand instances can witness SDP or LP gaps and can falsify proposed rounding claims. They cannot by themselves prove complexity-theoretic hardness, but they are central evidence for barriers.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Automated search over capacity-demand graphs and negative-type metrics can discover integrality-gap instances or stress-test stronger relaxations.",
+  "literature": {
+    "synthesis": "Keep demand models separate. ARV and its faster implementations give $O(\\sqrt{\\log n})$ for uniform demands. Arora-Lee-Naor give $O(\\sqrt{\\log n}\\log\\log n)$ for general demands, while Naor-Young give a nonuniform SDP gap $\\Omega(\\sqrt{\\log n})$. Khot-Vishnoi provided foundational superconstant gaps. None of these relaxation lower bounds alone identifies the polynomial-time approximation threshold. New research-release claims concerning uniform gaps and constant-factor hardness were located but not theorem-reviewed in this audit; see the audit follow-ups.",
+    "reviewed": [
+      {
+        "ref": "Kolmogorov, A simpler and parallelizable O(sqrt(log n))-approximation algorithm for Sparsest Cut, 2023",
+        "result": "Uniform-demand approximation line; not the stated upper bound for arbitrary demands.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2307.00115",
+        "relevance_detail": "best-current-algorithmic-line"
+      },
+      {
+        "ref": "Naor and Young, Integrality gap of the Goemans-Linial SDP relaxation, 2017",
+        "result": "Nonuniform-demand SDP gap $\\Omega(\\sqrt{\\log n})$; not a uniform-demand lower bound.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/1704.01200",
+        "relevance_detail": "relaxation-barrier"
+      },
+      {
+        "ref": "Khot and Vishnoi, Unique Games, integrality gaps, and embeddability, 2013",
+        "result": "Gives superconstant gaps and links Sparsest Cut to Unique Games and $\\ell_1$ embeddability.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/1305.4581",
+        "relevance_detail": "barrier-and-hardness-context"
+      },
+      {
+        "ref": "Naor and Young, The integrality gap of the Goemans-Linial SDP relaxation for Sparsest Cut is at least a constant multiple of sqrt(log n), STOC 2017",
+        "result": "Sections 1.7.1 and 1.7.3 distinguish general-demand and uniform-demand guarantees.",
+        "relevance": "partial-progress",
+        "url": "https://web.math.princeton.edu/~naor/homepage%20files/GL-SDP-SQRT-LOG-CAMERA.pdf"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Investigate stronger SDP or hierarchy relaxations; search for finite integrality gaps beyond Goemans-Linial; study whether small-set expansion or unique-games reductions can be sharpened into matching hardness; exploit special metric classes to identify structural decompositions that might generalize.",
+    "verification_notes": "A claimed $o(\\sqrt{\\log n})$ approximation must specify whether it handles uniform or nonuniform demands and must run in polynomial time. A claimed gap must identify the relaxation and prove both fractional and integral cut values. A hardness result should state its assumption and whether the factor is for uniform sparsest cut, nonuniform sparsest cut, or balanced separator. Do not confuse an SDP integrality gap with a computational lower bound.",
+    "machine_checkable": true
+  },
+  "notes_for_maintainer": "Status audit 2026-11-09: Primary full-text model comparison read. Research-release uniform-gap/hardness leads remain unreviewed, not established updates."
+}

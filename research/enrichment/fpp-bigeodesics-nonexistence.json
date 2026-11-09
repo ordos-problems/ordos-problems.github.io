@@ -1,0 +1,96 @@
+{
+  "id": "fpp-bigeodesics-nonexistence",
+  "title": "Nonexistence of bigeodesics in two-dimensional first-passage percolation",
+  "collection": "Applied Probability",
+  "area": "Random Growth and Percolation",
+  "tags": [
+    "first-passage percolation",
+    "bigeodesics",
+    "random metrics",
+    "geodesics",
+    "applied probability"
+  ],
+  "status": "conjecture",
+  "confidence": "high",
+  "short_statement": "For i.i.d. continuous first-passage percolation on $\\mathbb Z^2$, it is famously conjectured that there are almost surely no doubly infinite geodesics.",
+  "full_statement": "In nearest-neighbor first-passage percolation on $\\mathbb Z^2$, assign i.i.d. nonnegative continuous passage times $(t_e)$ to edges, with standard assumptions ensuring finite geodesics and a nondegenerate limit shape. For vertices $x,y$, let $$T(x,y)=\\inf_{\\gamma:x\\to y}\\sum_{e\\in\\gamma} t_e,$$ where the infimum is over nearest-neighbor paths. A finite or infinite path is a geodesic if every finite subpath realizes the passage time between its endpoints. A bigeodesic is a doubly infinite path $(v_i)_{i\\in\\mathbb Z}$ such that every segment $(v_i,\\ldots,v_j)$ is a geodesic between $v_i$ and $v_j$. The open problem is to prove that, under natural continuous i.i.d. edge-weight distributions in two dimensions, almost surely there are no bigeodesics. Equivalently, every infinite geodesic should have only one infinite end, and two-sided globally minimizing paths should not exist in the random metric. A solution should avoid assuming unproved curvature or differentiability properties of the limit shape unless those properties are also proved under the same distributional hypotheses.",
+  "open_problem": "Prove or refute the no-bigeodesics conjecture for two-dimensional i.i.d. continuous first-passage percolation under standard moment and nondegeneracy assumptions.",
+  "background": "First-passage percolation turns the lattice into a random metric and asks what large-scale geometry this metric has. The shape theorem gives first-order deterministic growth, but the structure of geodesics remains much less understood. Bigeodesics are especially important because they would be global two-sided minimizers, analogous to geodesic lines in deterministic geometry. In random media they are expected not to exist in two dimensions: geodesics from different points should coalesce, and random fluctuations should prevent a path from being globally optimal in both time directions. The conjecture is tied to Busemann functions, competition interfaces, spin-glass ground states, and the midpoint problem of Benjamini, Kalai, and Schramm. It is a clean fixed-model problem rather than a modeling question: the lattice, randomness, and object of study are all specified.",
+  "known_results": "Licea and Newman proved strong directional results under assumptions on curvature of the asymptotic shape, including absence of bigeodesics with prescribed directional behavior for a full-measure set of directions. Damron and Hanson proved that, if the boundary of the limit shape is differentiable, there are no bigeodesics with one end directed in any deterministic direction; their work also connects the question to the BKS midpoint problem. Ahlberg and Hoffman developed random coalescing geodesics and solved the midpoint problem, while Brito, Damron, and Hanson proved absence of backward infinite paths in geodesic graphs built from point-to-hyperplane limits in arbitrary dimension. These are substantial advances, but none proves the unconditional two-dimensional no-bigeodesics conjecture for general continuous i.i.d. passage-time distributions.",
+  "where_posed": {
+    "text": "Damron and Hanson describe the absence of bigeodesics as a famous conjecture in first-passage percolation.",
+    "url": "https://arxiv.org/abs/1512.00804",
+    "quote": "there are no bigeodesics",
+    "location": "Abstract."
+  },
+  "source": {
+    "authors": "Michael Damron, Jack Hanson",
+    "title": "Bigeodesics in first-passage percolation",
+    "year": 2015,
+    "venue": "arXiv",
+    "url": "https://arxiv.org/abs/1512.00804"
+  },
+  "additional_refs": [
+    {
+      "authors": "Daniel Ahlberg, Christopher Hoffman",
+      "title": "Random coalescing geodesics in first-passage percolation",
+      "year": 2016,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/1609.02447"
+    },
+    {
+      "authors": "Gerandy Brito, Michael Damron, Jack Hanson",
+      "title": "Absence of backward infinite paths for first-passage percolation in arbitrary dimension",
+      "year": 2020,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/2003.03367"
+    },
+    {
+      "authors": "Antonio Auffinger, Michael Damron, Jack Hanson",
+      "title": "50 years of first passage percolation",
+      "year": 2017,
+      "venue": "AMS University Lecture Series / arXiv",
+      "url": "https://arxiv.org/abs/1511.03262"
+    }
+  ],
+  "enabled": true,
+  "progress": {
+    "state": "open",
+    "summary": "Directional and conditional nonexistence results are known, but the unconditional two-dimensional no-bigeodesics conjecture remains open.",
+    "links": []
+  },
+  "importance": 8,
+  "difficulty": 9,
+  "counterexample_suitability": "low",
+  "counterexample_rationale": "The conjecture is an almost-sure asymptotic statement about an infinite random metric; finite simulations can illustrate behavior but cannot provide a rigorous counterexample.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Computation may help explore geodesic coalescence, midpoint behavior, and candidate finite obstructions, but a proof is likely analytic and probabilistic.",
+  "literature": {
+    "synthesis": "The no-bigeodesics problem is part of the broader project of understanding geodesic geometry in FPP beyond the shape theorem. Busemann functions provide one route: if directional Busemann limits exist and geodesics coalesce, one can rule out many two-sided minimizers. Conditional results show that differentiability or curvature of the limit shape would be enough to exclude important classes of bigeodesics, but those shape regularity properties are themselves open for ordinary lattice FPP. Recent random-coalescing-geodesic methods avoid some deterministic shape assumptions and solve related midpoint questions, yet still do not eliminate all possible bigeodesics. A complete solution would likely need a robust coalescence theorem, a new way to control exceptional directions, or a proof that any bigeodesic would force a translation-invariant structure now known to be impossible.",
+    "reviewed": [
+      {
+        "ref": "Damron and Hanson, Bigeodesics in first-passage percolation, 2015",
+        "result": "Rules out bigeodesics with deterministic directed end under differentiability of the limit shape.",
+        "relevance": "conditional-progress",
+        "url": "https://arxiv.org/abs/1512.00804"
+      },
+      {
+        "ref": "Ahlberg and Hoffman, Random coalescing geodesics in first-passage percolation, 2016",
+        "result": "Develops random coalescing geodesic machinery and solves the midpoint problem.",
+        "relevance": "geodesic-structure-progress",
+        "url": "https://arxiv.org/abs/1609.02447"
+      },
+      {
+        "ref": "Brito, Damron, Hanson, Absence of backward infinite paths for first-passage percolation in arbitrary dimension, 2020",
+        "result": "Shows absence of bigeodesics in certain geodesic graphs constructed from point-to-hyperplane limits.",
+        "relevance": "unconditional-partial-progress",
+        "url": "https://arxiv.org/abs/2003.03367"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Study Busemann-function constructions, geodesic coalescence, exceptional-direction arguments, and implications of limit-shape differentiability. Avoid relying on unproved KPZ exponents or curvature assumptions unless the proof explicitly makes the result conditional.",
+    "verification_notes": "A proof must specify distributional assumptions on edge weights and show almost-sure absence of every doubly infinite path whose finite subpaths are geodesics. A conditional result should state exactly which assumptions on the limit shape, curvature, differentiability, or Busemann limits are used, since many known results are conditional in precisely this way. A counterexample would require a passage-time distribution satisfying the standard hypotheses and a rigorous positive-probability construction of a bigeodesic, not only simulations or finite-box geodesic pictures.",
+    "machine_checkable": false
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "id": "single-machine-forbidden-times-fpt",
+  "title": "FPT Status of Single-Machine Scheduling with Forbidden Start and End Times",
+  "collection": "Operations Research",
+  "area": "Parameterized Scheduling",
+  "tags": [
+    "scheduling",
+    "parameterized complexity",
+    "forbidden times",
+    "single machine",
+    "FPT"
+  ],
+  "status": "partially resolved",
+  "confidence": "high",
+  "short_statement": "FPT is proved for integer-time forbidden start-and-end instants; the recorded formulation omitted the time-domain restriction.",
+  "full_statement": "Consider a single machine and a set of nonpreemptive jobs with processing times. There is also a set $F$ of $\\tau$ forbidden time points. A feasible schedule processes one job at a time and must avoid starting or completing any job at a forbidden time point; equivalently, every job start time and completion time must lie outside $F$. The objective is to minimize the makespan. The original target is an algorithm with running time $f(\\tau)L^{O(1)}$, where $L$ is the encoded input length, or a parameterized hardness classification. The record did not specify the time domain. Gabay, Rapine, and Brauner's Theorem 3 proves FPT for integer data and integer start/completion times, including high-multiplicity encoding. This settles that discrete-time interpretation, not unrestricted real-time schedules without a reduction or discretization argument. The original target is retained with this scope caveat.",
+  "background": "Forbidden endpoints model auxiliary resources needed to initiate or complete jobs; processing can continue across forbidden instants. Earlier XP bounds motivated parameterized questions. The prior record understated the high-multiplicity Fse result and did not distinguish its integer-time assumptions from unspecified real-time schedules. Forbidden-start-only (Fs) and forbidden-start-and-end (Fse) results also require separate treatment.",
+  "known_results": "Gabay, Rapine, and Brauner, Journal of Scheduling 19(5), 609-616 (2016), Theorem 3, proves FPT in the number of forbidden start-and-end instants even with high multiplicities. The model requires integer data and integer feasible endpoints. The previous XP-only description is incorrect for that model. Billaut-Sourd concerns forbidden starts; Rapine-Brauner concerns forbidden starts and completions. No conclusion about an unspecified real-time interpretation follows without additional argument.",
+  "open_problem": "Historical target: classify FPT in the number of forbidden start/end instants. The integer-time interpretation is solved; reconcile any intended nonintegral data or real-time schedules explicitly before extending that conclusion.",
+  "where_posed": {
+    "text": "Historical survey pointer retained from the original record. Its exact formulation should not be conflated with the integer-time Fse theorem; this audit does not certify that Open Problem 4 poses the identical model.",
+    "url": "https://arxiv.org/abs/1709.01670",
+    "quote": "",
+    "location": "Section 3.4, Open Problem 4"
+  },
+  "source": {
+    "authors": "Matthias Mnich, Rene van Bevern",
+    "title": "Parameterized complexity of machine scheduling: 15 open problems",
+    "year": 2018,
+    "venue": "Computers & Operations Research",
+    "url": "https://arxiv.org/abs/1709.01670"
+  },
+  "additional_refs": [
+    {
+      "authors": "Jean-Charles Billaut, Francis Sourd",
+      "title": "Single machine scheduling with forbidden start times",
+      "year": 2009,
+      "venue": "4OR",
+      "url": "https://doi.org/10.1007/s10288-007-0062-8"
+    },
+    {
+      "authors": "Christophe Rapine, Nadia Brauner",
+      "title": "A polynomial time algorithm for makespan minimization on one machine with forbidden start and completion times",
+      "year": 2013,
+      "venue": "Discrete Optimization",
+      "url": "https://doi.org/10.1016/j.disopt.2013.02.002"
+    },
+    {
+      "authors": "Michael Gabay, Christophe Rapine, Nadia Brauner",
+      "title": "High-Multiplicity Scheduling on One Machine with Forbidden Start and Completion Times",
+      "year": 2016,
+      "venue": "Journal of Scheduling 19(5), 609-616",
+      "url": "https://doi.org/10.1007/s10951-016-0475-z"
+    },
+    {
+      "authors": "Michael Gabay, Christophe Rapine, Nadia Brauner",
+      "title": "High-Multiplicity Scheduling on One Machine with Forbidden Start and Completion Times",
+      "year": 2014,
+      "venue": "Author manuscript, hal-00850824v2; Theorem 3",
+      "url": "https://www.researchgate.net/publication/281565107_High-Multiplicity_Scheduling_on_One_Machine_with_Forbidden_Start_and_Completion_Times"
+    }
+  ],
+  "enabled": true,
+  "progress": {
+    "state": "partial",
+    "summary": "The discrete-time Fse interpretation is resolved; omitted time-domain assumptions prevent an unqualified resolved label.",
+    "links": [
+      {
+        "title": "Mnich-van Bevern open-problem list",
+        "url": "https://arxiv.org/abs/1709.01670"
+      },
+      {
+        "title": "Gabay-Rapine-Brauner FPT theorem",
+        "url": "https://doi.org/10.1007/s10951-016-0475-z"
+      }
+    ]
+  },
+  "importance": 6,
+  "difficulty": 6,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Finite schedules can test implementations and modeling assumptions; a purported hardness result must not contradict the published discrete-time classification without addressing that theorem.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Computation can validate small schedules and discretization claims, not rediscover the already proved integer-time FPT result.",
+  "literature": {
+    "synthesis": "The integer-time Fse theorem supersedes the XP-only summary. The remaining issue in this record is precise model reconciliation, not evidence that a distinct real-time problem is currently open.",
+    "reviewed": [
+      {
+        "ref": "Matthias Mnich, Rene van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems', Computers & Operations Research 2018",
+        "result": "Historical parameterized-scheduling survey pointer; identity of its posed variant with this record is not certified.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/1709.01670"
+      },
+      {
+        "ref": "Jean-Charles Billaut, Francis Sourd, 'Single machine scheduling with forbidden start times', 4OR 2009",
+        "result": "Gives polynomial-time algorithms with exponent depending on the number of forbidden times.",
+        "relevance": "partial-progress",
+        "url": "https://doi.org/10.1007/s10288-007-0062-8"
+      },
+      {
+        "ref": "Christophe Rapine, Nadia Brauner, 'A polynomial time algorithm for makespan minimization on one machine with forbidden start and completion times', Discrete Optimization 2013",
+        "result": "Improves polynomial-time dependence for the forbidden start/completion time setting.",
+        "relevance": "partial-progress",
+        "url": "https://doi.org/10.1016/j.disopt.2013.02.002"
+      },
+      {
+        "ref": "Gabay, Rapine, Brauner (2016), Journal of Scheduling 19(5), 609-616; author manuscript Theorem 3",
+        "result": "FPT for integer-time Fse, including high multiplicities; not a theorem for unspecified real-time schedules.",
+        "relevance": "solves-special-case",
+        "url": "https://doi.org/10.1007/s10951-016-0475-z"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Fix the input encoding and allowed time domain first. Use the published algorithm for integer-time Fse; supply an explicit reduction for any other interpretation.",
+    "verification_notes": "Check integer data and integer feasible endpoints, nonpreemption, forbidden starts AND completions, makespan objective, and encoded input length. Scaling rational data alone does not prove integer schedules suffice. Real-time formulations must address attainment of the objective.",
+    "machine_checkable": true
+  }
+}

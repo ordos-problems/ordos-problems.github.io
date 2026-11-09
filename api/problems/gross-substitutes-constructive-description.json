@@ -1,0 +1,125 @@
+{
+ "number": 139,
+ "ref": "ORDOS-139",
+ "id": "gross-substitutes-constructive-description",
+ "title": "Constructive description of all gross substitutes valuations",
+ "collection": "Economics",
+ "area": "Market Design",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "gross substitutes",
+  "walrasian equilibrium",
+  "market design",
+  "auction theory",
+  "discrete convex analysis",
+  "matroids",
+  "economics"
+ ],
+ "short_statement": "Find a constructive grammar or representation theorem for all gross substitutes valuations over indivisible goods.",
+ "open_problem": "Give a complete constructive representation of gross substitutes valuations, or prove that no proposed natural family of primitives and substitute-preserving operations is complete.",
+ "background": "Gross substitutes valuations are one of the central tractable domains in market design with indivisible goods. A valuation $v:2^M\\to \\mathbb{R}$ has the gross substitutes property if, when some item prices rise and the remaining prices stay fixed, a buyer can choose a new demanded bundle that keeps every previously demanded item whose price did not rise. Kelso and Crawford introduced the condition in matching and salary markets, and Gul and Stacchetti showed its central role in Walrasian equilibrium theory for indivisible goods. Gross substitutes valuations are also equivalent to several discrete-convexity notions and include matroid rank functions and many valuated-matroid-like objects. The class is well characterized by demand behavior and exchange axioms, but these characterizations are not constructive: they do not explain how to build every gross substitutes valuation from simple primitives. Balkanski and Paes Leme frame this construction problem explicitly and show that one natural hope, positive linear combinations of matroid rank functions, is not enough.",
+ "full_statement": "Let $M$ be a finite set of indivisible goods and let $v:2^M\\to\\mathbb{R}$ be a normalized valuation. For a price vector $p\\in\\mathbb{R}^M$, let $D(v,p)$ be the set of bundles maximizing $v(S)-\\sum_{j\\in S}p_j$. The valuation $v$ is gross substitutes if for any $p\\le q$ and any $X\\in D(v,p)$, there exists $Y\\in D(v,q)$ such that every item in $X$ whose price did not increase remains in $Y$. The open problem is to give a constructive description of exactly this class: identify a set of elementary gross-substitutes primitives and closure operations that generate all and only gross substitutes valuations. A satisfactory answer could be a finite or recursively specified grammar, a decomposition theorem into known discrete-convex objects, or an algorithmic representation that is complete for all finite gross substitutes valuations. It should also explain the role of matroid rank functions, valuated matroids, endowment/merge-type operations, and other known substitute-preserving operations.",
+ "known_results": "Kelso and Crawford introduced gross substitutes in a job-matching model, and Gul and Stacchetti established its connection to Walrasian equilibria and ascending auctions. Discrete convex analysis gives several equivalent ways to recognize the class, including exchange and M-natural-concavity-style conditions; Murota's work clarifies the equivalence between strong no-complementarities and gross substitutes. Shioura showed that a rich subclass of gross substitutes can be represented using sums of matroid rank functions. Balkanski and Paes Leme prove that this particular construction is not complete: some gross substitutes valuations cannot be expressed as positive linear combinations of matroid rank functions. They also give necessary and sufficient conditions for sums to preserve substitutability, identify a new substitute-preserving operation, and completely describe all substitutes on at most four items. Thus the broad construction problem remains open after eliminating one of the most natural candidate representations.",
+ "progress": {
+  "state": "partial",
+  "summary": "Gross substitutes have many recognition characterizations and several closure operations. Positive combinations of matroid rank functions are not complete, and all four-item substitutes are classified, but no full constructive description is known.",
+  "links": [
+   {
+    "title": "On the Construction of Substitutes",
+    "url": "https://arxiv.org/abs/1805.03726"
+   },
+   {
+    "title": "Multiple Exchange Property for M-natural-concave Functions and Valuated Matroids",
+    "url": "https://arxiv.org/abs/1608.07021"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Any proposed constructive grammar can be tested against finite valuation tables. Small counterexamples can refute completeness of a candidate primitive/operation system, as in the matroid-rank-combination obstruction.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Search over finite valuation tables can discover gross substitutes valuations outside candidate generated classes, suggest new operations, and test closure conjectures.",
+ "literature": {
+  "synthesis": "Gross substitutes sit at the intersection of economics, combinatorial optimization, and discrete convex analysis. Equilibrium existence and ascending-auction algorithms are well understood when valuations are given by demand or value oracles, but the class remains structurally mysterious. The construction problem asks for more than a membership test: it asks for a generative theory comparable to how matroids can be built and recognized through rank, independence, bases, and exchange. Balkanski and Paes Leme's negative result is useful because it shows that the naive matroid-rank-span answer is false while leaving open whether a richer grammar using merge, endowment, valuated matroid operations, or other substitute-preserving transformations is complete.",
+  "reviewed": [
+   {
+    "ref": "Alexander S. Kelso Jr. and Vincent P. Crawford, 'Job Matching, Coalition Formation, and Gross Substitutes', Econometrica 1982",
+    "result": "Introduces gross substitutes in matching and salary markets.",
+    "relevance": "baseline",
+    "url": "https://doi.org/10.2307/1913392"
+   },
+   {
+    "ref": "Faruk Gul and Ennio Stacchetti, 'Walrasian Equilibrium with Gross Substitutes', Journal of Economic Theory 1999",
+    "result": "Connects gross substitutes to Walrasian equilibrium existence and indivisible-goods market design.",
+    "relevance": "baseline",
+    "url": "https://doi.org/10.1006/jeth.1999.2531"
+   },
+   {
+    "ref": "Kazuo Murota, 'Multiple Exchange Property for M-natural-concave Functions and Valuated Matroids', arXiv 2016",
+    "result": "Gives exchange-property foundations linking gross substitutes, strong no complementarities, and discrete convex analysis.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/1608.07021"
+   },
+   {
+    "ref": "Eric Balkanski and Renato Paes Leme, 'On the Construction of Substitutes', arXiv 2018",
+    "result": "Shows positive combinations of matroid rank functions do not generate all gross substitutes and frames the remaining construction problem.",
+    "relevance": "open-problem-source",
+    "url": "https://arxiv.org/abs/1805.03726"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Encode finite valuations and test gross substitutes via demand or exchange conditions. Search for valuations outside proposed generated classes; study closure under merge, endowment, convolution, restriction, and projection; or try to connect the construction problem to valuated matroid decomposition and discrete convex geometry.",
+  "verification_notes": "A claimed representation theorem must prove both soundness and completeness: every generated valuation is gross substitutes, and every finite gross substitutes valuation can be generated. A counterexample must provide an explicit valuation table or oracle, prove the gross substitutes property exactly, and prove nonrepresentability within the proposed construction system. Numerical evidence alone is not enough unless accompanied by exact rational certificates.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "Balkanski and Paes Leme explicitly frame the construction problem for gross substitutes valuations.",
+  "url": "https://arxiv.org/abs/1805.03726",
+  "quote": "providing a constructive description remains a major open problem",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Eric Balkanski, Renato Paes Leme",
+  "title": "On the Construction of Substitutes",
+  "year": 2018,
+  "venue": "arXiv:1805.03726",
+  "url": "https://arxiv.org/abs/1805.03726"
+ },
+ "additional_refs": [
+  {
+   "title": "Job Matching, Coalition Formation, and Gross Substitutes",
+   "url": "https://doi.org/10.2307/1913392",
+   "authors": "Alexander S. Kelso Jr., Vincent P. Crawford",
+   "year": 1982,
+   "venue": "Econometrica"
+  },
+  {
+   "title": "Walrasian Equilibrium with Gross Substitutes",
+   "url": "https://doi.org/10.1006/jeth.1999.2531",
+   "authors": "Faruk Gul, Ennio Stacchetti",
+   "year": 1999,
+   "venue": "Journal of Economic Theory"
+  },
+  {
+   "title": "Multiple Exchange Property for M-natural-concave Functions and Valuated Matroids",
+   "url": "https://arxiv.org/abs/1608.07021",
+   "authors": "Kazuo Murota",
+   "year": 2016,
+   "venue": "arXiv:1608.07021"
+  }
+ ],
+ "bibtex": "@misc{Balkanski2018,\n  author = {Eric Balkanski and Renato Paes Leme},\n  title = {On the Construction of Substitutes},\n  year = {2018},\n  howpublished = {arXiv:1805.03726},\n  url = {https://arxiv.org/abs/1805.03726},\n  note = {Source of ORdős Problem ORDOS-139}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/gross-substitutes-constructive-description.html",
+  "api": "https://ordos-problems.github.io/api/problems/gross-substitutes-constructive-description.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

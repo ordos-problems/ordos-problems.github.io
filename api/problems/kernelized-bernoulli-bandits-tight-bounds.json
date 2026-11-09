@@ -1,0 +1,131 @@
+{
+ "number": 142,
+ "ref": "ORDOS-142",
+ "id": "kernelized-bernoulli-bandits-tight-bounds",
+ "title": "Tight regret bounds for kernelized bandits with Bernoulli rewards",
+ "collection": "Online Algorithms & Learning",
+ "area": "Bandits",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "bandits",
+  "kernelized bandits",
+  "Bernoulli rewards",
+  "RKHS",
+  "regret bounds",
+  "COLT open problem"
+ ],
+ "short_statement": "Obtain tight regret bounds for kernelized bandits when observations are Bernoulli samples with mean $f(x)$ rather than sub-Gaussian additive noise.",
+ "open_problem": "Develop a tight upper-and-lower-bound theory for kernelized bandits with Bernoulli feedback.",
+ "background": "Kernelized bandits are a standard nonparametric model for sequential optimization. A learner chooses points $x_t$ from an action space $\\mathcal X$, receives noisy feedback, and wants to compete with the best point in hindsight. In the classical Gaussian-process/RKHS formulation, the unknown reward function $f$ belongs to a reproducing kernel Hilbert space $\\mathcal H_k$ with bounded norm, and the feedback is $y_t=f(x_t)+\\epsilon_t$ with sub-Gaussian noise. This additive-noise model has a mature theory through GP-UCB, information gain, and self-normalized concentration. Mussi, Drago, and Metelli's COLT open-problem note points out that many applications have binary outcomes instead: a click, conversion, success, or failure, with $y_t\\sim \\mathrm{Ber}(f(x_t))$. This is not merely a modelling variation. Bernoulli observations are heteroscedastic, bounded, and nonlinear in the likelihood; near $f(x)=0$ or $1$ the variance changes substantially, and standard sub-Gaussian RKHS analyses may lose the sharp dependence that KL-based finite-armed Bernoulli bandits achieve.",
+ "full_statement": "Let $\\mathcal X$ be a compact or finite action set and let $k$ be a positive semidefinite kernel with RKHS $\\mathcal H_k$. An unknown function $f:\\mathcal X\\to[0,1]$ satisfies $\\|f\\|_{\\mathcal H_k}\\le B$. At each round $t=1,\\ldots,T$, an adaptive policy chooses $x_t\\in\\mathcal X$ based on past observations and then observes $Y_t\\sim\\mathrm{Ber}(f(x_t))$, independently conditional on the past. Regret is $R_T=\\sum_{t=1}^T (f(x^*)-f(x_t))$, where $x^*\\in\\arg\\max_{x\\in\\mathcal X} f(x)$. Determine the minimax and/or instance-dependent order of $R_T$ for this Bernoulli kernelized bandit model. A satisfactory solution should give algorithms and lower bounds with matching dependence on $T$, the RKHS radius $B$, kernel complexity quantities such as maximum information gain or effective dimension, and the Bernoulli geometry. In particular, decide whether the best possible rates coincide with the sub-Gaussian kernelized-bandit rates up to logarithmic factors, improve through Bernoulli-specific KL curvature, or require a different complexity measure.",
+ "known_results": "For sub-Gaussian additive noise, Srinivas, Krause, Kakade, and Seeger introduced GP-UCB and obtained regret bounds in terms of information gain; Chowdhury and Gopalan later gave sharper frequentist RKHS confidence bounds and SupKernelUCB-type results. For ordinary finite-armed Bernoulli bandits, KL-UCB and related algorithms exploit Bernoulli likelihoods to obtain sharp logarithmic instance-dependent constants. Logistic and generalized-linear bandits handle binary observations when the mean is linked to a finite-dimensional linear predictor. Mussi, Drago, and Metelli identify the RKHS Bernoulli model $Y_t\\sim\\mathrm{Ber}(f(x_t))$ as a gap between these lines: it is not finite-dimensional logistic bandits, and the additive-noise kernelized-bandit analysis does not settle tightness for Bernoulli observations. As of the source check, no matching minimax or instance-dependent theorem for this exact model was found.",
+ "progress": {
+  "state": "partial",
+  "summary": "Sub-Gaussian RKHS bandits, finite-armed Bernoulli bandits, and finite-dimensional logistic bandits are well developed. The exact nonparametric RKHS model with direct Bernoulli means still lacks matching upper and lower bounds.",
+  "links": [
+   {
+    "title": "COLT open-problem note",
+    "url": "https://arxiv.org/abs/2407.06321"
+   },
+   {
+    "title": "On Kernelized Multi-armed Bandits",
+    "url": "https://arxiv.org/abs/1704.00445"
+   }
+  ]
+ },
+ "importance": 7,
+ "difficulty": 7,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "Finite action spaces and simple kernels can refute proposed complexity measures or show separations from additive-noise rates, but asymptotic tightness requires proof families rather than a single finite instance.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Search can test confidence-radius formulas, small kernel matrices, and adversarial functions where additive-noise algorithms are loose. It may suggest lower-bound instances or Bernoulli-specific exploration rules.",
+ "literature": {
+  "synthesis": "The open problem sits exactly between three mature theories. Additive-noise kernelized bandits control a self-normalized RKHS norm and pay complexity through information gain. Finite-armed Bernoulli bandits show that KL geometry can be essential for sharp constants. Logistic bandits handle binary feedback but assume a parametric link and finite-dimensional features. The Bernoulli RKHS model in the open-problem note asks for binary observations whose mean function itself belongs to the RKHS and lies in $[0,1]$. A solution must therefore decide whether existing RKHS confidence machinery is already minimax tight, whether KL-style local curvature improves the rate, or whether the boundary behavior of Bernoulli means introduces new obstructions.",
+  "reviewed": [
+   {
+    "ref": "Mussi, Drago, Metelli, 'Open Problem: Tight Bounds for Kernelized Multi-Armed Bandits with Bernoulli Rewards', arXiv 2024",
+    "result": "Formulates the Bernoulli kernelized-bandit model and identifies tight regret bounds as open.",
+    "relevance": "open-problem-source",
+    "url": "https://arxiv.org/abs/2407.06321"
+   },
+   {
+    "ref": "Chowdhury and Gopalan, 'On Kernelized Multi-armed Bandits', ICML 2017",
+    "result": "Provides frequentist RKHS regret bounds under sub-Gaussian additive noise.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/1704.00445"
+   },
+   {
+    "ref": "Garivier and Cappe, 'The KL-UCB Algorithm for Bounded Stochastic Bandits and Beyond', COLT 2011",
+    "result": "Shows the value of Bernoulli/KL geometry in finite-armed bandits.",
+    "relevance": "related-tool",
+    "url": "https://proceedings.mlr.press/v19/garivier11a.html"
+   },
+   {
+    "ref": "Faury, Abeille, Calauzenes, Fercoq, 'Improved Optimistic Algorithms for Logistic Bandits', ICML 2022",
+    "result": "Develops binary-feedback bandit methods for finite-dimensional generalized-linear structure.",
+    "relevance": "solves-related-model",
+    "url": "https://arxiv.org/abs/2002.07530"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Start with finite action sets and fixed kernel matrices, where the problem becomes a structured Bernoulli bandit with an RKHS ellipsoid constraint. Try KL-based confidence sets over the RKHS ball, compare them with sub-Gaussian confidence radii, and search for lower-bound functions concentrated near the boundary $0$ or $1$. Another route is to prove that Bernoulli feedback is no easier than additive sub-Gaussian feedback for certain kernels via a local asymptotic experiment.",
+  "verification_notes": "A claimed theorem must specify whether it is minimax or instance-dependent, the action-space assumptions, the kernel complexity measure, and the range condition ensuring $f(x)\\in[0,1]$. Upper bounds should be for an implementable adaptive policy and should not silently assume additive Gaussian observations. Lower bounds must use Bernoulli likelihoods and compare against all adaptive policies in the stated function class.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "Stated as a COLT open-problem note by Mussi, Drago, and Metelli, 'Open Problem: Tight Bounds for Kernelized Multi-Armed Bandits with Bernoulli Rewards'.",
+  "url": "https://arxiv.org/abs/2407.06321",
+  "quote": "it remains an open question whether tight results can be obtained for KBs",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Marco Mussi, Simone Drago, Alberto Maria Metelli",
+  "title": "Open Problem: Tight Bounds for Kernelized Multi-Armed Bandits with Bernoulli Rewards",
+  "year": 2024,
+  "venue": "COLT open-problem note / arXiv:2407.06321",
+  "url": "https://arxiv.org/abs/2407.06321"
+ },
+ "additional_refs": [
+  {
+   "authors": "Niranjan Srinivas, Andreas Krause, Sham Kakade, Matthias Seeger",
+   "title": "Gaussian Process Optimization in the Bandit Setting: No Regret and Experimental Design",
+   "year": 2010,
+   "venue": "ICML",
+   "url": "https://arxiv.org/abs/0912.3995"
+  },
+  {
+   "authors": "Sayak Ray Chowdhury, Aditya Gopalan",
+   "title": "On Kernelized Multi-armed Bandits",
+   "year": 2017,
+   "venue": "ICML",
+   "url": "https://arxiv.org/abs/1704.00445"
+  },
+  {
+   "authors": "Aurelien Garivier, Olivier Cappe",
+   "title": "The KL-UCB Algorithm for Bounded Stochastic Bandits and Beyond",
+   "year": 2011,
+   "venue": "COLT",
+   "url": "https://proceedings.mlr.press/v19/garivier11a.html"
+  },
+  {
+   "authors": "Louis Faury, Marc Abeille, Clement Calauzenes, Olivier Fercoq",
+   "title": "Improved Optimistic Algorithms for Logistic Bandits",
+   "year": 2022,
+   "venue": "ICML",
+   "url": "https://arxiv.org/abs/2002.07530"
+  }
+ ],
+ "bibtex": "@misc{Mussi2024,\n  author = {Marco Mussi and Simone Drago and Alberto Maria Metelli},\n  title = {Open Problem: Tight Bounds for Kernelized Multi-Armed Bandits with Bernoulli Rewards},\n  year = {2024},\n  howpublished = {COLT open-problem note / arXiv:2407.06321},\n  url = {https://arxiv.org/abs/2407.06321},\n  note = {Source of ORdős Problem ORDOS-142}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/kernelized-bernoulli-bandits-tight-bounds.html",
+  "api": "https://ordos-problems.github.io/api/problems/kernelized-bernoulli-bandits-tight-bounds.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

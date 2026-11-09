@@ -1,0 +1,129 @@
+{
+ "number": 147,
+ "ref": "ORDOS-147",
+ "id": "online-steiner-forest-greedy-ratio",
+ "title": "Tight competitive ratio of greedy online Steiner Forest",
+ "collection": "Online Algorithms & Learning",
+ "area": "Online Algorithms",
+ "status": "solution claimed",
+ "confidence": "medium",
+ "tags": [
+  "online Steiner forest",
+  "network design",
+  "greedy algorithm",
+  "competitive analysis"
+ ],
+ "short_statement": "A 2026 preprint claims the tight greedy online Steiner Forest ratio is $\\Theta(\\log k\\log\\log k)$, disproving a logarithmic guarantee.",
+ "open_problem": "Verify the claimed tight $\\Theta(\\log k\\log\\log k)$ characterization; the original $O(\\log k)$ question is claimed answered negatively.",
+ "background": "Historical context before October 2026: Online Steiner Forest is a canonical online network-design problem: connectivity demands appear over time, and infrastructure must be built irrevocably. The greedy algorithm is almost unavoidable in this setting: connect the new demand as cheaply as possible using the network already bought. Despite its simplicity, its exact performance has resisted analysis for decades. The problem is attractive because the lower bound for every online algorithm is only logarithmic, so greedy might be optimal up to constants. At the same time, greedy decisions can create subtle long-term effects: a path that is locally shortest may or may not build useful infrastructure for future terminal pairs. The gap between the simple algorithm and the optimal online lower bound is therefore a clean test of whether local metric contraction captures the right online network-design structure. Current status: An October 29, 2026 preprint by Gholami, Ilya Hajiaghayi, MohammadTaghi Hajiaghayi, and Jabbarzade claims tight $\\Theta(\\log k\\log\\log k)$ bounds for this exact greedy algorithm.",
+ "full_statement": "In online Steiner Forest, a weighted undirected graph $G=(V,E)$ is known in advance, but terminal pairs $(s_1,t_1),(s_2,t_2),\\ldots,(s_k,t_k)$ arrive one by one. After pair $(s_i,t_i)$ arrives, the algorithm must buy edges so that $s_i$ and $t_i$ are connected in the subgraph bought so far; bought edges cannot be removed. The cost is the total weight of all bought edges, and the benchmark is the offline optimum Steiner forest connecting all $k$ pairs. The greedy algorithm, upon arrival of $(s_i,t_i)$, buys a shortest path between $s_i$ and $t_i$ in the metric obtained after contracting all previously bought edges. Historically, it was known that every online algorithm has competitive ratio $\\Omega(\\log k)$, while the classical analysis of greedy gives $O(\\log^2 k)$. Bamas, Drygala, and Maggiori improved the analysis to $O(\\log k\\log\\log k)$ on a broad class of instances containing all previously known lower-bound examples. The original open problem was to determine whether greedy is $O(\\log k)$-competitive on all instances, or whether there is a family forcing a superlogarithmic ratio. An October 29, 2026 preprint by Gholami, Ilya Hajiaghayi, MohammadTaghi Hajiaghayi, and Jabbarzade claims tight $\\Theta(\\log k\\log\\log k)$ bounds for this exact greedy algorithm. Its lower bound is independent of tie-breaking; the claimed upper bound covers arbitrary finite positive-cost graphs and feasible demand sequences. Verification is pending.",
+ "known_results": "Historical context before October 2026: Awerbuch, Azar, and Bartal proved that greedy is $O(\\log^2 k)$-competitive, and this remained the main general upper bound for many years. A logarithmic lower bound applies even to randomized algorithms, so no online algorithm can be $o(\\log k)$-competitive in general. Bamas, Drygala, and Maggiori improved the analysis of greedy to $O(\\log k\\log\\log k)$ for a wide class of instances, including all lower-bound instances known in the literature. Their result suggests that the extra logarithmic factor in the classical analysis may be an artifact, but it does not settle arbitrary instances. Those earlier papers supplied neither a superlogarithmic greedy lower bound nor a logarithmic general upper bound. Current status: An October 29, 2026 preprint by Gholami, Ilya Hajiaghayi, MohammadTaghi Hajiaghayi, and Jabbarzade claims tight $\\Theta(\\log k\\log\\log k)$ bounds for this exact greedy algorithm.",
+ "progress": {
+  "state": "solution-claimed",
+  "summary": "An October 29, 2026 preprint by Gholami, Ilya Hajiaghayi, MohammadTaghi Hajiaghayi, and Jabbarzade claims tight $\\Theta(\\log k\\log\\log k)$ bounds for this exact greedy algorithm. Theorem statements reviewed; proof not independently verified.",
+  "links": [
+   {
+    "title": "Bamas-Drygala-Maggiori improved analysis",
+    "url": "https://arxiv.org/abs/2111.10086"
+   },
+   {
+    "title": "Gholami et al., The Tight Competitive Ratio of Greedy for Online Steiner Forest, arXiv:2610.40569 (2026)",
+    "url": "https://arxiv.org/html/2610.40569v1"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "A superlogarithmic lower bound for greedy would be an explicit graph and demand sequence. Small-instance search can test candidate bad families.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Automated search can evolve weighted graphs and terminal-pair sequences that maximize the greedy/offline ratio, with offline optima computed by integer programming for small cases.",
+ "literature": {
+  "synthesis": "Historical context: The online Steiner Forest greedy algorithm has a long history because it is both natural and hard to analyze. The Awerbuch-Azar-Bartal analysis gives a squared-logarithmic upper bound by charging greedy paths across distance scales. The universal lower bound is logarithmic, leaving a single extra logarithmic factor unexplained. Bamas, Drygala, and Maggiori show that this extra factor disappears, up to $\\log\\log k$, on a broad class of instances that captures known hard examples. Their work narrows the possibilities: either there is a qualitatively new family of bad instances, or greedy is essentially optimal. The problem is therefore a precise structural question about how shortest-path contractions evolve under adversarial demand sequences. An October 29, 2026 preprint by Gholami, Ilya Hajiaghayi, MohammadTaghi Hajiaghayi, and Jabbarzade claims tight $\\Theta(\\log k\\log\\log k)$ bounds for this exact greedy algorithm.",
+  "reviewed": [
+   {
+    "ref": "Awerbuch, Azar, Bartal, 'On-Line Generalized Steiner Problem', SODA 1996",
+    "result": "Classical $O(\\log^2 k)$ analysis of greedy.",
+    "relevance": "partial-progress",
+    "url": "https://dl.acm.org/doi/10.5555/313852.314087"
+   },
+   {
+    "ref": "Bamas, Drygala, Maggiori, 'An Improved Analysis of Greedy for Online Steiner Forest', SODA 2022",
+    "result": "Proves $O(\\log k\\log\\log k)$ on a broad class of instances.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2111.10086"
+   },
+   {
+    "ref": "Buchbinder and Naor, 'The Design of Competitive Online Algorithms via a Primal-Dual Approach', FnT TCS 2009",
+    "result": "Survey and framework for online primal-dual network design.",
+    "relevance": "survey",
+    "url": "https://doi.org/10.1561/0400000024"
+   },
+   {
+    "ref": "Gholami et al., The Tight Competitive Ratio of Greedy for Online Steiner Forest, arXiv:2610.40569 (2026)",
+    "result": "Preprint Theorems 1 and 2 assert matching bounds; Corollary 1.1 states tightness. This is not a result for a different online algorithm.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/html/2610.40569v1"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "First check Theorems 1 and 2 and the lower-bound construction in the 2026 preprint. Search for bad demand sequences on recursively defined metrics, tree metrics, and graph products. For upper bounds, try scale-refined charging arguments, potential functions on contracted metrics, or reductions showing arbitrary instances can be decomposed into the broad class handled by recent work.",
+  "verification_notes": "A lower-bound claim must compute the greedy cost and offline optimum for a parameterized family and prove the asymptotic ratio. An upper-bound proof must cover arbitrary weighted graphs and adaptive adversarial demand sequences. Exhaustive search can certify small examples but not asymptotic behavior without a family. A verifier should check that the algorithm is exactly the shortest-path-in-the-contracted-metric greedy algorithm, that contractions are modeled correctly after each bought path, and that the comparison is to the offline optimum forest for all demands, not to an online optimum or tree-only relaxation.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "Discussed in Bamas, Drygala, Maggiori, 'An Improved Analysis of Greedy for Online Steiner Forest', SODA 2022.",
+  "url": "https://arxiv.org/abs/2111.10086",
+  "quote": "Although simple and intuitive, greedy proved itself challenging to analyze and its competitive ratio is a long-standing open problem in the area of online algorithms.",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Etienne Bamas, Marina Drygala, Andreas Maggiori",
+  "title": "An Improved Analysis of Greedy for Online Steiner Forest",
+  "year": 2022,
+  "venue": "SODA",
+  "url": "https://arxiv.org/abs/2111.10086"
+ },
+ "additional_refs": [
+  {
+   "authors": "Baruch Awerbuch, Yossi Azar, Yair Bartal",
+   "title": "On-Line Generalized Steiner Problem",
+   "year": 1996,
+   "venue": "SODA",
+   "url": "https://dl.acm.org/doi/10.5555/313852.314087"
+  },
+  {
+   "authors": "Niv Buchbinder, Joseph Naor",
+   "title": "The Design of Competitive Online Algorithms via a Primal-Dual Approach",
+   "year": 2009,
+   "venue": "Foundations and Trends in Theoretical Computer Science",
+   "url": "https://doi.org/10.1561/0400000024"
+  },
+  {
+   "authors": "Etienne Bamas, Marina Drygala, Andreas Maggiori",
+   "title": "An Improved Analysis of Greedy for Online Steiner Forest",
+   "year": 2022,
+   "venue": "SODA",
+   "url": "https://arxiv.org/abs/2111.10086"
+  },
+  {
+   "authors": "Iman Gholami, Ilya Hajiaghayi, MohammadTaghi Hajiaghayi, Peyman Jabbarzade",
+   "title": "The Tight Competitive Ratio of Greedy for Online Steiner Forest",
+   "year": 2026,
+   "venue": "arXiv preprint; resolution claim not independently verified",
+   "url": "https://arxiv.org/abs/2610.40569"
+  }
+ ],
+ "bibtex": "@misc{Bamas2022,\n  author = {Etienne Bamas and Marina Drygala and Andreas Maggiori},\n  title = {An Improved Analysis of Greedy for Online Steiner Forest},\n  year = {2022},\n  howpublished = {SODA},\n  url = {https://arxiv.org/abs/2111.10086},\n  note = {Source of ORdős Problem ORDOS-147}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/online-steiner-forest-greedy-ratio.html",
+  "api": "https://ordos-problems.github.io/api/problems/online-steiner-forest-greedy-ratio.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

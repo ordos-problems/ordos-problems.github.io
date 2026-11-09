@@ -1,0 +1,83 @@
+{
+  "id": "polynomial-hirsch-conjecture",
+  "title": "The Polynomial Hirsch Conjecture",
+  "short_statement": "Santos disproved the original linear Hirsch bound, but it remains open whether every polytope has graph diameter bounded by a polynomial in its facets and dimension.",
+  "full_statement": "Let $P\\subset\\mathbb{R}^d$ be a convex polytope described by $n$ facet inequalities, and let $G(P)$ be its vertex-edge graph. The combinatorial diameter $\\delta(P)$ is the maximum, over pairs of vertices of $P$, of the shortest-path distance between them in $G(P)$. Hirsch's original conjecture asserted the linear bound $\\delta(P)\\le n-d$, and Santos disproved it. The polynomial Hirsch problem asks for the surviving qualitative version: does there exist an absolute constant $c$ and a polynomial $p(n,d)$, for example $(nd)^c$ or $n^c d^c$, such that every $d$-dimensional polytope with $n$ facets satisfies $\\delta(P)\\le p(n,d)$? Equivalently, can the current quasipolynomial/subexponential upper bounds be improved to polynomial, or can one construct an explicit family of polytopes whose graph diameters grow superpolynomially in the natural input parameters?",
+  "background": "The graph of a polytope is the state space traversed by simplex-type algorithms: vertices are basic feasible solutions, and edges are pivots. Warren Hirsch conjectured in 1957 that a $d$-dimensional polytope with $n$ facets has graph diameter at most $n-d$. Such a bound would have been a clean geometric explanation for short paths through feasible regions of linear programs. Santos disproved the original conjecture by constructing a 43-dimensional polytope with 86 facets and diameter exceeding $n-d$. That counterexample is fundamental, but it does not imply long simplex paths of superpolynomial length, nor does it rule out a larger polynomial diameter bound. The polynomial Hirsch conjecture is therefore the key residual geometric question: are all polytope graphs polynomial-diameter objects, or can high-dimensional polyhedral geometry force truly superpolynomial shortest paths?",
+  "open_problem": "Prove a polynomial upper bound on the graph diameter of every convex polytope in terms of facets and dimension, or construct an explicit superpolynomial-diameter family of polytopes that disproves the polynomial Hirsch conjecture.",
+  "known_results": "Santos disproved the original Hirsch conjecture with a 43-dimensional polytope having 86 facets and diameter larger than $n-d$, and his construction also yields linear-factor violations in related families. Kalai and Kleitman proved the foundational quasipolynomial upper bound for polyhedron diameter; Todd improved the form to approximately $(n-d)^{\\log_2 d}$, and later refinements improve exponents in some ranges without reaching polynomial. Polynomial or linear bounds are known for special classes, including low dimension, some 0/1-polytopes, and other structured families. General lower bounds remain only linear or mildly super-Hirsch, far below quasipolynomial. Thus both sides are open: no polynomial upper bound is known, and no superpolynomial lower-bound family is known.",
+  "status": "open",
+  "where_posed": {
+    "text": "The polynomial version is the surviving form of the Hirsch diameter problem after Santos's counterexample to the linear bound.",
+    "url": "https://arxiv.org/abs/1006.2814",
+    "quote": "",
+    "location": "Introduction and discussion following the counterexample"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The original linear Hirsch conjecture is false. The best general upper bounds remain quasipolynomial/subexponential, while known lower bounds do not approach superpolynomial growth. The polynomial gap remains fully open.",
+    "links": [
+      {
+        "title": "A counterexample to the Hirsch conjecture",
+        "url": "https://arxiv.org/abs/1006.2814"
+      },
+      {
+        "title": "An improved Kalai-Kleitman bound for the diameter of a polyhedron",
+        "url": "https://arxiv.org/abs/1402.3579"
+      }
+    ]
+  },
+  "importance": 9,
+  "difficulty": 9,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "A superpolynomial explicit family would refute the conjecture, and finite high-diameter candidates can be searched and verified computationally. Proving asymptotic superpolynomial growth, or a general polynomial upper bound, remains a mathematical proof task.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Search can explore spindle constructions, wedge operations, oriented matroids, and small polytope families with unusually large graph diameter. Candidate families still require rigorous realization and asymptotic diameter proofs.",
+  "literature": {
+    "synthesis": "The linear Hirsch conjecture failed, but known counterexamples are still far from refuting polynomial diameter. The upper-bound side descends from the Kalai-Kleitman recurrence and its improvements: these bounds are dramatically better than exponential but remain quasipolynomial in the relevant parameters. The lower-bound side has not produced a superpolynomial family; known constructions show that the Hirsch constant is false, not that polytope graphs can be extremely long. A solution therefore needs either a new global geometric/combinatorial argument giving polynomial diameter, or a construction method that amplifies local non-Hirsch behavior into genuine superpolynomial diameter while preserving realizability as convex polytopes.",
+    "reviewed": [
+      {
+        "ref": "Francisco Santos, 'A counterexample to the Hirsch conjecture', Annals of Mathematics 2012",
+        "result": "Constructs a 43-dimensional polytope with 86 facets violating the original $n-d$ Hirsch bound.",
+        "relevance": "hardness",
+        "url": "https://arxiv.org/abs/1006.2814"
+      },
+      {
+        "ref": "Gil Kalai and Daniel J. Kleitman, 'A quasi-polynomial bound for the diameter of graphs of polyhedra', Bulletin of the AMS 1992",
+        "result": "Gives the foundational quasipolynomial upper bound for polyhedron graph diameter.",
+        "relevance": "partial-progress",
+        "url": "https://doi.org/10.1090/S0273-0979-1992-00285-9"
+      },
+      {
+        "ref": "Michael J. Todd, 'An improved Kalai-Kleitman bound for the diameter of a polyhedron', SIAM Journal on Discrete Mathematics 2014",
+        "result": "Improves the Kalai-Kleitman bound to roughly $(n-d)^{\\log_2 d}$.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1402.3579"
+      },
+      {
+        "ref": "Noriyoshi Sukegawa, 'Improving bounds on the diameter of a polyhedron in high dimensions', Discrete Mathematics 2017",
+        "result": "Further improves Todd-style exponents in high-dimensional parameter ranges without changing the qualitative quasipolynomial status.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1604.04039"
+      },
+      {
+        "ref": "Victor Klee and David W. Walkup, 'The d-step conjecture for polyhedra of dimension d < 6', Acta Mathematica 1967",
+        "result": "Develops equivalent formulations and early structural results for Hirsch-type diameter questions.",
+        "relevance": "background",
+        "url": "https://doi.org/10.1007/BF02392053"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "For a disproof, search for structured families of spindles, wedge constructions, abstract polytopes, or oriented matroids with provably growing graph diameter, then verify realizability. For a proof, study separator-type arguments, recurrence inequalities stronger than Kalai-Kleitman, randomized shadow-vertex geometry, expansion properties of polytope graphs, and special classes that might admit bootstrapping.",
+    "verification_notes": "A counterexample to the original Hirsch bound is not enough; a disproof must give an infinite family with superpolynomial diameter in the chosen parameters and prove the family is realizable as convex polytopes. A positive proof must apply to arbitrary convex polytopes or state a restricted class. Claims about simplex pivot rules do not by themselves settle polynomial Hirsch, because graph diameter and algorithmic pivot length are related but not identical.",
+    "machine_checkable": true
+  },
+  "tags": [
+    "polytope-diameter",
+    "hirsch-conjecture",
+    "linear-programming",
+    "simplex-method",
+    "polyhedral-combinatorics"
+  ]
+}

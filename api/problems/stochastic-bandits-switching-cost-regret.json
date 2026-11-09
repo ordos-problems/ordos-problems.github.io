@@ -2,7 +2,7 @@
  "number": 38,
  "ref": "ORDOS-038",
  "id": "stochastic-bandits-switching-cost-regret",
- "title": "Minimax and gap-dependent regret for bandits with switching costs",
+ "title": "Fine-grained regret for bandits with switching costs",
  "collection": "Operations Research",
  "area": "Bandits",
  "status": "partially resolved",
@@ -13,15 +13,82 @@
   "switching-costs",
   "minimax",
   "online-learning",
-  "lower-bounds"
+  "lower-bounds",
+  "multi-armed bandits",
+  "switching costs",
+  "instance-dependent bounds",
+  "online learning",
+  "instance-dependent-bounds",
+  "best-of-both-worlds"
  ],
- "short_statement": "For regret minimization with a unit cost per arm switch, the adversarial minimax regret is order $T^{2/3}$ (vs $T^{1/2}$ without), and the stochastic switch-budget case has matching phase-transition bounds. Open: the exact instance-dependent (gap-dependent) optimal regret and tight dependence on general non-unit switching-cost structures.",
- "open_problem": "Determine the exact gap-dependent regret and the tight minimax dependence for stochastic bandits with general switching-cost matrices.",
- "full_statement": "An algorithm chooses $a_t \\in [K]$ for $t=1,\\dots,T$, observes only the played arm's reward (bandit feedback), and incurs a switching cost whenever $a_t \\neq a_{t-1}$; total cost = regret-from-rewards + switching cost. With unit costs, $R_T = (\\max_a \\sum_t \\mu_a - \\mathbb{E}\\sum_t \\mu_{a_t}) + \\mathbb{E}[\\sum_{t=2}^T \\mathbf{1}\\{a_t \\neq a_{t-1}\\}]$. Adversarial: Dekel-Ding-Koren-Peres (2014) prove the minimax value is $\\widetilde{\\Theta}(T^{2/3})$ (vs $\\Theta(\\sqrt{KT})$ without switching costs) via a multi-scale random-walk lower bound. Stochastic switch-budget: Simchi-Levi-Xu (2019) cap the number of switches at $S$ and prove matching bounds exhibiting equal-length 'phases' in $S$ where optimal regret is constant within a phase and drops sharply between phases. $$\\textbf{Open (residual):}\\ \\text{the exact gap-dependent optimal regret with switching cost } c, \\text{ and the tight minimax dependence under general (non-unit, arm-pair-dependent) switching-cost matrices,}$$ including matching constants and the precise interpolation between $T^{1/2}$ (cost $\\to 0$) and $T^{2/3}$ (unit cost) in the stochastic case.",
- "known_results": "Proven: adversarial unit-switching-cost minimax regret is $\\tilde{\\Theta}(T^{2/3})$ (Dekel et al. 2014); for the stochastic problem with a fixed budget S on the number of switches, matching bounds with explicit phase transitions (Simchi-Levi-Xu 2019); best-of-both-worlds algorithms achieving $O(T^{2/3})$ adversarial and $O(\\sum_i \\log T / \\Delta_i)$ stochastic simultaneously (Rouyer-Seldin-Cesa-Bianchi 2021). Open/residual: exact instance-dependent (gap-dependent) optimal constants for stochastic switching-cost regret, and tight characterization for general non-unit / arm-pair-dependent switching-cost matrices. This is a regret-minimization counterpart to the Bayesian/Gittins entry; the core minimax rates are resolved, so confidence that a clean fully-open question remains is moderate.",
+ "short_statement": "The headline minimax rates are known; the remaining problem is a sharp instance-dependent and cost-geometry theory for stochastic and best-of-both-worlds bandits with switching costs.",
+ "open_problem": "Develop tight instance-dependent regret bounds for bandits with switching costs, including nonuniform arm-pair costs and best-of-both-worlds constraints, with matching lower bounds that explain the exact dependence on gaps, horizon, arms, and switching-cost geometry.",
+ "background": "Switching costs capture a simple operational friction in bandit learning: changing suppliers, treatments, ads, prices, servers, or experimental configurations may be costly even when observations are otherwise standard bandit feedback. Dekel, Ding, Koren, and Peres showed that adversarial bandits with unit switching cost have minimax regret of order $T^{2/3}$ up to logarithmic factors, a qualitative change from the usual $\\sqrt{T}$ scale. In stochastic bandits, the story is subtler because logarithmically many carefully batched switches can be enough for classical gap-dependent learning in some models, while hard switching budgets produce phase transitions. Simchi-Levi and Xu gave matching minimax bounds for stochastic bandits with switching constraints and showed that general switching costs connect to graph-traversal structure. Later best-of-both-worlds work improved simultaneous stochastic/adversarial guarantees and proved tradeoff lower bounds. This means the useful open problem is no longer the basic minimax exponent; it is the Lai-Robbins-style fine structure under switching frictions.",
+ "full_statement": "A learner chooses arms $a_t\\in[K]$ over $t=1,\\ldots,T$, observes only the chosen reward or loss, and incurs a switching cost when $a_t\\ne a_{t-1}$ or, more generally, a cost $c(a_{t-1},a_t)$ determined by an arm-pair cost matrix or graph. Performance can be measured by regret that includes switching penalties, or by ordinary reward regret subject to a hard budget on total switching cost. For unit switching costs, adversarial minimax rates and stochastic switch-budget phase transitions are largely understood. The open problem is to determine the exact instance-dependent and structure-dependent regret in the remaining regimes: dependence on the gaps $\\Delta_i$, on nonuniform cost matrices or metric/graph structure, on the number and placement of switches, and on simultaneous best-of-both-worlds guarantees that remain adversarially robust while adapting optimally to stochastic instances.",
+ "known_results": "Dekel, Ding, Koren, and Peres proved adversarial unit-cost minimax regret $\\widetilde{\\Theta}(T^{2/3})$. Simchi-Levi and Xu characterized minimax regret for stochastic bandits under switching-budget constraints and identified phase transitions in the optimal rate; they also showed that general switching-cost structures lead to graph-traversal subproblems such as shortest Hamiltonian path. Rouyer, Seldin, and Cesa-Bianchi gave an algorithm with both adversarial and stochastically constrained guarantees when a fixed switching penalty is paid. Amir, Azov, Koren, and Livni improved the stochastic side of the best-of-both-worlds tradeoff and proved lower bounds showing that adversarial robustness forces additional stochastic regret in some regimes. These results leave open a complete formula for instance-dependent regret under heterogeneous costs and a full characterization of which best-of-both-worlds tradeoffs are simultaneously achievable.",
+ "progress": {
+  "state": "partial",
+  "summary": "Adversarial minimax rates, stochastic switch-budget rates, and several best-of-both-worlds tradeoffs are known. The unresolved part is a sharp instance-dependent theory with exact dependence on switching-cost geometry and adversarial-robustness requirements.",
+  "links": [
+   {
+    "title": "Bandits with Switching Costs: T^{2/3} Regret",
+    "url": "https://arxiv.org/abs/1310.2997"
+   },
+   {
+    "title": "Phase Transitions in Bandits with Switching Constraints",
+    "url": "https://arxiv.org/abs/1905.10825"
+   },
+   {
+    "title": "Better Best of Both Worlds Bounds for Bandits with Switching Costs",
+    "url": "https://arxiv.org/abs/2206.03098"
+   }
+  ]
+ },
+ "importance": 7,
+ "difficulty": 7,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "Small Bernoulli or Gaussian instances with two or three arms and carefully chosen switching-cost matrices can refute proposed gap-dependent formulas. Full lower bounds require asymptotic information-theoretic arguments.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Automated search can optimize small hard instances, switching graphs, or adaptive policies and compare empirical regret scalings. Proofs still need change-of-measure lower bounds and algorithm analysis.",
+ "literature": {
+  "synthesis": "The basic rate story is mostly settled, so this record should be read as a fine-grained open problem. The adversarial unit-cost case has the $T^{2/3}$ barrier; stochastic switching-budget models have phase transitions; and best-of-both-worlds algorithms now show that stochastic adaptation and adversarial robustness can coexist, but not for free. The missing theory is analogous to the gap-dependent theory of classical stochastic bandits, except that every sample path also has a switching geometry. The most useful resolution would identify the right complexity measure combining gaps and costs, prove an algorithm achieving it, and match it with lower bounds for both pure stochastic and robust-to-adversarial formulations.",
+  "reviewed": [
+   {
+    "ref": "Ofer Dekel, Jian Ding, Tomer Koren, and Yuval Peres, 'Bandits with Switching Costs: T^{2/3} Regret', STOC 2014",
+    "result": "Proves the adversarial unit-switching-cost minimax rate $\\widetilde{\\Theta}(T^{2/3})$ and connects the result to other adaptive-adversary and MDP questions.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1310.2997"
+   },
+   {
+    "ref": "David Simchi-Levi and Yunzong Xu, 'Phase Transitions in Bandits with Switching Constraints', Management Science 2023 / arXiv 2019",
+    "result": "Gives matching minimax bounds for stochastic bandits with switching budgets and identifies phase transitions; under general switching costs it exposes graph-traversal structure.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1905.10825"
+   },
+   {
+    "ref": "Chloe Rouyer, Yevgeny Seldin, and Nicolo Cesa-Bianchi, 'An Algorithm for Stochastic and Adversarial Bandits with Switching Costs', ICML 2021",
+    "result": "Provides a best-of-both-worlds algorithm with adversarial minimax regret and stochastic gap-dependent guarantees under switching costs.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2102.09864"
+   },
+   {
+    "ref": "Idan Amir, Guy Azov, Tomer Koren, and Roi Livni, 'Better Best of Both Worlds Bounds for Bandits with Switching Costs', arXiv 2022",
+    "result": "Improves the stochastic guarantee in the best-of-both-worlds setting and proves lower bounds showing unavoidable tradeoffs.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2206.03098"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Start with two- and three-arm Bernoulli or Gaussian instances and with nonuniform cost graphs such as stars, paths, and metrics. Try lower bounds that couple change-of-measure arguments with forced travel/switching counts. On the algorithmic side, analyze batched elimination, arm clustering by switching metric, graph traversal schedules, and Tsallis-INF-style robust algorithms with explicit stochastic terms.",
+  "verification_notes": "A claimed bound must specify whether switching costs are charged inside regret or imposed as a hard budget, and whether the environment is stochastic, adversarial, stochastically constrained adversarial, or best-of-both-worlds. It must compare against $\\widetilde{\\Theta}(T^{2/3})$ adversarial minimax bounds, Simchi-Levi-Xu switching-budget phase transitions, and known best-of-both-worlds lower bounds. For heterogeneous costs, the claimed complexity measure should be invariant under relabeling of arms and should reduce to known unit-cost rates.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "Core minimax rate established in Dekel, Ding, Koren, Peres, 'Bandits with Switching Costs: T^{2/3} Regret,' STOC 2014; the residual gap-dependent and non-unit-cost questions are noted in the surrounding literature (Simchi-Levi-Xu 2019; Rouyer-Seldin-Cesa-Bianchi 2021).",
-  "url": "https://arxiv.org/abs/1310.2997"
+  "text": "Residual problem after minimax and budgeted-switching results of Dekel et al. and Simchi-Levi-Xu.",
+  "url": "https://arxiv.org/abs/1905.10825",
+  "quote": "",
+  "location": "Discussion of general switching cost structures and phase transitions"
  },
  "source": {
   "authors": "Ofer Dekel, Jian Ding, Tomer Koren, Yuval Peres",

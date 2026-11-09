@@ -1,0 +1,32 @@
+{
+  "id": "prophet-cancellation-costs-small-buyback",
+  "known_results": "Ekbatani, Niazadeh, Nuti, and Vondrak prove the exact optimal ratio $(1+f)/(1+2f)$ when $f\\ge1$. For $0<f<1$, their paper explicitly states that the problem is still open. They give partial results for this regime, including almost matching asymptotic upper and lower bounds showing that as $f\\downarrow0$, the optimal ratio is $1-\\Theta(f\\log(1/f))$. Classical prophet inequalities solve the no-recourse irrevocable case with ratio $1/2$, while secretary/buyback and online matching recourse models give related techniques but not this exact independent-values prophet benchmark. Thus the qualitative small-cost behavior is known, but the exact function $\\alpha(f)$ for fixed $f\\in(0,1)$ is not.",
+  "literature": {
+    "synthesis": "The cancellation-cost model interpolates between irrevocable prophet selection and near-free recourse. The source paper develops two complementary proof styles: threshold arguments inspired by classical prophet inequalities, and combinatorial-optimization methods based on LP duality, flows, and cuts. The exact $f\\ge1$ ratio suggests a clean minimax structure, while the small-$f$ asymptotics show that very cheap cancellation nearly recovers the prophet but pays a logarithmic penalty. The unresolved regime is the interpolation between these behaviors. A solution likely needs either an exact factor-revealing program whose dual can be solved for every $f$, or a family of hard instances proving that a candidate policy is tight.",
+    "reviewed": [
+      {
+        "ref": "Farbod Ekbatani, Rad Niazadeh, Pranav Nuti, Jan Vondrak, 'Prophet Inequalities with Cancellation Costs', arXiv 2024",
+        "result": "Solves the regime $f\\ge1$ with exact ratio $(1+f)/(1+2f)$ and proves small-$f$ asymptotics $1-\\Theta(f\\log(1/f))$; leaves exact $0<f<1$ open.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2404.00527"
+      },
+      {
+        "ref": "Krengel and Sucheston, 'Semiamarts and finite values', Bulletin of the AMS 1977",
+        "result": "Classical source for prophet inequality ideas underlying the no-recourse benchmark.",
+        "relevance": "related-tool",
+        "url": "https://doi.org/10.1090/S0002-9904-1977-14379-0"
+      },
+      {
+        "ref": "Babaioff, Immorlica, Kempe, Kleinberg, 'A Knapsack Secretary Problem with Applications', APPROX 2007",
+        "result": "Representative online-selection work with recourse/secretary-style methods adjacent to buyback prophet models.",
+        "relevance": "related-tool",
+        "url": "https://doi.org/10.1007/978-3-540-74208-1_2"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Discretize values and solve the optimal online dynamic program for fixed $f$ to search for extremal instances. Try to fit the resulting values to a factor-revealing LP or to threshold policies with cancellation intervals. Dual-fitting and cut/flow formulations from the source paper are likely the right proof language.",
+    "verification_notes": "A claimed lower bound must handle arbitrary independent nonnegative distributions and account for all cancellation costs, including multiple replacements. A claimed upper bound must specify distributions and prove that no online replacement policy beats the stated ratio; simulation alone is not enough. A theorem for $f\\ge1$, asymptotic $f\\downarrow0$, secretary arrivals, adversarial values, or multi-item buyback does not resolve the fixed-$0<f<1$ prophet benchmark unless an explicit reduction is given.",
+    "machine_checkable": true
+  }
+}

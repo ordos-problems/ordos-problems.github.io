@@ -1,0 +1,153 @@
+{
+ "number": 172,
+ "ref": "ORDOS-172",
+ "id": "multiway-cut-approximation-threshold",
+ "title": "Exact approximation threshold for Multiway Cut",
+ "collection": "Approximation & Discrepancy",
+ "area": "Graph Cuts and Approximation Algorithms",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "multiway cut",
+  "graph cuts",
+  "approximation algorithms",
+  "integrality gap",
+  "CKR relaxation"
+ ],
+ "short_statement": "Multiway Cut has a $1.2787$ algorithm; a November 2026 preprint improves the UGC-based lower bound to $1.22232$. The exact threshold remains open.",
+ "open_problem": "Determine the exact approximation threshold between the $1.2787$ upper bound and lower bounds, including the new preprint $1.22232$ UGC-hardness claim.",
+ "background": "Graph cut problems are foundational in combinatorial optimization, operations research, image segmentation, clustering, and network interdiction. Multiway Cut is the natural generalization of $s$-$t$ cut from two terminals to many terminals. The two-terminal problem is exactly solvable by max-flow/min-cut, while three or more terminals create an approximation problem with rich geometric structure. The CKR relaxation converts cuts into simplex geometry, and much of the modern theory studies how to randomly round points in that simplex while controlling boundary-crossing probabilities. The model is parsimonious and fully specified, but the constants remain unresolved. This makes it a good repository entry: a clean graph optimization problem with a precise numerical approximation gap and machine-checkable finite gap instances.",
+ "full_statement": "In the undirected Multiway Cut problem, the input is an undirected graph $G=(V,E)$ with nonnegative edge weights and a set of terminals $T=\\{t_1,\\ldots,t_k\\}$. A feasible solution deletes a set of edges whose removal separates every pair of terminals; equivalently, it partitions $V$ into $k$ parts, each containing exactly one terminal, and pays the total weight of edges crossing between parts. The goal is to minimize this cut cost. The problem is APX-hard for $k\\ge3$ and has a canonical geometric LP relaxation due to Calinescu, Karloff, and Rabani, in which vertices are embedded into the $k$-simplex with terminals at simplex corners. The open problem is to determine the exact polynomial-time approximation threshold, or at least close the gap between the best algorithms and the best hardness/integrality-gap constructions for arbitrary $k$.",
+ "known_results": "Dahlhaus et al. established early approximation and hardness results; Calinescu, Karloff, and Rabani introduced the simplex LP. Sharma-Vondrak's $1.2965$ algorithm was superseded by Brakensiek, Huang, Potechin, and Zwick (STOC 2026), whose Theorem 1.1 gives $1.2787$ for arbitrary terminal count. Angelidakis-Makarychev-Manurangsi's $1.2$ hardness and the Berczi-Chandrasekaran-Kiraly-Madan $1.20016$ improvement are conditional on UGC when interpreted as approximation hardness, not consequences of $P\\ne NP$ alone. The latter is also an unconditional CKR gap lower bound. A November 3, 2026 preprint by Brakensiek et al. claims analytic lower bound $1.22232$, yielding hardness under UGC. Its $1.23003$ figure is numerical evidence, not the proved theorem.",
+ "progress": {
+  "state": "partial",
+  "summary": "Upper bound $1.2787$ (STOC 2026); published CKR gap lower bound $1.20016$ and new preprint lower bound $1.22232$. Corresponding approximation-hardness statements require UGC.",
+  "links": [
+   {
+    "title": "Berczi et al. gap instance",
+    "url": "https://arxiv.org/abs/1807.09735"
+   },
+   {
+    "title": "Sharma-Vondrak rounding",
+    "url": "https://doi.org/10.1145/2591796.2591829"
+   },
+   {
+    "title": "Brakensiek, Huang, Potechin, and Zwick, Improved Approximation Algorithms for Multiway Cut by Large Mixtures of New and Old Rounding Schemes, STOC 2026",
+    "url": "https://arxiv.org/html/2603.28700v1"
+   },
+   {
+    "title": "Brakensiek, Huang, Potechin, and Zwick, Improved lower bounds on the approximability of Multiway Cut using Sherali-Adams relaxations, arXiv:2611.05511 (2026)",
+    "url": "https://arxiv.org/html/2611.05511v1"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Small simplex discretizations and graph instances can certify integrality gaps for the CKR relaxation. Candidate hard instances are finite and often amenable to exact LP/IP verification.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Automated search can optimize simplex partitions, Sperner-admissible labelings, and finite graph/LP gap instances. Such searches have a plausible path to better lower-bound candidates or improved rounding constants.",
+ "literature": {
+  "synthesis": "The central technical object is the simplex relaxation. Algorithms design randomized partitions of the simplex and bound the probability that an edge segment is separated. Lower bounds construct finite simplex subdivisions and admissible labelings whose boundary behavior forces high cut cost. Sharma and Vondrak's descending-threshold framework gave the historical $1.2965$ constant, while Angelidakis-Makarychev-Manurangsi and Berczi-Chandrasekaran-Kiraly-Madan push the lower-bound side just above $1.2$. The gap is not merely numerical: upper bounds rely on rounding distributions with global simplex symmetries, while lower bounds require understanding higher-dimensional combinatorial topology. A full solution likely needs either a substantially sharper rounding family or a new integrality/hardness construction approaching the algorithmic constant. Large mixtures of rounding schemes improve the upper bound to $1.2787$; a separate new analytic preprint strengthens the lower side. Numerical evidence and conditional hardness must be labeled separately.",
+  "reviewed": [
+   {
+    "ref": "Calinescu, Karloff, Rabani, 'An Improved Approximation Algorithm for Multiway Cut', JCSS 2000",
+    "result": "Introduces the influential simplex LP relaxation and rounding approach.",
+    "relevance": "related-tool",
+    "url": "https://doi.org/10.1006/jcss.1999.1694",
+    "relevance_detail": "algorithmic-background"
+   },
+   {
+    "ref": "Sharma and Vondrak, 'Multiway Cut, Pairwise Realizable Distributions, and Descending Thresholds', STOC 2014",
+    "result": "Historical $1.2965$ approximation, superseded by $1.2787$ in 2026.",
+    "relevance": "partial-progress",
+    "url": "https://doi.org/10.1145/2591796.2591829"
+   },
+   {
+    "ref": "Berczi, Chandrasekaran, Kiraly, Madan, 'Improving the Integrality Gap for Multiway Cut', arXiv 2018",
+    "result": "Constructs a CKR integrality-gap instance of $1.20016$.",
+    "relevance": "hardness",
+    "url": "https://arxiv.org/abs/1807.09735",
+    "relevance_detail": "lower-bound-evidence"
+   },
+   {
+    "ref": "Brakensiek, Huang, Potechin, and Zwick, Improved Approximation Algorithms for Multiway Cut by Large Mixtures of New and Old Rounding Schemes, STOC 2026",
+    "result": "Theorem 1.1 gives $1.2787$ for arbitrary terminal count.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/html/2603.28700v1"
+   },
+   {
+    "ref": "Brakensiek, Huang, Potechin, and Zwick, Improved lower bounds on the approximability of Multiway Cut using Sherali-Adams relaxations, arXiv:2611.05511 (2026)",
+    "result": "Theorem 1.1 claims analytic $1.22232$ lower bound, with approximation hardness under UGC.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/html/2611.05511v1"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Search over simplex subdivisions, admissible labelings, and rounding distributions; solve the resulting finite LPs to optimize constants. For algorithms, investigate new randomized partitions of the simplex or combinations of known threshold schemes. For hardness, try to convert stronger CKR gap instances into approximation hardness reductions.",
+  "verification_notes": "A claimed algorithmic improvement must apply to arbitrary weighted undirected graphs with arbitrary numbers of terminals. Verify whether the ratio is against the integral optimum or only against the CKR relaxation. A claimed gap instance should give the terminal count, graph or simplex subdivision, LP value, and integral cut lower bound with exact or certified numerical values. Do not conflate Multiway Cut with Multicut, directed variants, hypergraph cuts, or the fixed-$k$ case unless the reduction is explicit. Hardness at the cited constants uses UGC. Do not promote the new 1.23003 numerical experiment to a theorem.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "Historical gap summarized in Berczi et al.; the quoted 1.2965 benchmark has since been improved.",
+  "url": "https://arxiv.org/abs/1807.09735",
+  "quote": "",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Kristof Berczi, Karthekeyan Chandrasekaran, Tamas Kiraly, Vivek Madan",
+  "title": "Improving the Integrality Gap for Multiway Cut",
+  "year": 2018,
+  "venue": "arXiv",
+  "url": "https://arxiv.org/abs/1807.09735"
+ },
+ "additional_refs": [
+  {
+   "authors": "Gruia Calinescu, Howard Karloff, Yuval Rabani",
+   "title": "An Improved Approximation Algorithm for Multiway Cut",
+   "year": 2000,
+   "venue": "Journal of Computer and System Sciences",
+   "url": "https://doi.org/10.1006/jcss.1999.1694"
+  },
+  {
+   "authors": "Anastasios Angelidakis, Yury Makarychev, Pasin Manurangsi",
+   "title": "An Improved Integrality Gap for the Calinescu-Karloff-Rabani Relaxation for Multiway Cut",
+   "year": 2017,
+   "venue": "IPCO",
+   "url": "https://doi.org/10.1007/978-3-319-59250-3_4"
+  },
+  {
+   "authors": "Ankit Sharma, Jan Vondrak",
+   "title": "Multiway Cut, Pairwise Realizable Distributions, and Descending Thresholds",
+   "year": 2014,
+   "venue": "STOC",
+   "url": "https://doi.org/10.1145/2591796.2591829"
+  },
+  {
+   "authors": "Joshua Brakensiek, Neng Huang, Aaron Potechin, Uri Zwick",
+   "title": "Improved Approximation Algorithms for Multiway Cut by Large Mixtures of New and Old Rounding Schemes",
+   "year": 2026,
+   "venue": "STOC; arXiv full version",
+   "url": "https://arxiv.org/abs/2603.28700"
+  },
+  {
+   "authors": "Joshua Brakensiek, Neng Huang, Aaron Potechin, Uri Zwick",
+   "title": "Improved lower bounds on the approximability of Multiway Cut using Sherali-Adams relaxations",
+   "year": 2026,
+   "venue": "arXiv preprint",
+   "url": "https://arxiv.org/abs/2611.05511"
+  }
+ ],
+ "bibtex": "@misc{Berczi2018,\n  author = {Kristof Berczi and Karthekeyan Chandrasekaran and Tamas Kiraly and Vivek Madan},\n  title = {Improving the Integrality Gap for Multiway Cut},\n  year = {2018},\n  howpublished = {arXiv},\n  url = {https://arxiv.org/abs/1807.09735},\n  note = {Source of ORdős Problem ORDOS-172}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/multiway-cut-approximation-threshold.html",
+  "api": "https://ordos-problems.github.io/api/problems/multiway-cut-approximation-threshold.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

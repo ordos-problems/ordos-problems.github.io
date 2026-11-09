@@ -1,0 +1,41 @@
+{
+  "id": "metric-facility-location-gap",
+  "full_statement": "An instance of metric uncapacitated facility location has a finite set $F$ of candidate facilities, a finite set $C$ of clients, nonnegative opening costs $f_i$ for facilities $i\\in F$, and connection costs $d(i,j)$ between facilities and clients. The costs are induced by a metric on $F\\cup C$, so triangle inequalities hold after including facility-facility and client-client distances. A feasible solution opens a subset $S\\subseteq F$ and assigns every client $j\\in C$ to some open facility $i(j)\\in S$, paying $\\sum_{i\\in S} f_i+\\sum_{j\\in C} d(i(j),j)$. Facilities are uncapacitated: an open facility can serve any number of clients. The open problem is to determine the exact polynomial-time approximation threshold for this standard metric UFL problem. The best known general approximation ratio is $1.488$, while the best known NP-hardness threshold is $1.463$. Closing the gap means either improving the algorithmic ratio below $1.488$, proving stronger hardness above $1.463$, or identifying a matching threshold.",
+  "background": "Metric uncapacitated facility location is a foundational clustering and network-design model. Facilities have opening costs, clients must be assigned to open facilities, and connection costs form a metric. The problem is simple to state and has been a testing ground for primal-dual, LP-rounding, greedy, and bifactor approximation techniques. The best known general approximation ratio is Shi Li's $1.488$, while the best hardness is $1.463$. This narrow numerical gap has persisted for more than a decade. Its appeal is that the remaining problem is not one of modelling or asymptotics: determine the exact polynomial-time approximability threshold for a clean metric optimization problem.",
+  "open_problem": "Determine the exact polynomial-time approximation threshold for metric uncapacitated facility location, closing the gap between the $1.463$ hardness and the $1.488$ algorithm.",
+  "known_results": "Guha and Khuller established the standard $1.463$ approximability lower bound for metric facility location. Algorithmically, a long sequence of primal-dual, local-search, greedy, LP-rounding, and bifactor algorithms reduced the upper bound. Jain, Mahdian, and Saberi developed influential primal-dual and bifactor tradeoff tools; Mahdian, Ye, and Zhang improved the ratio to about $1.52$. Byrka and Aardal then gave a $1.5$ approximation by combining a modified Chudak-Shmoys LP-rounding algorithm with another bifactor algorithm and by touching the Jain-Mahdian-Saberi limit curve for connection-cost-dominated instances. Shi Li improved the guarantee to $1.488$ through a randomized scaling/bifactor combination, which remains the best known ratio for the standard centralized metric UFL problem in the sources checked here. Later work improves related variants, such as distributed, multi-level, capacitated, or penalty versions, but no source in this sweep improved the $1.488$ versus $1.463$ window for ordinary metric UFL.",
+  "status": "open",
+  "where_posed": {
+    "text": "Gap left by Shi Li's $1.488$ algorithm and Guha-Khuller/Sviridenko hardness for metric UFL.",
+    "url": "https://doi.org/10.1016/j.ic.2012.01.007",
+    "quote": "",
+    "location": "Approximation ratio discussion"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "Best known algorithmic ratio is $1.488$ and best hardness is $1.463$. No later improvement was found in this sweep.",
+    "links": [
+      {"title": "Byrka and Aardal, optimal bifactor approximation", "url": "https://arxiv.org/abs/cs/0703010"},
+      {"title": "Shi Li, 1.488 approximation", "url": "https://doi.org/10.1016/j.ic.2012.01.007"}
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Hard instances for algorithm analyses or LP gaps are finite and searchable, but exact approximability requires either an algorithmic proof or a hardness reduction.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Search can optimize bifactor curves and hard facility-location instances for candidate algorithms. Formal progress still needs approximation analysis or reductions.",
+  "literature": {
+    "synthesis": "Facility location approximation is driven by tradeoffs between opening-cost and connection-cost guarantees. A bifactor algorithm with guarantee $(\\lambda_f,\\lambda_c)$ controls the facility-opening part and connection part separately, and many of the best single-factor algorithms arise by combining algorithms that perform well in different regions of this two-dimensional cost plane. Byrka and Aardal's $1.5$ result shows the power of this viewpoint: their LP-rounding algorithm touches the known bifactor limit curve in the connection-cost-dominated regime and is balanced with a complementary algorithm. Shi Li's $1.488$ algorithm pushes the same broad strategy further using randomized scaling. The remaining gap is small but conceptually important. It is unclear whether the bifactor/LP-rounding framework still has room, or whether a new hardness construction can move the $1.463$ barrier upward toward $1.488$.",
+    "reviewed": [
+      {"ref": "Sudipto Guha, Samir Khuller, 'Greedy Strikes Back: Improved Facility Location Algorithms', Journal of Algorithms 1999", "result": "Develops improved algorithms and hardness foundations for metric facility location.", "relevance": "partial-progress", "url": "https://doi.org/10.1006/jagm.1998.0993"},
+      {"ref": "Jaroslaw Byrka, Karen Aardal, 'An optimal bifactor approximation algorithm for the metric uncapacitated facility location problem', arXiv 2007", "result": "Gives a $1.5$ approximation and optimal bifactor tradeoff for part of the curve.", "relevance": "partial-progress", "url": "https://arxiv.org/abs/cs/0703010"},
+      {"ref": "Shi Li, 'A 1.488 Approximation Algorithm for the Uncapacitated Facility Location Problem', Information and Computation 2013", "result": "Best known general approximation ratio, $1.488$.", "relevance": "partial-progress", "url": "https://doi.org/10.1016/j.ic.2012.01.007"}
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Study bifactor approximation curves and search for finite instances where current rounding analyses are tight. Hardness attempts should refine metric reductions near the $1.488$ threshold.",
+    "verification_notes": "A claimed algorithmic improvement must apply to metric uncapacitated facility location with arbitrary nonnegative facility opening costs and arbitrary finite metrics, and it must run in polynomial time in the explicit instance size. A bifactor improvement should be translated into a single-factor ratio better than $1.488$, or it should clearly state that it is only partial progress. A verifier should distinguish the standard centralized metric UFL problem from nonmetric UFL, capacitated facility location, fault-tolerant variants, $k$-median, Euclidean or fixed-dimensional special cases, distributed models, and multi-level or penalty variants. A hardness improvement must use an approximation-preserving reduction for the metric uncapacitated model and should state the assumption, such as $P\\ne NP$ or a stronger complexity hypothesis.",
+    "machine_checkable": false
+  }
+}

@@ -2,11 +2,11 @@
  "number": 65,
  "ref": "ORDOS-065",
  "id": "ocrs-rank1-almighty-adversary",
- "title": "A 1/2-selectable OCRS for rank-1 matroids against the almighty adversary",
+ "title": "Rank-1 OCRS selectability against an almighty adversary",
  "collection": "Online Resource Allocation (Ma notes)",
  "area": "Online Contention Resolution",
- "status": "open",
- "confidence": "high",
+ "status": "partially resolved",
+ "confidence": "medium",
  "contributor": "Will Ma",
  "tags": [
   "OCRS",
@@ -14,22 +14,86 @@
   "almighty adversary",
   "selectability",
   "will-ma-notes",
-  "permission-pending"
+  "contributed by Will Ma",
+  "ocrs",
+  "almighty-adversary",
+  "contributed-by-will-ma"
  ],
- "short_statement": "A simple $1/2$-selectable OCRS is known for the rank-1 matroid against the standard online adversary. Open: whether a $1/2$-selectable OCRS exists against the much stronger almighty adversary (which sees all realizations); the best known is only $1/4$, and even beating $1/4$ is open.",
- "open_problem": "For the rank-1 matroid, does there exist a $\\tfrac12$-selectable OCRS against the almighty adversary (which knows all realized values in advance)? An ex-ante prophet inequality guarantees $\\tfrac12$ against the almighty adversary on rank-1 matroids, but the best-known OCRS against the almighty adversary is only $\\tfrac14$ (Feldman et al.",
- "full_statement": "A simple $\\tfrac12$-selectable online contention resolution scheme is known for the rank-1 matroid (single-choice) against the standard online adversary. \\textbf{Open:} For the rank-1 matroid, does there exist a $\\tfrac12$-selectable OCRS against the almighty adversary (which knows all realized values in advance)? An ex-ante prophet inequality guarantees $\\tfrac12$ against the almighty adversary on rank-1 matroids, but the best-known OCRS against the almighty adversary is only $\\tfrac14$ (Feldman et al. 2021). Either show a 1/2-selectable OCRS exists, find a modified one, or prove impossibility; even beating 1/4 is open.",
- "known_results": "For rank-1 matroids, Feldman, Svensson, and Zenklusen give a $1/4$-selectable OCRS against the almighty adversary. In contrast, the corresponding ex-ante prophet-inequality guarantee is $1/2$, so the OCRS and prophet views do not currently match quantitatively in this adversarial model. It is open whether one can close the gap all the way to $1/2$, or even improve the OCRS constant beyond $1/4$.",
+ "short_statement": "Distinguish the optimal greedy rank-1 guarantee from the broader almighty-adversary online-rule question.",
+ "open_problem": "For the broader online-rule question, specify the adversary's randomness visibility and determine the optimal constant beyond the greedy class. The greedy-class optimum is already known.",
+ "background": "Rank-one contention resolution asks for per-element conditional selection guarantees, rather than only expected welfare. Arrival-order information and visibility of random choices affect the model. Greedy OCRSs preselect a downward-closed feasibility subfamily and are robust to almighty ordering; their optimum need not equal that of all online rules.",
+ "full_statement": "Fix a rank-1 matroid on ground set $N$, so the online algorithm may select at most one active element. Given an ex-ante feasible vector $x\\in[0,1]^N$ with $\\sum_i x_i\\le 1$, each element $i$ is active independently with probability $x_i$. An online contention resolution scheme (OCRS) observes active elements in an order chosen by an adversary and must irrevocably decide whether to select each active element, selecting at most one. In the almighty-adversary model, the adversary sees the entire realized active set before choosing the order. A $c$-selectable OCRS must select every element $i$ with probability at least $c x_i$, or equivalently select it with conditional probability at least $c$ given that it is active. Livanos' greedy OCRS below gives a stronger guarantee than the historical $1/4$. Its optimality theorem is restricted to greedy schemes; it must not be interpreted as a lower bound against every history-dependent randomized online rule. Any broader formulation must additionally specify whether the adversary sees the algorithm's random seed or only the active set.",
+ "known_results": "Livanos, 'Simple and Optimal Greedy Online Contention Resolution Schemes' (NeurIPS 2022), Theorem 1.1, gives a $1/e$-selectable greedy OCRS for rank one, improving $1/4$. Theorem 1.3 makes this optimal among greedy OCRSs. These schemes tolerate an almighty adversary; the upper bound is not stated for all history-dependent OCRSs. The familiar $1/2$ result in weaker order models must not be transferred to this model without proof.",
+ "progress": {
+  "state": "partial",
+  "summary": "The old lower-bound summary is outdated. The general question's adversary quantifiers need clarification; greedy-class optimality alone is not a full resolution.",
+  "links": [
+   {
+    "title": "Feldman, Svensson, Zenklusen, Online Contention Resolution Schemes",
+    "url": "https://arxiv.org/abs/1508.00142"
+   },
+   {
+    "title": "Lee and Singla, Optimal OCRSs via Ex-Ante Prophet Inequalities",
+    "url": "https://arxiv.org/abs/1806.09251"
+   },
+   {
+    "title": "Simple and Optimal Greedy Online Contention Resolution Schemes",
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2022/file/3f45a1768ed452c1706e0a3a272e3bbc-Paper-Conference.pdf"
+   }
+  ]
+ },
+ "importance": 7,
+ "difficulty": 7,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Because the feasibility system is rank 1, potential impossibility examples can be searched over finite activation probabilities, randomized acceptance rules, and realization-dependent adversarial orderings.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "This is a compact game between a randomized OCRS and an almighty ordering adversary. Automated minimax search could suggest improved schemes or hard instances, especially after discretizing activation probabilities.",
+ "literature": {
+  "synthesis": "The primary greedy result supplies both an improved construction and a class-restricted barrier. The record previously omitted it and conflated adversary variants.",
+  "reviewed": [
+   {
+    "ref": "Moran Feldman, Ola Svensson, and Rico Zenklusen, 'Online Contention Resolution Schemes', SODA 2016",
+    "result": "Introduces OCRSs, defines strong selectability guarantees, and obtains constant-factor schemes including guarantees robust to almighty adversarial ordering.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1508.00142"
+   },
+   {
+    "ref": "Euiwoong Lee and Sahil Singla, 'Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities', ESA 2018",
+    "result": "Designs optimal $1/2$ OCRSs for matroids by reducing to ex-ante prophet inequalities, clarifying the benchmark but not settling the almighty-adversary variant.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/1806.09251"
+   },
+   {
+    "ref": "Moran Feldman, Ola Svensson, and Rico Zenklusen, 'Nearly Tight Sample Complexity for Matroid Online Contention Resolution', arXiv 2025",
+    "result": "Studies sample-based matroid OCRS guarantees and preserves the importance of the $1/4$ adversarial-order scale.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/2507.09507"
+   },
+   {
+    "ref": "Vasilis Livanos, 'Simple and Optimal Greedy Online Contention Resolution Schemes' (2022)",
+    "result": "Theorems 1.1 and 1.3: construction and optimality within the greedy class.",
+    "relevance": "partial-progress",
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2022/file/3f45a1768ed452c1706e0a3a272e3bbc-Paper-Conference.pdf"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Formalize the adversary and algorithm class before minimax search; compare against the greedy theorem rather than the obsolete baseline.",
+  "verification_notes": "Specify random-seed visibility, adaptive choices, and whether the rule is greedy in the paper's formal sense. A greedy-class upper bound does not rule out general online rules.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #2).",
-  "url": ""
+  "text": "Posed in Will Ma's Online Resource Allocation course notes, Appendix C, Open Problems about Online Contention Resolution Schemes, Problem 2.",
+  "url": "",
+  "quote": "",
+  "location": "Appendix C, OCRS #2"
  },
  "source": {
-  "authors": "Will Ma",
-  "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #2)",
-  "year": 2024,
-  "venue": "Lecture notes (uploaded)",
-  "url": ""
+  "authors": "Moran Feldman, Ola Svensson, Rico Zenklusen",
+  "title": "Online Contention Resolution Schemes",
+  "year": 2021,
+  "venue": "SIAM Journal on Computing / arXiv:1508.00142",
+  "url": "https://arxiv.org/abs/1508.00142"
  },
  "additional_refs": [
   {
@@ -38,9 +102,16 @@
    "year": 2021,
    "venue": "SIAM J. Computing",
    "url": "https://arxiv.org/abs/1606.06819"
+  },
+  {
+   "authors": "Vasilis Livanos",
+   "title": "Simple and Optimal Greedy Online Contention Resolution Schemes",
+   "year": 2022,
+   "venue": "NeurIPS",
+   "url": "https://proceedings.neurips.cc/paper_files/paper/2022/file/3f45a1768ed452c1706e0a3a272e3bbc-Paper-Conference.pdf"
   }
  ],
- "bibtex": "@misc{Ma2024,\n  author = {Will Ma},\n  title = {Online Resource Allocation — Course Notes, Appendix C (Open Problems about Online Contention Resolution Schemes, #2)},\n  year = {2024},\n  howpublished = {Lecture notes (uploaded)},\n  note = {Source of ORdős Problem ORDOS-065}\n}",
+ "bibtex": "@misc{Feldman2021,\n  author = {Moran Feldman and Ola Svensson and Rico Zenklusen},\n  title = {Online Contention Resolution Schemes},\n  year = {2021},\n  howpublished = {SIAM Journal on Computing / arXiv:1508.00142},\n  url = {https://arxiv.org/abs/1508.00142},\n  note = {Source of ORdős Problem ORDOS-065}\n}",
  "urls": {
   "human": "https://ordos-problems.github.io/problems/ocrs-rank1-almighty-adversary.html",
   "api": "https://ordos-problems.github.io/api/problems/ocrs-rank1-almighty-adversary.json",

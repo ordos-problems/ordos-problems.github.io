@@ -14,15 +14,115 @@
   "asymptotic-optimality",
   "base-stock",
   "constant-order-policy",
-  "curse-of-dimensionality"
+  "curse-of-dimensionality",
+  "projected-inventory-level",
+  "capped-base-stock",
+  "demand-learning"
  ],
- "short_statement": "For a periodic-review single-item inventory system with stochastic demand, lost sales, and a deterministic lead time $L \\ge 1$, characterize the structure of the cost-minimizing policy. It is provably neither base-stock nor constant-order for $L \\ge 1$, and no tractable characterization is known.",
+ "short_statement": "For periodic-review lost-sales inventory with positive deterministic lead time, characterize the exact optimal policy. Uniform approximation results are available, including a 2026 capped-base-stock bound, but do not give an exact policy.",
  "open_problem": "Characterize the exact optimal policy for periodic-review lost-sales inventory with positive deterministic lead time, or prove sharp non-asymptotic guarantees for a simple policy class.",
- "full_statement": "A single item is reviewed each period $t$ over an infinite horizon under the long-run average-cost criterion. Demands $D_t$ are i.i.d. nonnegative with known distribution. An order $q_t \\ge 0$ placed in period $t$ arrives after a deterministic lead time $L \\in \\mathbb{Z}_{\\ge 1}$, so the relevant state is the pipeline vector $\\mathbf{x}_t = (I_t, q_{t-L+1}, \\dots, q_{t-1}) \\in \\mathbb{R}_{\\ge 0}^{L}$, where $I_t$ is on-hand inventory; because the state is the entire vector of outstanding orders, the dynamic program is high-dimensional. With on-hand inventory after arrival $y_t$, demand is met up to availability and any remainder is LOST (not backlogged): $I_{t+1} = (y_t - D_t)^+$, with per-period cost $h\\,(y_t - D_t)^+ + p\\,(D_t - y_t)^+$ for holding cost $h>0$ and lost-sales penalty $p>0$. The objective is $\\min_{\\pi} \\limsup_{T\\to\\infty} \\frac{1}{T}\\,\\mathbb{E}^{\\pi}\\!\\left[\\sum_{t=1}^{T}\\big(h\\,I_{t+1} + p\\,(D_t - y_t)^+\\big)\\right]$. $$\\textbf{Open:}\\quad \\text{characterize the structure of an optimal policy } \\pi^\\star \\text{ for } L \\ge 1.$$ It is known that $\\pi^\\star$ is neither a base-stock nor a constant-order policy for $L\\ge 1$ (Zipkin 2008), and the value function lacks the convexity that makes the backlog model tractable. What remains genuinely open: a usable characterization of $\\pi^\\star$, explicit non-asymptotic optimality gaps for simple policies at moderate $L$, and whether a single simple policy is simultaneously near-optimal across all parameter regimes. Only asymptotic results exist: base-stock policies as the penalty grows, and constant-order policies as $L$ grows.",
- "known_results": "The optimal policy can in principle be computed by dynamic programming but is intractable for $L \\ge 1$ due to the L-dimensional pipeline state, and its structure is uncharacterized; Zipkin (2008) shows it is neither base-stock nor constant-order. Two complementary asymptotic regimes are proven: (i) order-up-to/base-stock policies are asymptotically optimal as the lost-sales penalty p -> infinity (Huh, Janakiraman, Muckstadt, Rusmevichientong 2009); (ii) the constant-order policy is asymptotically optimal as the lead time L -> infinity (Goldberg et al. 2016), sharpened by Xin & Goldberg (2016) to an exponentially decaying optimality gap in L. Projected-inventory-level (PIL) policies are asymptotically optimal in BOTH regimes (van Jaarsveld & Arts 2024). What remains open: an exact characterization of the optimal policy for finite $L \\ge 1$, tight non-asymptotic optimality gaps at moderate L, and whether any simple policy is simultaneously optimal across all regimes. The Goldberg-Reiman-Wang (2021) survey frames this whole line as asymptotic analysis of an otherwise intractable problem.",
+ "background": "Periodic-review inventory theory with backlogged demand is one of the great success stories of operations research: for the backlog model the $L$-dimensional pipeline of outstanding orders collapses to the scalar inventory position, the dynamic program is convex, and a simple base-stock (order-up-to) policy is exactly optimal. Karlin and Scarf, in their foundational 1958 work, already observed that the seemingly innocuous change from backlogging to lost sales — unmet demand simply vanishes, as in brick-and-mortar and online retail, perishables, and spare parts, where customers walk or switch to a competitor — destroys this entire structure: even for lead time $L=1$ the optimal order is not a function of the inventory position alone, so base-stock optimality fails in general. Morton (1969) derived bounds relating the optimal policy to the backlog solution, but the exact dynamic program lives on the full $L$-dimensional pipeline vector and is intractable beyond very small lead times. Zipkin's influential 2008 papers revived the problem: using $L^{\\natural}$-convexity he established monotonicity and bounded-sensitivity properties of the optimal order quantity, showed that neither base-stock nor constant-order is generally optimal, and showed numerically that base-stock policies can perform badly when the lead time is long and the penalty moderate. The problem then became the launching pad for the modern \"asymptotic analysis of inventory systems\" program surveyed by Goldberg, Reiman, and Wang (2021): if the exact optimum cannot be computed or described, prove that simple, interpretable policies are near-optimal in limiting regimes (large penalty, large lead time), and quantify the rate. Beyond its intrinsic role as perhaps the oldest unsolved structural question in inventory theory, the model is now a canonical benchmark for approximation guarantees in MDPs with high-dimensional states, for online learning with censored demand, and for deep-reinforcement-learning methods in operations, so any genuine structural characterization would reverberate well beyond inventory theory.",
+ "full_statement": "Consider periodic-review lost-sales inventory with i.i.d. nonnegative demands $D_t$, $0<\\mathbb E D_t<\\infty$, deterministic lead time $L\\ge1$, and holding/lost-sales costs $h,p>0$. Before arrivals in period $t$, the state is on-hand stock $I_t$ and pipeline $(x_{1,t},\\ldots,x_{L,t})$. Receive $x_{1,t}$, choose a nonnegative order $q_t$ without seeing $D_t$, then meet demand up to available stock. Set $I_{t+1}=(I_t+x_{1,t}-D_t)^+$, shift $x_{i,t+1}=x_{i+1,t}$ for $i<L$, and set $x_{L,t+1}=q_t$. Start empty and minimize $$C(\\pi)=\\limsup_{T\\to\\infty}T^{-1}\\mathbb E^\\pi\\sum_{t=1}^T[hI_{t+1}+p(D_t-I_t-x_{1,t})^+],\\quad\\mathrm{OPT}=\\inf_\\pi C(\\pi).$$ The exact finite-lead-time policy structure is the target. Base-stock and constant-order policies are not generally exactly optimal. Uniform approximation is not wholly open: Xin's July 2026 preprint proves $\\inf_{\\pi\\in\\mathrm{CBS}}C(\\pi)\\le[1+4L^2/((L+1)(3L-1))]\\mathrm{OPT}\\le(7/3)\\mathrm{OPT}$ for capped base-stock policies, including ordinary base stock as the infinite-cap case. Seek sharper bounds or exact structure beyond these guarantees.",
+ "known_results": "The optimal policy can in principle be computed by dynamic programming on the $L$-dimensional pipeline state but is intractable for moderate $L$, and its structure is uncharacterized: Karlin and Scarf (1958) showed base-stock is already suboptimal at $L=1$, and Zipkin (Operations Research 2008) proved via $L^{\\natural}$-convexity that the optimal policy is monotone with bounded sensitivity in the pipeline vector but neither base-stock nor constant-order is generally optimal. Asymptotic regimes are well understood: (i) order-up-to/base-stock policies are asymptotically optimal as the lost-sales penalty $p\\to\\infty$ (Huh, Janakiraman, Muckstadt, Rusmevichientong, Management Science 2009); (ii) the constant-order policy is asymptotically optimal as $L\\to\\infty$ (Goldberg, Katz-Rogozhnikov, Lu, Sharma, Squillante, Mathematics of OR 2016), with optimality gap decaying exponentially in $L$ (Xin and Goldberg, Operations Research 2016). Capped base-stock policies (a base-stock rule with an order cap) interpolate between the two extremes: Xin (Operations Research 2021) showed they converge exponentially fast in the base-stock level to constant-order policies and perform robustly, and Xin (Operations Research 2022) proved an asymptotic worst-case guarantee for a continuous-review lost-sales model — a capped base-stock policy has asymptotic ratio at most 1.79 for the continuous-review model with Poisson demand (via an asymptotic analysis jointly in large penalty and lead time). Projected-inventory-level (PIL) policies are asymptotically optimal in BOTH classical regimes: as $p\\to\\infty$ for general demand, and as $L\\to\\infty$ for exponential demand (van Jaarsveld and Arts, Operations Research 2024); Moradi, Arts, and Drent (arXiv:2504.10132, April 2025) extended large-$L$ asymptotic optimality of PIL to any demand with finite second moment provided the penalty is sufficiently large, via a Wiener-Hopf/ladder-process solution of the constant-order relative value function. On the learning side, Zhang, Chao, and Shi (Management Science 2020) gave a $O(\\sqrt{T})$-regret algorithm against the best base-stock policy under censored demand, and Lyu, Zhang, and Xin (Operations Research 2024) gave UCB-type algorithms with Kaplan-Meier estimation that learn the best capped base-stock policy with regret whose lead-time dependence is linear rather than exponential. Xin's 'Capped Base-Stock Policies: A 2.33-Approximation' (July 2026 preprint), Section 2 and Theorem 1, gives the nonasymptotic periodic-review bound stated above for all positive finite-mean i.i.d. demand, all $L\\ge1$, and $h,p>0$. It does not improve the earlier factor 2 for the different dual-balancing policy class. Separately, Hu (arXiv:2610.34576v1, October 2026), Theorem 4.1, claims a uniform $\\sqrt2$ base-stock bound without setup costs and $(\\sqrt2+\\sqrt6)/2<1.932$ for an $(r,Q)$-or-no-order policy with setup costs, but only in continuous review with unit Poisson demand. Neither is an exact optimal-policy characterization.",
+ "progress": {
+  "state": "partial",
+  "summary": "The 2026 periodic-review CBS guarantee removes the alleged absence of uniform nonasymptotic bounds for that class. Exact policy characterization and sharper worst-case factors remain separate targets; continuous-review improvements require different assumptions.",
+  "links": [
+   {
+    "title": "Projected Inventory-Level Policies for Lost Sales Inventory Systems: Asymptotic Optimality in Two Regimes — van Jaarsveld & Arts, OR 2024",
+    "url": "https://pubsonline.informs.org/doi/10.1287/opre.2021.0032"
+   },
+   {
+    "title": "Asymptotic Optimality of Projected Inventory Level Policies for Lost Sales Inventory Systems with Large Leadtime and Penalty Cost — Moradi, Arts, Drent, arXiv 2025",
+    "url": "https://arxiv.org/abs/2504.10132"
+   },
+   {
+    "title": "1.79-Approximation Algorithms for Continuous Review Single-Sourcing Lost-Sales and Dual-Sourcing Inventory Models — Xin, OR 2022",
+    "url": "https://pubsonline.informs.org/doi/10.1287/opre.2021.2150"
+   },
+   {
+    "title": "UCB-Type Learning Algorithms with Kaplan-Meier Estimator for Lost-Sales Inventory Models with Lead Times — Lyu, Zhang, Xin, OR 2024",
+    "url": "https://pubsonline.informs.org/doi/10.1287/opre.2022.0273"
+   },
+   {
+    "title": "Xin, Capped Base-Stock Policies: A 2.33-Approximation (2026 preprint)",
+    "url": "https://doi.org/10.2139/ssrn.7134538"
+   },
+   {
+    "title": "Hu, continuous-review lost-sales guarantee (2026 preprint)",
+    "url": "https://arxiv.org/abs/2610.34576v1"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 9,
+ "counterexample_suitability": "low",
+ "counterexample_rationale": "The headline question asks for a positive structural characterization, which no single finite object can settle; the useful negative results (base-stock and constant-order are not optimal) are already known via small computed instances. Finite search can only refute candidate characterizations — e.g., exactly solving a small-$L$ discrete-demand DP to show that PIL or capped base-stock policies are not exactly optimal — which is genuine but secondary progress.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "An evolutionary loop over interpretable policy programs (functions of the pipeline vector) with fitness from simulation or exact small-$L$ value iteration could plausibly rediscover or beat PIL/capped-base-stock heuristics and suggest new conjecturable policy structures — exactly how PIL itself emerged from human insight plus numerics. However, the open problem as posed demands proofs (characterization or uniform gap bounds), which search alone cannot supply, and existing heuristics are already within a percent of optimal on benchmark instances, leaving little numeric headroom.",
+ "literature": {
+  "synthesis": "Three kinds of progress must be kept separate: structural properties of exact optima, asymptotic optimality in limiting regimes, and uniform approximation factors. The existing base-stock, constant-order and projected-inventory analyses remain relevant, but the statement that nothing is known at finite parameters is false. The new CBS theorem directly addresses the periodic-review model. Continuous-review Poisson guarantees are related results, not substitutes for it; nor does a guarantee for the best policy within a restricted class characterize the unrestricted optimum.",
+  "reviewed": [
+   {
+    "ref": "Paul H. Zipkin, 'On the Structure of Lost-Sales Inventory Models', Operations Research 56(4):937-944, 2008",
+    "result": "Via $L^{\\natural}$-convexity, proves monotonicity and bounded-sensitivity structure of the optimal policy in the pipeline state, and shows failure of base-stock/constant-order optimality in general.",
+    "relevance": "partial-progress",
+    "url": "https://pubsonline.informs.org/doi/10.1287/opre.1070.0482"
+   },
+   {
+    "ref": "Huh, Janakiraman, Muckstadt, Rusmevichientong, 'Asymptotic Optimality of Order-Up-To Policies in Lost Sales Inventory Systems', Management Science 55(3):404-420, 2009",
+    "result": "Base-stock policies are asymptotically optimal as the lost-sales penalty grows ($p/h\\to\\infty$), the first rigorous asymptotic-optimality result for this model.",
+    "relevance": "solves-special-case",
+    "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.1080.0945"
+   },
+   {
+    "ref": "Linwei Xin, David A. Goldberg, 'Optimality Gap of Constant-Order Policies Decays Exponentially in the Lead Time for Lost Sales Models', Operations Research 64(6):1556-1565, 2016",
+    "result": "The best constant-order policy's relative optimality gap is $O(e^{-cL})$ for some $c>0$, sharpening the plain asymptotic optimality of Goldberg et al. (MOR 2016) as $L\\to\\infty$.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1409.1499"
+   },
+   {
+    "ref": "Linwei Xin, '1.79-Approximation Algorithms for Continuous Review Single-Sourcing Lost-Sales and Dual-Sourcing Inventory Models', Operations Research 70(1):111-128, 2022",
+    "result": "A capped base-stock policy has an asymptotic 1.79 guarantee in the continuous-review Poisson model under joint large-lead-time/large-penalty scaling; this is not a uniform finite-parameter periodic-review guarantee.",
+    "relevance": "partial-progress",
+    "url": "https://pubsonline.informs.org/doi/10.1287/opre.2021.2150"
+   },
+   {
+    "ref": "Willem van Jaarsveld, Joachim Arts, 'Projected Inventory-Level Policies for Lost Sales Inventory Systems: Asymptotic Optimality in Two Regimes', Operations Research 72(5):1790-1805, 2024",
+    "result": "PIL policies (order so the expected inventory level upon the order's arrival hits a fixed target) cost less than the corresponding backlog system, hence are asymptotically optimal as $p\\to\\infty$ under mild assumptions; they dominate constant-order for every finite $L$, hence are asymptotically optimal as $L\\to\\infty$ for exponential demand.",
+    "relevance": "partial-progress",
+    "url": "https://pubsonline.informs.org/doi/10.1287/opre.2021.0032"
+   },
+   {
+    "ref": "Poulad Moradi, Joachim Arts, Melvin Drent, 'Asymptotic Optimality of Projected Inventory Level Policies for Lost Sales Inventory Systems with Large Leadtime and Penalty Cost', arXiv:2504.10132, 2025",
+    "result": "Solves the constant-order relative value function via the Wiener-Hopf equation and ladder processes, then a policy-iteration step shows PIL policies are asymptotically optimal as $L\\to\\infty$ whenever the lost-sales penalty is sufficiently large and demand has finite second moment — removing the exponential-demand restriction of van Jaarsveld-Arts.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2504.10132"
+   },
+   {
+    "ref": "Linwei Xin, 'Capped Base-Stock Policies: A 2.33-Approximation', July 2026 preprint, SSRN 7134538",
+    "result": "Section 2 and Theorem 1 give the periodic-review, finite-lead-time CBS guarantee stated in full_statement.",
+    "relevance": "partial-progress",
+    "url": "https://doi.org/10.2139/ssrn.7134538"
+   },
+   {
+    "ref": "Ming Hu, 'A 1.932 Guarantee for (r,Q) Policies in Continuous-Review Lost-Sales Inventory Systems', arXiv:2610.34576v1 (2026)",
+    "result": "Theorem 4.1 improves the related continuous-review guarantee; see known_results for its different assumptions.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2610.34576v1"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Plausible routes: (1) extend the Wiener-Hopf/ladder-process solution of relative value functions (Moradi-Arts-Drent 2025) from the constant-order policy to richer policy classes, aiming at sharper bounds beyond the existing CBS guarantee or new PIL bounds at finite $L$; (2) exploit $L^{\\natural}$-convexity (Zipkin 2008) more aggressively to pin down the optimal policy on low-dimensional slices, combined with exact value iteration for discrete demand at $L=2,3,4$ to conjecture and then prove structural invariants; (3) LP/duality or information-relaxation lower bounds to certify small optimality gaps for candidate simple policies uniformly over parameters; (4) coupling arguments interpolating between the two proven asymptotic regimes.",
+  "verification_notes": "A claimed characterization must specify the policy class precisely and prove optimality (or an explicit gap bound) for the stated demand class and cost parameters under the long-run average criterion — check that the average-cost optimality equation or a vanishing-discount argument is handled rigorously, a classic failure point on unbounded state spaces. Numerical claims of exact optimality for a policy class can be refuted (but not confirmed) by exact value iteration on small discrete-demand instances ($L\\le 4$, truncated support) with rigorous span-based error bounds; watch for discretization artifacts with continuous demand. Common failure modes: silently assuming backlog-style state collapse to inventory position, confusing asymptotic optimality with exact optimality, and heuristics validated only on the standard (geometric/Poisson demand) benchmark grid. Compare any claimed CBS improvement with Xin's 2026 theorem and keep periodic/continuous review assumptions separate.",
+  "machine_checkable": false
+ },
  "where_posed": {
-  "text": "Stated/originated in Zipkin, 'On the Structure of Lost-Sales Inventory Models,' Operations Research 56(4):937-944, 2008, which proves the optimal policy is neither base-stock nor constant-order; framed as an open line in the Goldberg-Reiman-Wang (2021) survey.",
-  "url": "https://pubsonline.informs.org/doi/10.1287/opre.1070.0482"
+  "text": "The model originates with Karlin and Scarf (1958); the modern structural framing and negative results are in Zipkin, 'On the Structure of Lost-Sales Inventory Models', Operations Research 56(4):937-944, 2008, which proves the optimal policy is neither base-stock nor constant-order. The problem is presented as the flagship open line in Goldberg, Reiman, and Wang, 'A Survey of Recent Progress in the Asymptotic Analysis of Inventory Systems', Production and Operations Management 30(6):1718-1750, 2021.",
+  "url": "https://pubsonline.informs.org/doi/10.1287/opre.1070.0482",
+  "quote": "Lost sales inventory models with large lead times, which arise in many practical settings, are notoriously difficult to optimize due to the curse of dimensionality.",
+  "location": "Zipkin 2008 full text is paywalled; the quote is the verbatim opening of the abstract of Goldberg, Katz-Rogozhnikov, Lu, Sharma, Squillante, arXiv:1211.4063 (Mathematics of OR 2016), the paper that launched the asymptotic-analysis attack on this problem"
  },
  "source": {
   "authors": "Paul H. Zipkin",
@@ -66,6 +166,48 @@
    "year": 2021,
    "venue": "Production and Operations Management 30(6):1718-1750",
    "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/poms.13339"
+  },
+  {
+   "authors": "Linwei Xin",
+   "title": "Technical Note—Understanding the Performance of Capped Base-Stock Policies in Lost-Sales Inventory Models",
+   "year": 2021,
+   "venue": "Operations Research 69(1):61-70",
+   "url": "https://pubsonline.informs.org/doi/10.1287/opre.2020.2019"
+  },
+  {
+   "authors": "Linwei Xin",
+   "title": "1.79-Approximation Algorithms for Continuous Review Single-Sourcing Lost-Sales and Dual-Sourcing Inventory Models",
+   "year": 2022,
+   "venue": "Operations Research 70(1):111-128",
+   "url": "https://pubsonline.informs.org/doi/10.1287/opre.2021.2150"
+  },
+  {
+   "authors": "Poulad Moradi, Joachim Arts, Melvin Drent",
+   "title": "Asymptotic Optimality of Projected Inventory Level Policies for Lost Sales Inventory Systems with Large Leadtime and Penalty Cost",
+   "year": 2025,
+   "venue": "arXiv:2504.10132",
+   "url": "https://arxiv.org/abs/2504.10132"
+  },
+  {
+   "authors": "Chengyi Lyu, Huanan Zhang, Linwei Xin",
+   "title": "UCB-Type Learning Algorithms with Kaplan-Meier Estimator for Lost-Sales Inventory Models with Lead Times",
+   "year": 2024,
+   "venue": "Operations Research 72(4):1317-1332",
+   "url": "https://pubsonline.informs.org/doi/10.1287/opre.2022.0273"
+  },
+  {
+   "authors": "Linwei Xin",
+   "title": "Capped Base-Stock Policies: A 2.33-Approximation",
+   "year": 2026,
+   "venue": "SSRN working paper 7134538, written 17 July 2026",
+   "url": "https://doi.org/10.2139/ssrn.7134538"
+  },
+  {
+   "authors": "Ming Hu",
+   "title": "A 1.932 Guarantee for (r,Q) Policies in Continuous-Review Lost-Sales Inventory Systems",
+   "year": 2026,
+   "venue": "arXiv:2610.34576v1, 25 October 2026",
+   "url": "https://arxiv.org/abs/2610.34576v1"
   }
  ],
  "bibtex": "@misc{Zipkin2008,\n  author = {Paul H. Zipkin},\n  title = {On the Structure of Lost-Sales Inventory Models},\n  year = {2008},\n  howpublished = {Operations Research 56(4):937-944},\n  url = {https://pubsonline.informs.org/doi/10.1287/opre.1070.0482},\n  note = {Source of ORdős Problem ORDOS-032}\n}",

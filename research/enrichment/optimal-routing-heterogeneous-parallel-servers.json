@@ -1,0 +1,43 @@
+{
+  "id": "optimal-routing-heterogeneous-parallel-servers",
+  "background": "Dispatching to parallel queues is one of the oldest and cleanest stochastic-control problems in queueing theory. With identical exponential servers and full queue-length information, Join-the-Shortest-Queue has strong stochastic optimality properties: routing to the shortest line minimizes a broad class of queue-length costs. That theorem is often treated as folklore, but it is delicate and does not survive many natural perturbations. Heterogeneous service rates are the most basic perturbation. If one server is faster, the dispatcher must trade off a longer line at the fast server against a shorter line at a slow server. Simple policies such as SED or weighted JSQ work well asymptotically and in simulations, but the exact average-cost optimal policy is not characterized even in small heterogeneous systems. This is a well-defined OR open problem: the CTMC model and objective are fixed, JSQ's identical-server solution is known, and the missing theorem is a structural characterization or a proof that no simple index/threshold structure can work.",
+  "open_problem": "Characterize the exact average-cost optimal dispatching policy for finite heterogeneous parallel-server queues with full queue-length information and distinct exponential service rates.",
+  "known_results": "Winston proved optimality of the shortest-line discipline for homogeneous exponential queues, and Weber extended related assignment optimality results. Power-of-$d$ and JSQ($d$) policies have a mature mean-field theory, including double-exponential queue tails and asymptotic JSQ equivalence when $d(N)$ grows. Eschenfeldt and Gamarnik established heavy-traffic limits for JSQ with many servers. For heterogeneous servers, JSQ is not optimal, and SED/JSED, speed-aware JSQ, and redundancy/replication variants have asymptotic guarantees in specific regimes. The exact finite-system average-cost optimal dispatching policy for distinct service rates remains uncharacterized; even the cleanest two-server cases lead to nontrivial threshold regions.",
+  "status": "open",
+  "where_posed": {
+    "text": "The homogeneous optimality benchmark is Winston's 1977 paper; the heterogeneous-server gap is highlighted in modern load-balancing surveys and the dispatching literature.",
+    "url": "https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/optimality-of-the-shortest-line-discipline/A0E278FC4BCBFA67CA2F941C3D030233",
+    "quote": "",
+    "location": "Winston 1977 for the solved homogeneous case; van der Boor et al. survey for modern asymptotic context."
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "Large-system asymptotics are well developed, but they do not settle finite heterogeneous optimality. Modern surveys explain how JSQ-like policies become asymptotically optimal in many regimes, while exact dynamic-programming structure remains unresolved.",
+    "links": [
+      {"title": "van der Boor et al., Scalable Load Balancing in Networked Systems", "url": "https://arxiv.org/abs/1806.05444"},
+      {"title": "Eschenfeldt and Gamarnik, Join the Shortest Queue with Many Servers", "url": "https://pubsonline.informs.org/doi/10.1287/moor.2017.0887"},
+      {"title": "Winston, Optimality of the shortest line discipline", "url": "https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/optimality-of-the-shortest-line-discipline/A0E278FC4BCBFA67CA2F941C3D030233"}
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Small Markov decision processes can refute proposed simple index or threshold policies. A complete optimal-policy characterization, however, requires proof over unbounded queue-length states.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Computational search can map optimal-action regions for two- and three-server systems, infer threshold surfaces, or find counterexamples to conjectured monotonicity. It can provide evidence but not a full proof unless paired with symbolic or Lyapunov arguments.",
+  "literature": {
+    "synthesis": "The identical-server theory is unusually clean: shortest-queue routing has stochastic monotonicity and convex-order optimality. The many-server literature then shows that even partial information can recover JSQ-like asymptotic performance, motivating scalable policies. Heterogeneous servers break the symmetry that powers these results. The dispatcher must compare workload, queue length, and service-rate effects, and the optimal policy depends on the global queue vector. Heavy-traffic and mean-field approximations suggest good speed-aware policies, but they are approximation theorems rather than exact finite-system optimality. The open question asks for a structural theorem for the original Markov decision problem, or a rigorous impossibility result ruling out the common simple policy classes.",
+    "reviewed": [
+      {"ref": "Winston, 'Optimality of the shortest line discipline', Journal of Applied Probability 1977", "result": "Establishes shortest-line optimality for homogeneous exponential parallel queues.", "relevance": "solves-special-case", "url": "https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/optimality-of-the-shortest-line-discipline/A0E278FC4BCBFA67CA2F941C3D030233"},
+      {"ref": "Weber, 'On the optimal assignment of customers to parallel servers', Journal of Applied Probability 1978", "result": "Extends assignment optimality ideas for parallel-server routing.", "relevance": "solves-special-case", "url": "https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/on-the-optimal-assignment-of-customers-to-parallel-servers/3B2CF58EF9B8B29F7D18F062977760D4"},
+      {"ref": "Eschenfeldt and Gamarnik, 'Join the Shortest Queue with Many Servers. The Heavy-Traffic Asymptotics', Mathematics of Operations Research 2018", "result": "Gives many-server heavy-traffic limits for JSQ.", "relevance": "partial-progress", "url": "https://pubsonline.informs.org/doi/10.1287/moor.2017.0887"},
+      {"ref": "van der Boor, Borst, van Leeuwaarden, Mukherjee, 'Scalable load balancing in networked systems', SIAM Review 2022 / arXiv survey", "result": "Surveys JSQ, power-of-$d$, universality, and scalable load balancing asymptotics.", "relevance": "survey", "url": "https://arxiv.org/abs/1806.05444"}
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Analyze two-server exponential systems first through dynamic programming, value-iteration truncations, and monotone comparative statics. Candidate proofs may use submodularity, switching-curve arguments, or coupling with workload orderings. For negative results, test whether proposed SED or weighted-JSQ policies violate Bellman inequalities on small states.",
+    "verification_notes": "A claimed exact policy must satisfy the Bellman optimality equations on the infinite state space or provide a valid limiting/truncation argument. Numerical value iteration is useful for conjecture generation but is not a proof unless accompanied by certified residual bounds or symbolic inequalities.",
+    "machine_checkable": true
+  },
+  "notes_for_maintainer": "This is an older OR/control problem with a clean model and a sharp solved baseline. Keep it distinct from large-scale asymptotic load-balancing problems."
+}

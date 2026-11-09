@@ -5,21 +5,82 @@
  "title": "Metric k-Median: 1.736 Hardness vs. 2+epsilon Algorithm",
  "collection": "Approximation & Discrepancy",
  "area": "Approximation Algorithms",
- "status": "open",
- "confidence": "high",
+ "status": "solution claimed",
+ "confidence": "medium",
  "tags": [
   "k-median",
   "clustering",
   "approximation ratio",
   "hardness"
  ],
- "short_statement": "For metric $k$-median, it is NP-hard to approximate better than $1 + 2/e \\approx 1.736$, and as of 2025 the best algorithm achieves $2 + \\epsilon$. Determining the exact approximability in $[1.736, 2]$ is a major open problem.",
- "open_problem": "The natural LP relaxation has integrality gap at least $2 - o(1)$, so the remaining question is whether the true threshold is below, at, or above the LP barrier near $2$.",
- "full_statement": "In metric $k$-median, one is given a finite metric space $(V,d)$, a set of demand points (clients) in $V$, and an integer $k$. The algorithm must choose at most $k$ centers from $V$ and assign each client to its nearest chosen center, minimizing the total connection cost $\\sum_j d(j,S)$, where $S$ is the selected center set. The open problem is to determine the best possible polynomial-time approximation ratio $\\rho$ for this model. Known bounds are $1 + \\tfrac{2}{e} \\approx 1.736 \\le \\rho \\le 2 + \\varepsilon$. The natural LP relaxation has integrality gap at least $2 - o(1)$, so the remaining question is whether the true threshold is below, at, or above the LP barrier near $2$.",
- "known_results": "Jain, Mahdian, and Saberi proved that approximating metric $k$-median below $1+2/e \\approx 1.736$ is NP-hard. The best current algorithm achieves $2+\\epsilon$, due to Cohen-Addad, Grandoni, Lee, Schwiegelshohn, and Svensson, improving the long-standing $2.613$ barrier. The natural LP relaxation has integrality gap at least $2-o(1)$. The open problem is to determine whether the true threshold is near the hardness bound, near $2$, or somewhere in between; closing it likely requires either a different relaxation/algorithmic idea or a stronger hardness construction.",
+ "short_statement": "A 2026 research-release manuscript claims the metric $k$-median threshold $1+2/e$, via algorithms at every fixed factor above it; not independently verified here.",
+ "open_problem": "Verify the claimed $1+2/e$ infimum threshold for the specified-candidate-facility model; the original below-$2$ target is claimed resolved.",
+ "background": "Historical context before the September 2026 claim: Metric $k$-median is the canonical fixed-budget clustering problem: choose $k$ centers to minimize total client distance. It is closely related to facility location but lacks facility-opening penalties, replacing them with a hard cardinality constraint. This hard constraint makes rounding much more delicate. After years with best ratios above $2.6$, Cohen-Addad, Grandoni, Lee, Schwiegelshohn, and Svensson gave a $2+\\epsilon$ approximation in 2025, a major improvement. The hardness lower bound remains $1+2/e\\approx1.736$, and the natural LP relaxation has gap close to $2$. The question left by the 2025 result was whether the true threshold was near the hardness bound, near the LP barrier at $2$, or exactly at $2$. OpenAI's September 24, 2026 research-release manuscript claims a deterministic $(1+2/e+\\epsilon)$ approximation for each fixed $\\epsilon>0$, in polynomial binary-input time, opening at most $k$ specified candidate facilities.",
+ "full_statement": "In metric $k$-median, the input is a finite metric space containing a set of clients $C$, a set of candidate facilities $F$, distances $d$, and an integer $k$. The goal is to open at most $k$ facilities $S\\subseteq F$ and minimize $$\\sum_{j\\in C} d(j,S),\\qquad d(j,S)=\\min_{i\\in S} d(j,i).$$ Determine the optimal polynomial-time approximation ratio for this problem in arbitrary metrics. The original barrier question was whether there is a $(2-\\epsilon)$-approximation for some fixed $\\epsilon>0$, or prove hardness approaching $2$. The standard LP relaxation has an integrality gap near $2$, so a below-$2$ algorithm would likely need a stronger relaxation or a method that escapes the usual LP barrier. OpenAI's September 24, 2026 research-release manuscript claims a deterministic $(1+2/e+\\epsilon)$ approximation for each fixed $\\epsilon>0$, in polynomial binary-input time, opening at most $k$ specified candidate facilities. Under $P\\ne NP$, it claims the infimum is $1+2/e$, not attainment of the exact endpoint. This record flags a claimed resolution.",
+ "known_results": "Historical context before the September 2026 claim: Jain, Mahdian, and Saberi prove NP-hardness below $1+2/e\\approx1.736$ through the facility-location approximation framework. The natural LP relaxation has integrality gap at least $2-o(1)$, limiting direct LP rounding and Lagrangian-relaxation approaches. Before 2025, the best exactly-$k$ approximation ratio was $2.613$, with progress bottlenecked by bi-point rounding after facility-location-style algorithms. Cohen-Addad, Grandoni, Lee, Schwiegelshohn, and Svensson give a $2+\\epsilon$ approximation, improving the previous best ratio by avoiding the old bi-point rounding loss and combining a phased greedy modification with a stable-instance algorithm. Thus the pre-September-2026 gap was between hardness $1.736$ and algorithms arbitrarily close to $2$, with the LP barrier suggesting but not proving that $2$ may be tight. OpenAI's September 24, 2026 research-release manuscript claims a deterministic $(1+2/e+\\epsilon)$ approximation for each fixed $\\epsilon>0$, in polynomial binary-input time, opening at most $k$ specified candidate facilities.",
+ "progress": {
+  "state": "solution-claimed",
+  "summary": "OpenAI's September 24, 2026 research-release manuscript claims a deterministic $(1+2/e+\\epsilon)$ approximation for each fixed $\\epsilon>0$, in polynomial binary-input time, opening at most $k$ specified candidate facilities. This would match the conditional infimum threshold; independent verification remains pending.",
+  "links": [
+   {
+    "title": "Cohen-Addad et al., 2+epsilon k-median",
+    "url": "https://arxiv.org/abs/2503.10972"
+   },
+   {
+    "title": "Jain, Mahdian, Saberi, greedy facility-location framework",
+    "url": "https://doi.org/10.1145/509907.510012"
+   },
+   {
+    "title": "OpenAI, The approximation threshold for metric k-median (research-release preprint, September 24, 2026)",
+    "url": "https://github.com/openai/math/blob/main/preprints/The-Approximation-Threshold-for-Metric-k-Median-September-24-2026/build/sections/introduction.tex"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "LP gaps and hard instances are finite and searchable, but exact approximability requires proofs or reductions.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Search can identify hard metric instances for current algorithms and test whether $2$ appears algorithmically tight.",
+ "literature": {
+  "synthesis": "Historical algorithmic context: The old difficulty was converting facility-location-style Lagrangian guarantees into exactly $k$ centers without paying a large bi-point rounding penalty. The 2025 breakthrough shows that this penalty is not inherent up to $2+\\epsilon$. That historical gap motivated searches for either a better-than-2 algorithm using a fundamentally different relaxation or a hardness proof matching the LP barrier. Because the natural LP has gap $2-o(1)$, any algorithm below $2$ probably needs stronger structure than standard LP rounding. OpenAI's September 24, 2026 research-release manuscript claims a deterministic $(1+2/e+\\epsilon)$ approximation for each fixed $\\epsilon>0$, in polynomial binary-input time, opening at most $k$ specified candidate facilities. The claimed method allows a constant additive facility surplus internally and removes it before output; it must not be confused with a final bicriteria guarantee.",
+  "reviewed": [
+   {
+    "ref": "Kamal Jain, Mohammad Mahdian, Amin Saberi, 'A New Greedy Approach for Facility Location Problems', STOC 2002",
+    "result": "Provides facility-location algorithms and hardness ingredients including the $1+2/e$ lower-bound lineage for $k$-median.",
+    "relevance": "hardness",
+    "url": "https://doi.org/10.1145/509907.510012"
+   },
+   {
+    "ref": "Vincent Cohen-Addad, Fabrizio Grandoni, Euiwoong Lee, Chris Schwiegelshohn, Ola Svensson, 'A (2+epsilon)-Approximation Algorithm for Metric k-Median', STOC 2025",
+    "result": "Historical $2+\\epsilon$ approximation, preceding the unreviewed 2026 threshold claim.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2503.10972"
+   },
+   {
+    "ref": "Charikar et al. and subsequent LP-gap constructions for metric $k$-median",
+    "result": "Show natural relaxations have integrality gap near $2$, motivating the remaining barrier.",
+    "relevance": "hardness",
+    "url": "https://arxiv.org/abs/2503.10972"
+   },
+   {
+    "ref": "OpenAI, The approximation threshold for metric k-median (research-release preprint, September 24, 2026)",
+    "result": "Main theorem and threshold corollary claim the strict-budget result. The release warns that manuscripts vary in verification status.",
+    "relevance": "partial-progress",
+    "url": "https://github.com/openai/math/blob/main/preprints/The-Approximation-Threshold-for-Metric-k-Median-September-24-2026/build/sections/introduction.tex"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Prioritize independent verification of the research-release manuscript, including the directed comparison inequality, bit complexity, and removal of the additive facility surplus. Investigate relaxations stronger than the standard LP, or hard instances showing $2$-hardness. Computationally compare the 2025 algorithm against LP-gap and clustering benchmark families.",
+  "verification_notes": "A claimed ratio below $2$ must open at most $k$ centers exactly and hold in arbitrary metrics with arbitrary client/facility sets. Bicriteria algorithms opening $k+o(k)$ centers, algorithms for Euclidean or doubling metrics only, or guarantees against strengthened assumptions such as stability do not resolve the general problem. A hardness result must rule out polynomial-time algorithms under a standard assumption and should be compared carefully with the existing $1+2/e$ lower bound and the near-$2$ LP integrality gap. The release reports Lean artifacts, but neither their execution nor alignment with the mathematical statement was checked here. The lower-bound model permits $F\\ne C$; do not transfer it automatically to $F=C$.",
+  "machine_checkable": false
+ },
  "where_posed": {
-  "text": "The (2+epsilon) algorithm is from Cohen-Addad, Grandoni, Lee, Schwiegelshohn, Svensson, 'A (2+epsilon)-Approximation Algorithm for Metric k-Median,' STOC 2025; the 1.736 hardness from Jain-Mahdian-Saberi (2002). The gap is a major open problem.",
-  "url": "https://arxiv.org/abs/2503.10972"
+  "text": "Gap after Cohen-Addad et al., 'A (2+epsilon)-Approximation Algorithm for Metric k-Median'.",
+  "url": "https://arxiv.org/abs/2503.10972",
+  "quote": "for any $\\epsilon >0$, we present a $(2+\\epsilon)$-approximation algorithm for $k$-median, improving the previous best-known approximation factor of $2.613$.",
+  "location": "Abstract"
  },
  "source": {
   "authors": "Vincent Cohen-Addad, Fabrizio Grandoni, Euiwoong Lee, Chris Schwiegelshohn, Ola Svensson",
@@ -35,6 +96,13 @@
    "year": 2002,
    "venue": "STOC",
    "url": "https://doi.org/10.1145/509907.510012"
+  },
+  {
+   "authors": "OpenAI",
+   "title": "The approximation threshold for metric k-median",
+   "year": 2026,
+   "venue": "OpenAI Math research-release preprint; unreviewed here",
+   "url": "https://github.com/openai/math/blob/main/preprints/The-Approximation-Threshold-for-Metric-k-Median-September-24-2026/README.md"
   }
  ],
  "bibtex": "@misc{CohenAddad2025,\n  author = {Vincent Cohen-Addad and Fabrizio Grandoni and Euiwoong Lee and Chris Schwiegelshohn and Ola Svensson},\n  title = {A (2+epsilon)-Approximation Algorithm for Metric k-Median},\n  year = {2025},\n  howpublished = {STOC},\n  url = {https://arxiv.org/abs/2503.10972},\n  note = {Source of ORdős Problem ORDOS-054}\n}",

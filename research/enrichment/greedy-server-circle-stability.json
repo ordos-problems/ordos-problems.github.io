@@ -1,0 +1,83 @@
+{
+  "id": "greedy-server-circle-stability",
+  "status": "resolved",
+  "confidence": "high",
+  "short_statement": "The nearest-neighbor greedy server on a circle is stable at every subcritical arrival rate, for every positive travel speed (Rolla and Sidoravicius, 2017).",
+  "full_statement": "Let the state space be a circle of fixed finite circumference. Particles arrive according to a Poisson process of rate $\\lambda$, with iid uniform locations on the circle. A single server moves along the circle at a fixed finite positive speed. Serving a particle takes exactly one unit of time; after service the particle is removed. Whenever a service completion occurs and at least one particle is waiting, the server chooses a waiting particle at minimum circular distance from its current location, moves to that particle, serves it, and repeats. If no particle is waiting, the server idles until the next arrival. Since service itself consumes one unit of time, the obvious necessary condition for stability is $\\lambda<1$. This question is resolved: Rolla and Sidoravicius (2017), Theorem 1.1, prove positive recurrence for every $\\lambda<1$ and every positive speed. Their convention commits to the chosen customer while traveling, ignoring new arrivals until the next choice. Rescaling space covers each fixed finite circumference; this is not a uniform bound on mean return times over all circumferences and speeds.",
+  "open_problem": "Resolved for the stated Poisson/uniform-arrival model with deterministic unit service and a target fixed during each journey.",
+  "background": "Spatial queues capture systems in which travel or switching time depends on the geometry of outstanding work. The nearest-neighbor greedy server is perhaps the simplest nontrivial example: requests arrive randomly on a compact space, service consumes fixed time, and the server always moves to the closest waiting request. The policy is locally optimal in travel distance, but local optimality can create global pathologies because new arrivals may repeatedly pull the server around dense regions while remote work accumulates. Foss records that the stability conjecture had already been known for more than twenty years by 2009. The finite-state analogue is much easier, and state-independent routing policies are stable under the natural load condition. Rolla and Sidoravicius subsequently proved the continuous-space conjecture. This entry records that resolution, rather than proposing another search for an instability example.",
+  "known_results": "Rolla and Sidoravicius, Communications on Pure and Applied Mathematics 70 (2017), 1961-1986, Theorem 1.1, prove stability for Poisson arrivals at uniform circle locations when the arrival rate is below the service rate and travel speed is positive. Deterministic, exponential, and geometric service times are covered. Stability means finite expected time to regeneration at the empty state. Deterministic unit service is exactly the present case. The theorem does not cover a server that changes its destination during travel; the paper explicitly separates that variant. Foss's 2009 open-status statement is historical.",
+  "progress": {
+    "state": "resolved",
+    "summary": "Published Theorem 1.1 covers the stated model, including deterministic unit service.",
+    "links": [
+      {
+        "title": "Foss, Some Open Problems Related to Stability",
+        "url": "https://arxiv.org/abs/0909.0462"
+      },
+      {
+        "title": "Rolla and Sidoravicius, Stability of the Greedy Algorithm on the Circle (2017)",
+        "url": "https://doi.org/10.1002/cpa.21712"
+      },
+      {
+        "title": "Full paper, Theorem 1.1",
+        "url": "https://arxiv.org/pdf/1112.2389"
+      }
+    ]
+  },
+  "literature": {
+    "synthesis": "The earlier finite-space and light-traffic results were superseded for this question by the continuous-circle stability theorem. The proof uses evolving spatial profiles and controls the server's interaction with the unobserved configuration. The original conjecture should no longer be listed as open.",
+    "reviewed": [
+      {
+        "ref": "Coffman and Gilbert, 'Polling and Greedy Servers on a Line', Queueing Systems 1987",
+        "result": "Earlier study of greedy spatial service models referenced as background for the long-standing conjecture.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/0909.0462"
+      },
+      {
+        "ref": "Foss, 'Some Open Problems Related to Stability', 2009",
+        "result": "States the circle greedy-server stability conjecture and contrasts it with finite-state and state-independent variants.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/0909.0462"
+      },
+      {
+        "ref": "Foss and Last, 'Stability of Polling Systems with State Dependent Routing and with Exhaustive Service Policies', Annals of Applied Probability 1996",
+        "result": "Provides related stability methods for polling systems with state-dependent routing.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/0909.0462"
+      },
+      {
+        "ref": "Leonardo T. Rolla, Vladas Sidoravicius, 'Stability of the Greedy Algorithm on the Circle', CPAM 70 (2017), 1961-1986",
+        "result": "Theorem 1.1 resolves the stated circle model; see known_results for assumptions.",
+        "relevance": "solves-special-case",
+        "url": "https://arxiv.org/abs/1112.2389"
+      }
+    ]
+  },
+  "counterexample_suitability": "low",
+  "counterexample_rationale": "The stated conjecture is a published theorem; simulations are not a route to refuting it.",
+  "alphaevolve_suitability": "low",
+  "alphaevolve_rationale": "Computational work can illustrate the theorem but is not needed to resolve this record.",
+  "agent_guidance": {
+    "suitable_approaches": "Read the published proof; distinguish any proposed extension from the resolved model.",
+    "verification_notes": "Check Theorem 1.1, the regeneration definition, and the fixed-target travel convention. Do not infer a parameter-uniform return-time bound.",
+    "machine_checkable": false
+  },
+  "notes_for_maintainer": "Audit 2026-11-09: resolved, not merely partial. Read theorem, model, and proof outline in the full paper; publication metadata checked at DOI. No merge/build performed.",
+  "additional_refs": [
+    {
+      "authors": "E. G. Coffman and E. N. Gilbert",
+      "title": "Polling and Greedy Servers on a Line",
+      "year": 1987,
+      "venue": "Queueing Systems",
+      "url": "https://arxiv.org/abs/0909.0462"
+    },
+    {
+      "authors": "Leonardo T. Rolla, Vladas Sidoravicius",
+      "title": "Stability of the Greedy Algorithm on the Circle",
+      "year": 2017,
+      "venue": "Communications on Pure and Applied Mathematics 70, 1961-1986",
+      "url": "https://doi.org/10.1002/cpa.21712"
+    }
+  ]
+}

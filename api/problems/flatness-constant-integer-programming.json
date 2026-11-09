@@ -1,0 +1,159 @@
+{
+ "number": 158,
+ "ref": "ORDOS-158",
+ "id": "flatness-constant-integer-programming",
+ "title": "Tight asymptotics of the flatness constant in integer programming",
+ "collection": "Operations Research",
+ "area": "Integer Programming and Geometry of Numbers",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "integer programming",
+  "flatness theorem",
+  "lattice width",
+  "geometry of numbers",
+  "fixed-dimension algorithms"
+ ],
+ "short_statement": "Determine the correct asymptotic order of the maximum lattice width of lattice-free convex bodies.",
+ "open_problem": "Close the gap between the best lower and upper bounds on $\\operatorname{Flt}(d)$; in particular, decide whether the flatness constant is linear in $d$.",
+ "background": "Flatness is a geometric form of a basic integer-programming principle: if a convex relaxation contains no integer point, then it must be thin in some integer direction. Lenstra's algorithm and its descendants exploit this by branching on a bounded number of integer hyperplanes. Better flatness bounds translate into sharper fixed-dimension integer-programming algorithms and into structural information about maximal lattice-free convex sets, which are also central in cutting-plane theory. The model is parsimonious and fully formal: no stochastic assumptions, no application-specific modeling choices, just convex bodies, lattice points, and width. This makes it exactly the kind of hard, clean OR/open mathematics problem the repository is meant to track.",
+ "full_statement": "For a convex body $K\\subset\\mathbb R^d$ and a nonzero integer vector $u\\in\\mathbb Z^d$, define the width of $K$ in direction $u$ by $$w_u(K)=\\max_{x\\in K}u\\cdot x-\\min_{x\\in K}u\\cdot x.$$ The lattice width is $w(K)=\\min_{u\\in\\mathbb Z^d\\setminus\\{0\\}}w_u(K)$. A convex body is lattice-free if its interior contains no point of $\\mathbb Z^d$. The flatness constant is $$\\operatorname{Flt}(d)=\\sup\\{w(K):K\\subset\\mathbb R^d\\text{ convex body with }\\operatorname{int}(K)\\cap\\mathbb Z^d=\\emptyset\\}.$$ The flatness theorem says $\\operatorname{Flt}(d)<\\infty$ for every fixed $d$, and it is a key geometric ingredient behind Lenstra-type fixed-dimension integer-programming algorithms. The open problem is to determine the asymptotic growth of $\\operatorname{Flt}(d)$, ideally proving whether it is $\\Theta(d)$ and identifying the right constant, or showing that a superlinear factor is necessary. Current results give explicit linear lower bounds and near-linear upper bounds with polylogarithmic factors, leaving a clean asymptotic gap.",
+ "known_results": "Classical geometry-of-numbers arguments prove finiteness of $\\operatorname{Flt}(d)$ and polynomial bounds in $d$. Kannan's fixed-dimension integer-programming work and the Kannan-Lovasz covering-minima framework connect flatness to algorithmic integer programming. Dadush's subspace flatness conjecture predicted an essentially logarithmic factor in a related covering-radius comparison, which would imply near-optimal flatness and faster integer programming. Reis and Rothvoss proved this conjecture up to a constant in the exponent, obtaining an upper bound that implies $\\operatorname{Flt}(d)=O(d\\log^3(2d))$. On the lower-bound side, Mayrhofer, Schade, and Weltge constructed lattice-free simplices with lattice width at least $2d-O(\\sqrt d)$, substantially improving previous lower bounds. These are historical bounds, not the current upper-bound frontier. Bizeul's 2026 preprint, Section 3.4 equation (54), gives $O(d\\log d)$. Letwin, Reis, and Rothvoss's October 2026 preprint, Corollary 1.4, improves this to $O(d\\sqrt{\\log d})$ for arbitrary convex bodies. These preprint bounds leave the linear-order question open.",
+ "progress": {
+  "state": "partial",
+  "summary": "Lower bound $2d-o(d)$; a 2026 preprint claims the upper bound $O(d\\sqrt{\\log d})$, improving other recent bounds. Whether $\\operatorname{Flt}(d)=O(d)$ remains open.",
+  "links": [
+   {
+    "title": "Lower-bound simplices",
+    "url": "https://arxiv.org/abs/2111.08483"
+   },
+   {
+    "title": "Subspace flatness and faster IP",
+    "url": "https://arxiv.org/abs/2303.14605"
+   },
+   {
+    "title": "Pierre Bizeul, Optimal MM* bounds for convex bodies, arXiv:2607.29458v2 (2026)",
+    "url": "https://arxiv.org/html/2607.29458v2"
+   },
+   {
+    "title": "Letwin, Reis, and Rothvoss, Strongly Log-Concave Measures and Lattices, arXiv:2610.29238 (2026)",
+    "url": "https://arxiv.org/html/2610.29238v1"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 9,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Lower bounds are explicit lattice-free convex bodies with large lattice width. Candidate polytopes or simplices can be generated and their lattice-freeness and width can often be certified by exact computation in fixed dimension.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Automated search can evolve lattice-free simplices and polytopes with large width, test local maximality, and look for families whose width beats known constructions. Upper bounds remain analytic.",
+ "literature": {
+  "synthesis": "The flatness constant is a direct bridge between geometry of numbers and exact integer optimization. Kannan and Lovasz introduced covering-minima tools that made flatness algorithmically meaningful. Dadush's subspace flatness conjecture pointed to an almost optimal route through covering-radius lower bounds, and Reis-Rothvoss nearly realized it with near-linear polylogarithmic consequences. In parallel, Mayrhofer-Schade-Weltge showed that lower bounds are already essentially $2d$, ruling out many overly optimistic constants. What remains is a sharp asymptotic theorem: either remove the logarithmic upper-bound loss or construct lattice-free bodies with superlinear lattice width. Recent preprints reduce the upper-bound loss to $\\sqrt{\\log d}$; this audit did not independently certify those proofs.",
+  "reviewed": [
+   {
+    "ref": "Kannan, 'Minkowski's convex body theorem and integer programming', MOR 1987",
+    "result": "Connects flatness-type geometry to fixed-dimension integer programming algorithms.",
+    "relevance": "related-tool",
+    "url": "https://doi.org/10.1287/moor.12.3.415",
+    "relevance_detail": "background"
+   },
+   {
+    "ref": "Mayrhofer, Schade, Weltge, 'Lattice-free simplices with lattice width 2d - o(d)', arXiv 2021",
+    "result": "Gives the current strong linear lower-bound construction.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2111.08483"
+   },
+   {
+    "ref": "Reis and Rothvoss, 'The Subspace Flatness Conjecture and Faster Integer Programming', arXiv 2023",
+    "result": "Proves subspace flatness up to exponent loss and implies $O(d\\log^3 d)$ flatness.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2303.14605"
+   },
+   {
+    "ref": "Pierre Bizeul, Optimal MM* bounds for convex bodies, arXiv:2607.29458v2 (2026)",
+    "result": "Section 3.4, equation (54), gives flatness $O(d\\log d)$.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/html/2607.29458v2"
+   },
+   {
+    "ref": "Letwin, Reis, and Rothvoss, Strongly Log-Concave Measures and Lattices, arXiv:2610.29238 (2026)",
+    "result": "Corollary 1.4 gives $O(d\\sqrt{\\log d})$ for general lattice-free convex bodies.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/html/2610.29238v1"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "For lower bounds, search over parametric lattice-free simplices, use exact lattice-width computation, and attempt to identify asymptotic recurrences. For upper bounds, study covering minima, reverse Minkowski theorems, transference inequalities, and whether the Reis-Rothvoss logarithmic losses can be compressed. Connections to maximal lattice-free sets and cutting planes may supply additional structure.",
+  "verification_notes": "A lower-bound construction must prove two things for every dimension in the family: the convex body has no interior integer point, and every nonzero integer direction has width at least the claimed value. Numerical evidence should be converted to exact rational certificates whenever possible. An upper-bound proof must apply to arbitrary convex bodies, not only centrally symmetric bodies or polytopes in special position, unless it includes a valid reduction. Algorithmic claims should state how the flatness bound affects bit complexity and branching depth in integer programming.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "Recent flatness and subspace-flatness papers explicitly frame the remaining task as closing the asymptotic gap in the flatness constant.",
+  "url": "https://arxiv.org/abs/2303.14605",
+  "quote": "near-optimal flatness constant",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Ravi Kannan",
+  "title": "Minkowski's convex body theorem and integer programming",
+  "year": 1987,
+  "venue": "Mathematics of Operations Research",
+  "url": "https://doi.org/10.1287/moor.12.3.415"
+ },
+ "additional_refs": [
+  {
+   "authors": "Ravi Kannan, Laszlo Lovasz",
+   "title": "Covering minima and lattice-point-free convex bodies",
+   "year": 1988,
+   "venue": "Annals of Mathematics",
+   "url": "https://doi.org/10.2307/1971468"
+  },
+  {
+   "authors": "Daniel Dadush",
+   "title": "Integer Programming, Lattice Algorithms, and Deterministic Volume Estimation",
+   "year": 2012,
+   "venue": "PhD thesis",
+   "url": "https://hdl.handle.net/11245/1.385023"
+  },
+  {
+   "authors": "Lukas Mayrhofer, Jamico Schade, Stefan Weltge",
+   "title": "Lattice-free simplices with lattice width 2d - o(d)",
+   "year": 2021,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2111.08483"
+  },
+  {
+   "authors": "Victor Reis, Thomas Rothvoss",
+   "title": "The Subspace Flatness Conjecture and Faster Integer Programming",
+   "year": 2023,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2303.14605"
+  },
+  {
+   "authors": "Pierre Bizeul",
+   "title": "Optimal MM* bounds for convex bodies",
+   "year": 2026,
+   "venue": "arXiv preprint",
+   "url": "https://arxiv.org/abs/2607.29458"
+  },
+  {
+   "authors": "Brayden Letwin, Victor Reis, Thomas Rothvoss",
+   "title": "Strongly log-concave measures and lattices",
+   "year": 2026,
+   "venue": "arXiv preprint",
+   "url": "https://arxiv.org/abs/2610.29238"
+  }
+ ],
+ "bibtex": "@misc{Kannan1987,\n  author = {Ravi Kannan},\n  title = {Minkowski's convex body theorem and integer programming},\n  year = {1987},\n  howpublished = {Mathematics of Operations Research},\n  url = {https://doi.org/10.1287/moor.12.3.415},\n  note = {Source of ORdős Problem ORDOS-158}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/flatness-constant-integer-programming.html",
+  "api": "https://ordos-problems.github.io/api/problems/flatness-constant-integer-programming.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

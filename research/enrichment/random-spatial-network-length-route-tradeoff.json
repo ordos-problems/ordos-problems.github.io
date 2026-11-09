@@ -1,0 +1,33 @@
+{
+  "id": "random-spatial-network-length-route-tradeoff",
+  "full_statement": "Let $X_1,\\ldots,X_n$ be random points in a planar region, for example iid uniform points in a square of area $n$ so the point density is order one. A connected geometric network $G_n$ consists of straight or rectifiable edges joining the points, possibly with additional Steiner points. Let $L(G_n)$ be its total Euclidean length, normalized by the natural area scale as in Aldous-Shun, and let $d_{G_n}(i,j)$ be shortest-path distance in the network between $X_i$ and $X_j$. Aldous and Shun define a route-length statistic $R$ measuring the average excess of $d_{G_n}(i,j)$ over the Euclidean distance $|X_i-X_j|$ for random pairs of points, with the precise normalization chosen so that proximity-graph families have nontrivial limits. The open problem is to determine the optimal asymptotic tradeoff curve: among all connected spatial networks with limiting normalized length at most $\\ell$, what is the infimum possible limiting route-excess statistic $R$, and which network constructions attain or approximate this frontier?",
+  "known_results": "Aldous and Shun analyze classical proximity-graph families and use Monte Carlo evidence to illustrate a tradeoff between normalized network length and their statistic $R$. Minimum spanning trees, Delaunay triangulations, relative neighborhood graphs, and related proximity graphs provide explicit feasible networks with different points on the length-versus-route curve. They explicitly leave open how close this one-parameter family is to the optimum over all possible connected networks. Related Euclidean optimization theory gives laws of large numbers for structures such as MST and TSP, and geometric spanner theory supplies worst-case stretch constructions, but neither line identifies the average-case optimal length-route tradeoff frontier for random point sets.",
+  "literature": {
+    "synthesis": "Aldous and Shun's paper sits between stochastic geometry and network design. Proximity graphs offer tractable candidates with known or estimable length properties, but the global optimization problem is over all connected geometric networks, possibly including Steiner-like features and hierarchical road-like structures. The main gap is a lower-bound theory strong enough to certify a tradeoff curve, matched by explicit constructions. Existing Euclidean functionals such as MST and TSP constants control extreme points, and geometric spanner theory controls worst-case stretch, but neither directly answers the average-pair route-excess objective. A solution likely needs multiscale continuum lower bounds relating edge-length density to detour, together with constructions that balance local connectivity and long-range shortcuts.",
+    "reviewed": [
+      {
+        "ref": "David J. Aldous and Julian Shun, 'Connected Spatial Networks over Random Points and a Route-Length Statistic', arXiv 2010",
+        "result": "Introduces statistic $R$ and poses the optimal tradeoff question for spatial networks over random points.",
+        "relevance": "poses-problem",
+        "url": "https://arxiv.org/abs/1003.3700"
+      },
+      {
+        "ref": "J. Michael Steele, 'Probability Theory and Combinatorial Optimization', SIAM 1997",
+        "result": "Background on Euclidean optimization constants and subadditive methods relevant to MST/TSP-like spatial functionals.",
+        "relevance": "related-tool",
+        "url": "https://epubs.siam.org/doi/book/10.1137/1.9781611970029"
+      },
+      {
+        "ref": "Narasimhan and Smid, 'Geometric Spanner Networks', Cambridge University Press 2007",
+        "result": "Reference for geometric spanners, a related worst-case route-stretch framework.",
+        "relevance": "related-tool",
+        "url": "https://doi.org/10.1017/CBO9780511546884"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Search computationally over geometric spanner constructions, augmented MSTs, and hierarchical road-network designs. For lower bounds, look for continuum relaxations that relate route excess to edge-length density across scales.",
+    "verification_notes": "A proposed construction should specify the point process, boundary convention, allowed Steiner points, and exact normalization for length and $R$. It should prove convergence or tight bounds for both quantities as $n\\to\\infty$, not only report Monte Carlo estimates. A proof of optimality must include a lower bound applying to arbitrary connected geometric networks with the same length budget, not only to proximity graphs or planar graphs with bounded degree. If the result uses spanner theory, verify that worst-case stretch translates to the Aldous-Shun average excess statistic under random points.",
+    "machine_checkable": true
+  }
+}

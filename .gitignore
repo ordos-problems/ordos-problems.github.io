@@ -4,3 +4,4 @@ problems_render.json
 npm-debug.log*
 .env
 .env.*
+archive/

@@ -11,15 +11,94 @@
   "fair division",
   "envy-freeness",
   "EFX",
-  "indivisible goods"
+  "indivisible goods",
+  "rainbow cycle number",
+  "SAT-solving"
  ],
  "short_statement": "An EFX allocation of indivisible goods is one where any envy agent $i$ feels toward agent $j$ vanishes after removing any single good from $j$'s bundle. Does a complete EFX allocation always exist for four or more agents, even with additive valuations?",
- "open_problem": "does a complete EFX allocation exist for every instance with $n\\ge 4$ additive agents?",
- "full_statement": "Let $N=\\{1,\\dots,n\\}$ be a set of agents and $M$ a set of indivisible goods, with each agent $i$ having an additive valuation $v_i$. An allocation $(X_1,\\dots,X_n)$ partitioning $M$ among the agents is EFX (envy-free up to any good) if for all agents $i,j$ and every good $g\\in X_j$ with $v_i(\\{g\\})>0$: $v_i(X_i)\\ge v_i(X_j\\setminus\\{g\\})$. In words, any envy that agent $i$ feels toward agent $j$ would vanish upon removing any single (positively valued) good from $j$'s bundle. Exact complete EFX allocations are known to always exist for up to 3 agents with additive valuations. Question: does a complete EFX allocation exist for every instance with $n\\ge 4$ additive agents?",
- "known_results": "For additive goods, exact EFX allocations are known to exist for at most three agents, by Chaudhury, Garg, and Mehlhorn. For four agents, Berger and coauthors prove an almost-complete EFX allocation in which at most one good is left unallocated. For general $n$, EFX with charity is known, meaning that fewer than $n$ goods may be donated, and a $0.618$-EFX allocation always exists. The open problem is whether a complete exact EFX allocation always exists for additive goods when $n\\ge 4$.",
+ "open_problem": "does a complete EFX allocation exist for every instance with $n\\ge 4$ additive agents? As of mid-2026 this remains open even for $n=4$.",
+ "background": "Fair division asks how to split a set of indivisible resources among agents with different preferences so that no one feels cheated. When goods are divisible, envy-freeness (nobody prefers another's share) and efficiency can be achieved simultaneously, but indivisibility breaks this: if there is one house and two heirs, someone will envy the other no matter what. Envy-freeness up to any good (EFX), proposed by Caragiannis, Kurokawa, Moulin, Procaccia, Shah, and Wang in their influential 2016 paper on maximum Nash welfare, asks for the strongest reasonable relaxation: agent $i$ may envy agent $j$, but that envy must vanish once ANY single good is (hypothetically) removed from $j$'s bundle. This is strictly stronger than the more permissive and better-understood EF1 (envy vanishes after removing SOME good), and is widely regarded as the right notion of \"almost envy-free\" for indivisible goods. Despite a decade of sustained effort by many of the leading researchers in algorithmic game theory, EFX's existence for more than three agents is unresolved, making it perhaps the most famous open question in fair division and a benchmark for the field's proof techniques (rainbow cycle numbers, envy-graph algorithms, champion-graph arguments). The problem matters beyond its own puzzle value: EFX sits at the center of a web of related questions (EFX with bounded charity, EFX plus Pareto-optimality, EFX for chores, EFX for general valuations), and techniques developed while attacking it — e.g., the rainbow-cycle-number framework — have become standard tools throughout discrete fair division. The problem also has real-world resonance: course allocation, inheritance division, and cloud-resource allocation are all naturally modeled as indivisible-goods fair division, so a clean existence/nonexistence answer would have direct implications for mechanism design in these settings.",
+ "full_statement": "Let $N=\\{1,\\dots,n\\}$ be a set of agents and $M$ a set of indivisible goods, with each agent $i$ having an additive valuation $v_i$ (so $v_i(S)=\\sum_{g\\in S} v_i(\\{g\\})$ for any bundle $S\\subseteq M$). An allocation $(X_1,\\dots,X_n)$ partitioning $M$ among the agents is EFX (envy-free up to any good) if for all agents $i,j$ and every good $g\\in X_j$ with $v_i(\\{g\\})>0$: $v_i(X_i)\\ge v_i(X_j\\setminus\\{g\\})$. In words, any envy that agent $i$ feels toward agent $j$ would vanish upon removing any single (positively valued) good from $j$'s bundle. Exact complete EFX allocations are known to always exist for up to 3 agents with additive valuations (Chaudhury, Garg, Mehlhorn 2020), and for $n$ agents when all valuations coincide, or when there are at most 3 distinct valuation functions among the agents. Question: does a complete EFX allocation exist for every instance with $n\\ge 4$ additive agents? As of mid-2026 this remains open even for $n=4$.",
+ "known_results": "For additive valuations, exact EFX allocations are known to exist for at most three agents (Chaudhury, Garg, Mehlhorn, EC 2020 / JACM 2024), for agents whose valuations come from at most 3 distinct functions (Mahara 2023; extended in AAAI 2025's \"(Almost Full) EFX for Three (and More) Types of Agents\"), and for a handful of other structured cases (binary valuations, MMS-feasible valuations, graphical/multigraph valuations). For four agents, Berger, Cohen, Feldman, and Fiat (AAAI 2022, \"Almost Full EFX Exists for Four Agents\") proved that an EFX allocation always exists that leaves at most one good unallocated (\"almost-complete\" EFX); this remains the best exact-EFX progress toward $n=4$ as of July 2026 and has not been extended to a fully complete allocation. For general $n$, EFX with bounded charity is known: Chaudhury, Kavitha, Mehlhorn, Sgouritsa (SODA 2020) show an EFX allocation exists if up to $n-1$ goods may be donated to an unenvied charity; Berger et al. improved the donation bound to $n-2$ goods for nice-cancelable valuations, and Mahara (2024) extended this to general monotone valuations. On the approximation side, the 0.618-EFX ($1/\\varphi$, the inverse golden ratio) result of Amanatidis, Markakis, Ntokos (2020/2021) remains the best known guarantee that holds for ALL additive instances with any number of agents; the 2/3-EFX results of Amanatidis, Filos-Ratsikas, Sgouritsa and others (EC 2024/2025, \"Pushing the Frontier on Approximate EFX Allocations\") beat 0.618 only under extra restrictions (at most 7 agents, at most 3 distinct valuations, or graphical/multigraph valuations), so 0.618 is still the best universal bound as of 2026. No nonexistence example is known for additive valuations at any $n$; a 2026 SAT-based computer search (Akrami, Mayorov, Mehlhorn, Srinivas, Weidenbach) did find explicit nonexistence counterexamples for the strictly more general class of monotone (in particular submodular) valuations with $n\\ge 3$ agents and $m\\ge n+5$ goods, sharpening the sense that additive valuations sit right at the boundary of tractability. The central open question — complete EFX existence for $n\\ge4$ additive agents — remains unresolved as of July 2026.",
+ "progress": {
+  "state": "partial",
+  "summary": "No full resolution as of July 2026: the four-agent additive case is still open. Progress since 2024 has been mostly on relaxations and adjacent cases rather than closing the core question: EF2X (envy vanishes after removing any TWO goods) was shown to always exist for four agents, even for cancelable valuations, by Ashuri, Gkatzelis, and Sgouritsa (arXiv 2412.00254, Nov 2024 / rev. Apr 2025); the AAAI 2025 paper 'EFX Exists for Three Types of Agents' extended exact EFX to instances with at most 3 distinct valuation functions among any number of agents; and a 2025/2026 SAT-solver search (arXiv 2604.18216) produced the first explicit EFX nonexistence examples, but only for the broader monotone/submodular valuation class, leaving additive valuations without any known counterexample. The 0.618-EFX-with-charity guarantee for general additive instances has not been improved past 0.618 as of mid-2026; improvements to 2/3 apply only under added restrictions.",
+  "links": [
+   {
+    "title": "(Almost Full) EFX Exists for Four Agents (and Beyond) — Berger, Cohen, Feldman, Fiat, AAAI 2022",
+    "url": "https://arxiv.org/abs/2102.10654"
+   },
+   {
+    "title": "EF2X Exists For Four Agents — Ashuri, Gkatzelis, Sgouritsa, 2024/2025",
+    "url": "https://arxiv.org/abs/2412.00254"
+   },
+   {
+    "title": "Pushing the Frontier on Approximate EFX Allocations — EC 2024",
+    "url": "https://arxiv.org/abs/2406.12413"
+   },
+   {
+    "title": "A Counterexample to EFX; n≥3 Agents, m≥n+5 Items; Monotone/Submodular Valuations; via SAT-Solving",
+    "url": "https://arxiv.org/abs/2604.18216"
+   }
+  ]
+ },
+ "importance": 9,
+ "difficulty": 9,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "A counterexample for additive valuations (if one exists) would need to be a genuinely new combinatorial construction — a decade of hand-crafted attempts by top researchers have failed to find one even at $n=4$, but the 2026 SAT-solver breakthrough for the broader monotone/submodular class shows automated search can find EFX counterexamples once the valuation class is large enough, so a bigger/smarter search (larger $n$, $m$, or better encodings) attacking additive valuations specifically is a plausible, well-defined avenue.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "An evolutionary/LLM-guided search loop could plausibly explore the space of small additive-valuation instances (matrices of values) combined with SAT/ILP feasibility checks for EFX, mirroring the recent SAT-based nonexistence result for monotone valuations; the challenge is that a positive result (existence for all instances) cannot be found this way, only a counterexample, so alphaevolve-style search is suited to hunting for a negative example or for extremal/near-tight approximation constructions (e.g. improving the 0.618-EFX charity bound), not to proving universal existence.",
+ "literature": {
+  "synthesis": "EFX existence for additive valuations with $n\\ge 4$ agents has resisted the two main lines of attack that succeeded for $n\\le 3$: the envy-cycle-elimination / champion-graph techniques of Chaudhury, Garg, and Mehlhorn (EC 2020) and the rainbow-cycle-number framework of Chaudhury, Garg, Mehlhorn, Mehta, Misra (EC 2021) and its near-optimal refinement by Akrami, Alon, Chaudhury, Garg, Mehlhorn, Mehta (EC 2023). Both approaches bound the number of leftover (\"unallocated\") goods needed to guarantee EFX, and both have been pushed to their apparent limits: the rainbow cycle number is now known to be $\\Theta(d\\log d)$ in $d$ dimensions, translating into near-tight bounds on unallocated goods for the charity relaxation, but not into full existence. The four-agent case specifically has been attacked directly (Berger, Cohen, Feldman, Fiat, AAAI 2022, reaching \"leave at most one good\" EFX) without further improvement toward zero leftover goods as of 2026. Recent work has instead diversified: relaxations such as EF2X (Ashuri, Gkatzelis, Sgouritsa) sidestep the hard case entirely by weakening the fairness guarantee; restricted-valuation results (few distinct valuation types, graphical structure) chip away at special cases; and a 2026 SAT-solver-based search finally produced explicit nonexistence counterexamples, but only once the valuation class was broadened from additive to general monotone/submodular functions, which sharpens the sense that additive valuations occupy a genuine knife-edge in the problem's difficulty landscape. No consensus exists on whether the true answer is existence (most researchers' guess, given no additive counterexample after a decade) or nonexistence (which the 2026 SAT result for the adjacent submodular class makes newly plausible). The remaining gap is essentially: either a genuinely new combinatorial/topological argument extending the $n=3$ machinery to $n=4$, or a much larger/cleverer computational search targeted specifically at additive instances.",
+  "reviewed": [
+   {
+    "ref": "Caragiannis, Kurokawa, Moulin, Procaccia, Shah, Wang, 'The Unreasonable Fairness of Maximum Nash Welfare', EC 2016 / TEAC 2019",
+    "result": "Introduces the EFX fairness notion and connects it to maximum Nash welfare allocations.",
+    "relevance": "related-tool",
+    "url": "https://www.cs.toronto.edu/~nisarg/papers/mnw.ec16.pdf"
+   },
+   {
+    "ref": "Chaudhury, Garg, Mehlhorn, 'EFX Exists for Three Agents', EC 2020 / JACM 2024",
+    "result": "Constructive proof that complete EFX allocations always exist for $n=3$ additive agents; also refutes a conjecture that EFX allocations always maximize Nash welfare.",
+    "relevance": "solves-special-case",
+    "url": "https://arxiv.org/abs/2002.05119"
+   },
+   {
+    "ref": "Berger, Cohen, Feldman, Fiat, '(Almost Full) EFX Exists for Four Agents (and Beyond)', AAAI 2022",
+    "result": "Every 4-agent instance with additive (or nice-cancelable) valuations admits an EFX allocation leaving at most one good unallocated; general-$n$ EFX exists with at most $n-2$ unallocated goods.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2102.10654"
+   },
+   {
+    "ref": "Amanatidis, Filos-Ratsikas, Sgouritsa, 'Pushing the Frontier on Approximate EFX Allocations', EC 2024",
+    "result": "Shows $2/3$-EFX allocations exist under restrictions (at most 7 agents, at most 3 valuation values, or multigraph structure); the unrestricted best bound remains $0.618$-EFX (Amanatidis, Markakis, Ntokos).",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2406.12413"
+   },
+   {
+    "ref": "Ashuri, Gkatzelis, Sgouritsa, 'EF2X Exists For Four Agents', arXiv 2412.00254, 2024/2025",
+    "result": "Proves the relaxation EF2X (envy vanishes after removing any two goods) always exists for four agents, even for cancelable valuations, via a pseudopolynomial constructive algorithm; explicitly states that full EFX for four additive agents remains open.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/2412.00254"
+   },
+   {
+    "ref": "Akrami, Mayorov, Mehlhorn, Srinivas, Weidenbach, 'A Counterexample to EFX; n≥3 Agents, m≥n+5 Items; Monotone Valuations; via SAT-Solving', arXiv 2604.18216, 2026",
+    "result": "First explicit EFX nonexistence example, obtained via SAT encoding, but for general monotone (including submodular) valuations rather than additive; also shows every 3-agent, 7-good monotone instance does admit EFX.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/2604.18216"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Two realistic routes: (1) extend the $n=3$ toolkit (envy-cycle elimination with champion graphs, or the rainbow-cycle-number LP/combinatorial argument) to $n=4$, likely requiring a genuinely new invariant since direct extensions have stalled at 'one good unallocated'; (2) computational search — exhaustive or SAT/ILP-based enumeration of small additive instances (small $n$, small $m$, small integer valuations) to either find a counterexample or build confidence toward a positive conjecture, following the methodology of the 2026 SAT-solving paper but restricted to the additive valuation class specifically (their existing counterexamples require non-additive, e.g. submodular, valuations).",
+  "verification_notes": "A claimed existence proof for $n=4$ must produce (or algorithmically construct) an explicit EFX allocation for an ARBITRARY 4-agent additive instance and verify the EFX condition (a finite, polynomial-time-checkable set of $O(n \\cdot m)$ inequalities) directly; watch for proofs that secretly assume extra structure (e.g., generic/non-degenerate valuations) not present in the general statement. A claimed counterexample must be a fully specified finite instance (agents, goods, valuation matrix) together with a proof or brute-force check (feasible for small instances) that NO allocation satisfies all EFX inequalities; this is machine-checkable by enumerating the (finite but combinatorially large) space of allocations. Common failure mode: confusing EFX with EF1 or with EFX-with-charity (partial allocations), which are much easier and already solved — a valid contribution must address the COMPLETE allocation, unrestricted additive case.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "Notion introduced in Caragiannis, Kurokawa, Moulin, Procaccia, Shah, Wang, 'The Unreasonable Fairness of Maximum Nash Welfare', 2016, EC (TEAC 2019).",
-  "url": "https://www.cs.toronto.edu/~nisarg/papers/mnw.ec16.pdf"
+  "text": "The open problem is repeatedly stated in the EFX literature; the clearest recent formal statement is in Ashuri, Gkatzelis, Sgouritsa, 'EF2X Exists For Four Agents', 2024/2025 (arXiv), and the notion itself originates in Caragiannis, Kurokawa, Moulin, Procaccia, Shah, Wang, 'The Unreasonable Fairness of Maximum Nash Welfare', EC 2016 / TEAC 2019.",
+  "url": "https://arxiv.org/abs/2412.00254",
+  "quote": "The central open problem in this literature, which has proven to be extremely challenging, is regarding the existence of an EFX allocation, i.e., an allocation such that any envy from some agent i toward another agent j would vanish if we were to remove any single good from the bundle allocated to j. When the agents' valuations are additive, which has been the main focus of prior works, Chaudhury et al. [2024] showed that an EFX allocation is guaranteed to exist for all instances involving up to three agents. Subsequently, Berger et al. [2022] extended this guarantee to nice-cancelable valuations and Akrami et al. [2023] to MMS-feasible valuations. However, the existence of EFX allocations for instances involving four agents remains open, even for additive valuations.",
+  "location": "Abstract / Introduction"
  },
  "source": {
   "authors": "Ioannis Caragiannis, David Kurokawa, Herve Moulin, Ariel D. Procaccia, Nisarg Shah, Junxing Wang",
@@ -42,6 +121,34 @@
    "year": 2020,
    "venue": "SODA (SICOMP 2021)",
    "url": "https://arxiv.org/abs/1907.04596"
+  },
+  {
+   "authors": "Ben Berger, Avi Cohen, Michal Feldman, Amos Fiat",
+   "title": "(Almost Full) EFX Exists for Four Agents (and Beyond)",
+   "year": 2022,
+   "venue": "AAAI",
+   "url": "https://arxiv.org/abs/2102.10654"
+  },
+  {
+   "authors": "Arash Ashuri, Vasilis Gkatzelis, Alkmini Sgouritsa",
+   "title": "EF2X Exists For Four Agents",
+   "year": 2024,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2412.00254"
+  },
+  {
+   "authors": "Georgios Amanatidis, Aris Filos-Ratsikas, Alkmini Sgouritsa",
+   "title": "Pushing the Frontier on Approximate EFX Allocations",
+   "year": 2024,
+   "venue": "EC",
+   "url": "https://arxiv.org/abs/2406.12413"
+  },
+  {
+   "authors": "Hannaneh Akrami, Alexander Mayorov, Kurt Mehlhorn, Shreyas Srinivas, Christoph Weidenbach",
+   "title": "A Counterexample to EFX; n≥3 Agents, m≥n+5 Items; Monotone Valuations; via SAT-Solving",
+   "year": 2026,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2604.18216"
   }
  ],
  "bibtex": "@misc{Caragiannis2016,\n  author = {Ioannis Caragiannis and David Kurokawa and Herve Moulin and Ariel D. Procaccia and Nisarg Shah and Junxing Wang},\n  title = {The Unreasonable Fairness of Maximum Nash Welfare},\n  year = {2016},\n  howpublished = {EC (TEAC 2019)},\n  url = {https://www.cs.toronto.edu/~nisarg/papers/mnw.ec16.pdf},\n  note = {Source of ORdős Problem ORDOS-017}\n}",

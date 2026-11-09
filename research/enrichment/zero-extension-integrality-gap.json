@@ -1,0 +1,105 @@
+{
+  "id": "zero-extension-integrality-gap",
+  "title": "Tight approximation and LP gap for 0-Extension",
+  "collection": "Approximation & Discrepancy",
+  "area": "Metric Embeddings and Approximation Algorithms",
+  "tags": [
+    "0-extension",
+    "metric embeddings",
+    "cut sparsifiers",
+    "integrality gap",
+    "approximation algorithms"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "Close the gap between the $O(\\log k/\\log\\log k)$ upper bound and the $\\Omega((\\log k)^{2/3})$ lower bound for the 0-Extension metric relaxation.",
+  "full_statement": "In the $0$-Extension problem, the input is an undirected graph $G=(V,E)$ with nonnegative edge weights $w_e$, a terminal set $T=\\{t_1,\\ldots,t_k\\}\\subseteq V$, and a semimetric $D$ on $T$. A feasible solution maps every vertex $v\\in V$ to a terminal $f(v)\\in T$ while fixing terminals, $f(t)=t$ for all $t\\in T$. The objective is $$\\sum_{uv\\in E} w_{uv} D(f(u),f(v)).$$ The standard metric or semimetric relaxation extends $D$ from $T$ to all of $V$ and then rounds the extended metric back to a terminal assignment. The best known approximation and relaxation upper bound is $O(\\log k/\\log\\log k)$, while the best lower bound for the relaxation is $\\Omega((\\log k)^{2/3})$. The open problem is to determine the correct asymptotic integrality gap and approximability of $0$-Extension, and to clarify the corresponding limits of cut/flow vertex sparsifiers.",
+  "open_problem": "Determine the tight asymptotic approximation ratio and semimetric-LP integrality gap for $0$-Extension.",
+  "background": "$0$-Extension is a central metric labeling and graph compression problem. It asks how to collapse a graph onto a terminal metric while preserving pairwise terminal distances and minimizing the induced edge cost. This formulation captures clustering with prescribed labels, metric labeling relaxations, and terminal sparsification. Its importance is amplified by its equivalence and close relationship to cut and flow vertex sparsifiers: understanding how well nonterminals can be contracted to terminals tells us how well a large graph can be compressed while preserving terminal cut/flow information. The model is fully specified and finite; the hard question is a theorem-level gap in metric rounding and graph compression, not a modeling choice.",
+  "known_results": "Calinescu, Karloff, and Rabani developed the metric-relaxation framework and gave an $O(\\log k)$-approximation. Fakcharoenphol, Harrelson, Rao, and Talwar improved the rounding guarantee to $O(\\log k/\\log\\log k)$ using metric-decomposition ideas. The lower-bound side moved more slowly. Earlier constructions gave polynomial-in-log lower bounds, and Schwartz and Tur improved the metric-relaxation integrality gap to $\\Omega((\\log k)^{2/3})$ using randomized graph extensions and a topological obstruction. Chen and Tan studied a version allowing Steiner nodes and proved that related gaps remain superconstant even with many extra Steiner vertices, reinforcing the connection to the major open problem of cut/flow sparsifiers with Steiner nodes. The upper and lower bounds still do not match, and no alternative relaxation or algorithm is known to settle the correct asymptotic behavior.",
+  "where_posed": {
+    "text": "Schwartz and Tur state the current algorithmic upper bound and improve the lower bound for the standard metric relaxation; Chen and Tan connect the remaining gap to graph-compression open problems.",
+    "url": "https://arxiv.org/abs/2104.11670",
+    "quote": "The current best known integrality gap",
+    "location": "Abstract"
+  },
+  "source": {
+    "authors": "Roy Schwartz, Nitzan Tur",
+    "title": "The Metric Relaxation for 0-Extension Admits an Omega(log^{2/3} k) Gap",
+    "year": 2021,
+    "venue": "STOC",
+    "url": "https://arxiv.org/abs/2104.11670"
+  },
+  "additional_refs": [
+    {
+      "authors": "Gruia Calinescu, Howard Karloff, Yuval Rabani",
+      "title": "Approximation algorithms for the 0-extension problem",
+      "year": 2005,
+      "venue": "SIAM Journal on Computing",
+      "url": "https://doi.org/10.1137/S0097539701395978"
+    },
+    {
+      "authors": "Jittat Fakcharoenphol, Chris Harrelson, Satish Rao, Kunal Talwar",
+      "title": "An improved approximation algorithm for the 0-extension problem",
+      "year": 2003,
+      "venue": "SODA",
+      "url": "https://doi.org/10.1145/644108.644157"
+    },
+    {
+      "authors": "Yu Chen, Zihan Tan",
+      "title": "Lower Bounds on 0-Extension with Steiner Nodes",
+      "year": 2024,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/2401.09585"
+    }
+  ],
+  "enabled": true,
+  "progress": {
+    "state": "partial",
+    "summary": "The best upper bound is $O(\\log k/\\log\\log k)$ and the best standard-relaxation lower bound is $\\Omega((\\log k)^{2/3})$. Steiner-node variants remain superconstant and connect the problem to vertex sparsifiers.",
+    "links": [
+      {
+        "title": "Schwartz-Tur lower bound",
+        "url": "https://arxiv.org/abs/2104.11670"
+      },
+      {
+        "title": "Steiner-node lower bounds",
+        "url": "https://arxiv.org/abs/2401.09585"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 9,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Integrality-gap progress is based on explicit finite graph/terminal-metric families. Candidate gap instances can be encoded, solved fractionally, and compared against integral assignments for moderate sizes.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Automated search can explore small terminal metrics and graph extensions for large relaxation gaps, then attempt to extrapolate recurring structures into asymptotic families.",
+  "literature": {
+    "synthesis": "The known algorithms round an extended semimetric by probabilistic terminal decompositions. The $O(\\log k/\\log\\log k)$ bound reflects the best available decomposition quality for arbitrary terminal metrics. Lower bounds have become increasingly geometric: Schwartz and Tur's construction uses randomized graph extensions and a topological no-section argument to beat the earlier square-root-log barrier. Chen and Tan show that even adding many Steiner nodes does not make the corresponding compression problem constant-quality, suggesting the obstruction is not merely the lack of intermediate representatives. The gap remains wide enough that either side could move: a sharper decomposition might close toward $\\log^{2/3}k$, or a more powerful topological/metric construction might push the lower bound toward $\\log k/\\log\\log k$.",
+    "reviewed": [
+      {
+        "ref": "Calinescu, Karloff, Rabani, 'Approximation algorithms for the 0-extension problem', SICOMP 2005",
+        "result": "Introduces the metric-relaxation approach and gives an $O(\\log k)$ approximation.",
+        "relevance": "algorithmic-background",
+        "url": "https://doi.org/10.1137/S0097539701395978"
+      },
+      {
+        "ref": "Fakcharoenphol, Harrelson, Rao, Talwar, 'An improved approximation algorithm for the 0-extension problem', SODA 2003",
+        "result": "Improves the approximation to $O(\\log k/\\log\\log k)$.",
+        "relevance": "partial-progress",
+        "url": "https://doi.org/10.1145/644108.644157"
+      },
+      {
+        "ref": "Schwartz and Tur, 'The Metric Relaxation for 0-Extension Admits an Omega(log^{2/3} k) Gap', STOC 2021",
+        "result": "Improves the lower bound for the standard relaxation to $\\Omega((\\log k)^{2/3})$.",
+        "relevance": "lower-bound-evidence",
+        "url": "https://arxiv.org/abs/2104.11670"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "For upper bounds, study terminal decompositions, metric embeddings, and rounding schemes that exploit terminal geometry. For lower bounds, search for graph-extension constructions, lift-like gadgets, and terminal metrics with certified fractional/integral separation. Connections to vertex sparsifiers may transfer progress in either direction.",
+    "verification_notes": "A claimed upper bound must apply to arbitrary edge-weighted graphs and arbitrary terminal semimetrics, with terminal vertices fixed. A claimed integrality gap should specify the exact relaxation, the graph family, terminal metric, fractional extension value, and integral lower bound. Distinguish standard $0$-Extension from Steiner-node variants, metric labeling with arbitrary label costs, and cut-sparsifier statements; related results do not automatically imply the desired approximation bound without a formal reduction.",
+    "machine_checkable": true
+  }
+}

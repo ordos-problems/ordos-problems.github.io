@@ -1,0 +1,76 @@
+{
+  "id": "planted-structure-computational-thresholds",
+  "background": "Planted-structure problems are clean average-case models for statistical-computational gaps. One observes a random object, such as an Erdos-Renyi graph or a noisy matrix, into which a hidden clique, dense subgraph, community, or elevated submatrix has been planted. Information theory may allow recovery at very low signal levels, while all known polynomial-time algorithms require much stronger signal. Wu and Xu survey a general toolkit for proving information-theoretic thresholds and conditional computational lower bounds, often by reductions from planted clique. Chen and Xu give a detailed four-region picture for planted clustering and submatrix localization with growing numbers of clusters. Since then, low-degree polynomial methods have sharpened evidence for computational thresholds in several planted models. The open problem is to turn this evidence into exact algorithmic thresholds or matching conditional lower bounds in canonical regimes where current constants and boundaries do not line up.",
+  "short_statement": "Make the statistical-computational thresholds for canonical planted dense-subgraph and submatrix models sharp.",
+  "full_statement": "Fix a canonical planted-structure model such as planted dense subgraph, planted clustering, or submatrix localization. Under the null, the observation is an Erdos-Renyi graph, a random matrix with independent noise, or a related product distribution. Under the alternative, an unknown subset, community partition, or submatrix of size parameters such as $k$ and $r$ receives elevated edge probability, mean shift, or correlation. For each model and asymptotic regime, define the information-theoretic threshold as the smallest signal at which detection, weak recovery, exact recovery, or localization is possible by any estimator, and define the polynomial-time threshold as the smallest signal at which an algorithm running in $n^{O(1)}$ time succeeds with high probability. Determine the sharp polynomial-time threshold, including constants where meaningful, or prove a matching conditional lower bound under a standard average-case assumption such as planted clique or the low-degree-polynomial framework. The target is a precise threshold theorem for one unresolved sparse or growing planted model, not a new modeling variant.",
+  "open_problem": "Close the remaining statistical-computational gaps for planted dense subgraph, planted clustering, and submatrix localization by matching efficient algorithms with sharp conditional lower bounds in the unresolved sparse/growing regimes.",
+  "known_results": "Chen and Xu partitioned planted clustering and submatrix-localization parameter spaces into impossible, hard, easy, and simple regions, with tight results up to constants in several growing-cluster regimes. Wu and Xu surveyed the now-standard toolkit: first- and second-moment analyses for information-theoretic limits, mutual-information and interpolation methods for impossibility, and randomized reductions from planted clique for conditional computational lower bounds. Hajek, Wu, and Xu developed planted-clique-based lower bounds for community detection, showing how average-case reductions can explain algorithmic barriers. The low-degree framework has since become a second major source of evidence, and recent work on planted hypergraphs and tensor PCA identifies sharp low-degree thresholds in some regimes and turns matching upper bounds into algorithms above the threshold. Still, for several planted dense-subgraph, clustering, and submatrix regimes, the best algorithms, planted-clique reductions, and low-degree predictions do not yet form a single sharp boundary.",
+  "status": "open",
+  "where_posed": {
+    "text": "Surveyed as a central statistical-computational gap problem in Wu and Xu, 'Statistical Problems with Planted Structures'.",
+    "url": "https://arxiv.org/abs/1806.00118",
+    "quote": "",
+    "location": "Discussion of planted clique reductions and computational thresholds"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "Information-theoretic thresholds, convex-algorithm guarantees, planted-clique reductions, and low-degree evidence cover many regimes. Sharp polynomial-time thresholds remain open in several sparse and growing planted-structure models.",
+    "links": [
+      {
+        "title": "Statistical Problems with Planted Structures",
+        "url": "https://arxiv.org/abs/1806.00118"
+      },
+      {
+        "title": "Low-degree estimation thresholds in planted hypergraphs and tensor PCA",
+        "url": "https://arxiv.org/abs/2605.30113"
+      }
+    ]
+  },
+  "importance": 9,
+  "difficulty": 9,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Finite planted instances can test algorithms and low-degree predictions, but asymptotic threshold claims require probabilistic proof. Counterexamples are more likely to refute conjectured algorithms than to settle the full threshold.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Search can find statistics, spectral matrices, message-passing rules, or low-degree features that improve algorithms near threshold. It can also generate hard instances for heuristics.",
+  "literature": {
+    "synthesis": "The core gap is now well formalized. The information-theoretic side often follows from likelihood, second-moment, or interpolation arguments. The algorithmic side includes spectral methods, semidefinite programming, message passing, and low-degree polynomials. Conditional lower bounds via planted clique and low-degree calculations provide evidence for gaps, but exact thresholds and constants are not universally known. Recent low-degree results sharpen the picture for planted hypergraphs and tensor PCA, suggesting that similarly precise analyses may be possible for other planted dense-subgraph and submatrix settings.",
+    "reviewed": [
+      {
+        "ref": "Yudong Chen and Jiaming Xu, 'Statistical-Computational Tradeoffs in Planted Problems and Submatrix Localization with a Growing Number of Clusters and Submatrices', arXiv 2014",
+        "result": "Partitions parameter space into impossible, hard, easy, and simple regions for planted clustering and submatrix localization.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1402.1267"
+      },
+      {
+        "ref": "Yihong Wu and Jiaming Xu, 'Statistical Problems with Planted Structures: Information-Theoretical and Computational Limits', arXiv 2018",
+        "result": "Surveys information-theoretic methods and planted-clique reductions for planted-structure problems.",
+        "relevance": "survey",
+        "url": "https://arxiv.org/abs/1806.00118"
+      },
+      {
+        "ref": "Bruce Hajek, Yihong Wu, and Jiaming Xu, 'Computational Lower Bounds for Community Detection on Random Graphs', arXiv 2014",
+        "result": "Develops planted-clique-based computational lower bounds for community-detection regimes.",
+        "relevance": "hardness",
+        "url": "https://arxiv.org/abs/1406.6625"
+      },
+      {
+        "ref": "Daniel Fu and Youngtak Sohn, 'Low-degree estimation thresholds in planted hypergraphs and tensor PCA', arXiv 2026",
+        "result": "Sharpens low-degree threshold evidence and algorithms for planted dense hypergraph and tensor PCA regimes.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2605.30113"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Choose one canonical model and parameter regime, then compare information-theoretic, spectral/SDP/message-passing, planted-clique reduction, and low-degree thresholds. Search for new local statistics or reductions that close constant gaps.",
+    "verification_notes": "A claimed threshold theorem must specify the model distribution, sparsity regime, planted-set or cluster scaling, signal normalization, and task: detection, weak recovery, exact recovery, or full localization. For an algorithmic upper bound, check polynomial running time, success probability, and whether constants match the stated threshold. For a lower bound, check the assumption used: information-theoretic impossibility, planted-clique reduction, low-degree lower bound, or another average-case hypothesis are not interchangeable. Empirical phase transitions or experiments on finite graphs are useful diagnostics but do not verify an asymptotic threshold claim.",
+    "machine_checkable": true
+  },
+  "tags": [
+    "planted clique",
+    "planted dense subgraph",
+    "submatrix detection",
+    "average-case complexity",
+    "statistical-computational gaps"
+  ]
+}

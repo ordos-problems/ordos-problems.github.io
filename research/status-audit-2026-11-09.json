@@ -1,0 +1,3114 @@
+{
+  "audit_date": "2026-11-09",
+  "scope": "Existing-catalogue literature and status audit. No new problems added and no remote publication.",
+  "method": "Every local record received a targeted search. Relevant model/theorem/full-text sections were read for selected entries. Neither full-proof verification nor exhaustive forward-citation coverage was performed.",
+  "coverage_definitions": {
+    "theorem/full-text": "Relevant primary model/theorem or full-text sections read and compared; not every proof step certified.",
+    "abstract-only": "Primary abstract inspected; theorem assumptions not fully checked.",
+    "search-only": "Targeted searches or indexed material inspected. No finding of continued openness is implied."
+  },
+  "deployment": {
+    "live_url": "https://ordos-problems.github.io/",
+    "live_generated": "2026-06-21",
+    "live_problem_count": 84,
+    "local_problem_count": 182,
+    "local_only_count": 98,
+    "live_homepage_embedded_catalogue_verified": true,
+    "published_by_this_audit": false
+  },
+  "coverage_counts": {
+    "theorem/full-text": 70,
+    "search-only": 108,
+    "abstract-only": 4
+  },
+  "updated_records": 63,
+  "update_count_note": "63 records changed, including two metadata-only cleanups. Other changes include literature/status corrections, newer bounds, source/model qualifications, and citation metadata.",
+  "catalogue_status_after_audit": {
+    "solution claimed": 18,
+    "partially resolved": 19,
+    "open": 131,
+    "conjecture": 10,
+    "resolved": 4
+  },
+  "limitations": [
+    "108 records remain search-only and four abstract-only. Their retained status labels are not newly certified.",
+    "Recent preprint resolution claims are labeled solution claimed, not independently verified resolutions.",
+    "Two bandit entries are explicitly provisional or need sharper formulation.",
+    "A result for a related benchmark, different encoding, or larger policy class is not treated as resolution of the listed model.",
+    "The live site still embeds the June 21 catalogue with 84 records; 98 local records are not deployed.",
+    "Existing dirty-worktree changes were preserved; nothing committed or pushed."
+  ],
+  "rendering_changes": [
+    "Resolved and solution-claimed detail pages use Resolution / Claimed Resolution headings.",
+    "Homepage and detail Copy text retain status and use verification-oriented instructions for resolved or claimed targets.",
+    "Blank quotations and confidence corrections now survive the enrichment-to-source merge.",
+    "Site copy says cited results instead of asserting that all results were verified."
+  ],
+  "edited_citation_metadata_normalized": [
+    "beck-fiala-conjecture",
+    "flatness-constant-integer-programming",
+    "graph-shannon-capacity-odd-cycles",
+    "correlation-clustering-complete-graph-threshold",
+    "tusnady-low-dimensional-box-discrepancy",
+    "truthful-submodular-combinatorial-auctions",
+    "multiway-cut-approximation-threshold",
+    "forest-augmentation-approximation-threshold",
+    "metric-tsp-approximation-threshold",
+    "sparsest-cut-approximation-threshold",
+    "bimatrix-approximate-nash-threshold",
+    "minor-free-flow-cut-gap-gnrs"
+  ],
+  "validation": {
+    "build": "passed",
+    "records": 182,
+    "katex_failures": 0,
+    "source_api_consistency": "passed",
+    "status_headings_and_detail_copy": "passed",
+    "confidence_and_quote_merge": "passed",
+    "homepage_copy_status_paths": "passed (separate JavaScript unit check)",
+    "schema_error_count": 86,
+    "schema_categories": {
+      "literature": 79,
+      "id": 3,
+      "progress": 4
+    },
+    "schema_errors": [
+      {
+        "id": "edge-weighted-matching-free-disposal",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "adwords-general-bids",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "online-makespan-scheduling-gap",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'foundational' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "online-makespan-scheduling-gap",
+        "path": [
+          "literature",
+          "reviewed",
+          1,
+          "relevance"
+        ],
+        "message": "'status-check' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "subsidy-envy-freeness-monotone",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "kunit-prophet-iid-monotonicity-in-T",
+        "path": [
+          "id"
+        ],
+        "message": "'kunit-prophet-iid-monotonicity-in-T' does not match '^[a-z0-9-]+$'"
+      },
+      {
+        "id": "kunit-prophet-onl-off-adversarial",
+        "path": [
+          "literature",
+          "reviewed",
+          1,
+          "relevance"
+        ],
+        "message": "'background' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "arnosti-ma-stockout-threshold-conjecture",
+        "path": [
+          "literature",
+          "reviewed",
+          2,
+          "relevance"
+        ],
+        "message": "'background' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "ocrs-ex-ante-equivalence-oblivious-adversary",
+        "path": [
+          "literature",
+          "reviewed",
+          2,
+          "relevance"
+        ],
+        "message": "'background' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "L-sparse-nrm-interpolating-guarantee",
+        "path": [
+          "id"
+        ],
+        "message": "'L-sparse-nrm-interpolating-guarantee' does not match '^[a-z0-9-]+$'"
+      },
+      {
+        "id": "general-L-sparse-knapsack-guarantee",
+        "path": [
+          "id"
+        ],
+        "message": "'general-L-sparse-knapsack-guarantee' does not match '^[a-z0-9-]+$'"
+      },
+      {
+        "id": "general-L-sparse-knapsack-guarantee",
+        "path": [
+          "literature",
+          "reviewed",
+          1,
+          "relevance"
+        ],
+        "message": "'background' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "strongly-polynomial-lp",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "polynomial-hirsch-conjecture",
+        "path": [
+          "literature",
+          "reviewed",
+          4,
+          "relevance"
+        ],
+        "message": "'background' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "bhh-tsp-constant",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "bhh-tsp-constant",
+        "path": [
+          "literature",
+          "reviewed",
+          1,
+          "relevance"
+        ],
+        "message": "'numerical-evidence' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "dynamic-barter-kidney-exchange-optimal-policy",
+        "path": [
+          "literature",
+          "reviewed",
+          4,
+          "relevance"
+        ],
+        "message": "'background' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "dynamic-spatial-matching-greedy",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "throughput-scheduling-release-pmax",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "throughput-scheduling-release-pmax",
+        "path": [
+          "literature",
+          "reviewed",
+          1,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "job-shop-makespan-fpt-as-machines",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "open-shop-setup-times-fpt-batches",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "open-shop-setup-times-fpt-batches",
+        "path": [
+          "literature",
+          "reviewed",
+          3,
+          "relevance"
+        ],
+        "message": "'background' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "critical-beta-splitting-ctcs-coalescent",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "two-sided-flexibility-random-graph-matching",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "new-product-exploration-heterogeneous-priors-assortment",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "new-product-exploration-heterogeneous-priors-assortment",
+        "path": [
+          "literature",
+          "reviewed",
+          3,
+          "relevance"
+        ],
+        "message": "'background' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "optimal-contest-design-gradient-patterns",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "polling-renewal-large-switchover-limit",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "adaptive-polling-limited-service-stability-region",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "open-shop-throughput-machines-fpt",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "open-shop-throughput-machines-fpt",
+        "path": [
+          "literature",
+          "reviewed",
+          3,
+          "relevance"
+        ],
+        "message": "'nearby-hardness' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "random-spatial-network-length-route-tradeoff",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "total-weighted-tardiness-pmax-fpt",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "unit-time-precedence-scheduling-width-fpt",
+        "path": [
+          "literature",
+          "reviewed",
+          1,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "input-queued-switch-maxweight-heavy-traffic-distribution",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "sbp-queueing-network-bar-tight-matrix-condition",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "smooth-kernel-rgg-spectral-threshold-conjecture",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "finite-heterogeneous-server-load-balancing-optimality",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "minsum-single-machine-scheduling-lp-gap",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "ggm-fcfs-stationary-ergodic-tv-convergence",
+        "path": [
+          "literature",
+          "reviewed",
+          2,
+          "relevance"
+        ],
+        "message": "'open-problem-source' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "jsq-stationary-ergodic-stability-regimes",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'open-problem-source' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "local-global-nonlinear-completion-time-scheduling",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'baseline' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "local-global-nonlinear-completion-time-scheduling",
+        "path": [
+          "literature",
+          "reviewed",
+          1,
+          "relevance"
+        ],
+        "message": "'open-problem-source' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "local-global-nonlinear-completion-time-scheduling",
+        "path": [
+          "literature",
+          "reviewed",
+          2,
+          "relevance"
+        ],
+        "message": "'background' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "supermarket-heavy-traffic-stationary-short-queue-profile",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'baseline' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "supermarket-heavy-traffic-stationary-short-queue-profile",
+        "path": [
+          "literature",
+          "reviewed",
+          1,
+          "relevance"
+        ],
+        "message": "'baseline' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "supermarket-heavy-traffic-stationary-short-queue-profile",
+        "path": [
+          "literature",
+          "reviewed",
+          3,
+          "relevance"
+        ],
+        "message": "'open-problem-source' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "gross-substitutes-constructive-description",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'baseline' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "gross-substitutes-constructive-description",
+        "path": [
+          "literature",
+          "reviewed",
+          1,
+          "relevance"
+        ],
+        "message": "'baseline' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "gross-substitutes-constructive-description",
+        "path": [
+          "literature",
+          "reviewed",
+          3,
+          "relevance"
+        ],
+        "message": "'open-problem-source' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "optimal-dynamic-pricing-combinatorial-market-frontier",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'baseline' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "optimal-dynamic-pricing-combinatorial-market-frontier",
+        "path": [
+          "literature",
+          "reviewed",
+          1,
+          "relevance"
+        ],
+        "message": "'open-problem-source' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "optimal-dynamic-pricing-combinatorial-market-frontier",
+        "path": [
+          "literature",
+          "reviewed",
+          3,
+          "relevance"
+        ],
+        "message": "'background' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "kernelized-bernoulli-bandits-tight-bounds",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'open-problem-source' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "kernelized-bernoulli-bandits-tight-bounds",
+        "path": [
+          "literature",
+          "reviewed",
+          3,
+          "relevance"
+        ],
+        "message": "'solves-related-model' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "single-machine-precedence-wct-lp-kernel",
+        "path": [
+          "progress",
+          "state"
+        ],
+        "message": "'open' is not one of ['none', 'partial', 'solution-claimed', 'resolved']"
+      },
+      {
+        "id": "single-machine-precedence-wct-lp-kernel",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'open-problem-source' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "single-machine-precedence-wct-lp-kernel",
+        "path": [
+          "literature",
+          "reviewed",
+          1,
+          "relevance"
+        ],
+        "message": "'background' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "single-machine-precedence-wct-lp-kernel",
+        "path": [
+          "literature",
+          "reviewed",
+          2,
+          "relevance"
+        ],
+        "message": "'background' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "single-machine-throughput-bounded-processing-times",
+        "path": [
+          "progress",
+          "state"
+        ],
+        "message": "'open' is not one of ['none', 'partial', 'solution-claimed', 'resolved']"
+      },
+      {
+        "id": "single-machine-throughput-bounded-processing-times",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'open-problem-source' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "single-machine-throughput-bounded-processing-times",
+        "path": [
+          "literature",
+          "reviewed",
+          1,
+          "relevance"
+        ],
+        "message": "'open-problem-source' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "single-machine-throughput-bounded-processing-times",
+        "path": [
+          "literature",
+          "reviewed",
+          2,
+          "relevance"
+        ],
+        "message": "'background' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "pomdp-memoryless-policy-planning",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "pomdp-memoryless-policy-planning",
+        "path": [
+          "literature",
+          "reviewed",
+          1,
+          "relevance"
+        ],
+        "message": "'background' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "simple-stochastic-games-polynomial-time",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "capacitated-facility-location-relaxation-gap",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'lower-bound-evidence' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "capacitated-facility-location-relaxation-gap",
+        "path": [
+          "literature",
+          "reviewed",
+          1,
+          "relevance"
+        ],
+        "message": "'lower-bound-evidence' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "capacitated-facility-location-relaxation-gap",
+        "path": [
+          "literature",
+          "reviewed",
+          2,
+          "relevance"
+        ],
+        "message": "'algorithmic-background' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "minimum-feedback-arc-set-constant-approximation",
+        "path": [
+          "literature",
+          "reviewed",
+          2,
+          "relevance"
+        ],
+        "message": "'conditional-hardness' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "parity-games-polynomial-time",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'complexity-classification' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "zero-extension-integrality-gap",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'algorithmic-background' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "zero-extension-integrality-gap",
+        "path": [
+          "literature",
+          "reviewed",
+          2,
+          "relevance"
+        ],
+        "message": "'lower-bound-evidence' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "queueing-network-stability-clean-undecidability",
+        "path": [
+          "progress",
+          "state"
+        ],
+        "message": "'open' is not one of ['none', 'partial', 'solution-claimed', 'resolved']"
+      },
+      {
+        "id": "queueing-network-stability-clean-undecidability",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'source-open-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "queueing-network-stability-clean-undecidability",
+        "path": [
+          "literature",
+          "reviewed",
+          1,
+          "relevance"
+        ],
+        "message": "'foundational-tool' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "queueing-network-stability-clean-undecidability",
+        "path": [
+          "literature",
+          "reviewed",
+          2,
+          "relevance"
+        ],
+        "message": "'barrier-context' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "fpp-bigeodesics-nonexistence",
+        "path": [
+          "progress",
+          "state"
+        ],
+        "message": "'open' is not one of ['none', 'partial', 'solution-claimed', 'resolved']"
+      },
+      {
+        "id": "fpp-bigeodesics-nonexistence",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'conditional-progress' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "fpp-bigeodesics-nonexistence",
+        "path": [
+          "literature",
+          "reviewed",
+          1,
+          "relevance"
+        ],
+        "message": "'geodesic-structure-progress' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "fpp-bigeodesics-nonexistence",
+        "path": [
+          "literature",
+          "reviewed",
+          2,
+          "relevance"
+        ],
+        "message": "'unconditional-partial-progress' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "gilbert-pollak-steiner-ratio",
+        "path": [
+          "literature",
+          "reviewed",
+          0,
+          "relevance"
+        ],
+        "message": "'poses-problem' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "gilbert-pollak-steiner-ratio",
+        "path": [
+          "literature",
+          "reviewed",
+          1,
+          "relevance"
+        ],
+        "message": "'historical-claim' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "gilbert-pollak-steiner-ratio",
+        "path": [
+          "literature",
+          "reviewed",
+          2,
+          "relevance"
+        ],
+        "message": "'open-status' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      },
+      {
+        "id": "square-root-sum-polynomial-time",
+        "path": [
+          "literature",
+          "reviewed",
+          3,
+          "relevance"
+        ],
+        "message": "'technical-tool' is not one of ['partial-progress', 'solves-special-case', 'hardness', 'related-tool', 'survey']"
+      }
+    ],
+    "edited_records_schema": "passed (63 updated records)",
+    "legacy_schema_note": "Remaining errors are outside this audit's edited records: legacy relevance labels, four progress states, and three mixed-case IDs. IDs were preserved to avoid breaking existing links."
+  },
+  "records": [
+    {
+      "number": 1,
+      "id": "matroid-secretary-conjecture",
+      "status": "solution claimed",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected_enrichment",
+      "summary": "Sharp secretary resolution claimed; historical open/general-bound assertions replaced.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 2,
+      "id": "free-order-prophet-inequality",
+      "status": "partially resolved",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected_enrichment",
+      "summary": "Improved order-selection guarantee; exact IID-equality gap remains.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 3,
+      "id": "single-sample-matroid-prophet",
+      "status": "solution claimed",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected_enrichment",
+      "summary": "Single-sample resolution claimed for fixed oblivious order only.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 4,
+      "id": "online-matching-general-vertex-arrivals",
+      "status": "partially resolved",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "Matching fractional result located; no theorem-level recheck of the existing enrichment.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 5,
+      "id": "fully-online-matching",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected_enrichment",
+      "summary": "Updated fractional bounds; integral and bipartite/general graph guarantees separated.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 6,
+      "id": "vertex-weighted-random-order-matching",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected_enrichment",
+      "summary": "Improved weighted random-arrival guarantee, with known horizon.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 7,
+      "id": "edge-weighted-matching-free-disposal",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "No matching-model improvement verified; edge-arrival variants must not be transferred.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 8,
+      "id": "adwords-general-bids",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "General-bid reference located; no newer bound verified.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 9,
+      "id": "k-server-conjecture-deterministic",
+      "status": "solution claimed",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected_enrichment",
+      "summary": "General deterministic resolution claimed; proof not independently certified.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 10,
+      "id": "randomized-k-server-polylog-power",
+      "status": "partially resolved",
+      "review_level": "theorem/full-text",
+      "changed": false,
+      "disposition": "correction_deferred_dependency_review",
+      "summary": "Companion finite-rational-metric theorem reviewed. Main arbitrary-metric paper not retrieved; enrichment update deferred for dependency/scope review.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 11,
+      "id": "bin-packing-additive-integrality-gap",
+      "status": "partially resolved",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected_enrichment",
+      "summary": "Superconstant LP gap claimed; constant-gap question changes, exact growth remains undetermined.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 12,
+      "id": "online-makespan-scheduling-gap",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "Over-time/release-date scheduling hits do not establish progress in the list-arrival model.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 13,
+      "id": "randomized-list-update",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "Stochastic list-update hit is not the adversarial randomized ratio; no theorem-level review.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 14,
+      "id": "k-taxi-deterministic-finiteness",
+      "status": "solution claimed",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected_enrichment",
+      "summary": "Metric-independent deterministic finiteness claimed; optimal exponential base remains separate.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 15,
+      "id": "general-convex-body-chasing",
+      "status": "solution claimed",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected_enrichment",
+      "summary": "General dimension-only gap claimed closed; nested and bounded-horizon variants are separate.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 16,
+      "id": "submodular-bandit-cardinality-dependence",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected-model-no-closure-found",
+      "summary": "Corrected robust-greedy versus approximation-regret conflation and anonymous citations. Targeted search, not exhaustive absence proof.",
+      "evidence_files": [
+        "research/status-audit-bandits.json",
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 17,
+      "id": "efx-existence-goods",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "No full-text resolution or special-case claim checked; no open-status certification.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 18,
+      "id": "efx-chores",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "Local enrichment already contains a negative result. Its approximation definitions and latest proof require review; no overwrite.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 19,
+      "id": "nash-social-welfare-approximation",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected_enrichment",
+      "summary": "Improved unweighted additive approximation; weighted LP barrier no longer misapplied.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 20,
+      "id": "maximin-share-approximation",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected_enrichment",
+      "summary": "Both bounds improved; universal and fixed-agent-count guarantees separated.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 21,
+      "id": "competition-complexity-multi-item",
+      "status": "partially resolved",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "Regularity and item/bidder regimes need theorem-level reconciliation; no correction made.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 22,
+      "id": "menu-complexity-multi-item",
+      "status": "partially resolved",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "No primary theorem reviewed; menu-size and approximation regimes not reconciled.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 23,
+      "id": "price-of-anonymity-multi-unit",
+      "status": "partially resolved",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "Known multi-unit anonymity paper located; exact constants not reviewed.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 24,
+      "id": "max-stable-matchings",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected_enrichment",
+      "summary": "Improved upper exponential base; exact growth remains undetermined.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 25,
+      "id": "stable-matching-couples-threshold",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "Preference-domain and capacity-modification papers do not verify a random-market couples threshold; formal random model requires clarification.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 26,
+      "id": "prophet-secretary-tight-ratio",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected_enrichment",
+      "summary": "Improved lower and upper bounds for order-unaware prophet secretary.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 27,
+      "id": "online-bipartite-matching-random-order",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected_enrichment",
+      "summary": "Improved lower bound and corrected minimax quantifiers; ordinary Ranking remains separate.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 28,
+      "id": "ef1-po-polynomial-time",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "Fixed-agent-count result located; general polynomial-time question not verified.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 29,
+      "id": "envy-free-cake-cutting-query-complexity",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected_enrichment",
+      "summary": "Improved deterministic bound and randomized expected-polynomial result; deterministic polynomial target not resolved.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 30,
+      "id": "max-smti-approximation",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "No matching-model theorem reviewed.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 31,
+      "id": "subsidy-envy-freeness-monotone",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "No usable new primary theorem retained from search.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 32,
+      "id": "lost-sales-inventory-positive-lead-time-optimal-policy",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected-partial-results",
+      "summary": "Added finite-parameter CBS bound, qualified prior asymptotic 1.79 result and distinguished continuous review; repaired timing and overbroad base-stock claims. Retained open structural target; preprints not independently proof-certified.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 33,
+      "id": "dual-sourcing-inventory-optimal-policy-structure",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "unverified-leads-no-edit",
+      "summary": "No theorem review; cannot infer a current open status or resolution from the search.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 34,
+      "id": "optimal-policy-one-warehouse-multi-retailer",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located numerical/RL and network-design work; neither establishes the general exact OWMR control policy. No current open-status certification.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 35,
+      "id": "closed-form-optimal-policy-general-assembly-systems",
+      "status": "partially resolved",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located Chen-Muharremoglu's assembly-policy work and references to expediting/advance-demand variants; no theorem comparison for arbitrary imbalanced assembly systems.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 36,
+      "id": "weber-weiss-whittle-index-asymptotic-optimality",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-verified-correction",
+      "summary": "Staged enrichment already includes recent Hong-related work. Search results did not support a verified additional correction; no theorem from a new source read and no inference from absence of results.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 37,
+      "id": "bayesian-mab-switching-costs-optimal-policy",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Bayesian optimization with switching/movement costs is not automatically the rested Bayesian MAB policy problem. No direct resolution verified.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 38,
+      "id": "stochastic-bandits-switching-cost-regret",
+      "status": "partially resolved",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "unverified-leads-no-edit",
+      "summary": "Found a 2025 switching-cost bandit paper; its near-optimal regret claims require a theorem-level comparison with the exact instance-dependent target before changing bounds.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 39,
+      "id": "cmu-theta-rule-exact-optimality-abandonment",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "The overloaded-fluid c-mu-theta result does not establish Halfin-Whitt or finite-system exact optimality. A 2026 dissertation counterexample lead remains unverified.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 40,
+      "id": "optimal-routing-heterogeneous-parallel-servers",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located heavy-traffic routing results, not a verified finite-system optimal routing characterization.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 41,
+      "id": "nrm-relaxation-gap-degenerate-and-choice",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Found LP-based revenue-control analysis. LP benchmark, degeneracy, and choice-model assumptions have not been checked against this record.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 42,
+      "id": "stochastic-scheduling-optimal-policy-release-precedence",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located parallel-machine precedence approximation and local-search papers. These do not by their indexed descriptions resolve the exact stochastic single-machine policy target.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 43,
+      "id": "metric-tsp-four-thirds-integrality-gap",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "Local override already includes small-instance Held-Karp enumeration. No global 4/3 resolution verified; finite-size results are not a universal theorem.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 44,
+      "id": "atsp-held-karp-integrality-gap",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "bound-corrected",
+      "summary": "Published ATSP Held-Karp upper gap 17 supersedes 22; lower bound 2 unchanged.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 45,
+      "id": "steiner-tree-bidirected-cut-integrality-gap",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "Local override already includes the 2026 1.898 BCR preprint. No newer general result verified; not a claim that the gap is tight.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 46,
+      "id": "steiner-tree-approximation-ratio-gap",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "No improvement to the general Steiner Tree approximation threshold verified. Distinguish LP bounds and special graph classes.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 47,
+      "id": "santa-claus-config-lp-integrality-gap",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "bound-corrected",
+      "summary": "Existential restricted configuration-LP gap 53/15 supersedes 3.808; no polynomial algorithm inferred.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 48,
+      "id": "unrelated-machines-makespan-below-2",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "No polynomial-time below-2 algorithm for arbitrary unrelated-machine makespan verified.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 49,
+      "id": "beck-fiala-conjecture",
+      "status": "solution claimed",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "solution-claim-recorded",
+      "summary": "Full Beck-Fiala bound claimed as a consequence of Komlos; not independently proof-verified.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 50,
+      "id": "komlos-conjecture",
+      "status": "solution claimed",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "solution-claim-recorded",
+      "summary": "Full Komlos constant claimed; subsequent Karingula-Lovett Theorem 1.2 also read. Parent reports independently checking those theorem statements; this is not full proof verification.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 51,
+      "id": "matrix-spencer-conjecture",
+      "status": "solution claimed",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "solution-claim-recorded",
+      "summary": "Full square Matrix Spencer claimed. Corrected statement to n matrices of dimension n, not unrestricted d.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 52,
+      "id": "cvrp-unit-demand-approximability",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "Located fixed-capacity CVRP refinements; capacity-dependent gains do not automatically improve the uniform arbitrary-capacity guarantee.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 53,
+      "id": "metric-facility-location-gap",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "No newer general metric UFL bound verified in this limited search.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 54,
+      "id": "metric-k-median-gap",
+      "status": "solution claimed",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "solution-claim-recorded",
+      "summary": "Claims strict k and factor 1+2/e+epsilon for fixed epsilon, matching conditional infimum. Lean not run; release warns of varying verification.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 55,
+      "id": "graph-balancing-makespan",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "No improvement superseding the local graph-balancing algorithm/existence distinction verified.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 56,
+      "id": "restricted-assignment-makespan",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "No polynomial-time strict below-2 restricted-assignment result verified; LP and quasipolynomial bounds are separate.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 57,
+      "id": "santa-claus-best-approximation",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "bound-corrected",
+      "summary": "Existential gap 53/15 added without changing polynomial-time 4+delta benchmark.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 58,
+      "id": "kunit-prophet-iid-monotonicity-in-T",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": false,
+      "disposition": "related_model_reviewed_no_correction",
+      "summary": "Related asymptotic model reviewed. No theorem establishing the record's finite-T minimax monotonicity checked; no correction.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 59,
+      "id": "kunit-prophet-onl-off-adversarial",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "LP-relative versus offline multi-unit guarantees require a targeted theorem review.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 60,
+      "id": "kunit-prophet-correlation-gap-random-order",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "General-matroid random-order progress does not automatically improve the rank-k correlation-gap bound.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 61,
+      "id": "arnosti-ma-stockout-threshold-conjecture",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "Stockout-threshold conjecture lead located; instance-optimal versus minimax-guarantee wording requires review.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 62,
+      "id": "static-threshold-half-without-randomization-or-cardinal",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "Sample/ordinal result located; deterministic static-threshold model not reconciled.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 63,
+      "id": "random-order-vs-worst-case-known-order",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "Order-competitive results are adjacent, not a checked answer to this comparison.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 64,
+      "id": "ocrs-ex-ante-equivalence-oblivious-adversary",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "Known-order/random-order equivalence reference located; unknown oblivious-order extension not checked.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 65,
+      "id": "ocrs-rank1-almighty-adversary",
+      "status": "partially resolved",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected_enrichment",
+      "summary": "Greedy-class optimum added; general-rule adversary visibility remains underspecified.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 66,
+      "id": "explicit-kunit-ocrs-random-order",
+      "status": "solution claimed",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected_enrichment",
+      "summary": "Explicit optimal ROCRS construction claimed; known probabilities allow internal samples.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 67,
+      "id": "online-knapsack-unit-density-tight-guarantee",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected_enrichment",
+      "summary": "Corrected LP benchmark and heterogeneous independent arrival scope.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 68,
+      "id": "L-sparse-nrm-interpolating-guarantee",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "No theorem-level check of sparse-NRM capacity interpolation.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 69,
+      "id": "general-L-sparse-knapsack-guarantee",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "No theorem-level check of general column-sparse knapsack guarantees.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 70,
+      "id": "matroid-random-order-extends-to-resource-allocation",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "Resource-allocation feasibility and benchmark scope remain underspecified; no broad matroid transfer certified.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 71,
+      "id": "strongly-polynomial-lp",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "Located a general strongly-polynomial LP claim by Awoniyi and 2026 results for restricted LP classes. Neither theorem/proof reviewed; cannot declare the general claim valid or invalid.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 72,
+      "id": "simplex-polynomial-pivot-rule",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "Located ranking-based pivot-rule lower bounds (STACS 2026). Restricted rule lower bounds do not settle existence of a polynomial pivot rule.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 73,
+      "id": "polynomial-hirsch-conjecture",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "Located 2026 polytope-diameter work; no polynomial Hirsch resolution verified.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 74,
+      "id": "strongly-polynomial-mdp",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "Located fixed-discount/robust-MDP and restricted policy-iteration results; these do not by their titles establish strong polynomiality for unrestricted input discount factors.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 75,
+      "id": "bhh-tsp-constant",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "Located Gaudio-Guan 2026 publication and an additional self-published 0.6508 lower-bound claim. New claim not theorem-reviewed; no update promoted.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 76,
+      "id": "two-stage-stochastic-programming-complexity",
+      "status": "partially resolved",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "partial-progress-recorded",
+      "summary": "Fixed-recourse, affine uniform-box model: finer hardness/tractability classification; not a general FPRAS or SAA theorem.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 77,
+      "id": "generalized-cmu-exact-optimality",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "unverified-direct-lead-no-edit",
+      "summary": "Author manuscript claims improvements over generalized c-mu under Poisson/exponential jobs with convex age costs; indexed example is a potential counterexample lead. Full model and example must be checked before editing.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 78,
+      "id": "svf-appointment-sequencing",
+      "status": "partially resolved",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Found heuristic-based optimal sequencing and known SVF approximation literature. Optimality within a scheduling heuristic is not global SVF optimality.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 79,
+      "id": "constrained-assortment-markov-chain",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Found the original constrained Markov-chain approximation and newer online-learning/mixed-logit work. The latter models do not directly settle the offline Markov-chain approximation frontier.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 80,
+      "id": "perishable-inventory-optimal-policy",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "New perishable-inventory leads concern serial-system transformations or finite-horizon forecasts; no general optimal policy theorem verified.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 81,
+      "id": "dynamic-matching-thickness-optimal-policy",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located static-priority half-approximation and high-volume longest-queue guarantees. Neither indexed claim is an exact optimal thickness policy for the general target. Cross-reference 82 for limited primary model reading.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 82,
+      "id": "greedy-dynamic-matching-heterogeneous-departures",
+      "status": "conjecture",
+      "review_level": "theorem/full-text",
+      "changed": false,
+      "disposition": "direct-lead-scope-check-incomplete",
+      "summary": "Primary introduction/model matches finite types, independent Poisson arrivals, heterogeneous exponential abandonments, order-dependent rewards and long-run average reward. Paper states a polynomially computable static-priority half-approximation. Identity with the older specific LP-selected ALG has NOT been established; an existence theorem must not be called equivalent to that particular-policy conjecture. No enrichment edit.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 83,
+      "id": "dynamic-barter-kidney-exchange-optimal-policy",
+      "status": "partially resolved",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "GNN dynamic matching and bilateral local-compatibility papers were found. Their models/heuristics do not establish optimal kidney-exchange policies with general cycles and chains.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 84,
+      "id": "dynamic-spatial-matching-greedy",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "unverified-direct-lead-no-edit",
+      "summary": "Publisher issue overview identifies Feature-Based Dynamic Matching and SOAR as resolving a spatial-matching scaling question. Primary theorem not retrieved; whether this settles optimal-policy scaling versus nearest-neighbor greedy must be distinguished.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 85,
+      "id": "throughput-scheduling-release-pmax",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Three actual keyword queries completed. Returned preemptive/online or otherwise nonmatching throughput leads; no usable direct primary source identified. Empty sources is not evidence that the problem is open.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 86,
+      "id": "job-shop-makespan-fpt-as-machines",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Keyword query completed. No usable direct primary source identified; self-site results were excluded. No current-status conclusion.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 87,
+      "id": "open-shop-setup-times-fpt-batches",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located batch open-shop work with different setup assumptions; no FPT-in-batches theorem comparison completed.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 88,
+      "id": "fixed-budget-best-arm-identification-complexity",
+      "status": "partially resolved",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "updated-partial",
+      "summary": "Removed stale universal-positive target; added impossibility and uniform-admissibility results. Restricted-class follow-up remains broadly formulated.",
+      "evidence_files": [
+        "research/status-audit-bandits.json"
+      ]
+    },
+    {
+      "number": 89,
+      "id": "adwords-unknown-budgets-optimal-ratio",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected_enrichment",
+      "summary": "Corrected feedback, finite-bid factor, reference metadata, and framework-only upper bounds.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 90,
+      "id": "heterogeneous-data-driven-decision-efficient-robust-policies",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Found the revised Beyond IID manuscript (December 2024 / 2025 publication lead); no new general computational-efficiency theorem verified.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 91,
+      "id": "talagrand-empirical-process-decomposition",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": false,
+      "disposition": "no-verified-correction",
+      "summary": "Rejected conflation with different Talagrand problems. Exact historical conjecture checked; not an exhaustive current-status certification.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 92,
+      "id": "correlated-random-graph-matching-efficient-threshold",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located nonvanishing-correlation polynomial algorithms, near-quadratic above-Otter algorithms, and conditional low-degree barriers. Their density/correlation/almost-exact versus exact regimes need checking; no universal efficient-threshold resolution inferred.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 93,
+      "id": "planted-structure-computational-thresholds",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Dense-subhypergraph low-degree work does not directly settle the full planted dense-subgraph/submatrix threshold. Algorithmic-contiguity reduction lead was only found through a secondary index, not checked.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 94,
+      "id": "critical-beta-splitting-ctcs-coalescent",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": false,
+      "disposition": "no-new-correction",
+      "summary": "Existing enrichment already incorporated later parts. Preserved distinction between exact marginal/process correspondences and full coalescent identification.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 95,
+      "id": "random-growing-balls-cover-time",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected-model-attribution",
+      "summary": "Corrected false transfer of Aldous concentration; added sharp Poisson-model results as related-tool, not a resolution. Preserved formal target and required explicit scaling/finite-coverage assumptions.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 96,
+      "id": "oracle-efficient-agnostic-contextual-bandits",
+      "status": "partially resolved",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "updated-needs-reformulation",
+      "summary": "Finite-action misspecification guarantees already known; added concrete theorem and 2026 extension, lowered confidence in residual question's formulation.",
+      "evidence_files": [
+        "research/status-audit-bandits.json"
+      ]
+    },
+    {
+      "number": 97,
+      "id": "limited-switch-contextual-bandits-with-knapsacks",
+      "status": "open",
+      "review_level": "abstract-only",
+      "changed": true,
+      "disposition": "needs-model-review",
+      "summary": "No direct resolution verified. Realized-action and policy-map switches conflated in record; confidence lowered. Full-text forward review pending.",
+      "evidence_files": [
+        "research/status-audit-bandits.json"
+      ]
+    },
+    {
+      "number": 98,
+      "id": "two-sided-flexibility-random-graph-matching",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": false,
+      "disposition": "no-new-correction",
+      "summary": "Direct cited-source check, not a keyword search. Existing partial status preserved; no verified full resolution.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 99,
+      "id": "contextual-dynamic-pricing-heterogeneous-buyers-k-dependence",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected-inherited-bound",
+      "summary": "Staged known_results was already correct but inherited full_statement had extra sqrt(d). Corrected only that inconsistency and feedback caveat; type-dependence question remains.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 100,
+      "id": "new-product-exploration-heterogeneous-priors-assortment",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": false,
+      "disposition": "no-new-correction",
+      "summary": "Direct cited-source check. Existing enrichment already separates the solved variants; no edit.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 101,
+      "id": "optimal-contest-design-gradient-patterns",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": false,
+      "disposition": "scope-check-no-edit",
+      "summary": "Direct cited-source check. No new resolution established; follow-up should scrutinize generic FPTAS wording and fixed-beta/oracle assumptions before broadening claims.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 102,
+      "id": "online-monotone-subsequence-second-order-gap",
+      "status": "resolved",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "resolved",
+      "summary": "Published theorem closes the requested second-order gap and constant. Updated all dependent fields; did not invent a new higher-order open problem.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 103,
+      "id": "known-iid-online-stochastic-matching-ratio",
+      "status": "solution claimed",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected_enrichment",
+      "summary": "Basic asymptotic ratio claimed tight; polynomial-time attainment and separate integral-rate comparison not certified.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 104,
+      "id": "polling-gated-one-limited-pgf",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located the original gated/one-limited polling source, not a verified later closed-form resolution.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 105,
+      "id": "polling-renewal-large-switchover-limit",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Dorsman-van der Mei-Winands manuscript discusses renewal-input exhaustive polling approximations and large switchovers. Exact limit theorem assumptions not reviewed.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 106,
+      "id": "adaptive-polling-limited-service-stability-region",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located the original 2012 adaptive limited-service polling article through a bibliographic index. No full-text stability-region update verified.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 107,
+      "id": "random-ksat-satisfiability-threshold",
+      "status": "open",
+      "review_level": "abstract-only",
+      "changed": false,
+      "disposition": "direct-claim-abstract-only-no-edit",
+      "summary": "Opened Carenini's October 2026 ECCC abstract: claims a polynomial scaling window and threshold existence for every fixed k>=3. This is not an explicit physics-predicted threshold value. Computability and improved upper-bound leads remain search-only. No theorem verification or enrichment change.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 108,
+      "id": "deletion-channel-small-deletion-capacity-expansion",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Searches returned insertion-channel asymptotics; those are not deletion-channel capacity coefficients. No direct higher-order deletion result verified.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 109,
+      "id": "samuels-conjecture-independent-nonnegative-sums",
+      "status": "solution claimed",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected_enrichment",
+      "summary": "Corrected infimum/formula and removed erroneous quote; general proof and refinement reported.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 110,
+      "id": "prophet-cancellation-costs-small-buyback",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "Cancellation-cost source located; small-buyback exact ratio not checked in full text.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 111,
+      "id": "mgk-queue-exact-stationary-performance",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Found M/G/k lower bounds and operator-based stationary expressions. Bounds or implicit operator representations are not automatically the requested tractable general exact performance characterization.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 112,
+      "id": "subadditive-combinatorial-auction-constructive-prophet",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "No primary constant-factor constructive/nonconstructive theorem reviewed.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 113,
+      "id": "identical-machines-high-multiplicity-distinct-times-fpt",
+      "status": "solution claimed",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "solution-claimed",
+      "summary": "Initial numerical-parameter algorithms do not settle the target, but final cross-audit located a directly matching September2026 FPT claim. Added the conditional makespan consequence via capacity search and marked solution claimed; proof not independently certified.",
+      "evidence_files": [
+        "research/status-audit-scheduling.json",
+        "research/status-audit-optimization.json",
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 114,
+      "id": "mg1-response-time-tail-optimal-scheduling",
+      "status": "partially resolved",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected-partial-resolution",
+      "summary": "Separated known-size and partial-information asymptotic optimality from unresolved fixed thresholds/finite quantiles and model extensions.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 115,
+      "id": "open-shop-throughput-machines-fpt",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Original scheduling open-problem survey located; no newer parameterized open-shop throughput theorem verified. Historical posing does not establish present openness.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 116,
+      "id": "positive-shortest-path-games-pure-stationary-equilibrium",
+      "status": "partially resolved",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located the published 2026 positive-shortest-path-game result. Indexed description distinguishes stationary equilibrium from the stronger terminal equilibrium conjecture; no new terminal theorem read.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 117,
+      "id": "random-spatial-network-length-route-tradeoff",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located original route-efficiency and stretch-length tradeoff work. Worst-case stretch and average-route criteria must not be conflated.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 118,
+      "id": "real-period-pinwheel-density-threshold",
+      "status": "conjecture",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Found August 2026 publication covering three distinct real-period values at density 5/6. No unrestricted real-period theorem reviewed.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 119,
+      "id": "stochastic-inventory-capacity-constraints-policy-structure",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located the known Rossi-Chen-Tarim counterexample and a discounted-order capacity variant. No new general capacity-constrained policy characterization verified.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 120,
+      "id": "total-weighted-tardiness-pmax-fpt",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located fine-grained tardiness complexity in a dissertation. Dependence on job count and numeric magnitudes does not by itself classify p_max-parameterized FPT.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 121,
+      "id": "unit-time-precedence-scheduling-width-fpt",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located a 2022 parameterized scheduling source discussing width. A historical open statement is not a current openness certificate; no later theorem verified.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 122,
+      "id": "exact-matching-derandomization",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "Located parameterized exact-matching results. Did not verify general deterministic polynomial time for exact red-edge-count perfect matching.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 123,
+      "id": "input-queued-switch-maxweight-heavy-traffic-distribution",
+      "status": "conjecture",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Found the existing transform-uniqueness work and a different non-complete-resource-pooling queue model. No switch-specific uniqueness completion verified.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 124,
+      "id": "multi-server-job-queue-stability-region",
+      "status": "partially resolved",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected-partial-resolution",
+      "summary": "Removed claim of no characterization beyond tiny classes. Finite-state computability is not polynomial primitive-input complexity; general renewal/service extensions not silently claimed.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 125,
+      "id": "sbp-queueing-network-bar-tight-matrix-condition",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Found the original BAR/tight-matrix publication and author manuscript. No theorem establishing the general desired implication was checked.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 126,
+      "id": "smooth-kernel-rgg-spectral-threshold-conjecture",
+      "status": "conjecture",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located the 2026 smooth-kernel source itself. Its indexed result is not evidence that the general spectral conjecture stated there is settled.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 127,
+      "id": "finite-heterogeneous-server-load-balancing-optimality",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "SA-JSQ asymptotic optimality and adaptive-SED regret are different from finite-system MDP optimality; comparison to an SED oracle does not prove that oracle globally optimal.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 128,
+      "id": "minsum-single-machine-scheduling-lp-gap",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located the known gap below 4 and a Lasserre gap for a different relaxation. No transfer of the latter to the target knapsack-strengthened LP is justified.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 129,
+      "id": "precedence-unit-jobs-three-machines-complexity",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "unverified-direct-lead-no-edit",
+      "summary": "Secondary index reports a September 2026 polynomial-time three-machine unit-job scheduling claim. Primary repository directory retrieval failed; theorem/model and proof were not read. Do not change status based on this lead.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 130,
+      "id": "scheduling-communication-delays-constant-approximation",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located hardness for nonuniform communication delays/unique-machine variants. Those do not directly settle constant approximation with uniform delays.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 131,
+      "id": "single-machine-forbidden-times-fpt",
+      "status": "partially resolved",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected-integer-time-special-case",
+      "summary": "Corrected XP-only claim and erroneous authors/venue/DOI. Published Theorem 3 resolves the integer-time Fse interpretation, including high multiplicities. Original record omitted integer-time assumptions: retained target and marked partially resolved, not unconditionally resolved or a certified open real-time problem.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 132,
+      "id": "ggm-fcfs-stationary-ergodic-tv-convergence",
+      "status": "conjecture",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located original Foss conjecture and an infinite-server recurrence paper; the latter does not establish finite-server total-variation convergence under the target assumptions.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 133,
+      "id": "greedy-server-circle-stability",
+      "status": "resolved",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "resolved",
+      "summary": "Exact match to Foss's greedy-circle question. All stale open-status fields corrected. Parent independently checked Theorem 1.1 model match.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 134,
+      "id": "jsq-stationary-ergodic-stability-regimes",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Keyword and exact-phrase searches returned Markovian/heavy-traffic queueing work, not a verified stationary-ergodic JSQ convergence theorem.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 135,
+      "id": "multiaccess-success-feedback-stable-protocol",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "corrected-related-progress-not-resolution",
+      "summary": "Added published doubly randomized theorem as related partial progress only. Original deterministic f(p,J) target retained with open status and partial progress. Extra shared coin, estimator state, and interval-dependent parameters prevent treating this theorem as a resolution.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 136,
+      "id": "local-global-nonlinear-completion-time-scheduling",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located original local-global scheduling conjecture source; unrelated number-theory hits excluded. No later direct theorem verified.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 137,
+      "id": "weighted-k-server-uniform-randomized-ratio",
+      "status": "solution claimed",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "recorded-direct-solution-claim",
+      "summary": "Added Hwang preprint, Theorem 1.3 and Corollary 1.4, as solution claimed for the exponent-order gap. Diagonal-request specialization matches ordinary weighted k-server; exact exponential base and full proof certification remain distinct.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 138,
+      "id": "supermarket-heavy-traffic-stationary-short-queue-profile",
+      "status": "open",
+      "review_level": "abstract-only",
+      "changed": false,
+      "disposition": "no-verified-correction",
+      "summary": "No stationary interchange theorem checked; no inference of continued openness from search absence.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 139,
+      "id": "gross-substitutes-constructive-description",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "Sparse local enrichment read; constructive-description classes not reconciled against primary theorems.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 140,
+      "id": "optimal-dynamic-pricing-combinatorial-market-frontier",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "Related multi-demand pricing thesis located; full valuation-domain frontier not reviewed.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 141,
+      "id": "contextual-bandit-model-selection-optimal-regret",
+      "status": "resolved",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "resolved-general-target",
+      "summary": "General nested-policy target answered negatively in 2021. Record now archives it; structured realizable variants explicitly not all claimed settled.",
+      "evidence_files": [
+        "research/status-audit-bandits.json",
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 142,
+      "id": "kernelized-bernoulli-bandits-tight-bounds",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located generalized kernelized-bandit self-normalized bounds. A Bernoulli/exponential-family link model need not equal direct Bernoulli mean f; no exact-assumption comparison completed.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 143,
+      "id": "single-machine-precedence-wct-lp-kernel",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Found configuration-LP scheduling kernel work with different parameters. No polynomial kernel above this precedence-WCT LP bound verified. Existing invalid progress.state and relevance enums are logged separately, not introduced or changed by this audit.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 144,
+      "id": "single-machine-throughput-bounded-processing-times",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "searched-no-verified-correction",
+      "summary": "Both requested keyword variants completed; no usable direct primary result identified. No current openness or hardness conclusion. Existing invalid progress.state and relevance enums are logged separately, not introduced or changed by this audit.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 145,
+      "id": "uniform-decision-tree-constant-approximation",
+      "status": "solution claimed",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "recorded-direct-solution-claim",
+      "summary": "Added Szyfelbein preprint Theorem 8 as solution claimed. Uniform priors with arbitrary costs/outcomes include unit-cost target. Retained original existence question and historical references; full proof not independently certified.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 146,
+      "id": "generic-budget-ce-additive-goods",
+      "status": "conjecture",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "Almost-all-incomes source located; additive-model status not verified.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 147,
+      "id": "online-steiner-forest-greedy-ratio",
+      "status": "solution claimed",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "solution-claim-recorded",
+      "summary": "Claims tight Theta(log k loglog k) for exact contracted-shortest-path greedy, with tie-independent lower bound.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 148,
+      "id": "random-order-best-fit-bin-packing-ratio",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "bound-corrected",
+      "summary": "Asymptotic random-order BF lower bound 1.15582656; separate absolute bound 1.5 not conflated.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 149,
+      "id": "steiner-forest-below-two",
+      "status": "resolved",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "resolved-target",
+      "summary": "Below-2 target resolved by Ahmadi et al. FOCS2025; Gupta-Traub 1.994 theorem read. General bidirected-cut gap below2 remains separate.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 150,
+      "id": "stochastic-probing-subadditive-adaptivity-gap",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "search_only_review_pending",
+      "summary": "Potential Bernoulli versus multivalue probing mismatch needs theorem review; no bound transferred.",
+      "evidence_files": [
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 151,
+      "id": "submodular-facility-location-constant-approximation",
+      "status": "solution claimed",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "model-correction-and-solution-claim",
+      "summary": "Original arbitrary-g_f formulation was wrong for cited loglog bound. Common-g oracle threshold claimed Theta(loglog n); unrelated functions already contain Set Cover.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 152,
+      "id": "goemans-linial-sparsest-cut-gap",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": false,
+      "disposition": "follow-up-required",
+      "summary": "Verified historical model distinction; newer OpenAI near-sqrt-log uniform-gap claim located but not theorem-reviewed. Override unchanged; this is not current-bound certification.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 153,
+      "id": "joint-replenishment-approximation-ratio",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "Search found work supporting local 1.791 waiting-cost and 1.574 deadline benchmarks. No new threshold result verified.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 154,
+      "id": "mean-payoff-games-polynomial-time",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "Located OpenAI quasipolynomial mean-payoff-game claims with binary weights. Manuscripts not theorem-reviewed; quasipolynomial time would not resolve polynomial-time target.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 155,
+      "id": "capacitated-k-median-constant-approximation",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "partial-progress-recorded",
+      "summary": "Hard-capacity bicriteria results preserve one constraint but violate the other; no resolution of no-violation target.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 156,
+      "id": "densest-k-subgraph-approximation",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "No improvement over general n^(1/4+epsilon) Densest k-Subgraph approximation verified. At-least-k and unconstrained density results are different models.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 157,
+      "id": "first-passage-percolation-variance-exponent",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": false,
+      "disposition": "related-progress-not-resolution-no-edit",
+      "summary": "Existing enrichment already distinguishes continuum from lattice. New continuum theorem is not a resolution of the stated iid lattice target; companion full-text review remains pending.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 158,
+      "id": "flatness-constant-integer-programming",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "partial-progress-recorded",
+      "summary": "New O(d sqrt(log d)) bound claimed for arbitrary convex bodies; O(d) remains unresolved.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 159,
+      "id": "graph-shannon-capacity-odd-cycles",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "partial-progress-recorded",
+      "summary": "C7 lower bound 3.258832620353... from power500; no exact capacity result; certificates not executed.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 160,
+      "id": "kls-log-concave-isoperimetry-constant",
+      "status": "solution claimed",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "solution-claimed",
+      "summary": "Full conjecture claimed by two related preprints; theorem scope checked, not all proof steps or peer review. Full additional_refs added and unsupported independence wording removed.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 161,
+      "id": "pomdp-memoryless-policy-planning",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "No general memoryless POMDP resolution verified. Follow-up needed on discounted versus average reward and whether the target is exact/global computation or efficient approximation.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 162,
+      "id": "simple-stochastic-games-polynomial-time",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "Located stochastic/mean-payoff quasipolynomial claims and 2025 SDP reductions; no polynomial-time simple-stochastic-games theorem verified.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 163,
+      "id": "correlation-clustering-complete-graph-threshold",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "partial-progress-recorded",
+      "summary": "Claims 1.3865+epsilon for unweighted complete signed MinDisagree; retained published1.437, corrected 4/3 to LP-gap lower bound.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 164,
+      "id": "euclidean-cvrp-ptas-arbitrary-capacity",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "Local override already contains Sitters' QPTAS. Located further Euclidean CVRP approximation work; no arbitrary-capacity PTAS verified.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 165,
+      "id": "tusnady-low-dimensional-box-discrepancy",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "withdrawal-correction",
+      "summary": "Dutta2109.05693 withdrawn for unfixable Claim4.7. Removed its claimed bounds/high-dimensional settlement. Baseline Omega(log^(d-1)n) vs O(log^(d-1/2)n); not exhaustive 2026 consequence analysis.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 166,
+      "id": "capacitated-facility-location-relaxation-gap",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "No constant-gap relaxation resolving the exact hard-capacitated facility-location target verified. Bicriteria results are not sufficient.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 167,
+      "id": "minimum-feedback-arc-set-constant-approximation",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "Located OpenAI claim of NP-hardness for every constant-factor directed feedback vertex set approximation. Manuscript and transfer to this arc-set model not reviewed; do not promote to established negative resolution.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 168,
+      "id": "parity-games-polynomial-time",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "Located quasipolynomial mean-payoff/parity extension claims; no polynomial-time parity-game resolution verified.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 169,
+      "id": "truthful-submodular-combinatorial-auctions",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "bound-corrected-and-preprint-progress",
+      "summary": "Published submodular/XOS benchmark squared loglog, not cubed. Rubinstein-Singla2026 Theorem1.2 claims loglog random-order/offline; sampled constant theorem is a different model.",
+      "evidence_files": [
+        "research/status-audit-optimization.json",
+        "research/status-audit-selection.json"
+      ]
+    },
+    {
+      "number": 170,
+      "id": "weighted-tree-augmentation-threshold",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "Local override already includes 2026 below-1.49 weighted tree augmentation progress. No stronger result verified.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 171,
+      "id": "directed-steiner-tree-polylog-approximation",
+      "status": "open",
+      "review_level": "abstract-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "Read arXiv abstract/version notice: the earlier polylogarithmic DST claim was withdrawn, and later abstract has a relatively-integral LP condition. Local warning retained; no general resolution.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 172,
+      "id": "multiway-cut-approximation-threshold",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "bound-and-assumption-corrected",
+      "summary": "Upper1.2787; November preprint analytic lower1.22232 conditional on UGC for hardness. Numerical1.23003 not a theorem.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 173,
+      "id": "zero-extension-integrality-gap",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "Targeted search did not establish a new 0-extension gap bound. Search was partly polluted by unrelated uses of 'zero extension'; deeper review remains.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 174,
+      "id": "forest-augmentation-approximation-threshold",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "partial-progress-recorded",
+      "summary": "FAP1.9955 vs earlier1.9973; PAP1.9412 is different. Corrected spanning 2-edge-connectivity model.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 175,
+      "id": "metric-tsp-approximation-threshold",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": true,
+      "disposition": "enum-normalized-only",
+      "summary": "No stronger general metric-TSP approximation threshold verified. Integrality enumeration and restricted-support results do not resolve arbitrary metrics. Only invalid progress.state='open' was changed to 'partial'; mathematical coverage remains search-only.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 176,
+      "id": "queueing-network-stability-clean-undecidability",
+      "status": "conjecture",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "Located Gamarnik-Katz undecidability baseline. Positive service times, infinite buffers and the stability definition need theorem-level matching; no clean-model resolution verified.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 177,
+      "id": "sparsest-cut-approximation-threshold",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "model-correction",
+      "summary": "Nonuniform upper O(sqrt(log n)loglog n), lower Omega(sqrt(log n)); uniform ARV upper must not be paired with this lower as a matching gap. New research-release claims not reviewed.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 178,
+      "id": "bimatrix-approximate-nash-threshold",
+      "status": "open",
+      "review_level": "theorem/full-text",
+      "changed": true,
+      "disposition": "partial-progress-recorded",
+      "summary": "Claims0.30954+delta general bimatrix additive Nash; not symmetric-only or well-supported equilibrium. Exact threshold remains unresolved.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 179,
+      "id": "fpp-bigeodesics-nonexistence",
+      "status": "conjecture",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-verified-correction",
+      "summary": "No new theorem checked. An October conditional-extension lead was not verified; no resolution or negative literature claim.",
+      "evidence_files": [
+        "research/status-audit-operations.json"
+      ]
+    },
+    {
+      "number": 180,
+      "id": "minor-free-flow-cut-gap-gnrs",
+      "status": "conjecture",
+      "review_level": "search-only",
+      "changed": true,
+      "disposition": "enum-normalized-only",
+      "summary": "Located claims concerning planar/bounded-treewidth embeddings, not a verified all-minor-free GNRS theorem. Primary manuscripts not reviewed. Only invalid progress.state='open' was changed to 'partial'; mathematical coverage remains search-only.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 181,
+      "id": "gilbert-pollak-steiner-ratio",
+      "status": "conjecture",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "Located 0.8559 preprint and a self-published 0.860 claim with proof-layer qualifications. No full-text validation or resolution of sqrt(3)/2 established; local 0.8559 wording requires follow-up.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    },
+    {
+      "number": 182,
+      "id": "square-root-sum-polynomial-time",
+      "status": "open",
+      "review_level": "search-only",
+      "changed": false,
+      "disposition": "no-update-established",
+      "summary": "Located unary square-root-sum P/poly and fixed-radicand results; neither establishes uniform polynomial time for general binary input.",
+      "evidence_files": [
+        "research/status-audit-optimization.json"
+      ]
+    }
+  ]
+}

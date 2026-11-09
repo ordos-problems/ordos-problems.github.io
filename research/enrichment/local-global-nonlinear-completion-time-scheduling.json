@@ -1,0 +1,19 @@
+{
+  "id": "local-global-nonlinear-completion-time-scheduling",
+  "additional_refs": [
+    {
+      "authors": "Wayne E. Smith",
+      "title": "Various optimizers for single-stage production",
+      "year": 1956,
+      "venue": "Naval Research Logistics Quarterly",
+      "url": "https://doi.org/10.1002/nav.3800030106"
+    },
+    {
+      "authors": "Michael L. Pinedo",
+      "title": "Scheduling: Theory, Algorithms, and Systems",
+      "year": 2016,
+      "venue": "Springer",
+      "url": "https://doi.org/10.1007/978-3-319-26580-3"
+    }
+  ]
+}

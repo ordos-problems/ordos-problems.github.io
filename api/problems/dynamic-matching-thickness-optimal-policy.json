@@ -12,15 +12,74 @@
   "market design",
   "thickness",
   "optimal stopping",
-  "networks"
+  "networks",
+  "abandonment",
+  "stochastic networks"
  ],
- "short_statement": "In a market where agents arrive and depart over time and can only be matched to compatible partners present at the same time, what is the optimal matching policy — and exactly how valuable is waiting to 'thicken' the market?",
- "open_problem": "characterize the optimal dynamic matching policy and the exact achievable loss in the general model — beyond the restricted class and beyond the specific sparsity regime.",
- "full_statement": "Agents arrive to a market as a Poisson process of rate $m$; each ordered/unordered pair of present agents is compatible independently with a small probability (yielding a sparse random compatibility graph with average degree $d$); each agent, if not yet matched, departs after an independent $\\mathrm{Exp}(1)$ lifetime. A planner observes the compatibility graph over time (in the informed variant, also learns when an agent is about to depart) and decides when and whom to match (a match removes two compatible present agents). The objective is to minimize the long-run fraction of agents who perish unmatched (or expected waiting plus loss). Akbarpour–Li–Oveis Gharan (2020) show greedy matching is near-optimal without departure information, while a 'patient' waiting policy is much better with it, and characterize the optimal waiting threshold within a restricted policy class. Question: characterize the optimal dynamic matching policy and the exact achievable loss in the general model — beyond the restricted class and beyond the specific sparsity regime.",
- "known_results": "Greedy loses an $O(1/d)$ fraction without departure info; with departure info, waiting reduces loss to $O(e^{-d}/d)$-type rates; the optimal policy is characterized only within a restricted class and a specific random-graph regime (Akbarpour–Li–Oveis Gharan, JPE 2020). The general optimal policy, exact loss, and behavior on structured (non-random) compatibility graphs are open and actively studied.",
+ "short_statement": "Characterize exact optimal policies and loss rates in dynamic matching markets beyond the homogeneous sparse random-graph model.",
+ "open_problem": "Give a sharp optimal-policy and exact-loss theory for dynamic matching with stochastic arrivals and departures in heterogeneous or structured compatibility graphs, beyond the restricted homogeneous regimes where greedy or patient policies are already analyzed.",
+ "background": "Dynamic matching markets create a basic operational dilemma: match agents quickly to reduce waiting and abandonment, or hold them to thicken the market and improve match quality. Akbarpour, Li, and Oveis Gharan gave a benchmark random-graph model where agents arrive and depart stochastically and compatibility edges are sparse. Their main message is that information about imminent departures is extremely valuable: without it, greedy is near optimal, while with it, patient policies can achieve much lower loss. Later work studies heterogeneous types, adversarial arrivals, finite patience, constant-regret policies, and competitive policies. These papers make clear that there is no single universal 'always wait' or 'always greedy' principle. The remaining clean problem is to characterize optimal dynamic policies and exact losses in concrete stochastic graph models beyond the original homogeneous sparse setting, while distinguishing what is solved by greedy, what needs patience, and what needs global matching structure.",
+ "full_statement": "Consider a dynamic matching market in continuous or discrete time. Agents of finitely many types, or agents with random compatibility edges, arrive according to stochastic processes, wait for random or deterministic patience times, and abandon if unmatched. A policy observes the current market state and possibly partial departure information, chooses compatible pairs or chains to match, and removes matched agents. The objective may be long-run loss, perish probability, waiting cost plus match value, or regret against an online optimum, fluid benchmark, or clairvoyant benchmark. The open problem is to characterize exact optimal policies and sharp performance constants in clean stochastic models beyond the homogeneous sparse random-graph benchmark: for which compatibility networks is greedy optimal or constant-regret, when does patience or priority strictly improve performance, and when does global matching structure beat local immediate matching?",
+ "known_results": "Akbarpour, Li, and Oveis Gharan introduced a benchmark stochastic network model and showed that waiting to thicken the market can be far more valuable than speeding transactions; they also showed that naive timing policies can be close to optimal without departure information, while even partial information about departures can substantially improve outcomes. Ashlagi, Burq, Jaillet, and Saberi studied finite-patience dynamic matching under adversarial arrivals and gave a $1/4$-competitive algorithm, with no online algorithm beating $1/2$ in their model and a $1/8$ guarantee for certain random departure times. Ashlagi, Burq, Jaillet, and Manshadi analyzed heterogeneous dynamic markets and showed that market composition changes whether bilateral matching, chains, and priorities help. Recent work by Kerimov, Yang, and Yu gives constant regret for state-independent greedy policies under general-position-type conditions, while Arnosti and Simon prove tight $1/2$ competitive guarantees for LP-guided greedy policies in several abandonment models. The remaining gap is a unified exact optimal-policy theory for heterogeneous stochastic compatibility networks.",
+ "progress": {
+  "state": "partial",
+  "summary": "Several regimes now have near-optimal greedy, patient, competitive, or constant-regret policies. A general exact optimal-policy characterization for heterogeneous stochastic compatibility remains open.",
+  "links": [
+   {
+    "title": "Dynamic Matching Market Design",
+    "url": "https://arxiv.org/abs/1402.3643"
+   },
+   {
+    "title": "Greedy Dynamic Matching",
+    "url": "https://arxiv.org/abs/2507.04551"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Small typed compatibility networks can refute structural claims about greedy, batching, or threshold policies. Exact dynamic programs can verify finite examples.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Search can find hard typed networks and candidate priority structures, and can compare policies by simulation or exact Markov-chain computation before proof.",
+ "literature": {
+  "synthesis": "The field has moved from a single homogeneous random graph model to a collection of typed, adversarial, and abandonment models. The main resolved lesson is qualitative: greediness is often surprisingly strong, but departure information and patient matching can matter a great deal. Recent constant-regret and LP-guided greedy results narrow particular gaps, yet they usually require structural assumptions such as common departure rates, bipartite symmetry, or nondegenerate fluid relaxations. The remaining problem is to identify the right general theorem: a policy class with exact or sharp asymptotic performance across heterogeneous compatibility networks.",
+  "reviewed": [
+   {
+    "ref": "Mohammad Akbarpour, Shengwu Li, and Shayan Oveis Gharan, 'Dynamic Matching Market Design', arXiv 2014 / JPE 2020",
+    "result": "Shows greedy is near optimal without departure information and patient policies can be exponentially better with departure information in sparse random graphs.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1402.3643"
+   },
+   {
+    "ref": "Itai Ashlagi, Maximilien Burq, Patrick Jaillet, and Amin Saberi, 'Maximizing Efficiency in Dynamic Matching Markets', arXiv 2018",
+    "result": "Gives constant-competitive online algorithms for finite-patience dynamic matching under adversarial arrivals.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1803.01285"
+   },
+   {
+    "ref": "Nick Arnosti and Felipe Simon, 'Greedy Dynamic Matching', arXiv 2025",
+    "result": "Develops LP-guided greedy policies with tight $1/2$ competitive guarantees in several abandonment models.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2507.04551"
+   },
+   {
+    "ref": "Suleyman Kerimov, Mingwei Yang, and Sophie H. Yu, 'Achieving constant regret for dynamic matching via state-independent policies', arXiv 2025",
+    "result": "Obtains constant-regret guarantees for state-independent greedy policies in typed dynamic matching models.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2503.09762"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Work with typed continuous-time Markov chains, fluid relaxations, LP upper bounds, and exact small-network dynamic programs. Search for network structures where greedy is tight or where departure-aware patience yields a provable separation.",
+  "verification_notes": "A solution must state the stochastic model, compatibility graph or type network, patience distribution, information available to the policy, and benchmark: optimal online policy, clairvoyant/offline benchmark, fluid relaxation, or asymptotic loss. The claimed policy class should be explicit, for example greedy with acceptable edges, threshold batching, priority rules, or state-dependent dynamic programming. Referees should check that constants are compared to the correct benchmark and that already-known near-optimality of greedy in homogeneous sparse graphs is not repackaged as new. Small typed networks can often be verified by exact Markov-chain computation or dynamic programming before proving asymptotic claims.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "Restricted-class optimality and the general open question are in Akbarpour, Li, Oveis Gharan, 'Thickness and Information in Dynamic Matching Markets' (J. Political Economy 2020).",
-  "url": "https://scholar.harvard.edu/shengwu_li/publications/thickness-and-information-dynamic-matching-markets"
+  "text": "Residual problem emerging from Akbarpour, Li, and Oveis Gharan, 'Dynamic Matching Market Design', and later dynamic matching work.",
+  "url": "https://arxiv.org/abs/1402.3643",
+  "quote": "",
+  "location": "Optimization and information sections"
  },
  "source": {
   "authors": "Mohammad Akbarpour, Shengwu Li, Shayan Oveis Gharan",

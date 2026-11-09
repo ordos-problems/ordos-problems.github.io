@@ -5,21 +5,95 @@
  "title": "Deterministic competitive ratio for the hard k-taxi problem",
  "collection": "Online Algorithms & Learning",
  "area": "Online Algorithms",
- "status": "open",
+ "status": "solution claimed",
  "confidence": "medium",
  "tags": [
   "k-taxi",
   "k-server",
   "competitive analysis",
-  "metric spaces"
+  "metric spaces",
+  "online algorithms",
+  "layered graph traversal",
+  "hierarchically separated trees"
  ],
- "short_statement": "In the hard $k$-taxi problem, $k$ taxis serve pickup-dropoff requests and only empty (passenger-free) driving is charged. Does any finite deterministic competitive ratio exist for general $k$ on every metric space?",
- "open_problem": "Determine whether any finite deterministic competitive ratio exists for general $k$ on arbitrary metrics.",
- "full_statement": "The $k$-taxi problem generalizes $k$-server: $k$ taxis are located in a metric space, and each request is a pair $(s,t)$ of points; to serve it, some taxi must travel to the pickup point $s$ and then carry the passenger to the dropoff point $t$. In the hard version of the problem, the cost counts only the distance a taxi travels without a passenger (the 'empty' driving); the distance traveled while carrying a passenger (from $s$ to $t$) is free. This generalizes $k$-server, which is recovered by taking $s=t$. The question is whether there exists any finite deterministic competitive ratio (for instance, of the form $2^{O(k)}$) for every fixed $k$ on every metric space. The known lower bound is $\\Omega(2^k)$, and finiteness of the deterministic competitive ratio is established only for $k\\le 3$. Determine whether any finite deterministic competitive ratio exists for general $k$ on arbitrary metrics.",
- "known_results": "Deterministic hard k-taxi: lower bound $\\Omega(2^k)$; a finite competitive ratio is known only for small k. Whether any finite deterministic ratio exists for general k on general metrics is open. The randomized version was largely settled to poly-log.",
+ "short_statement": "A recent preprint claims a finite deterministic competitive ratio for hard k-taxi on every metric, for every k.",
+ "open_problem": "Verify the reported general-k finiteness theorem; the historical existence question is no longer an unaddressed target.",
+ "background": "The hard k-taxi problem charges only empty travel: each request specifies a pickup and destination, and passenger travel changes the configuration without cost. This differs from easy k-taxi, where all travel is charged. Historical small-k results did not establish a ratio depending only on k for arbitrary metrics; the new paper below reports such a bound.",
+ "full_statement": "Let k taxis occupy a metric space. Each request is a pickup/dropoff pair $(s,t)$. The chosen taxi must reach s and then carry the passenger to t; only empty travel to the pickup is charged. Compare the online total empty distance with the offline minimum from the same initial configuration. The historical question is whether a deterministic competitive ratio depending only on k exists on every metric, with any additive constant independent of the request sequence. The new theorem in the What Is Known section reports an affirmative answer for all k.",
+ "known_results": "Coester, Huang, and Poon, 'The Online k-Taxi Problem Is Competitive on All Metrics' (arXiv:2611.06684v1, November 4, 2026), Theorem 1.1 and Corollary 1.2, give randomized $9^{k-1}$ competitiveness against an adaptive online adversary and deterministic $81^{k-1}$ competitiveness on every metric. The deterministic bound is independent of the number of points and aspect ratio. Together with the existing $2^k-1$ lower bound this gives $2^{\\Theta(k)}$ dependence; exact constants/bases remain undetermined. The adaptive-online adversary is not an almighty adversary.",
+ "progress": {
+  "state": "solution-claimed",
+  "summary": "General-k deterministic finiteness is reported resolved. Earlier k=3 and parameter-dependent randomized results are historical context.",
+  "links": [
+   {
+    "title": "The Online k-Taxi Problem (Coester, Koutsoupias, STOC 2019)",
+    "url": "https://arxiv.org/abs/1807.06645"
+   },
+   {
+    "title": "Online 3-Taxi on General Metrics (Coester, 2025/2026)",
+    "url": "https://arxiv.org/abs/2510.25861"
+   },
+   {
+    "title": "Poly-logarithmic Competitiveness for the k-Taxi Problem (Gupta, Kumar, Panigrahi, SODA 2024)",
+    "url": "https://epubs.siam.org/doi/10.1137/1.9781611977912.146"
+   },
+   {
+    "title": "The Online k-Taxi Problem Is Competitive on All Metrics",
+    "url": "https://arxiv.org/abs/2611.06684"
+   }
+  ]
+ },
+ "importance": 7,
+ "difficulty": 9,
+ "counterexample_suitability": "low",
+ "counterexample_rationale": "Finite examples can test the reported algorithm; they do not establish an asymptotic competitive bound.",
+ "alphaevolve_suitability": "low",
+ "alphaevolve_rationale": "Search could assist with restricted-case constants or proof checks after the general finiteness claim is reviewed.",
+ "literature": {
+  "synthesis": "The prior claim that no general-k metric-independent deterministic ratio is known is superseded by the new theorem. Parameter-dependent polylogarithmic randomized bounds do not themselves settle this finiteness question.",
+  "reviewed": [
+   {
+    "ref": "Christian Coester, Elias Koutsoupias, \"The Online k-Taxi Problem\", STOC 2019",
+    "result": "Introduces the hard/easy k-taxi dichotomy; proves $\\Omega(2^k)$ deterministic lower bound for hard k-taxi via layered graph traversal reduction; gives $2^k-1$-competitive randomized memoryless HST algorithm (matching lower bounds) and derived $O(2^k \\log n)$-competitive general-metric randomized algorithm; establishes deterministic ratio exactly $9$ for $k=2$; gives $O(1)$-competitive deterministic algorithm for hard 3-taxi on the line.",
+    "relevance": "solves-special-case",
+    "url": "https://arxiv.org/abs/1807.06645"
+   },
+   {
+    "ref": "Anupam Gupta, Amit Kumar, Debmalya Panigrahi, \"Poly-logarithmic Competitiveness for the k-Taxi Problem\", SODA 2024",
+    "result": "Gives a randomized algorithm for hard k-taxi with competitive ratio poly-logarithmic in all parameters (k, n, request sequence length) on general metrics, via a covering LP relaxation for k-taxi on HSTs and a hierarchical primal-dual algorithm; resolves an open question posed in Coester-Koutsoupias 2019.",
+    "relevance": "partial-progress",
+    "url": "https://epubs.siam.org/doi/10.1137/1.9781611977912.146"
+   },
+   {
+    "ref": "Christian Coester, \"Online 3-Taxi on General Metrics\", arXiv:2510.25861 (2025/2026)",
+    "result": "Gives an $O(1)$-competitive deterministic algorithm for the hard 3-taxi problem on arbitrary (general) metric spaces, resolving finiteness for $k=3$ on general metrics -- previously open even for k=3 outside the line case.",
+    "relevance": "solves-special-case",
+    "url": "https://arxiv.org/abs/2510.25861"
+   },
+   {
+    "ref": "Christian Coester, Elias Koutsoupias, \"Online k-taxi via Double Coverage and time-reverse primal-dual\", Mathematical Programming (2022)",
+    "result": "Develops a time-reverse primal-dual framework connecting the Double Coverage algorithm to k-taxi analysis; relevant methodological precursor to the HST/LP techniques used in later poly-log and 3-taxi results.",
+    "relevance": "related-tool",
+    "url": "https://link.springer.com/article/10.1007/s10107-022-01815-6"
+   },
+   {
+    "ref": "Christian Coester, Yichen Huang, Tze-Yang Poon, 'The Online k-Taxi Problem Is Competitive on All Metrics' (2026)",
+    "result": "Theorem 1.1 and Corollary 1.2 address the metric-independent model.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2611.06684"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Verify the new general-k analysis and derandomization; do not start from the obsolete k<=3 frontier.",
+  "verification_notes": "Distinguish hard from easy travel costs, metric-independent from size-dependent ratios, and adaptive-online from almighty adversaries. Full proof verification remains outside this audit.",
+  "machine_checkable": false
+ },
  "where_posed": {
-  "text": "Stated/originated in Coester, Koutsoupias, 'The Online k-Taxi Problem', 2019, STOC.",
-  "url": "https://arxiv.org/abs/1807.06645"
+  "text": "Stated as an open question in Coester, Christian and Koutsoupias, Elias, \"The Online k-Taxi Problem\", Proceedings of the 51st Annual ACM SIGACT Symposium on Theory of Computing (STOC 2019), pp. 1136-1147.",
+  "url": "https://arxiv.org/abs/1807.06645",
+  "quote": "The hard k-taxi problem is substantially more difficult than the easy version with at least an exponential deterministic competitive ratio, $\\Omega(2^k)$, admitting a reduction from the layered graph traversal problem... This is the first competitive algorithm for the hard k-taxi problem for general finite metric spaces and general k.",
+  "location": "Abstract; open question on general deterministic competitive ratio discussed in Introduction/Conclusion"
  },
  "source": {
   "authors": "Christian Coester, Elias Koutsoupias",
@@ -35,6 +109,34 @@
    "year": 2024,
    "venue": "SODA",
    "url": "https://arxiv.org/abs/2111.04657"
+  },
+  {
+   "authors": "Christian Coester",
+   "title": "Online 3-Taxi on General Metrics",
+   "year": 2026,
+   "venue": "arXiv preprint",
+   "url": "https://arxiv.org/abs/2510.25861"
+  },
+  {
+   "authors": "Anupam Gupta, Amit Kumar, Debmalya Panigrahi",
+   "title": "Poly-logarithmic Competitiveness for the k-Taxi Problem",
+   "year": 2024,
+   "venue": "SODA",
+   "url": "https://epubs.siam.org/doi/10.1137/1.9781611977912.146"
+  },
+  {
+   "authors": "Christian Coester, Elias Koutsoupias",
+   "title": "Online k-taxi via Double Coverage and time-reverse primal-dual",
+   "year": 2022,
+   "venue": "Mathematical Programming",
+   "url": "https://link.springer.com/article/10.1007/s10107-022-01815-6"
+  },
+  {
+   "authors": "Christian Coester, Yichen Huang, Tze-Yang Poon",
+   "title": "The Online k-Taxi Problem Is Competitive on All Metrics",
+   "year": 2026,
+   "venue": "arXiv preprint",
+   "url": "https://arxiv.org/abs/2611.06684"
   }
  ],
  "bibtex": "@misc{Coester2019,\n  author = {Christian Coester and Elias Koutsoupias},\n  title = {The Online k-Taxi Problem},\n  year = {2019},\n  howpublished = {STOC},\n  url = {https://arxiv.org/abs/1807.06645},\n  note = {Source of ORdős Problem ORDOS-014}\n}",

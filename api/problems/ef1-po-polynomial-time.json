@@ -12,15 +12,91 @@
   "EF1",
   "Pareto optimality",
   "computational complexity",
-  "indivisible goods"
+  "indivisible goods",
+  "fractional Pareto optimality",
+  "PLS",
+  "Fisher markets"
  ],
- "short_statement": "For indivisible goods with additive valuations, an allocation that is both EF1 (envy-free up to one good) and Pareto-optimal always exists, but the known algorithm is only pseudo-polynomial. Can such an allocation be computed in truly polynomial time?",
- "open_problem": "Determine whether a truly polynomial-time algorithm exists.",
- "full_statement": "There are $n$ agents with additive valuations $v_i:2^M\\to\\mathbb{Z}_{\\ge0}$ over a set $M$ of $m$ indivisible goods, with the valuations given in binary. An allocation is EF1 (envy-free up to one good) if any agent's envy toward another vanishes after removing some single good from the envied bundle, and (fractionally) Pareto-optimal if no other (fractional) allocation makes some agent better off without making another worse off. Such an allocation always exists (the maximum-Nash-welfare allocation is one), so the question is purely computational: is there an algorithm running in time $\\mathrm{poly}(n,m,\\log V_{\\max})$ (where $V_{\\max}$ is the largest value) that outputs an allocation that is simultaneously EF1 and fractionally Pareto-optimal? The known algorithm runs in only pseudo-polynomial time (polynomial in the magnitude of values, not their bit-length). The problem is in PLS and is not known to be PLS-hard, NP-hard, or in P. Determine whether a truly polynomial-time algorithm exists.",
- "known_results": "Upper bound: pseudo-polynomial (Barman-Krishnamurthy-Vaish 2018); truly polynomial for a constant number of agents or a constant number of distinct values. No lower bound known (not known NP-hard or PLS-hard). Listed as an open problem in the Aziz-Li-Moulin-Wu survey.",
+ "short_statement": "For indivisible goods with additive valuations, an allocation that is both EF1 (envy-free up to one good) and Pareto-optimal always exists, but the known general algorithms are only pseudo-polynomial. Can such an allocation be computed in time polynomial in the number of agents, the number of goods, and the bit-length of the values?",
+ "open_problem": "Determine whether a truly polynomial-time algorithm exists; as of mid-2026 this is open for general $n$, resolved affirmatively only when $n$ is constant or the agents have constantly many distinct values.",
+ "background": "A central theme in discrete fair division is whether fairness and economic efficiency can be achieved simultaneously, and at what computational cost. For indivisible goods with additive valuations, envy-freeness up to one good (EF1) — introduced by Budish (2011) and, implicitly, Lipton et al. (2004) — is the standard fairness relaxation: any envy an agent feels toward another must vanish after hypothetically removing some single good from the envied bundle. Pareto optimality (PO), and its strictly stronger fractional variant fPO (no fractional reallocation Pareto-dominates the allocation), are the standard efficiency notions. Each property is trivial to achieve alone (round-robin gives EF1; welfare maximization gives PO), but combining them is subtle. The landmark result of Caragiannis, Kurokawa, Moulin, Procaccia, Shah, and Wang (EC 2016) showed that any allocation maximizing Nash social welfare is simultaneously EF1 and PO — a striking existence proof, but computationally useless since maximizing Nash welfare is NP-hard (indeed APX-hard). Barman, Krishnamurthy, and Vaish (EC 2018) bypassed this via a market-based algorithm with price-rounding that computes an EF1+PO allocation in pseudo-polynomial time — polynomial in the magnitudes of the values rather than their bit-length — and proved (non-constructively, by a convergence argument) that EF1+fPO allocations always exist. Since then, the question of whether an EF1+PO (or EF1+fPO) allocation can be computed in truly polynomial time, with values given in binary, has become one of the best-known open computational problems in fair division, appearing in the Aziz–Li–Moulin–Wu survey and in the introductions of many follow-up papers. The problem is intriguing complexity-theoretically: existence is guaranteed, the problem lies in PLS (Garg–Murhekar), and no NP-hardness or PLS-hardness is known, so it sits in the same murky total-search territory as problems like computing a competitive equilibrium from equal incomes. A polynomial-time algorithm would make fair-and-efficient allocation practical in applications such as course allocation and public resource division; a hardness result would delineate a genuine computational price of combining fairness with efficiency.",
+ "full_statement": "There are $n$ agents with additive valuations $v_i:2^M\\to\\mathbb{Z}_{\\ge0}$ over a set $M$ of $m$ indivisible goods, with the values $v_i(\\{g\\})$ given in binary. An allocation $(X_1,\\dots,X_n)$ partitioning $M$ is EF1 (envy-free up to one good) if for all agents $i,j$ with $X_j\\ne\\emptyset$ there exists $g\\in X_j$ with $v_i(X_i)\\ge v_i(X_j\\setminus\\{g\\})$; it is Pareto-optimal (PO) if no other allocation makes some agent strictly better off without making another worse off, and fractionally Pareto-optimal (fPO) if no fractional allocation does so. EF1+PO allocations always exist (any maximum-Nash-welfare allocation is one; Caragiannis et al. 2016), and EF1+fPO allocations always exist (Barman–Krishnamurthy–Vaish 2018), so the question is purely computational: is there an algorithm running in time $\\mathrm{poly}(n,m,\\log V_{\\max})$, where $V_{\\max}=\\max_{i,g}v_i(\\{g\\})$, that outputs an allocation that is simultaneously EF1 and PO (or the stronger EF1 and fPO)? The best general algorithms run in pseudo-polynomial time $\\mathrm{poly}(n,m,V_{\\max})$. The problem of computing an EF1+fPO allocation is in PLS and is not known to be NP-hard, PLS-hard, or in P. Determine whether a truly polynomial-time algorithm exists; as of mid-2026 this is open for general $n$, resolved affirmatively only when $n$ is constant or the agents have constantly many distinct values.",
+ "known_results": "Existence: max-Nash-welfare allocations are EF1+PO (Caragiannis, Kurokawa, Moulin, Procaccia, Shah, Wang, EC 2016 / TEAC 2019); EF1+fPO allocations always exist (Barman, Krishnamurthy, Vaish, EC 2018, via a non-constructive perturbation/convergence argument). Upper bounds: Barman–Krishnamurthy–Vaish (2018) compute EF1+PO in pseudo-polynomial time $\\mathrm{poly}(n,m,V_{\\max})$; Garg and Murhekar (IJCAI 2021 / JAIR 2024, arXiv 2204.14229) strengthened this to a pseudo-polynomial algorithm for EF1+fPO, gave a strongly polynomial-time algorithm for $k$-ary instances (each agent has at most $k=O(1)$ distinct values for the goods), a polynomial-time algorithm for EF1+PO when the number of agents $n$ is constant, and showed the EF1+fPO problem is in PLS. The most notable recent progress is Mahara (arXiv 2411.01810, Nov 2024; SAGT 2025), who gave the first truly polynomial-time algorithm computing an EF1+fPO allocation for any FIXED number of agents (polynomial in $m$ and $\\log V_{\\max}$ for constant $n$), by sequentially inserting agents while maintaining EF1+fPO. Special valuation classes are also solved: binary valuations (EFX+PO in polynomial time; Halpern et al. 2020, Babaioff–Ezra–Feige 2021), bi-valued valuations (EF1/EFX+PO in polynomial time; Garg–Murhekar 2023, Bu et al. 2024). Lower bounds: none — the problem is not known to be NP-hard or PLS-hard, and no super-polynomial lower bound is known in any model. The headline question — $\\mathrm{poly}(n,m,\\log V_{\\max})$ computation of EF1+PO (or EF1+fPO) for general $n$ — remains open as of July 2026.",
+ "progress": {
+  "state": "partial",
+  "summary": "The general question is still open as of July 2026, but there has been real movement on special cases since 2024: Mahara (arXiv 2411.01810, Nov 2024; published at SAGT 2025) gave the first truly polynomial-time algorithm for EF1+fPO with a fixed (constant) number of agents, strengthening Garg–Murhekar's constant-$n$ EF1+PO result to the stronger fPO guarantee, via a new agent-by-agent insertion technique. Garg and Murhekar's JAIR 2024 journal version (arXiv 2204.14229) consolidated the pseudo-polynomial EF1+fPO algorithm, strongly polynomial algorithms for constantly many distinct values ($k$-ary instances), and PLS membership. For general $n$ with values in binary, neither a polynomial-time algorithm nor any hardness result is known.",
+  "links": [
+   {
+    "title": "A Polynomial-Time Algorithm for Fair and Efficient Allocation with a Fixed Number of Agents — Mahara, arXiv 2411.01810 (SAGT 2025)",
+    "url": "https://arxiv.org/abs/2411.01810"
+   },
+   {
+    "title": "Computing Pareto-Optimal and Almost Envy-Free Allocations of Indivisible Goods — Garg, Murhekar, JAIR 2024",
+    "url": "https://arxiv.org/abs/2204.14229"
+   },
+   {
+    "title": "Finding Fair and Efficient Allocations — Barman, Krishnamurthy, Vaish, EC 2018",
+    "url": "https://arxiv.org/abs/1707.04731"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "low",
+ "counterexample_rationale": "Existence of EF1+PO allocations is already proven, so no counterexample can resolve the problem; the question is purely algorithmic/complexity-theoretic (design a polynomial-time algorithm or prove PLS-/NP-hardness), and neither direction is settled by a finite instance.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "An evolutionary search loop could plausibly help discover algorithmic ingredients — e.g., price-update or rounding rules for the Fisher-market framework that provably converge in polynomially many steps, or families of instances on which existing pseudo-polynomial algorithms exhibit exponential-in-bit-length behavior (evidence toward hardness or toward better potential functions) — but the final deliverable is a proof about all instances, which search alone cannot supply.",
+ "literature": {
+  "synthesis": "All known positive results flow from two techniques. The first is the Fisher-market / price-envy-freeness framework of Barman, Krishnamurthy, and Vaish (EC 2018): maintain an fPO allocation as a market equilibrium with item prices, and perform local swaps and price rises until price-EF1 (hence EF1) holds; a potential-function argument bounds the number of steps by $\\mathrm{poly}(n,m,V_{\\max})$, which is only pseudo-polynomial because the potential moves in value-magnitude increments. Garg and Murhekar (IJCAI 2021 / JAIR 2024) refined this machinery to reach the stronger EF1+fPO guarantee in pseudo-polynomial time, to run in strongly polynomial time when agents have constantly many distinct values (the price space collapses), and to place the problem in PLS — currently the only nontrivial complexity classification. The second technique, due to Mahara (2024, SAGT 2025), is incremental: insert agents one at a time, restoring EF1+fPO after each insertion; the analysis is polynomial for each fixed number of agents, giving the first $\\mathrm{poly}(m,\\log V_{\\max})$ algorithm for constant $n$ and the strongest partial result to date. Restricted valuation classes (binary, bi-valued) admit polynomial-time algorithms even for the stronger EFX+PO combination (Halpern et al. 2020; Babaioff–Ezra–Feige 2021; Garg–Murhekar 2023; Bu et al. 2024). The remaining gap is stark: for general $n$ and binary-encoded additive values there is neither a polynomial-time algorithm nor any hardness evidence. New ideas seem needed either to make the market potential decrease geometrically (bit-scaling the prices is the obvious but so-far-unsuccessful route) or to prove PLS-hardness, which would be the first hardness result of its kind in fair division.",
+  "reviewed": [
+   {
+    "ref": "Caragiannis, Kurokawa, Moulin, Procaccia, Shah, Wang, 'The Unreasonable Fairness of Maximum Nash Welfare', EC 2016 / TEAC 2019",
+    "result": "Every allocation maximizing Nash social welfare is simultaneously EF1 and PO, establishing existence; but computing it is NP-hard, so this yields no efficient algorithm.",
+    "relevance": "related-tool",
+    "url": "https://www.cs.toronto.edu/~nisarg/papers/mnw.ec16.pdf"
+   },
+   {
+    "ref": "Barman, Krishnamurthy, Vaish, 'Finding Fair and Efficient Allocations', EC 2018",
+    "result": "Pseudo-polynomial time algorithm ($\\mathrm{poly}(n,m,V_{\\max})$) for EF1+PO via Fisher-market rounding; non-constructive existence of EF1+fPO; also a polynomial-time 1.45-approximation to Nash welfare.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1707.04731"
+   },
+   {
+    "ref": "Garg, Murhekar, 'Computing Pareto-Optimal and Almost Envy-Free Allocations of Indivisible Goods', JAIR 2024 (arXiv 2204.14229)",
+    "result": "Pseudo-polynomial algorithm for the stronger EF1+fPO; strongly polynomial time for $k$-ary instances with constant $k$; polynomial time EF1+PO for constantly many agents; membership of EF1+fPO computation in PLS.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2204.14229"
+   },
+   {
+    "ref": "Mahara, 'A Polynomial-Time Algorithm for Fair and Efficient Allocation with a Fixed Number of Agents', arXiv 2411.01810, SAGT 2025",
+    "result": "First truly polynomial-time algorithm (in $m$ and $\\log V_{\\max}$) computing an EF1+fPO allocation when the number of agents is fixed, via sequential agent insertion; explicitly states the general polynomial-time question remains open.",
+    "relevance": "solves-special-case",
+    "url": "https://arxiv.org/abs/2411.01810"
+   },
+   {
+    "ref": "Aziz, Li, Moulin, Wu, 'Algorithmic Fair Allocation of Indivisible Items: A Survey and New Questions', SIGecom Exchanges 2022",
+    "result": "Survey listing polynomial-time computability of EF1+PO as a major open question in discrete fair division.",
+    "relevance": "survey",
+    "url": "https://www.sigecom.org/exchanges/volume_20/1/AZIZ.pdf"
+   },
+   {
+    "ref": "Zhou et al. (WINE 2025), 'On Pareto-Optimal and Fair Allocations with Personalized Bi-Valued Utilities' (arXiv 2507.18251)",
+    "result": "For personalized bi-valued utilities, characterizes Pareto-optimal allocations (deciding PO is coNP-complete in general but polynomial for integer ratios) and computes EFX allocations in polynomial time — illustrating that even recognizing PO is nontrivial, one obstacle to fast EF1+PO algorithms.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/2507.18251"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Most plausible routes: (1) bit-scaling or polynomial-step variants of the Barman–Krishnamurthy–Vaish market dynamics — design a price-rise/swap schedule whose potential decreases multiplicatively rather than additively, converting pseudo-polynomial to polynomial; (2) extend Mahara's agent-insertion technique from constant to general $n$ by finding a polynomially-bounded restoration procedure per insertion; (3) on the hardness side, attempt a PLS-hardness reduction (the problem is in PLS via Garg–Murhekar), which would explain the decade-long lack of progress; (4) exhaustive small-case experiments to map the behavior of existing algorithms on adversarial binary-encoded instances (exponentially large values) and locate worst-case families.",
+  "verification_notes": "A claimed algorithm must be verified on three axes: (a) EF1 — the $O(n^2)$ EF1 inequalities are directly checkable in polynomial time; (b) PO/fPO — verifying fPO of a given allocation is polynomial-time (via LP duality / market-equilibrium prices supporting the allocation), but verifying plain PO of an arbitrary allocation is coNP-hard in general, so proofs should certify fPO via explicit supporting prices; (c) running time — the analysis must be polynomial in $\\log V_{\\max}$, not $V_{\\max}$; the classic failure mode is a potential-function argument whose step count secretly scales with value magnitudes (pseudo-polynomial), or an algorithm analyzed only for bounded/polynomially-large values. A hardness claim must reduce from a known PLS-hard or NP-hard problem and respect the promise that a solution always exists (so NP-hardness of the search problem must be argued carefully, e.g., via a decision variant).",
+  "machine_checkable": false
+ },
  "where_posed": {
-  "text": "Pseudo-polynomial algorithm and the open computational question from Barman, Krishnamurthy, Vaish, 'Finding Fair and Efficient Allocations', 2018, EC; listed open in the Aziz-Li-Moulin-Wu survey.",
-  "url": "https://arxiv.org/abs/1707.04731"
+  "text": "The computational question originates with Barman, Krishnamurthy, Vaish, 'Finding Fair and Efficient Allocations', EC 2018 (whose algorithm is pseudo-polynomial), is listed as an open problem in the Aziz–Li–Moulin–Wu survey (SIGecom Exchanges 2022), and is restated crisply in Mahara, 'A Polynomial-Time Algorithm for Fair and Efficient Allocation with a Fixed Number of Agents', arXiv 2411.01810 (SAGT 2025).",
+  "url": "https://arxiv.org/abs/2411.01810",
+  "quote": "Nevertheless, the latter existence proof relies on a non-constructive convergence argument and does not directly yield an efficient algorithm for finding EF1 and fPO allocations. Whether a polynomial-time algorithm exists for finding an EF1 and PO (or fPO) allocation remains an important open problem.",
+  "location": "Abstract"
  },
  "source": {
   "authors": "Siddharth Barman, Sanath Kumar Krishnamurthy, Rohit Vaish",
@@ -36,6 +112,34 @@
    "year": 2022,
    "venue": "ACM SIGecom Exchanges",
    "url": "https://www.sigecom.org/exchanges/volume_20/1/AZIZ.pdf"
+  },
+  {
+   "authors": "Siddharth Barman, Sanath Kumar Krishnamurthy, Rohit Vaish",
+   "title": "Finding Fair and Efficient Allocations",
+   "year": 2018,
+   "venue": "EC",
+   "url": "https://arxiv.org/abs/1707.04731"
+  },
+  {
+   "authors": "Jugal Garg, Aniket Murhekar",
+   "title": "Computing Pareto-Optimal and Almost Envy-Free Allocations of Indivisible Goods",
+   "year": 2024,
+   "venue": "JAIR (IJCAI 2021)",
+   "url": "https://arxiv.org/abs/2204.14229"
+  },
+  {
+   "authors": "Ryoga Mahara",
+   "title": "A Polynomial-Time Algorithm for Fair and Efficient Allocation with a Fixed Number of Agents",
+   "year": 2024,
+   "venue": "arXiv 2411.01810 (SAGT 2025)",
+   "url": "https://arxiv.org/abs/2411.01810"
+  },
+  {
+   "authors": "Ioannis Caragiannis, David Kurokawa, Herve Moulin, Ariel D. Procaccia, Nisarg Shah, Junxing Wang",
+   "title": "The Unreasonable Fairness of Maximum Nash Welfare",
+   "year": 2016,
+   "venue": "EC (TEAC 2019)",
+   "url": "https://www.cs.toronto.edu/~nisarg/papers/mnw.ec16.pdf"
   }
  ],
  "bibtex": "@misc{Barman2018,\n  author = {Siddharth Barman and Sanath Kumar Krishnamurthy and Rohit Vaish},\n  title = {Finding Fair and Efficient Allocations},\n  year = {2018},\n  howpublished = {EC},\n  url = {https://arxiv.org/abs/1707.04731},\n  note = {Source of ORdős Problem ORDOS-028}\n}",

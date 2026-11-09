@@ -1,0 +1,67 @@
+{
+  "id": "deletion-channel-small-deletion-capacity-expansion",
+  "background": "The binary deletion channel is one of the simplest communication channels with synchronization errors. Each transmitted bit is independently deleted with probability $d$, and the receiver observes only the surviving subsequence, without knowing where deletions occurred. Unlike the binary erasure channel, where erasure positions are marked and capacity is elementary, the deletion channel has unknown capacity for every nontrivial deletion probability. The small-deletion regime offers a controlled asymptotic route: start at $d=0$, where capacity is $1$ and iid Bernoulli input is optimal, and ask how capacity changes as rare deletions are introduced. Kanoria and Montanari developed a systematic expansion and identified leading terms and near-optimal input processes. The remaining challenge is to push this perturbative program far enough to obtain exact higher-order terms and a structural description of optimal input distributions. This is a clean, well-defined open problem in information theory with strong probabilistic content.",
+  "short_statement": "Find higher-order terms in the small-deletion expansion of binary deletion-channel capacity and characterize the near-optimal input process.",
+  "full_statement": "For deletion probability $d\\in(0,1)$, the binary deletion channel takes an input bit string and independently deletes each bit with probability $d$; undeleted bits are received correctly and in order, but neither sender nor receiver observes the deletion positions. Let $C(d)$ be the Shannon capacity, optimized over stationary input processes in the usual information-spectrum/limit sense. As $d\\downarrow0$, determine the asymptotic expansion of $C(d)$ beyond the terms already proved by Kanoria and Montanari. Their work computes the leading small-deletion terms and constructs input processes achieving capacity to that order. The open problem is to rigorously compute further coefficients and characterize the structure of asymptotically optimal input processes, for example whether finite-memory or run-length-modified perturbations of iid Bernoulli$(1/2)$ inputs remain optimal at higher orders.",
+  "open_problem": "Determine the higher-order small-$d$ capacity expansion for the binary deletion channel and the structure of capacity-achieving or asymptotically capacity-achieving input processes. The unresolved part is the exact expansion and optimizer beyond the currently proved leading orders.",
+  "known_results": "Mitzenmacher surveyed the broad deletion-channel literature and emphasized that exact capacity is unknown for nontrivial deletion probabilities. Kanoria and Montanari initiated the small-deletion expansion program, first computing the two leading terms and showing that iid Bernoulli$(1/2)$ input is optimal to that order. Their later IEEE Transactions paper computes three leading terms of the expansion and gives an input distribution that achieves capacity up to that order, providing the first optimal coding result for the deletion channel in this asymptotic regime. These results strongly support a perturbative picture around iid Bernoulli input, but they do not determine all higher-order coefficients or the complete structure of capacity-achieving processes for small positive $d$.",
+  "status": "open",
+  "where_posed": {
+    "text": "Motivated and partially developed in Kanoria and Montanari, 'Optimal coding for the binary deletion channel with small deletion probability', IEEE Transactions on Information Theory.",
+    "url": "https://arxiv.org/abs/1104.5546",
+    "quote": "",
+    "location": "Abstract, introduction, and conjectural discussion of higher-order optimality"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The leading terms and near-optimal input processes are known for small deletion probability. The exact higher-order expansion and a complete optimizer characterization remain open.",
+    "links": [
+      {
+        "title": "Optimal coding for the deletion channel with small deletion probability",
+        "url": "https://arxiv.org/abs/1104.5546"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Finite-state input processes can refute conjectured optimizer classes or improve lower bounds. They cannot directly prove capacity without an accompanying converse.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Search over finite-state stationary input processes, run-length constraints, and entropy-rate estimators may reveal better asymptotic candidates or disprove conjectured structures. Exact verification still requires analytic bounds.",
+  "literature": {
+    "synthesis": "Deletion-channel capacity is difficult because synchronization uncertainty couples distant input bits through random subsequence alignment. The small-$d$ expansion program isolates rare deletion events and studies how runs of identical bits create ambiguity. Kanoria and Montanari showed that iid Bernoulli input is optimal to leading order and that carefully modified input processes achieve sharper approximations. The remaining gap is a rigorous perturbation theory beyond the established orders: one needs matching achievability and converse bounds and a principled description of the finite-memory or run-length-biased processes that attain them.",
+    "reviewed": [
+      {
+        "ref": "Michael Mitzenmacher, 'A survey of results for deletion channels and related synchronization channels', Probability Surveys 2009",
+        "result": "Surveys deletion-channel bounds and highlights that exact capacity remains unknown.",
+        "relevance": "survey",
+        "url": "https://doi.org/10.1214/08-PS141"
+      },
+      {
+        "ref": "Yashodhan Kanoria and Andrea Montanari, 'On the deletion channel with small deletion probability', arXiv 2009",
+        "result": "Computes the first leading terms in the small-deletion capacity expansion.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/0912.5176"
+      },
+      {
+        "ref": "Yashodhan Kanoria and Andrea Montanari, 'Optimal coding for the binary deletion channel with small deletion probability', IEEE Transactions on Information Theory 2013",
+        "result": "Computes three leading terms and identifies input distributions achieving capacity to that order.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1104.5546"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Promising approaches include finite-state process optimization, symbolic expansion of entropy rates, renewal/run-length decompositions, and computer-assisted searches for candidate input processes followed by analytic converse proofs.",
+    "verification_notes": "A claimed new coefficient must include matching achievability and converse bounds to the stated asymptotic order as $d\\downarrow0$. Achievability should specify the input process, prove existence of the relevant entropy-rate limits, and control truncation or finite-memory approximations uniformly in small $d$. A converse must apply to all stationary or otherwise admissible input processes, not only iid or renewal inputs. Simulated mutual-information estimates, finite-block Blahut-Arimoto-style computations, or symbolic expansions for a candidate process are useful evidence but do not resolve the record unless accompanied by rigorous error bounds. Results for insertion channels or deletion-substitution channels should be treated as related progress unless they specialize back to the binary deletion channel capacity expansion.",
+    "machine_checkable": true
+  },
+  "tags": [
+    "information theory",
+    "deletion channel",
+    "capacity",
+    "coding",
+    "asymptotics",
+    "applied probability"
+  ]
+}

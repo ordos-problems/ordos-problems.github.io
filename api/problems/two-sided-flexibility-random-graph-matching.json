@@ -15,12 +15,59 @@
   "matching markets"
  ],
  "short_statement": "In a two-sided platform where a fixed flexibility budget can be split between the two sides of a random bipartite graph, is the expected maximum matching always optimized by either the fully one-sided or the balanced allocation?",
- "open_problem": "Prove or refute that the expected maximum matching size is always maximized by one of the two extremal flexibility allocations: placing all flexibility on one side, or splitting it evenly across the two sides. If true, characterize the parameter regimes in which each allocation is optimal.",
+ "open_problem": "Prove or refute that, in the Freund-Martin-Zhao random bipartite flexibility model, the expected maximum matching is always maximized by either a fully one-sided flexibility allocation or a balanced allocation, and characterize the boundary between the regimes.",
+ "background": "Process flexibility is a central operations-management idea: a little flexibility in who can serve whom can recover much of the value of full flexibility. Traditional models usually allocate flexibility on one side of a bipartite system, such as plants to products or servers to demand classes. Two-sided platforms complicate this because compatibility can be improved on either side: drivers may become able to serve more rider types, or riders may become willing to accept more provider types. Freund, Martin, and Zhao propose a parsimonious random bipartite-graph model where a fixed flexibility budget can be split across sides and performance is the expected maximum matching size. Their analysis shows that optimizing each side separately can be badly misleading, and that two forces, flexibility cannibalization and flexibility abundance, help explain when one-sided or balanced allocations are good. The unresolved part is a sharp structural theorem for the true matching objective.",
  "full_statement": "Consider the heterogeneous random bipartite-graph model of Freund, Martin, and Zhao. There are two sides of a matching market, a fixed budget $B$ of flexible agents, and an allocation decision specifying how much flexibility is placed on each side. Flexible nodes have a higher probability of being compatible with nodes on the opposite side, while the model normalizes edge probabilities so that changes in performance come from how compatibility is distributed rather than simply from adding more expected edges. The main performance metric $\\mu$ is the asymptotic expected size of a maximum matching. Numerical evidence using the Karp-Sipser-based approximation $\\mu_{KS}$ and empirical simulations $\\mu_{EMP}$ suggests that $\\mu$ is always maximized either by the one-sided allocation or by the balanced allocation. The open problem is to prove this extremal principle, or find a counterexample, and then give an analytical boundary in $(B,p_n,p_f)$ space separating the one-sided-optimal and balanced-optimal regimes.",
- "known_results": "Freund, Martin, and Zhao give a complete analytical characterization for a simpler isolation-based metric $\\phi$, and they prove partial analytical comparisons for $\\mu$ in edge cases where flexibility cannibalization or flexibility asymmetry dominates. For the actual maximum-matching metric, their computational evidence strongly points to the one-sided-versus-balanced dichotomy, but no proof is known even for a parameter regime. The remaining open problem is therefore not to choose a model of platform flexibility, but to prove the optimal allocation structure inside their already specified random-graph model.",
+ "known_results": "Freund, Martin, and Zhao fully analyze a simpler isolation-based performance metric and derive partial comparisons for the maximum-matching objective in edge regimes. For the actual expected maximum matching size, their Karp-Sipser approximation and simulations suggest a striking dichotomy: optimal allocations appear to be either one-sided or balanced, not intermediate. The paper identifies flexibility cannibalization and flexibility abundance as drivers of the two regimes, but a proof of the extremal dichotomy and an analytical phase boundary remain open.",
+ "progress": {
+  "state": "partial",
+  "summary": "Isolation-based metrics are analytically characterized and maximum-matching edge regimes are partially understood. The full expected-matching extremal principle is still conjectural.",
+  "links": [
+   {
+    "title": "Freund, Martin, Zhao, Two-Sided Flexibility in Platforms",
+    "url": "https://arxiv.org/abs/2404.04709"
+   }
+  ]
+ },
+ "importance": 7,
+ "difficulty": 7,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "A counterexample would be a finite or asymptotic parameter setting where an intermediate split beats both one-sided and balanced allocations. Expected matching sizes can be estimated or computed for finite graphs.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Search over random-graph parameters and finite-size exact matching computations can stress-test the dichotomy and suggest phase-boundary formulas.",
+ "literature": {
+  "synthesis": "The classical process-flexibility literature shows that sparse flexibility designs can be nearly as valuable as full flexibility, but it usually treats flexibility as located on one side. The two-sided model introduces a new allocation dimension: flexibility on the two sides can substitute for or cannibalize each other. Freund-Martin-Zhao's analytical isolation metric gives intuition, while the maximum-matching metric is the operationally central objective. The remaining gap is mathematical: prove that the observed one-sided/balanced dichotomy is inherent to the random matching model, or find a parameter regime where an interior split is strictly optimal.",
+  "reviewed": [
+   {
+    "ref": "Daniel Freund, Sébastien Martin, Jiayu Kamessi Zhao, 'Two-Sided Flexibility in Platforms', arXiv 2024",
+    "result": "Introduces the random bipartite two-sided flexibility model and identifies one-sided/balanced optimality patterns for the expected matching objective through analysis and computation.",
+    "relevance": "poses-problem",
+    "url": "https://arxiv.org/abs/2404.04709"
+   },
+   {
+    "ref": "William C. Jordan and Stephen C. Graves, 'Principles on the Benefits of Manufacturing Process Flexibility', Management Science 1995",
+    "result": "Foundational process-flexibility paper motivating sparse flexibility in operations systems.",
+    "relevance": "related-tool",
+    "url": "https://doi.org/10.1287/mnsc.41.4.577"
+   },
+   {
+    "ref": "Karp and Sipser, 'Maximum matchings in sparse random graphs', FOCS 1981",
+    "result": "Provides the random-graph matching approximation machinery underlying modern asymptotic matching analysis.",
+    "relevance": "related-tool",
+    "url": "https://doi.org/10.1109/SFCS.1981.21"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Start by reproducing the finite-size matching computations and Karp-Sipser approximation. Search for violations of the one-sided/balanced dichotomy, then attempt asymptotic proofs via random graph matching differential equations or branching-process fixed points.",
+  "verification_notes": "A proof should apply to the maximum-matching metric, not only the isolation proxy. A counterexample must compare the interior split against both extremal candidates under the same budget and normalized edge-probability model.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "Conclusion of Freund, Martin, and Zhao, 'Two-Sided Flexibility in Platforms', lists the extremal optimality of one-sided or balanced allocations for the maximum-matching metric as a natural open question.",
-  "url": "https://arxiv.org/abs/2404.04709"
+  "text": "Open direction in Freund, Martin, and Zhao, 'Two-Sided Flexibility in Platforms'.",
+  "url": "https://arxiv.org/abs/2404.04709",
+  "quote": "",
+  "location": "Conclusion and discussion around the maximum-matching metric"
  },
  "source": {
   "authors": "Daniel Freund, Sebastien Martin, Jiayu Kamessi Zhao",

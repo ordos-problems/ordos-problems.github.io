@@ -1,0 +1,101 @@
+{
+  "id": "explicit-kunit-ocrs-random-order",
+  "source": {
+    "authors": "Euiwoong Lee, Sahil Singla",
+    "title": "Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities",
+    "year": 2018,
+    "venue": "ESA / arXiv:1806.09251",
+    "url": "https://arxiv.org/abs/1806.09251"
+  },
+  "title": "An explicit k-unit OCRS achieving the correlation-gap guarantee under random order",
+  "short_statement": "A new explicit random-order uniform-matroid contention-resolution scheme attains the correlation-gap guarantee.",
+  "full_statement": "Consider the uniform matroid of rank $k$: each element $i$ is active independently with probability $x_i$, where $x\\in[0,1]^N$ and $\\sum_i x_i\\le k$, and active elements arrive in uniformly random order. A random-order online contention resolution scheme must irrevocably accept or reject each active element while accepting at most $k$ elements in total. The target selectability constant is $c_k^{CG}=1-e^{-k}k^k/k!$, the same correlation-gap expression appearing in $k$-unit prophet-secretary and uniform-matroid contention resolution. Existence of a scheme at this constant can be inferred indirectly from ex-ante prophet-inequality/CRS machinery, and explicit constructions are known in special cases such as $k=1$ or offline CRS variants. The historical question asks for a direct, explicit online random-order OCRS for every $k>1$ that is $c_k^{CG}$-selectable for all feasible $x$. The new construction below reports an affirmative answer.",
+  "background": "This question asks for an explicit online per-element rounding rule, not merely a prophet welfare guarantee or an offline CRS. The new construction below addresses that distinction directly.",
+  "open_problem": "Verify the reported explicit construction in the original known-probability random-order model; it is no longer missing from the literature.",
+  "known_results": "Dughmi, Livanos, and Nuti, 'Optimal Contention Resolution from Samples' (arXiv:2611.08673v1, November 5, 2026), Algorithm 4 and Theorem 4.1, give the explicit Almost-Greedy ROCRS attaining $c_k^{CG}=1-e^{-k}k^k/k!$. It accepts the first k-1 active elements; at the kth, a single independent Bernoulli sample controls a randomized acceptance test, otherwise the next active element is accepted. Known activation probabilities permit generating these samples internally. Theorem 4.1 states total activation mass k; Appendix C.5 handles mass at most k. Corollary 5.1 shows ordinary greedy already suffices for k>=5.",
+  "status": "solution claimed",
+  "where_posed": {
+    "text": "Posed in Will Ma's Online Resource Allocation course notes, Appendix C, Open Problems about Online Contention Resolution Schemes, Problem 3.",
+    "url": "",
+    "quote": "",
+    "location": "Appendix C, OCRS #3"
+  },
+  "progress": {
+    "state": "solution-claimed",
+    "summary": "The new paper supplies the requested online construction; primary algorithm/model sections reviewed, not a full proof certification.",
+    "links": [
+      {
+        "title": "Lee and Singla, optimal OCRS via ex-ante prophet inequalities",
+        "url": "https://arxiv.org/abs/1806.09251"
+      },
+      {
+        "title": "Kashaev and Santiago, simple optimal CRS for uniform matroids",
+        "url": "https://arxiv.org/abs/2105.11992"
+      },
+      {
+        "title": "Optimal Contention Resolution from Samples",
+        "url": "https://arxiv.org/abs/2611.08673"
+      }
+    ]
+  },
+  "importance": 7,
+  "difficulty": 6,
+  "counterexample_suitability": "low",
+  "counterexample_rationale": "The problem is primarily constructive. Counterexamples are useful only if they reveal that a proposed explicit family fails or that an assumed online translation of an existential guarantee is invalid.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Finite activation-vector checks can test the reported construction and its implementation, but cannot certify universal conditional selectability.",
+  "contributor": "Will Ma",
+  "literature": {
+    "synthesis": "Earlier existential and offline results are precursors. The sample-based construction also works when probabilities are known and samples can be generated internally.",
+    "reviewed": [
+      {
+        "ref": "Euiwoong Lee and Sahil Singla, 'Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities', ESA 2018",
+        "result": "Gives optimal OCRS/random-order CRS guarantees and an explicit rank-1 random-order construction in the arXiv appendix.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1806.09251"
+      },
+      {
+        "ref": "Nick Arnosti and Will Ma, 'Tight Guarantees for Static Threshold Policies in the Prophet Secretary Problem', Operations Research 2023",
+        "result": "Analyzes static-threshold policies achieving the same $c_k^{CG}$ constant in prophet secretary settings.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/2108.12893"
+      },
+      {
+        "ref": "Danish Kashaev and Richard Santiago, 'A Simple Optimal Contention Resolution Scheme for Uniform Matroids', arXiv 2021",
+        "result": "Provides a simple explicit optimal offline CR scheme for rank-$k$ uniform matroids, with asymptotic balancedness $c_k^{CG}$.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/2105.11992"
+      },
+      {
+        "ref": "Shaddin Dughmi, Vasilis Livanos, Pranav Nuti, 'Optimal Contention Resolution from Samples' (2026)",
+        "result": "Algorithm 4, Theorem 4.1, Appendix C.5, and Corollary 5.1 address the constructive target.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2611.08673"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Check Algorithm 4, its conditional acceptance analysis, and the extension from total mass equal to capacity to smaller total mass.",
+    "verification_notes": "Check every feasible activation vector, not only symmetric inputs, and maintain independence of samples, online activations, and random order.",
+    "machine_checkable": true
+  },
+  "tags": [
+    "ocrs",
+    "k-unit",
+    "random-order",
+    "correlation-gap",
+    "explicit-construction",
+    "will-ma-notes",
+    "contributed-by-will-ma"
+  ],
+  "confidence": "medium",
+  "additional_refs": [
+    {
+      "authors": "Shaddin Dughmi, Vasilis Livanos, Pranav Nuti",
+      "title": "Optimal Contention Resolution from Samples",
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2611.08673"
+    }
+  ]
+}

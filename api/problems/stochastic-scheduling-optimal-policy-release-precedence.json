@@ -17,12 +17,73 @@
   "sharp-P-hardness"
  ],
  "short_statement": "On a single machine with random processing times, WSEPT is optimal for minimizing expected total weighted completion time with no release dates or precedence (Rothkopf 1966). With release dates and/or precedence, the optimal non-anticipative policy is uncharacterized even for exponential jobs; only constant-factor LP-based approximations are known.",
- "open_problem": "Characterize the optimal non-anticipative policy for stochastic scheduling with release dates or precedence constraints, or determine the precise complexity of computing it.",
+ "open_problem": "Characterize the optimal nonanticipative policy, or the precise computational complexity, for stochastic single-machine weighted completion-time scheduling with release dates or precedence constraints.",
+ "background": "Stochastic scheduling asks for nonanticipative policies when processing times are random but their distributions are known. In the cleanest single-machine setting with all jobs available at time zero and no precedence constraints, Rothkopf's stochastic analogue of Smith's rule, WSEPT, is optimal: sequence jobs by decreasing $w_j/\\mathbb{E}P_j$. Release dates and precedence constraints are the next natural modelling features, and they fundamentally change the problem. The controller must decide whether to process an available job now, wait for a future release, or respect precedence while learning processing completions. LP-based priority policies give constant-factor approximations, but they do not characterize the optimal nonanticipative policy. Recent hardness work for stochastic completion-time scheduling on parallel machines confirms that stochasticity itself creates computational difficulty, not just the deterministic special case.",
  "full_statement": "Single machine, jobs $j = 1,\\dots,n$ with independent random processing times $P_j$ and weights $w_j > 0$; $C_j$ is the policy-dependent random completion time. A policy $\\pi$ must be non-anticipative (decisions at time $t$ depend only on information available by $t$). Objective: $$\\min_{\\pi \\in \\Pi_{\\mathrm{non\\text{-}ant}}} \\ \\mathbb{E}\\Big[\\sum_{j=1}^n w_j C_j^{\\pi}\\Big].$$ Baseline (Rothkopf 1966): with all $r_j = 0$ and no precedence, the static list policy WSEPT (process in non-increasing order of $w_j / \\mathbb{E}[P_j]$) is optimal. $$\\textbf{Open (release dates): } \\text{with release dates } r_j \\ (1\\,|\\,r_j\\,|\\,\\mathbb{E}\\sum w_j C_j), \\text{ characterize an optimal non-anticipative policy, even when } P_j \\sim \\mathrm{Exp}(\\mu_j).$$ $$\\textbf{Open (precedence): } \\text{with precedence constraints (e.g. series-parallel) and } P_j \\sim \\mathrm{Exp}(\\mu_j), \\text{ characterize the optimal policy for } 1\\,|\\,\\mathrm{prec}\\,|\\,\\mathbb{E}\\sum w_j C_j.$$ No closed-form optimal priority policy is known in either case; the gap between best-known approximation guarantees and optimality is open. (The deterministic special cases $1\\,|\\,r_j\\,|\\,\\sum w_j C_j$ and $1\\,|\\,\\mathrm{prec}\\,|\\,\\sum w_j C_j$ are already strongly NP-hard.)",
- "known_results": "Rothkopf (1966) proved WSEPT is optimal for the single machine with no release dates and no precedence. For exponential processing times, WSEPT/cµ-type rules are optimal in several special structures, but with general release dates or precedence the optimal non-anticipative policy is uncharacterized even for exponential jobs. Best positive results are LP-based approximations: Möhring-Schulz-Uetz (1999, JACM) gave the first constant-factor guarantees for LP-guided priority policies with release dates and/or precedence; later work (Skutella-Sviridenko-Uetz; Correa-Schulz) improved constants and extended to unrelated machines, but these only bound the ratio to an optimal policy, not identify it. On complexity: the deterministic versions 1|$r_j$|sum $w_j C_j$ and 1|prec|sum $w_j C_j$ are strongly NP-hard; for the genuinely stochastic problem a 2026 result (arXiv:2601.17425) shows minimizing E[sum $w_j C_j$] on parallel machines is #P-hard even for two-point distributions with unit weights (and even evaluating WSEPT's expected cost is #P-hard) — the first hardness not inherited from the deterministic counterpart. The exact optimal-policy structure for the single-machine release-date and precedence cases, and the precise complexity of the single-machine stochastic version, remain open.",
+ "known_results": "Rothkopf proves WSEPT optimal for independent stochastic processing times on a single machine when all jobs are initially available and there is no precedence. Möhring, Schulz, and Uetz show the power of LP-based priority policies and obtain constant-factor approximation guarantees for stochastic scheduling with release dates, precedence, and related constraints. Skutella, Sviridenko, and Uetz extend approximation results to unrelated machines under stochastic processing times. Moseley, Pruhs, Uetz, and Zhou prove in 2026 that minimizing expected completion times of stochastic jobs on parallel machines is #P-hard even for two-point processing-time distributions and unit weights, and even evaluating WSEPT can be #P-hard. The exact single-machine release-date and precedence policy structure remains open.",
+ "progress": {
+  "state": "partial",
+  "summary": "Approximation algorithms are known, and recent #P-hardness results rule out naive optimism in broader machine environments. The exact single-machine stochastic release-date/precedence structure is still not characterized.",
+  "links": [
+   {
+    "title": "Moseley et al., Minimizing Completion Times of Stochastic Jobs on Parallel Machines is Hard",
+    "url": "https://arxiv.org/abs/2601.17425"
+   },
+   {
+    "title": "Möhring, Schulz, Uetz, Approximation in Stochastic Scheduling",
+    "url": "https://dl.acm.org/doi/10.1145/331524.331530"
+   },
+   {
+    "title": "Rothkopf, Scheduling with Random Service Times",
+    "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.12.9.707"
+   }
+  ]
+ },
+ "importance": 7,
+ "difficulty": 8,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "Small exponential or two-point instances can refute proposed index/list policies. Hardness or exact characterization requires reductions or structural dynamic-programming proofs.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Search can identify small instances where WSEPT-like, release-date-adjusted, or precedence-adjusted priority rules fail. It may also help infer candidate policies for restricted precedence classes.",
+ "literature": {
+  "synthesis": "Rothkopf's theorem gives a rare exact solution in stochastic scheduling: expected processing times are enough when all jobs are available and independent. LP-based priority-policy work shows that once release dates or precedence enter, exact optimality is elusive but good approximations remain possible. The 2026 hardness result demonstrates that stochastic scheduling has intrinsic computational complexity, including hardness of evaluating common greedy policies in broader settings. What remains unsettled for the single-machine release-date and precedence variants is whether there is hidden structure in the nonanticipative policy space, or whether even these clean special cases are computationally intractable in a way not yet formally captured.",
+  "reviewed": [
+   {
+    "ref": "Rothkopf, 'Scheduling with Random Service Times', Management Science 1966",
+    "result": "Proves WSEPT optimal for the basic single-machine stochastic model.",
+    "relevance": "solves-special-case",
+    "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.12.9.707"
+   },
+   {
+    "ref": "Möhring, Schulz, Uetz, 'Approximation in Stochastic Scheduling: The Power of LP-Based Priority Policies', JACM 1999",
+    "result": "Gives LP-based priority policies with constant-factor approximation guarantees.",
+    "relevance": "partial-progress",
+    "url": "https://dl.acm.org/doi/10.1145/331524.331530"
+   },
+   {
+    "ref": "Skutella, Sviridenko, Uetz, 'Unrelated Machine Scheduling with Stochastic Processing Times', Mathematics of Operations Research 2016",
+    "result": "Extends approximation theory for stochastic processing times to unrelated machines.",
+    "relevance": "partial-progress",
+    "url": "https://pubsonline.informs.org/doi/10.1287/moor.2015.0757"
+   },
+   {
+    "ref": "Moseley, Pruhs, Uetz, Zhou, 'Minimizing Completion Times of Stochastic Jobs on Parallel Machines is Hard', arXiv 2026",
+    "result": "Shows #P-hardness for stochastic completion-time scheduling and evaluating WSEPT in broad settings.",
+    "relevance": "hardness",
+    "url": "https://arxiv.org/abs/2601.17425"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Study restricted cases: two release dates, interval orders, series-parallel precedence, exponential processing times, or two-point distributions. For policy-structure work, derive Bellman inequalities comparing available jobs and waiting. For hardness, look for reductions that preserve single-machine release dates or precedence.",
+  "verification_notes": "A claimed optimal policy must be nonanticipative and must handle random processing completions correctly. Approximation results should compare against the optimal adaptive policy, not a static list. Hardness claims should separate inherited deterministic hardness from stochastic evaluation hardness.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "The WSEPT optimality baseline is Rothkopf, 'Scheduling with Random Service Times,' Management Science 12(9):707-713, 1966; the open release-date and precedence cases (with only LP-based approximations known) are developed in Möhring-Schulz-Uetz (1999, JACM) and the subsequent stochastic-scheduling literature.",
-  "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.12.9.707"
+  "text": "The solved WSEPT baseline is Rothkopf 1966; the release-date and precedence gap is implicit in the LP-priority approximation literature and sharpened by recent stochastic scheduling hardness results.",
+  "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.12.9.707",
+  "quote": "",
+  "location": "Rothkopf 1966 and Möhring-Schulz-Uetz 1999."
  },
  "source": {
   "authors": "Michael H. Rothkopf",
@@ -47,7 +108,7 @@
    "url": "https://pubsonline.informs.org/doi/10.1287/moor.2015.0757"
   },
   {
-   "authors": "(authors to verify)",
+   "authors": "Benjamin Moseley, Kirk Pruhs, Marc Uetz, Rudy Zhou",
    "title": "Minimizing Completion Times of Stochastic Jobs on Parallel Machines is Hard",
    "year": 2026,
    "venue": "arXiv:2601.17425",

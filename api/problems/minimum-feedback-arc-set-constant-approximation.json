@@ -1,0 +1,117 @@
+{
+ "number": 167,
+ "ref": "ORDOS-167",
+ "id": "minimum-feedback-arc-set-constant-approximation",
+ "title": "Constant-factor approximation for minimum feedback arc set in directed graphs",
+ "collection": "Computer Science",
+ "area": "Approximation Algorithms and Ranking",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "feedback arc set",
+  "directed graphs",
+  "approximation algorithms",
+  "ranking",
+  "cycle breaking"
+ ],
+ "short_statement": "Determine whether minimum feedback arc set in general directed graphs has a polynomial-time constant-factor approximation under standard assumptions.",
+ "open_problem": "Does general directed minimum feedback arc set admit a polynomial-time constant-factor approximation, or is every polynomial-time approximation necessarily superconstant under a standard complexity assumption?",
+ "background": "Minimum feedback arc set is a clean ordering problem: find the order of vertices that minimizes the total weight of arcs pointing backward. In tournaments this is the Kemeny/rank-aggregation problem and admits much stronger approximation schemes, but general directed graphs are far less understood. The model is not an application-specific modeling question; it is a fixed graph optimization problem with a direct LP/ordering formulation. The contrast with related problems is striking. Undirected feedback vertex set has constant approximations, maximum acyclic subgraph has a simple constant approximation, and tournament feedback arc set has PTAS-type results. But the minimization version for arbitrary directed graphs remains stuck at a polylogarithmic approximation versus only constant-factor hardness under standard assumptions.",
+ "full_statement": "Given a directed graph $G=(V,A)$ with nonnegative arc weights $w_a$, a feedback arc set is a set $F\\subseteq A$ whose removal makes $G$ acyclic. Equivalently, one can seek a linear ordering of the vertices and pay for arcs directed backward in the ordering; the minimum feedback arc set value is the minimum backward-arc weight over all orders. The problem is NP-hard and is one of the classical cycle-breaking and ranking problems, with applications in deadlock resolution, circuit analysis, graph drawing, and rank aggregation. The best general approximation algorithms for directed feedback arc set are polylogarithmic rather than constant, while strong hardness is known only under assumptions such as the Unique Games Conjecture. The open problem is to determine whether a polynomial-time $O(1)$-approximation exists for weighted or unweighted minimum feedback arc set in general directed graphs under ordinary assumptions such as $P\\ne NP$, or whether a superconstant lower bound can be proved.",
+ "known_results": "Karp's original NP-completeness framework includes feedback arc/feedback vertex style cycle-breaking problems, and later work established APX-hardness for directed feedback arc set. Even, Naor, Schieber, and Sudan gave influential polylogarithmic approximation algorithms for minimum feedback sets and directed multicuts; these remain part of the standard approximation baseline. For dense or tournament inputs the situation is much better: feedback arc set in tournaments admits polynomial-time approximation schemes, reflecting the additional ordering structure of complete orientations. Hardness is delicate. Under the Unique Games Conjecture, directed feedback arc set and directed feedback vertex set are hard to approximate within any constant factor, but that conditional result does not give an unconditional superconstant lower bound. Under $P\\ne NP$, the known inapproximability is only constant. Thus the central gap is qualitative: either find a constant approximation for arbitrary directed graphs, or prove superconstant hardness from more standard assumptions.",
+ "progress": {
+  "state": "partial",
+  "summary": "General directed feedback arc set has polylogarithmic approximations and constant-factor hardness. Tournament and other special cases are much better understood. Unique-Games-based results suggest no constant approximation, but an unconditional resolution is open.",
+  "links": [
+   {
+    "title": "Even-Naor-Schieber-Sudan",
+    "url": "https://doi.org/10.1007/PL00009191"
+   },
+   {
+    "title": "Tournament PTAS",
+    "url": "https://doi.org/10.1145/1250790.1250806"
+   }
+  ]
+ },
+ "importance": 7,
+ "difficulty": 8,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Finite directed graphs can refute proposed rounding schemes or LP relaxations. Approximation lower bounds need reductions, but gap instances for relaxations are machine-checkable.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Search can produce hard directed graphs for ordering heuristics, LP/SDP relaxations, and rounding strategies; exact optimum can be computed for moderate instances by integer programming over vertex orders.",
+ "literature": {
+  "synthesis": "The approximation landscape is asymmetric. Maximizing the number of forward arcs is easy to approximate by taking the better of an order and its reverse, but minimizing the backward arcs is sensitive to the optimum being small. Tournament structure removes sparse pathologies and leads to PTAS results, which is why rank aggregation is algorithmically different from general directed cycle breaking. The Even-Naor-Schieber-Sudan framework connects feedback sets with directed multicut and gives polylogarithmic guarantees, but it does not compress to a constant. Unique-Games hardness suggests a constant approximation may be impossible, yet the repository standard distinguishes UGC evidence from standard-assumption resolution. A breakthrough would either find a new decomposition of directed cycles into orderable pieces or convert conditional hardness intuition into an unconditional superconstant lower bound.",
+  "reviewed": [
+   {
+    "ref": "Even, Naor, Schieber, Sudan, 'Approximating Minimum Feedback Sets and Multicuts in Directed Graphs', Algorithmica 1998",
+    "result": "Provides core polylogarithmic approximation techniques for directed feedback sets.",
+    "relevance": "partial-progress",
+    "url": "https://doi.org/10.1007/PL00009191"
+   },
+   {
+    "ref": "Kenyon-Mathieu and Schudy, 'How to rank with few errors', STOC 2007",
+    "result": "Gives a PTAS for weighted feedback arc set on tournaments, showing the special complete-orientation case is much easier.",
+    "relevance": "solves-special-case",
+    "url": "https://doi.org/10.1145/1250790.1250806"
+   },
+   {
+    "ref": "Guruswami, Manokaran, Raghavendra, 'Beating the Random Ordering is Hard', FOCS 2008",
+    "result": "Gives Unique-Games-based approximation-resistance evidence for ordering CSPs, including implications for feedback-arc-type problems.",
+    "relevance": "conditional-hardness",
+    "url": "https://doi.org/10.1109/FOCS.2008.55"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Investigate LP/SDP relaxations for vertex ordering, cycle-packing duals, reductions from directed multicut, and decomposition by strongly connected or nearly tournament substructures. Computationally, enumerate small digraphs with large gaps for natural relaxations and use them to infer gadget families.",
+  "verification_notes": "A claimed constant approximation must apply to arbitrary directed graphs and weighted arcs unless it explicitly states an unweighted-only result. The guarantee should be for the minimum set of arcs removed, equivalently the backward arcs of an ordering, not for the complementary maximum acyclic subgraph objective. Do not confuse minimum feedback arc set with tournament feedback arc set, planar directed graphs, or directed feedback vertex set; reductions between vertex and arc versions must preserve approximation in the claimed direction. For hardness, state whether the assumption is $P\\ne NP$, ETH, UGC, or another conjecture; UGC-hardness is important evidence but not an unconditional answer.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "Standard surveys and problem summaries state that the best approximation for directed feedback arc set is polylogarithmic and that the existence of a constant approximation is open absent Unique-Games-type assumptions.",
+  "url": "https://doi.org/10.1007/PL00009191",
+  "quote": "",
+  "location": "Approximation-algorithm baseline for directed feedback sets"
+ },
+ "source": {
+  "authors": "Guy Even, Joseph Naor, Baruch Schieber, Madhu Sudan",
+  "title": "Approximating Minimum Feedback Sets and Multicuts in Directed Graphs",
+  "year": 1998,
+  "venue": "Algorithmica",
+  "url": "https://doi.org/10.1007/PL00009191"
+ },
+ "additional_refs": [
+  {
+   "authors": "Venkatesan Guruswami, Rajsekar Manokaran, Prasad Raghavendra",
+   "title": "Beating the Random Ordering is Hard: Every Ordering CSP is Approximation Resistant",
+   "year": 2008,
+   "venue": "FOCS",
+   "url": "https://doi.org/10.1109/FOCS.2008.55"
+  },
+  {
+   "authors": "Claire Kenyon-Mathieu, Warren Schudy",
+   "title": "How to rank with few errors: a PTAS for weighted feedback arc set on tournaments",
+   "year": 2007,
+   "venue": "STOC",
+   "url": "https://doi.org/10.1145/1250790.1250806"
+  },
+  {
+   "authors": "Richard M. Karp",
+   "title": "Reducibility among combinatorial problems",
+   "year": 1972,
+   "venue": "Complexity of Computer Computations",
+   "url": "https://doi.org/10.1007/978-1-4684-2001-2_9"
+  }
+ ],
+ "bibtex": "@misc{Even1998,\n  author = {Guy Even and Joseph Naor and Baruch Schieber and Madhu Sudan},\n  title = {Approximating Minimum Feedback Sets and Multicuts in Directed Graphs},\n  year = {1998},\n  howpublished = {Algorithmica},\n  url = {https://doi.org/10.1007/PL00009191},\n  note = {Source of ORdős Problem ORDOS-167}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/minimum-feedback-arc-set-constant-approximation.html",
+  "api": "https://ordos-problems.github.io/api/problems/minimum-feedback-arc-set-constant-approximation.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

@@ -1,0 +1,73 @@
+{
+  "id": "exact-matching-derandomization",
+  "background": "Exact Matching is a deceptively small extension of ordinary perfect matching. Ordinary matching is one of the central polynomial-time problems in combinatorial optimization, but adding the exact cardinality constraint on one color class moves the known general algorithmic status into randomized polynomial time. The problem also appears as a hardness core inside robust and recoverable assignment models, so it is not just a complexity-theory curiosity. The randomized algorithm of Mulmuley, Vazirani, and Vazirani is based on algebraic isolation: assign random weights so that a relevant matching is isolated with good probability, then use determinant or Pfaffian computations. Derandomizing this step is a long-standing open problem connected to the broader project of derandomizing isolation lemmas. Recent deterministic fixed-parameter algorithms show that structure helps, but the unrestricted deterministic polynomial-time question remains open.",
+  "short_statement": "Find a deterministic polynomial-time algorithm for Exact Matching, the problem of deciding whether a graph has a perfect matching with exactly $k$ red edges.",
+  "full_statement": "In the Exact Matching problem, the input is a graph $G=(V,E)$, a color or weight function $c:E\\to\\{0,1\\}$, and an integer $k$. The question is whether $G$ has a perfect matching $M$ satisfying $$\\sum_{e\\in M} c(e)=k.$$ Equivalently, in a red-blue graph, decide whether there is a perfect matching containing exactly $k$ red edges. The problem is in randomized polynomial time by the Mulmuley-Vazirani-Vazirani algebraic isolation framework. The open problem is to give a deterministic polynomial-time algorithm for arbitrary graphs, or to prove a principled barrier showing why such a derandomization would imply a major breakthrough elsewhere. A satisfactory positive solution may derandomize the isolation step, avoid isolation through a different algebraic certificate, or exploit the matching polytope and exact-cardinality constraint in a new way.",
+  "open_problem": "Find a deterministic polynomial-time algorithm for Exact Matching, or prove a barrier under a standard derandomization or complexity assumption.",
+  "known_results": "Mulmuley, Vazirani, and Vazirani gave a randomized polynomial-time algorithm via the isolation lemma and algebraic matching computations. The same isolation paradigm underlies many randomized matching algorithms and complexity-theoretic unique-witness reductions. Deterministic algorithms are known for ordinary perfect matching and for several structurally restricted Exact Matching instances. El Maalouly, Steiner, and Wulf gave deterministic FPT algorithms for bipartite graphs parameterized by bipartite independence number. Murakami and Yamaguchi extended deterministic FPT algorithms to more general graphs using odd-cycle-transversal and independence parameters. Fischer, Hartmann, Lendl, and Woeginger show that robust/recoverable assignment variants inherit the unresolved status of Exact Matching. None of these results yields a deterministic polynomial-time algorithm for unrestricted Exact Matching.",
+  "status": "open",
+  "where_posed": {
+    "text": "The derandomization gap goes back to Mulmuley, Vazirani, and Vazirani's randomized algorithm and is stated explicitly in later Exact Matching papers.",
+    "url": "https://arxiv.org/abs/2405.02829",
+    "quote": "Mulmuley, Vazirani, and Vazirani (1987) proposed a randomized polynomial-time algorithm for this problem, and it is still open whether it can be derandomized.",
+    "location": "Murakami and Yamaguchi 2024 abstract"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "Randomized polynomial time is known, and deterministic FPT algorithms exist under graph-structure parameters. The unrestricted deterministic polynomial-time problem remains open.",
+    "links": [
+      {
+        "title": "Murakami and Yamaguchi, FPT algorithms for Exact Matching",
+        "url": "https://arxiv.org/abs/2405.02829"
+      },
+      {
+        "title": "Mulmuley, Vazirani, Vazirani, Matching is as easy as matrix inversion",
+        "url": "https://doi.org/10.1007/BF02579206"
+      },
+      {
+        "title": "Fischer et al., recoverable robust assignment and Exact Matching",
+        "url": "https://arxiv.org/abs/2311.05696"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "low",
+  "counterexample_rationale": "The problem asks for an algorithm or derandomization barrier, so a finite counterexample is not the right resolution format. Finite instances can test proposed deterministic algorithms but cannot refute the existence of one.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Automated search can look for deterministic isolating weight families, small obstruction patterns for naive derandomizations, or algebraic identities for exact-cardinality matching. A final result needs a proof of polynomial-time correctness or a formal barrier.",
+  "literature": {
+    "synthesis": "Exact Matching is close enough to ordinary matching that one expects combinatorial structure, but the exact red-edge constraint blocks direct use of standard augmenting-path algorithms. The randomized MVV approach succeeds by isolating a witness matching and detecting it algebraically; derandomizing this would require deterministic isolation for the relevant family of perfect matchings or a different certificate. Parameterized results show that deterministic algorithms can exploit low independence number or small odd-cycle-transversal structure, while robust assignment reductions show the problem's influence in operations-research models. The unresolved gap is the general graph case with no structural parameter.",
+    "reviewed": [
+      {
+        "ref": "Mulmuley, Vazirani, Vazirani, 'Matching is as Easy as Matrix Inversion', Combinatorica 1987",
+        "result": "Introduces the randomized algebraic isolation framework for matching problems.",
+        "relevance": "partial-progress",
+        "url": "https://doi.org/10.1007/BF02579206"
+      },
+      {
+        "ref": "El Maalouly, Steiner, Wulf, deterministic FPT algorithms for Exact Matching in bipartite graphs, 2023",
+        "result": "Gives deterministic fixed-parameter algorithms under bipartite-independence-number structure.",
+        "relevance": "solves-special-case",
+        "url": "https://arxiv.org/abs/2305.04975"
+      },
+      {
+        "ref": "Murakami and Yamaguchi, 'An FPT Algorithm for the Exact Matching Problem and NP-hardness of Related Problems', arXiv 2024",
+        "result": "Extends deterministic FPT algorithms to general graphs with additional structural parameters and restates the derandomization open problem.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2405.02829"
+      },
+      {
+        "ref": "Fischer, Hartmann, Lendl, Woeginger, recoverable robust assignment, arXiv 2023",
+        "result": "Shows robust assignment variants are at least as hard as Exact Matching and calls its computational complexity long-standing and unresolved.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/2311.05696"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Look for deterministic families of edge weights that isolate every relevant exact-cardinality perfect matching family, or for algebraic certificates that distinguish the coefficient of the red-edge-count generating polynomial without random substitution. Another route is to exploit perfect-matching polytope structure plus exact cardinality through strongly polynomial separation or parity-style decompositions. For negative/barrier work, formalize what class of black-box isolation or polynomial-identity methods cannot derandomize the MVV algorithm.",
+    "verification_notes": "A proposed deterministic algorithm must run in polynomial time in $|V|+|E|$ and work for arbitrary graphs, not only bipartite, planar, bounded-treewidth, or bounded-parameter instances. The verifier should test whether the algorithm distinguishes exact red count $k$ rather than merely parity, minimum red count, or existence of some colored matching. If the proof uses isolation, it must show deterministic uniqueness or an equivalent certificate for all inputs.",
+    "machine_checkable": false
+  }
+}

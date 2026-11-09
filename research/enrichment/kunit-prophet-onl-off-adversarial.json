@@ -1,0 +1,77 @@
+{
+  "id": "kunit-prophet-onl-off-adversarial",
+  "source": {
+    "authors": "Jiashuo Jiang, Will Ma, Jiawei Zhang",
+    "title": "Tight Guarantees for Multi-unit Prophet Inequalities and Online Stochastic Knapsack",
+    "year": 2022,
+    "venue": "SODA / arXiv:2107.02058",
+    "url": "https://arxiv.org/abs/2107.02058"
+  },
+  "title": "Online-vs-offline ratio for k-unit prophet under adversarial order (k>1)",
+  "short_statement": "For adversarial-order $k$-unit prophet inequalities, determine the tight online-to-offline ratio for $k>1$, even for weighted Bernoulli distributions.",
+  "full_statement": "There are $T$ independent nonnegative values $V_1,\\ldots,V_T$ drawn from known distributions and revealed one by one in an adversarial order. An online algorithm may accept at most $k$ values and receives the sum of accepted values. Let $\\mathrm{ONL}(F,k)$ be the value of the best online policy in the worst arrival order, and let $\\mathrm{OFF}(F,k)=\\mathbb{E}[\\sum_{j=1}^k V_{(j)}]$ be the expected sum of the largest $k$ realized values. Jiang, Ma, and Zhang characterize tight guarantees in Alaei's multi-unit prophet framework relative to a fluid or LP benchmark, but Will Ma's open problem asks for the true online-to-offline ratio $\\inf_F \\mathrm{ONL}(F,k)/\\mathrm{OFF}(F,k)$ for every fixed $k>1$. The problem remains open even when each $V_t$ is weighted Bernoulli, taking value $w_t$ with probability $p_t$ and $0$ otherwise. This restriction keeps the offline benchmark nontrivial, because it is the expected weighted top-$k$ value among random successes, while making the instance space discrete enough for exact search.",
+  "background": "In multi-unit prophet inequalities, the benchmark matters. A fluid or ex-ante LP benchmark is often easier to analyze and composes well with downstream resource-allocation reductions, but the true offline benchmark is the expected value of the best feasible set after all random values are revealed. For one item, many of these distinctions collapse or are well understood: the classical adversarial-order prophet inequality has the tight $1/2$ flavor. For $k>1$, the offline optimum contains correlations induced by selecting the top $k$ realized values, while LP/fluid relaxations decouple ex-ante selection probabilities. Jiang, Ma, and Zhang show that the tight Alaei-style guarantees are better than the older $1-1/\\sqrt{k+3}$ bound, but those guarantees do not identify the true online-to-offline constant. Will Ma's formulation asks for this missing benchmark conversion in the most basic multi-unit setting.",
+  "open_problem": "Determine the tight value of $\\inf_F \\mathrm{ONL}(F,k)/\\mathrm{OFF}(F,k)$ for adversarial-order $k$-unit prophet inequalities when $k>1$, or prove nontrivial upper and lower bounds. Resolve the weighted-Bernoulli special case if the full distributional problem is too hard.",
+  "known_results": "For $k=1$, classical prophet inequalities give tight constant-factor guarantees against the offline maximum. For $k>1$, Alaei's framework and the Jiang-Ma-Zhang refinement characterize tight ratios relative to an LP/fluid benchmark, and the paper explicitly treats multi-unit prophet inequalities as a core online allocation primitive. The same Jiang-Ma-Zhang work also gives tight LP-relative results for online stochastic knapsack. None of these LP-relative theorems automatically yields the desired online-to-offline ratio, because $\\mathrm{OFF}$ is a nonlinear order-statistic benchmark, not an ex-ante capacity relaxation. The weighted-Bernoulli restriction remains open in Will Ma's notes and is a natural place to search for the exact constant or a separating example, since the offline benchmark is explicit but still captures the correlation among top-$k$ realized successes.",
+  "status": "open",
+  "where_posed": {
+    "text": "Posed in Will Ma's Online Resource Allocation course notes, Appendix C, Open Problems about Prophet Inequalities, Problem 2.",
+    "url": "",
+    "quote": "",
+    "location": "Appendix C, Prophet Inequalities #2"
+  },
+  "progress": {
+    "state": "none",
+    "summary": "The site sources do not contain a tight bound for the online-to-offline ratio when $k>1$. The weighted-Bernoulli special case is explicitly called out as open.",
+    "links": [
+      {
+        "title": "Jiang, Ma, Zhang, Tight Guarantees for Multi-unit Prophet Inequalities and Online Stochastic Knapsack",
+        "url": "https://arxiv.org/abs/2107.02058"
+      }
+    ]
+  },
+  "importance": 7,
+  "difficulty": 8,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Small weighted-Bernoulli instances can be enumerated or optimized to produce upper-bound examples. Such examples would be directly useful for guessing the correct constant.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "This is well suited to automated search: an agent can generate small adversarial-order Bernoulli instances, solve dynamic programs for the optimal online policy, and compare to offline top-$k$ value.",
+  "contributor": "Will Ma",
+  "literature": {
+    "synthesis": "The main line of progress uses LP or ex-ante relaxations to obtain clean ratios for multi-unit prophet problems, with Jiang, Ma, and Zhang giving tight guarantees in the Alaei-style setting. Those ratios are powerful for algorithms but do not automatically answer the online-to-offline question. The offline optimum is nonlinear in the realized values; for Bernoulli-valued instances it becomes a stochastic top-$k$ weighted selection problem. A plausible path is to identify the worst Bernoulli instance and prove that arbitrary distributions reduce to it by threshold decomposition, convex-order arguments, or factor-revealing LP duality. No such reduction is currently part of the site evidence.",
+    "reviewed": [
+      {
+        "ref": "Jiashuo Jiang, Will Ma, and Jiawei Zhang, 'Tight Guarantees for Multi-unit Prophet Inequalities and Online Stochastic Knapsack', SODA 2022",
+        "result": "Settles tight online-to-fluid guarantees for the relevant multi-unit prophet framework but leaves online-to-offline variants open.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2107.02058"
+      },
+      {
+        "ref": "Saeed Alaei, 'Bayesian combinatorial auctions: Expanding single buyer mechanisms to many buyers', FOCS 2011 / SICOMP 2014",
+        "result": "Introduces the influential multi-unit prophet-style framework whose guarantee was later sharpened by Jiang, Ma, and Zhang.",
+        "relevance": "background",
+        "url": "https://doi.org/10.1137/120878422"
+      },
+      {
+        "ref": "MohammadTaghi Hajiaghayi, Robert Kleinberg, and Tuomas Sandholm, 'Automated online mechanism design and prophet inequalities', AAAI 2007",
+        "result": "Classical algorithmic-prophet context for adversarial-order prophet inequalities and online mechanism design.",
+        "relevance": "related-tool",
+        "url": "https://doi.org/10.1609/aaai.v22i1.7480"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Start with the weighted-Bernoulli case. For each small instance, compute the exact optimal online dynamic program under the worst arrival order and the exact expected offline top-$k$ value, then search for extremal patterns. For proofs, try threshold decomposition, convex-order reduction to Bernoulli distributions, or a factor-revealing LP whose dual certifies a ratio. Track carefully whether the adversarial order is fixed before or after realization.",
+    "verification_notes": "A claimed lower bound must be against the true offline optimum, not the fluid benchmark. A claimed upper-bound instance must specify distributions, order model, capacity $k$, and exact computations of both online and offline values. If an argument passes through the LP relaxation, it must include a separate bound relating the LP to $\\mathrm{OFF}$ in the relevant direction.",
+    "machine_checkable": true
+  },
+  "tags": [
+    "prophet-inequality",
+    "k-unit",
+    "adversarial-order",
+    "competitive-ratio",
+    "bernoulli",
+    "will-ma-notes",
+    "contributed-by-will-ma"
+  ]
+}

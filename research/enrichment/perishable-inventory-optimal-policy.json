@@ -1,0 +1,41 @@
+{
+  "id": "perishable-inventory-optimal-policy",
+  "background": "Perishable inventory is a classical operations-management model for blood products, pharmaceuticals, food, and other goods with fixed shelf lives. The model is not hard because the business setting is vague; it is hard because the exact dynamic program has a high-dimensional age-profile state. If units expire after $m$ periods, the controller must track how many units have each remaining lifetime, because ordering too much creates future outdating while ordering too little creates shortages or lost sales. For $m=2$, the state is essentially one-dimensional and classical structure is available. For $m \\ge 3$, simple base-stock or order-up-to rules do not describe the optimal policy in general, and exact dynamic programming scales poorly. Approximation algorithms and heuristics exist, including myopic/critical-number ideas and later dual-balancing policies with constant-factor guarantees under FIFO optimality. The central open problem is therefore structural and algorithmic: find a simple exact policy class, or a sharper provably near-optimal policy, for the fixed-lifetime model beyond the two-period case.",
+  "open_problem": "For periodic-review fixed-lifetime perishable inventory with $m \\ge 3$, characterize a simple exact optimal policy if one exists, or give sharp performance guarantees for a tractable policy class under general demand and cost parameters.",
+  "known_results": "Nahmias and Pierskalla solve important two-period perishability cases, and Nahmias's 1982 review records how quickly the dynamic program becomes difficult for longer lifetimes. For $m \\ge 3$, the optimal order quantity depends on the full age vector, and no general base-stock, critical-number, or low-dimensional exact policy is known. Zhang, Ayer, and White prove 2-approximation guarantees for marginal-cost dual-balancing and truncated-balancing policies when FIFO is optimal, under general stochastic demand. These approximation guarantees are useful but leave a large gap between known tractable policies and exact optimality. Later asymptotic inventory-control work gives additional insight in special regimes, but it does not resolve the finite-lifetime exact policy structure.",
+  "status": "open",
+  "where_posed": {
+    "text": "The structural difficulty and open directions are highlighted in Nahmias, 'Perishable Inventory Theory: A Review', Operations Research 1982.",
+    "url": "https://pubsonline.informs.org/doi/10.1287/opre.30.4.680",
+    "quote": "",
+    "location": "Review discussion of fixed-lifetime models and high-dimensional optimal policies."
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The two-period case is classical, and modern approximation algorithms give worst-case factor-2 guarantees under FIFO optimality. General exact structure for $m \\ge 3$ remains open.",
+    "links": [
+      {"title": "Nahmias, Perishable Inventory Theory: A Review", "url": "https://pubsonline.informs.org/doi/10.1287/opre.30.4.680"},
+      {"title": "Zhang, Ayer, White, 2-Approximation Algorithms for Perishable Inventory Control", "url": "https://arxiv.org/abs/1605.01442"}
+    ]
+  },
+  "importance": 7,
+  "difficulty": 8,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Small finite-support demand instances with $m=3$ or $4$ can refute proposed base-stock, total-inventory, or critical-number structures through exact dynamic programming. A positive theorem must handle the unbounded age-profile state.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Search can map optimal actions for truncated MDPs and find counterexamples to conjectured monotonicity or low-dimensional policies. It can also optimize candidate heuristic parameters, but proofs need dynamic-programming or convexity arguments.",
+  "literature": {
+    "synthesis": "The perishable inventory literature has a long split between exact dynamic programming and usable policies. Classical work resolves special short-lifetime models, while Nahmias's review explains that fixed lifetime $m \\ge 3$ creates a multidimensional state and destroys the simplicity of ordinary inventory base-stock rules. Approximation work by Zhang, Ayer, and White provides a robust positive result: when FIFO issuing is optimal, dual-balancing-style policies are within a factor of two of the optimal ordering policy. This is meaningful operationally but still far from a structural characterization. The open gap is to decide whether the general model admits a clean policy description, whether stronger approximation ratios are possible, and which assumptions on demand, issuing, or costs recover simple optimality.",
+    "reviewed": [
+      {"ref": "Nahmias, 'Perishable Inventory Theory: A Review', Operations Research 1982", "result": "Surveys fixed-lifetime perishable inventory and documents the high-dimensional dynamic-programming difficulty.", "relevance": "survey", "url": "https://pubsonline.informs.org/doi/10.1287/opre.30.4.680"},
+      {"ref": "Nahmias and Pierskalla, 'Optimal ordering policies for a product that perishes in two periods subject to stochastic demand', Naval Research Logistics Quarterly 1973", "result": "Solves key two-period perishability cases.", "relevance": "solves-special-case", "url": "https://onlinelibrary.wiley.com/doi/10.1002/nav.3800200204"},
+      {"ref": "Zhang, Ayer, White, '2-Approximation Algorithms for Perishable Inventory Control When FIFO Is an Optimal Issuing Policy', arXiv 2016", "result": "Gives dual-balancing and truncated-balancing policies with factor-2 guarantees under FIFO optimality.", "relevance": "partial-progress", "url": "https://arxiv.org/abs/1605.01442"}
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Start with $m=3$ finite-support demand and compute exact discounted or average-cost optimal actions on truncated state spaces. Test conjectures about monotonicity, Schur-convexity in the age profile, or dominance by total inventory plus oldest stock. For approximation, try primal-dual or balancing arguments that improve the factor-2 analysis.",
+    "verification_notes": "A claimed exact policy must specify the issuing rule, cost criterion, demand assumptions, and prove Bellman optimality. Numerical dynamic programming is useful evidence but does not prove infinite-state optimality unless accompanied by certified truncation or structural bounds.",
+    "machine_checkable": true
+  },
+  "notes_for_maintainer": "Avoid phrasing this as a healthcare modelling problem. The clean problem is fixed-lifetime inventory control with a specified age-profile MDP."
+}

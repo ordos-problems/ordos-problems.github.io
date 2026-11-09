@@ -6,20 +6,91 @@
  "collection": "Online Algorithms & Learning",
  "area": "Online Algorithms",
  "status": "partially resolved",
- "confidence": "high",
+ "confidence": "medium",
  "tags": [
   "prophet inequality",
   "order selection",
   "stopping theory",
   "competitive analysis"
  ],
- "short_statement": "A gambler facing $n$ items with known distributions may choose the order in which to inspect them, then observes values online and stops irrevocably, keeping one. What is the exact optimal competitive ratio against the expected maximum in this free-order (order-selection) model?",
- "open_problem": "Determine the exact value of $\\alpha^*_{\\mathrm{OS}}$.",
- "full_statement": "There are $n$ items with values drawn independently from known distributions $D_1,\\dots,D_n$. In the free-order (order-selection) prophet inequality, the gambler first selects an inspection order $\\sigma$ (a permutation committing to the sequence in which items will be observed), then observes the realized values online one at a time and applies a stopping rule, irrevocably keeping exactly one value. The benchmark is the prophet's expected maximum $\\mathbb{E}[\\max_i X_i]$. Define the optimal order-selection ratio $$\\alpha^*_{\\mathrm{OS}} = \\sup_{(\\sigma,\\text{stop})}\\inf_{\\{D_i\\}} \\frac{\\mathbb{E}[X_{\\text{alg}}]}{\\mathbb{E}[\\max_i X_i]},$$ where the supremum is over all order-and-stopping-rule strategies and the infimum is over all instances. It is known that order selection achieves $\\ge 0.7258$, while no strategy in the random-order model exceeds $0.7254$, so order selection strictly beats random order. Determine the exact value of $\\alpha^*_{\\mathrm{OS}}$.",
- "known_results": "Order-selection guarantee 0.7258 and random-order hardness 0.7254 (Bubna-Chiplunkar, EC 2023), establishing a strict separation. Essentially settled to about 0.7258 but no exact tight constant proven, so technically open.",
+ "short_statement": "A gambler may choose the arrival order of independent known distributions before observing values, then must stop irrevocably. Determine the exact worst-case competitive ratio against the expected maximum.",
+ "open_problem": "Determine the exact order-selection ratio $\\alpha_{\\mathrm{OS}}$. In particular, does it equal the IID constant $\\Gamma^*\\approx0.74544$, or is there a strict separation above the current $0.74500001$ guarantee?",
+ "background": "Order selection is a natural relaxation of the classical prophet inequality. In the adversarial-order model, independent nonnegative values arrive in an order outside the algorithm's control, and the tight competitive ratio is $1/2$. In the free-order model, the decision maker knows the distributions and may choose the order in which to inspect them before values are realized. This is exactly the posted-price interpretation in which a seller chooses the sequence of buyers to approach. The model is still nonadaptive in the order: the order is chosen from the distributions, and once values arrive the algorithm must stop irrevocably. This makes the problem clean enough for exact constants, but rich enough that even finding the optimal order can be computationally hard. Historically, Bubna and Chiplunkar separated order selection from random order. The exact free-order constant remains unknown, and the IID Hill-Kertz constant $\\approx0.745$ remains the natural upper target.",
+ "full_statement": "There are independent nonnegative random variables $X_1,\\ldots,X_n$ with known distributions. Before observing any values, an online algorithm chooses a permutation $\\sigma$ of $[n]$. The variables are then revealed in that order. Upon seeing $X_{\\sigma(t)}$, the algorithm must either accept it and stop or reject it forever and continue. Let $\\mathrm{ALG}$ be the accepted value and let $\\mathrm{PROPHET}=\\mathbb{E}[\\max_i X_i]$. Define $$\\alpha_{\\mathrm{OS}}=\\sup_A\\inf_{n,D_1,\\ldots,D_n}\\frac{\\mathbb{E}[\\mathrm{ALG}_A]}{\\mathbb{E}[\\max_i X_i]},$$ where $A$ ranges over all algorithms that may choose the order from the distributions. Determine the exact value of $\\alpha_{\\mathrm{OS}}$, and characterize extremal instances and optimal order/threshold structure.",
+ "known_results": "Bo Peng and Zhihao Gavin Tang, 'Order-selection Prophet Inequality (Almost) Goes I.I.D.' (arXiv:2610.34892v1, 2026), Theorem 6.1, give a $0.74500001$ guarantee for arbitrary independent nonnegative values. Their algorithm samples arrival times before observing values and applies item-dependent thresholds. The proof includes a computer-assisted certificate, which has not been rerun for this catalogue.\n\nThe IID Hill-Kertz upper bound is $\\Gamma^*\\approx0.74544$. Thus the current bounds are $0.74500001\\le\\alpha_{\\mathrm{OS}}\\le\\Gamma^*$, with a gap below $4.5\\times10^{-4}$. Equality with the IID constant remains unproved in the reviewed sources.\n\nEarlier guarantees were $0.7251$ from Peng and Tang's arrival-time framework and $0.7258$ from Bubna and Chiplunkar. The latter also separated order selection from order-aware random order.\n\nA separate computational question asks for the optimal order on a given instance. Agrawal, Sethuraman, and Zhang show NP-hardness for three-point distributions $\\{0,m_i,1\\}$, but an $O(n^2)$ algorithm and a tight $1.25$ prophet factor for two-point distributions. A better universal guarantee does not resolve this ordering complexity.",
+ "progress": {
+  "state": "partial",
+  "summary": "Peng and Tang (2026), Theorem 6.1, raise the guarantee to $0.74500001$; the IID upper bound remains unmatched.",
+  "links": [
+   {
+    "title": "Order-selection Prophet Inequality (Almost) Goes I.I.D.",
+    "url": "https://arxiv.org/abs/2610.34892v1"
+   },
+   {
+    "title": "Bubna and Chiplunkar, order selection beats random order",
+    "url": "https://arxiv.org/abs/2211.04145"
+   },
+   {
+    "title": "Peng and Tang, arrival time design",
+    "url": "https://arxiv.org/abs/2204.01425"
+   },
+   {
+    "title": "Agrawal, Sethuraman, Zhang, optimal ordering complexity",
+    "url": "https://arxiv.org/abs/1911.05096"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Upper-bound instances are finite collections of distributions and can be searched. The hard part is proving that no order-selection algorithm beats a candidate ratio.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "The arrival-time design view turns candidate algorithms into functions that can be optimized numerically. Finite-support instances can be evaluated by dynamic programming, making hard-instance search plausible.",
+ "literature": {
+  "synthesis": "Order optimization for a particular input and a universal prophet guarantee are different tasks. The new arrival-time construction substantially narrows the latter gap; it does not remove the former computational hardness.",
+  "reviewed": [
+   {
+    "ref": "Archit Bubna, Ashish Chiplunkar, 'Prophet Inequality: Order selection beats random order', arXiv 2022 / EC",
+    "result": "Gives a $0.7258$ order-selection algorithm and a $0.7254$ hardness for order-aware prophet secretary, establishing a separation.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2211.04145"
+   },
+   {
+    "ref": "Bo Peng, Zhihao Gavin Tang, 'Order Selection Prophet Inequality: From Threshold Optimization to Arrival Time Design', FOCS 2022",
+    "result": "Introduces continuous arrival-time design and obtains a $0.7251$ guarantee for order selection.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2204.01425"
+   },
+   {
+    "ref": "Shipra Agrawal, Jay Sethuraman, Xingyu Zhang, 'On optimal ordering in the optimal stopping problem', EC 2021",
+    "result": "Shows optimal ordering is polynomial-time solvable for two-point distributions, NP-hard for restricted three-point distributions, and gives a tight $1.25$ prophet factor for two-point distributions under optimal ordering.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/1911.05096"
+   },
+   {
+    "ref": "Theodore P. Hill, Robert P. Kertz, 'Comparisons of stop rule and supremum expectations of i.i.d. random variables', Annals of Probability 1982",
+    "result": "Identifies the IID benchmark constant around $0.745$, which remains an upper target for order selection.",
+    "relevance": "hardness",
+    "url": "https://doi.org/10.1214/aop/1176993726"
+   },
+   {
+    "ref": "Bo Peng, Zhihao Gavin Tang, 'Order-selection Prophet Inequality (Almost) Goes I.I.D.' (2026)",
+    "result": "Theorem 6.1 gives the $0.74500001$ general guarantee via arrival-time design and a computer-assisted certificate. It does not establish the exact optimal ratio.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2610.34892v1"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Search over independent-arrival-time frameworks with identity-dependent thresholds, then use finite-support hard-instance optimization to test candidate constants. Another route is proving that every competitive algorithm can be converted into an approximate-stochastic-dominance algorithm and solving the resulting functional inequalities.",
+  "verification_notes": "A claimed lower bound must specify an online algorithm that chooses the order before seeing values and prove the ratio for arbitrary independent distributions. A claimed upper bound must give a family of instances and rule out all possible order-selection and stopping strategies.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "Stated in Bubna, Chiplunkar, 'Prophet Inequality: Order Selection Beats Random Order', 2023, EC.",
-  "url": "https://arxiv.org/abs/2211.04145"
+  "text": "Modern formulation and open exact-constant gap in Bubna and Chiplunkar, 'Prophet Inequality: Order selection beats random order'.",
+  "url": "https://arxiv.org/abs/2211.04145",
+  "quote": "the optimum ratio still remains unknown in the order selection setting",
+  "location": "Abstract / Introduction"
  },
  "source": {
   "authors": "Archit Bubna, Ashish Chiplunkar",
@@ -35,6 +106,20 @@
    "year": 2022,
    "venue": "FOCS",
    "url": "https://arxiv.org/abs/2204.01425"
+  },
+  {
+   "authors": "Shipra Agrawal, Jay Sethuraman, Xingyu Zhang",
+   "title": "On optimal ordering in the optimal stopping problem",
+   "year": 2021,
+   "venue": "EC",
+   "url": "https://arxiv.org/abs/1911.05096"
+  },
+  {
+   "authors": "Bo Peng, Zhihao Gavin Tang",
+   "title": "Order-selection Prophet Inequality (Almost) Goes I.I.D.",
+   "year": 2026,
+   "venue": "arXiv preprint",
+   "url": "https://arxiv.org/abs/2610.34892v1"
   }
  ],
  "bibtex": "@misc{Bubna2023,\n  author = {Archit Bubna and Ashish Chiplunkar},\n  title = {Prophet Inequality: Order Selection Beats Random Order},\n  year = {2023},\n  howpublished = {EC},\n  url = {https://arxiv.org/abs/2211.04145},\n  note = {Source of ORdős Problem ORDOS-002}\n}",

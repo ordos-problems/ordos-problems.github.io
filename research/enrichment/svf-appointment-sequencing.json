@@ -1,0 +1,73 @@
+{
+  "id": "svf-appointment-sequencing",
+  "background": "Appointment sequencing is a clean stochastic scheduling problem that often appears in healthcare operations but is not itself a modelling question: the service-time distributions, appointment-time optimization problem, and cost criterion are fixed. A single server must process a known set of jobs with independent random durations. For any chosen sequence, the optimal appointment times can be computed by a newsvendor-like dynamic program or convex optimization routine, so the difficult combinatorial part is the ordering of service distributions. The smallest-variance-first rule, or SVF, orders customers from least variable to most variable service time. Earlier work suggested SVF as a robust sequencing principle and proved it in small or special cases. Later work by de Kemp, Mandjes, and Olver clarified that SVF is not universally optimal, but also proved that it has strong approximation and asymptotic performance guarantees. Thus the right open problem is no longer the bare conjecture that SVF is always optimal. The sharper question is to determine the exact worst-case performance and the structural regimes in which SVF, or a small modification of it, is genuinely optimal.",
+  "short_statement": "SVF is not universally optimal, but it performs well; determine its tight approximation ratio and the exact regimes where variance-order sequencing is optimal.",
+  "full_statement": "There are $n$ jobs with independent service times $S_1,\\ldots,S_n$ and known distributions. A policy chooses a permutation $\\pi$ and appointment times $a_1\\le\\cdots\\le a_n$ for the ordered jobs. Given a sequence and appointment schedule, the induced single-server recursion determines each customer's waiting time, server idle time, and possibly overtime at the end of the session. The objective is a weighted sum of expected waiting time, expected idle time, and possibly expected overtime. For a fixed sequence, define $C(\\pi)$ as the minimum achievable expected cost over appointment times. Let $\\pi_{\\mathrm{SVF}}$ be the sequence ordering jobs by increasing service-time variance. The open problem is to determine the tight worst-case ratio $\\sup C(\\pi_{\\mathrm{SVF}})/\\min_\\pi C(\\pi)$ over natural distribution and cost classes, and to characterize the distributional or cost conditions under which SVF is exactly optimal.",
+  "open_problem": "Find the tight approximation ratio for smallest-variance-first appointment sequencing, and characterize the largest natural classes of service-time distributions and cost weights for which SVF is exactly optimal.",
+  "known_results": "Weiss introduced dispersion-based sequencing ideas and showed that simple dispersion orderings can fail for three jobs. Wang studied stochastic-server sequencing and proved SVF-type optimality in special exponential cases while motivating broader optimality claims. de Kemp, Mandjes, and Olver showed that SVF is not always optimal, but proved quantitative approximation guarantees and asymptotic optimality as the number of jobs grows under broad conditions. Their results reframe SVF as an approximation algorithm rather than a universal optimum rule. The remaining open problem is the tight finite-$n$ worst-case performance, the exact extremal examples, and the largest natural distribution classes where variance ordering is truly optimal.",
+  "status": "partially resolved",
+  "source": {
+    "authors": "Madelon A. de Kemp, Michel Mandjes, Neil Olver",
+    "title": "Performance of the smallest-variance-first rule in appointment sequencing",
+    "year": 2018,
+    "venue": "arXiv:1812.01467",
+    "url": "https://arxiv.org/abs/1812.01467"
+  },
+  "where_posed": {
+    "text": "Residual gap following de Kemp, Mandjes, and Olver's performance analysis of SVF.",
+    "url": "https://arxiv.org/abs/1812.01467",
+    "quote": "",
+    "location": "Abstract and discussion of approximation ratios"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The original universal-optimality conjecture is too strong. SVF is known to be near-optimal in several senses, but the exact worst-case ratio and exact optimality classes remain open.",
+    "links": [
+      {
+        "title": "Performance of the smallest-variance-first rule in appointment sequencing",
+        "url": "https://arxiv.org/abs/1812.01467"
+      }
+    ]
+  },
+  "importance": 6,
+  "difficulty": 7,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Finite collections of service-time distributions can refute proposed optimality conditions or improve lower bounds on SVF's approximation ratio. For small $n$, exact costs can be computed numerically or symbolically.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Search can generate hard finite instances for SVF, optimize over discrete distributions, and discover alternative ordering statistics. Candidate worst cases are directly checkable by computing appointment costs.",
+  "literature": {
+    "synthesis": "This record needed a correction. The interesting current question is not whether SVF is always optimal, because later work says it is not. The value of SVF is that it is simple, operationally interpretable, and provably close to optimal under broad assumptions. de Kemp, Mandjes, and Olver move the literature toward approximation-style guarantees, which is a better fit for a clean open-problem repository than a healthcare-specific modelling question. The remaining finite-sample theory is still incomplete: tight approximation constants, exact extremal instances, and exact conditions for optimality are not settled. A sharp answer would also clarify whether variance alone is the right statistic or whether higher moments and cost-weight asymmetry must enter any optimal sequencing rule.",
+    "reviewed": [
+      {
+        "ref": "Elliott N. Weiss, 'Models for Determining Estimated Start Times and Case Orderings in Hospital Operating Rooms', IIE Transactions 1990",
+        "result": "Introduces ordering ideas based on service-time dispersion and shows limitations for small instances.",
+        "relevance": "partial-progress",
+        "url": "https://doi.org/10.1080/07408179008964166"
+      },
+      {
+        "ref": "Pao-Ping Wang, 'Sequencing and scheduling N customers for a stochastic server', European Journal of Operational Research 1999",
+        "result": "Studies stochastic-server sequencing and formulates SVF-style optimality claims in special cases.",
+        "relevance": "partial-progress",
+        "url": ""
+      },
+      {
+        "ref": "Madelon A. de Kemp, Michel Mandjes, and Neil Olver, 'Performance of the smallest-variance-first rule in appointment sequencing', arXiv 2018",
+        "result": "Shows SVF is not always optimal, but proves approximation and asymptotic optimality guarantees.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1812.01467"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Search over small discrete service-time distributions and cost weights to find extremal SVF gaps. For positive results, use convexity of the fixed-sequence appointment problem, interchange arguments, and stochastic orders stronger than variance order.",
+    "verification_notes": "A claimed counterexample must compute the optimal appointment cost for both SVF and the true best sequence under the same appointment-time optimization model. A claimed ratio must state the distribution class, cost weights, overtime convention, and whether appointment times are optimized exactly or by a restricted rule. Simulations alone are not a proof unless accompanied by certified convex optimization or dynamic-programming error bounds for each sequence. A claimed exact-optimality theorem must prove an interchange argument or stochastic-order condition strong enough to compare all adjacent swaps, not just show that SVF performs well numerically.",
+    "machine_checkable": true
+  },
+  "tags": [
+    "appointment scheduling",
+    "sequencing",
+    "stochastic service times",
+    "approximation ratio",
+    "operations management"
+  ]
+}

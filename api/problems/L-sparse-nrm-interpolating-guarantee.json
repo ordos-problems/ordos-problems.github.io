@@ -14,22 +14,63 @@
   "fluid relaxation",
   "competitive ratio",
   "will-ma-notes",
-  "permission-pending"
+  "contributed by Will Ma"
  ],
- "short_statement": "In $L$-sparse network revenue management, each product consumes one unit of up to $L$ resources. A simple scheme guarantees $1/(1+L)$ of the fluid benchmark, and a recent bound gives asymptotic optimality as the minimum starting capacity $k$ grows. The open problem is a single guarantee interpolating between the two regimes.",
- "open_problem": "Find a guarantee that equals $1/(1+L)$ at $k=1$ and approaches $1$ as $k \\to \\infty$ (i.e. smoothly interpolating between the two regimes).",
- "full_statement": "In $L$-sparse network revenue management, each product consumes one unit of up to $L$ different resources. For $L$-sparse NRM, $\\mathbb{E}[\\mathrm{ALG}] \\ge \\mathrm{FLU}/(1+L)$ holds under adversarial order, and $\\mathbb{E}[\\mathrm{ALG}] \\ge (1 - L/\\sqrt{k+3})\\,\\mathrm{FLU}$ (Amil-Makhdoumi-Wei 2022) gives asymptotic optimality (approaching 1) as $k = \\min_i k_i \\to \\infty$ for fixed $L$, but is vacuous when $k=1, L>1$. \\textbf{Open:} Find a guarantee that equals $1/(1+L)$ at $k=1$ and approaches $1$ as $k \\to \\infty$ (i.e. smoothly interpolating between the two regimes).",
- "known_results": "Under adversarial order, a $1/(1+L)$ guarantee is known, and a folklore upper bound of $2/(1+L)$ shows that some linear dependence on $L$ is unavoidable when capacities are small. In the large-capacity regime, Amil, Makhdoumi, and Wei prove asymptotic optimality as the minimum starting capacity $k$ grows. The open problem is to find a single guarantee that recovers the small-capacity $1/(1+L)$ behavior and also approaches $1$ as $k$ grows.",
+ "short_statement": "Find a competitive guarantee for $L$-sparse network revenue management that degrades like $1/(1+L)$ at unit capacity but tends to $1$ as the minimum capacity grows.",
+ "open_problem": "Determine the best possible function $\\gamma(L,k)$ such that every $L$-sparse instance admits an online policy with expected reward at least $\\gamma(L,k)\\,\\mathrm{FLU}$.",
+ "background": "Network revenue management is one of the standard places where prophet-inequality ideas enter operations research. A firm has several reusable or consumable resources, customer types arrive online, and accepting a request consumes a vector of capacities. The usual fluid relaxation is tractable and often gives the right first-order benchmark, but online rounding loses value because accepting one customer can block future customers that need overlapping resources. The $L$-sparse case is a clean structural restriction: every product uses at most $L$ resources. It interpolates between single-resource stochastic knapsack and genuinely networked allocation, while still retaining a simple combinatorial parameter. In adversarial order, the canonical guarantee scales like $1/(1+L)$, and examples show that dependence on $L$ is not an artifact when capacities are small. On the other hand, large-capacity asymptotics are much more favorable. Amil, Makhdoumi, and Wei connect multi-item order fulfillment and network revenue management to prophet inequalities and prove asymptotic optimality once the minimum starting capacity is large. The open problem is to bridge these regimes with a single bound depending on both sparsity $L$ and minimum capacity $k$.",
+ "full_statement": "Consider an online network revenue management instance with resources $i=1,\\ldots,m$, integer starting capacities $b_i\\ge k$, and customer types arriving over a finite horizon in an adversarially chosen order from known independent distributions. Serving type $t$ yields reward $r_t\\ge 0$ and consumes a vector $a_t\\in\\{0,1\\}^m$ with support size at most $L$. Decisions are irrevocable and must respect the remaining capacities. Let $\\mathrm{FLU}$ be the standard fluid/ex-ante LP relaxation that chooses expected acceptances subject to expected resource consumptions at most $b_i$. Determine the best possible function $\\gamma(L,k)$ such that every $L$-sparse instance admits an online policy with expected reward at least $\\gamma(L,k)\\,\\mathrm{FLU}$. The desired bound should recover the known small-capacity scale $\\gamma(L,1)=\\Omega(1/(1+L))$ and satisfy $\\gamma(L,k)\\to 1$ as $k\\to\\infty$ for each fixed $L$.",
+ "known_results": "For adversarial arrival order and small capacities, a $1/(1+L)$-type guarantee is known from the prophet-inequality/online-rounding analysis in Will Ma's notes, and a folklore upper bound of order $2/(1+L)$ indicates that linear dependence on $L$ cannot be avoided at unit capacity. Amil, Makhdoumi, and Wei prove asymptotically optimal guarantees for related multi-item order-fulfillment and network revenue-management models when the retailer has sufficiently large inventory; their SSRN abstract states that the method gives new asymptotically optimal bounds for NRM. The open gap is non-asymptotic: no sharp finite-capacity expression is known that smoothly connects the $1/(1+L)$ regime with the asymptotic ratio $1$.",
+ "progress": {
+  "state": "partial",
+  "summary": "The endpoint regimes are understood: a sparse adversarial-order guarantee exists at the $1/(1+L)$ scale, and large-capacity asymptotic optimality is known. The missing result is a finite-capacity guarantee with explicit dependence on both $L$ and $k$.",
+  "links": [
+   {
+    "title": "Amil, Makhdoumi, Wei, multi-item order fulfillment and NRM asymptotics",
+    "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4176274"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 7,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "Upper-bound instances for a proposed guarantee are finite stochastic resource-allocation instances and can be searched. A full impossibility result, however, must bound all online policies and all coupling/rounding strategies.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "The finite-capacity regime can be discretized, and dynamic programs or LPs can evaluate candidate policies and hard instances for small $L,k$. Search may reveal the right interpolation formula or identify extremal arrival/resource patterns.",
+ "literature": {
+  "synthesis": "This problem sits between single-resource online stochastic knapsack and high-dimensional online resource allocation. Classical NRM policies often analyze asymptotic regimes in which capacities scale, while prophet-inequality and OCRS methods give non-asymptotic constants relative to fluid relaxations. The $L$-sparse model is attractive because the resource interaction graph is limited by support size rather than by the number of resources. Existing guarantees establish the two natural endpoints: for small capacities, online rounding loses a factor depending linearly on $L$; for large capacities, Amil, Makhdoumi, and Wei's method-based formulation and prophet-inequality connection yields asymptotic optimality for multi-item fulfillment and new NRM bounds. The missing theorem would likely require a capacity-aware contention-resolution scheme that tracks not only whether a resource is scarce but how many sparse conflicts remain.",
+  "reviewed": [
+   {
+    "ref": "Ayoub Amil, Ali Makhdoumi, Yehua Wei, 'Multi-Item Order Fulfillment Revisited: LP Formulation and Prophet Inequality', SSRN 2022/2024",
+    "result": "Develops dynamic policies combining randomized fulfillment, prophet inequalities, and subgradient methods; proves strong non-asymptotic approximations and asymptotic optimality for multi-item fulfillment, with new asymptotically optimal NRM bounds.",
+    "relevance": "partial-progress",
+    "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4176274"
+   },
+   {
+    "ref": "Jiashuo Jiang, Will Ma, Jiawei Zhang, 'Tight Guarantees for Multi-unit Prophet Inequalities and Online Stochastic Knapsack', SODA 2022",
+    "result": "Provides tight single-resource OCRS/knapsack guarantees relative to the fluid LP, which are the building blocks for multi-resource online allocation.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/2107.02058"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Good attack routes include designing a capacity-sensitive OCRS for sparse resource hypergraphs, proving a factor-revealing LP whose variables track residual capacities up to $k$, or searching for extremal sparse instances that force the interpolation shape. Coupling to independent per-resource contention schemes is tempting, but the main difficulty is preserving joint feasibility across overlapping supports.",
+  "verification_notes": "A claimed guarantee must specify the arrival-order model, the benchmark $\\mathrm{FLU}$, and a policy that is implementable online. A verifier should check that the proof works for all $m$, all $L$-sparse incidence patterns, and finite $k$, not just under asymptotic scaling.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Remark 7.6.",
-  "url": ""
+  "text": "Posed in Will Ma's Online Resource Allocation notes as the finite-capacity interpolation problem for $L$-sparse NRM, motivated by the asymptotic guarantees of Amil, Makhdoumi, and Wei.",
+  "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4176274",
+  "quote": "",
+  "location": "Remarks on $L$-sparse NRM and large-capacity prophet bounds"
  },
  "source": {
-  "authors": "Will Ma",
-  "title": "Online Resource Allocation — Course Notes, Remark 7.6",
-  "year": 2024,
-  "venue": "Lecture notes (uploaded)",
-  "url": ""
+  "authors": "Amil, Makhdoumi, Wei",
+  "title": "Multi-item Order Fulfillment Revisited: LP Formulation and Prophet Inequality",
+  "year": 2022,
+  "venue": "SSRN 4176274",
+  "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4176274"
  },
  "additional_refs": [
   {
@@ -40,7 +81,7 @@
    "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4176274"
   }
  ],
- "bibtex": "@misc{Ma2024,\n  author = {Will Ma},\n  title = {Online Resource Allocation — Course Notes, Remark 7.6},\n  year = {2024},\n  howpublished = {Lecture notes (uploaded)},\n  note = {Source of ORdős Problem ORDOS-068}\n}",
+ "bibtex": "@misc{Amil2022,\n  author = {Amil and Makhdoumi and Wei},\n  title = {Multi-item Order Fulfillment Revisited: LP Formulation and Prophet Inequality},\n  year = {2022},\n  howpublished = {SSRN 4176274},\n  url = {https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4176274},\n  note = {Source of ORdős Problem ORDOS-068}\n}",
  "urls": {
   "human": "https://ordos-problems.github.io/problems/L-sparse-nrm-interpolating-guarantee.html",
   "api": "https://ordos-problems.github.io/api/problems/L-sparse-nrm-interpolating-guarantee.json",

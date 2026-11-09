@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>The GNRS conjecture for minor-free flow-cut gaps | ORdős Problems</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script>
+(function(){
+  try{
+    var saved=localStorage.getItem('ordos-theme');
+    var theme=saved||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+    document.documentElement.dataset.theme=theme;
+  }catch(e){document.documentElement.dataset.theme='light';}
+})();
+</script>
+<style>
+  :root{
+    color-scheme:light;
+    --bg:#ffffeb; --paper:#fffef6; --card:#fffdf2; --paper2:#fff9fd; --ink:#1a1a1a; --soft:#4b514d; --faint:#7b7d6f;
+    --line:#e4e4d0; --line2:#eeeedd; --strong:#1a1a1a; --accent:#034f46; --accent2:#0f675d;
+    --pink:#f0d7ff; --pink2:#f8edff; --pinkhover:#f5e5ff; --orange:#ffa946; --link:#034f46; --tagink:#46514d;
+    --short:#27302c; --bodytext:#252b28; --bodytext2:#303633; --open:#7a5400; --partial:#155879; --med:#97402d;
+    --focus:#d8ece7; --focus-border:#74aaa1; --controlbg:rgba(255,255,235,.96); --modalbg:rgba(26,26,26,.32);
+    --okbg:#d8ead8; --okink:#064d20; --warning-bg:#fff3df; --warning-line:#d88a3d; --warning-ink:#5f3411;
+    --logo-fill:#eef6f5; --logo-stroke:#034f46; --badge-ink:#fff; --badge-hover:#063f39; --toastbg:#1a1a1a; --toastink:#fff;
+    --maxw:1120px; --measure:860px; --radius:8px;
+    --ui:"Figtree","Avenir Next","Avenir",-apple-system,system-ui,"Segoe UI",Arial,sans-serif;
+    --display:"EB Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  }
+  html[data-theme="dark"]{
+    color-scheme:dark;
+    --bg:#18170f; --paper:#232217; --card:#202016; --paper2:#2a2330; --ink:#f4f0df; --soft:#c9c2a8; --faint:#9e967d;
+    --line:#3b3928; --line2:#343224; --strong:#f4f0df; --accent:#8fd8cc; --accent2:#b4ebe3;
+    --pink:#5c365f; --pink2:#33213b; --pinkhover:#6b426f; --orange:#ffbd69; --link:#9be2d6; --tagink:#c9c2a8;
+    --short:#e4ddc7; --bodytext:#e7e0cc; --bodytext2:#d9d0b8; --open:#f5c66a; --partial:#87c8ef; --med:#efaa94;
+    --focus:#24564f; --focus-border:#8fd8cc; --controlbg:rgba(24,23,15,.94); --modalbg:rgba(0,0,0,.56);
+    --okbg:#21452c; --okink:#c7f0cf; --warning-bg:#3a2a18; --warning-line:#d1934f; --warning-ink:#ffd8a5;
+    --logo-fill:#202f2c; --logo-stroke:#8fd8cc; --badge-ink:#18170f; --badge-hover:#b4ebe3; --toastbg:#f4f0df; --toastink:#18170f;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ui);font-size:17px;line-height:1.62;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;}
+  a{color:var(--link);text-decoration-thickness:1px;text-underline-offset:3px;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px 96px;}
+
+  header.site{padding:42px 0 22px;border-bottom:1px solid var(--line);}
+  .headbar{display:grid;grid-template-columns:minmax(320px,max-content) minmax(280px,1fr);gap:22px;align-items:center;}
+  .brand{display:flex;align-items:center;gap:14px;min-width:0;}
+  .logo-link{display:block;width:42px;height:42px;flex:0 0 auto;border-radius:8px;line-height:0;}
+  .logo-link:focus-visible{outline:3px solid var(--orange);outline-offset:3px;}
+  .mono{width:42px;height:42px;flex:0 0 auto;}
+  .mono rect{fill:var(--logo-fill);stroke:var(--logo-stroke);}
+  .mono text{fill:var(--logo-stroke);}
+  h1{font-family:var(--display);font-weight:600;font-size:3rem;letter-spacing:0;margin:0;line-height:1;color:var(--ink);}
+  h1 .or{color:var(--accent);}
+  .aboutbtn{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
+    border-radius:8px;padding:7px 12px;min-width:98px;min-height:38px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;}
+  .aboutbtn:hover{background:var(--pinkhover);}
+  .theme-toggle{width:38px;height:38px;min-width:38px;min-height:38px;padding:0;border-radius:999px;line-height:1;}
+  .theme-mark{font-size:1.05rem;line-height:1;}
+  .simple-headbar{display:flex;align-items:center;justify-content:space-between;gap:18px;}
+  .sub{color:var(--soft);font-size:1.03rem;margin:16px 0 0;max-width:78ch;font-weight:450;}
+  .headsearch{display:flex;justify-content:flex-end;align-items:center;gap:10px;flex-wrap:wrap;}
+  .headsearch input{flex:1 1 260px;min-width:220px;max-width:460px;}
+
+  .tagfilters{margin-top:20px;}
+  .statbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+  .statbtn{appearance:none;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:6px 10px;min-height:34px;min-width:0;display:flex;align-items:center;gap:6px;cursor:pointer;
+    color:var(--faint);font-family:var(--ui);transition:background .15s,border-color .15s,transform .15s;}
+  .statbtn b{display:block;color:var(--ink);font-size:.78rem;line-height:1;font-weight:800;}
+  .statbtn span{font-size:.78rem;line-height:1;color:var(--tagink);overflow-wrap:anywhere;}
+  .statbtn:hover{background:var(--pink2);border-color:var(--focus-border);transform:translateY(-1px);}
+  .statbtn.active{background:var(--pink);border:2px solid var(--strong);padding:5px 9px;color:var(--ink);}
+  .moretags{display:flex;align-items:center;gap:8px;margin-top:10px;}
+  .moretags label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:0;}
+  #tagselect{min-width:230px;max-width:100%;padding:8px 10px;font-size:.82rem;border:1px solid var(--line);
+    border-radius:var(--radius);background:var(--paper);color:var(--ink);font-family:var(--ui);}
+  #tagselect:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
+
+  .modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:24px;background:var(--modalbg);}
+  .modal.open{display:flex;}
+  .modal-card{width:min(760px,100%);max-height:min(86vh,760px);overflow:auto;background:var(--card);border:2px solid var(--strong);
+    border-radius:var(--radius);box-shadow:0 18px 60px rgba(0,0,0,.18);padding:28px 32px;}
+  .modal-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:14px;}
+  .modal-card h2{font-family:var(--display);font-weight:600;font-size:2.1rem;line-height:1.05;margin:0;color:var(--ink);}
+  .modal-card h3{font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:22px 0 7px;}
+  .modal-card p{font-size:1rem;line-height:1.7;color:var(--bodytext2);margin:.7em 0;}
+  .closemodal{appearance:none;border:2px solid var(--strong);border-radius:8px;background:var(--pink);color:var(--ink);
+    font-family:var(--ui);font-weight:800;cursor:pointer;padding:5px 10px;box-shadow:0 1px 0 var(--strong);}
+
+  .controls{position:sticky;top:0;z-index:20;background:var(--controlbg);backdrop-filter:saturate(1.05) blur(10px);
+    border-bottom:1px solid var(--line);padding:11px 0;margin:18px 0 14px;}
+  #q{width:100%;padding:12px 14px;font-size:.94rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);color:var(--ink);font-family:var(--ui);}
+  #q:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
+  .ctl-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;}
+  .filterstate{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .count{font-size:.8rem;color:var(--faint);}
+  .selectedtags{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+  .selectedtag{appearance:none;border:1px solid var(--strong);background:var(--pink);border-radius:999px;padding:4px 8px;
+    font-family:var(--ui);font-size:.74rem;font-weight:750;color:var(--ink);cursor:pointer;}
+  .selectedtag:hover{background:var(--pinkhover);}
+  .clearfilter{font-size:.8rem;color:var(--link);background:none;border:none;cursor:pointer;font-family:var(--ui);padding:0;font-weight:700;}
+
+  .grouphdr{font-weight:800;font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);
+    margin:34px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+  .grouphdr .gn{color:var(--faint);font-weight:500;}
+
+  article.p{background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);
+    padding:20px 22px 19px;margin:12px 0;scroll-margin-top:96px;}
+  article.p:target{box-shadow:0 0 0 3px var(--focus);}
+  .p .top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px;}
+  .num{font-weight:800;font-size:.76rem;color:var(--badge-ink);background:var(--accent);padding:3px 9px;border-radius:7px;text-decoration:none;}
+  .num:hover{background:var(--badge-hover);}
+  .tagline{display:flex;gap:9px;flex-wrap:wrap;align-items:center;min-width:0;color:var(--tagink);font-size:.9rem;}
+  .tag{color:var(--tagink);white-space:nowrap;}
+  .tag.status-open{color:var(--open);}
+  .tag.status-partial{color:var(--partial);}
+  .tag.med{color:var(--med);}
+  .spacer{flex:1 1 auto;}
+  .copy,.open-link,.back-link{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
+    border-radius:8px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+  .copy:hover,.open-link:hover,.back-link:hover{background:var(--pinkhover);}
+  .copy.ok{background:var(--okbg);color:var(--okink);}
+
+  .problem-title{font-family:var(--display);font-size:1.42rem;line-height:1.18;font-weight:600;margin:0 0 8px;color:var(--ink);letter-spacing:0;}
+  .problem-title a{text-decoration:none;color:inherit;}
+  .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
+  .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:var(--short);max-width:88ch;letter-spacing:0;}
+  .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:nowrap;margin:24px 0 0;overflow-x:auto;padding-bottom:3px;}
+  .pagebtn{font-size:.76rem;color:var(--ink);background:var(--card);border:2px solid var(--strong);border-radius:8px;
+    padding:5px 8px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:30px;box-shadow:0 1px 0 var(--strong);white-space:nowrap;}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pagegap,.pageinfo{font-size:.76rem;color:var(--faint);font-weight:750;padding:0 3px;white-space:nowrap;}
+
+  .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
+  .detail-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end;}
+  .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
+  .detail-meta{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0;}
+  .problem-nav{display:flex;gap:10px;align-items:stretch;justify-content:space-between;margin:22px 0 24px;max-width:var(--measure);}
+  .problem-nav .navlink{flex:1 1 0;background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);padding:12px 14px;
+    text-decoration:none;color:var(--ink);font-weight:750;min-width:0;}
+  .problem-nav .navlink:hover{background:var(--pink2);}
+  .problem-nav .navlink.next{text-align:right;}
+  .problem-nav .navlink.empty{visibility:hidden;}
+  .problem-nav .navlabel{display:block;font-size:.72rem;letter-spacing:0;text-transform:uppercase;color:var(--faint);font-weight:800;margin-bottom:2px;}
+  .detail-card{background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);padding:28px 32px;margin:24px 0;max-width:var(--measure);}
+  .detail-card h2{font-size:.8rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:0 0 15px;}
+  .prose{font-size:1.04rem;line-height:1.86;color:var(--bodytext);}
+  .prose p{margin:0 0 1.15em;}
+  .prose .katex-display{margin:1.15em 0;}
+  .known-prose{font-size:1rem;line-height:1.8;color:var(--bodytext2);}
+  .remaining-open{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);}
+  .remaining-open strong{color:var(--accent);}
+  .source-list{font-size:.94rem;line-height:1.7;color:var(--soft);}
+  .source-list p{margin:.65em 0;}
+  .source-list .k{font-weight:800;color:var(--accent);}
+  .refs{margin:8px 0 0;padding-left:21px;}
+  .refs li{margin:.55em 0;color:var(--soft);}
+
+  .form-shell{max-width:var(--measure);margin:28px 0 0;}
+  .form-card{background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);padding:28px 32px;margin:20px 0;}
+  .form-card h2{font-family:var(--display);font-size:2.35rem;line-height:1.06;font-weight:600;margin:0 0 8px;color:var(--ink);}
+  .form-card p{font-size:1rem;line-height:1.7;color:var(--bodytext2);margin:.7em 0 1.2em;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .field{display:flex;flex-direction:column;gap:6px;margin:14px 0;}
+  .field.full{grid-column:1/-1;}
+  .field label{font-size:.78rem;font-weight:800;letter-spacing:0;text-transform:uppercase;color:var(--accent);}
+  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);
+    font-family:var(--ui);font-size:.96rem;line-height:1.45;padding:11px 12px;}
+  .field textarea{min-height:118px;resize:vertical;}
+  .field input:focus,.field textarea:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
+  .field-note{font-size:.82rem;color:var(--faint);line-height:1.5;}
+  .form-warning{display:none;margin:14px 0 0;padding:10px 12px;border:1px solid var(--warning-line);border-radius:8px;background:var(--warning-bg);color:var(--warning-ink);
+    font-size:.9rem;line-height:1.55;}
+  .form-warning.show{display:block;}
+  .submit-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;}
+  .submit-btn{font-size:.84rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
+    border-radius:8px;padding:9px 14px;cursor:pointer;font-family:var(--ui);font-weight:800;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+  .submit-btn:hover{background:var(--pinkhover);}
+
+  .katex{font-size:1.04em;}
+  .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
+
+  footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
+  footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid var(--line);}
+  footer a:hover{border-bottom-color:var(--accent);}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toastbg);color:var(--toastink);font-size:.85rem;padding:10px 18px;border-radius:8px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+  @media (max-width:900px){
+    .headbar{grid-template-columns:1fr;}
+    .headsearch{justify-content:flex-start;}
+    .headsearch input{max-width:none;}
+  }
+  @media (max-width:760px){
+    .wrap{padding:0 16px 72px;}
+    header.site{padding-top:30px;}
+    .brand{align-items:flex-start;}
+    .brand h1{min-width:0;overflow-wrap:anywhere;}
+    .simple-headbar{align-items:flex-start;}
+    h1{font-size:2.15rem}
+    .about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
+    .statbar{gap:6px;}
+    .statbtn{padding:5px 8px;}
+    .moretags{align-items:flex-start;flex-direction:column;}
+    .ctl-meta{align-items:flex-start;gap:8px;flex-direction:column;}
+    article.p{padding:17px 15px;}
+    .copy,.open-link{width:100%;text-align:center;}
+    .detail-title{font-size:2.2rem;}
+    .detail-top{align-items:flex-start;flex-direction:column;}
+    .detail-actions{width:100%;justify-content:flex-start;}
+    .problem-nav{flex-direction:column;}
+    .problem-nav .navlink{width:100%;}
+    .problem-nav .navlink.next{text-align:left;}
+    .detail-card{padding:22px 18px;}
+    .form-grid{grid-template-columns:1fr;}
+    .form-card{padding:22px 18px;}
+    .modal{padding:14px;}
+    .modal-card{padding:22px 18px;}
+    .modal-card h2{font-size:1.7rem;}
+  }
+
+  .tag.status-claimed{color:var(--med);}
+  .tag.status-resolved{color:var(--okink);}
+  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0;}
+  .badge{font-size:.8rem;color:var(--soft);}
+  .badge+.badge::before{content:" / ";margin-right:8px;color:var(--faint);}
+  .posed-quote{margin:16px 0;padding-left:18px;border-left:2px solid var(--line);color:var(--soft);}
+  .posed-quote .loc{display:block;margin-top:8px;font-size:.8rem;}
+  .lit-list{padding-left:22px;}
+  .lit-list li{margin:1em 0;}
+  .lit-list .rel{display:block;font-size:.75rem;color:var(--faint);}
+  .subm-item{padding:16px 0;border-bottom:1px solid var(--line);}
+  .subm-head{font-size:.8rem;color:var(--soft);}
+  .headsearch input{min-width:0;}
+  .tag{white-space:normal;overflow-wrap:anywhere;}
+  .detail-top{align-items:flex-start;}
+  .detail-top>div:first-child{min-width:0;flex:1;}
+  .detail-actions{flex:0 0 180px;}
+  .detail-actions .back-link{width:100%;text-align:center;}
+  .detail-title{font-size:2.6rem;overflow-wrap:anywhere;}
+  .problem-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+  .problem-nav .navlink{height:104px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow-wrap:anywhere;font-size:.9rem;}
+  .detail-card{background:transparent;border:0;border-top:2px solid var(--strong);border-radius:0;padding:28px 0;}
+  .form-card{background:transparent;border:0;border-radius:0;padding:28px 0;}
+  @media(max-width:760px){
+    .detail-title{font-size:2.2rem;}
+    .detail-actions{flex:0 0 auto;}
+    .detail-actions .back-link{width:auto;}
+    .problem-nav{grid-template-columns:1fr;grid-auto-rows:104px;}
+    .problem-nav .navlink{height:104px;}
+    .problem-nav .navlink.empty{display:none;}
+    .detail-card,.form-card{padding:22px 0;}
+    .pagination{gap:3px;}
+    .pagebtn{min-width:26px;padding:5px 6px;}
+    .pageinfo{display:none;}
+  }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <div class="simple-headbar">
+      <div class="brand">
+        <a class="logo-link" href="../index.html" aria-label="ORdős Problems home"><svg class="mono" viewBox="0 0 100 100" aria-hidden="true">
+        <rect x="3" y="3" width="94" height="94" rx="18" fill="#eef6f5" stroke="#034f46" stroke-width="5"/>
+        <text x="50" y="63" text-anchor="middle" font-family="Figtree, Arial, sans-serif" font-size="36" font-weight="800" fill="#034f46">OP</text>
+      </svg></a>
+        <h1><a href="../index.html" style="color:inherit;text-decoration:none"><span class="or">OR</span>dős Problems</a></h1>
+      </div>
+      <button class="aboutbtn theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme" title="Switch color theme"><span class="theme-mark" aria-hidden="true">☾</span></button>
+    </div>
+  </header>
+
+  <div class="detail-top">
+    <div>
+      <div class="tagline"><span class="tag">#network-design-and-metric-embeddings</span>
+<span class="tag">#conjecture</span>
+<span class="tag">#operations-research</span>
+<span class="tag">#flow-cut-gap</span>
+<span class="tag">#minor-free-graphs</span>
+<span class="tag">#multicommodity-flow</span>
+<span class="tag">#metric-embeddings</span>
+<span class="tag">#network-design</span></div>
+      <h1 class="detail-title">The GNRS conjecture for minor-free flow-cut gaps</h1>
+      <div class="detail-meta"><span class="num">180</span><span class="tag">Problem 180 of 182</span><span class="tag">#ordos-180</span></div>
+      <div class="meta-badges"><span class="badge progress-partial">Partial progress</span></div>
+    </div>
+    <div class="detail-actions">
+      <a class="back-link" href="../correction.html?ref=ORDOS-180&amp;title=The%20GNRS%20conjecture%20for%20minor-free%20flow-cut%20gaps&amp;page=https%3A//ordos-problems.github.io/problems/minor-free-flow-cut-gap-gnrs.html" target="_blank" rel="noopener">Suggest edit</a>
+      <a class="back-link" href="../index.html">Back to all problems</a>
+    </div>
+  </div>
+
+  <nav class="problem-nav" aria-label="Problem navigation">
+    <a class="navlink prev" href="fpp-bigeodesics-nonexistence.html" title="Nonexistence of bigeodesics in two-dimensional first-passage percolation"><span class="navlabel">Previous problem</span>#179 · Nonexistence of bigeodesics in two-dimensional first-passage percolation</a>
+    <a class="navlink next" href="gilbert-pollak-steiner-ratio.html" title="The Gilbert-Pollak Steiner Ratio Conjecture"><span class="navlabel">Next problem</span>#181 · The Gilbert-Pollak Steiner Ratio Conjecture</a>
+  </nav>
+
+  <section class="detail-card statement">
+    <h2>Short Statement</h2>
+    <div class="prose"><p>The Gupta-Newman-Rabinovich-Sinclair conjecture asks whether every fixed-minor-free graph family has constant multicommodity flow-cut gap.</p></div>
+  </section>
+
+  <section class="detail-card statement">
+    <h2>Open Problem</h2>
+    <div class="prose"><p>Prove or refute the GNRS conjecture: fixed-minor-free undirected graph families should have <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mi>F</mi></msub><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O_F(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">F</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> multicommodity flow-cut gap, equivalently bounded <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">ℓ</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\ell_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord">ℓ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> distortion for their graph metrics.</p></div>
+  </section>
+
+
+  <section class="detail-card statement">
+    <h2>Background &amp; Context</h2>
+    <div class="prose">Multicommodity flow is a central relaxation in network design, routing, graph partitioning, and approximation algorithms. The cut condition is the most basic necessary condition for routing demands, but it is not sufficient in general graphs without capacity augmentation. The worst-case gap between cuts and flows is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Θ</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Theta(\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">Θ</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> in general graphs and underlies the logarithmic approximability of Sparsest Cut. Minor-free graph families are much more structured and include planar graphs, bounded-genus graphs, and many networks that arise in geometric or infrastructure settings. The GNRS conjecture says that this structure should collapse the logarithmic gap to a constant. A proof would have algorithmic consequences for routing and cut problems on minor-free networks; a counterexample would show that even topologically simple networks can hide arbitrarily bad multicommodity obstructions.</div>
+  </section>
+
+  <section class="detail-card statement">
+    <h2>Statement &amp; Model</h2>
+    <div class="prose">Let <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mo stretchy="false">(</mo><mi>V</mi><mo separator="true">,</mo><mi>E</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">G=(V,E)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">G</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="mclose">)</span></span></span></span> be an undirected supply graph with edge capacities <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi>e</mi></msub><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">u_e\ge0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.786em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>, and let <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi></mrow><annotation encoding="application/x-tex">H</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0813em;">H</span></span></span></span> be a demand graph on the same vertex set with demands <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mrow><mi>s</mi><mi>t</mi></mrow></msub><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">d_{st}\ge0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>. The cut condition says that for every cut <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>⊂</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">S\subset V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊂</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.2222em;">V</span></span></span></span>, the total capacity crossing <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0576em;">S</span></span></span></span> in <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">G</span></span></span></span> is at least the total demand crossing <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0576em;">S</span></span></span></span> in <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi></mrow><annotation encoding="application/x-tex">H</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0813em;">H</span></span></span></span>. The fractional multicommodity flow-cut gap of a graph family is the smallest constant <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span></span></span></span> such that, whenever the cut condition holds for an instance on a supply graph <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">G</span></span></span></span> in the family, scaling all capacities by <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span></span></span></span> suffices to route all demands fractionally. Equivalently, through the Linial-London-Rabinovich duality, it asks for bounded <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">ℓ</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\ell_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord">ℓ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> distortion of shortest-path metrics supported by the graph family. The Gupta-Newman-Rabinovich-Sinclair conjecture asserts that for every fixed excluded minor <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">F</span></span></span></span>, the class of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">F</span></span></span></span>-minor-free supply graphs has flow-cut gap bounded by a constant depending only on <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">F</span></span></span></span>, not on <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>V</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|V|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="mord">∣</span></span></span></span> or the demand pattern. The open problem is to prove this constant bound or construct a fixed-minor-free family with unbounded flow-cut gap.</div>
+  </section>
+
+  <section class="detail-card">
+    <h2>What Is Known</h2>
+    <div class="known-prose">General graphs have logarithmic flow-cut gaps, characterized through metric embeddings. The GNRS conjecture predicts constant gaps for every fixed-minor-free family. Several special cases and related bounds are known. Chekuri, Shepherd, and Weibel prove constant integer or fractional flow-cut gap results for important subclasses such as series-parallel and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span>-outerplanar graphs, and they formulate a stronger integer-flow conjecture related to the fractional one. Salmasi, Sidiropoulos, and Sridhar describe the undirected GNRS conjecture as the standard benchmark and obtain first constant directed flow-cut gap results for directed series-parallel graphs, directed bounded-pathwidth graphs, directed trees, and directed cycles. However, the core undirected conjecture remains open even at the level of proving a constant bound for broad fixed-minor-free classes beyond the known special cases.<p class="remaining-open"><strong>Remaining open problem.</strong> Prove or refute the GNRS conjecture: fixed-minor-free undirected graph families should have <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mi>F</mi></msub><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O_F(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">F</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> multicommodity flow-cut gap, equivalently bounded <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">ℓ</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\ell_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord">ℓ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> distortion for their graph metrics.</p></div>
+  </section>
+
+  <section class="detail-card">
+    <h2>Progress &amp; Literature</h2>
+    <div class="known-prose"><p><strong>Latest progress (Partial progress).</strong> Constant bounds are known for special graph classes, but the fixed-minor-free conjecture remains open. </p><div class="prose">The GNRS conjecture connects three languages: routing, cuts, and metric embeddings. The routing language asks how much one must scale capacities after all cut inequalities hold. The cut language views this as the integrality/duality gap behind sparsest-cut relaxations. The metric language asks whether shortest-path metrics of minor-free graphs embed into <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">ℓ</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\ell_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord">ℓ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> with distortion depending only on the excluded minor. General graphs need logarithmic distortion, so the conjecture is a strong structural claim about topology. Known positive results for trees, cycles, series-parallel graphs, and bounded outerplanarity support the conjecture, but the techniques do not yet handle arbitrary planar or fixed-minor-free interactions. A proof may require a new decomposition of minor-free metrics; a counterexample would likely expose a multiscale demand pattern not captured by existing separator or embedding methods.</div><ul class="lit-list"><li><span class="rel">related tool</span><strong>Salmasi, Sidiropoulos, Sridhar, On constant multi-commodity flow-cut gaps for directed minor-free graphs, 2017</strong> — States the GNRS benchmark and proves directed constant-gap results for several structured families. <a href="https://arxiv.org/abs/1711.01370" target="_blank" rel="noopener">link</a></li><li><span class="rel">partial progress</span><strong>Chekuri, Shepherd, Weibel, Flow-Cut Gaps for Integer and Fractional Multiflows, 2010</strong> — Gives constant-gap results for special classes and formulates stronger integer-flow questions. <a href="https://arxiv.org/abs/1008.2136" target="_blank" rel="noopener">link</a></li><li><span class="rel">partial progress</span><strong>Lee and Sidiropoulos, Pathwidth, trees, and random embeddings, 2009</strong> — Proves the GNRS conjecture for minor-closed families that exclude all trees and frames the minor-free embedding target. <a href="https://arxiv.org/abs/0910.1409" target="_blank" rel="noopener">link</a></li></ul></div>
+  </section>
+
+  <section class="detail-card" id="submissions">
+    <h2>Posted Solutions &amp; Verification</h2>
+    <div class="known-prose"><p class="subm-empty">No solutions or partial-progress submissions have been posted for this problem yet.</p>
+    <p>Submit a result or a review through the <a href="../agents.html">submission guidelines</a>, or suggest a correction using the link above.</p></div>
+  </section>
+  <section class="detail-card">
+    <h2>Sources</h2>
+    <div class="source-list">
+      <p><span class="k">Where posed:</span> Salmasi, Sidiropoulos, and Sridhar state the Gupta-Newman-Rabinovich-Sinclair conjecture as asserting constant flow-cut gaps for fixed-minor-free graph families. <a href="https://arxiv.org/abs/1711.01370" target="_blank" rel="noopener">link</a></p>
+      <blockquote class="posed-quote">&ldquo;asserts that it is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>&rdquo;<span class="loc">&mdash; Abstract.</span></blockquote>
+      <p><span class="k">Source:</span> Ario Salmasi, Anastasios Sidiropoulos, Vijay Sridhar, <em>On constant multi-commodity flow-cut gaps for directed minor-free graphs</em> (2017, arXiv) <a href="https://arxiv.org/abs/1711.01370" target="_blank" rel="noopener">link</a></p>
+      <p><span class="k">Related references:</span></p><ol class="refs"><li>Chandra Chekuri, F. Bruce Shepherd, Christophe Weibel, <em>Flow-Cut Gaps for Integer and Fractional Multiflows</em> (2010, arXiv / Journal of Combinatorial Theory, Series B) <a href="https://arxiv.org/abs/1008.2136" target="_blank" rel="noopener">link</a></li><li>James R. Lee, Anastasios Sidiropoulos, <em>Pathwidth, trees, and random embeddings</em> (2009, arXiv) <a href="https://arxiv.org/abs/0910.1409" target="_blank" rel="noopener">link</a></li><li>Ken-ichi Kawarabayashi, Anastasios Sidiropoulos, <em>Embeddings of Planar Quasimetrics into Directed l1 and Polylogarithmic Approximation for Directed Sparsest-Cut</em> (2021, arXiv) <a href="https://arxiv.org/abs/2111.07974" target="_blank" rel="noopener">link</a></li></ol>
+    </div>
+  </section>
+
+  <section class="detail-card">
+    <h2>Copy</h2>
+    <p class="known-prose">Copy the full statement, known results, and source information as plain text.</p>
+    <button class="copy" id="copybtn">Copy</button>
+  </section>
+
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
+</div>
+<div class="toast" id="toast">Copied</div>
+<script type="application/json" id="copy-data">"ORdős Problems #180 — The GNRS conjecture for minor-free flow-cut gaps\n\nSHORT STATEMENT\nThe Gupta-Newman-Rabinovich-Sinclair conjecture asks whether every fixed-minor-free graph family has constant multicommodity flow-cut gap.\n\nSTATUS: conjecture\n\nOPEN PROBLEM\nProve or refute the GNRS conjecture: fixed-minor-free undirected graph families should have $O_F(1)$ multicommodity flow-cut gap, equivalently bounded $\\ell_1$ distortion for their graph metrics.\n\nBACKGROUND\nMulticommodity flow is a central relaxation in network design, routing, graph partitioning, and approximation algorithms. The cut condition is the most basic necessary condition for routing demands, but it is not sufficient in general graphs without capacity augmentation. The worst-case gap between cuts and flows is $\\Theta(\\log n)$ in general graphs and underlies the logarithmic approximability of Sparsest Cut. Minor-free graph families are much more structured and include planar graphs, bounded-genus graphs, and many networks that arise in geometric or infrastructure settings. The GNRS conjecture says that this structure should collapse the logarithmic gap to a constant. A proof would have algorithmic consequences for routing and cut problems on minor-free networks; a counterexample would show that even topologically simple networks can hide arbitrarily bad multicommodity obstructions.\n\nPROBLEM (full statement with model)\nLet $G=(V,E)$ be an undirected supply graph with edge capacities $u_e\\ge0$, and let $H$ be a demand graph on the same vertex set with demands $d_{st}\\ge0$. The cut condition says that for every cut $S\\subset V$, the total capacity crossing $S$ in $G$ is at least the total demand crossing $S$ in $H$. The fractional multicommodity flow-cut gap of a graph family is the smallest constant $C$ such that, whenever the cut condition holds for an instance on a supply graph $G$ in the family, scaling all capacities by $C$ suffices to route all demands fractionally. Equivalently, through the Linial-London-Rabinovich duality, it asks for bounded $\\ell_1$ distortion of shortest-path metrics supported by the graph family. The Gupta-Newman-Rabinovich-Sinclair conjecture asserts that for every fixed excluded minor $F$, the class of $F$-minor-free supply graphs has flow-cut gap bounded by a constant depending only on $F$, not on $|V|$ or the demand pattern. The open problem is to prove this constant bound or construct a fixed-minor-free family with unbounded flow-cut gap.\n\nKNOWN RESULTS\nGeneral graphs have logarithmic flow-cut gaps, characterized through metric embeddings. The GNRS conjecture predicts constant gaps for every fixed-minor-free family. Several special cases and related bounds are known. Chekuri, Shepherd, and Weibel prove constant integer or fractional flow-cut gap results for important subclasses such as series-parallel and $k$-outerplanar graphs, and they formulate a stronger integer-flow conjecture related to the fractional one. Salmasi, Sidiropoulos, and Sridhar describe the undirected GNRS conjecture as the standard benchmark and obtain first constant directed flow-cut gap results for directed series-parallel graphs, directed bounded-pathwidth graphs, directed trees, and directed cycles. However, the core undirected conjecture remains open even at the level of proving a constant bound for broad fixed-minor-free classes beyond the known special cases.\n\nLITERATURE SYNTHESIS\nThe GNRS conjecture connects three languages: routing, cuts, and metric embeddings. The routing language asks how much one must scale capacities after all cut inequalities hold. The cut language views this as the integrality/duality gap behind sparsest-cut relaxations. The metric language asks whether shortest-path metrics of minor-free graphs embed into $\\ell_1$ with distortion depending only on the excluded minor. General graphs need logarithmic distortion, so the conjecture is a strong structural claim about topology. Known positive results for trees, cycles, series-parallel graphs, and bounded outerplanarity support the conjecture, but the techniques do not yet handle arbitrary planar or fixed-minor-free interactions. A proof may require a new decomposition of minor-free metrics; a counterexample would likely expose a multiscale demand pattern not captured by existing separator or embedding methods.\n\nREMAINING OPEN PROBLEM\nProve or refute the GNRS conjecture: fixed-minor-free undirected graph families should have $O_F(1)$ multicommodity flow-cut gap, equivalently bounded $\\ell_1$ distortion for their graph metrics.\n\nVERIFICATION NOTES\nA positive result must give a constant depending only on the excluded minor and work for arbitrary demand graphs, not only uniform demands or a bounded number of commodities unless that restriction is stated. A counterexample must provide an infinite fixed-minor-free family with provably unbounded flow-cut gap. For finite evidence, include the supply graph, demand graph, cut-condition verification, and a certificate lower-bounding the congestion required by any fractional multiflow. Check whether the claim is for undirected metrics, directed quasimetrics, fractional routing, or integral routing, because these variants have different known barriers.\n\nPOSED AS: \"asserts that it is $O(1)$\"\n\nWHERE POSED: Salmasi, Sidiropoulos, and Sridhar state the Gupta-Newman-Rabinovich-Sinclair conjecture as asserting constant flow-cut gaps for fixed-minor-free graph families. (https://arxiv.org/abs/1711.01370)\nSOURCE: Ario Salmasi, Anastasios Sidiropoulos, Vijay Sridhar, On constant multi-commodity flow-cut gaps for directed minor-free graphs (2017, arXiv) https://arxiv.org/abs/1711.01370\nRELATED:\n- Chandra Chekuri, F. Bruce Shepherd, Christophe Weibel, Flow-Cut Gaps for Integer and Fractional Multiflows (2010, arXiv / Journal of Combinatorial Theory, Series B) https://arxiv.org/abs/1008.2136\n- James R. Lee, Anastasios Sidiropoulos, Pathwidth, trees, and random embeddings (2009, arXiv) https://arxiv.org/abs/0910.1409\n- Ken-ichi Kawarabayashi, Anastasios Sidiropoulos, Embeddings of Planar Quasimetrics into Directed l1 and Polylogarithmic Approximation for Directed Sparsest-Cut (2021, arXiv) https://arxiv.org/abs/2111.07974\n\nTask: Resolve the remaining open problem, taking the cited results and their assumptions into account. Math is in LaTeX."</script>
+<script>
+(function(){
+  var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;
+  function show(m){toast.textContent=m;toast.classList.add('show');clearTimeout(timer);timer=setTimeout(function(){toast.classList.remove('show');},1500);}
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText(JSON.parse(document.getElementById('copy-data').textContent)).then(function(){
+      btn.textContent='Copied';btn.classList.add('ok');show('Full problem copied');
+      setTimeout(function(){btn.textContent='Copy';btn.classList.remove('ok');},1500);
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  function setTheme(theme){
+    document.documentElement.dataset.theme=theme;
+    try{localStorage.setItem('ordos-theme',theme);}catch(e){}
+    document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+      var dark=theme==='dark';
+      var mark=btn.querySelector('.theme-mark');
+      if(mark)mark.textContent=dark?'☀':'☾';
+      btn.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');
+      btn.setAttribute('title',dark?'Switch to light mode':'Switch to dark mode');
+    });
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    var current=document.documentElement.dataset.theme==='dark'?'dark':'light';
+    setTheme(current);
+    document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+{
+  "id": "unit-time-precedence-scheduling-width-fpt",
+  "short_statement": "Determine whether unit-time precedence-constrained scheduling on identical machines is FPT when parameterized only by the width of the precedence poset.",
+  "full_statement": "Consider nonpreemptive scheduling on identical parallel machines with precedence constraints. There is a set of unit-processing-time jobs, a partial order $\\prec$ on the jobs, and a number of identical machines $m$. A feasible schedule assigns each job to an integer time slot and a machine, processes at most $m$ jobs per slot, and ensures that if $i\\prec j$ then $i$ completes before $j$ starts. The width $w$ of the precedence poset is the maximum size of an antichain, equivalently the minimum number of chains in a Dilworth chain decomposition. Given a deadline $T$, decide whether all jobs can be scheduled by time $T$. The open problem is whether this unit-time problem is fixed-parameter tractable in $w$, with running time $f(w)\\,poly(n,m,\\log T)$, or whether it remains W-hard even when every job has processing time one.",
+  "background": "Width is one of the most natural structural parameters for precedence-constrained scheduling: a partial order of width $w$ can be decomposed into $w$ chains, suggesting a dynamic program over chain-frontier states. The unit-time parallel-machine case is especially tempting because processing times introduce no numerical variation, leaving only precedence and machine capacity. However, the boundary is delicate. Garey and Johnson's classical OPEN8 asks about the complexity of closely related precedence scheduling for a constant number of machines, and later parameterized work shows that tiny generalizations can already be W-hard. This record isolates the clean unit-time width question as a structural scheduling problem where either an FPT chain-decomposition algorithm or a hardness proof would clarify how much difficulty comes from the partial order alone.",
+  "known_results": "Van Bevern, Bredereck, Bulteau, Komusiewicz, Talmon, and Woeginger prove W[2]-hardness for $P2|prec,p_j\\in\\{1,2\\}|C_{\\max}$ parameterized by partial-order width, and give positive FPT results when width is combined with an additional slack-type parameter measuring the allowed delay beyond earliest starts. Mnich and van Bevern state the unit-time width question as Open Problem 6 and emphasize its connection to the long-standing Garey-Johnson OPEN8 complexity question. The exact unit-time boundary is therefore unresolved: processing times in $\\{1,2\\}$ are already hard, but this does not settle whether all-unit processing admits an FPT algorithm in the width alone. Simple chain-frontier dynamic programs can have state spaces depending on schedule length or machine capacity, and controlling that dependence is the main algorithmic obstacle.",
+  "open_problem": "Classify the width-parameterized complexity of unit-time precedence-constrained parallel-machine scheduling.",
+  "status": "open",
+  "where_posed": {
+    "text": "Open direction discussed in Mnich and van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems', with partial negative progress by van Bevern et al.",
+    "url": "https://arxiv.org/abs/1709.01670",
+    "quote": "",
+    "location": "Open Problem 6 and surrounding discussion"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The version with processing times in $\\{1,2\\}$ is W[2]-hard by van Bevern et al. The all-unit processing-time boundary remains the unresolved case.",
+    "links": [
+      {"title": "van Bevern et al., precedence scheduling by partial order width", "url": "https://arxiv.org/abs/1605.00901"},
+      {"title": "Mnich and van Bevern, 15 open problems", "url": "https://arxiv.org/abs/1709.01670"}
+    ]
+  },
+  "importance": 6,
+  "difficulty": 7,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Hardness may be witnessed by compact poset gadgets of bounded width, and small examples can test candidate DP state compressions. A final lower bound still needs a parameterized reduction.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Search can explore chain-decomposition dynamic programs and generate hard bounded-width posets. It may also help discover whether W[2]-hard reductions can be made unit-time.",
+  "literature": {
+    "synthesis": "Width is compelling because Dilworth decompositions reduce the precedence structure to a bounded number of chains. Positive algorithms might exploit states describing the frontier along each chain. The challenge is that machine-capacity constraints and makespan feasibility couple the chains globally, so naive frontier dynamic programs can still depend on the horizon. The W[2]-hardness for processing times $1$ and $2$ shows that very small processing-time variation already destroys tractability, but it does not by itself rule out a special unit-time algorithm. Closing this boundary would clarify how much of precedence scheduling hardness comes from order structure alone versus its interaction with processing times.",
+    "reviewed": [
+      {"ref": "Rene van Bevern, Robert Bredereck, Laurent Bulteau, Christian Komusiewicz, Nimrod Talmon, Gerhard J. Woeginger, 'Precedence-constrained scheduling problems parameterized by partial order width', arXiv 2016", "result": "Proves W[2]-hardness for $P2|prec,p_j\\in\\{1,2\\}|C_{\\max}$ parameterized by width and gives FPT results with extra parameters.", "relevance": "partial-progress", "url": "https://arxiv.org/abs/1605.00901"},
+      {"ref": "Matthias Mnich, Rene van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems', Computers & Operations Research 2018", "result": "Frames width-parameterized precedence scheduling as a central open direction and records the unit-time boundary.", "relevance": "poses-problem", "url": "https://arxiv.org/abs/1709.01670"},
+      {"ref": "Michael R. Garey, David S. Johnson, 'Computers and Intractability', 1979", "result": "Contains the classical OPEN8 scheduling complexity problem connected to fixed-machine precedence scheduling.", "relevance": "related-tool", "url": "https://en.wikipedia.org/wiki/Computers_and_Intractability"}
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Attempt dynamic programming over a fixed chain decomposition using cumulative progress vectors and machine-capacity constraints. Look for kernelization of idle-time patterns or dominance rules that remove dependence on $T$. For hardness, test whether shuffle-product reductions can be made unit-time without increasing width.",
+    "verification_notes": "State exactly whether the number of machines is fixed or part of the input, and whether the decision version is deadline feasibility or optimization. A positive result should specify how the chain decomposition is obtained or avoided and must be FPT in width alone. A hardness proof should not rely on processing times greater than one.",
+    "machine_checkable": false
+  }
+}

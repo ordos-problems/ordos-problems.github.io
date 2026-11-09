@@ -1,0 +1,40 @@
+{
+  "id": "throughput-scheduling-release-pmax",
+  "background": "Throughput scheduling asks which jobs can be completed by their due dates when the machine cannot process everything on time. In the single-machine model with release dates, each job has an availability time, a processing requirement, and a deadline; the algorithm chooses a feasible nonpreemptive schedule and maximizes the number or total weight of on-time jobs. The case without release dates has classical polynomial or pseudo-polynomial algorithms, but release dates make the geometry much harder because feasible intervals for jobs interact over time. Sgall highlighted the constant-processing-time regime as a natural open frontier: if every job has processing time at most a fixed constant $c$, is the problem polynomial? Mnich and van Bevern reframed this as a parameterized-complexity question in $p_{\\max}$. This formulation is useful because an FPT or XP algorithm would be evidence for tractability at every fixed $c$, while W-hardness would explain why even bounded processing times do not tame release-date throughput scheduling.",
+  "open_problem": "Determine whether $1|r_j,p_j\\le c|\\sum U_j$ is polynomial-time solvable for each fixed $c$, and settle the weighted constant-$c$ case; equivalently, classify $1|r_j|\\sum U_j$ and $1|r_j|\\sum w_jU_j$ parameterized by $p_{\\max}$.",
+  "known_results": "Without release dates, $1||\\sum U_j$ is polynomial-time solvable by the Moore-Hodgson algorithm, while $1||\\sum w_jU_j$ is weakly NP-hard but pseudo-polynomial. With release dates and arbitrary processing times, throughput scheduling is hard. Sgall asked whether the unweighted release-date case is polynomial for every fixed processing-time bound $c$, and whether the weighted case is NP-hard for fixed $c$. Mnich and van Bevern state the parameterized version as Open Problem 3 and note that, at the time, even containment in XP for parameter $p_{\\max}$ was open. Hermelin et al. give FPT algorithms when two of three diversity parameters are simultaneously bounded: distinct due dates, distinct processing times, and distinct weights. The single-parameter $p_{\\max}$ question remains the clean gap.",
+  "status": "open",
+  "where_posed": {
+    "text": "Open Problem 3 in Mnich and van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems'.",
+    "url": "https://arxiv.org/abs/1709.01670",
+    "quote": "Currently, even containment in the parameterized complexity class XP is open.",
+    "location": "Section 3.3, Open Problem 3"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The problem is understood for no release dates and for combinations of multiple diversity parameters, but not for $p_{\\max}$ alone. The parameterized classification remains open in the dataset.",
+    "links": [
+      {"title": "Mnich and van Bevern, 15 open problems", "url": "https://arxiv.org/abs/1709.01670"},
+      {"title": "Sgall, Open problems in throughput scheduling", "url": "https://doi.org/10.1007/978-3-642-33090-2_2"}
+    ]
+  },
+  "importance": 6,
+  "difficulty": 7,
+  "counterexample_suitability": "low",
+  "counterexample_rationale": "This is a complexity-classification problem. Search may find reductions or algorithmic patterns, but a finite counterexample cannot resolve it.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Program search can test dynamic-programming state compressions for small $p_{\\max}$ and discover reduction gadgets. The final result needs a proof of FPT/XP membership or parameterized hardness.",
+  "literature": {
+    "synthesis": "The key difficulty is that small processing times do not obviously bound the number of relevant time configurations once release dates and due dates are arbitrary. Classical pseudo-polynomial algorithms exploit total processing time or integer time horizons, but FPT in $p_{\\max}$ would require compressing the schedule without depending exponentially on horizon length or the number of distinct release/deadline values. Hermelin-style diversity-parameter algorithms show that the problem becomes tractable when more structure is bounded, but they do not isolate $p_{\\max}$. The open problem therefore sits exactly at the boundary between numerical boundedness and combinatorial time-window complexity.",
+    "reviewed": [
+      {"ref": "Matthias Mnich and René van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems', Computers & Operations Research 2018", "result": "States Open Problem 3 and records that even XP containment for parameter $p_{\\max}$ was open.", "relevance": "poses-problem", "url": "https://arxiv.org/abs/1709.01670"},
+      {"ref": "Jiri Sgall, 'Open problems in throughput scheduling', ESA 2012", "result": "Raises the constant-processing-time release-date throughput questions that motivate the parameterized formulation.", "relevance": "poses-problem", "url": "https://doi.org/10.1007/978-3-642-33090-2_2"},
+      {"ref": "Danny Hermelin, Shlomo Karhi, Michael Pinedo, Dvir Shabtay, 'New algorithms for minimizing the weighted number of tardy jobs on a single machine', Annals of Operations Research 2018", "result": "Gives FPT algorithms under combinations of job-diversity parameters, illustrating partial tractability near this open problem.", "relevance": "partial-progress", "url": "https://doi.org/10.1007/s10479-016-2352-9"}
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Try interval-DP formulations that use bounded job lengths but avoid dependence on the number of distinct time points. For hardness, attempt reductions that encode choices through release/deadline windows while all processing times are drawn from $\\{1,\\ldots,p_{\\max}\\}$.",
+    "verification_notes": "An FPT claim must run in $f(p_{\\max})\\mathrm{poly}(|I|)$ time with binary-encoded dates and weights. A polynomial-time result for each fixed $c$ should make the exponent independent of $c$ if claimed as FPT; an $n^{f(c)}$ algorithm is only XP.",
+    "machine_checkable": false
+  }
+}

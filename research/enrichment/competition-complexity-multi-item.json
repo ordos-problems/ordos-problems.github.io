@@ -1,0 +1,91 @@
+{
+ "id": "competition-complexity-multi-item",
+ "background": "Bulow and Klemperer's 1996 theorem is one of the most quoted results in auction theory: for a single item and $n$ i.i.d. regular bidders, a simple second-price auction with $n+1$ bidders earns at least as much revenue as Myerson's optimal auction with $n$ bidders. The managerial message — investing in competition beats investing in mechanism-design sophistication — is compelling, but the single-item assumption is restrictive: real sellers (ad exchanges, spectrum auctions, e-commerce platforms) sell many items, and multi-item optimal mechanisms are notoriously complex, randomized, and prior-dependent (they can even require infinite menus). Eden, Feldman, Friedler, Talgam-Cohen, and Weinberg (EC 2017) introduced the competition complexity of an auction environment: the number of extra bidders that simple mechanisms — selling every item separately via second-price auctions (SRev), or running VCG — need in order to beat the optimal Bayesian incentive-compatible mechanism's revenue on the original bidders. This framework converts the vague 'simple vs. optimal' tradeoff into a sharp quantitative question and connects to the duality-based revenue-benchmark machinery of Cai, Devanur, and Weinberg. A decade of work has pinned down the additive/independent case up to constants: Beyhaghi and Weinberg (STOC 2019) proved $O(\\sqrt{nm})$ (for $m<n$) and $O(n\\ln(m/n))$ (for $m\\ge n$) upper bounds, and Derakhshan, Ryu, Weinberg, and Xue (EC 2024) proved the matching $\\Omega(\\sqrt{nm})$ lower bound via truncated equal-revenue distributions. What remains open is everything beyond this base case: exact constants, the fine structure of the $m\\ge n$ regime, non-additive valuations (unit-demand, XOS, subadditive), correlated items, and the power of other simple formats such as grand bundling.",
+ "short_statement": "How many extra i.i.d. bidders does a simple mechanism (selling items separately, or VCG) need to out-earn the optimal mechanism on the original bidders, in multi-item settings? The additive independent case is now settled at $\\Theta(\\sqrt{nm})$ for $m<n$; constants, the $m\\ge n$ regime, non-additive valuations, and correlated items remain open.",
+ "full_statement": "Fix $m$ items with values drawn from a product distribution $D=D_1\\times\\cdots\\times D_m$, and $n$ bidders each with additive values drawn i.i.d. from $D$. Let $\\mathrm{Rev}_n(D)$ be the optimal revenue of any Bayesian incentive-compatible mechanism for the $n$ original bidders, and $\\mathrm{SRev}_{n+c}(D)$ the revenue of selling each item separately by second-price auction to $n+c$ bidders. The competition complexity is $$C(n,m)=\\min\\{c\\in\\mathbb{N}:\\ \\mathrm{SRev}_{n+c}(D)\\ge \\mathrm{Rev}_n(D)\\ \\text{for all product}\\ D\\},$$ with the VCG analogue defined similarly for richer valuation classes. Bulow-Klemperer (1996) is the statement $C(n,1)=1$ for regular distributions. Known: for additive bidders over independent items, $C(n,m)=\\Theta(\\sqrt{nm})$ when $m<n$ and $C(n,m)=O(n\\ln(m/n))$ when $m\\ge n$ (with $\\Omega(n)$-type lower bounds). Open: (i) the exact constants and the tight bound in the regime $m\\ge n$; (ii) competition complexity for non-additive valuations (unit-demand, XOS, subadditive) where no finite bounds or only much weaker bounds are known; (iii) correlated item distributions; (iv) the competition complexity of other simple formats such as grand-bundle auctions beyond the single-bidder case.",
+ "known_results": "Additive values, independent items: Eden, Feldman, Friedler, Talgam-Cohen, Weinberg (EC 2017) initiated the framework and proved $C(n,m)\\le n+2m-2$-type bounds via Cai-Devanur-Weinberg duality; Feldman, Friedler, Rubinstein (EC 2018) showed $O(n\\ln(m/n))$ bidders suffice for $99\\%$ of optimal revenue and $\\Omega(n\\ln(m/n))$ are needed under standard regularity; Beyhaghi, Weinberg (STOC 2019) proved $C(n,m)=O(\\sqrt{nm})$ for $m<n$ and $O(n\\ln(m/n))$ for $m\\ge n$; Derakhshan, Ryu, Weinberg, Xue (EC 2024) settled the $m<n$ regime at $\\Theta(\\sqrt{nm})$ by improving the lower bound from $\\Omega(\\ln n)$ to $\\Omega(\\sqrt{nm})$, showing truncated equal-revenue distributions witness the worst case. Beyond regularity/VCG: Beyhaghi, Cai, Feng, Li, Weinberg (arXiv 2506.09291, 2025) show that under $\\alpha$-strong regularity the competition complexity of selling separately drops to $\\Theta(n/\\alpha)$ — independent of $m$ — and give constant bounds for grand bundling with a single bidder when $m$ is small or the distribution is MHR. For multi-unit auctions, 2026 work strengthens Bulow-Klemperer-style results in the duplicates model (arXiv 2602.11959, building on Feng-Fu-Li 2024, showing e.g. that one duplicate suffices for Vickrey to $10$-approximate optimal revenue). For a single unit-demand bidder ($n=1$), Eden et al. also gave bounds, but general non-additive (XOS/subadditive) competition complexity remains wide open, as do exact constants and correlated items.",
+ "status": "partially resolved",
+ "where_posed": {
+  "text": "Posed in Eden, Feldman, Friedler, Talgam-Cohen, Weinberg, 'The Competition Complexity of Auctions: A Bulow-Klemperer Result for Multi-Dimensional Bidders', EC 2017, generalizing Bulow, Klemperer, 'Auctions versus Negotiations', AER 1996.",
+  "url": "https://arxiv.org/abs/1612.08821",
+  "quote": "",
+  "location": ""
+ },
+ "progress": {
+  "state": "partial",
+  "summary": "The core additive regime $m<n$ was settled at $\\Theta(\\sqrt{nm})$ by Derakhshan, Ryu, Weinberg, Xue (EC 2024). Since then: Beyhaghi, Cai, Feng, Li, Weinberg (June 2025, arXiv 2506.09291) moved beyond standard regularity, proving $\\Theta(n/\\alpha)$ competition complexity under $\\alpha$-strong regularity (removing the dependence on $m$ entirely) and giving the first grand-bundling competition-complexity bounds; a February 2026 paper (arXiv 2602.11959) strengthens Bulow-Klemperer-style results for multi-unit auctions in the duplicates model. Exact constants, the fine $m\\ge n$ regime, non-additive valuations, and correlated items remain open.",
+  "links": [
+   {"title": "Settling the Competition Complexity of Additive Buyers over Independent Items (Derakhshan, Ryu, Weinberg, Xue, EC 2024)", "url": "https://arxiv.org/abs/2403.03937"},
+   {"title": "Competition Complexity in Multi-Item Auctions: Beyond VCG and Regularity (Beyhaghi, Cai, Feng, Li, Weinberg, 2025)", "url": "https://arxiv.org/abs/2506.09291"},
+   {"title": "Strengthening Bulow-Klemperer-Style Results for Multi-Unit Auctions (2026)", "url": "https://arxiv.org/abs/2602.11959"}
+  ]
+ },
+ "importance": 7,
+ "difficulty": 7,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "Lower bounds in this area are exactly explicit constructions — the EC 2024 settlement came from identifying truncated equal-revenue distributions as worst cases — so new hard distributions (for the $m\\ge n$ regime, for VCG with unit-demand bidders, or for correlated items) are a concrete constructive target; however, verifying a candidate requires reasoning about the optimal multi-item mechanism's revenue, which is analytically demanding rather than a finite check.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "A search loop could evolve parameterized families of value distributions (e.g. truncation points and mixtures of equal-revenue curves) and numerically estimate SRev/VCG revenue with extra bidders versus duality-based upper bounds on optimal revenue, hunting for instances that certify larger competition complexity; the bottleneck is that certifying $\\mathrm{Rev}_n(D)$ from below requires constructing explicit Bayesian IC mechanisms, which is harder to automate but was the key innovation of the 2024 lower bound.",
+ "literature": {
+  "synthesis": "The field is organized around the Cai-Devanur-Weinberg duality framework, which upper-bounds optimal multi-item revenue by tractable benchmarks, and progress has consisted of matching those benchmarks with the revenue of simple auctions with extra bidders. Eden, Feldman, Friedler, Talgam-Cohen, Weinberg (EC 2017) proved the first multi-item Bulow-Klemperer results this way ($n+2m-2$ extra bidders for additive bidders over independent regular items; also a single unit-demand bidder). Feldman, Friedler, Rubinstein (EC 2018) showed $O(n\\ln(m/n))$ extra bidders suffice even for $99\\%$ of the benchmark, with a matching $\\Omega(n\\ln(m/n))$ necessity under regularity. Beyhaghi and Weinberg (STOC 2019) sharpened the upper bounds to $O(\\sqrt{nm})$ for $m<n$, and Derakhshan, Ryu, Weinberg, Xue (EC 2024) closed that regime with an $\\Omega(\\sqrt{nm})$ lower bound built from an explicit Bayesian IC auction for truncated equal-revenue distributions, also proving these truncations always witness worst-case competition complexity. The 2025 'Beyond VCG and Regularity' paper (Beyhaghi, Cai, Feng, Li, Weinberg) shows the entire $m$-dependence is an artifact of bare regularity: under $\\alpha$-strong regularity the answer is $\\Theta(n/\\alpha)$, and grand bundling admits constant competition complexity in natural single-bidder cases. The main remaining gaps: no tight answer (even asymptotically, with constants) in the $m\\ge n$ regime; essentially nothing tight beyond additive valuations — for unit-demand, XOS, or subadditive bidders the duality benchmarks lose constant factors, so new benchmark technology or direct coupling arguments are needed; and correlated items break the per-item second-price analysis entirely.",
+  "reviewed": [
+   {"ref": "Bulow, Klemperer, 'Auctions versus Negotiations', American Economic Review 1996", "result": "Single item, $n$ i.i.d. regular bidders: a second-price auction with $n+1$ bidders revenue-dominates the optimal auction with $n$ bidders, i.e. $C(n,1)=1$.", "relevance": "related-tool", "url": "https://www.jstor.org/stable/2118262"},
+   {"ref": "Eden, Feldman, Friedler, Talgam-Cohen, Weinberg, 'The Competition Complexity of Auctions: A Bulow-Klemperer Result for Multi-Dimensional Bidders', EC 2017", "result": "Defines multi-item competition complexity; proves $C(n,m)\\le n+2m-2$ for additive bidders over independent regular items via duality, and bounds for a single unit-demand bidder.", "relevance": "partial-progress", "url": "https://arxiv.org/abs/1612.08821"},
+   {"ref": "Feldman, Friedler, Rubinstein, '99% Revenue via Enhanced Competition', EC 2018", "result": "$O(n\\ln(m/n))$ extra bidders suffice for selling separately to earn $99\\%$ of optimal revenue; $\\Omega(n\\ln(m/n))$ extra bidders are necessary under standard regularity.", "relevance": "partial-progress", "url": "https://dl.acm.org/doi/10.1145/3219166.3219208"},
+   {"ref": "Beyhaghi, Weinberg, 'Optimal (and Benchmark-Optimal) Competition Complexity for Additive Buyers over Independent Items', STOC 2019", "result": "Upper bounds $C(n,m)=O(\\sqrt{nm})$ for $m<n$ and $O(n\\ln(m/n))$ for $m\\ge n$, optimal against the duality benchmark.", "relevance": "partial-progress", "url": "https://arxiv.org/abs/1812.01794"},
+   {"ref": "Derakhshan, Ryu, Weinberg, Xue, 'Settling the Competition Complexity of Additive Buyers over Independent Items', EC 2024", "result": "Lower bound $\\Omega(\\sqrt{nm})$ for $m<n$, settling that regime at $\\Theta(\\sqrt{nm})$; shows truncated equal-revenue distributions witness the worst case.", "relevance": "solves-special-case", "url": "https://arxiv.org/abs/2403.03937"},
+   {"ref": "Beyhaghi, Cai, Feng, Li, Weinberg, 'Competition Complexity in Multi-Item Auctions: Beyond VCG and Regularity', arXiv 2506.09291, 2025", "result": "Under $\\alpha$-strong regularity, selling separately has competition complexity $\\Theta(n/\\alpha)$, independent of $m$; constant grand-bundling competition complexity for one bidder when $m$ is small or the distribution is MHR.", "relevance": "partial-progress", "url": "https://arxiv.org/abs/2506.09291"}
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "For lower bounds: construct explicit Bayesian IC mechanisms whose revenue exceeds SRev with $c$ extra bidders on candidate worst-case distributions — the EC 2024 result shows truncated equal-revenue families are the right search space for additive values, and analogous families for unit-demand/XOS are unexplored; numerical optimization over truncation parameters plus duality certificates is a plausible pipeline. For upper bounds: sharpen Cai-Devanur-Weinberg flow/benchmark choices, or exploit distributional structure ($\\alpha$-strong regularity, MHR) as in the 2025 work. The $m\\ge n$ regime likely needs a new benchmark, since the current one is provably loose there.",
+  "verification_notes": "An upper-bound claim must show $\\mathrm{SRev}_{n+c}\\ge\\mathrm{Rev}_n$ for ALL distributions in the stated class — referees should check the revenue benchmark used to upper-bound $\\mathrm{Rev}_n$ is valid for randomized Bayesian IC mechanisms (not just deterministic/DSIC ones) and that the coupling between original and augmented auctions handles the highest-order statistics correctly. A lower-bound claim needs an explicit distribution plus an explicit (possibly randomized) BIC mechanism whose revenue is certified to exceed $\\mathrm{SRev}_{n+c}$; the BIC constraints and revenue computation for specific parametric families can be verified numerically, but the final claim must hold exactly, so closed-form or interval-arithmetic verification is expected.",
+  "machine_checkable": false
+ },
+ "additional_refs": [
+  {
+   "authors": "Mahsa Derakhshan, Emily Ryu, S. Matthew Weinberg, Eric Xue",
+   "title": "Settling the Competition Complexity of Additive Buyers over Independent Items",
+   "year": 2024,
+   "venue": "EC",
+   "url": "https://arxiv.org/abs/2403.03937"
+  },
+  {
+   "authors": "Jeremy Bulow, Paul Klemperer",
+   "title": "Auctions versus Negotiations",
+   "year": 1996,
+   "venue": "American Economic Review",
+   "url": "https://www.jstor.org/stable/2118262"
+  },
+  {
+   "authors": "Hedyeh Beyhaghi, S. Matthew Weinberg",
+   "title": "Optimal (and Benchmark-Optimal) Competition Complexity for Additive Buyers over Independent Items",
+   "year": 2019,
+   "venue": "STOC",
+   "url": "https://arxiv.org/abs/1812.01794"
+  },
+  {
+   "authors": "Hedyeh Beyhaghi, Linda Cai, Yiding Feng, Yingkai Li, S. Matthew Weinberg",
+   "title": "Competition Complexity in Multi-Item Auctions: Beyond VCG and Regularity",
+   "year": 2025,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2506.09291"
+  },
+  {
+   "authors": "Michal Feldman, Ophir Friedler, Aviad Rubinstein",
+   "title": "99% Revenue via Enhanced Competition",
+   "year": 2018,
+   "venue": "EC",
+   "url": "https://dl.acm.org/doi/10.1145/3219166.3219208"
+  }
+ ],
+ "tags": [
+  "auctions",
+  "revenue",
+  "Bulow-Klemperer",
+  "competition complexity",
+  "multi-item",
+  "simple vs optimal"
+ ],
+ "notes_for_maintainer": "Verified July 2026; status 'partially resolved' is right. Updates vs. old record: (1) new 2025 paper by Beyhaghi, Cai, Feng, Li, Weinberg (arXiv 2506.09291) — under $\\alpha$-strong regularity the competition complexity of selling separately is $\\Theta(n/\\alpha)$, independent of $m$, plus first grand-bundling results; (2) a Feb 2026 arXiv paper (2602.11959) strengthens multi-unit Bulow-Klemperer results in the duplicates model — I verified its existence via search results and cite it only in progress links with a generic title since I did not fetch its full author list; maintainer may want to add authors. The old record's claim that the $n\\le m$ regime is settled at $\\Theta(n\\ln(1+m/n))$ overstates slightly: the upper bound is Beyhaghi-Weinberg and the $\\Omega(n\\ln(m/n))$ necessity (Feldman-Friedler-Rubinstein) is for the 99%-benchmark under regularity; EC 2024 settled only $m<n$. I softened this in known_results."
+}

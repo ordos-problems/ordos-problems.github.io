@@ -15,22 +15,69 @@
   "1-1/e",
   "online resource allocation",
   "will-ma-notes",
-  "permission-pending"
+  "contributed by Will Ma"
  ],
- "short_statement": "For matroid constraints under random (IID) order, the matroid prophet inequality gives a $1-1/e$ guarantee relative to the fluid benchmark, best possible even for a single resource. The open question is whether this $1-1/e$ guarantee extends to the abstract online resource allocation model under IID arrivals.",
- "open_problem": "Does the same $1-1/e$ guarantee hold for the abstract online resource allocation model (Definition 6.6 of the notes) under the IID special case?",
- "full_statement": "For matroid constraints under random (IID) arrival order, the matroid prophet inequality gives a $1-1/e$ guarantee relative to the fluid benchmark, which is best possible even for a single resource. Under random/IID arrival order, the matroid (ex-ante) prophet inequality yields $\\mathbb{E}[\\mathrm{ALG}] \\ge (1-1/e)\\,\\mathrm{FLU}$, tight even for a rank-1 matroid. \\textbf{Open:} Does the same $1-1/e$ guarantee hold for the abstract online resource allocation model (Definition 6.6 of the notes) under the IID special case?",
- "known_results": "$1-1/e$ holds for matroids under random order (Kleinberg-Weinberg 2012; ex-ante version Lee-Singla 2018) and is best possible even for rank-1. Whether it extends to the abstract online resource allocation model under IID is open.",
+ "short_statement": "Does the optimal $(1-1/e)$ random-order matroid CRS guarantee extend from matroids to the abstract online resource-allocation model used in stochastic allocation and NRM?",
+ "open_problem": "If the answer is no, determine the best universal constant and identify the structural property separating matroid-like instances from harder resource-allocation instances.",
+ "background": "Random-order contention resolution is one of the places where matroid structure gives an unusually clean constant. In a matroid, an ex-ante feasible fractional vector can be rounded online while preserving feasibility as elements arrive. Lee and Singla prove an optimal $1/2$ OCRS for adversarial order and an optimal $(1-1/e)$ random-order contention-resolution scheme for matroids. This constant is tight already for rank one, so the matroid theory is, in that sense, complete. Online resource allocation is broader: a request can consume a vector of resources, may have several feasible assignment options, and the feasible family is not necessarily a matroid even though it is still described by a clean ex-ante relaxation. Will Ma's notes isolate an abstract online resource-allocation model that includes several NRM and stochastic matching formulations. The open problem asks whether the random-order $1-1/e$ phenomenon is really a matroid artifact or a more general consequence of IID/random arrivals plus ex-ante feasibility.",
+ "full_statement": "Let an online resource-allocation instance have a finite horizon $T$, request types arriving either IID from a known distribution or as a uniformly random permutation of a known multiset, and for each realized request type a finite set of feasible actions. Taking an action yields reward and consumes a vector of resources with capacities $B_1,\\ldots,B_d$; the online policy observes the request and must choose an action or reject irrevocably while keeping realized resource consumption feasible. Let $\\mathrm{FLU}$ be the natural ex-ante/fluid LP that fractionally assigns type-action pairs subject to expected capacity constraints and obtains the corresponding expected reward. In the special case where the feasible accepted sets form a matroid, Lee and Singla's random-order contention-resolution scheme gives the optimal guarantee $1-1/e$ relative to the ex-ante benchmark. The open problem asks whether every instance in the broader abstract online resource-allocation model admits an online policy with expected reward at least $(1-1/e)\\mathrm{FLU}$ under IID or random arrival order. If the answer is no, determine the best universal constant and identify the structural property separating matroid-like instances from harder resource-allocation instances.",
+ "known_results": "Kleinberg and Weinberg introduced matroid prophet inequalities with constant guarantees, and OCRSs were later developed as a general online rounding framework for stochastic selection problems. Lee and Singla designed optimal OCRSs via ex-ante prophet inequalities: an optimal $1/2$ OCRS for adversarial-order matroids and an optimal $(1-1/e)$ random-order contention-resolution scheme for matroids. The $1-1/e$ constant is best possible even for rank one, so the matroid random-order theory is tight. Online stochastic knapsack and multi-unit prophet problems show that LP-relative constants can be characterized for some resource-allocation subcases, but those models do not cover arbitrary type-action systems with multiple resources and non-matroid feasibility. No source checked here proves or refutes the full extension from random-order matroids to Will Ma's abstract resource-allocation model.",
+ "progress": {
+  "state": "partial",
+  "summary": "The matroid version is tight at $1-1/e$, and the adversarial-order matroid OCRS is tight at $1/2$. No published result found extends the random-order $1-1/e$ guarantee to the full abstract resource-allocation model.",
+  "links": [
+   {
+    "title": "Lee and Singla, optimal OCRSs via ex-ante prophet inequalities",
+    "url": "https://arxiv.org/abs/1806.09251"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "A negative answer could plausibly be witnessed by a small resource-allocation instance whose optimal online value is below $(1-1/e)$ times the fluid LP. Such instances are finite and searchable after discretization.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Automated search can compare optimal online dynamic programs against the fluid LP for small non-matroid resource-allocation systems and test whether $1-1/e$ is plausible beyond matroids.",
+ "literature": {
+  "synthesis": "The strongest existing theorem is matroid-specific. Lee and Singla reduce optimal OCRSs to ex-ante prophet inequalities and obtain the optimal $1/2$ adversarial-order matroid OCRS plus the optimal $(1-1/e)$ random-order CRS. The proof exploits matroid exchange and rank structure. In broader online resource allocation, ex-ante LPs are still central, but feasibility comes from capacities and assignment options rather than a hereditary matroid family. Single-resource stochastic knapsack results show that even one-dimensional capacity can have tight constants below $1-1/e$ in adversarial order; random/IID order may help, but it is unclear whether it restores the matroid constant. The open problem is therefore structural: either find a resource-allocation CRS with the same correlation-gap-style behavior, or construct a non-matroid allocation instance where the fluid LP overstates what random-order online policies can achieve.",
+  "reviewed": [
+   {
+    "ref": "Euiwoong Lee, Sahil Singla, 'Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities', ESA 2018",
+    "result": "Designs the first optimal $1/2$ OCRS for matroids and optimal $(1-1/e)$ random-order CRS for matroids.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1806.09251"
+   },
+   {
+    "ref": "Robert Kleinberg, Seth Matthew Weinberg, 'Matroid Prophet Inequalities', STOC 2012",
+    "result": "Establishes constant prophet inequalities for matroid constraints and supplies the foundational matroid prophet framework.",
+    "relevance": "related-tool",
+    "url": "https://dl.acm.org/doi/10.1145/2213977.2213991"
+   },
+   {
+    "ref": "Jiashuo Jiang, Will Ma, Jiawei Zhang, 'Tight Guarantees for Multi-unit Prophet Inequalities and Online Stochastic Knapsack', SODA 2022",
+    "result": "Shows how OCRS formulations capture resource-allocation subproblems and gives tight LP-relative constants for $k$-unit and knapsack settings.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/2107.02058"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "For a positive result, search for exchange-like properties of the abstract resource-allocation polytope or a randomized rounding that simulates matroid CRS behavior on assignment actions. For a negative result, enumerate small bipartite/action-resource instances, compute the ex-ante LP, and solve the optimal online policy under random order by dynamic programming.",
+  "verification_notes": "A proof must define the abstract resource-allocation model precisely: request process, known distributions or random-order multiset, action sets, reward/consumption feedback, resource capacities, and stopping rule when a resource is exhausted. The guarantee must be relative to the same ex-ante/fluid LP benchmark used in the statement, not a weaker prophet benchmark or an LP with additional valid inequalities. A positive result must handle general action-resource systems, not only matroids, rank-one constraints, single-resource knapsack, or independently activated elements. A negative result should give a finite instance, compute or certify $\\mathrm{FLU}$, and upper-bound the value of every online policy under the stated IID/random-order model. Claims for adversarial order should be labeled separately because the constant can be different.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Remark 7.9 (refers to the abstract online resource allocation model of Definition 6.6 of the notes).",
-  "url": ""
+  "text": "Posed in Will Ma's Online Resource Allocation notes after the discussion of matroid random-order CRS and abstract online resource allocation.",
+  "url": "https://arxiv.org/abs/1806.09251",
+  "quote": "",
+  "location": "Remarks around the abstract resource-allocation model"
  },
  "source": {
-  "authors": "Will Ma",
-  "title": "Online Resource Allocation — Course Notes, Remark 7.9",
-  "year": 2024,
-  "venue": "Lecture notes (uploaded)",
-  "url": ""
+  "authors": "Euiwoong Lee, Sahil Singla",
+  "title": "Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities",
+  "year": 2018,
+  "venue": "ESA / arXiv:1806.09251",
+  "url": "https://arxiv.org/abs/1806.09251"
  },
  "additional_refs": [
   {
@@ -48,7 +95,7 @@
    "url": "https://arxiv.org/abs/1806.09251"
   }
  ],
- "bibtex": "@misc{Ma2024,\n  author = {Will Ma},\n  title = {Online Resource Allocation — Course Notes, Remark 7.9},\n  year = {2024},\n  howpublished = {Lecture notes (uploaded)},\n  note = {Source of ORdős Problem ORDOS-070}\n}",
+ "bibtex": "@misc{Lee2018,\n  author = {Euiwoong Lee and Sahil Singla},\n  title = {Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities},\n  year = {2018},\n  howpublished = {ESA / arXiv:1806.09251},\n  url = {https://arxiv.org/abs/1806.09251},\n  note = {Source of ORdős Problem ORDOS-070}\n}",
  "urls": {
   "human": "https://ordos-problems.github.io/problems/matroid-random-order-extends-to-resource-allocation.html",
   "api": "https://ordos-problems.github.io/api/problems/matroid-random-order-extends-to-resource-allocation.json",

@@ -1,0 +1,117 @@
+{
+ "number": 146,
+ "ref": "ORDOS-146",
+ "id": "generic-budget-ce-additive-goods",
+ "title": "Competitive equilibrium for almost all incomes with additive indivisible goods",
+ "collection": "Economics",
+ "area": "Market Design",
+ "status": "conjecture",
+ "confidence": "medium",
+ "tags": [
+  "competitive equilibrium",
+  "indivisible goods",
+  "fair division",
+  "generic budgets",
+  "market design"
+ ],
+ "short_statement": "For additive valuations over indivisible goods, characterize when competitive equilibria exist for almost every income vector.",
+ "open_problem": "More generally, determine for which pairs $(n,m)$ and valuation classes additive competitive equilibrium exists for almost all incomes, and for which pairs nonexistence persists on a positive-measure set.",
+ "background": "Competitive equilibrium is one of the cleanest bridges between economics and optimization. With divisible goods and convex preferences, prices decentralize efficient allocations and support fairness properties. Indivisible goods break this theory: exact market-clearing prices may not exist because an agent's demand jumps discontinuously as prices or budgets vary. Generic budgets are a natural repair. Instead of insisting on equal artificial incomes, perturb the income vector and ask whether the nonexistence pathologies are lower-dimensional coincidences. This idea is especially relevant to fair allocation mechanisms such as course allocation, public resource assignment, and allocation with unequal entitlements. The additive-valuation case is the most parsimonious indivisible-goods model: values are fully specified by item-agent weights, with no complementarities. If generic budgets do not restore equilibrium here, the obstruction is fundamental rather than a modeling artifact.",
+ "full_statement": "Consider a market with $n$ agents, $m$ indivisible goods, additive nonnegative valuations $v_i(S)=\\sum_{g\\in S} v_{ig}$, and an income vector $b\\in\\mathbb R_+^n$. A competitive equilibrium consists of prices $p_g\\ge 0$ and an allocation of goods to agents such that every allocated bundle is affordable for its owner, every agent receives a utility-maximizing affordable bundle, and all goods with positive price are allocated. Equal incomes can fail to admit a competitive equilibrium even in tiny indivisible markets, so Babaioff, Nisan, and Talgam-Cohen proposed asking whether equilibrium exists for almost every income vector, i.e. outside a measure-zero subset of income space. The open problem is to characterize this almost-everywhere existence question for additive valuations. A central conjectural positive case is two agents with additive valuations and any number of goods. More generally, determine for which pairs $(n,m)$ and valuation classes additive competitive equilibrium exists for almost all incomes, and for which pairs nonexistence persists on a positive-measure set.",
+ "known_results": "Babaioff, Nisan, and Talgam-Cohen showed positive results for two agents with equal budgets after generic perturbation, and for several non-equal-budget cases such as identical preferences. Segal-Halevi completed the characterization for monotonically increasing preferences in several small cases left open by the earlier paper: for four goods and three or four agents with general monotone preferences, almost-everywhere equilibrium may fail; for four goods and three additive agents, existence holds. Segal-Halevi also characterized monotone decreasing preferences for chores and proved fairness properties of competitive-equilibrium allocations. The additive-goods frontier remains unresolved. In particular, the broad conjecture that two agents with additive valuations admit competitive equilibrium for almost every income vector and any number of goods is not settled by the known small-$m$ and monotone-preference classifications.",
+ "progress": {
+  "state": "partial",
+  "summary": "Several small cases and broad monotone-preference cases are classified, but the additive frontier remains open, including the natural two-agent additive case for arbitrary numbers of goods.",
+  "links": [
+   {
+    "title": "Babaioff-Nisan-Talgam-Cohen generic budgets",
+    "url": "https://arxiv.org/abs/1703.08150"
+   },
+   {
+    "title": "Segal-Halevi almost all incomes",
+    "url": "https://arxiv.org/abs/1705.04212"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 7,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Nonexistence can be certified by finite valuation matrices and semialgebraic regions of budget space. Small cases are plausible targets for exhaustive or symbolic search.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Search can generate additive valuation matrices and budget regions that stress equilibrium existence, but a positive theorem likely needs geometric or topological arguments.",
+ "literature": {
+  "synthesis": "The generic-budget literature asks whether indivisibility failures are knife-edge equal-income artifacts. Babaioff, Nisan, and Talgam-Cohen establish the framework and prove important positive cases. Segal-Halevi then resolves several monotone-preference cases, showing both positive and negative phenomena and introducing a sequential-game view of equilibrium. The additive setting remains appealing because additive valuations are expressive enough for many assignment markets but avoid complementarities. The remaining gap is a structural characterization: either generic incomes restore equilibrium for broad additive domains, or there are additive nonexistence regions that have not yet been discovered. A solution may require combining polyhedral demand geometry, hyperplane-arrangement arguments, and explicit finite counterexamples.",
+  "reviewed": [
+   {
+    "ref": "Babaioff, Nisan, Talgam-Cohen, 'Competitive Equilibrium with Indivisible Goods and Generic Budgets', MOR 2021",
+    "result": "Introduces generic-budget existence and proves foundational positive cases.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1703.08150"
+   },
+   {
+    "ref": "Segal-Halevi, 'Competitive Equilibrium For Almost All Incomes', AAMAS 2020",
+    "result": "Completes several monotone-preference cases and proves additive small-case positives.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1705.04212"
+   },
+   {
+    "ref": "Budish, 'The Combinatorial Assignment Problem', JPE 2011",
+    "result": "Motivates approximate competitive equilibrium for practical indivisible assignment.",
+    "relevance": "related-tool",
+    "url": "https://doi.org/10.1086/664613"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "For negative results, formulate equilibrium existence as a finite set of demand inequalities over prices and budgets and search symbolically over small additive valuation matrices. For positive results, study the geometry of demand regions and whether budget-space bad sets are contained in finitely many lower-dimensional surfaces.",
+  "verification_notes": "A counterexample must prove positive-measure nonexistence, not merely failure at equal incomes or one budget vector. A positive result must quantify over all additive valuation matrices in the claimed regime and show the bad budget set has measure zero. Numerical price searches are only exploratory. A verifier should check the exact equilibrium definition used, including market clearing, affordability, and demand optimality at posted prices. For additive cases, the proof should reduce demand comparisons to explicit linear inequalities and account for all bundles, not just singleton demands.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "The generic-budget program is introduced by Babaioff, Nisan, Talgam-Cohen, and later open additive cases are discussed in Segal-Halevi's fair-division open-problem list and follow-up paper.",
+  "url": "https://arxiv.org/abs/1703.08150",
+  "quote": "Our results open opportunities for future research on generic equilibrium existence and fair treatment of non-equals.",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Moshe Babaioff, Noam Nisan, Inbal Talgam-Cohen",
+  "title": "Competitive Equilibrium with Indivisible Goods and Generic Budgets",
+  "year": 2021,
+  "venue": "Mathematics of Operations Research",
+  "url": "https://arxiv.org/abs/1703.08150"
+ },
+ "additional_refs": [
+  {
+   "authors": "Erel Segal-Halevi",
+   "title": "Competitive Equilibrium For Almost All Incomes: Existence and Fairness",
+   "year": 2020,
+   "venue": "Autonomous Agents and Multi-Agent Systems",
+   "url": "https://arxiv.org/abs/1705.04212"
+  },
+  {
+   "authors": "Eric Budish",
+   "title": "The Combinatorial Assignment Problem: Approximate Competitive Equilibrium from Equal Incomes",
+   "year": 2011,
+   "venue": "Journal of Political Economy",
+   "url": "https://doi.org/10.1086/664613"
+  },
+  {
+   "authors": "Haris Aziz",
+   "title": "Competitive Equilibrium with Equal Incomes for Allocation of Indivisible Objects",
+   "year": 2015,
+   "venue": "Operations Research Letters",
+   "url": "https://doi.org/10.1016/j.orl.2015.07.012"
+  }
+ ],
+ "bibtex": "@misc{Babaioff2021,\n  author = {Moshe Babaioff and Noam Nisan and Inbal Talgam-Cohen},\n  title = {Competitive Equilibrium with Indivisible Goods and Generic Budgets},\n  year = {2021},\n  howpublished = {Mathematics of Operations Research},\n  url = {https://arxiv.org/abs/1703.08150},\n  note = {Source of ORdős Problem ORDOS-146}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/generic-budget-ce-additive-goods.html",
+  "api": "https://ordos-problems.github.io/api/problems/generic-budget-ce-additive-goods.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

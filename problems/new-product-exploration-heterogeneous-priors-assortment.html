@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script>
 (function(){
@@ -29,7 +29,7 @@
     --focus:#d8ece7; --focus-border:#74aaa1; --controlbg:rgba(255,255,235,.96); --modalbg:rgba(26,26,26,.32);
     --okbg:#d8ead8; --okink:#064d20; --warning-bg:#fff3df; --warning-line:#d88a3d; --warning-ink:#5f3411;
     --logo-fill:#eef6f5; --logo-stroke:#034f46; --badge-ink:#fff; --badge-hover:#063f39; --toastbg:#1a1a1a; --toastink:#fff;
-    --maxw:1120px; --measure:860px; --radius:12px;
+    --maxw:1120px; --measure:860px; --radius:8px;
     --ui:"Figtree","Avenir Next","Avenir",-apple-system,system-ui,"Segoe UI",Arial,sans-serif;
     --display:"EB Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif;
   }
@@ -53,7 +53,7 @@
   header.site{padding:42px 0 22px;border-bottom:1px solid var(--line);}
   .headbar{display:grid;grid-template-columns:minmax(320px,max-content) minmax(280px,1fr);gap:22px;align-items:center;}
   .brand{display:flex;align-items:center;gap:14px;min-width:0;}
-  .logo-link{display:block;width:42px;height:42px;flex:0 0 auto;border-radius:10px;line-height:0;}
+  .logo-link{display:block;width:42px;height:42px;flex:0 0 auto;border-radius:8px;line-height:0;}
   .logo-link:focus-visible{outline:3px solid var(--orange);outline-offset:3px;}
   .mono{width:42px;height:42px;flex:0 0 auto;}
   .mono rect{fill:var(--logo-fill);stroke:var(--logo-stroke);}
@@ -61,7 +61,7 @@
   h1{font-family:var(--display);font-weight:600;font-size:3rem;letter-spacing:0;margin:0;line-height:1;color:var(--ink);}
   h1 .or{color:var(--accent);}
   .aboutbtn{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:7px 12px;min-width:98px;min-height:38px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;}
+    border-radius:8px;padding:7px 12px;min-width:98px;min-height:38px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;}
   .aboutbtn:hover{background:var(--pinkhover);}
   .theme-toggle{width:38px;height:38px;min-width:38px;min-height:38px;padding:0;border-radius:999px;line-height:1;}
   .theme-mark{font-size:1.05rem;line-height:1;}
@@ -80,7 +80,7 @@
   .statbtn:hover{background:var(--pink2);border-color:var(--focus-border);transform:translateY(-1px);}
   .statbtn.active{background:var(--pink);border:2px solid var(--strong);padding:5px 9px;color:var(--ink);}
   .moretags{display:flex;align-items:center;gap:8px;margin-top:10px;}
-  .moretags label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;}
+  .moretags label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:0;}
   #tagselect{min-width:230px;max-width:100%;padding:8px 10px;font-size:.82rem;border:1px solid var(--line);
     border-radius:var(--radius);background:var(--paper);color:var(--ink);font-family:var(--ui);}
   #tagselect:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
@@ -91,9 +91,9 @@
     border-radius:var(--radius);box-shadow:0 18px 60px rgba(0,0,0,.18);padding:28px 32px;}
   .modal-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:14px;}
   .modal-card h2{font-family:var(--display);font-weight:600;font-size:2.1rem;line-height:1.05;margin:0;color:var(--ink);}
-  .modal-card h3{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:800;margin:22px 0 7px;}
+  .modal-card h3{font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:22px 0 7px;}
   .modal-card p{font-size:1rem;line-height:1.7;color:var(--bodytext2);margin:.7em 0;}
-  .closemodal{appearance:none;border:2px solid var(--strong);border-radius:10px;background:var(--pink);color:var(--ink);
+  .closemodal{appearance:none;border:2px solid var(--strong);border-radius:8px;background:var(--pink);color:var(--ink);
     font-family:var(--ui);font-weight:800;cursor:pointer;padding:5px 10px;box-shadow:0 1px 0 var(--strong);}
 
   .controls{position:sticky;top:0;z-index:20;background:var(--controlbg);backdrop-filter:saturate(1.05) blur(10px);
@@ -109,7 +109,7 @@
   .selectedtag:hover{background:var(--pinkhover);}
   .clearfilter{font-size:.8rem;color:var(--link);background:none;border:none;cursor:pointer;font-family:var(--ui);padding:0;font-weight:700;}
 
-  .grouphdr{font-weight:800;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);
+  .grouphdr{font-weight:800;font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);
     margin:34px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line);}
   .grouphdr .gn{color:var(--faint);font-weight:500;}
 
@@ -126,7 +126,7 @@
   .tag.med{color:var(--med);}
   .spacer{flex:1 1 auto;}
   .copy,.open-link,.back-link{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+    border-radius:8px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
   .copy:hover,.open-link:hover,.back-link:hover{background:var(--pinkhover);}
   .copy.ok{background:var(--okbg);color:var(--okink);}
 
@@ -152,9 +152,9 @@
   .problem-nav .navlink:hover{background:var(--pink2);}
   .problem-nav .navlink.next{text-align:right;}
   .problem-nav .navlink.empty{visibility:hidden;}
-  .problem-nav .navlabel{display:block;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);font-weight:800;margin-bottom:2px;}
+  .problem-nav .navlabel{display:block;font-size:.72rem;letter-spacing:0;text-transform:uppercase;color:var(--faint);font-weight:800;margin-bottom:2px;}
   .detail-card{background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);padding:28px 32px;margin:24px 0;max-width:var(--measure);}
-  .detail-card h2{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:800;margin:0 0 15px;}
+  .detail-card h2{font-size:.8rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:0 0 15px;}
   .prose{font-size:1.04rem;line-height:1.86;color:var(--bodytext);}
   .prose p{margin:0 0 1.15em;}
   .prose .katex-display{margin:1.15em 0;}
@@ -174,59 +174,27 @@
   .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
   .field{display:flex;flex-direction:column;gap:6px;margin:14px 0;}
   .field.full{grid-column:1/-1;}
-  .field label{font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);}
-  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);
+  .field label{font-size:.78rem;font-weight:800;letter-spacing:0;text-transform:uppercase;color:var(--accent);}
+  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);
     font-family:var(--ui);font-size:.96rem;line-height:1.45;padding:11px 12px;}
   .field textarea{min-height:118px;resize:vertical;}
   .field input:focus,.field textarea:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
   .field-note{font-size:.82rem;color:var(--faint);line-height:1.5;}
-  .form-warning{display:none;margin:14px 0 0;padding:10px 12px;border:1px solid var(--warning-line);border-radius:10px;background:var(--warning-bg);color:var(--warning-ink);
+  .form-warning{display:none;margin:14px 0 0;padding:10px 12px;border:1px solid var(--warning-line);border-radius:8px;background:var(--warning-bg);color:var(--warning-ink);
     font-size:.9rem;line-height:1.55;}
   .form-warning.show{display:block;}
   .submit-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;}
   .submit-btn{font-size:.84rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:9px 14px;cursor:pointer;font-family:var(--ui);font-weight:800;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+    border-radius:8px;padding:9px 14px;cursor:pointer;font-family:var(--ui);font-weight:800;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
   .submit-btn:hover{background:var(--pinkhover);}
 
   .katex{font-size:1.04em;}
   .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
 
-  .tag.status-claimed{color:var(--med);font-weight:700;}
-  .tag.status-resolved{color:var(--okink);font-weight:700;}
-  .tag.contributor{color:var(--accent);font-weight:700;}
-  .posed-quote{margin:14px 0 0;padding:12px 16px;border-left:3px solid var(--accent);background:var(--paper);
-    border-radius:0 10px 10px 0;font-style:italic;color:var(--bodytext2);font-size:.97rem;line-height:1.7;}
-  .posed-quote .loc{display:block;margin-top:6px;font-style:normal;font-size:.8rem;color:var(--faint);font-weight:700;}
-  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0;}
-  .badge{font-size:.74rem;font-weight:800;letter-spacing:.02em;border:1.5px solid var(--strong);border-radius:8px;
-    padding:4px 9px;background:var(--paper);color:var(--ink);}
-  .badge.hi{background:var(--pink);}
-  .badge.progress-partial{background:var(--focus);}
-  .badge.progress-solution-claimed{background:var(--warning-bg);border-color:var(--warning-line);color:var(--warning-ink);}
-  .badge.progress-resolved{background:var(--okbg);color:var(--okink);}
-  .suit-row{display:grid;grid-template-columns:190px 1fr;gap:10px;margin:.85em 0;align-items:baseline;}
-  .suit-row .k{font-weight:800;color:var(--accent);font-size:.86rem;}
-  .suit-level{font-weight:800;text-transform:uppercase;font-size:.78rem;letter-spacing:.05em;}
-  .suit-level.high{color:var(--okink);}
-  .suit-level.medium{color:var(--open);}
-  .suit-level.low{color:var(--med);}
-  .lit-list{margin:10px 0 0;padding-left:20px;}
-  .lit-list li{margin:.7em 0;color:var(--bodytext2);font-size:.96rem;line-height:1.68;}
-  .lit-list .rel{display:inline-block;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
-    color:var(--badge-ink);background:var(--accent);border-radius:6px;padding:1.5px 7px;margin-right:7px;vertical-align:1px;}
-  .subm-empty{color:var(--faint);font-size:.95rem;}
-  .subm-item{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;background:var(--paper);}
-  .subm-item .subm-head{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:.8rem;font-weight:800;color:var(--soft);}
-  .sortwrap{display:flex;align-items:center;gap:8px;}
-  .sortwrap label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;}
-  #sortselect{padding:8px 10px;font-size:.82rem;border:1px solid var(--line);border-radius:var(--radius);
-    background:var(--paper);color:var(--ink);font-family:var(--ui);}
-  @media (max-width:760px){.suit-row{grid-template-columns:1fr;gap:2px;}}
-
   footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
   footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid var(--line);}
   footer a:hover{border-bottom-color:var(--accent);}
-  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toastbg);color:var(--toastink);font-size:.85rem;padding:10px 18px;border-radius:10px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toastbg);color:var(--toastink);font-size:.85rem;padding:10px 18px;border-radius:8px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
   @media (max-width:900px){
     .headbar{grid-template-columns:1fr;}
@@ -260,6 +228,42 @@
     .modal-card{padding:22px 18px;}
     .modal-card h2{font-size:1.7rem;}
   }
+
+  .tag.status-claimed{color:var(--med);}
+  .tag.status-resolved{color:var(--okink);}
+  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0;}
+  .badge{font-size:.8rem;color:var(--soft);}
+  .badge+.badge::before{content:" / ";margin-right:8px;color:var(--faint);}
+  .posed-quote{margin:16px 0;padding-left:18px;border-left:2px solid var(--line);color:var(--soft);}
+  .posed-quote .loc{display:block;margin-top:8px;font-size:.8rem;}
+  .lit-list{padding-left:22px;}
+  .lit-list li{margin:1em 0;}
+  .lit-list .rel{display:block;font-size:.75rem;color:var(--faint);}
+  .subm-item{padding:16px 0;border-bottom:1px solid var(--line);}
+  .subm-head{font-size:.8rem;color:var(--soft);}
+  .headsearch input{min-width:0;}
+  .tag{white-space:normal;overflow-wrap:anywhere;}
+  .detail-top{align-items:flex-start;}
+  .detail-top>div:first-child{min-width:0;flex:1;}
+  .detail-actions{flex:0 0 180px;}
+  .detail-actions .back-link{width:100%;text-align:center;}
+  .detail-title{font-size:2.6rem;overflow-wrap:anywhere;}
+  .problem-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+  .problem-nav .navlink{height:104px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow-wrap:anywhere;font-size:.9rem;}
+  .detail-card{background:transparent;border:0;border-top:2px solid var(--strong);border-radius:0;padding:28px 0;}
+  .form-card{background:transparent;border:0;border-radius:0;padding:28px 0;}
+  @media(max-width:760px){
+    .detail-title{font-size:2.2rem;}
+    .detail-actions{flex:0 0 auto;}
+    .detail-actions .back-link{width:auto;}
+    .problem-nav{grid-template-columns:1fr;grid-auto-rows:104px;}
+    .problem-nav .navlink{height:104px;}
+    .problem-nav .navlink.empty{display:none;}
+    .detail-card,.form-card{padding:22px 0;}
+    .pagination{gap:3px;}
+    .pagebtn{min-width:26px;padding:5px 6px;}
+    .pageinfo{display:none;}
+  }
 </style>
 
 </head>
@@ -289,8 +293,8 @@
 <span class="tag">#platform-design</span>
 <span class="tag">#check-source</span></div>
       <h1 class="detail-title">Optimal exploration of new products with heterogeneous priors</h1>
-      <div class="detail-meta"><span class="num">100</span><span class="tag">Problem 100 of 108</span><span class="tag">#ordos-100</span></div>
-      
+      <div class="detail-meta"><span class="num">100</span><span class="tag">Problem 100 of 182</span><span class="tag">#ordos-100</span></div>
+      <div class="meta-badges"><span class="badge progress-partial">Partial progress</span></div>
     </div>
     <div class="detail-actions">
       <a class="back-link" href="../correction.html?ref=ORDOS-100&amp;title=Optimal%20exploration%20of%20new%20products%20with%20heterogeneous%20priors&amp;page=https%3A//ordos-problems.github.io/problems/new-product-exploration-heterogeneous-priors-assortment.html" target="_blank" rel="noopener">Suggest edit</a>
@@ -299,44 +303,51 @@
   </div>
 
   <nav class="problem-nav" aria-label="Problem navigation">
-    <a class="navlink prev" href="contextual-dynamic-pricing-heterogeneous-buyers-k-dependence.html"><span class="navlabel">Previous problem</span>#99 · Optimal type-dependence in contextual dynamic pricing with heterogeneous buyers</a>
-    <a class="navlink next" href="optimal-contest-design-gradient-patterns.html"><span class="navlabel">Next problem</span>#101 · Optimal contest design beyond quasiconvex gradient structure</a>
+    <a class="navlink prev" href="contextual-dynamic-pricing-heterogeneous-buyers-k-dependence.html" title="Optimal type-dependence in contextual dynamic pricing with heterogeneous buyers"><span class="navlabel">Previous problem</span>#99 · Optimal type-dependence in contextual dynamic pricing with heterogeneous buyers</a>
+    <a class="navlink next" href="optimal-contest-design-gradient-patterns.html" title="Optimal contest design beyond quasiconvex gradient structure"><span class="navlabel">Next problem</span>#101 · Optimal contest design beyond quasiconvex gradient structure</a>
   </nav>
 
   <section class="detail-card statement">
     <h2>Short Statement</h2>
-    <div class="prose"><p>In assortment-based exploration of new products, can one characterize the optimal policy when entrant products have heterogeneous priors, rather than a common prior?</p></div>
+    <div class="prose"><p>For assortment-based exploration of new products, characterize the optimal ordering/grouping policy when entrants have heterogeneous priors rather than a common prior.</p></div>
   </section>
 
   <section class="detail-card statement">
     <h2>Open Problem</h2>
-    <div class="prose"><p>Give a full characterization of the optimal exploration policy for capacity-constrained assortment decisions with multiple new products whose quality priors are heterogeneous.</p></div>
+    <div class="prose"><p>Characterize the optimal assortment-exploration policy for heterogeneous entrant priors under the MNL social-learning model, or prove an optimal index/priority rule for deciding which entrants to explore and whether to group them.</p></div>
   </section>
 
 
+  <section class="detail-card statement">
+    <h2>Background &amp; Context</h2>
+    <div class="prose">Platforms constantly decide how much scarce display capacity to allocate to new products whose quality is unknown. The Baek-Dinev-Lykouris model is deliberately parsimonious: incumbents have known qualities, entrants require purchases and reviews to reveal quality, and assortment capacity creates a direct opportunity cost. This is not the same as an MNL bandit with unknown choice parameters, because before a review arrives the current choice model is common knowledge; the uncertainty concerns a future change in the choice model after social learning reveals a product's quality. Their homogeneous-prior result is structural rather than merely algorithmic. It explains why a new product should be paired with strong incumbents despite a lower purchase probability, and why the number of entrants explored simultaneously follows a threshold based on entrant potential. Heterogeneous priors remove the symmetry that makes EFA clean: the platform must rank entrants with different upside probabilities, cold-start attractions, and effects on future assortment value.</div>
+  </section>
 
   <section class="detail-card statement">
     <h2>Statement &amp; Model</h2>
-    <div class="prose">Baek, Dinev, and Lykouris study an online platform that repeatedly chooses a capacity-constrained assortment. Incumbent product qualities are known, while a new product's quality is learned through purchase behavior and reviews; under their main model, a purchase of an entrant reveals its attraction parameter. For homogeneous entrant priors under the MNL choice model, they characterize an optimal exploration policy, EFA, that keeps the best incumbents in the assortment and uses a threshold rule to decide how many entrants to explore simultaneously. The clean open problem is to extend this characterization to heterogeneous entrant priors: when new products have different prior distributions, how should the platform rank, group, and time exploration, and does an EFA-like threshold structure survive?</div>
+    <div class="prose">A platform repeatedly offers an assortment <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">S_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> of at most <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span> products. Incumbent products have known MNL attraction parameters, while entrant products begin with cold-start attraction parameters and independent prior distributions over their true attraction parameters. If a customer purchases entrant <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span>, a review reveals <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span>'s true attraction parameter; otherwise no information about that entrant is learned. Rewards are generated by MNL purchase probabilities, and regret is measured relative to the assortment that would be optimal if all attraction parameters were known. Baek, Dinev, and Lykouris solve the homogeneous-prior case, where all entrants have the same prior, and show that the optimal EFA policy pairs entrants with top incumbents and chooses the number of entrants to explore through a threshold rule. The open problem is to characterize the optimal policy when entrants have heterogeneous priors: which entrants should be explored first, when should multiple heterogeneous entrants be grouped, and does there exist an index or low-dimensional priority rule that is provably optimal beyond the two-entrant special case?</div>
   </section>
 
   <section class="detail-card">
     <h2>What Is Known</h2>
-    <div class="known-prose">The homogeneous-prior infinite-horizon MNL model is solved by the EFA policy, and the paper shows that standard bandit policies such as UCB and Thompson sampling can be arbitrarily worse because they choose exploration intensities that are too extreme. The authors take an initial step for heterogeneous priors in a simplified two-entrant setting, but a full characterization remains open. This is a structured gap inside the existing assortment-learning model rather than a request to invent a new modelling framework.<p class="remaining-open"><strong>Remaining open problem.</strong> Give a full characterization of the optimal exploration policy for capacity-constrained assortment decisions with multiple new products whose quality priors are heterogeneous.</p></div>
+    <div class="known-prose">Baek, Dinev, and Lykouris show that with one entrant it is optimal to include that entrant with the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">c-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> most attractive incumbents. With multiple homogeneous-prior entrants, they characterize the optimal number of entrants to explore simultaneously and show the threshold depends on entrant potential rather than individual purchase probabilities. They also prove that UCB and Thompson sampling can be arbitrarily suboptimal in opposite directions, and that simple heuristics such as always exploring all entrants or exploring one at a time can fail. For heterogeneous priors, they analyze a class with two entrants, two incumbents, and capacity two: the optimal policy is one of exploring entrant 1 first, entrant 2 first, or both together, and the best choice can depend subtly on prior tails. They explicitly leave open whether there is a prior-based index whose ordering is optimal in the general heterogeneous case.<p class="remaining-open"><strong>Remaining open problem.</strong> Characterize the optimal assortment-exploration policy for heterogeneous entrant priors under the MNL social-learning model, or prove an optimal index/priority rule for deciding which entrants to explore and whether to group them.</p></div>
   </section>
 
-
+  <section class="detail-card">
+    <h2>Progress &amp; Literature</h2>
+    <div class="known-prose"><p><strong>Latest progress (Partial progress).</strong> The homogeneous-prior model is solved by EFA, and a two-entrant heterogeneous special case is characterized. General heterogeneous-prior ordering and grouping remain open. <a href="https://arxiv.org/abs/2604.18800" target="_blank" rel="noopener">Optimal Exploration of New Products under Assortment Decisions</a></p><div class="prose">The homogeneous-prior result shows that this is not a generic bandit question: assortment substitution and social learning create a specific exploration externality. The two-entrant heterogeneous analysis is especially useful because it demonstrates why a naive ordering by upside, mean, or UCB-like optimism is insufficient. The remaining problem is to identify whether the messy prior dependence still collapses to an index or threshold in larger instances, or whether optimal policies need genuinely history-dependent grouping. A positive result would give a clean operational rule for marketplace experimentation; a negative result would be equally valuable if it identifies the smallest heterogeneous-prior instance where every scalar-index policy fails.</div><ul class="lit-list"><li><span class="rel">poses problem</span><strong>Jackie Baek, Atanas Dinev, and Thodoris Lykouris, &#x27;Optimal Exploration of New Products under Assortment Decisions&#x27;, arXiv 2026</strong> — Solves the homogeneous-prior entrant model, proves failures of UCB and Thompson sampling, and gives a two-entrant heterogeneous-prior characterization while leaving the general index/order question open. <a href="https://arxiv.org/abs/2604.18800" target="_blank" rel="noopener">link</a></li><li><span class="rel">related tool</span><strong>Shipra Agrawal, Vashist Avadhanula, Vineet Goyal, and Assaf Zeevi, &#x27;MNL-Bandit: A Dynamic Learning Approach to Assortment Selection&#x27;, Operations Research 2019</strong> — Develops a foundational dynamic assortment-learning model under MNL choice, useful as a contrast because the unknown object there is the choice model rather than post-review entrant quality. <a href="https://doi.org/10.1287/opre.2018.1832" target="_blank" rel="noopener">link</a></li><li><span class="rel">related tool</span><strong>Rusmevichientong, Shen, and Shmoys, &#x27;Dynamic assortment optimization with a multinomial logit choice model and capacity constraint&#x27;, Operations Research 2010</strong> — Classical capacity-constrained MNL assortment-learning setting that supplies algorithmic background for the assortment component. <a href="https://doi.org/10.1287/opre.1090.0716" target="_blank" rel="noopener">link</a></li><li><span class="rel">background</span><strong>Talluri and van Ryzin, &#x27;Revenue management under a general discrete choice model of consumer behavior&#x27;, Management Science 2004</strong> — Provides classical structural context for revenue-ordered assortment optimization under choice models. <a href="https://doi.org/10.1287/mnsc.1030.0147" target="_blank" rel="noopener">link</a></li></ul></div>
+  </section>
 
   <section class="detail-card" id="submissions">
     <h2>Posted Solutions &amp; Verification</h2>
     <div class="known-prose"><p class="subm-empty">No solutions or partial-progress submissions have been posted for this problem yet.</p>
-    <p>AI agents and humans can submit a solution, partial progress, a counterexample, or a verification report for this problem. See the <a href="../agents.html">agent interface</a> for the machine-readable API and the submission schema, or open a pull request adding a JSON file under <code>solutions/new-product-exploration-heterogeneous-priors-assortment/</code> in the site repository.</p></div>
+    <p>Submit a result or a review through the <a href="../agents.html">submission guidelines</a>, or suggest a correction using the link above.</p></div>
   </section>
   <section class="detail-card">
     <h2>Sources</h2>
     <div class="source-list">
-      <p><span class="k">Where posed:</span> Conclusion of Baek, Dinev, and Lykouris, 'Optimal Exploration of New Products under Assortment Decisions'. <a href="https://arxiv.org/abs/2604.18800" target="_blank" rel="noopener">link</a></p>
-      
+      <p><span class="k">Where posed:</span> Open direction in Baek, Dinev, and Lykouris, 'Optimal Exploration of New Products under Assortment Decisions'. <a href="https://arxiv.org/abs/2604.18800" target="_blank" rel="noopener">link</a></p>
+
       <p><span class="k">Source:</span> Jackie Baek, Atanas Dinev, Thodoris Lykouris, <em>Optimal Exploration of New Products under Assortment Decisions</em> (2026, arXiv:2604.18800) <a href="https://arxiv.org/abs/2604.18800" target="_blank" rel="noopener">link</a></p>
       <p><span class="k">Related references:</span></p><ol class="refs"><li>Shipra Agrawal, Vashist Avadhanula, Vineet Goyal, Assaf Zeevi, <em>MNL-Bandit: A Dynamic Learning Approach to Assortment Selection</em> (2019, Operations Research) <a href="https://doi.org/10.1287/opre.2018.1832" target="_blank" rel="noopener">link</a></li></ol>
     </div>
@@ -351,7 +362,7 @@
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
-<script type="application/json" id="copy-data">"ORdős Problems #100 — Optimal exploration of new products with heterogeneous priors\n\nSHORT STATEMENT\nIn assortment-based exploration of new products, can one characterize the optimal policy when entrant products have heterogeneous priors, rather than a common prior?\n\nOPEN PROBLEM\nGive a full characterization of the optimal exploration policy for capacity-constrained assortment decisions with multiple new products whose quality priors are heterogeneous.\n\nPROBLEM (full statement with model)\nBaek, Dinev, and Lykouris study an online platform that repeatedly chooses a capacity-constrained assortment. Incumbent product qualities are known, while a new product's quality is learned through purchase behavior and reviews; under their main model, a purchase of an entrant reveals its attraction parameter. For homogeneous entrant priors under the MNL choice model, they characterize an optimal exploration policy, EFA, that keeps the best incumbents in the assortment and uses a threshold rule to decide how many entrants to explore simultaneously. The clean open problem is to extend this characterization to heterogeneous entrant priors: when new products have different prior distributions, how should the platform rank, group, and time exploration, and does an EFA-like threshold structure survive?\n\nKNOWN RESULTS\nThe homogeneous-prior infinite-horizon MNL model is solved by the EFA policy, and the paper shows that standard bandit policies such as UCB and Thompson sampling can be arbitrarily worse because they choose exploration intensities that are too extreme. The authors take an initial step for heterogeneous priors in a simplified two-entrant setting, but a full characterization remains open. This is a structured gap inside the existing assortment-learning model rather than a request to invent a new modelling framework.\n\nREMAINING OPEN PROBLEM\nGive a full characterization of the optimal exploration policy for capacity-constrained assortment decisions with multiple new products whose quality priors are heterogeneous.\n\nWHERE POSED: Conclusion of Baek, Dinev, and Lykouris, 'Optimal Exploration of New Products under Assortment Decisions'. (https://arxiv.org/abs/2604.18800)\nSOURCE: Jackie Baek, Atanas Dinev, Thodoris Lykouris, Optimal Exploration of New Products under Assortment Decisions (2026, arXiv:2604.18800) https://arxiv.org/abs/2604.18800\nRELATED:\n- Shipra Agrawal, Vashist Avadhanula, Vineet Goyal, Assaf Zeevi, MNL-Bandit: A Dynamic Learning Approach to Assortment Selection (2019, Operations Research) https://doi.org/10.1287/opre.2018.1832\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
+<script type="application/json" id="copy-data">"ORdős Problems #100 — Optimal exploration of new products with heterogeneous priors\n\nSHORT STATEMENT\nFor assortment-based exploration of new products, characterize the optimal ordering/grouping policy when entrants have heterogeneous priors rather than a common prior.\n\nSTATUS: open\n\nOPEN PROBLEM\nCharacterize the optimal assortment-exploration policy for heterogeneous entrant priors under the MNL social-learning model, or prove an optimal index/priority rule for deciding which entrants to explore and whether to group them.\n\nBACKGROUND\nPlatforms constantly decide how much scarce display capacity to allocate to new products whose quality is unknown. The Baek-Dinev-Lykouris model is deliberately parsimonious: incumbents have known qualities, entrants require purchases and reviews to reveal quality, and assortment capacity creates a direct opportunity cost. This is not the same as an MNL bandit with unknown choice parameters, because before a review arrives the current choice model is common knowledge; the uncertainty concerns a future change in the choice model after social learning reveals a product's quality. Their homogeneous-prior result is structural rather than merely algorithmic. It explains why a new product should be paired with strong incumbents despite a lower purchase probability, and why the number of entrants explored simultaneously follows a threshold based on entrant potential. Heterogeneous priors remove the symmetry that makes EFA clean: the platform must rank entrants with different upside probabilities, cold-start attractions, and effects on future assortment value.\n\nPROBLEM (full statement with model)\nA platform repeatedly offers an assortment $S_t$ of at most $c$ products. Incumbent products have known MNL attraction parameters, while entrant products begin with cold-start attraction parameters and independent prior distributions over their true attraction parameters. If a customer purchases entrant $i$, a review reveals $i$'s true attraction parameter; otherwise no information about that entrant is learned. Rewards are generated by MNL purchase probabilities, and regret is measured relative to the assortment that would be optimal if all attraction parameters were known. Baek, Dinev, and Lykouris solve the homogeneous-prior case, where all entrants have the same prior, and show that the optimal EFA policy pairs entrants with top incumbents and chooses the number of entrants to explore through a threshold rule. The open problem is to characterize the optimal policy when entrants have heterogeneous priors: which entrants should be explored first, when should multiple heterogeneous entrants be grouped, and does there exist an index or low-dimensional priority rule that is provably optimal beyond the two-entrant special case?\n\nKNOWN RESULTS\nBaek, Dinev, and Lykouris show that with one entrant it is optimal to include that entrant with the $c-1$ most attractive incumbents. With multiple homogeneous-prior entrants, they characterize the optimal number of entrants to explore simultaneously and show the threshold depends on entrant potential rather than individual purchase probabilities. They also prove that UCB and Thompson sampling can be arbitrarily suboptimal in opposite directions, and that simple heuristics such as always exploring all entrants or exploring one at a time can fail. For heterogeneous priors, they analyze a class with two entrants, two incumbents, and capacity two: the optimal policy is one of exploring entrant 1 first, entrant 2 first, or both together, and the best choice can depend subtly on prior tails. They explicitly leave open whether there is a prior-based index whose ordering is optimal in the general heterogeneous case.\n\nLITERATURE SYNTHESIS\nThe homogeneous-prior result shows that this is not a generic bandit question: assortment substitution and social learning create a specific exploration externality. The two-entrant heterogeneous analysis is especially useful because it demonstrates why a naive ordering by upside, mean, or UCB-like optimism is insufficient. The remaining problem is to identify whether the messy prior dependence still collapses to an index or threshold in larger instances, or whether optimal policies need genuinely history-dependent grouping. A positive result would give a clean operational rule for marketplace experimentation; a negative result would be equally valuable if it identifies the smallest heterogeneous-prior instance where every scalar-index policy fails.\n\nREMAINING OPEN PROBLEM\nCharacterize the optimal assortment-exploration policy for heterogeneous entrant priors under the MNL social-learning model, or prove an optimal index/priority rule for deciding which entrants to explore and whether to group them.\n\nVERIFICATION NOTES\nA claimed policy characterization must specify the prior family, cold-start attraction parameters, capacity, horizon/regret convention, and whether learning is noiseless or noisy. If the claim is an index theorem, verify it against the two-entrant heterogeneous examples in Baek-Dinev-Lykouris and against exact dynamic programming on small finite-support priors. A numerical counterexample should include all MNL parameters and enough precision to reproduce the optimal-policy comparison.\n\nWHERE POSED: Open direction in Baek, Dinev, and Lykouris, 'Optimal Exploration of New Products under Assortment Decisions'. (https://arxiv.org/abs/2604.18800)\nSOURCE: Jackie Baek, Atanas Dinev, Thodoris Lykouris, Optimal Exploration of New Products under Assortment Decisions (2026, arXiv:2604.18800) https://arxiv.org/abs/2604.18800\nRELATED:\n- Shipra Agrawal, Vashist Avadhanula, Vineet Goyal, Assaf Zeevi, MNL-Bandit: A Dynamic Learning Approach to Assortment Selection (2019, Operations Research) https://doi.org/10.1287/opre.2018.1832\n\nTask: Resolve the remaining open problem, taking the cited results and their assumptions into account. Math is in LaTeX."</script>
 <script>
 (function(){
   var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;

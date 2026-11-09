@@ -1,0 +1,84 @@
+{
+  "id": "mg1-response-time-tail-optimal-scheduling",
+  "known_results": "SRPT is classically optimal for mean response time in an M/G/1 queue when exact sizes are known, but mean optimality does not imply tail optimality. FCFS is weakly optimal for the asymptotic response-time tail under light-tailed service distributions, meaning that its logarithmic tail decay can be best possible in a limiting sense, but this does not imply optimality at finite quantiles or stochastic dominance. Grosof, Yang, Scully, and Harchol-Balter introduce Nudge and prove that it stochastically improves upon FCFS for relevant light-tailed settings, improving every point of the tail and all moments. Yu and Scully (POMACS 2024) prove strong asymptotic tail optimality of $\\gamma$-Boost for known sizes and class-I service distributions. Its boost is $b_\\gamma(s)=\\gamma^{-1}\\log(1/(1-e^{-\\gamma s}))$, with $\\gamma=\\lambda(\\mathbb E e^{\\gamma S}-1)$. Harlev, Yu, and Scully (POMACS 2025) extend strong tail optimality to unknown/partial-size information using $\\gamma$-Gittins in their discrete-step Markov job model. Arrivals are still continuous-time Poisson; service steps are discrete and preemption occurs only at step boundaries. Neither theorem asserts optimality at every finite threshold.",
+  "literature": {
+    "synthesis": "Nudge established that FCFS could be improved. Later Boost and Gittins results optimize asymptotic tails under explicit information models. They must not be confused with stochastic ordering of the entire stationary response-time distribution. The unknown-size theorem's service-step restriction also matters; its continuous-service extension is not proved merely by suggesting finer discretization.",
+    "reviewed": [
+      {
+        "ref": "Isaac Grosof, Kunhe Yang, Ziv Scully, Mor Harchol-Balter, 'Nudge: Stochastically Improving upon FCFS', arXiv 2021",
+        "result": "Introduces Nudge and proves stochastic improvement over FCFS, resolving the FCFS strong-tail-optimality conjecture negatively.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2106.01492"
+      },
+      {
+        "ref": "Mor Harchol-Balter, 'Performance Modeling and Design of Computer Systems', Cambridge University Press 2013",
+        "result": "Standard reference on M/G/1 scheduling objectives and classical queueing policies.",
+        "relevance": "survey",
+        "url": "https://www.cambridge.org/core/books/performance-modeling-and-design-of-computer-systems/"
+      },
+      {
+        "ref": "L. E. Schrage, 'A proof of the optimality of the shortest remaining processing time discipline', Operations Research 1968",
+        "result": "Classical mean-response optimality result for SRPT in single-server queues with known sizes.",
+        "relevance": "solves-special-case",
+        "url": "https://doi.org/10.1287/opre.16.3.687"
+      },
+      {
+        "ref": "George Yu, Ziv Scully, 'Strongly Tail-Optimal Scheduling in the Light-Tailed M/G/1', POMACS 8(2) (2024)",
+        "result": "Optimal asymptotic tail constant in the known-size class-I model.",
+        "relevance": "solves-special-case",
+        "url": "https://arxiv.org/abs/2404.08826"
+      },
+      {
+        "ref": "Amit Harlev, George Yu, Ziv Scully, 'A Gittins Policy for Optimizing Tail Latency', POMACS 9(2), article 17 (2025)",
+        "result": "Strong tail optimality for the discrete-step Markov job information model; Section 2.1.1 explains the continuous-service limitation.",
+        "relevance": "solves-special-case",
+        "url": "https://amitharlev.com/assets/pdf/sigmetrics2025-harlev-gittins-tail-latency.pdf"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Start with two-point or phase-type service distributions and formulate Markov chains for finite policy classes. Compare policies under stochastic orders and search for threshold interchange arguments. Coupling and sample-path exchange arguments are more likely to certify dominance than transform calculations alone.",
+    "verification_notes": "A solution must specify the admissible information model: exact sizes known on arrival, only size classes known, preemption allowed or forbidden, and whether policies must be work-conserving. A stochastic-dominance claim must compare steady-state response-time distributions for all thresholds $t$, not just a finite set of percentiles. A high-quantile optimality claim must state whether the objective is fixed-$t$, asymptotic $t\\to\\infty$, or a percentile under the stationary distribution. Numerical tail curves are not enough unless the claim is only to refute a proposed dominance relation; proofs should use coupling, transforms, Markov-chain ordering, or certified finite-state approximations with truncation error. Account for the now-solved asymptotic cases and the discrete-step restriction in the unknown-size theorem.",
+    "machine_checkable": true
+  },
+  "status": "partially resolved",
+  "short_statement": "Strong asymptotic tail optimality is solved for known-size class-I M/G/1 queues; finite-threshold and full-distribution optimization are different remaining targets.",
+  "full_statement": "Consider an $M/G/1$ queue with Poisson arrivals of rate $\\lambda$, i.i.d. service requirements from a known light-tailed distribution $G$, and load $\\rho<1$. A scheduling discipline may be nonanticipative and may use each job's size or class information, depending on the model variant, but it must be work-conserving and stable. For a policy $\\pi$, let $T^{\\pi}$ be steady-state response time. Classical objectives such as mean response time are solved by policies such as SRPT when sizes are known, while FCFS has attractive asymptotic-tail properties in light-tailed settings. For class-I service distributions with known exact sizes, Yu and Scully (2024) solve strong asymptotic tail optimality using $\\gamma$-Boost. Class I means that the moment generating function has a positive convergence endpoint (possibly infinite) and diverges there. This is not stochastic dominance at every finite threshold. The remaining target here is fixed-threshold or finite-percentile optimization, or a rigorously defined attainable-distribution frontier, with size information and preemption permissions fixed in advance.",
+  "open_problem": "Characterize fixed-threshold/finite-percentile performance or the attainable response-time-distribution frontier; do not re-pose solved class-I asymptotic tail-constant optimality.",
+  "background": "Queueing textbooks give clean optimality theorems for a few objectives: SRPT minimizes mean response time with known sizes, and FCFS has classical asymptotic-tail guarantees for light-tailed service distributions. Modern systems care much more about the entire tail curve, such as the 95th or 99th percentile response time. That objective is still mathematically sharp but much less understood. Grosof, Yang, Scully, and Harchol-Balter showed that a policy called Nudge can stochastically improve upon FCFS, refuting a long-standing belief that FCFS might be strongly tail optimal. Subsequent work identifies asymptotically optimal disciplines, while the finite-threshold objective remains distinct. The model is clean and classical, and the unresolved part is a real theorem about stochastic ordering and stationary queue distributions.",
+  "progress": {
+    "state": "partial",
+    "summary": "The asymptotic objective has optimal-policy theorems; retain the finite-threshold question separately.",
+    "links": [
+      {
+        "title": "Nudge: Stochastically Improving upon FCFS",
+        "url": "https://arxiv.org/abs/2106.01492"
+      },
+      {
+        "title": "Yu and Scully (2024), gamma-Boost",
+        "url": "https://arxiv.org/abs/2404.08826"
+      },
+      {
+        "title": "Harlev, Yu, Scully (2025), gamma-Gittins",
+        "url": "https://amitharlev.com/assets/pdf/sigmetrics2025-harlev-gittins-tail-latency.pdf"
+      }
+    ]
+  },
+  "notes_for_maintainer": "Audit 2026-11-09: read Yu-Scully model and tail criterion and Harlev-Yu-Scully Sections 2-3, including the discretization caveat. This is partial resolution, not a universal finite-quantile optimum.",
+  "additional_refs": [
+    {
+      "authors": "George Yu, Ziv Scully",
+      "title": "Strongly Tail-Optimal Scheduling in the Light-Tailed M/G/1",
+      "year": 2024,
+      "venue": "SIGMETRICS 2024; arXiv:2404.08826v2",
+      "url": "https://arxiv.org/abs/2404.08826v2"
+    },
+    {
+      "authors": "Amit Harlev, George Yu, Ziv Scully",
+      "title": "A Gittins Policy for Optimizing Tail Latency",
+      "year": 2025,
+      "venue": "Proceedings of the ACM on Measurement and Analysis of Computing Systems 9(2), article 17",
+      "url": "https://amitharlev.com/assets/pdf/sigmetrics2025-harlev-gittins-tail-latency.pdf"
+    }
+  ]
+}

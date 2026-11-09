@@ -1,0 +1,113 @@
+{
+ "number": 150,
+ "ref": "ORDOS-150",
+ "id": "stochastic-probing-subadditive-adaptivity-gap",
+ "title": "Tight adaptivity gap for subadditive stochastic probing",
+ "collection": "Operations Research",
+ "area": "Stochastic Optimization",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "stochastic probing",
+  "adaptivity gap",
+  "subadditive functions",
+  "stochastic optimization",
+  "approximation algorithms"
+ ],
+ "short_statement": "Close the gap between known lower and upper bounds for the adaptivity gap of stochastic probing with general subadditive objectives.",
+ "open_problem": "Determine the correct asymptotic adaptivity gap for general subadditive stochastic probing.",
+ "background": "Stochastic probing is a clean abstraction for sequential testing under uncertainty. It models kidney-exchange edge testing, hiring and inspection, sensor activation, product experimentation, and other settings where observations are costly and feasibility constraints limit what can be tested. Adaptivity is valuable because later tests can react to earlier outcomes, but adaptive policies are often computationally and operationally complex. Adaptivity-gap theorems justify replacing adaptive policies by simpler nonadaptive plans. For submodular and related objectives, constant or near-constant gaps are known in many regimes. General subadditive objectives are much harder: they capture broad complement-free valuation classes but lack the marginal structure used by submodular analyses. The open problem is therefore a precise measure of how much adaptivity is worth when the reward function is complement-free but otherwise arbitrary.",
+ "full_statement": "Let $U=[n]$ be a set of elements. Each element $i$ has an independent random variable $X_i$ with known distribution. A probing policy adaptively chooses elements to probe; probing reveals $X_i$, and the sequence of probed elements must lie in a prefix-closed feasibility family $\\mathcal F$. For a set $P$ of probed elements, the reward is $f(X_P)$, where $f$ is a monotone subadditive objective on realized value vectors and unprobed coordinates are treated as zero. The adaptive optimum is the maximum expected reward over policies whose future probes may depend on observed values. The nonadaptive optimum is the maximum expected reward over a distribution over feasible probe sequences fixed before seeing realizations. The adaptivity gap is the worst-case ratio between these two optima. For Bernoulli probing with binary-XOS objectives, the gap is now known to be $\\Theta(\\log n/\\log\\log n)$. For Bernoulli probing with general subadditive objectives, the best known upper bound is $O(\\log^3 n)$, while the binary-XOS lower bound still applies. Determine the correct asymptotic adaptivity gap for general subadditive stochastic probing.",
+ "known_results": "Gupta, Nagarajan, and Singla and subsequent work developed stochastic probing adaptivity-gap frameworks for submodular, XOS, and related objectives. Bradac, Singla, and Zuzic obtained near-optimal gaps for multi-value probing in several structured settings. Li, Liu, and Zhang resolved an open question for general monotone norms, proving an $O(\\log^2 n)$ adaptivity gap and an improved $O(\\log r\\log n/\\log\\log n)$ bound where $r$ is the maximum probing length. They also proved a tight $\\Theta(\\log n/\\log\\log n)$ gap for Bernoulli probing with binary-XOS objectives and an $O(\\log^3 n)$ upper bound for Bernoulli probing with general subadditive objectives. This leaves a polynomial-logarithmic gap for the general subadditive case: the right bound could match binary-XOS, be closer to $\\log^3 n$, or require a new intermediate rate.",
+ "progress": {
+  "state": "partial",
+  "summary": "General monotone norms now have polylogarithmic adaptivity gaps, and binary-XOS Bernoulli probing is tight at $\\Theta(\\log n/\\log\\log n)$. General subadditive Bernoulli probing remains between this lower bound and $O(\\log^3 n)$.",
+  "links": [
+   {
+    "title": "Li-Liu-Zhang FOCS 2025",
+    "url": "https://arxiv.org/abs/2504.15547"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Lower bounds are explicit stochastic-probing instances with finite distributions, feasibility systems, and subadditive objectives. Such instances can be searched and verified computationally for small sizes.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Automated search can generate subadditive valuation tables and feasibility systems, compute adaptive and nonadaptive optima by dynamic programming or integer programming for small instances, and look for growing gap patterns.",
+ "literature": {
+  "synthesis": "The stochastic-probing literature separates two questions: can one approximate the adaptive optimum efficiently, and how much value is lost by committing to a nonadaptive plan? For submodular and structured objectives, adaptivity gaps are often constant or logarithmic. General subadditive objectives are more expressive and resist marginal-contribution arguments. Li, Liu, and Zhang make major progress by proving polylogarithmic bounds for monotone norms and tight bounds for binary-XOS objectives. Their $O(\\log^3 n)$ bound for general subadditive Bernoulli probing is the broadest current guarantee, but it is not known to be tight. The lower-bound frontier is at least $\\Omega(\\log n/\\log\\log n)$ because binary-XOS is a subclass. Closing this gap would clarify the exact price of adaptivity for one of the broadest complement-free stochastic-optimization models.",
+  "reviewed": [
+   {
+    "ref": "Gupta, Nagarajan, Singla, 'Algorithms and Adaptivity Gaps for Stochastic Probing', SODA 2017",
+    "result": "Foundational stochastic probing adaptivity-gap framework.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/1608.01936"
+   },
+   {
+    "ref": "Bradac, Singla, Zuzic, '(Near) Optimal Adaptivity Gaps for Stochastic Multi-Value Probing', APPROX/RANDOM 2019",
+    "result": "Near-optimal adaptivity gaps for structured multi-value probing objectives.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1902.01461"
+   },
+   {
+    "ref": "Li, Liu, Zhang, 'Adaptivity Gaps for Stochastic Probing with Subadditive Functions', FOCS 2025",
+    "result": "Proves $O(\\log^3 n)$ for Bernoulli probing with general subadditive objectives and tight binary-XOS bounds.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2504.15547"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "For lower bounds, enumerate small prefix-closed systems and subadditive valuation tables, compute adaptive and nonadaptive values exactly, and look for recursively composable gap gadgets. For upper bounds, try decompositions of subadditive functions into XOS-like or norm-like pieces with controlled loss.",
+  "verification_notes": "A lower-bound claim must verify subadditivity, independence of item states, feasibility prefix-closure, and exact adaptive/nonadaptive values or asymptotic recurrences. An upper-bound proof must cover arbitrary monotone subadditive objectives, not just norms, XOS, or submodular functions. A verifier should check that the nonadaptive benchmark fixes the probing plan before realizations, that adaptivity only uses observed probed values, and that the gap is worst-case over instances. For computational certificates, recompute adaptive values by dynamic programming and nonadaptive values by enumeration or integer programming on small instances.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "The remaining gap is implicit in Li, Liu, Zhang, 'Adaptivity Gaps for Stochastic Probing with Subadditive Functions', FOCS 2025.",
+  "url": "https://arxiv.org/abs/2504.15547",
+  "quote": "Additionally, we show an $O(\\log^3 n)$ upper bound for Bernoulli probing with general subadditive objectives.",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Jian Li, Yinchen Liu, Yiran Zhang",
+  "title": "Adaptivity Gaps for Stochastic Probing with Subadditive Functions",
+  "year": 2025,
+  "venue": "FOCS",
+  "url": "https://arxiv.org/abs/2504.15547"
+ },
+ "additional_refs": [
+  {
+   "authors": "Anupam Gupta, Viswanath Nagarajan, Sahil Singla",
+   "title": "Algorithms and Adaptivity Gaps for Stochastic Probing",
+   "year": 2017,
+   "venue": "SODA",
+   "url": "https://arxiv.org/abs/1608.01936"
+  },
+  {
+   "authors": "Domagoj Bradac, Sahil Singla, Goran Zuzic",
+   "title": "(Near) Optimal Adaptivity Gaps for Stochastic Multi-Value Probing",
+   "year": 2019,
+   "venue": "APPROX/RANDOM",
+   "url": "https://arxiv.org/abs/1902.01461"
+  },
+  {
+   "authors": "Jian Li, Yinchen Liu, Yiran Zhang",
+   "title": "Adaptivity Gaps for Stochastic Probing with Subadditive Functions",
+   "year": 2025,
+   "venue": "FOCS",
+   "url": "https://arxiv.org/abs/2504.15547"
+  }
+ ],
+ "bibtex": "@misc{Li2025,\n  author = {Jian Li and Yinchen Liu and Yiran Zhang},\n  title = {Adaptivity Gaps for Stochastic Probing with Subadditive Functions},\n  year = {2025},\n  howpublished = {FOCS},\n  url = {https://arxiv.org/abs/2504.15547},\n  note = {Source of ORdős Problem ORDOS-150}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/stochastic-probing-subadditive-adaptivity-gap.html",
+  "api": "https://ordos-problems.github.io/api/problems/stochastic-probing-subadditive-adaptivity-gap.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

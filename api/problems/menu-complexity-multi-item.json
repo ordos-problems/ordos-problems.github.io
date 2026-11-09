@@ -12,15 +12,79 @@
   "revenue",
   "menu complexity",
   "simple vs optimal",
-  "multi-item"
+  "multi-item",
+  "optimal transport"
  ],
- "short_statement": "When selling several items to one additive buyer, how many distinct menu (lottery) options are needed to capture a $(1-\\epsilon)$ fraction of the optimal revenue, as a function of the number of items $n$ (and the exact two-item exponent)?",
- "open_problem": "the tight growth of $C(n,\\varepsilon)$ in $n$ for fixed $\\varepsilon$ (in particular whether $\\mathrm{poly}(n)$ suffices), and the exact two-item menu-size exponent. Determine these.",
- "full_statement": "Consider a single additive buyer whose item values are drawn from independent distributions $F_1,\\dots,F_n$ over $n$ items. A mechanism can be described as a menu of (possibly randomized) options. Let $C(n,\\varepsilon)$ be the minimum menu size such that some mechanism with at most $C(n,\\varepsilon)$ entries achieves expected revenue $\\ge(1-\\varepsilon)\\mathrm{Rev}(F)$ for every such product distribution $F$, where $\\mathrm{Rev}(F)$ is the optimal revenue. Even with two items the revenue-optimal menu can require a continuum of options. Known: $C(n,1/n)\\ge 2^{\\Omega(n)}$; for two items the menu size is between $\\Omega(\\varepsilon^{-1/4})$ and $O(\\varepsilon^{-2})$. Open: the tight growth of $C(n,\\varepsilon)$ in $n$ for fixed $\\varepsilon$ (in particular whether $\\mathrm{poly}(n)$ suffices), and the exact two-item menu-size exponent. Determine these.",
- "known_results": "Several qualitative questions are resolved: finite menus can approximate optimal revenue to within a $(1-\\epsilon)$ factor, and the better of selling items separately and selling the grand bundle gives a constant-factor approximation. For two items, the communication complexity is $\\Theta(\\log(1/\\epsilon))$. The open problem is quantitative menu-size growth: for fixed $\\epsilon$, it is unknown whether a polynomial-size menu in $n$ always suffices, since exponential lower bounds are known only when $\\epsilon=1/n$. Even for two items, the exact exponent in the dependence on $1/\\epsilon$ remains open.",
+ "short_statement": "When selling $n$ items to one additive buyer with independent values, how many menu (lottery) options are needed to guarantee a $(1-\\varepsilon)$ fraction of optimal revenue? In particular: is $\\mathrm{poly}(n)$ menu size enough for fixed $\\varepsilon$, and what is the exact two-item exponent in $1/\\varepsilon$?",
+ "open_problem": "(i) for fixed $\\varepsilon$, does $C(n,\\varepsilon)$ grow polynomially in $n$, or is it exponential? (ii) determine the exact exponent $c$ with $C(2,\\varepsilon)=\\Theta(\\varepsilon^{-c})$.",
+ "background": "Myerson's theory makes single-item revenue maximization simple: the optimal mechanism is a posted price (for one buyer) or a virtual-value auction. Multi-item revenue maximization is drastically different. By the taxation principle, any mechanism for a single buyer is equivalent to a menu of (lottery, price) options, and Hart and Nisan showed the revenue-optimal menu can be startlingly complex: even for two independent items, optimal mechanisms may need randomization, and for correlated items the optimal revenue may be infinite while every finite-menu mechanism earns only a negligible fraction — an infinite 'menu-size complexity'. This motivated menu size as a clean complexity measure for mechanisms, quantifying the 'simple versus optimal' tension at the heart of multidimensional mechanism design. Two regimes anchor the theory. First, constant-factor approximation is cheap: Babaioff, Immorlica, Lucier, and Weinberg showed the better of selling separately and grand bundling (a menu of $n+1$ options) achieves a constant fraction of optimal revenue for an additive buyer over independent items. Second, near-optimal approximation is subtle: Babaioff, Gonczarowski, and Nisan resolved the qualitative question by proving a finite menu of size $C(n,\\varepsilon)$ always suffices for $(1-\\varepsilon)$-optimal revenue, and Gonczarowski's optimal-transport-duality lower bound of $\\Omega(\\varepsilon^{-1/4})$ (two i.i.d. items from nice distributions) shows real growth is necessary. What is not known is the quantitative rate: whether $C(n,\\varepsilon)$ can be polynomial in $n$ for fixed $\\varepsilon$ (the known exponential lower bounds only kick in when $\\varepsilon\\approx 1/n$), and even the exact exponent of $1/\\varepsilon$ for two items, where the bounds $\\Omega(\\varepsilon^{-1/4})$ and $O(\\varepsilon^{-2})$ leave a polynomial gap. These questions connect to communication complexity, mechanism descriptions in practice, and the buy-many literature.",
+ "full_statement": "A monopolist sells $n$ items to a single additive, risk-neutral, quasilinear buyer whose item values are drawn from a product distribution $F=F_1\\times\\cdots\\times F_n$. By the taxation principle a mechanism is a menu $\\{(x_k,p_k)\\}_k$ of lottery-price pairs, where $x_k\\in[0,1]^n$ gives allocation probabilities and $p_k\\in\\mathbb{R}$ a price; the buyer picks a utility-maximizing entry. The menu size of a mechanism is its number of entries. Let $\\mathrm{Rev}(F)$ be the optimal (unbounded-menu) revenue and define $$C(n,\\varepsilon)=\\min\\{s:\\ \\forall F\\ \\exists\\ \\text{menu of size}\\le s\\ \\text{with revenue}\\ge(1-\\varepsilon)\\mathrm{Rev}(F)\\}.$$ Known: $C(n,\\varepsilon)$ is finite for all $n,\\varepsilon>0$ (Babaioff, Gonczarowski, Nisan); exponential lower bounds are known in the regime $\\varepsilon\\sim 1/n$; for $n=2$, $\\Omega(\\varepsilon^{-1/4})\\le C(2,\\varepsilon)\\le O(\\varepsilon^{-2})$ (the upper bound under standard distributional assumptions; $O(\\varepsilon^{-4})$ unconditionally). Open: (i) for fixed $\\varepsilon$, does $C(n,\\varepsilon)$ grow polynomially in $n$, or is it exponential? (ii) determine the exact exponent $c$ with $C(2,\\varepsilon)=\\Theta(\\varepsilon^{-c})$.",
+ "known_results": "Foundational negatives: Hart, Nisan (EC 2013 / JET 2019) show optimal mechanisms for two independent items may require randomization, and for correlated items every finite menu can miss almost all revenue (infinite menu-size complexity), so finite-menu guarantees require independence. Constant factors are cheap: Babaioff, Immorlica, Lucier, Weinberg (FOCS 2014) show max(SRev, BRev) — a menu of $n+1$ entries — is a $6$-approximation (constant since improved). Near-optimality: Babaioff, Gonczarowski, Nisan (STOC 2017 / GEB 2022) prove $C(n,\\varepsilon)$ is finite for every $n,\\varepsilon$, with upper bounds exponential in $n$, and exponential lower bounds when $\\varepsilon\\approx 1/n$. For two items, Hart-Nisan gave $O(\\varepsilon^{-4})$; Gonczarowski (STOC 2018) strengthened this to $O(\\varepsilon^{-2})$ under standard economic assumptions and proved the first lower bound $\\Omega(\\varepsilon^{-1/4})$, even for i.i.d. values from nice distributions; as a corollary the deterministic communication complexity of $(1-\\varepsilon)$-optimal two-item mechanisms is $\\Theta(\\log(1/\\varepsilon))$. Related strands: buy-many mechanisms have $\\mathrm{poly}(n,1/\\varepsilon)$ menu-size complexity in some regimes (Chawla, Teng, Tzamos, EC 2020), symmetric menu complexity of i.i.d. items is quasi-polynomial (Kothari et al. 2019), and communication/quantum-communication analogues have been studied through ITCS 2025. As of mid-2026, both headline quantitative questions — polynomial-in-$n$ menu size for fixed $\\varepsilon$, and the tight two-item exponent in $[1/4,2]$ — remain open.",
+ "progress": {
+  "state": "partial",
+  "summary": "No movement on the two core quantitative questions since Gonczarowski (STOC 2018): the two-item gap $[\\Omega(\\varepsilon^{-1/4}), O(\\varepsilon^{-2})]$ and the poly-vs-exponential growth of $C(n,\\varepsilon)$ in $n$ for fixed $\\varepsilon$ both stand as of mid-2026. Activity has shifted to adjacent models: buy-many mechanisms (poly menu-size complexity in restricted settings), symmetric menus for i.i.d. items, and the communication and quantum-communication complexity of auctions (e.g. ITCS 2025), which refine but do not resolve the menu-size questions.",
+  "links": [
+   {
+    "title": "The Menu-Size Complexity of Revenue Approximation (Babaioff, Gonczarowski, Nisan, STOC 2017 / GEB 2022)",
+    "url": "https://arxiv.org/abs/1604.06580"
+   },
+   {
+    "title": "Bounding the Menu-Size of Approximately Optimal Auctions via Optimal-Transport Duality (Gonczarowski, STOC 2018)",
+    "url": "https://arxiv.org/abs/1708.08907"
+   }
+  ]
+ },
+ "importance": 6,
+ "difficulty": 7,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "Improved lower bounds are explicit constructions: one must exhibit a (family of) product distributions and prove every small menu loses more than an $\\varepsilon$ fraction of revenue. Candidate distributions can be searched numerically (the optimal two-item mechanism is computable via convex programming for discretized instances), but converting numerical evidence into a proof requires duality certificates, so this is construction-friendly rather than purely finite-checkable.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "An evolutionary loop could search over two-item value distributions (e.g. parameterized densities or discrete grids), compute optimal revenue and best size-$s$ menu revenue via LP/convex optimization, and evolve instances maximizing the gap — directly attacking the $\\Omega(\\varepsilon^{-1/4})$-vs-$O(\\varepsilon^{-2})$ question with candidate worst cases; optimal-transport duality then offers a route to certify the discovered gaps.",
+ "literature": {
+  "synthesis": "The upper-bound technology is 'nudge and round': Babaioff, Gonczarowski, Nisan (STOC 2017 / GEB 2022) discretize the menu of an optimal mechanism, rounding allocations and prices so the buyer's choice changes little and revenue loses only $\\varepsilon\\cdot\\mathrm{Rev}$, giving finiteness of $C(n,\\varepsilon)$ but with bounds exponential in $n$; their lower bounds show exponential size is genuinely necessary when the accuracy target scales as $\\varepsilon\\sim 1/n$. Gonczarowski (STOC 2018) introduced the main lower-bound tool at fixed $n$: the optimal-transport (Daskalakis-Deckelbaum-Tzamos) duality characterizing optimal two-item mechanisms, from which he extracted the $\\Omega(\\varepsilon^{-1/4})$ bound and, in the positive direction, an $O(\\varepsilon^{-2})$ menu under standard assumptions, plus the tight $\\Theta(\\log(1/\\varepsilon))$ communication complexity for fixed $n$. Hart and Nisan's JET 2019 paper delimits the whole program: with correlated items no finite menu achieves any constant fraction of optimal revenue, so product distributions are essential. Adjacent lines: Babaioff-Immorlica-Lucier-Weinberg's constant-factor 'SRev vs BRev' result shows tiny menus suffice for constant approximation; Chawla, Teng, Tzamos show buy-many mechanisms — a natural robustness restriction — have polynomial menu-size complexity, suggesting the exponential blowup is tied to exotic one-shot lotteries; Kothari, Mohan, Schvartzman, Singla, Weinberg bound symmetric menu complexity for i.i.d. items at quasi-polynomial. The two-item exponent gap persists because the lower-bound construction exploits only local behavior of the transport dual near a critical region, while the upper bound rounds globally; closing it likely requires either a sharper duality-based construction or a fundamentally better rounding that adapts menu density to the distribution.",
+  "reviewed": [
+   {
+    "ref": "Hart, Nisan, 'Selling Multiple Correlated Goods: Revenue Maximization and Menu-Size Complexity', EC 2013 / Journal of Economic Theory 2019",
+    "result": "Introduces menu-size complexity; shows randomization is needed for two independent items and that with correlated items every finite menu can lose almost all revenue; $O(\\varepsilon^{-4})$ menu for two independent items.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/1304.6116"
+   },
+   {
+    "ref": "Babaioff, Immorlica, Lucier, Weinberg, 'A Simple and Approximately Optimal Mechanism for an Additive Buyer', FOCS 2014 / JACM 2020",
+    "result": "max(sell separately, grand bundle) — menu size $n+1$ — achieves a constant fraction (originally $1/6$) of optimal revenue for an additive buyer over independent items.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1405.6146"
+   },
+   {
+    "ref": "Babaioff, Gonczarowski, Nisan, 'The Menu-Size Complexity of Revenue Approximation', STOC 2017 / Games and Economic Behavior 2022",
+    "result": "$C(n,\\varepsilon)$ is finite for all $n,\\varepsilon$: a menu of bounded size extracts $(1-\\varepsilon)$ of optimal revenue; complementary exponential lower bounds in the regime $\\varepsilon\\approx 1/n$.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1604.06580"
+   },
+   {
+    "ref": "Gonczarowski, 'Bounding the Menu-Size of Approximately Optimal Auctions via Optimal-Transport Duality', STOC 2018",
+    "result": "Two items: lower bound $\\Omega(\\varepsilon^{-1/4})$ (even i.i.d. nice distributions) and upper bound $O(\\varepsilon^{-2})$ under standard assumptions; deterministic communication complexity $\\Theta(\\log(1/\\varepsilon))$ for fixed $n$.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1708.08907"
+   },
+   {
+    "ref": "Chawla, Teng, Tzamos, 'Menu-size Complexity and Revenue Continuity of Buy-many Mechanisms', EC 2020",
+    "result": "For buy-many mechanisms (buyer may purchase any multiset of menu entries), polynomial menu size suffices for near-optimal buy-many revenue, contrasting with the exponential blowup for unrestricted mechanisms.",
+    "relevance": "related-tool",
+    "url": "https://dl.acm.org/doi/10.1145/3391403.3399453"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "For the two-item lower bound: use the optimal-transport duality to construct distributions whose optimal menus have many 'essentially distinct' entries — a parameterized search over densities with numerical solution of the two-item screening problem (an infinite-dimensional LP, tractable after discretization) could locate candidates, then duality certificates make the bound rigorous. For upper bounds: adaptive rounding of menus (finer near high-curvature regions of the utility function) could plausibly beat $O(\\varepsilon^{-2})$; for the $n$-item question, either extend nudge-and-round with dimension-free discretization (suggesting poly(n)) or lift the $\\varepsilon\\sim 1/n$ exponential lower bound to constant $\\varepsilon$ via direct-sum-style constructions.",
+  "verification_notes": "A lower-bound claim must exhibit distributions and prove EVERY menu of size $s$ loses $>\\varepsilon\\cdot\\mathrm{Rev}$ — referees should check the argument covers randomized (lottery) entries, not just deterministic bundle prices, and that optimal revenue is certified from below (e.g. an explicit mechanism) while small-menu revenue is bounded from above (duality). An upper-bound claim must construct, for an arbitrary product distribution in the stated class, a small menu with certified revenue; check the distributional assumptions (bounded support? MHR?) match the claim's generality. Discretized instances are machine-checkable via LP, but the headline bounds are asymptotic statements requiring proof.",
+  "machine_checkable": false
+ },
  "where_posed": {
-  "text": "Studied in Hart, Nisan, 'Selling Multiple Correlated Goods: Revenue Maximization and Menu-Size Complexity', 2019, Journal of Economic Theory.",
-  "url": "https://arxiv.org/abs/1304.6116"
+  "text": "Menu size as a complexity measure and the approximation question were introduced in Hart, Nisan, 'The Menu-Size Complexity of Auctions', EC 2013 (published as 'Selling Multiple Correlated Goods: Revenue Maximization and Menu-Size Complexity', Journal of Economic Theory 2019); the quantitative open questions are stated in Babaioff, Gonczarowski, Nisan, 'The Menu-Size Complexity of Revenue Approximation', STOC 2017 / Games and Economic Behavior 2022, and Gonczarowski, STOC 2018.",
+  "url": "https://arxiv.org/abs/1604.06580",
+  "quote": "",
+  "location": ""
  },
  "source": {
   "authors": "Sergiu Hart, Noam Nisan",
@@ -43,6 +107,27 @@
    "year": 2018,
    "venue": "STOC",
    "url": "https://arxiv.org/abs/1708.08907"
+  },
+  {
+   "authors": "Sergiu Hart, Noam Nisan",
+   "title": "Selling Multiple Correlated Goods: Revenue Maximization and Menu-Size Complexity",
+   "year": 2019,
+   "venue": "Journal of Economic Theory (EC 2013)",
+   "url": "https://arxiv.org/abs/1304.6116"
+  },
+  {
+   "authors": "Moshe Babaioff, Nicole Immorlica, Brendan Lucier, S. Matthew Weinberg",
+   "title": "A Simple and Approximately Optimal Mechanism for an Additive Buyer",
+   "year": 2014,
+   "venue": "FOCS (JACM 2020)",
+   "url": "https://arxiv.org/abs/1405.6146"
+  },
+  {
+   "authors": "Shuchi Chawla, Yifeng Teng, Christos Tzamos",
+   "title": "Menu-size Complexity and Revenue Continuity of Buy-many Mechanisms",
+   "year": 2020,
+   "venue": "EC",
+   "url": "https://dl.acm.org/doi/10.1145/3391403.3399453"
   }
  ],
  "bibtex": "@misc{Hart2019,\n  author = {Sergiu Hart and Noam Nisan},\n  title = {Selling Multiple Correlated Goods: Revenue Maximization and Menu-Size Complexity},\n  year = {2019},\n  howpublished = {Journal of Economic Theory},\n  url = {https://arxiv.org/abs/1304.6116},\n  note = {Source of ORdős Problem ORDOS-022}\n}",

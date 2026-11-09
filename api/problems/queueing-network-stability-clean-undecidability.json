@@ -1,0 +1,108 @@
+{
+ "number": 176,
+ "ref": "ORDOS-176",
+ "id": "queueing-network-stability-clean-undecidability",
+ "title": "Undecidability of stability for clean multiclass queueing networks",
+ "collection": "Applied Probability",
+ "area": "Queueing Networks and Stochastic Processing",
+ "status": "conjecture",
+ "confidence": "medium",
+ "tags": [
+  "queueing networks",
+  "stability",
+  "static priority",
+  "undecidability",
+  "stochastic networks"
+ ],
+ "short_statement": "Gamarnik and Katz proved queueing-network stability is undecidable for priority networks allowing finite buffers or zero service times; they conjecture the undecidability persists for the cleaner infinite-buffer, positive-service model.",
+ "open_problem": "Prove or refute undecidability of the stability problem for multiclass static-priority queueing networks when all buffers are infinite and all service times are strictly positive.",
+ "background": "Queueing-network stability is one of the basic structural questions in applied probability and operations research. If a proposed service discipline is stabilizing, steady-state performance analysis is meaningful; if not, average delay and inventory of unfinished work can explode. For product-form networks stability is transparent, but multiclass networks with priority disciplines can emulate complicated computations. Earlier fluid-model theory showed that traffic intensity conditions alone are not enough and that stable-looking local behavior can produce global instability. Gamarnik and Katz pushed this to a computability boundary by reducing from counter machines. Their theorem is deliberately unsettling: for a natural class of queueing models, a complete constructive characterization of stability cannot exist. The remaining conjecture removes two technical conveniences in the reduction, finite buffers and zero service times, and asks whether the impossibility is intrinsic to ordinary positive-service, infinite-buffer networks.",
+ "full_statement": "Consider a multiclass queueing network with finitely many stations and job classes. External arrivals and service times are deterministic or otherwise specified by rational data; each class has a deterministic route through stations; each station serves jobs according to a fixed nonpreemptive static buffer-priority rule. The stability question asks whether the total queue length remains bounded in the usual stochastic/traffic-intensity sense, or equivalently whether the Markov or deterministic network dynamics are positive recurrent or nondivergent under the specified primitive assumptions. Gamarnik and Katz prove that deciding stability is algorithmically undecidable for a broad class of such networks with deterministic interarrival and service times, allowing finite and infinite buffers and possibly zero service times. They explicitly conjecture that the negative result should remain true for the cleaner model with only infinite buffers and strictly positive service times. The open problem is to prove or refute this conjecture: is there no algorithm that, given the finite rational description of an infinite-buffer multiclass queueing network with positive service times and static priority disciplines, decides stability?",
+ "known_results": "Gamarnik and Katz prove undecidability for nonpreemptive static buffer-priority networks with deterministic interarrival and service times, in a formulation that permits finite buffers and possibly zero service times. Their construction extends earlier undecidability ideas for queueing-network stability and uses counter-machine simulation. Classical stability theory gives sufficient and necessary conditions for special classes, and fluid-model methods provide powerful stability certificates or instability witnesses, but they do not yield a general decision procedure. The clean infinite-buffer, positive-service-time case remains open according to the conjecture in the Gamarnik-Katz abstract. Proving undecidability there would show that the obstacle is not a modeling artifact; refuting it would identify a sharp boundary where queueing stability becomes decidable again.",
+ "progress": {
+  "state": "open",
+  "summary": "Undecidability is known for a broader static-priority class; the infinite-buffer, positive-service restriction remains conjectural.",
+  "links": []
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "A counterexample to a proposed decidability criterion can be a finite network description. Proving undecidability, however, requires a reduction rather than a finite witness.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Search might help transform zero-service or finite-buffer gadgets into positive-service infinite-buffer gadgets, but the main task is a rigorous simulation or decidability proof.",
+ "literature": {
+  "synthesis": "Queueing stability sits between stochastic-process analysis and formal computation. Fluid limits often reduce stability questions to deterministic dynamical systems, but multiclass priority networks can encode behavior rich enough to defeat simple load criteria. Gamarnik and Katz show that this richness is not merely analytical inconvenience: in their model, stability is undecidable. The open conjecture is about robustness of the reduction. Zero service times and finite buffers are useful for simulating counters and control logic, but they may be removable by time-scaling, buffer-protection, or gadget amplification. A positive decidability result would be equally interesting because it would isolate a precise modeling feature responsible for undecidability.",
+  "reviewed": [
+   {
+    "ref": "Gamarnik and Katz, On deciding stability of multiclass queueing networks under buffer priority scheduling policies, 2007",
+    "result": "Proves undecidability for static-priority networks and conjectures the clean restriction.",
+    "relevance": "source-open-problem",
+    "url": "https://arxiv.org/abs/0708.1034"
+   },
+   {
+    "ref": "Dai, On positive Harris recurrence of multiclass queueing networks, 1995",
+    "result": "Develops fluid-limit criteria for stability.",
+    "relevance": "foundational-tool",
+    "url": "https://doi.org/10.1214/aoap/1177004774"
+   },
+   {
+    "ref": "Bramson, A stable queueing network with unstable fluid model, 1999",
+    "result": "Shows subtlety in the relationship between queueing networks and fluid models.",
+    "relevance": "barrier-context",
+    "url": "https://doi.org/10.1214/aoap/1029962805"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Study the Gamarnik-Katz counter-machine construction and identify exactly where finite buffers or zero service times are used; attempt gadget replacements using strictly positive service times and infinite-buffer overflow guards; alternatively, search for structural invariants in the clean model that could imply decidability.",
+  "verification_notes": "An undecidability proof must give an effective reduction from a known undecidable machine problem to the clean queueing stability instance, with rational positive service and interarrival data and no finite buffers. A decidability proof must specify the exact input encoding and return a terminating algorithm for all such networks. Stability notions must be stated precisely; avoid mixing rate stability, positive recurrence, and fluid stability without proving equivalence in the model under discussion.",
+  "machine_checkable": false
+ },
+ "where_posed": {
+  "text": "Gamarnik and Katz state the conjecture after proving undecidability for a slightly broader class.",
+  "url": "https://arxiv.org/abs/0708.1034",
+  "quote": "we conjecture that it also holds",
+  "location": "Abstract."
+ },
+ "source": {
+  "authors": "David Gamarnik, Dmitriy Katz",
+  "title": "On deciding stability of multiclass queueing networks under buffer priority scheduling policies",
+  "year": 2007,
+  "venue": "arXiv / Mathematics of Operations Research",
+  "url": "https://arxiv.org/abs/0708.1034"
+ },
+ "additional_refs": [
+  {
+   "authors": "David Gamarnik",
+   "title": "Using fluid models to prove stability of adversarial queueing networks",
+   "year": 2000,
+   "venue": "IEEE Transactions on Automatic Control",
+   "url": "https://doi.org/10.1109/9.880612"
+  },
+  {
+   "authors": "Maury Bramson",
+   "title": "A stable queueing network with unstable fluid model",
+   "year": 1999,
+   "venue": "Annals of Applied Probability",
+   "url": "https://doi.org/10.1214/aoap/1029962805"
+  },
+  {
+   "authors": "J. G. Dai",
+   "title": "On positive Harris recurrence of multiclass queueing networks: A unified approach via fluid limit models",
+   "year": 1995,
+   "venue": "Annals of Applied Probability",
+   "url": "https://doi.org/10.1214/aoap/1177004774"
+  }
+ ],
+ "bibtex": "@misc{Gamarnik2007,\n  author = {David Gamarnik and Dmitriy Katz},\n  title = {On deciding stability of multiclass queueing networks under buffer priority scheduling policies},\n  year = {2007},\n  howpublished = {arXiv / Mathematics of Operations Research},\n  url = {https://arxiv.org/abs/0708.1034},\n  note = {Source of ORdős Problem ORDOS-176}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/queueing-network-stability-clean-undecidability.html",
+  "api": "https://ordos-problems.github.io/api/problems/queueing-network-stability-clean-undecidability.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

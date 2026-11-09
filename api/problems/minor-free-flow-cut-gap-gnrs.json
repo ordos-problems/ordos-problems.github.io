@@ -1,0 +1,109 @@
+{
+ "number": 180,
+ "ref": "ORDOS-180",
+ "id": "minor-free-flow-cut-gap-gnrs",
+ "title": "The GNRS conjecture for minor-free flow-cut gaps",
+ "collection": "Operations Research",
+ "area": "Network Design and Metric Embeddings",
+ "status": "conjecture",
+ "confidence": "high",
+ "tags": [
+  "flow-cut gap",
+  "minor-free graphs",
+  "multicommodity flow",
+  "metric embeddings",
+  "network design"
+ ],
+ "short_statement": "The Gupta-Newman-Rabinovich-Sinclair conjecture asks whether every fixed-minor-free graph family has constant multicommodity flow-cut gap.",
+ "open_problem": "Prove or refute the GNRS conjecture: fixed-minor-free undirected graph families should have $O_F(1)$ multicommodity flow-cut gap, equivalently bounded $\\ell_1$ distortion for their graph metrics.",
+ "background": "Multicommodity flow is a central relaxation in network design, routing, graph partitioning, and approximation algorithms. The cut condition is the most basic necessary condition for routing demands, but it is not sufficient in general graphs without capacity augmentation. The worst-case gap between cuts and flows is $\\Theta(\\log n)$ in general graphs and underlies the logarithmic approximability of Sparsest Cut. Minor-free graph families are much more structured and include planar graphs, bounded-genus graphs, and many networks that arise in geometric or infrastructure settings. The GNRS conjecture says that this structure should collapse the logarithmic gap to a constant. A proof would have algorithmic consequences for routing and cut problems on minor-free networks; a counterexample would show that even topologically simple networks can hide arbitrarily bad multicommodity obstructions.",
+ "full_statement": "Let $G=(V,E)$ be an undirected supply graph with edge capacities $u_e\\ge0$, and let $H$ be a demand graph on the same vertex set with demands $d_{st}\\ge0$. The cut condition says that for every cut $S\\subset V$, the total capacity crossing $S$ in $G$ is at least the total demand crossing $S$ in $H$. The fractional multicommodity flow-cut gap of a graph family is the smallest constant $C$ such that, whenever the cut condition holds for an instance on a supply graph $G$ in the family, scaling all capacities by $C$ suffices to route all demands fractionally. Equivalently, through the Linial-London-Rabinovich duality, it asks for bounded $\\ell_1$ distortion of shortest-path metrics supported by the graph family. The Gupta-Newman-Rabinovich-Sinclair conjecture asserts that for every fixed excluded minor $F$, the class of $F$-minor-free supply graphs has flow-cut gap bounded by a constant depending only on $F$, not on $|V|$ or the demand pattern. The open problem is to prove this constant bound or construct a fixed-minor-free family with unbounded flow-cut gap.",
+ "known_results": "General graphs have logarithmic flow-cut gaps, characterized through metric embeddings. The GNRS conjecture predicts constant gaps for every fixed-minor-free family. Several special cases and related bounds are known. Chekuri, Shepherd, and Weibel prove constant integer or fractional flow-cut gap results for important subclasses such as series-parallel and $k$-outerplanar graphs, and they formulate a stronger integer-flow conjecture related to the fractional one. Salmasi, Sidiropoulos, and Sridhar describe the undirected GNRS conjecture as the standard benchmark and obtain first constant directed flow-cut gap results for directed series-parallel graphs, directed bounded-pathwidth graphs, directed trees, and directed cycles. However, the core undirected conjecture remains open even at the level of proving a constant bound for broad fixed-minor-free classes beyond the known special cases.",
+ "progress": {
+  "state": "partial",
+  "summary": "Constant bounds are known for special graph classes, but the fixed-minor-free conjecture remains open.",
+  "links": []
+ },
+ "importance": 9,
+ "difficulty": 9,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Finite supply-demand instances can witness large flow-cut gaps for a graph family and can be checked by linear programming. A refutation would require an infinite family, but computational search can discover candidate gadgets.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Search over planar or minor-free supply graphs with demand graphs can produce large finite gaps, suggest recursive constructions, or stress-test embedding conjectures.",
+ "literature": {
+  "synthesis": "The GNRS conjecture connects three languages: routing, cuts, and metric embeddings. The routing language asks how much one must scale capacities after all cut inequalities hold. The cut language views this as the integrality/duality gap behind sparsest-cut relaxations. The metric language asks whether shortest-path metrics of minor-free graphs embed into $\\ell_1$ with distortion depending only on the excluded minor. General graphs need logarithmic distortion, so the conjecture is a strong structural claim about topology. Known positive results for trees, cycles, series-parallel graphs, and bounded outerplanarity support the conjecture, but the techniques do not yet handle arbitrary planar or fixed-minor-free interactions. A proof may require a new decomposition of minor-free metrics; a counterexample would likely expose a multiscale demand pattern not captured by existing separator or embedding methods.",
+  "reviewed": [
+   {
+    "ref": "Salmasi, Sidiropoulos, Sridhar, On constant multi-commodity flow-cut gaps for directed minor-free graphs, 2017",
+    "result": "States the GNRS benchmark and proves directed constant-gap results for several structured families.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/1711.01370",
+    "relevance_detail": "source-open-problem-and-related-progress"
+   },
+   {
+    "ref": "Chekuri, Shepherd, Weibel, Flow-Cut Gaps for Integer and Fractional Multiflows, 2010",
+    "result": "Gives constant-gap results for special classes and formulates stronger integer-flow questions.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1008.2136"
+   },
+   {
+    "ref": "Lee and Sidiropoulos, Pathwidth, trees, and random embeddings, 2009",
+    "result": "Proves the GNRS conjecture for minor-closed families that exclude all trees and frames the minor-free embedding target.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/0910.1409"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Search for large-gap planar or minor-free supply-demand instances via LP; study decompositions of planar metrics into cut metrics; connect separator hierarchies, random partitions, and $\\ell_1$ embeddings; examine whether directed counterexamples have undirected analogues.",
+  "verification_notes": "A positive result must give a constant depending only on the excluded minor and work for arbitrary demand graphs, not only uniform demands or a bounded number of commodities unless that restriction is stated. A counterexample must provide an infinite fixed-minor-free family with provably unbounded flow-cut gap. For finite evidence, include the supply graph, demand graph, cut-condition verification, and a certificate lower-bounding the congestion required by any fractional multiflow. Check whether the claim is for undirected metrics, directed quasimetrics, fractional routing, or integral routing, because these variants have different known barriers.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "Salmasi, Sidiropoulos, and Sridhar state the Gupta-Newman-Rabinovich-Sinclair conjecture as asserting constant flow-cut gaps for fixed-minor-free graph families.",
+  "url": "https://arxiv.org/abs/1711.01370",
+  "quote": "asserts that it is $O(1)$",
+  "location": "Abstract."
+ },
+ "source": {
+  "authors": "Ario Salmasi, Anastasios Sidiropoulos, Vijay Sridhar",
+  "title": "On constant multi-commodity flow-cut gaps for directed minor-free graphs",
+  "year": 2017,
+  "venue": "arXiv",
+  "url": "https://arxiv.org/abs/1711.01370"
+ },
+ "additional_refs": [
+  {
+   "authors": "Chandra Chekuri, F. Bruce Shepherd, Christophe Weibel",
+   "title": "Flow-Cut Gaps for Integer and Fractional Multiflows",
+   "year": 2010,
+   "venue": "arXiv / Journal of Combinatorial Theory, Series B",
+   "url": "https://arxiv.org/abs/1008.2136"
+  },
+  {
+   "authors": "James R. Lee, Anastasios Sidiropoulos",
+   "title": "Pathwidth, trees, and random embeddings",
+   "year": 2009,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/0910.1409"
+  },
+  {
+   "authors": "Ken-ichi Kawarabayashi, Anastasios Sidiropoulos",
+   "title": "Embeddings of Planar Quasimetrics into Directed l1 and Polylogarithmic Approximation for Directed Sparsest-Cut",
+   "year": 2021,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2111.07974"
+  }
+ ],
+ "bibtex": "@misc{Salmasi2017,\n  author = {Ario Salmasi and Anastasios Sidiropoulos and Vijay Sridhar},\n  title = {On constant multi-commodity flow-cut gaps for directed minor-free graphs},\n  year = {2017},\n  howpublished = {arXiv},\n  url = {https://arxiv.org/abs/1711.01370},\n  note = {Source of ORdős Problem ORDOS-180}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/minor-free-flow-cut-gap-gnrs.html",
+  "api": "https://ordos-problems.github.io/api/problems/minor-free-flow-cut-gap-gnrs.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

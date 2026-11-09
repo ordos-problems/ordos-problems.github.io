@@ -1,0 +1,26 @@
+{
+  "id": "gross-substitutes-constructive-description",
+  "additional_refs": [
+    {
+      "authors": "Alexander S. Kelso Jr., Vincent P. Crawford",
+      "title": "Job Matching, Coalition Formation, and Gross Substitutes",
+      "year": 1982,
+      "venue": "Econometrica",
+      "url": "https://doi.org/10.2307/1913392"
+    },
+    {
+      "authors": "Faruk Gul, Ennio Stacchetti",
+      "title": "Walrasian Equilibrium with Gross Substitutes",
+      "year": 1999,
+      "venue": "Journal of Economic Theory",
+      "url": "https://doi.org/10.1006/jeth.1999.2531"
+    },
+    {
+      "authors": "Kazuo Murota",
+      "title": "Multiple Exchange Property for M-natural-concave Functions and Valuated Matroids",
+      "year": 2016,
+      "venue": "arXiv:1608.07021",
+      "url": "https://arxiv.org/abs/1608.07021"
+    }
+  ]
+}

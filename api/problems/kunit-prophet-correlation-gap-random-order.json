@@ -14,22 +14,73 @@
   "random order",
   "correlation gap",
   "will-ma-notes",
-  "permission-pending"
+  "contributed by Will Ma",
+  "prophet-inequality",
+  "random-order",
+  "correlation-gap",
+  "contributed-by-will-ma"
  ],
- "short_statement": "For $k$-unit prophet inequalities, the correlation-gap constant $c_k$ can be beaten when the algorithm freely chooses the arrival order. Under random order the best known bound is stuck exactly at $c_k$ for $k>1$ (only $k=1$ is beatable). The open problem is to extend the free-order techniques to random order for $k>1$.",
- "open_problem": "Can the order-selection techniques be extended to overcome the correlation gap under random order for $k>1$? Any improvement would establish a separation for $\\inf \\mathrm{ONL}/\\mathrm{OFF}$ previously unknown.",
- "full_statement": "For $k$-unit prophet inequalities, let $c_k^{\\mathrm{CG}} = 1 - e^{-k}k^k/k!$ be the correlation-gap constant, and let $\\mathrm{ONL}/\\mathrm{OFF}$ denote the online-to-offline ratio. This constant can be overcome (beaten) when the arrival order can be freely chosen by the algorithm. Under the slightly harder random arrival order, the best-known $\\inf_{T,\\mathbf F}\\mathrm{ONL}/\\mathrm{OFF}$ for $k$-unit prophet is stuck at $c_k^{\\mathrm{CG}}$ for $k>1$ (Arnosti-Ma 2022), while it is beaten for $k=1$ (Correa et al. 2021). \\textbf{Open:} Can the order-selection techniques be extended to overcome the correlation gap under random order for $k>1$? Any improvement would establish a separation for $\\inf \\mathrm{ONL}/\\mathrm{OFF}$ previously unknown.",
- "known_results": "For $k=1$, Correa and coauthors show that the correlation-gap constant can be beaten. For $k>1$ under random arrival order, the best known online-to-offline guarantees remain stuck at the correlation-gap value $c_k^{\\mathrm{CG}}$, as in the Arnosti-Ma analysis of static thresholds. The open problem is to beat $c_k^{\\mathrm{CG}}$ for any fixed $k>1$ under random order; even an arbitrarily small improvement would establish a new separation between random order and the correlation-gap barrier.",
+ "short_statement": "For random-order $k$-unit prophet inequalities, beat the correlation-gap/static-threshold constant $c_k^{CG}$ for some $k>1$, or prove it is a true barrier.",
+ "open_problem": "For some fixed $k>1$, design a random-order $k$-unit prophet policy with worst-case ratio strictly larger than $c_k^{CG}=1-e^{-k}k^k/k!$, or prove that no online policy can beat this constant.",
+ "background": "The correlation-gap constant $c_k^{CG}=1-e^{-k}k^k/k!$ appears throughout online allocation because it measures the loss from independent ex-ante rounding under a $k$-unit constraint. Static-threshold prophet-secretary policies achieve exactly this benchmark in random order, and Arnosti and Ma show that no static threshold can guarantee more. The conceptual question is whether random order contains additional power beyond this correlation-gap barrier. For $k=1$, refined random-order and sample-driven stopping techniques beat the basic $1-1/e$ threshold. For $k>1$, however, the best general guarantees in the current site sources remain pinned at $c_k^{CG}$. The difficulty is that accepting one value changes both remaining capacity and the conditional distribution of future opportunities, so single-item arguments do not lift directly.",
+ "full_statement": "In the $k$-unit prophet secretary problem, independent values are drawn from known distributions and then presented in a uniformly random order. The online algorithm may accept at most $k$ values. Arnosti and Ma show that static threshold policies achieve the guarantee $c_k^{CG}=1-e^{-k}k^k/k!$ against the offline optimum, and that this is tight for the class of static thresholds. For $k=1$, random-order prophet inequalities can beat the corresponding static-threshold baseline $1-1/e$. In free-order variants, where the algorithm can choose the order, correlation-gap constants can also be exceeded. Will Ma's open problem asks whether random order plus adaptive decision making can beat $c_k^{CG}$ for any fixed $k>1$, or whether the static-threshold/correlation-gap value is the true optimal online-to-offline ratio for multi-unit random-order prophet inequalities.",
+ "known_results": "Arnosti and Ma prove that an appropriate static threshold achieves $c_k^{CG}$ and that this guarantee is tight within the static-threshold class. Their result gives the best-known guarantee for prophet secretary with $k>1$ in the site sources, and their proof reduces the worst static-threshold behavior to extremal Bernoulli-sum calculations. For $k=1$, the static-threshold value $1-1/e$ is not optimal for random-order prophet inequalities; later work obtains better constants using more refined stopping rules. In free-order prophet settings, controlling the arrival order can also beat correlation-gap-style barriers. No general $k>1$ random-order policy with guarantee above $c_k^{CG}$, and no impossibility theorem for all adaptive policies, is recorded in the current sources.",
+ "progress": {
+  "state": "partial",
+  "summary": "Static-threshold policies are fully understood, and the conjectural barrier is known to be beatable in neighboring models such as $k=1$ random order and free order. The $k>1$ random-order case remains open.",
+  "links": [
+   {
+    "title": "Arnosti and Ma, static threshold guarantees",
+    "url": "https://arxiv.org/abs/2108.12893"
+   }
+  ]
+ },
+ "importance": 7,
+ "difficulty": 7,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "Upper-bound instances can be searched computationally, but proving that no policy beats $c_k^{CG}$ would require quantifying over adaptive policies.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Automated policy search may find small improvements over static thresholds for small $k$, or evidence that simple dynamic policies fail. Certifying a universal ratio remains proof-heavy.",
+ "literature": {
+  "synthesis": "Arnosti and Ma isolate static thresholds as a tractable and surprisingly powerful family for prophet secretary problems. Their guarantee $c_k^{CG}$ matches the correlation-gap expression and is tight for static thresholds. The open question is whether adaptivity to the random order can exploit more information than a single fixed threshold. Single-item random-order prophet inequalities and free-order prophet inequalities show that correlation-gap constants are not always ultimate barriers. The challenge is that for $k>1$, accepting one value changes both remaining capacity and the distribution of future order statistics, making direct reductions from the $k=1$ case ineffective.",
+  "reviewed": [
+   {
+    "ref": "Nick Arnosti and Will Ma, 'Tight Guarantees for Static Threshold Policies in the Prophet Secretary Problem', Operations Research 2023",
+    "result": "Shows static thresholds achieve $c_k^{CG}=1-e^{-k}k^k/k!$ and that this guarantee is tight for static thresholds.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2108.12893"
+   },
+   {
+    "ref": "Jose Correa, Andres Cristi, Boris Epstein, and Jose Soto, 'Sample-driven optimal stopping', SODA 2021",
+    "result": "Develops random-order optimal-stopping machinery relevant to beating simple static-threshold baselines in single-selection settings.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/2011.06516"
+   },
+   {
+    "ref": "Euiwoong Lee and Sahil Singla, 'Optimal Online Contention Resolution Schemes via Ex-Ante Prophet Inequalities', ESA 2018",
+    "result": "Connects random-order contention resolution and ex-ante prophet inequalities, giving context for correlation-gap-style constants.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/1806.09251"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Try small $k$ policy search first, especially $k=2$, with discretized value distributions and dynamic thresholds depending on remaining capacity, elapsed time, and accepted values. Search for factor-revealing finite distributions where every natural adaptive threshold collapses to $c_k^{CG}$. For proof attempts, look for martingale or balance identities that separate the correlation-gap loss from the random-order information gain.",
+  "verification_notes": "A claimed improvement must be a policy with a rigorously proved worst-case ratio above $c_k^{CG}$ for some fixed $k>1$. Numerical evidence alone is not enough, but it can guide a finite-dimensional factor-revealing proof. A lower bound must apply to all adaptive online policies, not only static thresholds.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #3).",
-  "url": ""
+  "text": "Posed in Will Ma's Online Resource Allocation course notes, Appendix C, Open Problems about Prophet Inequalities, Problem 3.",
+  "url": "",
+  "quote": "",
+  "location": "Appendix C, Prophet Inequalities #3"
  },
  "source": {
-  "authors": "Will Ma",
-  "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #3)",
-  "year": 2024,
-  "venue": "Lecture notes (uploaded)",
-  "url": ""
+  "authors": "Nick Arnosti, Will Ma",
+  "title": "Tight Guarantees for Static Threshold Policies in the Prophet Secretary Problem",
+  "year": 2023,
+  "venue": "Operations Research / arXiv:2108.12893",
+  "url": "https://arxiv.org/abs/2108.12893"
  },
  "additional_refs": [
   {
@@ -47,7 +98,7 @@
    "url": "https://arxiv.org/abs/2009.11885"
   }
  ],
- "bibtex": "@misc{Ma2024,\n  author = {Will Ma},\n  title = {Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #3)},\n  year = {2024},\n  howpublished = {Lecture notes (uploaded)},\n  note = {Source of ORdős Problem ORDOS-060}\n}",
+ "bibtex": "@misc{Arnosti2023,\n  author = {Nick Arnosti and Will Ma},\n  title = {Tight Guarantees for Static Threshold Policies in the Prophet Secretary Problem},\n  year = {2023},\n  howpublished = {Operations Research / arXiv:2108.12893},\n  url = {https://arxiv.org/abs/2108.12893},\n  note = {Source of ORdős Problem ORDOS-060}\n}",
  "urls": {
   "human": "https://ordos-problems.github.io/problems/kunit-prophet-correlation-gap-random-order.html",
   "api": "https://ordos-problems.github.io/api/problems/kunit-prophet-correlation-gap-random-order.json",

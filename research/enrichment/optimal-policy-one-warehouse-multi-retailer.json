@@ -1,0 +1,106 @@
+{
+ "id": "optimal-policy-one-warehouse-multi-retailer",
+ "background": "Multi-echelon inventory theory began with Clark and Scarf's 1960 proof that for SERIAL supply chains — a single chain of stages, each feeding the next — the optimal policy has a beautifully simple structure: each stage follows an echelon base-stock policy, ordering up to a fixed target measured in echelon inventory position. The natural next topology, and by far the most common in practice, is the divergent (distribution) system: one warehouse replenishes from an outside supplier and ships to $N$ retailers, each facing its own random demand. Here the Clark–Scarf decomposition breaks. The culprit is the allocation problem: once stock is shipped to a retailer it cannot be moved sideways to a sister retailer, so when demands realize unevenly the system becomes imbalanced — one retailer is overstocked while another is starved — and the warehouse cannot simultaneously bring all echelon inventory positions to their desired levels. Eppen and Schrage (1981) and then Federgruen and Zipkin (1984) showed that if one relaxes the model to permit negative shipments (the so-called balance or allocation assumption, effectively free lateral transshipment), the problem decomposes and echelon base-stock policies become optimal; Diks and de Kok (1998) extended this to general $n$-echelon divergent networks. But the relaxation is a fiction, and Zipkin (1984) analyzed exactly how inventory imbalance degrades these approximations. Without the balance assumption, echelon base-stock policies are provably suboptimal, the dynamic program does not decompose, and after six decades no well-structured optimal policy is known — a gap flagged as a central open issue in every major survey of the field. The problem matters enormously in practice: essentially every retail and spare-parts distribution network is divergent, and the industry runs on heuristics (allocation rules like fair-share rationing, projected-inventory policies, Lagrangian decompositions) whose optimality gaps are typically assessed only numerically. A structural characterization, or a simple policy with a provable small constant-factor guarantee for the stochastic backlog objective, would close one of the oldest open questions in inventory theory.",
+ "known_results": "Structure under relaxation: echelon base-stock (order-up-to) policies are optimal for divergent systems ONLY under the balance assumption, which permits negative allocations to retailers (Eppen–Schrage 1981; Federgruen–Zipkin 1984; Diks–de Kok, EJOR 1998, for general $n$-echelon divergent networks). Under the true constraint $q_i \\ge 0$ the problem does not decompose, echelon base-stock is suboptimal, and no well-structured optimal policy is known — de Kok, Grob, Laumanns, Minner, Rambau, Schade (EJOR 2018) state flatly that 'so far, it has been impossible to identify well-structured optimal policies for n-echelon divergent systems without this assumption,' and a mid-2026 check finds no paper overturning this. Asymptotic/approximation progress for the STOCHASTIC problem: Miao, Jasin, Chao (Operations Research 70(1):141–159, 2022) give Lagrangian-relaxation-based policies for one-warehouse (and multi-warehouse) multi-store systems with lost sales whose loss relative to optimal is sublinear in both the horizon $T$ and the number of stores $N$ — asymptotic optimality as the system grows, but no fixed-instance constant-factor guarantee, and for the lost-sales rather than backlog objective. Najy, Diabat, Elbassioni (Operations Research 73(3):1151–1164, 2025) give an FPTAS for the continuous relaxation of the stochastic OWMR under the $(S,T)$/power-of-two policy class (building on Chu–Shen's 2010 approximate cost model) with an improved rounding factor to power-of-two solutions — approximation within a restricted policy class of an approximate model, not the true optimum. For the DETERMINISTIC lot-sizing OWMR, the best general constant remains the 1.8-approximation of Levi, Roundy, Shmoys, Sviridenko (Management Science 54(4):763–776, 2008; incorporating the Levi–Sviridenko APPROX 2006 improvement); the JRP special case has a 1.791-approximation (Bienkowski, Byrka, Chrobak, Jeż, Nogneng, Sgall, SODA 2014), and Segev (Mathematics of Operations Research, 2025; arXiv:2408.05443) recently gave the first improvement over power-of-two-type guarantees for continuous-time joint replenishment. As of July 2026, neither an optimal-policy characterization nor a constant-factor approximation for the stochastic divergent system with the no-negative-shipment constraint is known.",
+ "status": "open",
+ "where_posed": {
+  "text": "The serial foundation is Clark & Scarf, 'Optimal Policies for a Multi-Echelon Inventory Problem,' Management Science 6(4):475–490, 1960; the divergent-system obstruction is developed in Eppen–Schrage (1981), Zipkin (Math. OR 1984) and Federgruen–Zipkin (NRL 1984). The open problem is stated explicitly in the survey of de Kok, Grob, Laumanns, Minner, Rambau, Schade, 'A typology and literature review on stochastic multi-echelon inventory models,' European Journal of Operational Research 269(3):955–983, 2018.",
+  "url": "https://doi.org/10.1016/j.ejor.2018.02.047",
+  "quote": "However, this can only be shown under the assumption that negative shipment quantities to downstream stockpoints are allowed. This assumption was first proposed by Eppen and Schrage (1981). The implication is that echelon inventory positions after allocation can be lower than before the allocation, i.e., the option of free transshipments. As a consequence, the classical inventory balance equations for individual items may no longer hold. So far, it has been impossible to identify well-structured optimal policies for n-echelon divergent systems without this assumption.",
+  "location": "Section 4.9.1 (Optimal policies)"
+ },
+ "progress": {
+  "state": "partial",
+  "summary": "No structural breakthrough as of July 2026: the optimal policy for divergent systems without the balance assumption remains uncharacterized. Recent progress is asymptotic and computational rather than structural: Miao–Jasin–Chao (Operations Research 2022) proved Lagrangian-relaxation policies asymptotically optimal (loss sublinear in horizon and number of stores) for one-/multi-warehouse multi-store systems with lost sales, and Najy–Diabat–Elbassioni (Operations Research 2025) gave an FPTAS-based method computing near-optimal power-of-two $(S,T)$ policies for an approximate stochastic OWMR model. On the deterministic side the 1.8-approximation of Levi–Roundy–Shmoys–Sviridenko (2008) is still the best general constant for OWMR; Segev (Math. OR 2025) improved continuous-time joint replenishment guarantees beyond power-of-two policies, suggesting the OWMR constant may also be improvable.",
+  "links": [
+   {"title": "Asymptotically Optimal Lagrangian Policies for Multi-Warehouse, Multi-Store Systems with Lost Sales — Miao, Jasin, Chao, Operations Research 2022", "url": "https://pubsonline.informs.org/doi/10.1287/opre.2021.2161"},
+   {"title": "Heuristic (S, T) Solutions via an FPTAS for a One-Warehouse Multiretailer Problem — Najy, Diabat, Elbassioni, Operations Research 2025", "url": "https://pubsonline.informs.org/doi/10.1287/opre.2024.1177"},
+   {"title": "Improved Approximation Guarantees for Joint Replenishment in Continuous Time — Segev, Mathematics of Operations Research 2025", "url": "https://arxiv.org/abs/2408.05443"},
+   {"title": "A typology and literature review on stochastic multi-echelon inventory models — de Kok et al., EJOR 2018 (open access)", "url": "https://epub.uni-bayreuth.de/3587/1/SCM-MPC_master.pdf"}
+  ]
+ },
+ "importance": 8,
+ "difficulty": 9,
+ "counterexample_suitability": "low",
+ "counterexample_rationale": "The question asks for a positive structural characterization or a policy with a provable guarantee; the negative side is already settled (echelon base-stock is known to be suboptimal without the balance assumption, and imbalance examples are classical since Zipkin 1984), so no finite counterexample can resolve what remains open.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "An evolutionary search loop could plausibly discover interpretable replenishment-and-allocation policy templates (parametrized allocation rules, projected-inventory or Lagrangian-index policies) and score them against exact DP values on small instances (2–3 retailers, short lead times, discretized demand), potentially revealing structure worth proving; on the deterministic OWMR side, searching over LP-rounding parameters and shifted power-of-two schedules to beat the 1.8 constant is a concrete, factor-revealing-style target well-suited to automated search.",
+ "literature": {
+  "synthesis": "Work on divergent systems splits into three strands. (1) Structure under relaxation: Eppen–Schrage (1981) and Federgruen–Zipkin (1984) showed the balance assumption (allowing negative allocations) restores the Clark–Scarf decomposition, making echelon base-stock policies optimal; Diks–de Kok (1998) generalized this to $n$-echelon divergent networks, and Zipkin (1984) quantified how real imbalance erodes these approximations. This line has been essentially frozen since the 1990s: the de Kok et al. (2018) survey records that no well-structured optimal policy is known without the assumption. (2) Asymptotics for the true stochastic system: Miao–Jasin–Chao (OR 2022) is the state of the art, proving Lagrangian-relaxation policies for one-/multi-warehouse multi-store lost-sales systems have optimality loss sublinear in both the horizon and the number of stores — the first rigorous performance guarantee for the unrelaxed allocation dynamics, but asymptotic rather than uniform, and for lost sales rather than backlogging. (3) Approximation algorithms for the deterministic lot-sizing OWMR: Levi–Roundy–Shmoys–Sviridenko (MS 2008) hold the best general constant at 1.8 via LP rounding; JRP stands at 1.791 (Bienkowski et al., SODA 2014); and Segev (Math. OR 2025) broke the long-standing power-of-two barrier for continuous-time JRP, with Najy–Diabat–Elbassioni (OR 2025) contributing an FPTAS for computing power-of-two $(S,T)$ policies in an approximate stochastic OWMR model. The remaining gap is stark: nothing connects strands (2)–(3) to a fixed-instance constant-factor guarantee — let alone a structural optimality result — for the stochastic backlog divergent system with the no-lateral-transshipment constraint. New ideas seem needed either in coupling/cost-accounting arguments that tame imbalance directly, or in identifying a richer but still tractable policy class (state-dependent allocation indices) provably close to the DP optimum.",
+  "reviewed": [
+   {"ref": "Clark, Scarf, 'Optimal Policies for a Multi-Echelon Inventory Problem', Management Science 6(4):475–490, 1960", "result": "Echelon base-stock policies are optimal for serial multi-echelon systems without fixed costs; the decomposition underlying all subsequent multi-echelon structural results.", "relevance": "related-tool", "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.6.4.475"},
+   {"ref": "Federgruen, Zipkin, 'Allocation policies and cost approximations for multilocation inventory systems', Naval Research Logistics Quarterly 31(1):97–129, 1984", "result": "Under the balance (allocation) assumption permitting negative shipments, the one-warehouse multi-retailer dynamic program decomposes and myopic allocation plus echelon base-stock replenishment is optimal; provides the standard cost approximations used ever since.", "relevance": "solves-special-case", "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/nav.3800310112"},
+   {"ref": "Zipkin, 'On the Imbalance of Inventories in Multi-Echelon Systems', Mathematics of Operations Research 9(3):402–423, 1984", "result": "Formalizes and analyzes inventory imbalance in divergent systems, quantifying the error introduced by the balance assumption and explaining why the relaxed solution can fail under the true non-negative-shipment constraint.", "relevance": "hardness", "url": "https://pubsonline.informs.org/doi/10.1287/moor.9.3.402"},
+   {"ref": "Levi, Roundy, Shmoys, Sviridenko, 'A Constant Approximation Algorithm for the One-Warehouse Multiretailer Problem', Management Science 54(4):763–776, 2008", "result": "LP-rounding 1.8-approximation for the deterministic OWMR lot-sizing problem (improving the SODA 2005 constant via the Levi–Sviridenko APPROX 2006 technique); still the best general constant for deterministic OWMR as of 2026.", "relevance": "solves-special-case", "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.1070.0781"},
+   {"ref": "Miao, Jasin, Chao, 'Asymptotically Optimal Lagrangian Policies for Multi-Warehouse, Multi-Store Systems with Lost Sales', Operations Research 70(1):141–159, 2022", "result": "Lagrangian-relaxation-based replenishment/allocation heuristics for warehouse–store systems with lost sales whose optimality loss is sublinear in both the time horizon and the number of stores (with extensions to positive lead times); the strongest performance guarantee to date for unrelaxed divergent-system dynamics.", "relevance": "partial-progress", "url": "https://pubsonline.informs.org/doi/10.1287/opre.2021.2161"},
+   {"ref": "Najy, Diabat, Elbassioni, 'Heuristic (S, T) Solutions via an FPTAS for a One-Warehouse Multiretailer Problem', Operations Research 73(3):1151–1164, 2025", "result": "FPTAS for the continuous relaxation of an approximate stochastic OWMR model (Chu–Shen 2010) under power-of-two $(S,T)$ policies, with an improved rounding factor; yields near-optimal $(S,T)$ solutions orders of magnitude faster than exact methods but no guarantee against the true DP optimum.", "relevance": "partial-progress", "url": "https://pubsonline.informs.org/doi/10.1287/opre.2024.1177"}
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Plausible routes: (1) coupling/cost-accounting arguments in the style of recent asymptotic-optimality proofs (Lagrangian decomposition with per-retailer subproblems, then bounding the imbalance cost of reconciling the relaxed allocation with $q_i\\ge 0$) aimed at a uniform constant-factor guarantee for the backlog objective; (2) restricted-policy-class optimization — prove that some tractable class (state-dependent allocation indices, projected-inventory-level rules, or balanced base-stock with rationing) is within a provable factor of the DP optimum, perhaps via an LP/factor-revealing analysis; (3) exact DP computation on tiny systems (2 retailers, lead times 0–2, discrete demand) to conjecture structural properties (monotonicity, weak decomposition) of the true optimal policy; (4) for the deterministic OWMR, LP-rounding parameter search to push below 1.8.",
+  "verification_notes": "A structural claim must specify the policy class exactly and prove optimality against ALL admissible policies of the full-information DP with the non-negative-shipment constraint — the classic failure mode is silently reintroducing the balance assumption (negative allocations, free transshipment, or 'virtual' reallocation) somewhere in the induction; a referee should check every allocation step respects $q_i \\ge 0$ and $\\sum_i q_i \\le y_0$. A constant-factor claim must state the benchmark (optimal DP cost, not a relaxation) and hold per instance, not asymptotically; verify that lower bounds used (e.g., Lagrangian or balance-relaxed cost) are proved to be valid bounds on the true optimum. Numerical DP comparisons on small instances can falsify structural conjectures but cannot substitute for proof; asymptotic results (regime $N\\to\\infty$ or $T\\to\\infty$) should not be reported as resolving the constant-factor question.",
+  "machine_checkable": false
+ },
+ "additional_refs": [
+  {
+   "authors": "Paul Zipkin",
+   "title": "On the Imbalance of Inventories in Multi-Echelon Systems",
+   "year": 1984,
+   "venue": "Mathematics of Operations Research 9(3):402-423",
+   "url": "https://pubsonline.informs.org/doi/10.1287/moor.9.3.402"
+  },
+  {
+   "authors": "Awi Federgruen, Paul Zipkin",
+   "title": "Allocation policies and cost approximations for multilocation inventory systems",
+   "year": 1984,
+   "venue": "Naval Research Logistics Quarterly 31(1):97-129",
+   "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/nav.3800310112"
+  },
+  {
+   "authors": "Retsef Levi, Robin Roundy, David B. Shmoys, Maxim Sviridenko",
+   "title": "A Constant Approximation Algorithm for the One-Warehouse Multiretailer Problem",
+   "year": 2008,
+   "venue": "Management Science 54(4):763-776",
+   "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.1070.0781"
+  },
+  {
+   "authors": "Ton de Kok, Christopher Grob, Marco Laumanns, Stefan Minner, Jörg Rambau, Konrad Schade",
+   "title": "A typology and literature review on stochastic multi-echelon inventory models",
+   "year": 2018,
+   "venue": "European Journal of Operational Research 269(3):955-983",
+   "url": "https://www.sciencedirect.com/science/article/abs/pii/S0377221718301802"
+  },
+  {
+   "authors": "Sentao Miao, Stefanus Jasin, Xiuli Chao",
+   "title": "Asymptotically Optimal Lagrangian Policies for Multi-Warehouse, Multi-Store Systems with Lost Sales",
+   "year": 2022,
+   "venue": "Operations Research 70(1):141-159",
+   "url": "https://pubsonline.informs.org/doi/10.1287/opre.2021.2161"
+  },
+  {
+   "authors": "Waleed Najy, Ali Diabat, Khaled Elbassioni",
+   "title": "Heuristic (S, T) Solutions via an FPTAS for a One-Warehouse Multiretailer Problem",
+   "year": 2025,
+   "venue": "Operations Research 73(3):1151-1164",
+   "url": "https://pubsonline.informs.org/doi/10.1287/opre.2024.1177"
+  },
+  {
+   "authors": "Danny Segev",
+   "title": "Improved Approximation Guarantees for Joint Replenishment in Continuous Time",
+   "year": 2025,
+   "venue": "Mathematics of Operations Research (arXiv:2408.05443)",
+   "url": "https://arxiv.org/abs/2408.05443"
+  }
+ ],
+ "tags": [
+  "multi-echelon",
+  "distribution-system",
+  "base-stock",
+  "balance-assumption",
+  "allocation-problem",
+  "approximation-algorithms",
+  "asymptotic-optimality",
+  "Lagrangian-relaxation"
+ ],
+ "notes_for_maintainer": "Status confirmed OPEN as of July 2026. The hint about 'Miao-Wang-Zhang' appears to be a misremembering: the relevant asymptotic-optimality work is Miao, Jasin, Chao, Operations Research 70(1):141-159, 2022 (SSRN 3552995), for lost-sales one-/multi-warehouse multi-store systems — verified via the OR page and SSRN. The batch record's mention of 'FPTAS-based guarantees (Operations Research 2024)' is Najy-Diabat-Elbassioni, published OR 73(3):1151-1164, 2025 under DOI 10.1287/opre.2024.1177 (article number is 2024, publication 2025) — I cite it as 2025. The deterministic OWMR constant 1.8 (Levi-Roundy-Shmoys-Sviridenko, MS 2008) appears NOT to have been improved for OWMR itself; improvements found (Bienkowski et al. 1.791; Segev MOOR 2025) apply to the JRP special case / continuous-time JRP, not general OWMR — I searched specifically and found nothing beating 1.8 for OWMR. The where_posed verbatim quote was extracted from the open-access author PDF of de Kok et al. 2018 (epub.uni-bayreuth.de mirror), Section 4.9.1; wording verified against the PDF text layer."
+}

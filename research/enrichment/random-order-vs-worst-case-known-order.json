@@ -1,0 +1,65 @@
+{
+  "id": "random-order-vs-worst-case-known-order",
+  "source": {
+    "authors": "Tomer Ezra, Michal Feldman, Nick Gravin, Zhihao Gavin Tang",
+    "title": "On the Significance of Knowing the Arrival Order in Prophet Inequalities",
+    "year": 2022,
+    "venue": "arXiv:2202.09215",
+    "url": "https://arxiv.org/abs/2202.09215"
+  },
+  "full_statement": "Fix independent nonnegative random variables with product distribution $F=F_1\\times\\cdots\\times F_T$ and a single-choice stopping objective. For each deterministic arrival order $\\sigma$, let the algorithm know $\\sigma$ in advance and choose the best policy adapted to that revealed order. This gives the value $\\sup_\\pi E_{V\\sim F}[ALG^\\pi(\\sigma(V))]$. Compare this with the model in which the arrival order is a uniformly random permutation unknown to the algorithm before it commits to a policy, giving $E_\\sigma E_{V\\sim F}[ALG^\\pi(\\sigma(V))]$ optimized over order-unaware policies $\\pi$. Will Ma's question asks whether unknown random order can ever be strictly worse than the worst revealed deterministic order, i.e. whether the order of $\\sup_\\pi$, $E_\\sigma$, and $\\min_\\sigma$ in Equation (C.1) can create a real gap. The open problem is to prove no such product distribution exists, or exhibit a finite product distribution with a certified strict gap.",
+  "background": "Arrival order is one of the main axes along which prophet inequalities vary. In a fixed-order model, the algorithm knows the order and can tailor thresholds to it. In an adversarial-order model, a malicious order is chosen. In the random-order or prophet-secretary model, the order is uniformly random but unknown in advance. Intuition says that an unknown random order should not be worse than the worst deterministic order revealed to the algorithm: randomness should average over bad permutations rather than create a new disadvantage. Will Ma's problem asks whether this intuition is actually true for single-choice product distributions. The subtlety is that the known-order benchmark may choose a different optimal policy for each permutation, whereas the random-order algorithm must commit to one strategy before seeing the permutation. This is an interchange-of-information question rather than a new stochastic model. If the inequality always holds, random-order prophet analyses could sometimes be reduced to simpler fixed-order arguments.",
+  "known_results": "Prophet-secretary work shows that random order can improve competitive ratios relative to adversarial order in standard prophet models, with threshold-based guarantees above $1/2$ in several settings. Ezra, Feldman, Gravin, and Tang formalize the value of knowing the arrival order through the order-competitive ratio and prove tight bounds for several prophet settings and algorithm classes. Their results show that order-awareness can matter, but they do not directly settle Will Ma's sharper minimax comparison: can the expectation over unknown uniformly random order be strictly worse than the minimum over revealed deterministic orders? No counterexample or general theorem for Equation (C.1) is recorded in the current site sources.",
+  "open_problem": "Decide whether unknown uniformly random order is always at least as good as the worst deterministic order revealed in advance, in the single-choice product-distribution prophet model.",
+  "status": "open",
+  "where_posed": {
+    "text": "Posed in Will Ma's Online Resource Allocation course notes, Appendix C, Open Problems about Prophet Inequalities, Problem 6, Equation (C.1).",
+    "url": "",
+    "quote": "",
+    "location": "Appendix C, Prophet Inequalities #6 / Equation (C.1)"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "Related order-awareness losses have been characterized in other formulations, but the exact minimax comparison in Equation (C.1) remains open.",
+    "links": [
+      {
+        "title": "Ezra et al., significance of knowing arrival order",
+        "url": "https://arxiv.org/abs/2202.09215"
+      }
+    ]
+  },
+  "importance": 7,
+  "difficulty": 7,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "A counterexample would likely be a finite product distribution with a certified gap between two dynamic programs. Small-support search is feasible.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "This is a direct computational game: generate finite product distributions, compute order-aware and order-unaware optimal policies exactly, and search for a strict inequality.",
+  "literature": {
+    "synthesis": "Prophet-secretary results show that random arrival order can be algorithmically helpful, but they optimize a standard competitive ratio and do not compare against a worst revealed order. Recent work on arrival-order knowledge shows that order information can matter, yet Will Ma's formulation asks a more surgical minimax question. The known-order side optimizes after seeing the permutation; the random-order side optimizes before the permutation is drawn. This creates a nontrivial interchange of min, expectation, and sup. A positive result might come from convexity or a symmetrization argument showing that a randomized mixture of known-order policies can be implemented order-unaware. A negative result would identify a product distribution where policy specialization across permutations is essential.",
+    "reviewed": [
+      {
+        "ref": "Hossein Esfandiari, MohammadTaghi Hajiaghayi, Vahid Liaghat, Morteza Monemizadeh, 'Prophet Secretary', arXiv 2015",
+        "result": "Introduces the prophet-secretary random-order model and shows random order can improve over adversarial-order prophet guarantees.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/1507.01155"
+      },
+      {
+        "ref": "Tomer Ezra, Michal Feldman, Nick Gravin, Zhihao Gavin Tang, 'Who Is Next in Line? On the Significance of Knowing the Arrival Order in Bayesian Online Settings', 2022",
+        "result": "Defines and studies the order-competitive ratio, giving tight bounds for prophet problems under order-aware versus order-unaware algorithms.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/2202.09215"
+      },
+      {
+        "ref": "Yossi Azar, Ashish Chiplunkar, Haim Kaplan, 'Prophet Secretary: Surpassing the 1-1/e Barrier', arXiv 2017",
+        "result": "Shows that the random-order prophet-secretary model has subtler behavior than the early $1-1/e$ threshold analysis.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/1711.01834"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Implement exact dynamic programs for finite distributions under both sides of Equation (C.1). Search over two- and three-point distributions, then inspect whether any numerical gap survives rational certification.",
+    "verification_notes": "A proof of nonexistence must handle all product distributions, not just i.i.d. cases, and must preserve the information pattern in Equation (C.1). A counterexample must compute the order-unaware random-order optimum and the worst revealed-order optimum exactly enough to certify a strict gap; approximate simulations are not enough unless converted into rational certificates.",
+    "machine_checkable": true
+  }
+}

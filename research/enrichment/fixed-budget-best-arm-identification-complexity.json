@@ -1,0 +1,115 @@
+{
+  "id": "fixed-budget-best-arm-identification-complexity",
+  "background": "A fixed experimental budget is natural in simulation optimization and ranking and selection: the experiment ends after a predetermined number of samples, rather than when a confidence threshold is reached. The asymptotic question concerns rare erroneous recommendations. This is different from fixed-confidence sample complexity and from Bayesian posterior concentration. A sampling rule whose proportions converge almost surely to an oracle allocation need not inherit that allocation's frequentist error exponent: atypical trajectories can dominate errors.\n\nQin's COLT 2022 note separated the existence of a common instance-wise optimum from the weaker question of improving on uniform allocation. The two questions now have substantial answers. This entry retains the historical question and its limitations, rather than continuing to advertise an unrestricted optimal algorithm as an unsolved target.",
+  "open_problem": "The unrestricted uniformly optimal exponent is ruled out in general. The residual research direction is to identify a nontrivial restricted algorithm class with a sharp complexity, or a sharp benchmark-relative tradeoff; specify the class and reward family explicitly.",
+  "known_results": "Degenne (COLT 2023, Theorem 10) rules out a common attainable complexity for two-arm Bernoulli identification in classes containing all static-proportion algorithms; the paper also establishes an obstruction for sufficiently many Gaussian arms. Its conclusion asks about meaningful restricted algorithm classes. Wang, Ariu, and Proutiere (ICML 2024) show that uniform allocation is undominated in error-exponent performance for two Bernoulli arms.\n\nImbens, Qin, and Wager (2025 preprint, Assumption 1 and Theorem 5) construct batched elimination rules improving the exponent over uniform allocation for $K\\ge3$ Gaussian arms with common variance. For a fixed unique-best instance, expected simple regret and error probability differ by fixed positive gap factors, so they have the same exponential rate.\n\nGoldberger's July 2026 preprint, Theorems 3.2 and 4.3, reports nonexistence of a complexity for every $K\\ge3$ in regular one-parameter natural exponential families. This is a preprint result, not a proof independently certified by this repository. The unresolved work is on restricted classes or alternative tradeoffs, not the original unrestricted existence claim.",
+  "status": "partially resolved",
+  "where_posed": {
+    "text": "Stated as Open Problems 1 and 2 in Chao Qin, 'Open Problem: Optimal Best Arm Identification with Fixed Budget'.",
+    "url": "https://arxiv.org/abs/2303.00950",
+    "quote": "",
+    "location": "COLT 2022 open-problem note."
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "Corrected on 2026-11-09: unrestricted complexity is impossible in general; uniform-sampling admissibility is settled for two-arm Bernoulli and equal-variance Gaussian K>=3 models. Broader restricted-class questions remain separate.",
+    "links": [
+      {
+        "title": "Remy Degenne, COLT 2023",
+        "url": "https://proceedings.mlr.press/v195/degenne23a.html"
+      },
+      {
+        "title": "Po-An Wang, Kaito Ariu, Alexandre Proutiere, ICML 2024",
+        "url": "https://proceedings.mlr.press/v235/wang24c.html"
+      },
+      {
+        "title": "Guido Imbens, Chao Qin, Stefan Wager, 2025 preprint",
+        "url": "https://arxiv.org/abs/2506.05329"
+      },
+      {
+        "title": "Motti Goldberger, 2026 preprint",
+        "url": "https://arxiv.org/abs/2607.11635"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Small Gaussian or Bernoulli instances can refute proposed complexity formulae by numerical optimization of allocation exponents. A complete solution, however, requires a theorem over all adaptive sampling rules.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Automated search can explore small instances, candidate exponent formulae, and adaptive allocation heuristics. It may be especially useful for finding failures of conjectured max-min characterizations.",
+  "literature": {
+    "synthesis": "Do not conflate an everywhere-optimal algorithm, an undominated algorithm, and a worst-case competitive ratio to a benchmark. The first is impossible in standard models even when the second exists. Any proposed remaining question must fix its quantifiers and algorithm class. The newer Gaussian admissibility construction does not contradict the impossibility of uniformly matching a more powerful instance-specific oracle.",
+    "reviewed": [
+      {
+        "ref": "Remy Degenne, On the Existence of a Complexity in Fixed Budget Bandit Identification, COLT 2023",
+        "result": "Theorem 10 provides a negative answer to unrestricted complexity in two-arm Bernoulli BAI; Section 6 distinguishes restricted-class questions.",
+        "relevance": "hardness",
+        "url": "https://proceedings.mlr.press/v195/degenne23a/degenne23a.pdf"
+      },
+      {
+        "ref": "Po-An Wang, Kaito Ariu, Alexandre Proutiere, On Universally Optimal Algorithms for A/B Testing, ICML 2024",
+        "result": "Uniform sampling is admissible for two Bernoulli arms in the asymptotic error-exponent comparison.",
+        "relevance": "solves-special-case",
+        "url": "https://proceedings.mlr.press/v235/wang24c.html"
+      },
+      {
+        "ref": "Guido Imbens, Chao Qin, Stefan Wager, Admissibility of Completely Randomized Trials: A Large-Deviation Approach, arXiv 2025",
+        "result": "Theorem 5 gives sufficient batch weights for strict exponent improvement over uniform allocation under common-variance Gaussian rewards, K>=3.",
+        "relevance": "solves-special-case",
+        "url": "https://arxiv.org/html/2506.05329v1"
+      },
+      {
+        "ref": "Motti Goldberger, Fundamental Limitations of Fixed-Budget Best-Arm Identification, arXiv 2026",
+        "result": "Reports a logarithmic static-oracle loss and nonexistence for every K>=3 in regular one-parameter natural exponential families.",
+        "relevance": "hardness",
+        "url": "https://arxiv.org/html/2607.11635v1"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Begin by defining a restricted class or a benchmark-relative optimization problem. Do not try to construct an unrestricted universally optimal algorithm. Finite examples can test a proposed tradeoff, but require a large-deviations argument.",
+    "verification_notes": "State the reward family, known variances, consistency requirement and order of limits. Separate uniform dominance from pointwise optimality. Check whether an algorithm class contains all fixed-proportion rules, since the impossibility applies to such classes. Convergence of allocation proportions alone is not a proof of a frequentist exponent. Independently check any reliance on the 2026 preprint.",
+    "machine_checkable": false
+  },
+  "notes_for_maintainer": "2026-11-09 status audit: read Degenne Theorem 10/conclusion, Goldberger Theorems 3.2/4.3 and discussion, and Imbens-Qin-Wager Assumption 1/Theorem 5. Wang et al. publication abstract checked. Retained partially resolved because this record combines a refuted general demand with a broad restricted-class direction; the latter still needs a sharper separately curated formulation.",
+  "short_statement": "Fixed-budget best-arm identification has no universally optimal instance-wise error exponent in general. The remaining issue is a sharp achievable tradeoff or a meaningful restricted algorithm class, not a universal analogue of Track-and-Stop.",
+  "full_statement": "Fix a known one-parameter reward family and $K$ independent arms with unknown mean vector $\\mu$ and a unique best arm $i^*(\\mu)$. An algorithm family $A=(A_T)_{T\\ge1}$ adaptively allocates exactly $T$ observations and returns $\\widehat i_T$. Write $p_{\\mu,T}(A)=\\Pr_\\mu(\\widehat i_T\\ne i^*(\\mu))$ and $\\Gamma_A(\\mu)=\\liminf_{T\\to\\infty}T^{-1}\\log(1/p_{\\mu,T}(A))$. Consistency means $p_{\\mu,T}(A)\\to0$ for every admissible instance.\n\nThe historical question asked for an instance-dependent complexity attained simultaneously by one algorithm across all instances. That cannot hold in general: Degenne's COLT 2023 impossibility theorem already covers two Bernoulli arms for algorithm classes containing all fixed-proportion rules. Thus the previous formulation asking unconditionally for a uniformly optimal exponent was stale.\n\nA distinct residual problem, identified in Degenne's conclusion, is whether a meaningful restricted class admits such a complexity. The class must be specified before optimization; restricting to a singleton makes the question vacuous. Alternatively one can fix a benchmark and seek a minimax ratio across instances, rather than a pointwise optimum. These alternatives must not be reported as the original unrestricted conjecture.\n\nThe separate question of dominating uniform sampling also depends on the reward family: the two-arm Bernoulli case is settled negatively by Wang, Ariu, and Proutiere, while Imbens, Qin, and Wager give a positive Gaussian equal-variance result for $K\\ge3$.",
+  "source": {
+    "authors": "Chao Qin",
+    "title": "Open Problem: Optimal Best Arm Identification with Fixed Budget",
+    "year": 2022,
+    "venue": "COLT (arXiv version posted 2023)",
+    "url": "https://arxiv.org/abs/2303.00950"
+  },
+  "additional_refs": [
+    {
+      "authors": "Remy Degenne",
+      "title": "On the Existence of a Complexity in Fixed Budget Bandit Identification",
+      "year": 2023,
+      "venue": "COLT, PMLR 195:1131-1154",
+      "url": "https://proceedings.mlr.press/v195/degenne23a.html"
+    },
+    {
+      "authors": "Po-An Wang, Kaito Ariu, Alexandre Proutiere",
+      "title": "On Universally Optimal Algorithms for A/B Testing",
+      "year": 2024,
+      "venue": "ICML, PMLR 235:50065-50091",
+      "url": "https://proceedings.mlr.press/v235/wang24c.html"
+    },
+    {
+      "authors": "Guido Imbens, Chao Qin, Stefan Wager",
+      "title": "Admissibility of Completely Randomized Trials: A Large-Deviation Approach",
+      "year": 2025,
+      "venue": "arXiv:2506.05329 (preprint)",
+      "url": "https://arxiv.org/abs/2506.05329"
+    },
+    {
+      "authors": "Motti Goldberger",
+      "title": "Fundamental Limitations of Fixed-Budget Best-Arm Identification",
+      "year": 2026,
+      "venue": "arXiv:2607.11635 (preprint)",
+      "url": "https://arxiv.org/abs/2607.11635"
+    }
+  ]
+}

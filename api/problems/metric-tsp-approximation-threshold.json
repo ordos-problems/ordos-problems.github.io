@@ -1,0 +1,111 @@
+{
+ "number": 175,
+ "ref": "ORDOS-175",
+ "id": "metric-tsp-approximation-threshold",
+ "title": "The true approximation threshold for metric TSP",
+ "collection": "Operations Research",
+ "area": "Routing and Approximation Algorithms",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "traveling salesman problem",
+  "metric TSP",
+  "routing",
+  "approximation algorithms",
+  "integrality gap"
+ ],
+ "short_statement": "Christofides' $3/2$ barrier for metric TSP was finally beaten, but only by a tiny constant; the true polynomial-time approximation threshold is still unknown.",
+ "open_problem": "Close the metric TSP approximability gap: prove a meaningfully better constant-factor approximation than $3/2-10^{-36}$, or prove a substantially stronger hardness threshold for arbitrary symmetric metrics.",
+ "background": "Metric TSP is one of the canonical routing models in operations research and one of the first problems that made worst-case approximation guarantees central to combinatorial optimization. The model is clean: the metric closure abstracts away road-network details and keeps only pairwise shortest-path distances. Christofides' analysis is also clean, which partly explains why it became a benchmark. The algorithm's two ingredients, a spanning tree and a parity-correction matching, can be interpreted through the subtour-elimination relaxation and $T$-join structure. The long-standing difficulty is that the obvious proof has tight examples, but those examples need not be tight for every algorithm. Modern progress uses maximum-entropy distributions over spanning trees and delicate negative-dependence properties, showing that the old $3/2$ wall was not a theorem-level barrier. The remaining question is whether that breakthrough is the start of a path toward constants such as $4/3$, or whether metric TSP has hard instances requiring ratios much closer to $3/2$.",
+ "full_statement": "In the symmetric metric Traveling Salesman Problem, the input is a complete graph on vertex set $V$ with nonnegative distances $c_{uv}$ satisfying symmetry and the triangle inequality. A feasible solution is a Hamiltonian cycle, and the goal is to minimize its total length. Christofides' algorithm, independently found by Serdyukov, gives a $3/2$-approximation by combining a minimum spanning tree with a minimum perfect matching on odd-degree vertices. For more than forty years this was the best general polynomial-time guarantee. Karlin, Klein, and Oveis Gharan recently gave a randomized $(3/2-\\epsilon)$-approximation for some explicit but extremely small $\\epsilon>10^{-36}$, and subsequent work derandomized the guarantee. The open problem is to determine the true polynomial-time approximation threshold for metric TSP: is there a substantially better constant than $3/2$, perhaps approaching the conjectural $4/3$ behavior suggested by the subtour LP, or is there a hardness barrier far above the current $123/122$ inapproximability bound? A solution should apply to arbitrary finite metrics, not only Euclidean, graphic, bounded-genus, or other structured metrics.",
+ "known_results": "Christofides' algorithm gives a $3/2$ approximation for every metric instance, and examples show that this analysis is tight for that algorithm. The strongest general hardness results are much weaker: Karpinski, Lampis, and Schmied prove APX-hardness and an explicit inapproximability threshold of $123/122$ for symmetric metric TSP. Karlin, Klein, and Oveis Gharan break the $3/2$ barrier with a randomized $3/2-\\epsilon$ algorithm for an explicit tiny $\\epsilon>10^{-36}$; a later paper derandomizes the relevant max-entropy approach. Related work gives slightly improved upper bounds on the subtour-LP integrality gap, and the famous $4/3$ conjecture for the subtour LP remains unresolved. Thus the open part is enormous: the best algorithmic constant is essentially $1.5$, while the best hardness is barely above $1$.",
+ "progress": {
+  "state": "partial",
+  "summary": "The $3/2$ approximation barrier has been broken only by a tiny constant; the exact threshold and subtour-LP gap remain open.",
+  "links": []
+ },
+ "importance": 10,
+ "difficulty": 9,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Finite metric instances can refute proposed LP gaps, rounding analyses, or conjectured stronger guarantees for specific algorithm families. Hardness and positive approximation results still require proof, but computational search can produce useful extremal instances.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Search over finite metrics, graph metrics, and subtour-LP extreme points is a plausible way to find stronger lower-bound examples or stress-test max-entropy rounding conjectures.",
+ "literature": {
+  "synthesis": "The literature has three distinct layers. The classical algorithmic layer is Christofides' tree-plus-matching method, which gives $3/2$ and remains practically and conceptually central. The LP layer studies the subtour-elimination relaxation and its integrality gap; the conjectured $4/3$ value would imply a much more structured view of metric TSP, but current general upper bounds are still close to $3/2$. The recent max-entropy layer proves that carefully sampled spanning trees have enough structure to beat the old barrier, but the improvement is minuscule. On the hardness side, reductions show APX-hardness but leave a vast gap between $123/122$ and $3/2$. The open problem is therefore not a matter of polishing constants. It asks for either a new global decomposition of metric tours, a much sharper use of the subtour LP, or a reduction that finally explains why routing in arbitrary metrics is hard beyond tiny constant factors.",
+  "reviewed": [
+   {
+    "ref": "Karlin, Klein, Oveis Gharan, A (Slightly) Improved Approximation Algorithm for Metric TSP, STOC 2021",
+    "result": "Gives a randomized $3/2-\\epsilon$ approximation for metric TSP.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2007.01409",
+    "relevance_detail": "best-current-upper-bound"
+   },
+   {
+    "ref": "Karlin, Klein, Oveis Gharan, A (Slightly) Improved Deterministic Approximation Algorithm for Metric TSP, 2022",
+    "result": "Derandomizes the relevant max-entropy objective for the improved guarantee.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2212.06296",
+    "relevance_detail": "algorithmic-progress"
+   },
+   {
+    "ref": "Karpinski, Lampis, Schmied, New Inapproximability Bounds for TSP, 2013",
+    "result": "Improves explicit metric TSP hardness to $123/122$.",
+    "relevance": "hardness",
+    "url": "https://arxiv.org/abs/1303.6437",
+    "relevance_detail": "best-known-hardness"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Search for extremal graph metrics and subtour-LP basic feasible solutions; analyze max-entropy tree sampling beyond the current narrow event decomposition; investigate whether graphic or bounded-degree hard examples lift to arbitrary metrics; compare candidate rounding schemes against known Christofides-tight instances.",
+  "verification_notes": "A claimed algorithmic improvement must run in polynomial time for arbitrary symmetric metrics and compare its tour cost against the optimum, or against a valid lower bound such as the subtour LP. A claimed hardness result must state the assumption and approximation factor precisely. A claimed integrality-gap lower bound should provide the metric, the subtour-LP value, and a rigorous lower bound on every tour. Do not count Euclidean PTAS results, graphic-TSP constants, or asymmetric-TSP bounds as resolving this metric symmetric problem.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "The gap is implicit in the metric TSP literature after the Karlin-Klein-Oveis Gharan breakthrough and the much weaker known hardness threshold.",
+  "url": "https://arxiv.org/abs/2007.01409",
+  "quote": "For some $\\epsilon > 10^{-36}$ we give a randomized $3/2-\\epsilon$ approximation algorithm.",
+  "location": "Abstract and follow-up literature on the metric TSP approximation gap."
+ },
+ "source": {
+  "authors": "Anna R. Karlin, Nathan Klein, Shayan Oveis Gharan",
+  "title": "A (Slightly) Improved Approximation Algorithm for Metric TSP",
+  "year": 2020,
+  "venue": "arXiv / STOC 2021",
+  "url": "https://arxiv.org/abs/2007.01409"
+ },
+ "additional_refs": [
+  {
+   "authors": "Anna R. Karlin, Nathan Klein, Shayan Oveis Gharan",
+   "title": "A (Slightly) Improved Deterministic Approximation Algorithm for Metric TSP",
+   "year": 2022,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2212.06296"
+  },
+  {
+   "authors": "Anna Karlin, Nathan Klein, Shayan Oveis Gharan",
+   "title": "A (Slightly) Improved Bound on the Integrality Gap of the Subtour LP for TSP",
+   "year": 2021,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2105.10043"
+  },
+  {
+   "authors": "Marek Karpinski, Michael Lampis, Richard Schmied",
+   "title": "New Inapproximability Bounds for TSP",
+   "year": 2013,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/1303.6437"
+  }
+ ],
+ "bibtex": "@misc{Karlin2020,\n  author = {Anna R. Karlin and Nathan Klein and Shayan Oveis Gharan},\n  title = {A (Slightly) Improved Approximation Algorithm for Metric TSP},\n  year = {2020},\n  howpublished = {arXiv / STOC 2021},\n  url = {https://arxiv.org/abs/2007.01409},\n  note = {Source of ORdős Problem ORDOS-175}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/metric-tsp-approximation-threshold.html",
+  "api": "https://ordos-problems.github.io/api/problems/metric-tsp-approximation-threshold.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

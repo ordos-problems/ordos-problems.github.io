@@ -1,0 +1,113 @@
+{
+ "id": "max-smti-approximation",
+ "background": "The stable marriage problem of Gale and Shapley (1962) is the founding model of matching under preferences: two sides rank each other, and a matching is stable if no pair would rather be together than with their assigned partners. In real deployments — hospital-resident matching (e.g., the Scottish Foundation Allocation Scheme), school choice, and labor markets — agents routinely submit preference lists that are both incomplete (they rank only acceptable partners) and contain ties (indifference among several partners). This combination, SMTI, changes the problem fundamentally. Under the standard notion of weak stability, stable matchings still always exist and one can be found by breaking ties arbitrarily and running Gale-Shapley, but different weakly stable matchings can have different sizes — up to a factor of two apart. Since leaving participants unmatched is costly in applications (an unmatched resident, an unfilled position), the natural objective is MAX-SMTI: find a maximum-cardinality weakly stable matching. Iwama, Manlove, Miyazaki, and Morita (1999) proved this NP-hard, and it was soon shown APX-hard even under severe restrictions (e.g., ties of length two on one side only). This launched a long approximation race — from the trivial factor 2 through 15/8, 5/3, and 8/5 — culminating in McDermid's 3/2-approximation at ICALP 2009, later simplified and made linear-time by Paluch and by Király, and recently extended by Csáji, Király, and Yokoi to a wide range of generalizations (matroid constraints, free edges, critical agents) still at ratio exactly 3/2. Meanwhile the hardness frontier advanced from 21/19 to Yanagisawa's 33/29 (assuming P ≠ NP) and 4/3 under the Unique Games Conjecture, and — importantly — Dudycz, Lewandowski, and Marcinkowski (IPCO 2019) showed that under the Small Set Expansion Hypothesis or a strong form of UGC, no $(3/2-\\varepsilon)$-approximation exists at all. Determining the true approximation threshold, and in particular whether 3/2 can be beaten under only P ≠ NP or standard UGC, is one of the best-known open problems in the algorithmics of matching under preferences (it is highlighted in Manlove's monograph and recurs in the open-problem lists of the field).",
+ "short_statement": "In stable marriage with ties and incomplete lists (SMTI), weakly stable matchings can differ in size and finding a maximum one (MAX-SMTI) is NP-hard. The best polynomial-time algorithm achieves ratio $3/2$; the best lower bounds are $33/29$ (P $\\ne$ NP), $4/3$ (UGC), and $3/2$ (Small Set Expansion Hypothesis / strong UGC). What is the optimal approximation ratio — in particular, can $3/2$ be beaten under standard assumptions?",
+ "full_statement": "An SMTI instance consists of a bipartite set of men $U$ and women $W$, where each agent ranks a subset of the other side (incomplete lists) in a weak order (ties allowed); a pair $(m,w)$ is acceptable if each appears on the other's list. A matching $M$ (a set of disjoint acceptable pairs) is weakly stable if there is no acceptable pair $(m,w)\\notin M$ such that $m$ is unmatched or strictly prefers $w$ to $M(m)$, AND $w$ is unmatched or strictly prefers $m$ to $M(w)$. Weakly stable matchings always exist but can differ in size by up to a factor of $2$. MAX-SMTI asks for a weakly stable matching of maximum cardinality; it is NP-hard (Iwama, Manlove, Miyazaki, Morita 1999). Let $\\alpha^*$ be the infimum of ratios $\\alpha$ such that a polynomial-time algorithm always outputs a weakly stable matching of size at least $|M_{\\mathrm{OPT}}|/\\alpha$. Known: $\\alpha^*\\le 3/2$ (McDermid 2009; linear-time versions by Paluch and Király); $\\alpha^*\\ge 33/29$ unless P $=$ NP and $\\alpha^*\\ge 4/3$ under the Unique Games Conjecture (Yanagisawa 2007; Halldórsson, Iwama, Miyazaki, Yanagisawa 2007); and $\\alpha^*\\ge 3/2$ assuming the Small Set Expansion Hypothesis or the strong UGC (via Dudycz, Lewandowski, Marcinkowski 2019). Open: determine $\\alpha^*$ — equivalently, either give a polynomial-time $(3/2-\\varepsilon)$-approximation for some $\\varepsilon>0$ (which would refute SSEH and strong UGC), or prove a matching $3/2$ lower bound under P $\\ne$ NP or standard UGC.",
+ "known_results": "Upper bound: the best general polynomial-time approximation ratio is $3/2$, first achieved by McDermid (ICALP 2009), then by simpler linear-time algorithms of Paluch (WAOA 2011 / Algorithms 2014) and Király (MATCH-UP 2011 / Algorithms 2013). Csáji (arXiv:2304.02558; with Király and Yokoi, Mathematics of Operations Research 2025) gives a simple edge-duplication-based $3/2$-approximation covering many generalizations (free edges, critical vertices, matroid constraints, $\\Delta$-stabilities) — still at exactly $3/2$. Lower bounds: NP-hard to approximate within $33/29\\approx 1.1379$ (Yanagisawa 2007; Halldórsson, Iwama, Miyazaki, Yanagisawa, ACM Trans. Algorithms 2007), within $4/3$ under the Unique Games Conjecture, and — crucially — within $3/2-\\varepsilon$ for any $\\varepsilon>0$ assuming the Small Set Expansion Hypothesis or the strong UGC (follows from Dudycz, Lewandowski, Marcinkowski, IPCO 2019, via the connection between MAX-SMTI and minimum maximal matching). So $3/2$ is conditionally optimal, and the surviving open gap is $[4/3,\\,3/2]$ under standard UGC and $[33/29,\\,3/2]$ under P $\\ne$ NP. Restricted variants do better: with ties on one side only, $25/17\\approx 1.4706$ (Iwama, Miyazaki, Yanagisawa, Algorithmica 2014) and subsequently $1+1/e\\approx 1.368$ (Lam and Plaxton, SODA 2019); with all ties of length at most $L$, $(3L-2)/(2L-1)$ (Koenemann, Pashkovich, Tofigzade, SAGT 2020), which is $4/3$ for $L=2$; and $1.25$ for the one-sided ties-at-the-end special case, matching its UGC lower bound. As of July 2026, no verified polynomial-time algorithm with ratio below $3/2$ for general MAX-SMTI exists; despite rumors of such claims, careful search of arXiv found none, consistent with the SSEH-conditional optimality of $3/2$.",
+ "status": "open",
+ "where_posed": {
+  "text": "The approximation question was opened by the NP-hardness proof of Iwama, Manlove, Miyazaki, Morita (ICALP 1999) and became the field's benchmark open problem once McDermid, 'A 3/2-Approximation Algorithm for General Stable Marriage', ICALP 2009, set the current record; the state of the art including the conditional tightness of 3/2 is summarized in Csáji, 'A Simple 1.5-Approximation Algorithm for a Wide Range of Max-SMTI Problems', arXiv:2304.02558 (SAGT 2023; journal version with Király and Yokoi, Math. Oper. Res. 2025).",
+  "url": "https://arxiv.org/abs/2304.02558",
+  "quote": "Since then, various algorithms have been proposed to improve the approximation ratio, e.g. Iwama et al. and Király, and the current best ratio is 3/2 by a polynomial-time algorithm of McDermid, where the same ratio is attained by linear-time algorithms of Pauluch and Király. [...] Yanagisawa and Halldórsson et al. showed that assuming the Unique Games Conjecture, there is no 4/3 − ε-approximation for any ε > 0. By a recent work by Dudycz et al. it follows that assuming the Small Set Expansion Hypothesis or the strong-UGC, there cannot even be a 3/2 − ε-approximation algorithm for Max-SMTI.",
+  "location": "Section 1.1 (Related work)"
+ },
+ "progress": {
+  "state": "partial",
+  "summary": "The general ratio has been stuck at $3/2$ since McDermid (2009), and Dudycz, Lewandowski, Marcinkowski (IPCO 2019) showed $3/2$ is optimal assuming the Small Set Expansion Hypothesis or strong UGC, conditionally explaining the stall. Progress since then has been lateral: Csáji (SAGT 2023; with Király and Yokoi, Math. Oper. Res. 2025) extended the $3/2$-approximation to a broad framework of generalizations via a simple edge-duplication technique, and restricted variants (one-sided ties: $1+1/e$; bounded ties of size $L$: $(3L-2)/(2L-1)$) beat $3/2$. As of July 2026 no verified sub-$3/2$ algorithm for the general problem exists, and the gap $4/3$ vs $3/2$ under standard UGC (and $33/29$ vs $3/2$ under P $\\ne$ NP) remains open.",
+  "links": [
+   {"title": "Tight Approximation Ratio for Minimum Maximal Matching — Dudycz, Lewandowski, Marcinkowski, IPCO 2019 (implies SSEH/strong-UGC hardness of 3/2−ε for MAX-SMTI)", "url": "https://arxiv.org/abs/1811.08506"},
+   {"title": "A Simple 1.5-Approximation Algorithm for a Wide Range of Max-SMTI Problems — Csáji, arXiv 2023/2024 (Math. Oper. Res. 2025 with Király, Yokoi)", "url": "https://arxiv.org/abs/2304.02558"},
+   {"title": "Approximating Stable Matchings with Ties of Bounded Size — Koenemann, Pashkovich, Tofigzade, SAGT 2020", "url": "https://arxiv.org/abs/2005.05228"}
+  ]
+ },
+ "importance": 7,
+ "difficulty": 8,
+ "counterexample_suitability": "low",
+ "counterexample_rationale": "The question asks for an algorithm or a hardness proof, neither of which is a finite counterexample; explicit small instances only serve the secondary role of showing tightness of specific algorithms' analyses (e.g., instances where McDermid-type algorithms output exactly $2/3$ of optimum), which are already known.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "An evolutionary search loop could plausibly discover improved rounding/augmenting-path rules or tie-breaking heuristics whose worst case is then bounded via factor-revealing LPs, and could search for integrality-gap instances of the natural LP relaxations (Rothblum-type stable matching LPs) to map where $3/2$ is tight; however, since $3/2$ is optimal under SSEH/strong-UGC, a genuine general-case improvement is unlikely to be found by search, making restricted variants (one-sided or bounded ties) the realistic target.",
+ "literature": {
+  "synthesis": "Two lines of attack dominate. Algorithmically, all $3/2$-approximations descend from Gale-Shapley augmented with mechanisms to reduce the number of length-3 augmenting paths between the output and an optimal matching: McDermid (ICALP 2009) first achieved $3/2$, Paluch and Király gave linear-time versions, and Csáji, Király, and Yokoi (Math. Oper. Res. 2025; arXiv:2304.02558) distilled the approach into an edge-duplication technique that extends the ratio to matroid constraints, free edges, and critical agents — but every known charging argument saturates at $3/2$ because a stable matching can miss one vertex of each of $\\mathrm{OPT}$'s length-3 alternating paths. On the hardness side, Halldórsson, Iwama, Miyazaki, and Yanagisawa (ACM Trans. Algorithms 2007) and Yanagisawa's 2007 thesis established $33/29$ NP-hardness and $4/3$ UGC-hardness, and Dudycz, Lewandowski, and Marcinkowski (IPCO 2019) leveraged the tight connection to minimum maximal matching to show that no $(3/2-\\varepsilon)$-approximation exists under the Small Set Expansion Hypothesis or strong UGC — strong evidence that $3/2$ is the true threshold. The remaining gap is thus really a question about complexity assumptions: beating $3/2$ would refute SSEH, while confirming $3/2$-hardness under vanilla UGC or P $\\ne$ NP needs new gadget constructions beyond the current $4/3$ and $33/29$ reductions. Restricted variants show the algorithmic frontier is not rigid everywhere: one-sided ties admit $1+1/e$ (Lam-Plaxton, SODA 2019) against a $(1+1/e)$-matching UGC lower bound conjectured tight, and ties of size $\\le L$ admit $(3L-2)/(2L-1)$ (Koenemann-Pashkovich-Tofigzade, SAGT 2020). New ideas are most needed on the unconditional hardness side.",
+  "reviewed": [
+   {"ref": "Eric McDermid, 'A 3/2-Approximation Algorithm for General Stable Marriage', ICALP 2009", "result": "First polynomial-time $3/2$-approximation for MAX-SMTI with ties on both sides; the record ratio ever since.", "relevance": "partial-progress", "url": "https://link.springer.com/chapter/10.1007/978-3-642-02927-1_57"},
+   {"ref": "Zoltán Király, 'Linear Time Local Approximation Algorithm for Maximum Stable Marriage', Algorithms 6(3):471-484, 2013", "result": "Linear-time (and even local/distributed) $3/2$-approximation for MAX-SMTI, simplifying McDermid; with Paluch's parallel work this made the $3/2$ bound practical.", "relevance": "partial-progress", "url": "https://www.mdpi.com/1999-4893/6/3/471"},
+   {"ref": "Magnús M. Halldórsson, Kazuo Iwama, Shuichi Miyazaki, Hiroki Yanagisawa, 'Improved Approximation Results for the Stable Marriage Problem', ACM Trans. Algorithms 3(3), 2007", "result": "Inapproximability of MAX-SMTI: NP-hardness bounds (strengthened to $33/29$ in Yanagisawa's 2007 Kyoto thesis) and $4/3$ hardness under the Unique Games Conjecture.", "relevance": "hardness", "url": "https://dl.acm.org/doi/10.1145/1273340.1273346"},
+   {"ref": "Szymon Dudycz, Mateusz Lewandowski, Jan Marcinkowski, 'Tight Approximation Ratio for Minimum Maximal Matching', IPCO 2019 (arXiv:1811.08506)", "result": "Shows minimum maximal matching is hard to approximate below $2$ under UGC and below $3/2$... with the consequence (explicitly noted) that MAX-SMTI has no $(3/2-\\varepsilon)$-approximation assuming the Small Set Expansion Hypothesis or strong UGC — i.e., $3/2$ is conditionally tight.", "relevance": "hardness", "url": "https://arxiv.org/abs/1811.08506"},
+   {"ref": "Gergely Csáji, 'A Simple 1.5-Approximation Algorithm for a Wide Range of Max-SMTI Problems', SAGT 2023 / arXiv:2304.02558 (journal version with Tamás Király and Yu Yokoi, Mathematics of Operations Research 2025)", "result": "A single simple edge-duplication algorithm achieving $3/2$ for MAX-SMTI and many generalizations (free edges, critical vertices, capacities, matroid constraints, $\\Delta$-stability), answering an open question of Askalidis et al. (2013); confirms $3/2$ remains the general-case record.", "relevance": "partial-progress", "url": "https://arxiv.org/abs/2304.02558"},
+   {"ref": "Kazuo Iwama, Shuichi Miyazaki, Hiroki Yanagisawa, 'A 25/17-Approximation Algorithm for the Stable Marriage Problem with One-Sided Ties', Algorithmica 68:758-775, 2014", "result": "Beats $3/2$ for the one-sided-ties special case with ratio $25/17\\approx 1.4706$ via LP-based analysis; later improved to $1+1/e$ by Lam and Plaxton (SODA 2019), showing sub-$3/2$ ratios are achievable once ties are restricted to one side.", "relevance": "solves-special-case", "url": "https://link.springer.com/article/10.1007/s00453-012-9699-2"}
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "For the algorithmic side (only promising for restricted variants, given SSEH-tightness of the general case): factor-revealing LPs over the structure of alternating paths between the algorithm's output and OPT; LP rounding of Rothblum-type stable-matching polytopes with tie-aware constraints; local-search algorithms whose ratio is certified by charging arguments. For the hardness side: new gadget reductions from vertex cover / minimum maximal matching aiming to lift the unconditional bound above $33/29$ or to derive $3/2-\\varepsilon$ hardness from vanilla UGC rather than SSEH/strong-UGC. Exhaustive small-instance search is useful only to falsify proposed algorithms (find instances where a candidate algorithm's stable output is smaller than $\\mathrm{OPT}/(3/2-\\varepsilon)$).",
+  "verification_notes": "A claimed $(3/2-\\varepsilon)$-approximation must (i) always output a WEAKLY STABLE matching — check the stability definition used, since strong/super stability variants are polynomial and confusing them is a classic failure mode; (ii) prove the cardinality guarantee against the true maximum stable matching via a worst-case argument (numerics/experiments do not suffice); and (iii) run in polynomial time. Referees should be alert that such a result refutes the Small Set Expansion Hypothesis and strong UGC — an extraordinary consequence demanding extraordinary scrutiny; any paper claiming a general ratio below 3/2 (e.g., rumored '1.4986'-type claims) should be checked against the Dudycz-Lewandowski-Marcinkowski reduction and tested on minimum-maximal-matching-derived instances. A claimed hardness improvement must specify the exact complexity assumption and the reduction's completeness/soundness parameters.",
+  "machine_checkable": false
+ },
+ "additional_refs": [
+  {
+   "authors": "Kazuo Iwama, David F. Manlove, Shuichi Miyazaki, Yasufumi Morita",
+   "title": "Stable Marriage with Incomplete Lists and Ties",
+   "year": 1999,
+   "venue": "ICALP",
+   "url": "https://link.springer.com/chapter/10.1007/3-540-48523-6_41"
+  },
+  {
+   "authors": "Magnús M. Halldórsson, Kazuo Iwama, Shuichi Miyazaki, Hiroki Yanagisawa",
+   "title": "Improved Approximation Results for the Stable Marriage Problem",
+   "year": 2007,
+   "venue": "ACM Trans. Algorithms",
+   "url": "https://dl.acm.org/doi/10.1145/1273340.1273346"
+  },
+  {
+   "authors": "Eric McDermid",
+   "title": "A 3/2-Approximation Algorithm for General Stable Marriage",
+   "year": 2009,
+   "venue": "ICALP",
+   "url": "https://link.springer.com/chapter/10.1007/978-3-642-02927-1_57"
+  },
+  {
+   "authors": "Zoltán Király",
+   "title": "Linear Time Local Approximation Algorithm for Maximum Stable Marriage",
+   "year": 2013,
+   "venue": "Algorithms 6(3):471-484",
+   "url": "https://www.mdpi.com/1999-4893/6/3/471"
+  },
+  {
+   "authors": "Szymon Dudycz, Mateusz Lewandowski, Jan Marcinkowski",
+   "title": "Tight Approximation Ratio for Minimum Maximal Matching",
+   "year": 2019,
+   "venue": "IPCO (arXiv:1811.08506)",
+   "url": "https://arxiv.org/abs/1811.08506"
+  },
+  {
+   "authors": "Gergely Csáji",
+   "title": "A Simple 1.5-Approximation Algorithm for a Wide Range of Max-SMTI Problems",
+   "year": 2023,
+   "venue": "SAGT 2023 / arXiv:2304.02558 (Math. Oper. Res. 2025 with T. Király and Y. Yokoi)",
+   "url": "https://arxiv.org/abs/2304.02558"
+  },
+  {
+   "authors": "Kazuo Iwama, Shuichi Miyazaki, Hiroki Yanagisawa",
+   "title": "A 25/17-Approximation Algorithm for the Stable Marriage Problem with One-Sided Ties",
+   "year": 2014,
+   "venue": "Algorithmica 68:758-775",
+   "url": "https://link.springer.com/article/10.1007/s00453-012-9699-2"
+  },
+  {
+   "authors": "Jochen Koenemann, Kanstantsin Pashkovich, Natig Tofigzade",
+   "title": "Approximating Stable Matchings with Ties of Bounded Size",
+   "year": 2020,
+   "venue": "SAGT (arXiv:2005.05228)",
+   "url": "https://arxiv.org/abs/2005.05228"
+  }
+ ],
+ "tags": [
+  "stable matching",
+  "ties",
+  "incomplete lists",
+  "approximation",
+  "inapproximability",
+  "unique games conjecture",
+  "small set expansion"
+ ],
+ "notes_for_maintainer": "Re-verified July 2026: MAX-SMTI general-case ratio is STILL 3/2 — I searched carefully (arXiv + web, 7 queries) for the rumored recent below-3/2 results ('1.4986', '(3/2 − ε)-approximation', attributed variously to Faenza et al., Chen et al., or Ka Yaw Teo) and found NO such verifiable paper; I recommend treating any such citation as unverified/nonexistent unless an arXiv page can be produced. Importantly, the batch record UNDERSOLD the hardness side: Dudycz-Lewandowski-Marcinkowski (IPCO 2019, arXiv:1811.08506, verified) implies no (3/2−ε)-approximation under the Small Set Expansion Hypothesis or strong UGC, so 3/2 is CONDITIONALLY TIGHT — this both explains the 17-year stall and makes any sub-3/2 claim tantamount to refuting SSEH. I added this to known_results/full_statement (the batch's '4/3 ≤ α* ≤ 3/2 under UGC' framing is still correct for vanilla UGC). The 33/29 NP-hardness (Yanagisawa 2007 thesis) and 4/3 UGC-hardness were reconfirmed via the Csáji arXiv HTML (verbatim quote captured). Csáji's SAGT 2023 paper now has a Math. Oper. Res. 2025 journal version with Király and Yokoi per web search; I cited both. The Lam-Plaxton (1+1/e) one-sided-ties result is cited from search-result snippets naming the result but I did not fetch its arXiv page directly; confidence high but worth a spot check."
+}

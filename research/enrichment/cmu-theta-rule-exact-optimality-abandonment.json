@@ -1,0 +1,43 @@
+{
+  "id": "cmu-theta-rule-exact-optimality-abandonment",
+  "background": "The classical $c\\mu$ rule is one of the cleanest exact scheduling results in queueing: in a multiclass single-server queue with linear holding costs and exponential service, serve the class with largest $c_i\\mu_i$. Abandonment changes the economics. A class with high abandonment rate may leave soon if ignored, so serving it is less valuable than its holding cost alone suggests. The $c\\mu/\\theta$ rule emerged as a heavy-traffic prescription for many-server queues with impatient customers and has strong asymptotic justification. But exact optimality outside the heavy-traffic limit is much less settled. Down, Koole, and Lewis show that simple priority structure can fail in general with abandonment, while special order conditions recover static priorities. The open problem is a precise structural characterization of the exact Markov decision problem: when, if ever, is $c\\mu/\\theta$ or another static index rule exactly optimal?",
+  "open_problem": "Characterize the exact optimal scheduling policy for multiclass Markovian queues with abandonment, and determine the parameter conditions under which a static priority or index rule such as $c\\mu/\\theta$ is exactly optimal.",
+  "known_results": "Without abandonment, the $c\\mu$ rule is exactly optimal in the classical single-server setting. Atar, Giat, and Shimkin prove asymptotic optimality of the $c\\mu/\\theta$ rule for many-server queues with abandonment in heavy traffic, including related ergodic-cost results. Down, Koole, and Lewis analyze the exact single-server abandonment problem and show that the ordinary priority-rule intuition does not hold without additional ordering assumptions; under special parameter orderings, static priority can be recovered. Larrañaga, Ayesta, and Verloop develop Whittle/index-style policies for abandonment queues with convex holding costs and prove asymptotic optimality in suitable regimes. A full exact optimal-policy characterization remains open.",
+  "status": "open",
+  "where_posed": {
+    "text": "The $c\\mu/\\theta$ rule is introduced and justified asymptotically in Atar, Giat, and Shimkin, while the exact-control gap is clarified by Down, Koole, and Lewis.",
+    "url": "https://pubsonline.informs.org/doi/10.1287/opre.1100.0826",
+    "quote": "",
+    "location": "Atar-Giat-Shimkin 2010 and Down-Koole-Lewis 2011."
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The heavy-traffic theory is strong, and exact static-priority optimality is known under special orderings. The general finite-system discounted or average-cost policy remains uncharacterized.",
+    "links": [
+      {"title": "Atar, Giat, Shimkin, The c mu/theta Rule for Many-Server Queues with Abandonment", "url": "https://pubsonline.informs.org/doi/10.1287/opre.1100.0826"},
+      {"title": "Down, Koole, Lewis, Dynamic control of a single-server system with abandonments", "url": "https://link.springer.com/article/10.1007/s11134-010-9201-2"},
+      {"title": "Larranaga, Ayesta, Verloop, Asymptotically optimal index policies for an abandonment queue", "url": "https://link.springer.com/article/10.1007/s11134-015-9445-y"}
+    ]
+  },
+  "importance": 7,
+  "difficulty": 8,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Small two- and three-class M/M/1+M instances can refute proposed static-priority or index rules by solving truncated Bellman equations. Positive general structure is harder.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Automated search can find parameter sets where the optimal action violates a proposed index ordering, or discover candidate switching curves for two-class systems.",
+  "literature": {
+    "synthesis": "The no-abandonment $c\\mu$ result provides a rare exact index theorem. Abandonment introduces an additional time scale, and heavy-traffic analysis suggests the $c\\mu/\\theta$ index. Atar, Giat, and Shimkin show that this is the right asymptotic rule in many-server abandonment queues. Down, Koole, and Lewis then demonstrate that exact finite-system control is subtler: static priority is not generally valid, but can be proved under special parameter orderings. The Whittle-index literature gives powerful asymptotic and heuristic tools for more general convex costs. The remaining open problem is to bridge these views: either find an exact index/threshold characterization for the original Markov control problem, or prove that no simple static index form can cover the general case.",
+    "reviewed": [
+      {"ref": "Atar, Giat, Shimkin, 'The c mu/theta Rule for Many-Server Queues with Abandonment', Operations Research 2010", "result": "Proves heavy-traffic asymptotic optimality of $c\\mu/\\theta$.", "relevance": "partial-progress", "url": "https://pubsonline.informs.org/doi/10.1287/opre.1100.0826"},
+      {"ref": "Down, Koole, Lewis, 'Dynamic control of a single-server system with abandonments', Queueing Systems 2011", "result": "Analyzes exact single-server abandonment control and identifies special conditions for static priority optimality.", "relevance": "partial-progress", "url": "https://link.springer.com/article/10.1007/s11134-010-9201-2"},
+      {"ref": "Larranaga, Ayesta, Verloop, 'Asymptotically optimal index policies for an abandonment queue with convex holding cost', Queueing Systems 2015", "result": "Develops index policies and asymptotic optimality for abandonment queues with convex costs.", "relevance": "related-tool", "url": "https://link.springer.com/article/10.1007/s11134-015-9445-y"},
+      {"ref": "Buyukkoc, Varaiya, Walrand, 'The c mu rule revisited', Advances in Applied Probability 1985", "result": "Classical exact optimality baseline for the no-abandonment $c\\mu$ rule.", "relevance": "solves-special-case", "url": "https://www.cambridge.org/core/journals/advances-in-applied-probability/article/c-rule-revisited/4208A5791793438658BF774D4D9DF013"}
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "For two-class systems, analyze Bellman differences and attempt to prove monotone switching curves. For counterexamples, solve truncated discounted MDPs over grids of $(c_i,\\mu_i,\\theta_i,\\lambda_i)$ and search for violations of any proposed static priority order.",
+    "verification_notes": "A positive result must specify discounted versus average cost, preemptive versus nonpreemptive service, and finite versus many-server setting. A counterexample should include parameters, computed value-function inequalities, and a proof that truncation does not change the relevant optimal action.",
+    "machine_checkable": true
+  },
+  "notes_for_maintainer": "This entry is now about exact finite-system structure, not the already-established heavy-traffic $c\\mu/\\theta$ theorem."
+}

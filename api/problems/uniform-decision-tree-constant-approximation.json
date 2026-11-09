@@ -1,0 +1,146 @@
+{
+ "number": 145,
+ "ref": "ORDOS-145",
+ "id": "uniform-decision-tree-constant-approximation",
+ "title": "Polynomial-time constant approximation for Uniform Decision Tree",
+ "collection": "Operations Research",
+ "area": "Stochastic Optimization",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "stochastic optimization",
+  "decision trees",
+  "active learning",
+  "approximation algorithms",
+  "min-sum set cover",
+  "pandora's box"
+ ],
+ "short_statement": "Uniform-prior adaptive identification has strong greedy and subexponential-time guarantees, but the reported 2026 polynomial-time constant approximation was withdrawn.",
+ "open_problem": "Find a polynomial-time constant-factor approximation for Uniform Decision Tree, or establish an appropriate stronger hardness result. The withdrawn 2026 constant-factor claim and fixed-order Pandora guarantees do not settle this question.",
+ "background": "Adaptive identification is useful in diagnosis, active learning, and sequential testing. Uniform priors change the approximation landscape: hardness for an arbitrary prior cannot simply be transferred to equally likely hypotheses. A tree can be optimized by exhaustive recursion on subsets, but this is exponential. The central issue is whether a polynomial-time method can exploit the uniform prior as effectively as the known subexponential algorithms.",
+ "full_statement": "Let $H$ be a set of $n$ hypotheses, with a uniform prior, and let $T$ be an explicitly given family of tests. Each unit-cost test is a map $\\tau:H\\to[K]$ specifying the observed outcome for every hypothesis. Assume the tests separate every pair of hypotheses. A decision tree chooses a test at each internal node, branches on its outcome, and identifies the hidden hypothesis at a leaf. Its cost is $C(D)=n^{-1}\\sum_{h\\in H}\\operatorname{depth}_D(h)$, and $\\mathrm{OPT}$ is the minimum cost over valid trees.\n\nDoes a polynomial-time algorithm always construct a tree with $C(D)\\le c\\,\\mathrm{OPT}$ for a universal constant $c$? State whether the result covers arbitrary outcome arity $K$ or only fixed $K$; even binary tests form a meaningful restricted target. Time must be polynomial in the explicit test table, not subexponential in $n$. Nonuniform hypothesis priors and nonuniform test costs are different models. The constant-factor claim in arXiv:2604.12036v1 was withdrawn in v2; the current v4 paper does not resolve this target.",
+ "known_results": "Li, Liang, and Mussmann (arXiv:1906.11385v2), Theorems 3.1-3.2, bound greedy's ratio by $O(\\log n/\\log C_{\\mathrm{OPT}})$ and obtain constant approximations in subexponential time. For fixed outcome arity, this gives a polynomial-time $O(\\log n/\\log\\log n)$ approximation. Their cited hardness threshold is $4-\\varepsilon$; their ETH implication limits superconstant NP-hardness results.\n\nSzyfelbein's arXiv:2604.12036v1 claimed a constant ratio, but v2 (April 28, 2026) withdraws it because of a fundamental proof error and a counterexample to the algorithm. Version 4, 'Simpler Logarithmic Approximation Algorithms for the Optimal Decision Tree and Adaptive Set Cover' (October 19, 2026), instead gives logarithmic simultaneous average- and worst-case guarantees. The earlier claim is not current evidence of resolution.\n\nChawla, Gergatsouli, McMahan, and Tzamos connect UDT to fully adaptive correlated Pandora policies. Bansal, Huang, and Zhu's 2025 ratio-4 result instead benchmarks partially adaptive policies: a fixed box order with adaptive stopping (Section 2.2). It cannot be transferred as a resolution of fully adaptive UDT. The polynomial-time constant-factor question therefore remains open in the reviewed sources.",
+ "progress": {
+  "state": "partial",
+  "summary": "Corrected the previous solution-claimed label: the cited constant-factor claim was withdrawn. Current guarantees do not close the polynomial-time constant-factor gap.",
+  "links": [
+   {
+    "title": "Li, Liang, Mussmann, A tight analysis of greedy yields subexponential time approximation for UDT",
+    "url": "https://arxiv.org/abs/1906.11385"
+   },
+   {
+    "title": "Chawla et al., Approximating Pandora's Box with Correlations",
+    "url": "https://arxiv.org/abs/2108.12976"
+   },
+   {
+    "title": "Szyfelbein: withdrawal notice, v2",
+    "url": "https://arxiv.org/abs/2604.12036v2"
+   },
+   {
+    "title": "Szyfelbein: current logarithmic results, v4",
+    "url": "https://arxiv.org/abs/2604.12036v4"
+   }
+  ]
+ },
+ "importance": 7,
+ "difficulty": 8,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "Finite instances can refute candidate algorithms or greedy-style conjectures, and their optimal decision-tree cost can be computed exactly for small $n$. A full negative result still needs an infinite hardness construction.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Search can generate hard UDT instances, test adaptive policies, and explore structural conjectures connecting UDT to min-sum set cover or correlated Pandora's Box.",
+ "literature": {
+  "synthesis": "Version history reverses the earlier resolution assessment. The surviving results are partial, and the Pandora comparison requires the same adaptivity benchmark. See What Is Known for the corrected scope.",
+  "reviewed": [
+   {
+    "ref": "Ray Li, Percy Liang, Stephen Mussmann, 'A Tight Analysis of Greedy Yields Subexponential Time Approximation for Uniform Decision Tree', arXiv 2019",
+    "result": "Improves greedy analysis for UDT and gives constant-factor subexponential-time approximations, while historically highlighting the absence of polynomial-time constant approximations.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1906.11385"
+   },
+   {
+    "ref": "Shuchi Chawla, Evangelia Gergatsouli, Jeremy McMahan, Christos Tzamos, 'Approximating Pandora's Box with Correlations', arXiv 2021/2023",
+    "result": "Shows an approximation-preserving equivalence between correlated Pandora's Box, Uniform Decision Tree, and a Min-Sum Set Cover variant.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/2108.12976"
+   },
+   {
+    "ref": "Nikhil Bansal, Zhiyi Huang, Zixuan Zhu, 'Optimal 4-Approximation for the Correlated Pandora's Problem', FOCS 2025 / arXiv 2025",
+    "result": "Section 2.2 specifies the partially adaptive benchmark, not the fully adaptive policy class used in the UDT connection.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2509.17029"
+   },
+   {
+    "ref": "Michal Szyfelbein, arXiv:2604.12036v2 withdrawal notice; v4, Simpler Logarithmic Approximation Algorithms for the Optimal Decision Tree and Adaptive Set Cover (2026)",
+    "result": "The constant-factor claim was withdrawn; the current paper proves logarithmic guarantees. See What Is Known.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2604.12036v4"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Study whether the uniform prior permits stronger decompositions or rounding than greedy. Compare candidate policies to exact small-instance optima before attempting a universal approximation proof.",
+  "verification_notes": "Specify outcome arity, explicit test representation, uniform priors, unit test costs, and polynomial running time. Do not import weighted-prior hardness or fixed-order Pandora results. Check the withdrawal notice before relying on arXiv:2604.12036v1. Testing instances cannot certify a universal approximation theorem.",
+  "machine_checkable": false
+ },
+ "where_posed": {
+  "text": "Li, Liang, and Mussmann explicitly identify approximating Uniform Decision Tree as a natural problem with subexponential constant approximations but no known polynomial-time constant approximation; Chawla et al. call the polynomial-time constant-factor question long-standing.",
+  "url": "https://arxiv.org/abs/1906.11385",
+  "quote": "",
+  "location": "Abstract and introduction; see also Chawla et al. 2021/2023 abstract."
+ },
+ "source": {
+  "authors": "Ray Li, Percy Liang, Stephen Mussmann",
+  "title": "A Tight Analysis of Greedy Yields Subexponential Time Approximation for Uniform Decision Tree",
+  "year": 2019,
+  "venue": "arXiv:1906.11385",
+  "url": "https://arxiv.org/abs/1906.11385"
+ },
+ "additional_refs": [
+  {
+   "authors": "Shuchi Chawla, Evangelia Gergatsouli, Jeremy McMahan, Christos Tzamos",
+   "title": "Approximating Pandora's Box with Correlations",
+   "year": 2023,
+   "venue": "arXiv:2108.12976",
+   "url": "https://arxiv.org/abs/2108.12976"
+  },
+  {
+   "authors": "Nikhil Bansal, Zhiyi Huang, Zixuan Zhu",
+   "title": "Optimal 4-Approximation for the Correlated Pandora's Problem",
+   "year": 2025,
+   "venue": "FOCS / arXiv:2509.17029",
+   "url": "https://arxiv.org/abs/2509.17029"
+  },
+  {
+   "authors": "Sanjeev R. Kosaraju, Teresa M. Przytycka, Ryan Borgstrom",
+   "title": "On an optimal split tree problem",
+   "year": 1999,
+   "venue": "Workshop on Algorithms and Data Structures",
+   "url": "https://doi.org/10.1007/3-540-48447-7_16"
+  },
+  {
+   "authors": "Michal Szyfelbein",
+   "title": "Constant-Factor Approximation for the Uniform Decision Tree",
+   "year": 2026,
+   "venue": "arXiv:2604.12036v1; claim withdrawn in v2",
+   "url": "https://arxiv.org/abs/2604.12036v2"
+  },
+  {
+   "authors": "Michal Szyfelbein",
+   "title": "Simpler Logarithmic Approximation Algorithms for the Optimal Decision Tree and Adaptive Set Cover",
+   "year": 2026,
+   "venue": "arXiv:2604.12036v4",
+   "url": "https://arxiv.org/abs/2604.12036v4"
+  }
+ ],
+ "bibtex": "@misc{Li2019,\n  author = {Ray Li and Percy Liang and Stephen Mussmann},\n  title = {A Tight Analysis of Greedy Yields Subexponential Time Approximation for Uniform Decision Tree},\n  year = {2019},\n  howpublished = {arXiv:1906.11385},\n  url = {https://arxiv.org/abs/1906.11385},\n  note = {Source of ORdős Problem ORDOS-145}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/uniform-decision-tree-constant-approximation.html",
+  "api": "https://ordos-problems.github.io/api/problems/uniform-decision-tree-constant-approximation.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

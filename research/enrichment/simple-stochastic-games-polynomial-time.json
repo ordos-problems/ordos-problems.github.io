@@ -1,0 +1,112 @@
+{
+  "id": "simple-stochastic-games-polynomial-time",
+  "title": "Polynomial-time algorithm for simple stochastic games",
+  "collection": "Computer Science",
+  "area": "Stochastic Games and Complexity",
+  "tags": [
+    "simple stochastic games",
+    "stochastic games",
+    "NP intersect coNP",
+    "game algorithms",
+    "dynamic programming"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "Decide whether simple stochastic games can be solved in polynomial time.",
+  "full_statement": "A simple stochastic game is a finite directed graph whose vertices are partitioned into max vertices, min vertices, random vertices, and terminal vertices. A token starts at a specified vertex. At a max vertex, player Max chooses the outgoing edge; at a min vertex, player Min chooses; at a random vertex, the next edge is chosen according to a specified probability distribution, usually uniform over two outgoing edges in the canonical model. Terminal vertices have fixed payoffs, for example $1$ if Max wins and $0$ otherwise. The value of a vertex is the supremum, over Max strategies, of the infimum, over Min strategies, of the probability of reaching the winning terminal. Positional optimal strategies exist. The computational problem is: given the game and a rational threshold $q$, decide whether the value of the start vertex is at least $q$, or compute all vertex values and optimal strategies. The open problem is to give an algorithm whose running time is polynomial in the number of vertices and input bit length, or prove an appropriate lower bound explaining why such an algorithm is unlikely. The problem is distinct from mean-payoff games, parity games, and discounted MDPs, although it is polynomially related to several of them.",
+  "open_problem": "Is there a polynomial-time algorithm for solving simple stochastic games?",
+  "background": "Simple stochastic games are one of the cleanest models of adversarial sequential decision making with randomness. They are turn-based, zero-sum, finite, and have a reachability objective. This puts them close to stochastic dynamic programming and robust control, but the two-player adversarial structure makes the complexity unresolved. Condon introduced the model as a simple form of stochastic game with striking complexity status: it is not known to be polynomial-time solvable, yet it lies in low-looking classes such as NP intersect coNP for the decision version. The problem has become a benchmark for the boundary between dynamic programming, strategy improvement, linear/quadratic programming, and total-search complexity.",
+  "known_results": "Condon showed that simple stochastic games are in NP intersect coNP and gave foundational reductions and algorithms, but no polynomial-time algorithm. Positional optimal strategies exist, so certificates of value comparisons can be compact in principle. Ludwig gave a subexponential randomized algorithm by adapting strategy-improvement ideas. Gimbert and Horn developed algorithms that are polynomial when the number of random vertices is fixed, using permutation strategies over random vertices. Several strategy-iteration, value-iteration, quadratic-programming, and reduction-based methods perform well in practice, and benchmark work continues to test them. Recent reductions connect simple stochastic games, stochastic mean-payoff games, mean-payoff games, and semidefinite feasibility frameworks, but these do not currently yield a polynomial-time algorithm for the original problem. The exact worst-case complexity remains open.",
+  "where_posed": {
+    "text": "Condon's original work introduced simple stochastic games and left polynomial-time solvability open; later benchmark papers restate SSGs as the simplest stochastic-game class without a known polynomial-time algorithm.",
+    "url": "https://arxiv.org/abs/2402.02571",
+    "quote": "no known polynomial-time algorithm",
+    "location": "Abstract"
+  },
+  "source": {
+    "authors": "Anne Condon",
+    "title": "The complexity of stochastic games",
+    "year": 1992,
+    "venue": "Information and Computation",
+    "url": "https://doi.org/10.1016/0890-5401(92)90048-K"
+  },
+  "additional_refs": [
+    {
+      "authors": "Walter Ludwig",
+      "title": "A subexponential randomized algorithm for the simple stochastic game problem",
+      "year": 1995,
+      "venue": "Information and Computation",
+      "url": "https://doi.org/10.1006/inco.1995.1097"
+    },
+    {
+      "authors": "Hugo Gimbert, Florian Horn",
+      "title": "Solving Simple Stochastic Games with Few Random Vertices",
+      "year": 2008,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/0712.1765"
+    },
+    {
+      "authors": "Jan Kretinsky, Emanuel Ramneantu, Alexander Slivinskiy, Maximilian Weininger",
+      "title": "Comparison of Algorithms for Simple Stochastic Games",
+      "year": 2020,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/2008.09465"
+    },
+    {
+      "authors": "Avi Rudich, Isaac Rudich, Rachel Rue",
+      "title": "Simple Stochastic Stopping Games: A Generator and Benchmark Library",
+      "year": 2024,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/2402.02571"
+    }
+  ],
+  "enabled": true,
+  "progress": {
+    "state": "partial",
+    "summary": "Subexponential and parameterized algorithms are known, and practical solvers exist, but no polynomial-time worst-case algorithm or hardness classification is known.",
+    "links": [
+      {
+        "title": "Few-random-vertices algorithms",
+        "url": "https://arxiv.org/abs/0712.1765"
+      },
+      {
+        "title": "Benchmark library",
+        "url": "https://arxiv.org/abs/2402.02571"
+      }
+    ]
+  },
+  "importance": 9,
+  "difficulty": 9,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Algorithmic conjectures can be stressed by explicit small games with long strategy-improvement paths or bad value-iteration behavior. Such instances are finite and exactly checkable.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Search can generate hard benchmark games, long pivot paths, or instances separating algorithmic heuristics. Verifying a full lower bound is theoretical, but empirical discovery can guide reductions and potential functions.",
+  "literature": {
+    "synthesis": "SSGs occupy a role similar to parity and mean-payoff games: the model is finite and positional, the decision problem has compact certificates, and many natural algorithms work well on most instances but lack polynomial worst-case guarantees. Condon's formulation made the problem canonical. Ludwig's subexponential algorithm and Gimbert-Horn's fixed-random-vertex algorithms show that the difficulty is structured rather than generic PSPACE-style hardness. Benchmark and comparison papers emphasize that practical progress has outpaced complexity theory. A resolution would either produce a new form of strategy-improvement/linear-complementarity analysis or show that the NP intersect coNP status hides a deeper barrier.",
+    "reviewed": [
+      {
+        "ref": "Condon, 'The complexity of stochastic games', Information and Computation 1992",
+        "result": "Introduces simple stochastic games and establishes foundational complexity results.",
+        "relevance": "poses-problem",
+        "url": "https://doi.org/10.1016/0890-5401(92)90048-K"
+      },
+      {
+        "ref": "Ludwig, 'A subexponential randomized algorithm...', Information and Computation 1995",
+        "result": "Gives a subexponential randomized algorithm, leaving polynomial time open.",
+        "relevance": "partial-progress",
+        "url": "https://doi.org/10.1006/inco.1995.1097"
+      },
+      {
+        "ref": "Gimbert and Horn, 'Solving Simple Stochastic Games with Few Random Vertices', arXiv 2007",
+        "result": "Shows polynomial-time solvability for fixed number of random vertices.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/0712.1765"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Try to identify a potential function or monotone progress measure for strategy improvement, sharpen reductions to related game classes, or search for hard instances for known algorithms. Parameterized work around random vertices, strongly connected components, or stopping transformations may reveal the obstruction. Computational agents can generate benchmark games and exact values via linear programming once strategies are fixed.",
+    "verification_notes": "A polynomial-time algorithm must handle arbitrary rational transition probabilities and thresholds, or clearly state any restriction such as stopping games or binary random vertices. A proof based on strategy iteration must bound the number of pivots for all tie-breaking choices it uses. A lower-bound claim should be careful: NP-hardness would imply consequences for NP intersect coNP, so conditional complexity assumptions must be stated precisely. For submitted hard instances, provide the game graph, vertex partition, probabilities, terminal rewards, and the exact algorithmic behavior being claimed.",
+    "machine_checkable": true
+  }
+}

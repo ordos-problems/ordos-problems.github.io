@@ -1,0 +1,94 @@
+{
+  "id": "random-growing-balls-cover-time",
+  "background": "Random coverage connects geometric probability, coupon collection, and stochastic geometry. Aldous's growing-ball model uses Poisson arrivals and constant radial growth on a compact metric space. The deterministic integer-time arrivals and general growth function in this record define a broader, different model; the cited concentration theorem does not automatically transfer. Sharp laws now exist for important Poisson Euclidean models, so the research target must distinguish arrival schedules, growth rules, and geometric classes.",
+  "short_statement": "Develop sharp cover-time asymptotics for sequentially arriving randomly centered growing balls on compact metric spaces.",
+  "full_statement": "Let $(S,d)$ be a compact metric space with Borel probability measure $\\mu$. At integer times $i=1,2,\\ldots$, centers $X_i$ are sampled iid from $\\mu$. A ball born at time $i$ has radius $r(t-i)$ at time $t\\ge i$, where $r:[0,\\infty)\\to[0,\\infty)$ is deterministic, nondecreasing, and $r(0)=0$. The cover time is $$T=\\inf\\left\\{t:S\\subseteq \\bigcup_{1\\le i\\le t} B(X_i,r(t-i))\\right\\}.$$ Aldous's weak-concentration theorem instead concerns Poisson birth times and linear growth; it is not a theorem for this entire deterministic-birth, arbitrary-growth model. Asymptotic questions must specify a sequence of spaces, arrival scalings, or growth scalings, and conditions ensuring finite cover times. The open problem is to determine sharp first-order constants, second-order corrections, and limiting distributions for $T$ in natural families of spaces: intervals, circles, flat tori, compact manifolds, fractals, finite metric spaces approaching a continuum, and irregular measures with nonuniform local dimension. A satisfactory answer should identify which geometric quantities, such as metric entropy, small-ball probabilities, boundary effects, and bottleneck sets, determine the cover-time law.",
+  "open_problem": "Determine sharp cover-time laws for specified asymptotic families in the deterministic-birth model above. Separate this target from established Poisson, linear-growth results, and specify assumptions ensuring finite cover times.",
+  "known_results": "Aldous (2022), Section 3, equation (3.1) and Proposition 3.1, treats Poisson births of rate $\\lambda$, iid centers, and radius $v(t-\\tau_i)$, proving $\\operatorname{Var}(C/\\mathbb EC)\\le c^*/\\mathbb EC$, where $c^*=\\sup_s\\mathbb EC(s)$. This is not a result for arbitrary $r$ or deterministic birth times. Penrose and Higgs (2026), Theorems 2.2-2.3, give sharp centering and limiting laws for Poisson seeds restricted to $A\\times[0,\\infty)$ with linear unit growth: planar polygons and compact smoothly bounded domains in dimensions $d\\ge2$. In dimension two the limit has both area and boundary contributions, not a single Gumbel term. Transferring such laws to this record's schedule requires a separate argument.",
+  "status": "open",
+  "where_posed": {
+    "text": "Related Poisson, linear-growth questions occur in Aldous; the deterministic-birth, arbitrary-growth formulation here is an editorial extension, not his exact model.",
+    "url": "https://arxiv.org/abs/2101.12671",
+    "quote": "",
+    "location": "Section 3 (model and Proposition 3.1); Section 5 (geometric questions)"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "Sharp laws are known for related Poisson birth-growth models. No resolution of the deterministic-birth, general-growth target is inferred.",
+    "links": [
+      {
+        "title": "Covering a compact space by fixed-radius or growing random balls",
+        "url": "https://arxiv.org/abs/2101.12671"
+      },
+      {
+        "title": "Random coverage and Dvoretzky covering background",
+        "url": "https://doi.org/10.1214/aop/1176995598"
+      },
+      {
+        "title": "Coupon collector and cover-time analogies",
+        "url": "https://doi.org/10.1214/aop/1176992436"
+      },
+      {
+        "title": "Penrose and Higgs (2026): Poisson Johnson-Mehl cover times",
+        "url": "https://doi.org/10.1007/s10687-026-00529-8"
+      }
+    ]
+  },
+  "importance": 7,
+  "difficulty": 8,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Irregular compact spaces can refute overly simple entropy-based formulas. Finite metric examples can be checked exactly or by simulation.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Search over finite metrics and growth rules can reveal candidate formulas and pathologies. Simulations can guide conjectures about constants and limiting distributions.",
+  "literature": {
+    "synthesis": "Aldous's concentration result and the sharp Penrose-Higgs laws concern Poisson arrivals with linear growth. They provide comparison targets and techniques, but do not establish a theorem for the deterministic schedule and arbitrary growth rule in the formal statement. Do not describe all Euclidean sharp asymptotics as missing.",
+    "reviewed": [
+      {
+        "ref": "David J. Aldous, 'Covering a compact space by fixed-radius or growing random balls', ALEA 19, 755-767 (2022)",
+        "result": "Section 3, Proposition 3.1: weak concentration for Poisson births and linear radial growth.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/2101.12671"
+      },
+      {
+        "ref": "Dvoretzky covering problem literature",
+        "result": "Develops sharp random covering criteria and constants in classical one-dimensional settings, showing the kind of precision missing in the general growing-ball model.",
+        "relevance": "related-tool",
+        "url": "https://doi.org/10.1214/aop/1176995598"
+      },
+      {
+        "ref": "Aldous, 'Threshold limits for cover times', Journal of Theoretical Probability 1991",
+        "result": "Connects cover-time behavior to threshold phenomena and coupon-collector analogies in finite stochastic systems.",
+        "relevance": "related-tool",
+        "url": "https://doi.org/10.1007/BF01046996"
+      },
+      {
+        "ref": "Penrose and Higgs, 'Random coverage from within with variable radii, and Johnson-Mehl cover times', Extremes (2026)",
+        "result": "Theorems 2.2-2.3 establish sharp limiting laws for the restricted Poisson Johnson-Mehl model on polygonal or smoothly bounded Euclidean domains.",
+        "relevance": "related-tool",
+        "url": "https://doi.org/10.1007/s10687-026-00529-8"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Start with intervals, circles, flat tori, and finite metric spaces. Compare uncovered-radius extremes to metric entropy integrals, and search for boundary-driven second-order terms.",
+    "verification_notes": "A claimed asymptotic theorem must specify the class of spaces, the regularity assumptions on $\\mu$, and the admissible growth functions $r$. The verifier should check that the theorem gives constants or limit laws, not merely a weak-concentration statement in a different birth-growth model. For counterexamples to proposed entropy formulas, the construction should include a sequence of compact metric probability spaces and a proof that the predicted scale differs from the true cover-time scale. Check any de-Poissonization or change-of-growth argument explicitly; specify the asymptotic parameter and finite-coverage conditions.",
+    "machine_checkable": true
+  },
+  "tags": [
+    "random coverage",
+    "cover times",
+    "metric spaces",
+    "stochastic geometry",
+    "applied probability"
+  ],
+  "additional_refs": [
+    {
+      "authors": "Mathew D. Penrose, Frankie Higgs",
+      "title": "Random coverage from within with variable radii, and Johnson-Mehl cover times",
+      "year": 2026,
+      "venue": "Extremes 29, 445-494",
+      "url": "https://doi.org/10.1007/s10687-026-00529-8"
+    }
+  ],
+  "notes_for_maintainer": "Audit 2026-11-09: read Aldous Section 3/Proposition 3.1 and Penrose-Higgs model, Theorems 2.2-2.3 and their reduction to random-radius coverage. Retained the deterministic-birth target rather than silently replacing it with the Poisson model."
+}

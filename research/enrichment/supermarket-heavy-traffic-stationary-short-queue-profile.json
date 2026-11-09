@@ -1,0 +1,26 @@
+{
+  "id": "supermarket-heavy-traffic-stationary-short-queue-profile",
+  "additional_refs": [
+    {
+      "authors": "Malwina J. Luczak, Colin McDiarmid",
+      "title": "On the maximum queue length in the supermarket model",
+      "year": 2006,
+      "venue": "Annals of Probability / arXiv",
+      "url": "https://arxiv.org/abs/math/0605639"
+    },
+    {
+      "authors": "N. D. Vvedenskaya, R. L. Dobrushin, F. I. Karpelevich",
+      "title": "Queueing system with selection of the shortest of two queues: an asymptotic approach",
+      "year": 1996,
+      "venue": "Problems of Information Transmission",
+      "url": "https://link.springer.com/article/10.1007/BF02352927"
+    },
+    {
+      "authors": "Michael Mitzenmacher",
+      "title": "The Power of Two Choices in Randomized Load Balancing",
+      "year": 1996,
+      "venue": "PhD thesis, University of California, Berkeley",
+      "url": "https://www.eecs.harvard.edu/~michaelm/postscripts/mythesis.pdf"
+    }
+  ]
+}

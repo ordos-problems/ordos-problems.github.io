@@ -1,0 +1,41 @@
+{
+  "id": "cvrp-unit-demand-approximability",
+  "background": "Capacitated vehicle routing is a fundamental routing model in operations research. In the unit-demand version, a depot and customers lie in a metric space, every customer has demand one, and each vehicle tour may visit at most $Q$ customers before returning to the depot. The classical iterated tour partitioning algorithm starts with a TSP tour and cuts it into capacity-feasible pieces, yielding ratio roughly $\\alpha+1$, where $\\alpha$ is the best metric-TSP approximation ratio. That guarantee stood for decades. Blauth, Traub, and Vygen gave the first improvement, shaving a fixed constant from the $\\alpha+1$ bound for general, unit-demand, and splittable variants. The resulting open problem is how much of the extra $+1$ capacity loss is inherent, and whether CVRP approximability can be pushed much closer to TSP.",
+  "full_statement": "In unit-demand capacitated vehicle routing, the input is a finite metric space with a distinguished depot $r$, a set of customers $C$, and an integer vehicle capacity $Q$. Each customer has demand one. A feasible solution is a collection of tours, each starting and ending at $r$, such that every customer is visited by some tour and each tour visits at most $Q$ customers. The objective is to minimize total tour length. Let $\\alpha$ denote the best approximation ratio known or achievable for metric TSP. Classical iterated tour partitioning gives ratio $\\alpha+1$ by building a TSP tour through all customers and cutting it into capacity-feasible routes. Determine the optimal approximation ratio for unit-demand CVRP in arbitrary metrics. In particular, decide whether one can substantially beat the tour-partitioning barrier, perhaps approaching the TSP ratio plus a smaller capacity-overhead term, or prove that a large additive loss over TSP is inherent.",
+  "open_problem": "Determine the optimal approximation ratio for unit-demand capacitated vehicle routing in general metrics, and in particular whether the classical $\\alpha+1$ barrier can be substantially improved.",
+  "known_results": "Haimovich and Rinnooy Kan's iterated tour partitioning gives an $\\alpha+1$ approximation for unit-demand CVRP, where $\\alpha$ is the approximation ratio for metric TSP; Altinkemer and Gavish obtained related partitioning guarantees. This was the benchmark for about 35 years. Blauth, Traub, and Vygen prove the first improvement, obtaining $\\alpha+1-\\epsilon$ for an explicit positive constant, and their result applies to unit-demand CVRP, splittable CVRP, and general CVRP variants in arbitrary metrics. Hardness is much weaker and largely inherited from metric TSP, so the true threshold could be near $\\alpha$, near $\\alpha+1$, or somewhere between. Recent work improves other unsplittable CVRP variants, but the clean unit-demand approximability threshold remains open.",
+  "status": "open",
+  "where_posed": {
+    "text": "Open gap after Blauth, Traub, and Vygen, 'Improving the Approximation Ratio for Capacitated Vehicle Routing'.",
+    "url": "https://arxiv.org/abs/2011.05235",
+    "quote": "This is the first improvement upon the classical tour partitioning algorithm by Haimovich and Rinnooy Kan and Altinkemer and Gavish.",
+    "location": "Abstract"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The classical $\\alpha+1$ barrier has been beaten by a small constant, but no near-tight algorithmic or hardness threshold is known.",
+    "links": [
+      {"title": "Blauth, Traub, Vygen, improving CVRP approximation", "url": "https://arxiv.org/abs/2011.05235"},
+      {"title": "Zhao and Xiao, improved unsplittable CVRP variants", "url": "https://arxiv.org/abs/2601.21660"}
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Hard instances for route partitioning, LP relaxations, or proposed algorithms are finite metric instances and can be evaluated exactly for moderate size.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Search can find metric instances where partitioning-style algorithms lose close to their bounds and suggest better route decompositions.",
+  "literature": {
+    "synthesis": "The $\\alpha+1$ guarantee separates routing cost into a TSP backbone plus depot-return/capacity overhead. The Blauth-Traub-Vygen improvement shows that this decomposition is not tight in the worst case, but the improvement is small. A major challenge is to integrate capacity decisions into the tour construction rather than partition after the fact. Lower bounds are also underdeveloped: known hardness does not explain an additive $+1$ loss. Progress may come from stronger route-covering relaxations, better randomized partitioning, or hard metric families where depot-distance and intercustomer-distance terms conflict.",
+    "reviewed": [
+      {"ref": "Mordecai Haimovich and Alexander H. G. Rinnooy Kan, 'Bounds and Heuristics for Capacitated Routing Problems', Mathematics of Operations Research 1985", "result": "Introduces classical tour-partitioning bounds for CVRP.", "relevance": "partial-progress", "url": "https://doi.org/10.1287/moor.10.4.527"},
+      {"ref": "Jannis Blauth, Vera Traub, Jens Vygen, 'Improving the Approximation Ratio for Capacitated Vehicle Routing', Mathematical Programming 2023 / IPCO 2021", "result": "First improvement over the classical $\\alpha+1$ tour-partitioning ratio for general, unit-demand, and splittable CVRP.", "relevance": "partial-progress", "url": "https://arxiv.org/abs/2011.05235"},
+      {"ref": "Jingyang Zhao, Mingyu Xiao, 'Improved Approximations for the Unsplittable Capacitated Vehicle Routing Problem', arXiv 2026", "result": "Recent improvements for unsplittable CVRP variants, relevant but not a resolution of the unit-demand threshold.", "relevance": "related-tool", "url": "https://arxiv.org/abs/2601.21660"}
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Search for bad instances for iterated partitioning and for newer randomized partitioning schemes. Algorithmic routes include LP/route-cover relaxations, depot-distance decompositions, and coupling with improved TSP rounding.",
+    "verification_notes": "State whether the claim is for unit-demand, splittable, unsplittable, or arbitrary-demand CVRP; these variants have different guarantees and reductions. A unit-demand result must handle arbitrary metric spaces and arbitrary capacities $Q$, and each route may serve at most $Q$ customers. For lower-bound instances, certify the optimum CVRP value, not just the performance of tour partitioning. For algorithmic claims, separate the TSP-approximation component from the capacity-overhead analysis.",
+    "machine_checkable": true
+  }
+}

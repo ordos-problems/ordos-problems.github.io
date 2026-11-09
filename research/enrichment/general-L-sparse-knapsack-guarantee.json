@@ -1,0 +1,76 @@
+{
+  "id": "general-L-sparse-knapsack-guarantee",
+  "source": {
+    "authors": "Jiashuo Jiang, Will Ma, Jiawei Zhang",
+    "title": "Tight Guarantees for Multi-unit Prophet Inequalities and Online Stochastic Knapsack",
+    "year": 2022,
+    "venue": "SODA / arXiv:2107.02058",
+    "url": "https://arxiv.org/abs/2107.02058"
+  },
+  "title": "Any nonzero guarantee for the most general L-sparse knapsack",
+  "short_statement": "For online stochastic knapsack where each request consumes fractional amounts of at most $L$ resources, obtain any positive adversarial-order guarantee relative to the fluid relaxation.",
+  "full_statement": "There are resources $i=1,\\ldots,m$, each with normalized capacity $1$. Request $t$ arrives online in an adversarially chosen order. Conditional on arrival, its reward $r_t\\ge0$ and consumption vector $s_t\\in[0,1]^m$ are drawn from known distributions, with support size $|\\{i:s_{ti}>0\\}|\\le L$. The algorithm observes the realized reward and consumption vector and must irrevocably accept or reject the request; accepted requests must satisfy $\\sum_{t\\in A}s_{ti}\\le1$ for every resource $i$. Let $\\mathrm{FLU}$ be the ex-ante fluid LP that fractionally accepts types or realizations subject to expected capacity constraints. For every fixed sparsity $L$, does there exist a constant $c_L>0$ and an online policy with expected reward at least $c_L\\mathrm{FLU}$ for all such instances? The target would ideally recover the tight single-resource constant $c_1=1/(3+e^{-2})$ from Jiang, Ma, and Zhang and degrade gracefully with $L$.",
+  "background": "The most general $L$-sparse online knapsack model allows each accepted request to consume fractional amounts of several resources. This is much harder than unit-demand or binary sparse network revenue-management models, because a request can partially fill several capacities and thereby create many different residual-capacity states. The case $L=1$ is already the online stochastic knapsack problem: requests arrive online, sizes are realized from known distributions, and the algorithm must decide immediately whether to accept. Jiang, Ma, and Zhang resolved the best possible LP-relative guarantee for this single-resource benchmark by giving a best-fit magician with ratio $1/(3+e^{-2})\\approx0.319$ and proving tightness with respect to the standard LP relaxation. The multi-resource $L>1$ version is a clean next step: the model is formal, the fluid benchmark is standard, and sparsity is the only structural handle.",
+  "open_problem": "Prove that every fixed $L$ admits a positive constant $c_L$ for adversarial-order online stochastic knapsack with arbitrary fractional $L$-sparse consumptions, or construct instances showing that no such LP-relative constant is possible.",
+  "known_results": "For $L=1$, Jiang, Ma, and Zhang give the tight LP-relative guarantee $1/(3+e^{-2})\\approx0.319$ for general online stochastic knapsack. Their best-fit magician selects feasible sample paths with the most capacity already used and maintains a utilization invariant; they also prove an upper bound showing the constant is tight for the standard LP. For unit-density and other special cases, better or different constants are known, and multi-resource appointment-scheduling applications can exploit additional structure. For binary or unit-demand sparse allocation models, guarantees depending on sparsity can be obtained by other prophet/OCRS techniques. These results do not cover arbitrary fractional consumption vectors supported on up to $L$ resources, where one request may be best-fit for one resource and damaging for another. No positive constant for the full $L>1$ model is recorded in the current site sources.",
+  "status": "open",
+  "where_posed": {
+    "text": "Posed in Will Ma's Online Resource Allocation notes as the general $L$-sparse knapsack extension of Jiang-Ma-Zhang's tight single-resource result.",
+    "url": "https://arxiv.org/abs/2107.02058",
+    "quote": "",
+    "location": "Remarks following the online stochastic knapsack/OCRS section"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The single-resource case is tight at $1/(3+e^{-2})$. No comparable nonzero guarantee is known for arbitrary fractional $L$-sparse consumptions when $L>1$.",
+    "links": [
+      {
+        "title": "Jiang, Ma, Zhang, tight online stochastic knapsack guarantee",
+        "url": "https://arxiv.org/abs/2107.02058"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "If a proposed constant or policy is wrong, small discretized multi-resource knapsack instances may expose it. Exhaustive dynamic programming can evaluate optimal online policies for small state spaces.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "This is a strong candidate for automated search: residual-capacity states are finite after discretization, and both hard instances and policy rules can be optimized computationally before proof.",
+  "contributor": "Will Ma",
+  "literature": {
+    "synthesis": "Jiang, Ma, and Zhang show that the single-resource setting has a clean best-fit structure: to preserve enough room for future large items, the policy deliberately fills capacity on selected paths as much as possible, and the tight constant follows from a utilization invariant. Moving to $L$-sparse fractional consumptions breaks the one-dimensional ordering of residual capacity. A request can be best-fit on one resource and worst-fit on another, and scarce resources may be correlated through shared requests. Known sparse NRM guarantees handle binary resource incidence, while general online stochastic knapsack handles fractional sizes for one resource. The open problem asks for a synthesis of these two theories: a multi-dimensional contention-resolution scheme that maintains enough residual slack across all sparse supports to obtain any LP-relative constant.",
+    "reviewed": [
+      {
+        "ref": "Jiashuo Jiang, Will Ma, and Jiawei Zhang, 'Tight Guarantees for Multi-unit Prophet Inequalities and Online Stochastic Knapsack', SODA 2022",
+        "result": "Introduces the best-fit magician and proves the tight $1/(3+e^{-2})$ LP-relative guarantee for single-resource online stochastic knapsack.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2107.02058"
+      },
+      {
+        "ref": "Saeed Alaei, 'Bayesian combinatorial auctions: Expanding single buyer mechanisms to many buyers', SIAM Journal on Computing 2014",
+        "result": "Provides a key ex-ante relaxation and online allocation framework used throughout multi-resource prophet-style allocation.",
+        "relevance": "background",
+        "url": "https://doi.org/10.1137/120878422"
+      },
+      {
+        "ref": "Ayoub Amil, Ali Makhdoumi, and Yehua Wei, 'Multi-Item Order Fulfillment Revisited: LP Formulation and Prophet Inequality', SSRN 2022/2024",
+        "result": "Shows how prophet-inequality ideas produce strong guarantees in multi-item fulfillment and related NRM settings, but under assumptions different from full fractional $L$-sparse knapsack.",
+        "relevance": "related-tool",
+        "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4176274"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Start with $L=2$ and capacities discretized into a small grid. Compute optimal online policies by dynamic programming and compare best-fit, worst-fit, balanced, randomized projection, and primal-dual policies. On the proof side, try vector-valued utilization potentials, dependent rounding over sparse supports, or randomized projections that reduce sparse fractional consumption to controlled single-resource knapsack constraints.",
+    "verification_notes": "A valid positive guarantee must handle arbitrary rewards, arbitrary fractional sizes in $[0,1]$, arbitrary resource supports of size at most $L$, and adversarial order. A claimed algorithm that assumes unit-density, binary sizes, independent resource decomposition, or random arrival order does not solve this problem. A counterexample must compare against the fluid LP used in the statement.",
+    "machine_checkable": true
+  },
+  "tags": [
+    "l-sparse-knapsack",
+    "online-resource-allocation",
+    "fluid-relaxation",
+    "competitive-ratio",
+    "will-ma-notes",
+    "contributed-by-will-ma"
+  ]
+}

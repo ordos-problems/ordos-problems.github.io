@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Throughput scheduling with release dates and bounded processing times | ORdős Problems</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script>
+(function(){
+  try{
+    var saved=localStorage.getItem('ordos-theme');
+    var theme=saved||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+    document.documentElement.dataset.theme=theme;
+  }catch(e){document.documentElement.dataset.theme='light';}
+})();
+</script>
+<style>
+  :root{
+    color-scheme:light;
+    --bg:#ffffeb; --paper:#fffef6; --card:#fffdf2; --paper2:#fff9fd; --ink:#1a1a1a; --soft:#4b514d; --faint:#7b7d6f;
+    --line:#e4e4d0; --line2:#eeeedd; --strong:#1a1a1a; --accent:#034f46; --accent2:#0f675d;
+    --pink:#f0d7ff; --pink2:#f8edff; --pinkhover:#f5e5ff; --orange:#ffa946; --link:#034f46; --tagink:#46514d;
+    --short:#27302c; --bodytext:#252b28; --bodytext2:#303633; --open:#7a5400; --partial:#155879; --med:#97402d;
+    --focus:#d8ece7; --focus-border:#74aaa1; --controlbg:rgba(255,255,235,.96); --modalbg:rgba(26,26,26,.32);
+    --okbg:#d8ead8; --okink:#064d20; --warning-bg:#fff3df; --warning-line:#d88a3d; --warning-ink:#5f3411;
+    --logo-fill:#eef6f5; --logo-stroke:#034f46; --badge-ink:#fff; --badge-hover:#063f39; --toastbg:#1a1a1a; --toastink:#fff;
+    --maxw:1120px; --measure:860px; --radius:8px;
+    --ui:"Figtree","Avenir Next","Avenir",-apple-system,system-ui,"Segoe UI",Arial,sans-serif;
+    --display:"EB Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  }
+  html[data-theme="dark"]{
+    color-scheme:dark;
+    --bg:#18170f; --paper:#232217; --card:#202016; --paper2:#2a2330; --ink:#f4f0df; --soft:#c9c2a8; --faint:#9e967d;
+    --line:#3b3928; --line2:#343224; --strong:#f4f0df; --accent:#8fd8cc; --accent2:#b4ebe3;
+    --pink:#5c365f; --pink2:#33213b; --pinkhover:#6b426f; --orange:#ffbd69; --link:#9be2d6; --tagink:#c9c2a8;
+    --short:#e4ddc7; --bodytext:#e7e0cc; --bodytext2:#d9d0b8; --open:#f5c66a; --partial:#87c8ef; --med:#efaa94;
+    --focus:#24564f; --focus-border:#8fd8cc; --controlbg:rgba(24,23,15,.94); --modalbg:rgba(0,0,0,.56);
+    --okbg:#21452c; --okink:#c7f0cf; --warning-bg:#3a2a18; --warning-line:#d1934f; --warning-ink:#ffd8a5;
+    --logo-fill:#202f2c; --logo-stroke:#8fd8cc; --badge-ink:#18170f; --badge-hover:#b4ebe3; --toastbg:#f4f0df; --toastink:#18170f;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ui);font-size:17px;line-height:1.62;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;}
+  a{color:var(--link);text-decoration-thickness:1px;text-underline-offset:3px;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px 96px;}
+
+  header.site{padding:42px 0 22px;border-bottom:1px solid var(--line);}
+  .headbar{display:grid;grid-template-columns:minmax(320px,max-content) minmax(280px,1fr);gap:22px;align-items:center;}
+  .brand{display:flex;align-items:center;gap:14px;min-width:0;}
+  .logo-link{display:block;width:42px;height:42px;flex:0 0 auto;border-radius:8px;line-height:0;}
+  .logo-link:focus-visible{outline:3px solid var(--orange);outline-offset:3px;}
+  .mono{width:42px;height:42px;flex:0 0 auto;}
+  .mono rect{fill:var(--logo-fill);stroke:var(--logo-stroke);}
+  .mono text{fill:var(--logo-stroke);}
+  h1{font-family:var(--display);font-weight:600;font-size:3rem;letter-spacing:0;margin:0;line-height:1;color:var(--ink);}
+  h1 .or{color:var(--accent);}
+  .aboutbtn{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
+    border-radius:8px;padding:7px 12px;min-width:98px;min-height:38px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;}
+  .aboutbtn:hover{background:var(--pinkhover);}
+  .theme-toggle{width:38px;height:38px;min-width:38px;min-height:38px;padding:0;border-radius:999px;line-height:1;}
+  .theme-mark{font-size:1.05rem;line-height:1;}
+  .simple-headbar{display:flex;align-items:center;justify-content:space-between;gap:18px;}
+  .sub{color:var(--soft);font-size:1.03rem;margin:16px 0 0;max-width:78ch;font-weight:450;}
+  .headsearch{display:flex;justify-content:flex-end;align-items:center;gap:10px;flex-wrap:wrap;}
+  .headsearch input{flex:1 1 260px;min-width:220px;max-width:460px;}
+
+  .tagfilters{margin-top:20px;}
+  .statbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+  .statbtn{appearance:none;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:6px 10px;min-height:34px;min-width:0;display:flex;align-items:center;gap:6px;cursor:pointer;
+    color:var(--faint);font-family:var(--ui);transition:background .15s,border-color .15s,transform .15s;}
+  .statbtn b{display:block;color:var(--ink);font-size:.78rem;line-height:1;font-weight:800;}
+  .statbtn span{font-size:.78rem;line-height:1;color:var(--tagink);overflow-wrap:anywhere;}
+  .statbtn:hover{background:var(--pink2);border-color:var(--focus-border);transform:translateY(-1px);}
+  .statbtn.active{background:var(--pink);border:2px solid var(--strong);padding:5px 9px;color:var(--ink);}
+  .moretags{display:flex;align-items:center;gap:8px;margin-top:10px;}
+  .moretags label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:0;}
+  #tagselect{min-width:230px;max-width:100%;padding:8px 10px;font-size:.82rem;border:1px solid var(--line);
+    border-radius:var(--radius);background:var(--paper);color:var(--ink);font-family:var(--ui);}
+  #tagselect:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
+
+  .modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:24px;background:var(--modalbg);}
+  .modal.open{display:flex;}
+  .modal-card{width:min(760px,100%);max-height:min(86vh,760px);overflow:auto;background:var(--card);border:2px solid var(--strong);
+    border-radius:var(--radius);box-shadow:0 18px 60px rgba(0,0,0,.18);padding:28px 32px;}
+  .modal-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:14px;}
+  .modal-card h2{font-family:var(--display);font-weight:600;font-size:2.1rem;line-height:1.05;margin:0;color:var(--ink);}
+  .modal-card h3{font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:22px 0 7px;}
+  .modal-card p{font-size:1rem;line-height:1.7;color:var(--bodytext2);margin:.7em 0;}
+  .closemodal{appearance:none;border:2px solid var(--strong);border-radius:8px;background:var(--pink);color:var(--ink);
+    font-family:var(--ui);font-weight:800;cursor:pointer;padding:5px 10px;box-shadow:0 1px 0 var(--strong);}
+
+  .controls{position:sticky;top:0;z-index:20;background:var(--controlbg);backdrop-filter:saturate(1.05) blur(10px);
+    border-bottom:1px solid var(--line);padding:11px 0;margin:18px 0 14px;}
+  #q{width:100%;padding:12px 14px;font-size:.94rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);color:var(--ink);font-family:var(--ui);}
+  #q:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
+  .ctl-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;}
+  .filterstate{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .count{font-size:.8rem;color:var(--faint);}
+  .selectedtags{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+  .selectedtag{appearance:none;border:1px solid var(--strong);background:var(--pink);border-radius:999px;padding:4px 8px;
+    font-family:var(--ui);font-size:.74rem;font-weight:750;color:var(--ink);cursor:pointer;}
+  .selectedtag:hover{background:var(--pinkhover);}
+  .clearfilter{font-size:.8rem;color:var(--link);background:none;border:none;cursor:pointer;font-family:var(--ui);padding:0;font-weight:700;}
+
+  .grouphdr{font-weight:800;font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);
+    margin:34px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+  .grouphdr .gn{color:var(--faint);font-weight:500;}
+
+  article.p{background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);
+    padding:20px 22px 19px;margin:12px 0;scroll-margin-top:96px;}
+  article.p:target{box-shadow:0 0 0 3px var(--focus);}
+  .p .top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px;}
+  .num{font-weight:800;font-size:.76rem;color:var(--badge-ink);background:var(--accent);padding:3px 9px;border-radius:7px;text-decoration:none;}
+  .num:hover{background:var(--badge-hover);}
+  .tagline{display:flex;gap:9px;flex-wrap:wrap;align-items:center;min-width:0;color:var(--tagink);font-size:.9rem;}
+  .tag{color:var(--tagink);white-space:nowrap;}
+  .tag.status-open{color:var(--open);}
+  .tag.status-partial{color:var(--partial);}
+  .tag.med{color:var(--med);}
+  .spacer{flex:1 1 auto;}
+  .copy,.open-link,.back-link{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
+    border-radius:8px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+  .copy:hover,.open-link:hover,.back-link:hover{background:var(--pinkhover);}
+  .copy.ok{background:var(--okbg);color:var(--okink);}
+
+  .problem-title{font-family:var(--display);font-size:1.42rem;line-height:1.18;font-weight:600;margin:0 0 8px;color:var(--ink);letter-spacing:0;}
+  .problem-title a{text-decoration:none;color:inherit;}
+  .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
+  .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:var(--short);max-width:88ch;letter-spacing:0;}
+  .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:nowrap;margin:24px 0 0;overflow-x:auto;padding-bottom:3px;}
+  .pagebtn{font-size:.76rem;color:var(--ink);background:var(--card);border:2px solid var(--strong);border-radius:8px;
+    padding:5px 8px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:30px;box-shadow:0 1px 0 var(--strong);white-space:nowrap;}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pagegap,.pageinfo{font-size:.76rem;color:var(--faint);font-weight:750;padding:0 3px;white-space:nowrap;}
+
+  .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
+  .detail-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end;}
+  .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
+  .detail-meta{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0;}
+  .problem-nav{display:flex;gap:10px;align-items:stretch;justify-content:space-between;margin:22px 0 24px;max-width:var(--measure);}
+  .problem-nav .navlink{flex:1 1 0;background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);padding:12px 14px;
+    text-decoration:none;color:var(--ink);font-weight:750;min-width:0;}
+  .problem-nav .navlink:hover{background:var(--pink2);}
+  .problem-nav .navlink.next{text-align:right;}
+  .problem-nav .navlink.empty{visibility:hidden;}
+  .problem-nav .navlabel{display:block;font-size:.72rem;letter-spacing:0;text-transform:uppercase;color:var(--faint);font-weight:800;margin-bottom:2px;}
+  .detail-card{background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);padding:28px 32px;margin:24px 0;max-width:var(--measure);}
+  .detail-card h2{font-size:.8rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:0 0 15px;}
+  .prose{font-size:1.04rem;line-height:1.86;color:var(--bodytext);}
+  .prose p{margin:0 0 1.15em;}
+  .prose .katex-display{margin:1.15em 0;}
+  .known-prose{font-size:1rem;line-height:1.8;color:var(--bodytext2);}
+  .remaining-open{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);}
+  .remaining-open strong{color:var(--accent);}
+  .source-list{font-size:.94rem;line-height:1.7;color:var(--soft);}
+  .source-list p{margin:.65em 0;}
+  .source-list .k{font-weight:800;color:var(--accent);}
+  .refs{margin:8px 0 0;padding-left:21px;}
+  .refs li{margin:.55em 0;color:var(--soft);}
+
+  .form-shell{max-width:var(--measure);margin:28px 0 0;}
+  .form-card{background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);padding:28px 32px;margin:20px 0;}
+  .form-card h2{font-family:var(--display);font-size:2.35rem;line-height:1.06;font-weight:600;margin:0 0 8px;color:var(--ink);}
+  .form-card p{font-size:1rem;line-height:1.7;color:var(--bodytext2);margin:.7em 0 1.2em;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .field{display:flex;flex-direction:column;gap:6px;margin:14px 0;}
+  .field.full{grid-column:1/-1;}
+  .field label{font-size:.78rem;font-weight:800;letter-spacing:0;text-transform:uppercase;color:var(--accent);}
+  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);
+    font-family:var(--ui);font-size:.96rem;line-height:1.45;padding:11px 12px;}
+  .field textarea{min-height:118px;resize:vertical;}
+  .field input:focus,.field textarea:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
+  .field-note{font-size:.82rem;color:var(--faint);line-height:1.5;}
+  .form-warning{display:none;margin:14px 0 0;padding:10px 12px;border:1px solid var(--warning-line);border-radius:8px;background:var(--warning-bg);color:var(--warning-ink);
+    font-size:.9rem;line-height:1.55;}
+  .form-warning.show{display:block;}
+  .submit-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;}
+  .submit-btn{font-size:.84rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
+    border-radius:8px;padding:9px 14px;cursor:pointer;font-family:var(--ui);font-weight:800;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+  .submit-btn:hover{background:var(--pinkhover);}
+
+  .katex{font-size:1.04em;}
+  .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
+
+  footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
+  footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid var(--line);}
+  footer a:hover{border-bottom-color:var(--accent);}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toastbg);color:var(--toastink);font-size:.85rem;padding:10px 18px;border-radius:8px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+  @media (max-width:900px){
+    .headbar{grid-template-columns:1fr;}
+    .headsearch{justify-content:flex-start;}
+    .headsearch input{max-width:none;}
+  }
+  @media (max-width:760px){
+    .wrap{padding:0 16px 72px;}
+    header.site{padding-top:30px;}
+    .brand{align-items:flex-start;}
+    .brand h1{min-width:0;overflow-wrap:anywhere;}
+    .simple-headbar{align-items:flex-start;}
+    h1{font-size:2.15rem}
+    .about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
+    .statbar{gap:6px;}
+    .statbtn{padding:5px 8px;}
+    .moretags{align-items:flex-start;flex-direction:column;}
+    .ctl-meta{align-items:flex-start;gap:8px;flex-direction:column;}
+    article.p{padding:17px 15px;}
+    .copy,.open-link{width:100%;text-align:center;}
+    .detail-title{font-size:2.2rem;}
+    .detail-top{align-items:flex-start;flex-direction:column;}
+    .detail-actions{width:100%;justify-content:flex-start;}
+    .problem-nav{flex-direction:column;}
+    .problem-nav .navlink{width:100%;}
+    .problem-nav .navlink.next{text-align:left;}
+    .detail-card{padding:22px 18px;}
+    .form-grid{grid-template-columns:1fr;}
+    .form-card{padding:22px 18px;}
+    .modal{padding:14px;}
+    .modal-card{padding:22px 18px;}
+    .modal-card h2{font-size:1.7rem;}
+  }
+
+  .tag.status-claimed{color:var(--med);}
+  .tag.status-resolved{color:var(--okink);}
+  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0;}
+  .badge{font-size:.8rem;color:var(--soft);}
+  .badge+.badge::before{content:" / ";margin-right:8px;color:var(--faint);}
+  .posed-quote{margin:16px 0;padding-left:18px;border-left:2px solid var(--line);color:var(--soft);}
+  .posed-quote .loc{display:block;margin-top:8px;font-size:.8rem;}
+  .lit-list{padding-left:22px;}
+  .lit-list li{margin:1em 0;}
+  .lit-list .rel{display:block;font-size:.75rem;color:var(--faint);}
+  .subm-item{padding:16px 0;border-bottom:1px solid var(--line);}
+  .subm-head{font-size:.8rem;color:var(--soft);}
+  .headsearch input{min-width:0;}
+  .tag{white-space:normal;overflow-wrap:anywhere;}
+  .detail-top{align-items:flex-start;}
+  .detail-top>div:first-child{min-width:0;flex:1;}
+  .detail-actions{flex:0 0 180px;}
+  .detail-actions .back-link{width:100%;text-align:center;}
+  .detail-title{font-size:2.6rem;overflow-wrap:anywhere;}
+  .problem-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+  .problem-nav .navlink{height:104px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow-wrap:anywhere;font-size:.9rem;}
+  .detail-card{background:transparent;border:0;border-top:2px solid var(--strong);border-radius:0;padding:28px 0;}
+  .form-card{background:transparent;border:0;border-radius:0;padding:28px 0;}
+  @media(max-width:760px){
+    .detail-title{font-size:2.2rem;}
+    .detail-actions{flex:0 0 auto;}
+    .detail-actions .back-link{width:auto;}
+    .problem-nav{grid-template-columns:1fr;grid-auto-rows:104px;}
+    .problem-nav .navlink{height:104px;}
+    .problem-nav .navlink.empty{display:none;}
+    .detail-card,.form-card{padding:22px 0;}
+    .pagination{gap:3px;}
+    .pagebtn{min-width:26px;padding:5px 6px;}
+    .pageinfo{display:none;}
+  }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <div class="simple-headbar">
+      <div class="brand">
+        <a class="logo-link" href="../index.html" aria-label="ORdős Problems home"><svg class="mono" viewBox="0 0 100 100" aria-hidden="true">
+        <rect x="3" y="3" width="94" height="94" rx="18" fill="#eef6f5" stroke="#034f46" stroke-width="5"/>
+        <text x="50" y="63" text-anchor="middle" font-family="Figtree, Arial, sans-serif" font-size="36" font-weight="800" fill="#034f46">OP</text>
+      </svg></a>
+        <h1><a href="../index.html" style="color:inherit;text-decoration:none"><span class="or">OR</span>dős Problems</a></h1>
+      </div>
+      <button class="aboutbtn theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme" title="Switch color theme"><span class="theme-mark" aria-hidden="true">☾</span></button>
+    </div>
+  </header>
+
+  <div class="detail-top">
+    <div>
+      <div class="tagline"><span class="tag">#scheduling-theory</span>
+<span class="tag">#open</span>
+<span class="tag">#operations-research</span>
+<span class="tag">#scheduling</span>
+<span class="tag">#throughput-maximization</span>
+<span class="tag">#release-dates</span>
+<span class="tag">#bounded-processing-times</span>
+<span class="tag">#parameterized-complexity</span>
+<span class="tag">#single-machine-scheduling</span>
+<span class="tag">#check-source</span></div>
+      <h1 class="detail-title">Throughput scheduling with release dates and bounded processing times</h1>
+      <div class="detail-meta"><span class="num">144</span><span class="tag">Problem 144 of 182</span><span class="tag">#ordos-144</span></div>
+      <div class="meta-badges"><span class="badge progress-open">open</span></div>
+    </div>
+    <div class="detail-actions">
+      <a class="back-link" href="../correction.html?ref=ORDOS-144&amp;title=Throughput%20scheduling%20with%20release%20dates%20and%20bounded%20processing%20times&amp;page=https%3A//ordos-problems.github.io/problems/single-machine-throughput-bounded-processing-times.html" target="_blank" rel="noopener">Suggest edit</a>
+      <a class="back-link" href="../index.html">Back to all problems</a>
+    </div>
+  </div>
+
+  <nav class="problem-nav" aria-label="Problem navigation">
+    <a class="navlink prev" href="single-machine-precedence-wct-lp-kernel.html" title="Polynomial kernels above the LP bound for precedence-constrained weighted completion time"><span class="navlabel">Previous problem</span>#143 · Polynomial kernels above the LP bound for precedence-constrained weighted completion time</a>
+    <a class="navlink next" href="uniform-decision-tree-constant-approximation.html" title="Polynomial-time constant approximation for Uniform Decision Tree"><span class="navlabel">Next problem</span>#145 · Polynomial-time constant approximation for Uniform Decision Tree</a>
+  </nav>
+
+  <section class="detail-card statement">
+    <h2>Short Statement</h2>
+    <div class="prose"><p>Resolve the complexity of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi mathvariant="normal">∣</mi><msub><mi>r</mi><mi>j</mi></msub><mo separator="true">,</mo><msub><mi>p</mi><mi>j</mi></msub><mo>≤</mo><mi>c</mi><mi mathvariant="normal">∣</mi><msub><mo>∑</mo><mi>j</mi></msub><msub><mi>U</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">1|r_j,p_j\le c|\sum_j U_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord">1∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1858em;vertical-align:-0.4358em;"></span><span class="mord mathnormal">c</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.162em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4358em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> for constant <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span>, and the corresponding weighted/FPT variants.</p></div>
+  </section>
+
+  <section class="detail-card statement">
+    <h2>Open Problem</h2>
+    <div class="prose"><p>Settle the polynomial-time and parameterized complexity of single-machine throughput scheduling with release dates and constant-bounded processing times.</p></div>
+  </section>
+
+
+  <section class="detail-card statement">
+    <h2>Background &amp; Context</h2>
+    <div class="prose">Maximum-throughput scheduling asks which jobs can be completed by their deadlines. It is a clean single-machine model for admission control: each job has a release date, deadline, and processing time; jobs completed late contribute no throughput. The unit-processing-time case is tractable by matching or greedy methods, while arbitrary processing times make the problem NP-hard. The boundary where processing times are bounded by a fixed constant is surprisingly delicate. Sgall's survey and Mnich-van Bevern's parameterized open-problem list highlight the question <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi mathvariant="normal">∣</mi><msub><mi>r</mi><mi>j</mi></msub><mo separator="true">,</mo><msub><mi>p</mi><mi>j</mi></msub><mo>≤</mo><mi>c</mi><mi mathvariant="normal">∣</mi><msub><mo>∑</mo><mi>j</mi></msub><msub><mi>U</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">1|r_j,p_j\le c|\sum_j U_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord">1∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1858em;vertical-align:-0.4358em;"></span><span class="mord mathnormal">c</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.162em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4358em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>: for each fixed constant <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span>, is there a polynomial-time algorithm for maximizing the number of on-time jobs? The weighted version and parameterized versions are also open-looking. This is exactly the kind of problem the repository is meant to include: the model is fixed, small, and classical, but the complexity frontier is not known.</div>
+  </section>
+
+  <section class="detail-card statement">
+    <h2>Statement &amp; Model</h2>
+    <div class="prose">An instance consists of jobs <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">j=1,\ldots,n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0572em;">j</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span></span></span></span> on one nonpreemptive machine. Job <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0572em;">j</span></span></span></span> has release date <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">r_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>, deadline <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">d_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>, processing time <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>j</mi></msub><mo>∈</mo><mo stretchy="false">{</mo><mn>1</mn><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">p_j\in\{1,\ldots,c\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8252em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">c</span><span class="mclose">}</span></span></span></span> for a fixed constant <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span>, and optionally weight <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">w_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>. A schedule chooses a subset of jobs and start times so that each scheduled job starts no earlier than <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">r_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>, runs for <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">p_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> uninterrupted, no two jobs overlap, and job <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0572em;">j</span></span></span></span> is counted as on time only if it completes by <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">d_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>. In Graham notation, the unweighted objective is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi mathvariant="normal">∣</mi><msub><mi>r</mi><mi>j</mi></msub><mo separator="true">,</mo><msub><mi>p</mi><mi>j</mi></msub><mo>≤</mo><mi>c</mi><mi mathvariant="normal">∣</mi><msub><mo>∑</mo><mi>j</mi></msub><msub><mi>U</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">1|r_j,p_j\le c|\sum_j U_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord">1∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1858em;vertical-align:-0.4358em;"></span><span class="mord mathnormal">c</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.162em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4358em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>, equivalently maximizing the number of on-time jobs; the weighted objective is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi mathvariant="normal">∣</mi><msub><mi>r</mi><mi>j</mi></msub><mo separator="true">,</mo><msub><mi>p</mi><mi>j</mi></msub><mo>≤</mo><mi>c</mi><mi mathvariant="normal">∣</mi><msub><mo>∑</mo><mi>j</mi></msub><msub><mi>w</mi><mi>j</mi></msub><msub><mi>U</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">1|r_j,p_j\le c|\sum_j w_jU_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord">1∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1858em;vertical-align:-0.4358em;"></span><span class="mord mathnormal">c</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.162em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4358em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>. Determine whether the unweighted problem is polynomial-time solvable for every fixed constant <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span>, whether the weighted version is NP-hard for fixed <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span>, and whether the natural parameterized versions are fixed-parameter tractable when parameterized by <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span> and/or the number of distinct processing times.</div>
+  </section>
+
+  <section class="detail-card">
+    <h2>What Is Known</h2>
+    <div class="known-prose">When all processing times are unit, maximum throughput on one machine with release dates and deadlines has classical polynomial algorithms. With arbitrary processing times, throughput scheduling is NP-hard and heavily studied in approximation and online scheduling. Sgall's survey on maximum throughput scheduling asked whether <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi mathvariant="normal">∣</mi><msub><mi>r</mi><mi>j</mi></msub><mo separator="true">,</mo><msub><mi>p</mi><mi>j</mi></msub><mo>≤</mo><mi>c</mi><mi mathvariant="normal">∣</mi><msub><mo>∑</mo><mi>j</mi></msub><msub><mi>U</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">1|r_j,p_j\le c|\sum_j U_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord">1∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1858em;vertical-align:-0.4358em;"></span><span class="mord mathnormal">c</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.162em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4358em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> is polynomial-time solvable for constant <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span>; Mnich and van Bevern restate this and add parameterized versions. They also note that the NP-hardness of the weighted case for constant <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span> is open. The issue is that bounded processing times make time-indexed dynamic programs plausible, but release-date/deadline interactions still create global interval-packing structure. A later search did not find a source resolving the exact fixed-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span> complexity frontier.<p class="remaining-open"><strong>Remaining open problem.</strong> Settle the polynomial-time and parameterized complexity of single-machine throughput scheduling with release dates and constant-bounded processing times.</p></div>
+  </section>
+
+  <section class="detail-card">
+    <h2>Progress &amp; Literature</h2>
+    <div class="known-prose"><p><strong>Latest progress (open).</strong> Polynomial algorithms are known for unit processing times, and hardness is known for broader processing-time regimes. The fixed constant-bounded processing-time frontier remains unresolved in the cited open-problem list. <a href="https://arxiv.org/abs/1709.01670" target="_blank" rel="noopener">Parameterized complexity of machine scheduling: 15 open problems</a></p><div class="prose">The problem is a boundary case in single-machine scheduling. Unit jobs can be handled because the time axis decomposes cleanly, but arbitrary processing times allow knapsack-like hardness. If every processing time is at most a fixed constant <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span>, the input has only a bounded set of job lengths, suggesting that a clever dynamic program or flow formulation may exist. On the other hand, release dates and deadlines can encode many interval interactions even with short jobs. Mnich and van Bevern propose parameterized complexity as an intermediate route: even if the polynomial-time question is difficult, classifying FPT behavior with respect to <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span> or the number of distinct processing times may expose the right structure.</div><ul class="lit-list"><li><span class="rel">open problem source</span><strong>Mnich and van Bevern, &#x27;Parameterized complexity of machine scheduling: 15 open problems&#x27;, Computers &amp; Operations Research 2018</strong> — Restates Sgall's fixed-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span> throughput scheduling question and poses parameterized variants. <a href="https://arxiv.org/abs/1709.01670" target="_blank" rel="noopener">link</a></li><li><span class="rel">open problem source</span><strong>Sgall, &#x27;Open problems in throughput scheduling&#x27;, 2012</strong> — Surveys maximum-throughput scheduling gaps and asks about constant-bounded processing times. <a href="https://kam.mff.cuni.cz/~sgall/papers/open-throughput.pdf" target="_blank" rel="noopener">link</a></li><li><span class="rel">background</span><strong>Brucker, &#x27;Scheduling Algorithms&#x27;, Springer 2007</strong> — Standard reference for deterministic scheduling models, release dates, deadlines, and throughput-type objectives. <a href="https://doi.org/10.1007/978-3-540-69516-5" target="_blank" rel="noopener">link</a></li></ul></div>
+  </section>
+
+  <section class="detail-card" id="submissions">
+    <h2>Posted Solutions &amp; Verification</h2>
+    <div class="known-prose"><p class="subm-empty">No solutions or partial-progress submissions have been posted for this problem yet.</p>
+    <p>Submit a result or a review through the <a href="../agents.html">submission guidelines</a>, or suggest a correction using the link above.</p></div>
+  </section>
+  <section class="detail-card">
+    <h2>Sources</h2>
+    <div class="source-list">
+      <p><span class="k">Where posed:</span> Discussed in Sgall's survey on maximum-throughput scheduling and posed as Open Problem 3 in Mnich and van Bevern's 15 scheduling open problems. <a href="https://arxiv.org/abs/1709.01670" target="_blank" rel="noopener">link</a></p>
+      <blockquote class="posed-quote">&ldquo;Sgall (2012) asked whether there is a polynomial-time algorithm for 1|rj, pj≤c|ΣUj for constant c.&rdquo;<span class="loc">&mdash; Section 3.3, Open Problem 3</span></blockquote>
+      <p><span class="k">Source:</span> Matthias Mnich, Rene van Bevern, <em>Parameterized complexity of machine scheduling: 15 open problems</em> (2018, Computers &amp; Operations Research) <a href="https://arxiv.org/abs/1709.01670" target="_blank" rel="noopener">link</a></p>
+      <p><span class="k">Related references:</span></p><ol class="refs"><li>Jiri Sgall, <em>Open problems in throughput scheduling</em> (2012, ESA workshop / survey) <a href="https://kam.mff.cuni.cz/~sgall/papers/open-throughput.pdf" target="_blank" rel="noopener">link</a></li><li>Matthias Mnich, Rene van Bevern, <em>Parameterized complexity of machine scheduling: 15 open problems</em> (2018, Computers &amp; Operations Research) <a href="https://doi.org/10.1016/j.cor.2018.07.020" target="_blank" rel="noopener">link</a></li><li>Peter Brucker, <em>Scheduling Algorithms</em> (2007, Springer) <a href="https://doi.org/10.1007/978-3-540-69516-5" target="_blank" rel="noopener">link</a></li></ol>
+    </div>
+  </section>
+
+  <section class="detail-card">
+    <h2>Copy</h2>
+    <p class="known-prose">Copy the full statement, known results, and source information as plain text.</p>
+    <button class="copy" id="copybtn">Copy</button>
+  </section>
+
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
+</div>
+<div class="toast" id="toast">Copied</div>
+<script type="application/json" id="copy-data">"ORdős Problems #144 — Throughput scheduling with release dates and bounded processing times\n\nSHORT STATEMENT\nResolve the complexity of $1|r_j,p_j\\le c|\\sum_j U_j$ for constant $c$, and the corresponding weighted/FPT variants.\n\nSTATUS: open\n\nOPEN PROBLEM\nSettle the polynomial-time and parameterized complexity of single-machine throughput scheduling with release dates and constant-bounded processing times.\n\nBACKGROUND\nMaximum-throughput scheduling asks which jobs can be completed by their deadlines. It is a clean single-machine model for admission control: each job has a release date, deadline, and processing time; jobs completed late contribute no throughput. The unit-processing-time case is tractable by matching or greedy methods, while arbitrary processing times make the problem NP-hard. The boundary where processing times are bounded by a fixed constant is surprisingly delicate. Sgall's survey and Mnich-van Bevern's parameterized open-problem list highlight the question $1|r_j,p_j\\le c|\\sum_j U_j$: for each fixed constant $c$, is there a polynomial-time algorithm for maximizing the number of on-time jobs? The weighted version and parameterized versions are also open-looking. This is exactly the kind of problem the repository is meant to include: the model is fixed, small, and classical, but the complexity frontier is not known.\n\nPROBLEM (full statement with model)\nAn instance consists of jobs $j=1,\\ldots,n$ on one nonpreemptive machine. Job $j$ has release date $r_j$, deadline $d_j$, processing time $p_j\\in\\{1,\\ldots,c\\}$ for a fixed constant $c$, and optionally weight $w_j$. A schedule chooses a subset of jobs and start times so that each scheduled job starts no earlier than $r_j$, runs for $p_j$ uninterrupted, no two jobs overlap, and job $j$ is counted as on time only if it completes by $d_j$. In Graham notation, the unweighted objective is $1|r_j,p_j\\le c|\\sum_j U_j$, equivalently maximizing the number of on-time jobs; the weighted objective is $1|r_j,p_j\\le c|\\sum_j w_jU_j$. Determine whether the unweighted problem is polynomial-time solvable for every fixed constant $c$, whether the weighted version is NP-hard for fixed $c$, and whether the natural parameterized versions are fixed-parameter tractable when parameterized by $c$ and/or the number of distinct processing times.\n\nKNOWN RESULTS\nWhen all processing times are unit, maximum throughput on one machine with release dates and deadlines has classical polynomial algorithms. With arbitrary processing times, throughput scheduling is NP-hard and heavily studied in approximation and online scheduling. Sgall's survey on maximum throughput scheduling asked whether $1|r_j,p_j\\le c|\\sum_j U_j$ is polynomial-time solvable for constant $c$; Mnich and van Bevern restate this and add parameterized versions. They also note that the NP-hardness of the weighted case for constant $c$ is open. The issue is that bounded processing times make time-indexed dynamic programs plausible, but release-date/deadline interactions still create global interval-packing structure. A later search did not find a source resolving the exact fixed-$c$ complexity frontier.\n\nLITERATURE SYNTHESIS\nThe problem is a boundary case in single-machine scheduling. Unit jobs can be handled because the time axis decomposes cleanly, but arbitrary processing times allow knapsack-like hardness. If every processing time is at most a fixed constant $c$, the input has only a bounded set of job lengths, suggesting that a clever dynamic program or flow formulation may exist. On the other hand, release dates and deadlines can encode many interval interactions even with short jobs. Mnich and van Bevern propose parameterized complexity as an intermediate route: even if the polynomial-time question is difficult, classifying FPT behavior with respect to $c$ or the number of distinct processing times may expose the right structure.\n\nREMAINING OPEN PROBLEM\nSettle the polynomial-time and parameterized complexity of single-machine throughput scheduling with release dates and constant-bounded processing times.\n\nVERIFICATION NOTES\nA polynomial-time algorithm must run in $n^{O(1)}$ for each fixed $c$ and should state whether the exponent depends on $c$. An FPT algorithm must have running time $f(c)n^{O(1)}$ or the stated parameter dependence. A hardness proof must keep $c$ fixed and distinguish the weighted and unweighted objectives. Algorithms for unit processing times or approximations for arbitrary processing times do not resolve the problem.\n\nPOSED AS: \"Sgall (2012) asked whether there is a polynomial-time algorithm for 1|rj, pj≤c|ΣUj for constant c.\"\n\nWHERE POSED: Discussed in Sgall's survey on maximum-throughput scheduling and posed as Open Problem 3 in Mnich and van Bevern's 15 scheduling open problems. (https://arxiv.org/abs/1709.01670)\nSOURCE: Matthias Mnich, Rene van Bevern, Parameterized complexity of machine scheduling: 15 open problems (2018, Computers & Operations Research) https://arxiv.org/abs/1709.01670\nRELATED:\n- Jiri Sgall, Open problems in throughput scheduling (2012, ESA workshop / survey) https://kam.mff.cuni.cz/~sgall/papers/open-throughput.pdf\n- Matthias Mnich, Rene van Bevern, Parameterized complexity of machine scheduling: 15 open problems (2018, Computers & Operations Research) https://doi.org/10.1016/j.cor.2018.07.020\n- Peter Brucker, Scheduling Algorithms (2007, Springer) https://doi.org/10.1007/978-3-540-69516-5\n\nTask: Resolve the remaining open problem, taking the cited results and their assumptions into account. Math is in LaTeX."</script>
+<script>
+(function(){
+  var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;
+  function show(m){toast.textContent=m;toast.classList.add('show');clearTimeout(timer);timer=setTimeout(function(){toast.classList.remove('show');},1500);}
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText(JSON.parse(document.getElementById('copy-data').textContent)).then(function(){
+      btn.textContent='Copied';btn.classList.add('ok');show('Full problem copied');
+      setTimeout(function(){btn.textContent='Copy';btn.classList.remove('ok');},1500);
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  function setTheme(theme){
+    document.documentElement.dataset.theme=theme;
+    try{localStorage.setItem('ordos-theme',theme);}catch(e){}
+    document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+      var dark=theme==='dark';
+      var mark=btn.querySelector('.theme-mark');
+      if(mark)mark.textContent=dark?'☀':'☾';
+      btn.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');
+      btn.setAttribute('title',dark?'Switch to light mode':'Switch to dark mode');
+    });
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    var current=document.documentElement.dataset.theme==='dark'?'dark':'light';
+    setTheme(current);
+    document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

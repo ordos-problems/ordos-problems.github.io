@@ -1,0 +1,166 @@
+{
+ "number": 159,
+ "ref": "ORDOS-159",
+ "id": "graph-shannon-capacity-odd-cycles",
+ "title": "Exact Shannon capacity of odd cycles and small graphs",
+ "collection": "Computer Science",
+ "area": "Information Theory and Combinatorial Optimization",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "Shannon capacity",
+  "graph theory",
+  "information theory",
+  "semidefinite programming",
+  "combinatorial optimization"
+ ],
+ "short_statement": "Determine the Shannon capacity of basic graphs such as odd cycles beyond $C_5$, especially $C_7$, and clarify the computational complexity of the graph capacity invariant.",
+ "open_problem": "Compute $\\Theta(C_7)$ and, more generally, determine the algorithmic complexity and approximability of graph Shannon capacity.",
+ "background": "Shannon introduced zero-error capacity to capture communication when the receiver must decode with no possibility of confusion. Translating a channel to its confusability graph gives a beautiful combinatorial invariant: independent sets in strong powers of the graph are zero-error codes. The model is exceptionally clean, but the invariant is hard because it is asymptotic over all powers of the graph. Lovasz's solution for the pentagon $C_5$ via the theta function is one of the classic successes of semidefinite optimization in combinatorics; it also highlights the mystery, because the same machinery does not settle even the next odd cycles. The problem belongs on ORdos because it is a crisp optimization limit, tied to SDP bounds, asymptotic spectra, and finite-object certificate search.",
+ "full_statement": "For a finite graph $G$, let $G^{\\boxtimes k}$ denote the $k$-fold strong product of $G$ with itself, and let $\\alpha(H)$ be the independence number of a graph $H$. The Shannon capacity of $G$ is $$\\Theta(G)=\\sup_{k\\ge 1}\\alpha(G^{\\boxtimes k})^{1/k}=\\lim_{k\\to\\infty}\\alpha(G^{\\boxtimes k})^{1/k}.$$ Equivalently, $G$ is a confusability graph for a zero-error communication channel, and $\\Theta(G)$ is the asymptotic number of distinguishable symbols per channel use. The open problem is to compute or tightly characterize $\\Theta(G)$ for fundamental graph families and to determine the computational complexity of approximating or deciding bounds on $\\Theta(G)$. A concrete benchmark is the odd cycle $C_7$: determine the exact value of $\\Theta(C_7)$, or even close the best upper and lower bounds enough to reveal the correct structural mechanism. A broader resolution would explain whether Shannon capacity admits effective approximation algorithms, semidefinite/asymptotic-spectrum certificates, or inherent noncomputability-like finite-prefix barriers.",
+ "known_results": "Shannon defined the capacity invariant and solved several elementary cases. Lovasz introduced the theta number and proved $\\Theta(C_5)=\\sqrt 5$, giving an efficiently computable semidefinite upper bound that is tight for perfect graphs and some special nonperfect graphs. Haemers introduced rank-based upper bounds that can beat Lovasz theta on some graphs, and later work developed Schrijver, fractional, projective-rank, and asymptotic-spectrum tools. For odd cycles beyond $C_5$, exact capacities remain unknown. Computational and constructive work has improved lower bounds for $C_7$, $C_{11}$, $C_{13}$, $C_{15}$ and related graphs by finding large independent sets in graph powers. Alon and Lubetzky showed that the sequence $\\alpha(G^{\\boxtimes k})$ can have complicated behavior, so no fixed finite prefix of powers can generally approximate capacity within subpolynomial factors. Recent asymptotic-spectrum and graph-limit work provides new language and some improved bounds, but the basic small-instance benchmark $\\Theta(C_7)$ remains unresolved. The 2026 construction sequence includes Buys-Polak-Zuiddam's July preprint bound $\\Theta(C_7)\\ge3.258805369885\\ldots$, a later repository update to $3.258827985920\\ldots$, and Tandon's August preprint Theorem 2 giving $\\Theta(C_7)\\ge3.258832620353\\ldots$ from an explicit independent set in $C_7^{\\boxtimes500}$. The Lovasz upper bound is $7\\cos(\\pi/7)/(1+\\cos(\\pi/7))\\approx3.317667$. These are lower-bound improvements, not exact capacity.",
+ "progress": {
+  "state": "partial",
+  "summary": "Exact $\\Theta(C_7)$ remains open. The strongest theorem-level lower bound located in this audit is the 2026 preprint value $3.258832620353\\ldots$; the theta upper bound is approximately $3.317667$.",
+  "links": [
+   {
+    "title": "Alon-Lubetzky finite-prefix obstruction",
+    "url": "https://arxiv.org/abs/cs/0608021"
+   },
+   {
+    "title": "Odd-cycle lower bounds",
+    "url": "https://arxiv.org/abs/1504.01472"
+   },
+   {
+    "title": "Buys, Polak, and Zuiddam, Lean-verified lower bounds for the Shannon capacity of odd cycles, arXiv:2607.29681 (2026)",
+    "url": "https://arxiv.org/html/2607.29681v1"
+   },
+   {
+    "title": "Ravi Tandon, Strengthening Recursive Constructions for Zero-Error Shannon Capacity, arXiv:2608.30273 (2026)",
+    "url": "https://arxiv.org/html/2608.30273v1"
+   }
+  ]
+ },
+ "importance": 9,
+ "difficulty": 9,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Lower-bound progress is often an explicit independent set in a finite strong power. Such objects are finite certificates and can be verified exactly by graph computation.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Search and evolutionary methods can hunt for large independent sets in graph powers, discover symmetry-reduced constructions, and test SDP/rank upper-bound candidates. Exact upper bounds remain much harder but can sometimes be certified by SDP dual solutions or algebraic arguments.",
+ "literature": {
+  "synthesis": "The capacity problem has two faces. For a fixed graph such as $C_7$, progress can come from finite combinatorial objects: larger independent sets in $C_7^{\\boxtimes k}$ improve lower bounds, while theta/rank/asymptotic-spectrum methods improve upper bounds. For the general computational problem, Alon and Lubetzky show why naive finite-prefix extrapolation cannot work: the independence numbers of powers can behave too irregularly. Recent asymptotic-spectrum work reframes capacity as part of a broader theory of asymptotic invariants, but has not eliminated the gap on the standard odd-cycle benchmarks. A solution for $C_7$ would likely reveal a new certificate type, either a surprisingly structured code or a sharper universal upper-bound method. The recent recursive constructions improve the finite-power lower bounds; their reported exact-arithmetic and Lean certificates were not rerun in this audit.",
+  "reviewed": [
+   {
+    "ref": "Lovasz, 'On the Shannon capacity of a graph', IEEE TIT 1979",
+    "result": "Introduces the theta number and proves $\\Theta(C_5)=\\sqrt 5$.",
+    "relevance": "partial-progress",
+    "url": "https://doi.org/10.1109/TIT.1979.1055985"
+   },
+   {
+    "ref": "Alon and Lubetzky, 'The Shannon capacity of a graph and the independence numbers of its powers', IEEE TIT 2006",
+    "result": "Shows strong limitations of approximating capacity from any fixed prefix of independence numbers.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/cs/0608021",
+    "relevance_detail": "barrier"
+   },
+   {
+    "ref": "Mathew and Ostergard, 'New Lower Bounds for the Shannon Capacity of Odd Cycles', DCC 2015",
+    "result": "Uses computational constructions to improve lower bounds for odd cycles including $C_7$.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1504.01472"
+   },
+   {
+    "ref": "Buys, Polak, and Zuiddam, Lean-verified lower bounds for the Shannon capacity of odd cycles, arXiv:2607.29681 (2026)",
+    "result": "July preprint reports new explicit constructions and Lean verification; later bounds supersede its C7 value.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/html/2607.29681v1"
+   },
+   {
+    "ref": "Ravi Tandon, Strengthening Recursive Constructions for Zero-Error Shannon Capacity, arXiv:2608.30273 (2026)",
+    "result": "Theorem 2 and Appendix B specify the size of an independent set in the 500th strong power of C7.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/html/2608.30273v1"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "For lower bounds, search for independent sets in strong powers of odd cycles using symmetry, SAT/IP formulations, coding-theoretic ansatzes, and local improvement. For upper bounds, study Lovasz-theta strengthenings, Haemers-rank variants over fields, asymptotic-spectrum elements, and dual SDP certificates. Keep separate the fixed-graph problem, such as $C_7$, from the general complexity question.",
+  "verification_notes": "A lower-bound submission should provide the graph, power $k$, and an explicit independent set; a referee can verify pairwise nonadjacency in $G^{\\boxtimes k}$ and compute the implied $\\alpha^{1/k}$ bound. An upper-bound claim must give a valid capacity upper bound, not merely a bound on one finite independence number. If the proof uses theta or another SDP, provide a dual certificate or interval-certified numerical solution. For complexity claims, distinguish exact computation, additive approximation, multiplicative approximation, and promises on the input graph family.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "The open status of small odd cycles and the finite-prefix obstruction are discussed in Shannon-capacity papers and surveys; Alon and Lubetzky give a formal obstruction to finite-prefix approximation.",
+  "url": "https://arxiv.org/abs/cs/0608021",
+  "quote": "cannot be approximated",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Claude E. Shannon",
+  "title": "The zero error capacity of a noisy channel",
+  "year": 1956,
+  "venue": "IRE Transactions on Information Theory",
+  "url": "https://doi.org/10.1109/TIT.1956.1056798"
+ },
+ "additional_refs": [
+  {
+   "authors": "Laszlo Lovasz",
+   "title": "On the Shannon capacity of a graph",
+   "year": 1979,
+   "venue": "IEEE Transactions on Information Theory",
+   "url": "https://doi.org/10.1109/TIT.1979.1055985"
+  },
+  {
+   "authors": "Willem H. Haemers",
+   "title": "On some problems of Lovasz concerning the Shannon capacity of a graph",
+   "year": 1979,
+   "venue": "IEEE Transactions on Information Theory",
+   "url": "https://doi.org/10.1109/TIT.1979.1055982"
+  },
+  {
+   "authors": "Noga Alon, Eyal Lubetzky",
+   "title": "The Shannon capacity of a graph and the independence numbers of its powers",
+   "year": 2006,
+   "venue": "IEEE Transactions on Information Theory",
+   "url": "https://arxiv.org/abs/cs/0608021"
+  },
+  {
+   "authors": "K. Ashik Mathew, Patric R. J. Ostergard",
+   "title": "New Lower Bounds for the Shannon Capacity of Odd Cycles",
+   "year": 2015,
+   "venue": "Designs, Codes and Cryptography",
+   "url": "https://arxiv.org/abs/1504.01472"
+  },
+  {
+   "authors": "David de Boer, Pjotr Buys, Jeroen Zuiddam",
+   "title": "The asymptotic spectrum distance, graph limits, and the Shannon capacity",
+   "year": 2024,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2404.16763"
+  },
+  {
+   "authors": "Pjotr Buys, Sven Polak, Jeroen Zuiddam",
+   "title": "Lean-verified lower bounds for the Shannon capacity of odd cycles",
+   "year": 2026,
+   "venue": "arXiv preprint; certificates not rerun in this audit",
+   "url": "https://arxiv.org/abs/2607.29681"
+  },
+  {
+   "authors": "Ravi Tandon",
+   "title": "Strengthening Recursive Constructions for Zero-Error Shannon Capacity",
+   "year": 2026,
+   "venue": "arXiv preprint; certificates not rerun in this audit",
+   "url": "https://arxiv.org/abs/2608.30273"
+  }
+ ],
+ "bibtex": "@misc{Shannon1956,\n  author = {Claude E. Shannon},\n  title = {The zero error capacity of a noisy channel},\n  year = {1956},\n  howpublished = {IRE Transactions on Information Theory},\n  url = {https://doi.org/10.1109/TIT.1956.1056798},\n  note = {Source of ORdős Problem ORDOS-159}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/graph-shannon-capacity-odd-cycles.html",
+  "api": "https://ordos-problems.github.io/api/problems/graph-shannon-capacity-odd-cycles.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

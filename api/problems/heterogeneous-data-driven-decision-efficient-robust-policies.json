@@ -14,13 +14,68 @@
   "newsvendor",
   "pricing"
  ],
- "short_statement": "In the heterogeneity-ball framework for data-driven decisions, can one efficiently compute or approximate general robust policies that retain the known rate-optimal worst-case regret guarantees?",
- "open_problem": "The open problem is algorithmic: can these general robust policies be computed efficiently, or approximated in a way that preserves their rate-optimal regret guarantees, for broad classes of OR/MS problems beyond the worked examples?",
- "full_statement": "Consider the framework of Besbes, Ma, and Mouchtaki: a decision $x\\in\\mathcal{X}$ is evaluated on a future distribution $\\mu$, while historical observations are independent but may come from different unknown distributions $\\nu_1,\\dots,\\nu_n$ lying in a radius-$\\epsilon$ heterogeneity ball around $\\mu$ under a specified metric such as Kolmogorov, Wasserstein, total variation, or a divergence. A data-driven policy maps historical samples into a decision, and performance is measured by asymptotic worst-case expected regret relative to the oracle decision optimal for $\\mu$. SAA is rate-optimal for some problem/metric pairs but fails badly for others, such as pricing under Wasserstein heterogeneity and ski-rental variants. The paper proposes robust alternatives such as RDRO and DRO policies and proves rate-optimality in several settings. The open problem is algorithmic: can these general robust policies be computed efficiently, or approximated in a way that preserves their rate-optimal regret guarantees, for broad classes of OR/MS problems beyond the worked examples?",
- "known_results": "Besbes, Ma, and Mouchtaki give a formal heterogeneity-ball model, upper/lower bounds for SAA, and problem-dependent rate-optimal robust policies for examples including newsvendor, pricing, and ski rental. They explicitly leave open efficient computation of the RDRO/DRO policies, approximations that still perform well, and broader finite-sample/adaptive-to-heterogeneity guarantees.",
+ "short_statement": "In the heterogeneity-ball framework for data-driven decisions, can one efficiently compute or approximate general robust policies that retain rate-optimal worst-case regret guarantees?",
+ "open_problem": "Design computationally efficient robust policies for the heterogeneity-ball data-driven decision framework that preserve rate-optimal worst-case regret guarantees across broad OR/MS decision classes.",
+ "background": "Most data-driven OR theory assumes that historical samples and the future deployment environment are iid draws from one distribution. Besbes, Ma, and Mouchtaki study a cleaner and more pessimistic model for the common case where historical data come from related but different environments: each historical distribution lies in a heterogeneity ball around the future distribution, and performance is measured by worst-case regret relative to the future oracle. This is not an open-ended modelling request; the heterogeneity-ball model, metrics, and benchmark are already defined. The paper shows that sample-average approximation can be rate-optimal in some problem/metric pairs and badly suboptimal in others, motivating robust policies such as RDRO and DRO variants. The remaining problem is algorithmic and structural: can one design broadly applicable policies that are computationally efficient and retain the rate-optimal guarantees, rather than proving problem-by-problem robust prescriptions?",
+ "full_statement": "Consider the Besbes-Ma-Mouchtaki heterogeneity-ball framework. A decision $x\\in\\mathcal{X}$ is evaluated under a future distribution $\\mu$, while historical observations are independent but may come from different unknown distributions $\\nu_1,\\dots,\\nu_n$ lying in a radius-$\\epsilon$ ball around $\\mu$ under a specified metric such as Kolmogorov distance, Wasserstein distance, total variation, or another integral probability metric. A data-driven policy maps historical samples into a decision, and performance is measured by asymptotic worst-case expected regret relative to the oracle decision optimal for $\\mu$. Sample-average approximation is rate-optimal for some problem/metric pairs but is provably suboptimal for others, including canonical pricing and ski-rental variants under natural heterogeneity metrics. The open problem is to design computationally efficient policies, or approximation schemes for the robust prescriptions such as RDRO/DRO, that preserve rate-optimal worst-case regret over broad OR/MS decision classes. A satisfactory solution should specify the metric, loss geometry, decision-set structure, finite-sample or asymptotic guarantee, and computational model.",
+ "known_results": "Besbes, Ma, and Mouchtaki define the heterogeneity-ball framework and prove general regret upper bounds for broad policy classes. They analyze SAA under integral probability metrics and introduce an approximation parameter explaining when SAA succeeds or fails. They prove rate-optimal robust policies for illustrative problems including newsvendor, pricing, and ski rental, and they provide initial steps toward general rate-optimal algorithms. Their contextual-newsvendor follow-up gives an exact worst-case regret characterization for weighted empirical risk minimization policies on any fixed context configuration, reducing an infinite-dimensional distributional problem to a tractable one-dimensional search. Kumar and Mouchtaki later give an exact finite-dimensional reduction for worst-case regret of classical data-driven newsvendor policies under censored demand observations. These papers substantially sharpen exact performance analysis in special newsvendor-style models, but they do not settle the general open problem: efficient, broadly applicable robust policies with rate-optimal guarantees for general heterogeneous OR/MS decision classes, finite-sample settings, and unknown heterogeneity radii.",
+ "progress": {
+  "state": "partial",
+  "summary": "The framework and several problem-specific rate-optimal policies are known. Follow-up work gives exact worst-case regret reductions for contextual and censored newsvendor variants. The broad efficient-algorithm question remains open for general losses and decision sets where the robust policy is not a simple scalar prescription.",
+  "links": [
+   {
+    "title": "Besbes, Ma, Mouchtaki, Beyond IID",
+    "url": "https://arxiv.org/abs/2206.09642"
+   },
+   {
+    "title": "Besbes, Ma, Mouchtaki, From Contextual Data to Newsvendor Decisions",
+    "url": "https://arxiv.org/abs/2302.08424"
+   },
+   {
+    "title": "Kumar and Mouchtaki, What is the Value of Censored Data?",
+    "url": "https://arxiv.org/abs/2602.16842"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 7,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "Finite decision problems can expose failures of proposed universal robust policies or SAA-style rules. Positive algorithmic results require broad convex-analytic or minimax arguments.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Search can help discover small heterogeneous instances where SAA, DRO, or a candidate approximation has the wrong regret rate, and can test heuristics numerically. It is less likely to replace the minimax proof needed for general guarantees.",
+ "literature": {
+  "synthesis": "The Beyond-IID paper builds a formal bridge between distributionally robust optimization and statistical rates under heterogeneous data. Its key contribution is not just that heterogeneity hurts, but that the interaction between metric, loss geometry, and decision class determines whether SAA is rate-optimal. The contextual and censored-data follow-ups show that exact worst-case analysis is possible in carefully structured newsvendor models, and they supply useful reduction templates for finite-dimensional certification. The open gap is that these templates are not yet a general computational theory. For a repository of open problems, this is a good candidate because the model is parsimonious and the missing object is precise: an efficient policy or approximation scheme with rate guarantees under heterogeneity balls, ideally covering broad convex losses and operational decision sets.",
+  "reviewed": [
+   {
+    "ref": "Besbes, Ma, Mouchtaki, 'Beyond IID: data-driven decision-making in heterogeneous environments', arXiv 2022/2025",
+    "result": "Defines heterogeneity balls, analyzes SAA via approximation parameters, and gives problem-dependent rate-optimal robust policies.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2206.09642"
+   },
+   {
+    "ref": "Besbes, Ma, Mouchtaki, 'From Contextual Data to Newsvendor Decisions', arXiv 2023/2025",
+    "result": "Exactly characterizes worst-case regret of WERM policies for contextual newsvendor instances by reducing the distributional problem to a line search.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/2302.08424"
+   },
+   {
+    "ref": "Rachitesh Kumar and Omar Mouchtaki, 'What is the Value of Censored Data? An Exact Analysis for the Data-driven Newsvendor', arXiv 2026",
+    "result": "Reduces exact worst-case regret analysis under censored demand observations to a finite-dimensional optimization problem.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/2602.16842"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Try convex duality for heterogeneity balls under Wasserstein, total variation, and IPM metrics; identify when the minimax robust policy reduces to a tractable regularized empirical problem. For negative results, construct two-point or finite-support distributions where a candidate policy has provably suboptimal asymptotic regret.",
+  "verification_notes": "A claimed solution must specify the metric, decision class, loss regularity, and whether the guarantee is asymptotic or finite-sample. It must compare to the oracle for the future distribution and preserve the rate under worst-case heterogeneous histories, not merely improve empirical performance.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "Section 6 of Besbes, Ma, and Mouchtaki, 'Beyond IID: data-driven decision-making in heterogeneous environments', leaves open efficient computation/approximation of robust policies that perform well under heterogeneity.",
-  "url": "https://arxiv.org/abs/2206.09642"
+  "text": "Posed in the concluding discussion of Besbes, Ma, and Mouchtaki, 'Beyond IID: data-driven decision-making in heterogeneous environments'.",
+  "url": "https://arxiv.org/abs/2206.09642",
+  "quote": "",
+  "location": "Section 6 / conclusion."
  },
  "source": {
   "authors": "Omar Besbes, Will Ma, Omar Mouchtaki",
@@ -36,6 +91,13 @@
    "year": 2023,
    "venue": "arXiv:2302.08424",
    "url": "https://arxiv.org/abs/2302.08424"
+  },
+  {
+   "title": "What is the Value of Censored Data? An Exact Analysis for the Data-driven Newsvendor",
+   "url": "https://arxiv.org/abs/2602.16842",
+   "authors": "Rachitesh Kumar, Omar Mouchtaki",
+   "year": 2026,
+   "venue": "arXiv:2602.16842"
   }
  ],
  "bibtex": "@misc{Besbes2022,\n  author = {Omar Besbes and Will Ma and Omar Mouchtaki},\n  title = {Beyond IID: data-driven decision-making in heterogeneous environments},\n  year = {2022},\n  howpublished = {arXiv:2206.09642},\n  url = {https://arxiv.org/abs/2206.09642},\n  note = {Source of ORdős Problem ORDOS-090}\n}",

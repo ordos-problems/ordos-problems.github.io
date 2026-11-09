@@ -1,0 +1,101 @@
+{
+  "id": "single-machine-precedence-wct-lp-kernel",
+  "title": "Polynomial kernels above the LP bound for precedence-constrained weighted completion time",
+  "collection": "Operations Research",
+  "area": "Scheduling Theory",
+  "status": "open",
+  "confidence": "medium",
+  "tags": [
+    "scheduling",
+    "parameterized complexity",
+    "kernelization",
+    "precedence constraints",
+    "weighted completion time",
+    "linear programming"
+  ],
+  "short_statement": "Decide whether $1|\\mathrm{prec}|\\sum_j w_j C_j$ has a polynomial kernel when parameterized by the gap between the optimum and the natural LP lower bound.",
+  "background": "The single-machine precedence-constrained weighted-completion-time problem is a compact classical scheduling model. There is one machine, each job has a processing time and weight, and a precedence partial order restricts the feasible permutations. The objective $\\sum_j w_jC_j$ measures total weighted flow through the machine and is central in deterministic scheduling. The problem is NP-hard, but it has strong linear-programming and ordering structure: precedence constraints make it closely related to vertex-cover-like formulations, and several exact and approximation approaches use LP relaxations. Mnich and van Bevern's open-problem list asks for a parameterized-preprocessing result rather than another approximation ratio. If the optimum value is only $k$ above the natural LP lower bound, can the instance be reduced in polynomial time to an equivalent instance whose size is polynomial in $k$? This is a clean question about whether LP structure gives compressible exact instances.",
+  "full_statement": "An instance consists of jobs $J$, processing times $p_j\\in\\mathbb N$, weights $w_j\\in\\mathbb N$, and a precedence partial order $\\prec$ on $J$. A feasible schedule is a linear extension $\\sigma$ of $\\prec$ on a single nonpreemptive machine; completion times are $C_{\\sigma(t)}=\\sum_{s\\le t}p_{\\sigma(s)}$, and the objective is $\\sum_{j\\in J}w_jC_j$. Let $\\mathrm{OPT}$ be the minimum objective value and let $\\mathrm{LP}$ be the value of the standard natural LP relaxation used for this precedence-constrained weighted-completion-time problem. Parameterize the decision version by $k=\\mathrm{OPT}-\\mathrm{LP}$, or equivalently by the allowed excess over the LP lower bound. The open problem is whether this parameterized problem admits a polynomial kernel: a polynomial-time preprocessing algorithm that maps every instance with parameter $k$ to an equivalent instance of size $k^{O(1)}$. A positive answer would show that near-LP-tight instances have a finite structural core; a negative answer would likely require cross-composition or related kernel lower-bound machinery.",
+  "open_problem": "Prove or refute the existence of a polynomial kernel for $1|\\mathrm{prec}|\\sum_j w_j C_j$ parameterized above the natural LP lower bound.",
+  "known_results": "The problem $1|\\mathrm{prec}|\\sum_j w_j C_j$ is NP-hard and has been studied through LP relaxations, ordering polyhedra, and approximation algorithms. Mnich and van Bevern note that it is a special case of weighted vertex cover under a natural formulation, making it tempting to seek kernelization results analogous to above-LP parameterizations in graph problems. Weighted Vertex Cover has polynomial kernels for certain above-guarantee parameterizations, but those results do not directly transfer because scheduling variables encode a linear extension and completion-time costs rather than a plain chosen vertex set. The source list explicitly posed whether the scheduling problem has a polynomial kernel in the excess over the LP bound. A quick status search did not find a later theorem resolving this exact kernelization question.",
+  "where_posed": {
+    "text": "Open Problem 2 in Mnich and van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems'.",
+    "url": "https://arxiv.org/abs/1709.01670",
+    "quote": "Does 1|prec|ΣwjCj admit a problem kernel of size polynomial in the difference between the optimum and the lower bound obtained from its natural LP relaxation?",
+    "location": "Section 3.2, Open Problem 2"
+  },
+  "source": {
+    "authors": "Matthias Mnich, Rene van Bevern",
+    "title": "Parameterized complexity of machine scheduling: 15 open problems",
+    "year": 2018,
+    "venue": "Computers & Operations Research",
+    "url": "https://arxiv.org/abs/1709.01670"
+  },
+  "additional_refs": [
+    {
+      "authors": "Matthias Mnich, Rene van Bevern",
+      "title": "Parameterized complexity of machine scheduling: 15 open problems",
+      "year": 2018,
+      "venue": "Computers & Operations Research",
+      "url": "https://doi.org/10.1016/j.cor.2018.07.020"
+    },
+    {
+      "authors": "Ronald L. Graham, Eugene L. Lawler, Jan Karel Lenstra, A. H. G. Rinnooy Kan",
+      "title": "Optimization and approximation in deterministic sequencing and scheduling: a survey",
+      "year": 1979,
+      "venue": "Annals of Discrete Mathematics",
+      "url": "https://doi.org/10.1016/S0167-5060(08)70356-X"
+    },
+    {
+      "authors": "Marek Cygan, Fedor V. Fomin, Lukasz Kowalik, Daniel Lokshtanov, Daniel Marx, Marcin Pilipczuk, Michal Pilipczuk, Saket Saurabh",
+      "title": "Parameterized Algorithms",
+      "year": 2015,
+      "venue": "Springer",
+      "url": "https://doi.org/10.1007/978-3-319-21275-3"
+    }
+  ],
+  "progress": {
+    "state": "open",
+    "summary": "The open-problem source gives the precise kernelization target. The usual NP-hardness and approximation literature does not settle whether instances close to the LP bound compress polynomially.",
+    "links": [
+      {
+        "title": "Parameterized complexity of machine scheduling: 15 open problems",
+        "url": "https://arxiv.org/abs/1709.01670"
+      }
+    ]
+  },
+  "importance": 6,
+  "difficulty": 7,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Small instances may reveal reduction rules or obstructions, but a kernel lower bound is a complexity-theoretic statement and cannot be certified by a single counterexample.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Search can generate near-LP-tight instances, test candidate reduction rules, and look for irreducible families. It is less suitable for proving cross-composition lower bounds.",
+  "literature": {
+    "synthesis": "This problem belongs to the above-guarantee kernelization program. The LP relaxation gives a natural lower bound; if a schedule is only slightly worse than that lower bound, the question is whether all irrelevant jobs and precedence structure can be compressed away. The appeal is that the model is much more structured than an arbitrary integer program but richer than graph vertex cover. A positive result would likely exploit precedence transitivity, dominance among jobs, and LP slack structure. A negative result would have to encode many independent hard choices while keeping the LP gap small, which is exactly the kind of construction that often drives kernel lower bounds.",
+    "reviewed": [
+      {
+        "ref": "Mnich and van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems', Computers & Operations Research 2018",
+        "result": "Poses the polynomial-kernel question for $1|\\mathrm{prec}|\\sum_j w_j C_j$ parameterized above the LP lower bound.",
+        "relevance": "open-problem-source",
+        "url": "https://arxiv.org/abs/1709.01670"
+      },
+      {
+        "ref": "Graham et al., 'Optimization and approximation in deterministic sequencing and scheduling: a survey', Annals of Discrete Mathematics 1979",
+        "result": "Provides the standard scheduling notation and classical context for $1|\\mathrm{prec}|\\sum_j w_j C_j$.",
+        "relevance": "background",
+        "url": "https://doi.org/10.1016/S0167-5060(08)70356-X"
+      },
+      {
+        "ref": "Cygan et al., 'Parameterized Algorithms', Springer 2015",
+        "result": "Provides the modern kernelization framework used in the open problem.",
+        "relevance": "background",
+        "url": "https://doi.org/10.1007/978-3-319-21275-3"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Try to formalize the natural LP and compute slack certificates on small instances. Search for safe reduction rules based on forced precedence, dominated jobs, and zero-slack pairs. For lower bounds, attempt to encode a known no-polynomial-kernel problem into many independent precedence gadgets while controlling the LP excess.",
+    "verification_notes": "A positive submission must define the exact LP relaxation and prove equivalence of every reduction rule, with final encoding size polynomial in $k=\\mathrm{OPT}-\\mathrm{LP}$. A negative submission must state the complexity assumption, usually NP not contained in coNP/poly or a parameterized analogue, and give a valid polynomial-parameter transformation or cross-composition. Approximation algorithms or FPT algorithms alone do not answer the kernelization question.",
+    "machine_checkable": false
+  }
+}

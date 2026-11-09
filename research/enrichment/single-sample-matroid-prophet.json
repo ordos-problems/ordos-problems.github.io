@@ -1,0 +1,90 @@
+{
+  "id": "single-sample-matroid-prophet",
+  "short_statement": "A recent preprint reports the optimal single-sample matroid prophet guarantee for fixed oblivious arrival order.",
+  "full_statement": "Let $M=(E,\\mathcal I)$ be a matroid. Each element $e\\in E$ has an independent nonnegative value $X_e\\sim D_e$, where the distributions $D_e$ are unknown. Before the online phase, the algorithm observes exactly one independent sample $S_e\\sim D_e$ for each element. Then the elements arrive online in an adversarial order fixed independently of samples, realized values, and algorithmic randomness (not necessarily known to the algorithm) with realized values $X_e$, and the algorithm must irrevocably accept or reject each element while maintaining an independent accepted set. The benchmark is $E[\\max_{I\\in\\mathcal I}\\sum_{e\\in I}X_e]$, the expected value of the offline prophet that sees all realized values before choosing a feasible set. The historical question asks whether there is a universal constant $c$ and a single-sample algorithm whose expected value is at least $1/c$ times this benchmark for every matroid and every product distribution. The reported answer is affirmative in this fixed-order model; see the What Is Known section. This statement does not cover an almighty adversary.",
+  "background": "Single-sample prophet inequalities replace full distributional knowledge by one historical observation per element. Earlier rank-one and special-matroid guarantees motivated the general question. It is now addressed by the new theorem below.",
+  "known_results": "Abdi, Banihashem, Hajiaghayi, Huang, Mittal, and Singla (arXiv:2611.08869v1), Theorem 1.2 / formal Theorem 3.1, report the optimal $1/2$ guarantee with one independent sample per element for every known matroid and independent nonnegative values. The order must be fixed independently of values, samples, and random coins, but need not be revealed beforehand. The implementation uses $O(n^2)$ independence queries. The earlier polylogarithmic-sample guarantee is no longer the frontier for this model.",
+  "open_problem": "Verify the reported resolution of the historical single-sample question with the arrival-order quantifiers stated above.",
+  "progress": {
+    "state": "solution-claimed",
+    "summary": "A matching-model resolution is reported; stronger adversary variants are not certified here.",
+    "links": [
+      {
+        "title": "Sample-Based Matroid Prophet Inequalities",
+        "url": "https://arxiv.org/abs/2406.12799"
+      },
+      {
+        "title": "Optimal Single-Choice Prophet Inequalities from Samples",
+        "url": "https://arxiv.org/abs/1911.07945"
+      },
+      {
+        "title": "As Easy as Rank One: Optimal Algorithms for Matroid Secretary and Single-Sample Matroid Prophet",
+        "url": "https://arxiv.org/abs/2611.08869"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Finite distributions and matroids can test the claimed construction, but cannot alone prove or disprove its universal guarantee.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Automated search can explore threshold rules, OCRS-style policies, and hard instances over small matroids. Candidate policies can often be stress-tested computationally before proof attempts.",
+  "literature": {
+    "synthesis": "The new result removes the sample-count gap for the specified order model. Known-prior OCRS equivalences must not be transferred automatically to sample-based or almighty-adversary models.",
+    "reviewed": [
+      {
+        "ref": "Pablo D. Azar, Robert Kleinberg, S. Matthew Weinberg, 'Prophet Inequalities with Limited Information', SODA 2014 / arXiv",
+        "result": "Introduces limited-information prophet inequalities and single-sample algorithms for several settings.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/1307.3736"
+      },
+      {
+        "ref": "Aviad Rubinstein, Jack Z. Wang, S. Matthew Weinberg, 'Optimal Single-Choice Prophet Inequalities from Samples', ITCS 2020 / arXiv",
+        "result": "Shows one sample per distribution achieves the optimal $1/2$ guarantee for single-choice prophet inequalities.",
+        "relevance": "solves-special-case",
+        "url": "https://arxiv.org/abs/1911.07945"
+      },
+      {
+        "ref": "Hu Fu, Pinyan Lu, Zhihao Gavin Tang, Hongxun Wu, Jinzhao Wu, Qianfan Zhang, 'Sample-Based Matroid Prophet Inequalities', EC 2024 / arXiv",
+        "result": "Gives a $(1/4-\\epsilon)$ matroid prophet inequality with $O_\\epsilon(polylog\\,n)$ samples and identifies the single-sample general-matroid question as closely linked to matroid secretary.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2406.12799"
+      },
+      {
+        "ref": "Kanstantsin Pashkovich, Alice Sayutina, 'Single Sample Prophet Inequality for Uniform Matroids of Rank 2', arXiv 2023",
+        "result": "Proves a tight deterministic $1/2$ guarantee for uniform matroids of rank $2$ and conjectures broader uniform-matroid behavior.",
+        "relevance": "solves-special-case",
+        "url": "https://arxiv.org/abs/2306.17716"
+      },
+      {
+        "ref": "Hamed Abdi, Kiarash Banihashem, MohammadTaghi Hajiaghayi, Zhiyi Huang, Danny Mittal, Sahil Singla, 'As Easy as Rank One: Optimal Algorithms for Matroid Secretary and Single-Sample Matroid Prophet' (2026)",
+        "result": "Theorems 1.2 and 3.1 report the single-sample result; see the What Is Known section.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2611.08869"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Review the new reduction and sampling independence conditions before pursuing further algorithm design.",
+    "verification_notes": "Check the precise order model, one-sample restriction, matroid feasibility, and expected offline-optimum benchmark. The audit reviewed theorem/model sections, not the complete proof.",
+    "machine_checkable": true
+  },
+  "additional_refs": [
+    {
+      "authors": "Kanstantsin Pashkovich, Alice Sayutina",
+      "title": "Single Sample Prophet Inequality for Uniform Matroids of Rank 2",
+      "year": 2023,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/2306.17716"
+    },
+    {
+      "authors": "Hamed Abdi, Kiarash Banihashem, MohammadTaghi Hajiaghayi, Zhiyi Huang, Danny Mittal, Sahil Singla",
+      "title": "As Easy as Rank One: Optimal Algorithms for Matroid Secretary and Single-Sample Matroid Prophet",
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2611.08869"
+    }
+  ],
+  "status": "solution claimed",
+  "confidence": "medium"
+}

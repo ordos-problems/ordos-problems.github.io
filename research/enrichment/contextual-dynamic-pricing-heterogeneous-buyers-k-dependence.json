@@ -1,0 +1,59 @@
+{
+  "id": "contextual-dynamic-pricing-heterogeneous-buyers-k-dependence",
+  "background": "Dynamic pricing with binary purchase feedback is a canonical revenue-management learning problem. Classical models usually assume a homogeneous valuation response after conditioning on observable context. Lykouris, Nietert, Okoroafor, Podimata, and Zimmert add a clean form of latent heterogeneity: each arriving buyer's type is drawn from an unknown finite distribution with support size $K_\\star$, and the seller sees context but not type. This creates a mixture demand curve and makes exploration harder because the same price/context observation is informative about multiple latent valuation components. Their paper gives the first regret bounds for this contextual heterogeneous model, but leaves a sharp dependence on the number of latent types unresolved. This is a well-posed learning-theoretic gap inside a specified pricing model: the open question is about regret exponents and computational efficiency, not about choosing a better demand model.",
+  "open_problem": "Determine the optimal dependence on the latent type count $K_\\star$ for contextual dynamic pricing with heterogeneous buyers, and achieve it with a computationally efficient algorithm.",
+  "known_results": "Lykouris et al. give an optimistic posterior sampling algorithm with regret $\\widetilde O(K_\\star\\sqrt{dT})$ in the contextual model, tight in $d$ and $T$ up to logarithmic factors. They prove a lower bound of order $\\Omega(\\sqrt{K_\\star dT})$ for sufficiently large horizons, leaving a gap between linear and square-root dependence on $K_\\star$. In the non-contextual case, their variance-aware zooming algorithm achieves the optimal $\\widetilde O(\\sqrt{K_\\star T})$ dependence, showing that linear $K_\\star$ is not inevitable without context. The algorithmic efficiency question is also open because the posterior-sampling approach can have exponential dependence on model-class discretization.",
+  "status": "open",
+  "where_posed": {
+    "text": "Open questions in Lykouris, Nietert, Okoroafor, Podimata, and Zimmert, 'Contextual Dynamic Pricing with Heterogeneous Buyers'.",
+    "url": "https://arxiv.org/abs/2512.09513",
+    "quote": "",
+    "location": "Open questions / discussion"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The first contextual upper and lower bounds are known, and the non-contextual $K_\\star$ dependence is resolved. The full contextual type-dependence and efficient implementation remain open.",
+    "links": [
+      {
+        "title": "Contextual Dynamic Pricing with Heterogeneous Buyers",
+        "url": "https://arxiv.org/abs/2512.09513"
+      }
+    ]
+  },
+  "importance": 7,
+  "difficulty": 7,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Finite mixture instances can test proposed algorithms and lower-bound constructions, but a tight minimax theorem requires asymptotic regret analysis.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Search can generate hard finite mixtures and evaluate pricing policies in simulation, especially to distinguish $K$ versus $\\sqrt K$ behavior. Formal regret proofs are still required.",
+  "literature": {
+    "synthesis": "The known bounds show that context dimension and horizon dependence are essentially understood for the proposed heterogeneous model, while type dependence is not. The non-contextual solution suggests that variance-aware localization can exploit the finite mixture structure more efficiently than naive posterior sampling. The contextual difficulty is that context partitions interact with latent type learning, and price feedback is censored to a binary purchase decision. A plausible positive route would combine metric-bandit zooming with mixture estimation or variance-sensitive confidence bounds; a lower-bound route would need instances where contexts force repeated relearning across type components.",
+    "reviewed": [
+      {
+        "ref": "Thodoris Lykouris, Sloan Nietert, Princewill Okoroafor, Chara Podimata, Julian Zimmert, 'Contextual Dynamic Pricing with Heterogeneous Buyers', arXiv 2025",
+        "result": "Introduces the model, gives $\\widetilde O(K_\\star\\sqrt{dT})$ contextual regret, a $\\Omega(\\sqrt{K_\\star dT})$ lower bound, and optimal non-contextual $K_\\star$ dependence.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/2512.09513"
+      },
+      {
+        "ref": "Nicolò Cesa-Bianchi, Tommaso Cesari, Vianney Perchet, 'Dynamic Pricing with Finitely Many Unknown Valuations', ALT 2019",
+        "result": "Studies dynamic pricing with finite valuation structure, a precursor for finite-support heterogeneity.",
+        "relevance": "related-tool",
+        "url": "https://proceedings.mlr.press/v98/cesa-bianchi19a.html"
+      },
+      {
+        "ref": "Robert Kleinberg, Aleksandrs Slivkins, Eli Upfal, 'Multi-armed bandits in metric spaces', STOC 2008",
+        "result": "Provides zooming-style tools relevant to metric/contextual pricing algorithms.",
+        "relevance": "related-tool",
+        "url": "https://doi.org/10.1145/1374376.1374455"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Try variance-aware confidence bounds that adapt separately to context dimension and latent type support. Lower-bound attempts should construct mixtures where each context reveals only weak information about the active type.",
+    "verification_notes": "Check whether a claimed algorithm is computationally efficient in $K_\\star$, $d$, and $T$, not just statistically efficient. A regret bound matching $\\sqrt{K_\\star dT}$ up to logs would resolve the type-dependence gap only if it applies to the full contextual model.",
+    "machine_checkable": false
+  },
+  "full_statement": "A seller repeatedly observes a $d$-dimensional context, posts a price, and observes only a binary purchase decision. The buyer's valuation type is drawn from an unknown distribution $D_\\star$ with finite support size $K_\\star$, so heterogeneity creates a context-dependent, non-i.i.d. demand curve even when the type distribution is fixed. Lykouris, Nietert, Okoroafor, Podimata, and Zimmert give an optimistic posterior sampling approach whose regret scales as $\\widetilde O(K_\\star\\sqrt{dT})$ in the general contextual setting, with a lower bound of $\\Omega(\\sqrt{K_\\star dT})$ for sufficiently large horizons. In the non-contextual case they improve the type dependence to $\\widetilde O(\\sqrt{K_\\star T})$ using a variance-aware zooming algorithm. The open problem is to obtain the right $K_\\star$ dependence in the full contextual model, and to do so with an efficient algorithm rather than one whose runtime is exponential in $K_\\star$ and $d$. The contextual lower bound in Theorem 3.8 assumes $K_\\star>1$ and $T\\ge 8dK_\\star^3\\log(2d)$. The stronger rate with ex-post valuation-vector feedback is a different feedback model, not a resolution under binary purchase feedback.",
+  "notes_for_maintainer": "Audit 2026-11-09: checked Theorem 3.8 and Section 6 of the full paper. Corrected the inherited formal statement's extra square-root dimension factor to match the already-correct staged known_results. Full-information feedback in Theorem 5.2 is not the binary-feedback target. No new resolution asserted."
+}

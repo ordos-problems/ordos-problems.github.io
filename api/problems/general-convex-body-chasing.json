@@ -5,20 +5,108 @@
  "title": "Optimal competitive ratio for general convex body chasing",
  "collection": "Online Algorithms & Learning",
  "area": "Online Algorithms",
- "status": "partially resolved",
- "confidence": "high",
+ "status": "solution claimed",
+ "confidence": "medium",
  "tags": [
   "convex body chasing",
   "competitive analysis",
-  "online convex optimization"
+  "online convex optimization",
+  "online algorithms",
+  "convex geometry",
+  "metrical task systems",
+  "k-server",
+  "Steiner point"
  ],
- "short_statement": "Convex bodies in $\\mathbb{R}^d$ arrive online and after each you must move your point into the current body, paying distance moved. For general (arbitrary) convex bodies, is the optimal competitive ratio $\\Theta(\\sqrt{d})$?",
- "open_problem": "Determine the optimal competitive ratio for general convex body chasing; in particular, is it $\\Theta(\\sqrt d)$?",
- "full_statement": "In convex body chasing, convex bodies $K_1,K_2,\\dots\\subseteq\\mathbb{R}^d$ are revealed online one at a time. After each body $K_n$ is revealed, the algorithm must choose a point $x_n\\in K_n$, paying movement cost $\\|x_n-x_{n-1}\\|$. The competitive ratio is $$\\sup \\frac{\\sum_n\\|x_n-x_{n-1}\\|}{\\mathrm{OPT}},$$ where $\\mathrm{OPT}$ is the optimal offline cost. The nested case (each body contained in the previous, $K_1\\supseteq K_2\\supseteq\\cdots$) is essentially settled at $\\Theta(\\sqrt{d})$. For general (arbitrary) convex bodies in Euclidean space, the best upper bound is $O(\\min(d,\\sqrt{d\\log N}))$ (where $N$ is the number of bodies) and the lower bound is $\\Omega(\\sqrt d)$. Determine the optimal competitive ratio for general convex body chasing; in particular, is it $\\Theta(\\sqrt d)$?",
- "known_results": "The Friedman-Linial conjecture (a finite ratio depending only on d exists) is resolved: Sellke and Argue-Gupta-Guruganesh-Tang achieve $O(d)$. Nested chasing is essentially tight at $\\Theta(\\sqrt{d})$. For general convex body chasing in Euclidean space, the best upper bound is O(min(d, sqrt(d log N))) versus $\\Omega(\\sqrt{d})$; the exact ratio remains open.",
+ "short_statement": "A recent preprint reports tight linear dimension dependence for general convex body chasing, including Euclidean movement.",
+ "open_problem": "Verify the reported resolution of the general dimension-only gap; do not conflate it with nested or bounded-horizon chasing.",
+ "background": "Convex body chasing requires an online point to enter each successive convex body, paying movement in a fixed norm. Dimension-only chaseability was established earlier; the remaining general-versus-nested distinction is essential. The new lower bound below addresses arbitrary nonnested sequences.",
+ "full_statement": "Starting from $x_0\\in\\mathbb R^d$, an online algorithm receives nonempty convex bodies $K_1,\\ldots,K_T$ sequentially and selects $x_t\\in K_t$, paying $\\sum_t\\|x_t-x_{t-1}\\|$. The offline optimum minimizes the same cost with the full sequence known. The historical question asks for the optimal dimension-only competitive ratio over arbitrary finite sequences, with no nesting assumption. The new theorem in the What Is Known section reports a matching lower bound for the existing linear upper bound.",
+ "known_results": "Christianson, 'A Linear Lower Bound for Convex Body Chasing in Every Norm' (arXiv:2610.32670v2, November 3, 2026), Theorem 1, proves a universal $\\Omega(d)$ lower bound in every d-dimensional normed space, including Euclidean space and randomized expected cost against fixed input sequences. Combined with Sellke's $O(d)$ upper bound, this reports $\\Theta(d)$ worst-case dimension dependence. It does not settle the nested variant or the sharper dependence on a bounded number of requests.",
+ "progress": {
+  "state": "solution-claimed",
+  "summary": "The general dimension-only gap is reported closed by a linear lower bound; full proof not independently checked.",
+  "links": [
+   {
+    "title": "Chasing Convex Bodies Optimally (Sellke, SODA 2020 / arXiv:1905.11968)",
+    "url": "https://arxiv.org/abs/1905.11968"
+   },
+   {
+    "title": "Chasing Convex Bodies with Linear Competitive Ratio (Argue, Gollapudi, Guruganesh, Schild, JACM 2021 / arXiv:1905.11877)",
+    "url": "https://arxiv.org/abs/1905.11877"
+   },
+   {
+    "title": "The Role of Dimension in the Online Chasing Problem (arXiv:2307.09350, 2023)",
+    "url": "https://arxiv.org/abs/2307.09350"
+   },
+   {
+    "title": "A Linear Lower Bound for Convex Body Chasing in Every Norm",
+    "url": "https://arxiv.org/abs/2610.32670v2"
+   }
+  ]
+ },
+ "importance": 7,
+ "difficulty": 8,
+ "counterexample_suitability": "low",
+ "counterexample_rationale": "A lower-bound family, not an isolated finite trajectory, is required for dimension-dependent claims.",
+ "alphaevolve_suitability": "low",
+ "alphaevolve_rationale": "The object of interest is an online algorithm (a strategy over an unbounded, adversarially-revealed sequence of convex bodies in $\\mathbb{R}^d$) together with an asymptotic competitive-ratio proof, not a fixed finite combinatorial structure; an evolutionary/code-search loop could at best explore small, fixed-$d$, fixed-$N$ instances or heuristics, which would not by itself yield or verify a dimension-general asymptotic bound.",
+ "literature": {
+  "synthesis": "The earlier Euclidean lower bound and request-count-dependent upper bounds are historical context. The new result separates the unrestricted sequence model from nested chasing.",
+  "reviewed": [
+   {
+    "ref": "J. Friedman, N. Linial, 'On convex body chasing', Discrete & Computational Geometry, 1993",
+    "result": "Introduces the problem; proves $\\Omega(\\sqrt d)$ competitive-ratio lower bound via chasing faces of a hypercube; conjectures a dimension-only competitive ratio exists.",
+    "relevance": "hardness",
+    "url": "https://link.springer.com/article/10.1007/BF02189324"
+   },
+   {
+    "ref": "S. Bubeck, Y.T. Lee, Y. Li, M. Sellke, 'Competitively Chasing Convex Bodies', STOC 2019 / SIAM J. Comput. 2021",
+    "result": "First finite competitive ratio for general convex body chasing: $2^{O(d)}$, resolving the 1993 chaseability conjecture.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1811.00887"
+   },
+   {
+    "ref": "D. Argue, S. Gollapudi, G. Guruganesh, A. Schild, 'Chasing Convex Bodies with Linear Competitive Ratio', J. ACM 2021 (SODA 2020)",
+    "result": "Gives an $O(\\min(d, \\sqrt{d \\log T}))$-competitive algorithm for sequences of length $T$, the first linear-in-$d$ bound.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1905.11877"
+   },
+   {
+    "ref": "M. Sellke, 'Chasing Convex Bodies Optimally', SODA 2020 (arXiv:1905.11968)",
+    "result": "Gives a $d$-competitive algorithm in any normed space (tight for $\\ell^\\infty$) and $O(\\sqrt{d \\log N})$-competitive in Euclidean space, via the functional Steiner point of the work function; current best known upper bound for the general problem.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1905.11968"
+   },
+   {
+    "ref": "N. Bansal, M. Böhm, M. Elias, G. Koumoutsos, S.W. Umboh, 'Nested Convex Bodies are Chaseable', SODA 2018 (arXiv:1707.05527)",
+    "result": "Historical chaseability result for nested convex bodies; not a resolution of the general nonnested model. The previously attributed near-optimal Steiner-point bound is not asserted here.",
+    "relevance": "solves-special-case",
+    "url": "https://arxiv.org/abs/1707.05527"
+   },
+   {
+    "ref": "A. Kupavskii, 'The Role of Dimension in the Online Chasing Problem', arXiv:2307.09350, 2023",
+    "result": "Develops a general framework for $\\Omega(d^c)$ lower bounds on convex body chasing and shows doubling/Assouad dimension of a metric space do not control chaseability of general ball-chasing.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/2307.09350"
+   },
+   {
+    "ref": "Nicolas Christianson, 'A Linear Lower Bound for Convex Body Chasing in Every Norm' (2026)",
+    "result": "Theorem 1 reports the matching general lower bound.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2610.32670v2"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Audit the lower-bound reduction, randomized quantifiers, and extension from Euclidean to arbitrary norms.",
+  "verification_notes": "Any claimed improvement to either bound must be checked as a genuine proof, not a numerical experiment: an upper-bound proof must specify the algorithm/potential function and verify the potential-drop or amortized-cost argument holds for arbitrary $d$ and arbitrary (possibly adversarially chosen, unboundedly long) convex-body sequences, not just sampled instances; a lower-bound proof must exhibit an explicit family of convex-body sequences (parametrized by $d$) together with a proof that every online algorithm incurs cost $\\Omega(f(d)) \\cdot \\mathrm{OPT}$ against them. Common failure modes: bounds that secretly depend on $N$ or $T$ being conflated with dimension-only bounds; results that only apply to the nested case being mistakenly cited as resolving the general case; and conflating different published years/venues of the same author's results (e.g., Sellke's 2019 arXiv preprint vs. the 2020 SODA publication) when checking novelty.",
+  "machine_checkable": false
+ },
  "where_posed": {
-  "text": "Stated/originated in Friedman, Linial, 'On Convex Body Chasing', 1993, Discrete & Computational Geometry.",
-  "url": "https://link.springer.com/article/10.1007/BF02189324"
+  "text": "Posed by J. Friedman and N. Linial, 'On convex body chasing', Discrete & Computational Geometry, 1993.",
+  "url": "https://link.springer.com/article/10.1007/BF02189324",
+  "quote": "",
+  "location": "Original paper (1993); the $\\Omega(\\sqrt d)$ vs. dimension-only-competitive-ratio question is restated as an explicit open problem in Bubeck, Lee, Li, Sellke, 'Competitively Chasing Convex Bodies', and again in Sellke, 'Chasing Convex Bodies Optimally' (SODA 2020), Section 1."
  },
  "source": {
   "authors": "Joel Friedman, Nathan Linial",
@@ -41,6 +129,48 @@
    "year": 2020,
    "venue": "SODA",
    "url": "https://arxiv.org/abs/1905.11968"
+  },
+  {
+   "authors": "Sébastien Bubeck, Yin Tat Lee, Yuanzhi Li, Mark Sellke",
+   "title": "Competitively Chasing Convex Bodies",
+   "year": 2018,
+   "venue": "arXiv:1811.00887",
+   "url": "https://arxiv.org/abs/1811.00887"
+  },
+  {
+   "authors": "Nikhil Bansal, Martin Böhm, Marek Eliáš, Grigorios Koumoutsos, Seeun William Umboh",
+   "title": "Chasing Nested Convex Bodies Nearly Optimally",
+   "year": 2018,
+   "venue": "arXiv:1811.00999",
+   "url": "https://arxiv.org/abs/1811.00999"
+  },
+  {
+   "authors": "C. J. Argue, Sreenivas Gollapudi, Marco Molinaro",
+   "title": "Lipschitz Selectors may not Yield Competitive Algorithms for Convex Body Chasing",
+   "year": 2021,
+   "venue": "arXiv:2104.07487",
+   "url": "https://arxiv.org/abs/2104.07487"
+  },
+  {
+   "authors": "Yue Guan, Longxu Pan, Daigo Shishika, Panagiotis Tsiotras",
+   "title": "On the Adversarial Convex Body Chasing Problem",
+   "year": 2022,
+   "venue": "arXiv:2209.13606",
+   "url": "https://arxiv.org/abs/2209.13606"
+  },
+  {
+   "authors": "Nicolas Christianson, Tinashe Handina, Adam Wierman",
+   "title": "Chasing Convex Bodies and Functions with Black-Box Advice",
+   "year": 2022,
+   "venue": "arXiv:2206.11780",
+   "url": "https://arxiv.org/abs/2206.11780"
+  },
+  {
+   "authors": "Nicolas Christianson",
+   "title": "A Linear Lower Bound for Convex Body Chasing in Every Norm",
+   "year": 2026,
+   "venue": "arXiv preprint",
+   "url": "https://arxiv.org/abs/2610.32670v2"
   }
  ],
  "bibtex": "@misc{Friedman1993,\n  author = {Joel Friedman and Nathan Linial},\n  title = {On Convex Body Chasing},\n  year = {1993},\n  howpublished = {Discrete & Computational Geometry},\n  url = {https://link.springer.com/article/10.1007/BF02189324},\n  note = {Source of ORdős Problem ORDOS-015}\n}",

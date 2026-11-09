@@ -15,13 +15,80 @@
   "global-attractor",
   "indexability"
  ],
- "short_statement": "Whittle (1988) conjectured his index policy is asymptotically optimal for restless bandits as the number of arms grows. Weber-Weiss (1990) proved this under indexability plus a global-attractor condition on the mean-field ODE, but gave a counterexample where it fails. Open: when the global-attractor/non-degeneracy conditions hold and the minimal assumptions for each optimality-gap rate.",
- "open_problem": "Give checkable conditions under which Whittle's index policy is asymptotically optimal, and characterize when its optimality gap is $O(\\sqrt N)$, $O(1)$, or exponentially small.",
+ "short_statement": "For average-reward restless bandits, characterize when Whittle-index or LP-priority policies are asymptotically optimal, and determine the minimal assumptions for $O(N^{-1/2})$, $O(N^{-1})$, or exponentially small optimality gaps.",
+ "open_problem": "Give checkable structural conditions under which Whittle's index policy, or a specified LP-priority policy, is asymptotically optimal for average-reward restless bandits, and characterize the minimal assumptions that yield $O(N^{-1/2})$, $O(N^{-1})$, or exponentially small optimality gaps.",
+ "background": "Restless bandits are one of the canonical hard dynamic-allocation models in Operations Research: many Markovian projects evolve whether or not they are served, but only a fixed fraction can receive service at each time. Whittle's relaxation replaces the hard per-period resource constraint by a time-average constraint and decomposes the problem into single-arm subsidy problems. When the arms are indexable, this produces the Whittle index policy, a remarkably simple priority rule used in queueing, machine maintenance, healthcare screening, web crawling, and communication scheduling. The mathematical difficulty is that indexability only makes the heuristic well defined; it does not by itself explain why the many-arm constrained process should track the relaxed optimum. Weber and Weiss showed that a mean-field global-attractor condition is enough and also showed that the condition is not cosmetic: without it, an indexable system can cycle and Whittle's policy can be asymptotically suboptimal. The resulting open problem is not a modelling question. The model is fixed and classical. The unresolved part is a structural theorem: identify checkable conditions under which the index or priority policy is asymptotically optimal, and determine the exact assumptions needed for the different possible gap rates.",
  "full_statement": "Consider $N$ arms, each a two-action ($a\\in\\{0,1\\}$) MDP with common kernels $P^0,P^1$ and rewards $R^0,R^1$ on a finite state space, under the hard constraint that exactly $\\alpha N$ arms are activated each time, with the long-run average-reward criterion. Let $V^{\\mathrm{opt}}(N)$ be the optimal value and $V^{\\mathrm{rel}}(N)=N\\rho^{\\mathrm{rel}}$ Whittle's relaxation value (the per-period constraint replaced by its time-average), which upper-bounds $V^{\\mathrm{opt}}(N)$. A bandit is $\\emph{indexable}$ if the set of states where the passive action is optimal in the $\\nu$-subsidized single-arm MDP is monotone non-decreasing in the subsidy $\\nu$; the Whittle index $\\nu_i$ is the smallest $\\nu$ making passive optimal in state $i$, and the Whittle Index Policy (WIP) activates the $\\alpha N$ highest-index arms. Let $\\mathbf m(t)\\in\\Delta^d$ be the empirical state distribution; under WIP it follows, as $N\\to\\infty$, a piecewise-affine mean-field drift $\\dot{\\mathbf m}=\\phi(\\mathbf m)$ with fixed point $\\mathbf m^*$. $\\textbf{Whittle's conjecture: }$ $V_{\\mathrm{WIP}}(N)/N\\to\\rho^{\\mathrm{rel}}$. $\\textbf{Weber-Weiss (1990): }$ if the bandit is indexable and $\\mathbf m^*$ is a $\\emph{global attractor}$, then $V_{\\mathrm{WIP}}(N)/N\\to\\rho^{\\mathrm{rel}}$; and there exists an indexable instance whose ODE has a stable limit cycle (no global attractor) for which WIP is $\\emph{not}$ asymptotically optimal. $\\textbf{Open: }$ (a) a checkable characterization of when the global-attractor / Uniform Global Attractor Property holds; (b) the tight minimal-assumption characterization of when the gap is $O(\\sqrt N)$ vs $O(1)$ vs $O(e^{-cN})$, and whether non-degeneracy/local stability are necessary for the exponential rate for index/priority-type policies.",
- "known_results": "Proven: (i) Weber-Weiss (1990) — indexability + a global attractor of the mean-field ODE implies WIP is asymptotically optimal, plus an indexable counterexample (stable limit cycle) where WIP is NOT asymptotically optimal, so Whittle's conjecture is false in general (a technical gap patched by the 1991 addendum). (ii) Gast-Gaujal-Yan (2023) — under indexability + uniform global attractor + a non-degenerate fixed point, the gap is $O(e^{-cN})$; at a degenerate fixed point it can be only $O(1/\\sqrt{N})$; with no global attractor WIP converges to a limit-cycle time-average and is generally suboptimal. (iii) Gast-Gaujal-Yan (Math of OR 2024) — necessary AND sufficient conditions for general LP/priority policies for each rate regime; an explicit LP-index policy is asymptotically optimal with $O(1/\\sqrt{N})$ on ALL models, exponential under non-degeneracy + UGAP. (iv) Verloop (2016) gives asymptotic optimality of priority policies (incl. non-indexable) under a global attractor. (v) Hong-Xie-Chen-Wang removed the hard-to-verify assumptions: $O(1/\\sqrt{N})$ without UGAP (FTVA 2023; unichain+aperiodicity 2025), and $O(e^{-CN})$ under aperiodic-unichain + non-degeneracy + local stability with a matching lower bound (two-set policy 2024). Indexability itself is hard to verify; sufficient conditions exist only for structured families (Niño-Mora's partial conservation laws). Still open: a practically checkable characterization of the global-attractor/UGAP condition; the exact minimal assumptions per rate regime (esp. for index/priority policies); and whether indexability plus something easily verifiable can guarantee asymptotic (let alone exponential) optimality of the Whittle index policy specifically.",
+ "known_results": "Weber and Weiss proved asymptotic optimality of Whittle's index policy under indexability plus a global-attractor condition for the mean-field ODE, and gave an indexable counterexample where the ODE cycles and the policy is not asymptotically optimal. Verloop extended priority-policy asymptotic optimality under related global-attractor assumptions. Gast, Gaujal, and Yan proved exponential convergence for Whittle's index policy under uniform global attraction plus nondegeneracy, and later gave necessary and sufficient conditions for LP-priority policies, including an LP-index policy with $O(N^{-1/2})$ gap in broad models and exponential rates under stronger assumptions. Hong, Xie, Chen, and Wang introduced simulation-based policies that remove the uniform global-attractor condition for $O(N^{-1/2})$ asymptotic optimality, and a two-set policy with exponential gaps under aperiodic-unichain, nondegeneracy, and local stability. What remains open is the practical structural characterization: when does the original Whittle-index or simple priority rule itself have the desired rate, and which assumptions are genuinely necessary rather than artifacts of the current proofs?",
+ "progress": {
+  "state": "partial",
+  "summary": "Recent work has substantially narrowed the issue: there are now non-index simulation-based policies with $O(N^{-1/2})$ gaps without UGAP, and exponential-gap policies under local stability assumptions. The original Whittle-index/global-attractor characterization is still incomplete because UGAP is hard to verify and not implied by indexability.",
+  "links": [
+   {
+    "title": "Hong, Xie, Chen, Wang, Restless Bandits with Average Reward: Breaking the Uniform Global Attractor Assumption",
+    "url": "https://arxiv.org/abs/2306.00196"
+   },
+   {
+    "title": "Hong, Xie, Chen, Wang, Achieving Exponential Asymptotic Optimality without Global Attractor Assumption",
+    "url": "https://arxiv.org/abs/2405.17882"
+   },
+   {
+    "title": "Gast, Gaujal, Yan, LP-based policies for restless bandits",
+    "url": "https://pubsonline.informs.org/doi/10.1287/moor.2022.0101"
+   }
+  ]
+ },
+ "importance": 9,
+ "difficulty": 9,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "Finite-state restless-bandit instances can be enumerated and their mean-field dynamics simulated, so counterexamples to overly strong conjectures are plausible search targets. A positive characterization, however, requires proof about all finite-state models satisfying structural conditions.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Search can help discover small indexable examples with cycles, degenerate fixed points, or surprising gap rates, which may guide conjectures. It is less likely to prove the general global-attractor or exponential-rate theorem directly.",
+ "literature": {
+  "synthesis": "The literature has moved from Whittle's heuristic to a fine-grained mean-field theory. Weber and Weiss established the first clean theorem: indexability plus global attraction of the fluid fixed point implies asymptotic optimality, while an indexable cyclic example rules out indexability alone. Verloop broadened the priority-policy view. Gast, Gaujal, and Yan then refined the rate story: under uniform global attraction and nondegeneracy, Whittle-type policies can have exponentially small gaps, while degeneracy changes the rate; their Mathematics of Operations Research work gives a more general LP-priority certificate. The 2023-2024 Hong-Xie-Chen-Wang line changes the algorithmic landscape by showing that non-index, simulation-based policies can avoid UGAP, first at $O(N^{-1/2})$ scale and then exponentially under local stability. The remaining gap is therefore sharp and well formed: Whittle-index policies are attractive precisely because they are simple, local, and interpretable, but the known sufficient assumptions are hard to verify and not known to be necessary.",
+  "reviewed": [
+   {
+    "ref": "Weber and Weiss, 'On an index policy for restless bandits', Journal of Applied Probability 1990",
+    "result": "Proves asymptotic optimality under indexability plus global attraction; gives a counterexample without global attraction.",
+    "relevance": "partial-progress",
+    "url": "https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/on-an-index-policy-for-restless-bandits/33B68AAB7D03097C5C17DA889D12B78A"
+   },
+   {
+    "ref": "Verloop, 'Asymptotically optimal priority policies for indexable and nonindexable restless bandits', Annals of Applied Probability 2016",
+    "result": "Extends asymptotic optimality to broader priority policies under global-attractor-type assumptions.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1609.00563"
+   },
+   {
+    "ref": "Gast, Gaujal, Yan, 'Exponential convergence rate for the asymptotic optimality of Whittle index policy', Queueing Systems 2023",
+    "result": "Obtains exponential optimality gaps under UGAP and nondegeneracy, and identifies degenerate-rate phenomena.",
+    "relevance": "partial-progress",
+    "url": "https://link.springer.com/article/10.1007/s11134-023-09875-x"
+   },
+   {
+    "ref": "Gast, Gaujal, Yan, 'LP-based policies for restless bandits', Mathematics of Operations Research 2024",
+    "result": "Gives necessary and sufficient conditions for LP-priority policies and rate regimes.",
+    "relevance": "partial-progress",
+    "url": "https://pubsonline.informs.org/doi/10.1287/moor.2022.0101"
+   },
+   {
+    "ref": "Hong, Xie, Chen, Wang, 'Restless Bandits with Average Reward: Breaking the Uniform Global Attractor Assumption', NeurIPS 2023",
+    "result": "Provides a simulation-based policy with $O(N^{-1/2})$ gap without UGAP in continuous time and under weaker assumptions in discrete time.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2306.00196"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "For positive results, focus on Lyapunov functions for the mean-field ODE, local-to-global stability certificates, or perturbation bounds around the LP relaxation. For negative results, enumerate small finite-state arms, test indexability, simulate the fluid dynamics, and then certify cycles or multiple attractors. A useful intermediate result would be a checkable sufficient condition for UGAP that covers important OR models.",
+  "verification_notes": "A valid solution must distinguish the policy class: Whittle index, LP-priority, or a new simulation-based policy. For a positive theorem, verify the exact assumptions and prove the many-arm stochastic process tracks the claimed fluid or stationary regime. For a counterexample, provide the transition matrices, rewards, activation fraction, indexability proof, and a rigorous argument that the resulting gap does not vanish.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "Conjecture originates in Whittle, 'Restless bandits: activity allocation in a changing world,' J. Appl. Prob. 25A:287-298, 1988; the global-attractor condition and counterexample are established in Weber & Weiss, 'On an index policy for restless bandits,' J. Appl. Prob. 27(3):637-648, 1990 (addendum 1991).",
-  "url": "https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/on-an-index-policy-for-restless-bandits/33B68AAB7D03097C5C17DA889D12B78A"
+  "text": "The conjectural program originates in Whittle's 1988 restless-bandit paper; Weber and Weiss isolated the global-attractor condition and counterexample in their 1990 Journal of Applied Probability paper.",
+  "url": "https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/on-an-index-policy-for-restless-bandits/33B68AAB7D03097C5C17DA889D12B78A",
+  "quote": "",
+  "location": "Weber-Weiss 1990, main theorem and counterexample; see also recent UGAP discussions in Hong-Xie-Chen-Wang 2023."
  },
  "source": {
   "authors": "R. R. Weber, G. Weiss",

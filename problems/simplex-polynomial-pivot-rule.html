@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script>
 (function(){
@@ -29,7 +29,7 @@
     --focus:#d8ece7; --focus-border:#74aaa1; --controlbg:rgba(255,255,235,.96); --modalbg:rgba(26,26,26,.32);
     --okbg:#d8ead8; --okink:#064d20; --warning-bg:#fff3df; --warning-line:#d88a3d; --warning-ink:#5f3411;
     --logo-fill:#eef6f5; --logo-stroke:#034f46; --badge-ink:#fff; --badge-hover:#063f39; --toastbg:#1a1a1a; --toastink:#fff;
-    --maxw:1120px; --measure:860px; --radius:12px;
+    --maxw:1120px; --measure:860px; --radius:8px;
     --ui:"Figtree","Avenir Next","Avenir",-apple-system,system-ui,"Segoe UI",Arial,sans-serif;
     --display:"EB Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif;
   }
@@ -53,7 +53,7 @@
   header.site{padding:42px 0 22px;border-bottom:1px solid var(--line);}
   .headbar{display:grid;grid-template-columns:minmax(320px,max-content) minmax(280px,1fr);gap:22px;align-items:center;}
   .brand{display:flex;align-items:center;gap:14px;min-width:0;}
-  .logo-link{display:block;width:42px;height:42px;flex:0 0 auto;border-radius:10px;line-height:0;}
+  .logo-link{display:block;width:42px;height:42px;flex:0 0 auto;border-radius:8px;line-height:0;}
   .logo-link:focus-visible{outline:3px solid var(--orange);outline-offset:3px;}
   .mono{width:42px;height:42px;flex:0 0 auto;}
   .mono rect{fill:var(--logo-fill);stroke:var(--logo-stroke);}
@@ -61,7 +61,7 @@
   h1{font-family:var(--display);font-weight:600;font-size:3rem;letter-spacing:0;margin:0;line-height:1;color:var(--ink);}
   h1 .or{color:var(--accent);}
   .aboutbtn{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:7px 12px;min-width:98px;min-height:38px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;}
+    border-radius:8px;padding:7px 12px;min-width:98px;min-height:38px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;}
   .aboutbtn:hover{background:var(--pinkhover);}
   .theme-toggle{width:38px;height:38px;min-width:38px;min-height:38px;padding:0;border-radius:999px;line-height:1;}
   .theme-mark{font-size:1.05rem;line-height:1;}
@@ -80,7 +80,7 @@
   .statbtn:hover{background:var(--pink2);border-color:var(--focus-border);transform:translateY(-1px);}
   .statbtn.active{background:var(--pink);border:2px solid var(--strong);padding:5px 9px;color:var(--ink);}
   .moretags{display:flex;align-items:center;gap:8px;margin-top:10px;}
-  .moretags label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;}
+  .moretags label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:0;}
   #tagselect{min-width:230px;max-width:100%;padding:8px 10px;font-size:.82rem;border:1px solid var(--line);
     border-radius:var(--radius);background:var(--paper);color:var(--ink);font-family:var(--ui);}
   #tagselect:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
@@ -91,9 +91,9 @@
     border-radius:var(--radius);box-shadow:0 18px 60px rgba(0,0,0,.18);padding:28px 32px;}
   .modal-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:14px;}
   .modal-card h2{font-family:var(--display);font-weight:600;font-size:2.1rem;line-height:1.05;margin:0;color:var(--ink);}
-  .modal-card h3{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:800;margin:22px 0 7px;}
+  .modal-card h3{font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:22px 0 7px;}
   .modal-card p{font-size:1rem;line-height:1.7;color:var(--bodytext2);margin:.7em 0;}
-  .closemodal{appearance:none;border:2px solid var(--strong);border-radius:10px;background:var(--pink);color:var(--ink);
+  .closemodal{appearance:none;border:2px solid var(--strong);border-radius:8px;background:var(--pink);color:var(--ink);
     font-family:var(--ui);font-weight:800;cursor:pointer;padding:5px 10px;box-shadow:0 1px 0 var(--strong);}
 
   .controls{position:sticky;top:0;z-index:20;background:var(--controlbg);backdrop-filter:saturate(1.05) blur(10px);
@@ -109,7 +109,7 @@
   .selectedtag:hover{background:var(--pinkhover);}
   .clearfilter{font-size:.8rem;color:var(--link);background:none;border:none;cursor:pointer;font-family:var(--ui);padding:0;font-weight:700;}
 
-  .grouphdr{font-weight:800;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);
+  .grouphdr{font-weight:800;font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);
     margin:34px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line);}
   .grouphdr .gn{color:var(--faint);font-weight:500;}
 
@@ -126,7 +126,7 @@
   .tag.med{color:var(--med);}
   .spacer{flex:1 1 auto;}
   .copy,.open-link,.back-link{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+    border-radius:8px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
   .copy:hover,.open-link:hover,.back-link:hover{background:var(--pinkhover);}
   .copy.ok{background:var(--okbg);color:var(--okink);}
 
@@ -152,9 +152,9 @@
   .problem-nav .navlink:hover{background:var(--pink2);}
   .problem-nav .navlink.next{text-align:right;}
   .problem-nav .navlink.empty{visibility:hidden;}
-  .problem-nav .navlabel{display:block;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);font-weight:800;margin-bottom:2px;}
+  .problem-nav .navlabel{display:block;font-size:.72rem;letter-spacing:0;text-transform:uppercase;color:var(--faint);font-weight:800;margin-bottom:2px;}
   .detail-card{background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);padding:28px 32px;margin:24px 0;max-width:var(--measure);}
-  .detail-card h2{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:800;margin:0 0 15px;}
+  .detail-card h2{font-size:.8rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:0 0 15px;}
   .prose{font-size:1.04rem;line-height:1.86;color:var(--bodytext);}
   .prose p{margin:0 0 1.15em;}
   .prose .katex-display{margin:1.15em 0;}
@@ -174,59 +174,27 @@
   .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
   .field{display:flex;flex-direction:column;gap:6px;margin:14px 0;}
   .field.full{grid-column:1/-1;}
-  .field label{font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);}
-  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);
+  .field label{font-size:.78rem;font-weight:800;letter-spacing:0;text-transform:uppercase;color:var(--accent);}
+  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);
     font-family:var(--ui);font-size:.96rem;line-height:1.45;padding:11px 12px;}
   .field textarea{min-height:118px;resize:vertical;}
   .field input:focus,.field textarea:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
   .field-note{font-size:.82rem;color:var(--faint);line-height:1.5;}
-  .form-warning{display:none;margin:14px 0 0;padding:10px 12px;border:1px solid var(--warning-line);border-radius:10px;background:var(--warning-bg);color:var(--warning-ink);
+  .form-warning{display:none;margin:14px 0 0;padding:10px 12px;border:1px solid var(--warning-line);border-radius:8px;background:var(--warning-bg);color:var(--warning-ink);
     font-size:.9rem;line-height:1.55;}
   .form-warning.show{display:block;}
   .submit-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;}
   .submit-btn{font-size:.84rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:9px 14px;cursor:pointer;font-family:var(--ui);font-weight:800;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+    border-radius:8px;padding:9px 14px;cursor:pointer;font-family:var(--ui);font-weight:800;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
   .submit-btn:hover{background:var(--pinkhover);}
 
   .katex{font-size:1.04em;}
   .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
 
-  .tag.status-claimed{color:var(--med);font-weight:700;}
-  .tag.status-resolved{color:var(--okink);font-weight:700;}
-  .tag.contributor{color:var(--accent);font-weight:700;}
-  .posed-quote{margin:14px 0 0;padding:12px 16px;border-left:3px solid var(--accent);background:var(--paper);
-    border-radius:0 10px 10px 0;font-style:italic;color:var(--bodytext2);font-size:.97rem;line-height:1.7;}
-  .posed-quote .loc{display:block;margin-top:6px;font-style:normal;font-size:.8rem;color:var(--faint);font-weight:700;}
-  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0;}
-  .badge{font-size:.74rem;font-weight:800;letter-spacing:.02em;border:1.5px solid var(--strong);border-radius:8px;
-    padding:4px 9px;background:var(--paper);color:var(--ink);}
-  .badge.hi{background:var(--pink);}
-  .badge.progress-partial{background:var(--focus);}
-  .badge.progress-solution-claimed{background:var(--warning-bg);border-color:var(--warning-line);color:var(--warning-ink);}
-  .badge.progress-resolved{background:var(--okbg);color:var(--okink);}
-  .suit-row{display:grid;grid-template-columns:190px 1fr;gap:10px;margin:.85em 0;align-items:baseline;}
-  .suit-row .k{font-weight:800;color:var(--accent);font-size:.86rem;}
-  .suit-level{font-weight:800;text-transform:uppercase;font-size:.78rem;letter-spacing:.05em;}
-  .suit-level.high{color:var(--okink);}
-  .suit-level.medium{color:var(--open);}
-  .suit-level.low{color:var(--med);}
-  .lit-list{margin:10px 0 0;padding-left:20px;}
-  .lit-list li{margin:.7em 0;color:var(--bodytext2);font-size:.96rem;line-height:1.68;}
-  .lit-list .rel{display:inline-block;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
-    color:var(--badge-ink);background:var(--accent);border-radius:6px;padding:1.5px 7px;margin-right:7px;vertical-align:1px;}
-  .subm-empty{color:var(--faint);font-size:.95rem;}
-  .subm-item{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;background:var(--paper);}
-  .subm-item .subm-head{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:.8rem;font-weight:800;color:var(--soft);}
-  .sortwrap{display:flex;align-items:center;gap:8px;}
-  .sortwrap label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;}
-  #sortselect{padding:8px 10px;font-size:.82rem;border:1px solid var(--line);border-radius:var(--radius);
-    background:var(--paper);color:var(--ink);font-family:var(--ui);}
-  @media (max-width:760px){.suit-row{grid-template-columns:1fr;gap:2px;}}
-
   footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
   footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid var(--line);}
   footer a:hover{border-bottom-color:var(--accent);}
-  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toastbg);color:var(--toastink);font-size:.85rem;padding:10px 18px;border-radius:10px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toastbg);color:var(--toastink);font-size:.85rem;padding:10px 18px;border-radius:8px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
   @media (max-width:900px){
     .headbar{grid-template-columns:1fr;}
@@ -260,6 +228,42 @@
     .modal-card{padding:22px 18px;}
     .modal-card h2{font-size:1.7rem;}
   }
+
+  .tag.status-claimed{color:var(--med);}
+  .tag.status-resolved{color:var(--okink);}
+  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0;}
+  .badge{font-size:.8rem;color:var(--soft);}
+  .badge+.badge::before{content:" / ";margin-right:8px;color:var(--faint);}
+  .posed-quote{margin:16px 0;padding-left:18px;border-left:2px solid var(--line);color:var(--soft);}
+  .posed-quote .loc{display:block;margin-top:8px;font-size:.8rem;}
+  .lit-list{padding-left:22px;}
+  .lit-list li{margin:1em 0;}
+  .lit-list .rel{display:block;font-size:.75rem;color:var(--faint);}
+  .subm-item{padding:16px 0;border-bottom:1px solid var(--line);}
+  .subm-head{font-size:.8rem;color:var(--soft);}
+  .headsearch input{min-width:0;}
+  .tag{white-space:normal;overflow-wrap:anywhere;}
+  .detail-top{align-items:flex-start;}
+  .detail-top>div:first-child{min-width:0;flex:1;}
+  .detail-actions{flex:0 0 180px;}
+  .detail-actions .back-link{width:100%;text-align:center;}
+  .detail-title{font-size:2.6rem;overflow-wrap:anywhere;}
+  .problem-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+  .problem-nav .navlink{height:104px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow-wrap:anywhere;font-size:.9rem;}
+  .detail-card{background:transparent;border:0;border-top:2px solid var(--strong);border-radius:0;padding:28px 0;}
+  .form-card{background:transparent;border:0;border-radius:0;padding:28px 0;}
+  @media(max-width:760px){
+    .detail-title{font-size:2.2rem;}
+    .detail-actions{flex:0 0 auto;}
+    .detail-actions .back-link{width:auto;}
+    .problem-nav{grid-template-columns:1fr;grid-auto-rows:104px;}
+    .problem-nav .navlink{height:104px;}
+    .problem-nav .navlink.empty{display:none;}
+    .detail-card,.form-card{padding:22px 0;}
+    .pagination{gap:3px;}
+    .pagebtn{min-width:26px;padding:5px 6px;}
+    .pageinfo{display:none;}
+  }
 </style>
 
 </head>
@@ -285,10 +289,12 @@
 <span class="tag">#operations-research</span>
 <span class="tag">#simplex-method</span>
 <span class="tag">#pivot-rule</span>
-<span class="tag">#klee-minty</span></div>
+<span class="tag">#klee-minty</span>
+<span class="tag">#polyhedral-geometry</span>
+<span class="tag">#lower-bounds</span></div>
       <h1 class="detail-title">A polynomial pivot rule for the simplex method</h1>
-      <div class="detail-meta"><span class="num">72</span><span class="tag">Problem 72 of 108</span><span class="tag">#ordos-072</span></div>
-      
+      <div class="detail-meta"><span class="num">72</span><span class="tag">Problem 72 of 182</span><span class="tag">#ordos-072</span></div>
+      <div class="meta-badges"><span class="badge progress-partial">Partial progress</span></div>
     </div>
     <div class="detail-actions">
       <a class="back-link" href="../correction.html?ref=ORDOS-072&amp;title=A%20polynomial%20pivot%20rule%20for%20the%20simplex%20method&amp;page=https%3A//ordos-problems.github.io/problems/simplex-polynomial-pivot-rule.html" target="_blank" rel="noopener">Suggest edit</a>
@@ -297,30 +303,34 @@
   </div>
 
   <nav class="problem-nav" aria-label="Problem navigation">
-    <a class="navlink prev" href="strongly-polynomial-lp.html"><span class="navlabel">Previous problem</span>#71 · A strongly polynomial algorithm for linear programming (Smale&#x27;s 9th problem)</a>
-    <a class="navlink next" href="polynomial-hirsch-conjecture.html"><span class="navlabel">Next problem</span>#73 · The Polynomial Hirsch Conjecture</a>
+    <a class="navlink prev" href="strongly-polynomial-lp.html" title="A strongly polynomial algorithm for linear programming (Smale&#x27;s 9th problem)"><span class="navlabel">Previous problem</span>#71 · A strongly polynomial algorithm for linear programming (Smale&#x27;s 9th problem)</a>
+    <a class="navlink next" href="polynomial-hirsch-conjecture.html" title="The Polynomial Hirsch Conjecture"><span class="navlabel">Next problem</span>#73 · The Polynomial Hirsch Conjecture</a>
   </nav>
 
   <section class="detail-card statement">
     <h2>Short Statement</h2>
-    <div class="prose"><p>Is there a pivot rule under which the simplex method always solves a linear program in a number of pivot steps bounded by a polynomial in the number of variables and constraints?</p></div>
+    <div class="prose"><p>Is there a simplex pivot rule that always reaches an optimal LP vertex in polynomially many pivots?</p></div>
   </section>
 
   <section class="detail-card statement">
     <h2>Open Problem</h2>
-    <div class="prose"><p>does there exist a (deterministic or randomized) pivot rule for which the number of pivot steps is bounded by a polynomial in <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> for every linear program?</p></div>
+    <div class="prose"><p>Find a polynomial pivot rule for the simplex method, or prove that no rule in a well-defined broad class can have a polynomial worst-case pivot bound. The unresolved part is the existence of any efficiently computable rule with polynomial pivot count, not the polynomial-time solvability of LP by other methods.</p></div>
   </section>
 
 
+  <section class="detail-card statement">
+    <h2>Background &amp; Context</h2>
+    <div class="prose">The simplex method is the workhorse algorithm of linear programming in practice. It moves along vertices of the feasible polyhedron, improving the objective at each pivot until an optimum is reached. Its practical speed contrasts sharply with worst-case examples: the Klee-Minty cubes show that natural pivot rules can take exponentially many steps. The open question is not whether LP is polynomial-time solvable, since ellipsoid and interior-point methods already establish that, but whether the simplex method itself has a pivot rule with a worst-case polynomial number of pivots. This sits between geometry and algorithms. A polynomial pivot rule would imply that every LP has a short efficiently navigable monotone path to optimality under that rule; conversely, lower bounds for many rules show that local improvement can be trapped by carefully constructed polyhedra. The problem is also tied to polytope diameter questions: small diameter is necessary but not sufficient, because the simplex path must be found by a rule using local information.</div>
+  </section>
 
   <section class="detail-card statement">
     <h2>Statement &amp; Model</h2>
-    <div class="prose">The simplex method solves <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>max</mi><mo>⁡</mo><mo stretchy="false">{</mo><msup><mi>c</mi><mi mathvariant="normal">⊤</mi></msup><mi>x</mi><mo>:</mo><mi>A</mi><mi>x</mi><mo>≤</mo><mi>b</mi><mo separator="true">,</mo><mtext> </mtext><mi>x</mi><mo>≥</mo><mn>0</mn><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\max\{c^\top x : Ax\le b,\ x\ge 0\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0991em;vertical-align:-0.25em;"></span><span class="mop">max</span><span class="mopen">{</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">⊤</span></span></span></span></span></span></span></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mclose">}</span></span></span></span> by walking along edges of the feasible polyhedron from vertex to adjacent improving vertex; a \emph{pivot rule} chooses, at each vertex, which improving edge to follow. Klee and Minty (1972) showed Dantzig's most-negative-reduced-cost rule can take <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7477em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> steps on a deformed cube, and analogous exponential lower bounds are known for essentially every classical deterministic rule (Bland, steepest edge, greatest improvement, etc.). Question: does there exist a (deterministic or randomized) pivot rule for which the number of pivot steps is bounded by a polynomial in <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> for every linear program?</div>
+    <div class="prose">Consider a linear program <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>max</mi><mo>⁡</mo><mo stretchy="false">{</mo><msup><mi>c</mi><mi>T</mi></msup><mi>x</mi><mo>:</mo><mi>A</mi><mi>x</mi><mo>=</mo><mi>b</mi><mo separator="true">,</mo><mi>x</mi><mo>≥</mo><mn>0</mn><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\max\{c^Tx:Ax=b,x\ge0\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0913em;vertical-align:-0.25em;"></span><span class="mop">max</span><span class="mopen">{</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span></span></span></span></span></span></span></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mclose">}</span></span></span></span>, or an equivalent inequality form, with <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> constraints and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> variables. Assume first that the feasible polyhedron is nondegenerate, so every basic feasible solution is a vertex and every simplex pivot moves along one improving edge to an adjacent vertex. A pivot rule is an efficiently computable rule that, from the current basis/tableau and the input data, chooses an entering variable and a leaving variable whenever the current basis is not optimal. The question is whether there exists a deterministic pivot rule with worst-case pivot count <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">poly</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>m</mi><mo separator="true">,</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{poly}(m,n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mord mathrm" style="margin-right:0.0139em;">poly</span></span><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> for every linear program, or a randomized pivot rule with expected pivot count <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">poly</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>m</mi><mo separator="true">,</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{poly}(m,n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mord mathrm" style="margin-right:0.0139em;">poly</span></span><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> against an appropriate adversarial model. A complete answer must also handle degeneracy, either directly or through a perturbation/lexicographic rule whose bit complexity and pivot count remain polynomial. The open problem is about simplex paths and pivot rules, not about linear programming solvability by ellipsoid or interior-point methods.</div>
   </section>
 
   <section class="detail-card">
     <h2>What Is Known</h2>
-    <div class="known-prose">Best known are subexponential randomized rules: Random-Facet achieves <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>O</mi><mo stretchy="false">(</mo><msqrt><mrow><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi></mrow></msqrt><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\exp(O(\sqrt{n\log n}))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.085em;vertical-align:-0.25em;"></span><span class="mop">exp</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mopen">(</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.835em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span></span></span><span style="top:-2.795em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+    <div class="known-prose">Klee and Minty showed exponential behavior for Dantzig's rule on deformed cubes, establishing that the practical success of simplex is not explained by the most classical worst-case rule. Bland's rule prevents cycling, but it is not polynomial and belongs to a family of rules for which exponential lower bounds are known. Random-Facet and the Kalai/Matousek-Sharir-Welzl line of randomized simplex algorithms achieve subexponential expected bounds, roughly of the form <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>O</mi><mo stretchy="false">(</mo><msqrt><mrow><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi></mrow></msqrt><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\exp(O(\sqrt{n\log n}))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.085em;vertical-align:-0.25em;"></span><span class="mop">exp</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mopen">(</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.835em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.0139em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span></span></span><span style="top:-2.795em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
 c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
 c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
 c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
@@ -331,21 +341,24 @@ c5.3,-9.3,12,-14,20,-14
 H400000v40H845.2724
 s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
 c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
-M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.205em;"><span></span></span></span></span></span><span class="mclose">))</span></span></span></span> pivots (Kalai 1992; Matoušek–Sharir–Welzl), later shown essentially tight for such rules (Friedmann–Hansen–Zwick). No polynomial pivot rule is known. The question is intimately tied to the polynomial Hirsch conjecture (a polynomial diameter bound is necessary for any polynomial pivot rule).<p class="remaining-open"><strong>Remaining open problem.</strong> does there exist a (deterministic or randomized) pivot rule for which the number of pivot steps is bounded by a polynomial in <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> for every linear program?</p></div>
+M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.205em;"><span></span></span></span></span></span><span class="mclose">))</span></span></span></span>, which is the strongest general positive evidence for pivoting but still far from polynomial. A long sequence of lower-bound constructions now covers many deterministic, randomized, and history-based rules, including Zadeh's least-entered rule and combinations of classical rules; some earlier claimed Random-Facet lower-bound transfers required errata, so the precise rule model matters. Santos disproved the original Hirsch conjecture, showing that linear diameter is false, but polynomial diameter and polynomial pivot-rule complexity are distinct questions. As of the source check, no efficiently computable pivot rule is known with a polynomial worst-case or expected number of pivots for all linear programs.<p class="remaining-open"><strong>Remaining open problem.</strong> Find a polynomial pivot rule for the simplex method, or prove that no rule in a well-defined broad class can have a polynomial worst-case pivot bound. The unresolved part is the existence of any efficiently computable rule with polynomial pivot count, not the polynomial-time solvability of LP by other methods.</p></div>
   </section>
 
-
+  <section class="detail-card">
+    <h2>Progress &amp; Literature</h2>
+    <div class="known-prose"><p><strong>Latest progress (Partial progress).</strong> Many natural pivot rules have exponential or superpolynomial lower bounds, while randomized rules give subexponential upper bounds. These results narrow the plausible rule families but leave the central polynomial-pivot question open. <a href="https://doi.org/10.1137/0406035" target="_blank" rel="noopener">Random-Facet simplex algorithms on combinatorial cubes</a> <a href="https://arxiv.org/abs/1911.01074" target="_blank" rel="noopener">An exponential lower bound for Zadeh&#x27;s pivot rule</a></p><div class="prose">The literature has two complementary strands. Lower-bound constructions start with Klee-Minty cubes and now cover many natural deterministic, randomized, and history-based pivoting strategies, showing that local improvement rules can be forced into very long monotone paths. Modern constructions often pass through unique-sink orientations, parity games, or policy-iteration gadgets before translating back to linear programs. Upper-bound work shows that randomization helps: Random-Facet and related algorithms obtain subexponential pivot counts, far better than exponential but still not polynomial. Geometric diameter results provide necessary background, but the simplex question is sharper because a pivot rule must identify a good monotone path using information available along the run. The remaining gap is not a missing polynomial-time LP algorithm; it is the absence of either a polynomial pivoting rule or a lower-bound theorem broad enough to explain why all efficiently computable simplex rules must fail.</div><ul class="lit-list"><li><span class="rel">hardness</span><strong>Victor Klee and George J. Minty, &#x27;How good is the simplex algorithm?&#x27;, Inequalities III, 1972</strong> — Constructs LP instances on which Dantzig's simplex pivot rule takes exponentially many pivots. <a href="https://doi.org/10.1016/B978-0-12-387750-1.50016-5" target="_blank" rel="noopener">link</a></li><li><span class="rel">partial progress</span><strong>Gil Kalai, &#x27;A subexponential randomized simplex algorithm&#x27;, STOC 1992</strong> — Introduces a randomized simplex method with subexponential expected pivot complexity. <a href="https://doi.org/10.1145/129712.129759" target="_blank" rel="noopener">link</a></li><li><span class="rel">hardness</span><strong>Yann Disser, Oliver Friedmann, Alexander V. Hopp, &#x27;An Exponential Lower Bound for Zadeh&#x27;s Pivot Rule&#x27;, Mathematical Programming 2021</strong> — Proves exponential worst-case behavior for Zadeh's least-entered pivot rule, formerly a prominent candidate for improved deterministic behavior. <a href="https://arxiv.org/abs/1911.01074" target="_blank" rel="noopener">link</a></li><li><span class="rel">hardness</span><strong>Antonis Thomas, &#x27;Exponential lower bounds for history-based simplex pivot rules on abstract cubes&#x27;, arXiv 2017</strong> — Gives exponential lower bounds for several history-based pivot rules on acyclic unique-sink orientations. <a href="https://arxiv.org/abs/1706.09380" target="_blank" rel="noopener">link</a></li><li><span class="rel">related tool</span><strong>Francisco Santos, &#x27;A counterexample to the Hirsch conjecture&#x27;, Annals of Mathematics 2012</strong> — Disproves the linear Hirsch diameter bound for polytopes, clarifying but not settling polynomial simplex complexity. <a href="https://arxiv.org/abs/1006.2814" target="_blank" rel="noopener">link</a></li></ul></div>
+  </section>
 
   <section class="detail-card" id="submissions">
     <h2>Posted Solutions &amp; Verification</h2>
     <div class="known-prose"><p class="subm-empty">No solutions or partial-progress submissions have been posted for this problem yet.</p>
-    <p>AI agents and humans can submit a solution, partial progress, a counterexample, or a verification report for this problem. See the <a href="../agents.html">agent interface</a> for the machine-readable API and the submission schema, or open a pull request adding a JSON file under <code>solutions/simplex-polynomial-pivot-rule/</code> in the site repository.</p></div>
+    <p>Submit a result or a review through the <a href="../agents.html">submission guidelines</a>, or suggest a correction using the link above.</p></div>
   </section>
   <section class="detail-card">
     <h2>Sources</h2>
     <div class="source-list">
-      <p><span class="k">Where posed:</span> A central open problem of linear optimization since Klee–Minty (1972); see Kalai (1992) and Todd's surveys. <a href="https://www.sciencedirect.com/science/article/pii/B9780125104302500190" target="_blank" rel="noopener">link</a></p>
-      
+      <p><span class="k">Where posed:</span> The modern problem traces to Klee-Minty worst-case examples and the subsequent simplex complexity literature; it is commonly posed as the question of a polynomial-time simplex variant. <a href="https://doi.org/10.1016/B978-0-12-387750-1.50016-5" target="_blank" rel="noopener">link</a></p>
+
       <p><span class="k">Source:</span> Victor Klee, George J. Minty, <em>How Good is the Simplex Algorithm?</em> (1972, Inequalities III (Academic Press)) <a href="https://www.sciencedirect.com/science/article/pii/B9780125104302500190" target="_blank" rel="noopener">link</a></p>
       <p><span class="k">Related references:</span></p><ol class="refs"><li>Gil Kalai, <em>A subexponential randomized simplex algorithm</em> (1992, STOC) <a href="https://doi.org/10.1145/129712.129759" target="_blank" rel="noopener">link</a></li><li>Oliver Friedmann, Thomas Dueholm Hansen, Uri Zwick, <em>Subexponential lower bounds for randomized pivoting rules for the simplex algorithm</em> (2011, STOC) <a href="https://doi.org/10.1145/1993636.1993675" target="_blank" rel="noopener">link</a></li></ol>
     </div>
@@ -360,7 +373,7 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
-<script type="application/json" id="copy-data">"ORdős Problems #72 — A polynomial pivot rule for the simplex method\n\nSHORT STATEMENT\nIs there a pivot rule under which the simplex method always solves a linear program in a number of pivot steps bounded by a polynomial in the number of variables and constraints?\n\nOPEN PROBLEM\ndoes there exist a (deterministic or randomized) pivot rule for which the number of pivot steps is bounded by a polynomial in $m$ and $n$ for every linear program?\n\nPROBLEM (full statement with model)\nThe simplex method solves $\\max\\{c^\\top x : Ax\\le b,\\ x\\ge 0\\}$ by walking along edges of the feasible polyhedron from vertex to adjacent improving vertex; a \\emph{pivot rule} chooses, at each vertex, which improving edge to follow. Klee and Minty (1972) showed Dantzig's most-negative-reduced-cost rule can take $2^n-1$ steps on a deformed cube, and analogous exponential lower bounds are known for essentially every classical deterministic rule (Bland, steepest edge, greatest improvement, etc.). Question: does there exist a (deterministic or randomized) pivot rule for which the number of pivot steps is bounded by a polynomial in $m$ and $n$ for every linear program?\n\nKNOWN RESULTS\nBest known are subexponential randomized rules: Random-Facet achieves $\\exp(O(\\sqrt{n\\log n}))$ pivots (Kalai 1992; Matoušek–Sharir–Welzl), later shown essentially tight for such rules (Friedmann–Hansen–Zwick). No polynomial pivot rule is known. The question is intimately tied to the polynomial Hirsch conjecture (a polynomial diameter bound is necessary for any polynomial pivot rule).\n\nREMAINING OPEN PROBLEM\ndoes there exist a (deterministic or randomized) pivot rule for which the number of pivot steps is bounded by a polynomial in $m$ and $n$ for every linear program?\n\nWHERE POSED: A central open problem of linear optimization since Klee–Minty (1972); see Kalai (1992) and Todd's surveys. (https://www.sciencedirect.com/science/article/pii/B9780125104302500190)\nSOURCE: Victor Klee, George J. Minty, How Good is the Simplex Algorithm? (1972, Inequalities III (Academic Press)) https://www.sciencedirect.com/science/article/pii/B9780125104302500190\nRELATED:\n- Gil Kalai, A subexponential randomized simplex algorithm (1992, STOC) https://doi.org/10.1145/129712.129759\n- Oliver Friedmann, Thomas Dueholm Hansen, Uri Zwick, Subexponential lower bounds for randomized pivoting rules for the simplex algorithm (2011, STOC) https://doi.org/10.1145/1993636.1993675\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
+<script type="application/json" id="copy-data">"ORdős Problems #72 — A polynomial pivot rule for the simplex method\n\nSHORT STATEMENT\nIs there a simplex pivot rule that always reaches an optimal LP vertex in polynomially many pivots?\n\nSTATUS: open\n\nOPEN PROBLEM\nFind a polynomial pivot rule for the simplex method, or prove that no rule in a well-defined broad class can have a polynomial worst-case pivot bound. The unresolved part is the existence of any efficiently computable rule with polynomial pivot count, not the polynomial-time solvability of LP by other methods.\n\nBACKGROUND\nThe simplex method is the workhorse algorithm of linear programming in practice. It moves along vertices of the feasible polyhedron, improving the objective at each pivot until an optimum is reached. Its practical speed contrasts sharply with worst-case examples: the Klee-Minty cubes show that natural pivot rules can take exponentially many steps. The open question is not whether LP is polynomial-time solvable, since ellipsoid and interior-point methods already establish that, but whether the simplex method itself has a pivot rule with a worst-case polynomial number of pivots. This sits between geometry and algorithms. A polynomial pivot rule would imply that every LP has a short efficiently navigable monotone path to optimality under that rule; conversely, lower bounds for many rules show that local improvement can be trapped by carefully constructed polyhedra. The problem is also tied to polytope diameter questions: small diameter is necessary but not sufficient, because the simplex path must be found by a rule using local information.\n\nPROBLEM (full statement with model)\nConsider a linear program $\\max\\{c^Tx:Ax=b,x\\ge0\\}$, or an equivalent inequality form, with $m$ constraints and $n$ variables. Assume first that the feasible polyhedron is nondegenerate, so every basic feasible solution is a vertex and every simplex pivot moves along one improving edge to an adjacent vertex. A pivot rule is an efficiently computable rule that, from the current basis/tableau and the input data, chooses an entering variable and a leaving variable whenever the current basis is not optimal. The question is whether there exists a deterministic pivot rule with worst-case pivot count $\\operatorname{poly}(m,n)$ for every linear program, or a randomized pivot rule with expected pivot count $\\operatorname{poly}(m,n)$ against an appropriate adversarial model. A complete answer must also handle degeneracy, either directly or through a perturbation/lexicographic rule whose bit complexity and pivot count remain polynomial. The open problem is about simplex paths and pivot rules, not about linear programming solvability by ellipsoid or interior-point methods.\n\nKNOWN RESULTS\nKlee and Minty showed exponential behavior for Dantzig's rule on deformed cubes, establishing that the practical success of simplex is not explained by the most classical worst-case rule. Bland's rule prevents cycling, but it is not polynomial and belongs to a family of rules for which exponential lower bounds are known. Random-Facet and the Kalai/Matousek-Sharir-Welzl line of randomized simplex algorithms achieve subexponential expected bounds, roughly of the form $\\exp(O(\\sqrt{n\\log n}))$, which is the strongest general positive evidence for pivoting but still far from polynomial. A long sequence of lower-bound constructions now covers many deterministic, randomized, and history-based rules, including Zadeh's least-entered rule and combinations of classical rules; some earlier claimed Random-Facet lower-bound transfers required errata, so the precise rule model matters. Santos disproved the original Hirsch conjecture, showing that linear diameter is false, but polynomial diameter and polynomial pivot-rule complexity are distinct questions. As of the source check, no efficiently computable pivot rule is known with a polynomial worst-case or expected number of pivots for all linear programs.\n\nLITERATURE SYNTHESIS\nThe literature has two complementary strands. Lower-bound constructions start with Klee-Minty cubes and now cover many natural deterministic, randomized, and history-based pivoting strategies, showing that local improvement rules can be forced into very long monotone paths. Modern constructions often pass through unique-sink orientations, parity games, or policy-iteration gadgets before translating back to linear programs. Upper-bound work shows that randomization helps: Random-Facet and related algorithms obtain subexponential pivot counts, far better than exponential but still not polynomial. Geometric diameter results provide necessary background, but the simplex question is sharper because a pivot rule must identify a good monotone path using information available along the run. The remaining gap is not a missing polynomial-time LP algorithm; it is the absence of either a polynomial pivoting rule or a lower-bound theorem broad enough to explain why all efficiently computable simplex rules must fail.\n\nREMAINING OPEN PROBLEM\nFind a polynomial pivot rule for the simplex method, or prove that no rule in a well-defined broad class can have a polynomial worst-case pivot bound. The unresolved part is the existence of any efficiently computable rule with polynomial pivot count, not the polynomial-time solvability of LP by other methods.\n\nVERIFICATION NOTES\nA lower-bound submission must define the pivot rule exactly, specify whether the construction is an actual linear program, an oriented matroid, or an abstract unique-sink orientation, and prove the claimed path length on an infinite family. A lower bound for an abstract cube or for a restricted implementation of a rule should not be advertised as a lower bound for all LP pivot rules unless the reduction is explicit. A positive submission must prove that the rule is efficiently computable, that it chooses valid improving pivots, and that its pivot count is polynomial for all inputs. Degeneracy cannot be ignored: either prove the result for degenerate LPs or supply a perturbation/lexicographic implementation with controlled bit complexity and no hidden exponential sequence of degenerate pivots.\n\nWHERE POSED: The modern problem traces to Klee-Minty worst-case examples and the subsequent simplex complexity literature; it is commonly posed as the question of a polynomial-time simplex variant. (https://doi.org/10.1016/B978-0-12-387750-1.50016-5)\nSOURCE: Victor Klee, George J. Minty, How Good is the Simplex Algorithm? (1972, Inequalities III (Academic Press)) https://www.sciencedirect.com/science/article/pii/B9780125104302500190\nRELATED:\n- Gil Kalai, A subexponential randomized simplex algorithm (1992, STOC) https://doi.org/10.1145/129712.129759\n- Oliver Friedmann, Thomas Dueholm Hansen, Uri Zwick, Subexponential lower bounds for randomized pivoting rules for the simplex algorithm (2011, STOC) https://doi.org/10.1145/1993636.1993675\n\nTask: Resolve the remaining open problem, taking the cited results and their assumptions into account. Math is in LaTeX."</script>
 <script>
 (function(){
   var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;

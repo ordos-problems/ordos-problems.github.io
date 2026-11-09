@@ -6,28 +6,86 @@
  "collection": "Operations Research",
  "area": "Online Resource Allocation",
  "status": "open",
- "confidence": "high",
+ "confidence": "medium",
  "tags": [
   "adwords",
   "online allocation",
   "unknown budgets",
   "competitive analysis",
-  "budget oblivious"
+  "budget oblivious",
+  "budget-oblivious algorithms"
  ],
- "short_statement": "In the Adwords problem where advertiser budgets are unknown until exceeded, what is the optimal randomized competitive ratio?",
- "open_problem": "The open problem is to determine the best possible randomized competitive ratio for Adwords with unknown budgets, and whether a budget-oblivious or different randomized algorithm achieves it.",
- "full_statement": "In the Adwords problem, queries arrive online. Each query $t$ has bids $b_{it}$ from advertisers $i$, and assigning $t$ to $i$ earns $b_{it}$ up to advertiser $i$'s remaining budget $B_i$. In the classical model, all budgets $B_i$ are known to the algorithm. In the unknown-budget model, bids are known on arrival but $B_i$ is not known in advance; the algorithm only learns that an advertiser's budget has been exceeded when an attempted allocation fails or exhausts it. Decisions are irrevocable, and the benchmark is the offline optimum that knows the entire arrival sequence and all budgets. Greedy is $1/2$-competitive and no deterministic algorithm can do better. Udwani gives a randomized budget-oblivious generalized perturbed-greedy algorithm with competitive ratio at least $0.522$ and shows this algorithm is strictly below $1-1/e$. The open problem is to determine the best possible randomized competitive ratio for Adwords with unknown budgets, and whether a budget-oblivious or different randomized algorithm achieves it.",
- "known_results": "Known-budget Adwords admits the classic $1-1/e$ guarantee under small bids. With unknown budgets, deterministic algorithms are capped at $1/2$. Udwani's randomized GPG-style algorithm improves this to at least $0.522$, with an upper bound below $1-1/e$ for that algorithm. The exact optimal randomized ratio remains open.",
+ "short_statement": "Determine the optimal randomized competitive ratio for Adwords when advertiser budgets are initially unknown.",
+ "open_problem": "Determine the optimal small-bid randomized ratio within the reviewed $[0.522,1-1/e]$ bounds; framework-specific barriers do not settle this target.",
+ "background": "Unknown budgets remove the budget fractions used by classical Adwords allocation rules. The feedback and truncation convention are part of the model, as is the small-bids limit; guarantees for known budgets or arbitrary bid sizes do not transfer automatically.",
+ "full_statement": "Advertisers have hidden budgets $B_i>0$. On each adversarially ordered query t, bids $b_{it}$ are revealed and the algorithm irrevocably assigns it to one advertiser or discards it. An assigned advertiser pays the bid truncated at its remaining budget; exhaustion is revealed, but budgets are not available upfront. The benchmark is the integral offline optimum knowing all bids and budgets. Let $\\gamma=\\max_{i,t}b_{it}/B_i$. Determine the optimal randomized competitive ratio in the small-bids limit $\\gamma\\to0$, for inputs fixed independently of the algorithm's random choices. This is not a failed-allocation model requiring the entire bid to fit.",
+ "known_results": "Udwani, arXiv:2110.00504v5, Theorem 1, bounds deterministic budget-oblivious algorithms by $1/2$. Theorems 2-3 and Corollary 1 give GPG at least $0.522/(1+\\gamma)$, hence $0.522$ in the small-bids limit. The general upper benchmark is $1-1/e$. Liang, Tang, Xu, Zhang, and Zhou, arXiv:2210.10370v2, Theorem 2, bound all Perturbed-Ranking perturbation functions by $1-1/e-0.0003$; the canonical perturbation has upper bound $0.624$. These are framework restrictions, not upper bounds for every randomized budget-oblivious algorithm.",
+ "progress": {
+  "state": "partial",
+  "summary": "The existing small-bid lower bound is retained with its finite-bid qualification; feedback and upper-bound scope are corrected.",
+  "links": [
+   {
+    "title": "Adwords with Unknown Budgets and Beyond",
+    "url": "https://arxiv.org/abs/2110.00504"
+   },
+   {
+    "title": "On the Perturbation Function of Ranking and Balance for Weighted Online Bipartite Matching",
+    "url": "https://arxiv.org/abs/2210.10370v2"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Finite adversarial instances can upper-bound proposed algorithms or refute candidate ratios. Factor-revealing LPs may certify tight examples.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Search over small bid/budget instances and randomized perturbation distributions can reveal worst cases and candidate optimal algorithms.",
+ "literature": {
+  "synthesis": "The deterministic barrier, randomized achievable guarantee, and perturbation-family barriers answer different questions. No reviewed theorem closes the all-algorithms gap.",
+  "reviewed": [
+   {
+    "ref": "Aranyak Mehta, Amin Saberi, Umesh Vazirani, and Vijay Vazirani, 'AdWords and generalized online matching', Journal of the ACM 2007",
+    "result": "Establishes the classical known-budget Adwords framework and $1-1/e$ style guarantees.",
+    "relevance": "related-tool",
+    "url": "https://doi.org/10.1145/1206035.1206036"
+   },
+   {
+    "ref": "Rajan Udwani, 'Adwords with Unknown Budgets and Beyond', arXiv:2110.00504v5 (2024 revision)",
+    "result": "Theorem 1 and Corollary 1 supply the deterministic barrier and bid-ratio-dependent randomized guarantee.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2110.00504"
+   },
+   {
+    "ref": "Vijay V. Vazirani, 'Towards a Practical, Budget-Oblivious Algorithm for the Adwords Problem under Small Bids', arXiv 2021",
+    "result": "Studies budget-oblivious approaches connected to the unknown-budget model.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/2107.10777"
+   },
+   {
+    "ref": "Jingxun Liang, Zhihao Gavin Tang, Yixuan Even Xu, Yuhao Zhang, Renfei Zhou, 'On the Perturbation Function of Ranking and Balance for Weighted Online Bipartite Matching' (2023)",
+    "result": "Theorem 2 restricts perturbation functions, not all randomized algorithms.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2210.10370v2"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Use factor-revealing LPs or adversarial instance search for upper bounds, and optimize randomized perturbation distributions for lower bounds. Small-bid limits may simplify analysis into differential equations.",
+  "verification_notes": "A claimed ratio must be against the offline optimum that knows both budgets and the entire arrival sequence. The proof must state the budget-feedback model exactly, since learning exact remaining budget, learning only on exhaustion, and observing failed allocations are different information structures. It must also state whether it assumes the small-bids limit; a proof for infinitesimal bids does not automatically imply the same constant for arbitrary bid-to-budget ratios. A randomized lower bound should specify whether the adversary is oblivious or adaptive and should use Yao-style distributions or another rigorous minimax argument. Improvements for known-budget Adwords, stochastic arrivals, online matching without budgets, or deterministic multi-channel matching do not resolve this record unless they are explicitly transferred to the unknown-budget model.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "Conclusion of Udwani, 'Adwords with Unknown Budgets and Beyond', states the immediate open question of finding the best possible competitive ratio guarantee for Adwords with unknown budgets.",
-  "url": "https://arxiv.org/abs/2110.00504"
+  "text": "Posed by the remaining gap in Udwani, 'Adwords with Unknown Budgets and Beyond'.",
+  "url": "https://arxiv.org/abs/2110.00504",
+  "quote": "",
+  "location": "Abstract and discussion of randomized algorithm bounds"
  },
  "source": {
   "authors": "Rajan Udwani",
   "title": "Adwords with Unknown Budgets and Beyond",
   "year": 2024,
-  "venue": "Operations Research",
-  "url": "https://arxiv.org/abs/2110.00504"
+  "venue": "arXiv:2110.00504v5 (revision)",
+  "url": "https://arxiv.org/abs/2110.00504v5"
  },
  "additional_refs": [
   {
@@ -43,9 +101,16 @@
    "year": 2021,
    "venue": "arXiv:2107.10777",
    "url": "https://arxiv.org/abs/2107.10777"
+  },
+  {
+   "authors": "Jingxun Liang, Zhihao Gavin Tang, Yixuan Even Xu, Yuhao Zhang, Renfei Zhou",
+   "title": "On the Perturbation Function of Ranking and Balance for Weighted Online Bipartite Matching",
+   "year": 2023,
+   "venue": "arXiv preprint",
+   "url": "https://arxiv.org/abs/2210.10370v2"
   }
  ],
- "bibtex": "@misc{Udwani2024,\n  author = {Rajan Udwani},\n  title = {Adwords with Unknown Budgets and Beyond},\n  year = {2024},\n  howpublished = {Operations Research},\n  url = {https://arxiv.org/abs/2110.00504},\n  note = {Source of ORdős Problem ORDOS-089}\n}",
+ "bibtex": "@misc{Udwani2024,\n  author = {Rajan Udwani},\n  title = {Adwords with Unknown Budgets and Beyond},\n  year = {2024},\n  howpublished = {arXiv:2110.00504v5 (revision)},\n  url = {https://arxiv.org/abs/2110.00504v5},\n  note = {Source of ORdős Problem ORDOS-089}\n}",
  "urls": {
   "human": "https://ordos-problems.github.io/problems/adwords-unknown-budgets-optimal-ratio.html",
   "api": "https://ordos-problems.github.io/api/problems/adwords-unknown-budgets-optimal-ratio.json",

@@ -1,0 +1,118 @@
+{
+  "id": "bimatrix-approximate-nash-threshold",
+  "title": "Polynomial-time approximation threshold for bimatrix Nash equilibria",
+  "collection": "Economics",
+  "area": "Algorithmic Game Theory",
+  "tags": [
+    "Nash equilibrium",
+    "bimatrix games",
+    "PPAD",
+    "approximation algorithms",
+    "game theory"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "A 2026 preprint claims additive Nash error $0.30954+\\delta$ for general bimatrix games, improving the published $1/3+\\delta$ benchmark; the exact threshold remains open.",
+  "full_statement": "In a two-player normal-form game, the row player has payoff matrix $A\\in[0,1]^{m\\times n}$ and the column player has payoff matrix $B\\in[0,1]^{m\\times n}$. A mixed strategy profile $(x,y)$ is an $\\varepsilon$-approximate Nash equilibrium if no player can improve expected payoff by more than $\\varepsilon$ through a unilateral deviation: $$\\max_i e_i^T A y - x^T A y \\le \\varepsilon,\\qquad \\max_j x^T B e_j - x^T B y \\le \\varepsilon.$$ Exact equilibrium exists by Nash's theorem but is PPAD-complete to compute. The open problem is to determine the best additive approximation guarantee achievable in polynomial time for arbitrary bimatrix games. Deligkas, Fasoulakis, and Markakis give a polynomial-time algorithm for $(1/3+\\delta)$-approximate Nash equilibria for every constant $\\delta>0$. Rubinstein proves quasi-polynomial lower bounds for some positive constant $\\varepsilon$ under a PPAD-ETH assumption, but the constant is far below $1/3$ and does not identify the algorithmic threshold. The historical below-$1/3$ target was either to compute $(1/3-\\eta)$-approximate equilibria in polynomial time for some universal $\\eta>0$, or to prove hardness for approximation at or near the $1/3$ frontier. Dongchen Li and Hanyu Li's October 2026 preprint, Theorem 1, claims an $(r_*+\\delta)$-approximate Nash equilibrium for arbitrary bimatrix payoffs in $[0,1]$, where $r_*\\approx0.30954$, in time polynomial in input length and $1/\\delta$. This claims to cross $1/3$, but does not settle the exact threshold.",
+  "open_problem": "Determine the exact polynomial-time additive-Nash threshold; verify or improve the new $0.30954+\\delta$ preprint guarantee.",
+  "background": "Bimatrix games are one of the cleanest mathematical models of strategic interaction in economics. They are also a central source problem for PPAD, the complexity class that captures total search problems proved total by parity or fixed-point arguments. Exact Nash equilibrium computation is hard, so approximation became the practical and theoretical fallback. The approximation question is subtle because coarse constant approximations are easy, quasi-polynomial algorithms can achieve arbitrarily small constant error, and PPAD lower bounds become much stronger when the allowed running time is quasi-polynomial rather than polynomial. The historical $1/3$ barrier is important because it is a concrete, model-independent number in the simplest two-player setting. Moving it in either direction would sharpen the computational meaning of Nash equilibrium: either general games admit better polynomial-time strategic predictions than currently known, or the hardness of equilibrium appears already at a visible constant. A new preprint claims to cross it; the overall quantitative threshold is still unresolved.",
+  "known_results": "Daskalakis, Goldberg, and Papadimitriou and independently Chen, Deng, and Teng established PPAD-completeness for exact Nash equilibrium computation, including the two-player case. Lipton, Markakis, and Mehta showed that $\\varepsilon$-approximate equilibria can be found in quasi-polynomial time by enumerating small supports. Tsaknakis and Spirakis gave a long-standing polynomial-time algorithm with guarantee about $0.3393+\\delta$. Deligkas, Fasoulakis, and Markakis improved this to $1/3+\\delta$ in polynomial time by refining the descent framework and using a richer set of candidate strategies. On the hardness side, Rubinstein proves that, assuming PPAD-ETH, there is a constant $\\varepsilon>0$ for which computing an $\\varepsilon$-approximate equilibrium requires quasi-polynomial time. This matches the qualitative quasi-polynomial upper bound, but the hard constant is not known to approach $1/3$. Thus the open part remains the quantitative polynomial-time threshold. Dongchen Li and Hanyu Li's October 2026 preprint, Theorem 1, claims an $(r_*+\\delta)$-approximate Nash equilibrium for arbitrary bimatrix payoffs in $[0,1]$, where $r_*\\approx0.30954$, in time polynomial in input length and $1/\\delta$. This audit has not independently verified the proof.",
+  "where_posed": {
+    "text": "The approximation-threshold question is highlighted by Deligkas, Fasoulakis, and Markakis as the fundamental pursuit in approximate equilibrium computation.",
+    "url": "https://arxiv.org/abs/2204.11525",
+    "quote": "Finding the best possible approximation guarantee",
+    "location": "Abstract and introduction."
+  },
+  "source": {
+    "authors": "Argyrios Deligkas, Michail Fasoulakis, Evangelos Markakis",
+    "title": "A Polynomial-Time Algorithm for 1/3-Approximate Nash Equilibria in Bimatrix Games",
+    "year": 2022,
+    "venue": "arXiv",
+    "url": "https://arxiv.org/abs/2204.11525"
+  },
+  "additional_refs": [
+    {
+      "authors": "Aviad Rubinstein",
+      "title": "Settling the complexity of computing approximate two-player Nash equilibria",
+      "year": 2016,
+      "venue": "arXiv / FOCS",
+      "url": "https://arxiv.org/abs/1606.04550"
+    },
+    {
+      "authors": "Xi Chen, Xiaotie Deng, Shang-Hua Teng",
+      "title": "Settling the Complexity of Two-Player Nash Equilibria",
+      "year": 2007,
+      "venue": "arXiv / FOCS",
+      "url": "https://arxiv.org/abs/0704.1678"
+    },
+    {
+      "authors": "Richard J. Lipton, Evangelos Markakis, Aranyak Mehta",
+      "title": "Playing Large Games Using Simple Strategies",
+      "year": 2003,
+      "venue": "EC",
+      "url": "https://doi.org/10.1145/779928.779933"
+    },
+    {
+      "authors": "Dongchen Li, Hanyu Li",
+      "title": "A Simple Algorithm Breaking the 1/3 Barrier for Approximate Nash Equilibria in Bimatrix Games",
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2610.05317"
+    }
+  ],
+  "enabled": true,
+  "progress": {
+    "state": "partial",
+    "summary": "Published benchmark $1/3+\\delta$; a 2026 preprint claims $0.30954+\\delta$ for general bimatrix games. Exact threshold remains open.",
+    "links": [
+      {
+        "title": "Li Dongchen and Li Hanyu, 2026 bimatrix approximate-Nash preprint, arXiv:2610.05317",
+        "url": "https://arxiv.org/html/2610.05317v1"
+      }
+    ]
+  },
+  "importance": 9,
+  "difficulty": 9,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Finite bimatrix games can refute proposed algorithms, descent lemmas, support-size claims, or factor-revealing inequalities. Hardness proofs require reductions, but small games are useful for discovering barriers.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Automated search can optimize payoff matrices against candidate algorithms and identify bottleneck games near the $1/3$ boundary.",
+  "literature": {
+    "synthesis": "Approximate Nash computation has two different frontiers. The quasi-polynomial frontier is nearly understood: small-support enumeration gives an $n^{O(\\log n)}$ algorithm for any fixed error, and Rubinstein gives matching quasi-polynomial lower bounds for some constant error under PPAD-ETH. The polynomial-time frontier is much sharper numerically and much less understood. The Tsaknakis-Spirakis descent framework dominated for years at $0.3393+\\delta$, and Deligkas-Fasoulakis-Markakis pushed it to $1/3+\\delta$. A further improvement likely needs either a new structural theorem about approximate best responses in arbitrary bimatrix games or a stronger bottleneck analysis of descent-style methods. A hardness result near $1/3$ would require reductions that preserve a much larger approximation constant than current PPAD-hardness technology provides. The new preprint claims a further descent-framework improvement. Do not confuse this general-game result with stronger guarantees restricted to symmetric games.",
+    "reviewed": [
+      {
+        "ref": "Deligkas, Fasoulakis, Markakis, A Polynomial-Time Algorithm for 1/3-Approximate Nash Equilibria in Bimatrix Games, 2022",
+        "result": "Published $1/3+\\delta$ benchmark, preceding the 2026 preprint claim.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2204.11525",
+        "relevance_detail": "best-current-upper-bound"
+      },
+      {
+        "ref": "Rubinstein, Settling the complexity of computing approximate two-player Nash equilibria, 2016",
+        "result": "Shows quasi-polynomial lower bounds for constant-error approximate Nash under PPAD-ETH.",
+        "relevance": "hardness",
+        "url": "https://arxiv.org/abs/1606.04550",
+        "relevance_detail": "hardness-context"
+      },
+      {
+        "ref": "Chen, Deng, Teng, Settling the Complexity of Two-Player Nash Equilibria, 2007",
+        "result": "Establishes PPAD-completeness of exact two-player Nash equilibrium computation and rules out an FPTAS under PPAD assumptions.",
+        "relevance": "hardness",
+        "url": "https://arxiv.org/abs/0704.1678",
+        "relevance_detail": "foundational-hardness"
+      },
+      {
+        "ref": "Li Dongchen and Li Hanyu, 2026 bimatrix approximate-Nash preprint, arXiv:2610.05317",
+        "result": "Theorem 1 claims general bimatrix guarantee $r_*+\\delta$, $r_*\\approx0.30954$.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/html/2610.05317v1"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Verify the 2026 descent analysis and its worst-case constant before treating it as an established benchmark. Search for worst-case games for the $1/3$ algorithm; formulate candidate improvements as nonconvex optimization or sum-of-squares certificates; revisit support-enumeration and regret-minimization hybrids; study whether Rubinstein-style gadgets can preserve larger additive regret gaps.",
+    "verification_notes": "A claimed algorithmic result must be polynomial in the matrix dimensions for every payoff pair in $[0,1]$ and must output a profile whose unilateral regrets are bounded by the stated $\\varepsilon$. The proof should use additive regret, not multiplicative approximation or well-supported equilibrium unless it explicitly translates the guarantee. A claimed lower bound must state the complexity assumption and the additive approximation constant. Empirical game-search evidence is not a proof, but it can support counterexamples to specific algorithms if the payoff matrices, mixed strategies, best-response values, and exact regret calculations are supplied.",
+    "machine_checkable": true
+  },
+  "notes_for_maintainer": "Status audit 2026-11-09: Theorem 1 and general-game model read; no independent proof or computational certificate verification."
+}

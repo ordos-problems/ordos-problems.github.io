@@ -5,8 +5,8 @@
  "title": "Additive integrality gap of the bin packing (Gilmore-Gomory) LP",
  "collection": "Online Algorithms & Learning",
  "area": "Online Algorithms",
- "status": "open",
- "confidence": "high",
+ "status": "partially resolved",
+ "confidence": "medium",
  "tags": [
   "bin packing",
   "integrality gap",
@@ -14,10 +14,69 @@
   "MIRUP",
   "cutting stock"
  ],
- "short_statement": "For bin packing, how far can the integer optimum be from the value of the Gilmore-Gomory configuration LP relaxation in absolute (additive) terms? Is the gap always $O(1)$ extra bins, or can it grow?",
- "open_problem": "Determine whether the additive integrality gap is $O(1)$ or $\\Theta(\\log)$.",
- "full_statement": "In the bin packing problem, items of given sizes must be packed into unit-capacity bins, minimizing the number of bins used. The standard strong LP relaxation is the Gilmore-Gomory configuration LP. For a bin packing instance $I$, let $\\mathrm{OPT}_f(I)$ be the value of the Gilmore-Gomory LP relaxation and $\\mathrm{OPT}(I)$ the integer optimum. Define the additive integrality gap $$\\mathrm{gap}=\\sup_I\\big(\\mathrm{OPT}(I)-\\mathrm{OPT}_f(I)\\big).$$ The question is whether $\\mathrm{gap}=O(1)$ (a constant number of extra bins regardless of instance). The related Modified Integer Round-Up Property (MIRUP) conjecture posits $\\mathrm{OPT}(I)\\le\\lceil \\mathrm{OPT}_f(I)\\rceil+1$. The best known upper bound is $\\mathrm{gap}=O(\\log \\mathrm{OPT}_f)$. Determine whether the additive integrality gap is $O(1)$ or $\\Theta(\\log)$.",
- "known_results": "Hoberg and Rothvoss proved that the integer optimum is at most $\\mathrm{OPT}_f+O(\\log \\mathrm{OPT}_f)$, improving the earlier $O(\\log^2 \\mathrm{OPT}_f)$ additive bound of Karmarkar and Karp. On the lower-bound side, no family is known with additive gap growing beyond a constant, and the stronger MIRUP conjecture predicts an extremely small constant gap. The main open question is whether the true additive gap is bounded by $O(1)$ or whether the logarithmic upper bound is qualitatively necessary.",
+ "short_statement": "A recent preprint gives a superconstant additive configuration-LP gap for bin packing; the exact growth remains undetermined.",
+ "open_problem": "Determine the sharp growth of $G(B)$ between the reported iterated-logarithmic lower bound and logarithmic upper bound. The historical constant-gap question has a reported negative resolution.",
+ "background": "Bin packing and cutting stock are core problems in approximation algorithms, integer programming, and operations research. The configuration LP is unusually strong: although it has exponentially many columns, it captures the natural pattern structure of bins and underlies the Karmarkar-Karp approximation scheme. Most approximation questions ask for multiplicative ratios, but this problem asks for an additive constant, which is much sharper and directly relevant in large cutting-stock instances where a few extra bins matter. The problem is also connected to discrepancy theory: rounding a fractional collection of configurations to integer bins is a vector-balancing problem with additional packing structure. Hoberg and Rothvoss's logarithmic bound shows that discrepancy methods go far, but their own framing indicates that further progress likely needs more algebraic or structural use of bin-packing configurations.",
+ "full_statement": "An instance of one-dimensional bin packing consists of item sizes $s_1,\\ldots,s_n\\in(0,1]$ and unit-capacity bins. A configuration is a multiset of items whose total size is at most $1$. The Gilmore-Gomory configuration LP has one nonnegative variable $x_C$ for each feasible configuration $C$ and minimizes $\\sum_C x_C$ subject to covering each item type in the required multiplicity. Equivalently, in the high-multiplicity view, each column records how many items of each size appear in one bin. Let $OPT_f(I)$ be the fractional optimum and $OPT(I)$ be the integer optimum. Define $G(B)=\\sup\\{OPT(I)-OPT_f(I):OPT_f(I)\\le B\\}$. The quantitative problem is to determine the asymptotic growth of $G(B)$ as $B$ grows. The historical question asked whether $G(B)$ is bounded by a universal constant. The stronger historical Modified Integer Round-Up Property predicts $OPT(I)\\le \\lceil OPT_f(I)\\rceil+1$ for every instance. The known upper bound is logarithmic in $OPT_f(I)$, and the new superconstant lower bound is recorded below.",
+ "known_results": "Rebecca Hoberg and Thomas Rothvoss give an $O(\\log OPT_f)$ additive upper bound for the configuration LP.\n\nIlan Doron-Arad, 'Additive Omega(log* OPT) Gap for Bin Packing with Three Items per Bin' (arXiv:2611.09447v1, 2026), Theorem 1.3, gives an $\\Omega(\\log^* OPT)$ gap with sizes arbitrarily close to $1/3$. This builds on the September OpenAI construction. Theorem 1.2 also transfers arbitrary instances' gaps to this restricted class up to constants.\n\nTheorem 1.1 separately rules out deterministic polynomial-time additive error $o(\\log^* OPT)$ unless $P=NP$. This computational hardness is distinct from the unconditional LP-gap claim.\n\nIf correct, the construction refutes both a constant additive gap and MIRUP. The iterated-logarithmic lower bound and logarithmic upper bound still differ. The proof and dependency chain have not been independently certified here.",
+ "progress": {
+  "state": "partial",
+  "summary": "Doron-Arad (2026) quantifies the superconstant gap as $\\Omega(\\log^* OPT)$, even near item size $1/3$; the growth rate remains open.",
+  "links": [
+   {
+    "title": "Additive Omega(log* OPT) Gap for Bin Packing with Three Items per Bin",
+    "url": "https://arxiv.org/abs/2611.09447v1"
+   },
+   {
+    "title": "Hoberg-Rothvoss logarithmic additive gap",
+    "url": "https://arxiv.org/abs/1503.08796"
+   },
+   {
+    "title": "Goemans-Rothvoss constant item types",
+    "url": "https://arxiv.org/abs/1307.5108"
+   }
+  ]
+ },
+ "importance": 9,
+ "difficulty": 8,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "A refutation of constant gap could be given by explicit item-size families and certified LP/integer optima. Even small high-gap examples are machine-checkable with integer programming and column generation.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Automated search can generate item-size multisets, solve or approximate the configuration LP, and look for fractional structures with large additive gaps. Search may also discover rounding patterns suggesting a proof.",
+ "literature": {
+  "synthesis": "Earlier discrepancy results primarily improved upper bounds or limited rounding techniques. The new result claims an actual integrality-gap family, changing the qualitative answer while leaving quantitative growth undetermined.",
+  "reviewed": [
+   {
+    "ref": "Narendra Karmarkar, Richard M. Karp, 'An Efficient Approximation Scheme for the One-Dimensional Bin-Packing Problem', FOCS 1982",
+    "result": "Gives the classical configuration-LP-based asymptotic scheme with $O(\\log^2 OPT)$ additive loss.",
+    "relevance": "related-tool",
+    "url": "https://ieeexplore.ieee.org/document/4568405"
+   },
+   {
+    "ref": "Rebecca Hoberg, Thomas Rothvoss, 'A Logarithmic Additive Integrality Gap for Bin Packing', SODA 2017",
+    "result": "Improves the general additive guarantee to $O(\\log OPT)$.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1503.08796"
+   },
+   {
+    "ref": "Friedrich Eisenbrand, Domotor Palvolgyi, Thomas Rothvoss, 'Bin Packing via Discrepancy of Permutations', arXiv 2010",
+    "result": "Shows limitations of rounding-up approaches through a discrepancy connection.",
+    "relevance": "hardness",
+    "url": "https://arxiv.org/abs/1007.2170"
+   },
+   {
+    "ref": "Ilan Doron-Arad, 'Additive Omega(log* OPT) Gap for Bin Packing with Three Items per Bin' (2026)",
+    "result": "Theorems 1.1-1.3 separate computational hardness, a gap-preserving reduction to three-item bins, and an unconditional integrality-gap family.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2611.09447v1"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Check the new construction and its LP convention before searching for improved gap families or rounding bounds.",
+  "verification_notes": "Certify integer and fractional objectives using the same configuration convention. Separate the unconditional gap claim from computational hardness and from restrictions on rounding algorithms.",
+  "machine_checkable": true
+ },
  "where_posed": {
   "text": "Stated in Hoberg, Rothvoss, 'A Logarithmic Additive Integrality Gap for Bin Packing', 2017, SODA.",
   "url": "https://arxiv.org/abs/1503.08796"
@@ -36,6 +95,34 @@
    "year": 1982,
    "venue": "FOCS",
    "url": "https://ieeexplore.ieee.org/document/4568405"
+  },
+  {
+   "authors": "Friedrich Eisenbrand, Domotor Palvolgyi, Thomas Rothvoss",
+   "title": "Bin Packing via Discrepancy of Permutations",
+   "year": 2010,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/1007.2170"
+  },
+  {
+   "authors": "Michel X. Goemans, Thomas Rothvoss",
+   "title": "Polynomiality for Bin Packing with a Constant Number of Item Types",
+   "year": 2020,
+   "venue": "Journal of the ACM",
+   "url": "https://arxiv.org/abs/1307.5108"
+  },
+  {
+   "authors": "Thomas Rothvoss",
+   "title": "Approximating Bin Packing within O(log OPT log log OPT) Bins",
+   "year": 2013,
+   "venue": "FOCS",
+   "url": "https://doi.org/10.1109/FOCS.2013.26"
+  },
+  {
+   "authors": "Ilan Doron-Arad",
+   "title": "Additive Omega(log* OPT) Gap for Bin Packing with Three Items per Bin",
+   "year": 2026,
+   "venue": "arXiv preprint",
+   "url": "https://arxiv.org/abs/2611.09447v1"
   }
  ],
  "bibtex": "@misc{Hoberg2017,\n  author = {Rebecca Hoberg and Thomas Rothvoss},\n  title = {A Logarithmic Additive Integrality Gap for Bin Packing},\n  year = {2017},\n  howpublished = {SODA},\n  url = {https://arxiv.org/abs/1503.08796},\n  note = {Source of ORdős Problem ORDOS-011}\n}",

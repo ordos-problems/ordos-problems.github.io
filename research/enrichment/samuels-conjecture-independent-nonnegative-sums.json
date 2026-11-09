@@ -1,0 +1,113 @@
+{
+  "id": "samuels-conjecture-independent-nonnegative-sums",
+  "background": "Samuels' conjecture concerns the smallest lower-tail probability for independent nonnegative variables with prescribed means. Maximizing that lower-tail probability is a different, trivial problem when deterministic variables lie below the threshold. The corrected extremal statement is now the subject of a reported general proof.",
+  "short_statement": "For independent nonnegative variables with prescribed means, determine the smallest probability that their sum falls below a fixed threshold. A general proof of Samuels' proposed formula has been reported.",
+  "full_statement": "Let $0\\le\\mu_1\\le\\cdots\\le\\mu_n$ and $\\lambda>\\sum_i\\mu_i$. Over independent nonnegative random variables with $\\mathbb E X_i=\\mu_i$, Samuels' formula is $$\\inf\\Pr\\!\\left[\\sum_iX_i<\\lambda\\right]=\\min_{1\\le i\\le n}\\prod_{j=i}^n\\left(1-\\frac{\\mu_j}{\\lambda-\\sum_{k<i}\\mu_k}\\right).$$ The infimum is attained: for a minimizing i, take $X_k=\\mu_k$ for k<i and independent $X_j\\in\\{0,D_i\\}$ for j>=i, with $D_i=\\lambda-\\sum_{k<i}\\mu_k$ and $\\Pr(X_j=D_i)=\\mu_j/D_i$. Weighted mean-one formulations follow by absorbing weights into the variables. The lower-tail infimum, not supremum, is the nontrivial quantity.",
+  "known_results": "Zhi Ling, 'On Samuels' Conjecture' (arXiv:2608.18392v1, 2026), Theorem 1.1, reports the full formula and attainment for arbitrary ordered nonnegative means and thresholds above their sum.\n\nYanjun Han and Zipei Nie, 'A Sharp Refinement of Samuels' Inequality via Cap Moves' (arXiv:2608.22816v2, October 30, 2026), Theorem 1.1, restate Ling's result and prove a refinement in Theorem 1.2. Their paper is a follow-up, not independent certification of Ling's proof.\n\nThe original conjecture therefore has a reported full resolution. This catalogue checked the statements and model, not complete proof correctness, and does not assert a new remaining conjecture.",
+  "status": "solution claimed",
+  "where_posed": {
+    "text": "Originally posed by Stephen M. Samuels in 'On a Chebyshev-type inequality for sums of independent random variables' and discussed in Paulin, 'On some conjectures of Samuels and Feige'.",
+    "url": "https://arxiv.org/abs/1703.05152",
+    "quote": "",
+    "location": "Historical attribution retained; previous purported quote removed because its direction conflicts with the primary formulation."
+  },
+  "progress": {
+    "state": "solution-claimed",
+    "summary": "General resolution reported and followed by a refinement. The old supremum formulation and posing quote are corrected.",
+    "links": [
+      {
+        "title": "Paulin, On some conjectures of Samuels and Feige",
+        "url": "https://arxiv.org/abs/1703.05152"
+      },
+      {
+        "title": "Alqasem, Aravinda, Marsiglietti, Melbourne, Feige for discrete log-concave distributions",
+        "url": "https://arxiv.org/abs/2208.12702"
+      },
+      {
+        "title": "On Samuels' Conjecture",
+        "url": "https://arxiv.org/abs/2608.18392v1"
+      },
+      {
+        "title": "A Sharp Refinement of Samuels' Inequality via Cap Moves",
+        "url": "https://arxiv.org/abs/2608.22816v2"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 9,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Finite distributions can test the claimed inequality; compare their probability with the minimum formula, not the obsolete supremum.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Exact finite-support checks may assist proof review but cannot establish the unrestricted distributional theorem.",
+  "literature": {
+    "synthesis": "The historical conjecture strengthens coarse moment-based inequalities. The recent papers address the general independent-variable statement, not merely an IID or log-concave special case.",
+    "reviewed": [
+      {
+        "ref": "Stephen M. Samuels, 'On a Chebyshev-type inequality for sums of independent random variables', Annals of Mathematical Statistics 1966",
+        "result": "Introduces the Chebyshev-type extremal inequality and the conjectural sharp form for weighted sums of independent nonnegative variables.",
+        "relevance": "partial-progress",
+        "url": "https://doi.org/10.1214/aoms/1177699278"
+      },
+      {
+        "ref": "Uriel Feige, 'On sums of independent random variables with unbounded variance, and estimating the average degree in a graph', SIAM Journal on Computing 2006",
+        "result": "States and proves weaker distribution-free lower-tail bounds for sums of independent nonnegative random variables.",
+        "relevance": "partial-progress",
+        "url": "https://doi.org/10.1137/S0097539704447304"
+      },
+      {
+        "ref": "Roland Paulin, 'On some conjectures of Samuels and Feige', arXiv 2017",
+        "result": "Shows that Samuels' conjecture implies Feige's conjecture.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/1703.05152"
+      },
+      {
+        "ref": "Abdulmajeed Alqasem, Heshan Aravinda, Arnaud Marsiglietti, James Melbourne, 'On a Conjecture of Feige for Discrete Log-Concave Distributions', arXiv 2022",
+        "result": "Proves a strengthened Feige-type bound for independent discrete log-concave variables.",
+        "relevance": "solves-special-case",
+        "url": "https://arxiv.org/abs/2208.12702"
+      },
+      {
+        "ref": "Zhi Ling, 'On Samuels' Conjecture' (2026)",
+        "result": "Theorem 1.1 reports the full extremal formula and attainment.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2608.18392v1"
+      },
+      {
+        "ref": "Yanjun Han, Zipei Nie, 'A Sharp Refinement of Samuels' Inequality via Cap Moves' (2026)",
+        "result": "Theorems 1.1-1.2 restate and refine the general result.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2608.22816v2"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Audit the general extremal inequality and reduction to simple laws; use the corrected infimum when testing examples.",
+    "verification_notes": "Check strict lower-tail versus complementary non-strict upper-tail events, ordered means, threshold above total mean, independence, and extension to arbitrary laws. Finite-support numerics do not certify the general theorem.",
+    "machine_checkable": true
+  },
+  "additional_refs": [
+    {
+      "authors": "Stephen M. Samuels",
+      "title": "On a Chebyshev-type inequality for sums of independent random variables",
+      "year": 1966,
+      "venue": "Annals of Mathematical Statistics",
+      "url": "https://doi.org/10.1214/aoms/1177699278"
+    },
+    {
+      "authors": "Zhi Ling",
+      "title": "On Samuels' Conjecture",
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2608.18392v1"
+    },
+    {
+      "authors": "Yanjun Han, Zipei Nie",
+      "title": "A Sharp Refinement of Samuels' Inequality via Cap Moves",
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2608.22816v2"
+    }
+  ],
+  "confidence": "medium",
+  "open_problem": "Ling (2026), Theorem 1.1, claims the full lower-tail infimum formula and attainment in the model below. Han and Nie (2026) give a refinement; this is a reported general resolution, not merely a special case. The catalogue has not independently certified the proofs."
+}

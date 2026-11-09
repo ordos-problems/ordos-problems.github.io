@@ -1,0 +1,114 @@
+{
+ "number": 129,
+ "ref": "ORDOS-129",
+ "id": "precedence-unit-jobs-three-machines-complexity",
+ "title": "Complexity of Unit-Time Precedence Scheduling on Three Machines",
+ "collection": "Operations Research",
+ "area": "Scheduling Theory",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "scheduling",
+  "precedence constraints",
+  "complexity",
+  "makespan",
+  "fixed machines",
+  "Garey-Johnson"
+ ],
+ "short_statement": "Determine whether $P3\\mid prec, p_j=1\\mid C_{\\max}$ is polynomial-time solvable or NP-hard.",
+ "open_problem": "Resolve the computational complexity of $P3\\mid prec,p_j=1\\mid C_{\\max}$.",
+ "background": "Precedence-constrained scheduling is one of the oldest bridges between operations research and theoretical computer science. Graham's list scheduling gives a simple constant-factor approximation for identical machines, and many variants with arbitrary processing times or many machines are known to be hard. The striking feature of this problem is how little structure remains: all jobs have unit length, the number of machines is fixed at three, and the only combinatorial object is a partial order. For two machines the problem has special structure; for unrestricted machine counts and broader variants there are hardness results. The three-machine case survived the original Garey-Johnson complexity list and remains a benchmark for whether the boundary between polynomial structure and NP-hardness in scheduling can be drawn exactly. Recent approximation work has made the optimization version much better understood for constant $m$, but it has not settled the exact decision complexity of the smallest unresolved fixed-machine case.",
+ "full_statement": "An instance consists of a finite set $J$ of unit-processing-time jobs, three identical parallel machines, and a precedence partial order $\\prec$ on $J$. A feasible nonpreemptive schedule assigns each job $j\\in J$ to one of the three machines and to an integer time slot, with at most one job processed on each machine in each slot, and with $j$ completed before $k$ starts whenever $j\\prec k$. The objective is to minimize the makespan $C_{\\max}$, the time at which the last job completes. The open problem is the classical decision complexity of this clean fixed-machine model: given $T$, decide whether there is a feasible schedule of makespan at most $T$ for $P3\\mid prec,p_j=1\\mid C_{\\max}$. Prove that the problem is in P, prove that it is NP-hard, or identify a sharper structural complexity classification that resolves the Garey-Johnson open case.",
+ "known_results": "Levey and Rothvoss proved a near-polynomial/quasi-polynomial-time $(1+\\epsilon)$-approximation framework for $P\\mid prec,p_j=1\\mid C_{\\max}$ with constant $m$ using LP hierarchies, substantially improving the approximation landscape but not resolving NP-hardness for $m=3$. Garg improved the hierarchy-based running time to quasi-polynomial, Li further improved the dependence, and Das and Wiese gave a simpler QPTAS-style approach. Kulkarni, Li, Tarnawski, and Ye extended hierarchy-based ideas to arbitrary processing lengths in a non-migratory relaxed setting and to communication-delay variants. These results show that constant-machine precedence scheduling is approximable extremely well in quasi-polynomial time, but as of the 2026 literature check they still leave open the exact P-versus-NP status of $P3\\mid prec,p_j=1\\mid C_{\\max}$.",
+ "progress": {
+  "state": "partial",
+  "summary": "The optimization problem has quasi-polynomial approximation schemes for fixed $m$, but those algorithms do not imply an exact polynomial-time algorithm or NP-hardness for three machines.",
+  "links": [
+   {
+    "title": "Das-Wiese simpler QPTAS",
+    "url": "https://arxiv.org/abs/2501.09091"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "A hardness proof would likely require a finite gadget construction, and automated search might help discover small precedence gadgets. A polynomial-time resolution would probably require structural decomposition rather than a finite counterexample.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Search over small posets, minimal unschedulable instances, and candidate reductions could expose useful gadgets or invariants. However, a final answer needs a formal complexity proof.",
+ "literature": {
+  "synthesis": "The literature around this problem has shifted from exact complexity to approximation without eliminating the original complexity question. Levey and Rothvoss showed that a Sherali-Adams lift of the time-indexed LP gives a $(1+\\epsilon)$ approximation in slightly super-polylogarithmic hierarchy depth for constant $m$. Garg improved this to a cleaner quasi-polynomial-time approximation, and later work simplified the algorithmic template. These results are strong evidence that fixed-machine precedence scheduling has substantial hidden structure, but they are not exact algorithms. The 2020 hierarchy-based work also emphasizes that arbitrary processing lengths and communication delays remain harder variants. The remaining gap is qualitative rather than a constant-factor gap: determine whether the three-machine, unit-job decision problem is NP-hard or polynomial-time solvable.",
+  "reviewed": [
+   {
+    "ref": "Elaine Levey, Thomas Rothvoss, 'A (1+epsilon)-Approximation for Makespan Scheduling with Precedence Constraints using LP Hierarchies', SICOMP 2019 / arXiv",
+    "result": "Gives a $(1+\\epsilon)$ approximation for fixed $m$ in $n^{O((\\log n)^{\\Theta(\\log\\log n)})}$ time and restates the $m=3$ complexity problem.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1509.07808"
+   },
+   {
+    "ref": "Shashwat Garg, 'Quasi-PTAS for Scheduling with Precedences using LP Hierarchies', ICALP 2018",
+    "result": "Improves the fixed-$m$ hierarchy approach to quasi-polynomial time.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1708.04369"
+   },
+   {
+    "ref": "Syamantak Das, Andreas Wiese, 'A simpler QPTAS for scheduling jobs with precedence constraints', ESA 2022 / arXiv 2025",
+    "result": "Gives a simpler QPTAS-style treatment and again notes that NP-hardness for $m=3$ remains open.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2501.09091"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "For hardness, search for reductions whose gadgets are naturally unit-time and precedence-only, perhaps from restricted SAT, poset dimension, or exact cover variants, while preserving the three-machine limit. For an algorithmic attack, study canonical decompositions of width, chains, antichains, and critical intervals in near-tight schedules. Exhaustive enumeration of small posets may be useful for guessing forbidden structures or validating dynamic-programming states.",
+  "verification_notes": "A hardness proof must use only three machines and unit processing times; reductions that rely on variable machine count or arbitrary processing times do not resolve the problem. A polynomial-time solution must optimize exact makespan, not merely approximate it, and should include a proof that the state space remains polynomial.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "Listed as one of the remaining Garey-Johnson open problems and restated in Levey-Rothvoss and later precedence-scheduling papers.",
+  "url": "https://arxiv.org/abs/1509.07808",
+  "quote": "whether or not this problem is NP-hard for m=3",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Elaine Levey, Thomas Rothvoss",
+  "title": "A (1+epsilon)-Approximation for Makespan Scheduling with Precedence Constraints using LP Hierarchies",
+  "year": 2018,
+  "venue": "SIAM Journal on Computing / arXiv",
+  "url": "https://arxiv.org/abs/1509.07808"
+ },
+ "additional_refs": [
+  {
+   "authors": "Shashwat Garg",
+   "title": "Quasi-PTAS for Scheduling with Precedences using LP Hierarchies",
+   "year": 2018,
+   "venue": "ICALP / arXiv",
+   "url": "https://arxiv.org/abs/1708.04369"
+  },
+  {
+   "authors": "Syamantak Das, Andreas Wiese",
+   "title": "A simpler QPTAS for scheduling jobs with precedence constraints",
+   "year": 2025,
+   "venue": "ESA / arXiv",
+   "url": "https://arxiv.org/abs/2501.09091"
+  },
+  {
+   "authors": "Janardhan Kulkarni, Shi Li, Jakub Tarnawski, Minwei Ye",
+   "title": "Hierarchy-Based Algorithms for Minimizing Makespan under Precedence and Communication Constraints",
+   "year": 2020,
+   "venue": "SODA / arXiv",
+   "url": "https://arxiv.org/abs/2004.13891"
+  }
+ ],
+ "bibtex": "@misc{Levey2018,\n  author = {Elaine Levey and Thomas Rothvoss},\n  title = {A (1+epsilon)-Approximation for Makespan Scheduling with Precedence Constraints using LP Hierarchies},\n  year = {2018},\n  howpublished = {SIAM Journal on Computing / arXiv},\n  url = {https://arxiv.org/abs/1509.07808},\n  note = {Source of ORdős Problem ORDOS-129}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/precedence-unit-jobs-three-machines-complexity.html",
+  "api": "https://ordos-problems.github.io/api/problems/precedence-unit-jobs-three-machines-complexity.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

@@ -12,15 +12,67 @@
   "coalescents",
   "exchangeability",
   "critical beta-splitting",
-  "Aldous"
+  "Aldous",
+  "applied probability"
  ],
- "short_statement": "What is the precise relationship between the infinite critical beta-splitting tree and the beta(2,1) coalescent?",
- "open_problem": "Characterize the limiting continuous-time critical beta-splitting tree CTCS($\\infty$), and determine whether and how its exchangeable partition dynamics are represented by the beta(2,1) coalescent.",
- "full_statement": "In the critical beta-splitting model, a clade of size $m$ is split into subclades of sizes $i$ and $m-i$ with probabilities proportional to $1/(i(m-i))$. Aldous and Janson construct a consistent family of continuous-time trees CTCS($n$), $n\\ge 2$, under the operation of deleting a random leaf and pruning. Consistency suggests an infinite exchangeable limit CTCS($\\infty$). The open problem is to give a complete probabilistic description of this infinite object and to explain its relation to the beta(2,1) coalescent: whether the same merger structure appears exactly, after a time change, in a marginal projection, or only through an asymptotic correspondence.",
- "known_results": "Aldous and Janson give an overview of the critical beta-splitting model, including a central limit theorem for leaf heights, a description of the fringe distribution seen from a random leaf, and a canonical embedding into the CTCS($n$) continuous-time model. The remaining open part is structural: the infinite exchangeable limit is only partly understood, and the connection to the beta(2,1) coalescent is explicitly identified as a major unresolved issue.",
+ "short_statement": "Characterize the infinite critical beta-splitting CTCS limit and its exact relation to the beta$(2,1)$ coalescent.",
+ "open_problem": "Give a complete probabilistic description of $\\mathrm{CTCS}(\\infty)$ and identify the exact mathematical relationship, if any, between its exchangeable partition dynamics and the beta$(2,1)$ coalescent.",
+ "background": "Aldous's beta-splitting family is a fundamental model for random rooted binary trees, motivated in part by phylogenetic tree shapes. The critical beta-splitting case has splitting probabilities proportional to $1/(i(m-i))$ for a clade of size $m$, producing unusually balanced logarithmic phenomena and a rich connection between recursive tree structure, Markov chains, and exchangeable partitions. Aldous and Janson developed a continuous-time consistent splitting model $\\mathrm{CTCS}(n)$ whose finite-$n$ trees are consistent under deletion of a uniform leaf. This consistency suggests an infinite exchangeable limit $\\mathrm{CTCS}(\\infty)$, analogous in spirit to continuum random tree limits but with different merger/splitting structure. Their later papers formalize exchangeable partition representations and fringe-tree limits. The remaining conceptual question is the exact relationship between this infinite critical splitting object and the beta$(2,1)$ coalescent.",
+ "full_statement": "In the critical beta-splitting model, a clade of size $m$ splits into subclades of sizes $i$ and $m-i$ with probability proportional to $1/(i(m-i))$, independently down the tree. Aldous and Janson embed this discrete Markov-branching tree in a continuous-time consistent splitting model $\\mathrm{CTCS}(n)$ with real edge lengths. The family $\\{\\mathrm{CTCS}(n):n\\ge2\\}$ is consistent under deleting a uniformly random leaf and pruning degree-two vertices, which leads to an infinite exchangeable limit $\\mathrm{CTCS}(\\infty)$ represented through nested exchangeable partitions. The open problem is to give a complete probabilistic description of this infinite object and its partition-valued dynamics. In particular, determine whether the genealogy or time-reversal of $\\mathrm{CTCS}(\\infty)$ is exactly the beta$(2,1)$ coalescent, a deterministic time change of that coalescent, a projection or size-biased transform of it, or merely shares some marginal split-size asymptotics.",
+ "known_results": "Aldous and Janson constructed the consistent finite $\\mathrm{CTCS}(n)$ family, proved detailed results for leaf heights and fringe distributions, and formulated an exchangeable infinite limit. Their Part III paper develops the exchangeable partition representation and fringe tree more explicitly, giving a concrete framework in which finite restrictions of $\\mathrm{CTCS}(\\infty)$ can be studied. Part IV gives sharper Mellin analysis of leaf heights and normal/large-deviation estimates. Kolesnik supplied contraction-method proofs for related height central limit theorems. These advances clarify many one-dimensional and fringe statistics, but they do not fully identify the partition dynamics with, or separate it from, the beta$(2,1)$ coalescent.",
+ "progress": {
+  "state": "partial",
+  "summary": "The exchangeable partition representation and fringe tree have been developed further in later papers, but the exact beta$(2,1)$ coalescent relationship remains unresolved.",
+  "links": [
+   {
+    "title": "The Critical Beta-splitting Random Tree II",
+    "url": "https://arxiv.org/abs/2303.02529"
+   },
+   {
+    "title": "The Critical Beta-splitting Random Tree III",
+    "url": "https://arxiv.org/abs/2412.09655"
+   }
+  ]
+ },
+ "importance": 7,
+ "difficulty": 8,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "Finite-dimensional distributions of $\\mathrm{CTCS}(n)$ can refute a proposed exact coalescent identity. A complete positive result needs exchangeable-partition process convergence.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Symbolic and simulation search can compare finite merger rates and suggest time changes. The main work is probabilistic identification of an infinite exchangeable process.",
+ "literature": {
+  "synthesis": "The finite critical beta-splitting model is explicit, but its infinite limit is subtle because consistency is expressed through deletion and pruning rather than a simple forward growth rule. The CTCS construction gives a natural continuous-time object, and later exchangeable-partition work makes the limit more concrete. The beta$(2,1)$ coalescent appears as the plausible coalescent-side analogue, but equality of finite-dimensional transition rates, time changes, and projections must be pinned down. The open problem is a structural identification, not just another asymptotic estimate.",
+  "reviewed": [
+   {
+    "ref": "David J. Aldous and Svante Janson, 'The Critical Beta-splitting Random Tree II: Overview and Open Problems', arXiv 2023",
+    "result": "Summarizes the CTCS construction, leaf-height results, fringe distribution, and open problems including the infinite limit.",
+    "relevance": "poses-problem",
+    "url": "https://arxiv.org/abs/2303.02529"
+   },
+   {
+    "ref": "David J. Aldous and Svante Janson, 'The Critical Beta-splitting Random Tree III: The exchangeable partition representation and the fringe tree', arXiv 2024",
+    "result": "Develops the exchangeable partition representation and fringe-tree description for the infinite critical beta-splitting structure.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2412.09655"
+   },
+   {
+    "ref": "David Aldous and Svante Janson, 'The Critical Beta-splitting Random Tree IV: Mellin analysis of Leaf Height', arXiv 2024",
+    "result": "Gives sharper asymptotic analysis of leaf heights using Mellin methods and the limit tree structure.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/2412.12319"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Compute finite-dimensional transition rates for partitions induced by $\\mathrm{CTCS}(n)$ and compare them to beta$(2,1)$ coalescent rates. Look for exact time changes or size-biased projections.",
+  "verification_notes": "A proposed coalescent identity must match all finite restrictions of the exchangeable partition process, not only the one-step split-size distribution or marginal leaf-height asymptotics. The verifier should check the time parameterization, deletion/pruning convention, and whether the claimed process is forward splitting, backward merging, or a size-biased projection. A negative result should identify a concrete finite-dimensional statistic, such as a two-step transition probability or joint law of nested restrictions, where $\\mathrm{CTCS}(\\infty)$ and the beta$(2,1)$ coalescent differ.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "The abstract and overview of Aldous and Janson, 'The Critical Beta-splitting Random Tree II: Overview and Open Problems', state that many open problems remain, especially the relation between CTCS(infinity) and the beta(2,1) coalescent.",
-  "url": "https://arxiv.org/abs/2303.02529"
+  "text": "Posed in Aldous and Janson, 'The Critical Beta-splitting Random Tree II: Overview and Open Problems'.",
+  "url": "https://arxiv.org/abs/2303.02529",
+  "quote": "",
+  "location": "Open problems around CTCS(infinity) and coalescent connections"
  },
  "source": {
   "authors": "David J. Aldous, Svante Janson",

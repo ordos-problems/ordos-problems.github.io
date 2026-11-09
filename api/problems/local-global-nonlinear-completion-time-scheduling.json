@@ -1,0 +1,108 @@
+{
+ "number": 136,
+ "ref": "ORDOS-136",
+ "id": "local-global-nonlinear-completion-time-scheduling",
+ "title": "Local-global structure for nonlinear single-machine weighted completion time",
+ "collection": "Operations Research",
+ "area": "Scheduling Theory",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "scheduling",
+  "single-machine scheduling",
+  "weighted completion time",
+  "nonlinear objectives",
+  "local-global conjecture",
+  "exact algorithms",
+  "operations research"
+ ],
+ "short_statement": "For $1||\\sum_j w_j C_j^\\beta$ with fixed $\\beta\\ne 1$, determine the complexity and resolve the local-global ordering conjecture.",
+ "open_problem": "Resolve the local-global conjecture for $1||\\sum_j w_j C_j^\\beta$ and determine the polynomial-time versus NP-hard status of the nonlinear weighted-completion-time problem for fixed $\\beta\\ne 1$.",
+ "background": "The classical single-machine problem $1||\\sum_j w_j C_j$ is solved exactly by Smith's rule: order jobs by decreasing $w_j/p_j$. This is one of the cleanest results in deterministic scheduling. Bansal, Duerr, Thang, and Vasquez study the natural nonlinear extension $1||\\sum_j w_j C_j^\\beta$, where $\\beta>0$ is a fixed constant. This objective appears when marginal delay costs are nonlinear, for example through learning effects, convex lateness penalties, or power-like delay disutility. The difficulty is not that the model is vague; the model is completely specified. The difficulty is that for $\\beta\\ne 1$, a pairwise preference between two jobs can depend on the time at which the pair is scheduled and on other jobs placed before them. Their paper develops dominance relations and a local-global conjecture suggesting that certain local ordering constraints may characterize global optimality. The open problem is to settle this structural conjecture and, more broadly, the computational complexity of the nonlinear problem.",
+ "full_statement": "Given $n$ jobs on one nonpreemptive single machine, job $j$ has processing time $p_j>0$ and weight $w_j>0$. A schedule is a permutation $\\sigma$, completion times are $C_{\\sigma(t)}=\\sum_{s\\le t}p_{\\sigma(s)}$, and the objective is $\\sum_j w_j C_j^\\beta$ for a fixed constant $\\beta>0$. For $\\beta=1$, Smith's rule gives an optimal ordering by decreasing $w_j/p_j$. For $\\beta\\ne 1$, determine whether the problem is polynomial-time solvable or NP-hard. More specifically, resolve the local-global conjecture studied by Bansal, Duerr, Thang, and Vasquez: if a schedule satisfies the relevant local dominance/order constraints for all pairs or local moves, must it be globally optimal? A solution should either prove that the local conditions imply global optimality, yielding a structural algorithmic route, or construct an explicit counterexample and then determine the resulting complexity status.",
+ "known_results": "For $\\beta=1$, Smith's rule optimally orders jobs by decreasing $w_j/p_j$. Bansal, Duerr, Thang, and Vasquez show that for $\\beta\\ne 1$ the usual pairwise interchange argument breaks: the preferred order of two jobs may depend on their start time and on intervening jobs. They derive new dominance properties and use them to greatly accelerate exact A* search, but they do not settle the complexity of the problem. Their abstract explicitly states that the complexity status is open for $\\beta\\ne 1$. The local-global conjecture captures the hope that enough local dominance constraints might still force global optimality, but no proof or counterexample is known from the checked source trail. Thus the remaining gap is very concrete: either turn the local structure into a proof and algorithm, or show by counterexample or reduction that nonlinear power objectives fundamentally break Smith-like orderability.",
+ "progress": {
+  "state": "partial",
+  "summary": "Smith's rule solves the linear case. The nonlinear case has dominance rules and fast exact-search pruning, but neither a polynomial-time algorithm nor NP-hardness proof is known from the source-checked literature.",
+  "links": [
+   {
+    "title": "The local-global conjecture for scheduling with non-linear cost",
+    "url": "https://arxiv.org/abs/1304.6188"
+   }
+  ]
+ },
+ "importance": 7,
+ "difficulty": 7,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "A counterexample to the local-global conjecture would be a finite job set and a locally consistent schedule that is not globally optimal. Such objects can be searched exhaustively for small integer processing times and weights.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Automated search can enumerate or evolve weighted job instances to test local dominance conjectures, find minimal counterexamples, or discover stronger ordering invariants.",
+ "literature": {
+  "synthesis": "This problem is appealing for the repository because the model is parsimonious and the open question is sharply algorithmic. The linear case has a complete one-line priority rule, while the nonlinear power case is still not classified. The Bansal-Duerr-Thang-Vasquez paper gives enough structure to make computational search meaningful: one can encode local dominance rules, run exact dynamic programming or A* on small instances, and look for either a proof pattern or a smallest obstruction. A full solution would clarify whether the success of Smith's rule is a linear-objective accident or the visible part of a broader nonlinear local-global scheduling principle.",
+  "reviewed": [
+   {
+    "ref": "Wayne E. Smith, 'Various optimizers for single-stage production', Naval Research Logistics Quarterly 1956",
+    "result": "Introduces the priority-index rule that solves the linear weighted-completion-time problem.",
+    "relevance": "baseline",
+    "url": "https://doi.org/10.1002/nav.3800030106"
+   },
+   {
+    "ref": "Nikhil Bansal, Christoph Duerr, Nguyen Kim Thang, and Oscar C. Vasquez, 'The local-global conjecture for scheduling with non-linear cost', arXiv 2013",
+    "result": "States the open complexity status for $\\beta\\ne 1$ and develops dominance properties plus computational evidence for the local-global conjecture.",
+    "relevance": "open-problem-source",
+    "url": "https://arxiv.org/abs/1304.6188"
+   },
+   {
+    "ref": "Michael L. Pinedo, 'Scheduling: Theory, Algorithms, and Systems', Springer",
+    "result": "Provides standard scheduling notation and context for single-machine weighted-completion-time objectives.",
+    "relevance": "background",
+    "url": "https://doi.org/10.1007/978-3-319-26580-3"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Search for small integer counterexamples to the local-global conjecture; formulate the pairwise dominance relation as symbolic inequalities; try reductions from partition or sequencing problems for fixed rational $\\beta$; or prove that local optimality under a sufficiently rich move set implies a global exchange argument.",
+  "verification_notes": "A counterexample must state $\\beta$, all $p_j,w_j$, the locally valid schedule, and an alternative schedule with smaller objective; the local conditions should be checked exactly, not by floating-point approximation alone. A polynomial-time solution must work for arbitrary input size and a fixed specified $\\beta$, and should explain how numeric encoding of $\\beta$ is handled. An NP-hardness proof should distinguish fixed $\\beta$ from variable $\\beta$.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "Bansal, Duerr, Thang, and Vasquez explicitly state the open complexity status and formulate the local-global scheduling conjecture for nonlinear completion-time costs.",
+  "url": "https://arxiv.org/abs/1304.6188",
+  "quote": "for $\\beta \\neq 1$, the complexity status of this problem is open",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Nikhil Bansal, Christoph Duerr, Nguyen Kim Thang, Oscar C. Vasquez",
+  "title": "The local-global conjecture for scheduling with non-linear cost",
+  "year": 2013,
+  "venue": "arXiv:1304.6188",
+  "url": "https://arxiv.org/abs/1304.6188"
+ },
+ "additional_refs": [
+  {
+   "title": "Various optimizers for single-stage production",
+   "url": "https://doi.org/10.1002/nav.3800030106",
+   "authors": "Wayne E. Smith",
+   "year": 1956,
+   "venue": "Naval Research Logistics Quarterly"
+  },
+  {
+   "title": "Scheduling: Theory, Algorithms, and Systems",
+   "url": "https://doi.org/10.1007/978-3-319-26580-3",
+   "authors": "Michael L. Pinedo",
+   "year": 2016,
+   "venue": "Springer"
+  }
+ ],
+ "bibtex": "@misc{Bansal2013,\n  author = {Nikhil Bansal and Christoph Duerr and Nguyen Kim Thang and Oscar C. Vasquez},\n  title = {The local-global conjecture for scheduling with non-linear cost},\n  year = {2013},\n  howpublished = {arXiv:1304.6188},\n  url = {https://arxiv.org/abs/1304.6188},\n  note = {Source of ORdős Problem ORDOS-136}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/local-global-nonlinear-completion-time-scheduling.html",
+  "api": "https://ordos-problems.github.io/api/problems/local-global-nonlinear-completion-time-scheduling.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

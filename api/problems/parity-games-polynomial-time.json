@@ -1,0 +1,117 @@
+{
+ "number": 168,
+ "ref": "ORDOS-168",
+ "id": "parity-games-polynomial-time",
+ "title": "Polynomial-time solvability of parity games",
+ "collection": "Computer Science",
+ "area": "Algorithmic Game Theory and Verification",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "parity games",
+  "algorithmic game theory",
+  "verification",
+  "NP intersect coNP",
+  "quasi-polynomial algorithms"
+ ],
+ "short_statement": "Determine whether finite parity games can be solved in polynomial time.",
+ "open_problem": "Are parity games solvable in polynomial time?",
+ "background": "Parity games sit at the intersection of graph algorithms, automata theory, logic, and verification. They arise in model checking and synthesis for the modal $\\mu$-calculus and omega-automata, and they are one of the cleanest finite two-player infinite-duration games with positional strategies. The model is fixed and elementary: a colored directed graph, alternating choices by two players, and a parity acceptance condition. Yet its exact worst-case complexity has resisted classification for decades. The problem resembles mean-payoff and simple stochastic games in that it lies in low nondeterministic complexity classes and has compact certificates, but no polynomial-time algorithm is known. Because practical solvers often perform well, the unresolved question is a sharp theoretical one: is there hidden polynomial structure in strategy improvement, progress measures, or attractor decompositions, or is the quasi-polynomial breakthrough close to the true boundary?",
+ "full_statement": "A parity game is played on a finite directed graph $G=(V,E)$ whose vertices are partitioned into $V_0$ and $V_1$, controlled by players Even and Odd, and equipped with a priority function $p:V\\to\\{0,1,\\ldots,d\\}$. A token starts at a vertex. If the token is at a vertex in $V_i$, player $i$ chooses an outgoing edge and the token moves along it. The resulting infinite path is won by Even if the largest priority seen infinitely often is even, and by Odd otherwise; equivalent minimum-priority conventions can be translated by changing priorities. Positional determinacy holds, so if a player can win from a vertex, that player has a memoryless winning strategy. The computational problem is to compute the winning regions and memoryless winning strategies, or decide for a start vertex which player wins. The open problem is to give an algorithm with running time polynomial in $|V|$, $|E|$, and $d$, or to prove a lower-bound result explaining why such an algorithm is unlikely.",
+ "known_results": "Emerson and Jutla, Mostowski, and Zielonka established the game-theoretic foundations of parity games, including determinacy and memoryless winning strategies. Jurdzinski proved that deciding the winner lies in $UP\\cap coUP$, strengthening the older $NP\\cap coNP$ membership and explaining why standard NP-hardness is unlikely. For many years the best general algorithms were exponential or subexponential. In 2017, Calude, Jain, Khoussainov, Li, and Stephan gave a quasi-polynomial-time algorithm, a major breakthrough. Fearnley, Jain, Schewe, Stephan, and Wojtczak showed how to implement the Calude et al. approach in quasi-polynomial time and quasi-linear space, while later work by Parys, Lehtinen, and others produced alternative quasi-polynomial algorithms and progress-measure formulations. Many restricted classes are polynomial-time solvable, and practical strategy-improvement and Zielonka-style algorithms are effective on benchmarks. None of these results gives a polynomial worst-case algorithm for all finite parity games.",
+ "progress": {
+  "state": "partial",
+  "summary": "Parity games are in $UP\\cap coUP$ and have quasi-polynomial algorithms. The long-standing polynomial-time question remains open.",
+  "links": [
+   {
+    "title": "Ordered quasi-polynomial implementation",
+    "url": "https://arxiv.org/abs/1703.01296"
+   },
+   {
+    "title": "Zielonka quasi-polynomial variant",
+    "url": "https://arxiv.org/abs/1904.12446"
+   }
+  ]
+ },
+ "importance": 9,
+ "difficulty": 9,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "A finite family can disprove a proposed polynomial strategy-improvement rule or progress-measure conjecture, but the main open problem is algorithmic complexity and will not be settled by a single instance unless it supports a formal lower bound for a specified algorithm class.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Search can generate hard benchmark games for specific algorithms and discover invariants of progress measures, but proving a polynomial-time algorithm or lower bound requires structural complexity arguments.",
+ "literature": {
+  "synthesis": "Parity-game algorithms have repeatedly rediscovered the same tension: memoryless determinacy gives simple certificates, but naive search over strategies can cycle or take exponential time. Progress-measure algorithms encode enough ordinal information to certify wins, Zielonka-style recursive attractor decompositions are fast in practice, and strategy-improvement methods are conceptually simple but hard to analyze. The quasi-polynomial algorithms introduced succinct universal trees, register games, and ordered progress measures that compress the search space much more effectively than earlier exponential techniques. This suggests the right invariant may be near-polynomial, but the remaining logarithmic exponent has not been eliminated. A polynomial-time solution would likely identify a stronger compression of progress certificates or a new monotone potential for strategy improvement; a negative result would require a complexity-theoretic breakthrough because the problem lies in classes where ordinary NP-hardness is implausible.",
+  "reviewed": [
+   {
+    "ref": "Jurdzinski, 'Deciding the winner in parity games is in UP intersect co-UP', IPL 1998",
+    "result": "Places parity-game decision in $UP\\cap coUP$.",
+    "relevance": "complexity-classification",
+    "url": "https://doi.org/10.1016/S0020-0190(98)00150-1"
+   },
+   {
+    "ref": "Calude et al., 'Deciding Parity Games in Quasi-polynomial Time', SIAM J. Comput. 2022 / STOC 2017",
+    "result": "Gives the first quasi-polynomial-time algorithm.",
+    "relevance": "partial-progress",
+    "url": "https://doi.org/10.1137/17M1145288"
+   },
+   {
+    "ref": "Fearnley et al., 'An Ordered Approach to Solving Parity Games in Quasi Polynomial Time and Quasi Linear Space', arXiv 2017",
+    "result": "Implements and analyzes the quasi-polynomial approach with quasi-linear space.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1703.01296"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Investigate progress-measure compression, universal trees, register-game parameters, strategy-improvement potentials, and reductions among parity, mean-payoff, and simple stochastic games. Computational work should generate hard families for specific algorithms and test whether structural parameters predict quasi-polynomial behavior.",
+  "verification_notes": "A claimed polynomial algorithm must solve arbitrary finite parity games, not only bounded-priority, bounded-treewidth, weak, solitaire, or random instances. The running time must be polynomial in the explicit graph size and number of priorities. If the algorithm is a modified strategy-improvement, progress-measure, or Zielonka procedure, verify that termination and update counts are bounded in the worst case, not only empirically. A lower bound should specify the computational model or algorithm family; proving exponential behavior for one pivoting rule does not rule out polynomial-time solvability.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "The complexity of parity games is repeatedly identified in the literature as a long-standing open problem; the 2017 quasi-polynomial algorithms were major progress but did not settle polynomial-time solvability.",
+  "url": "https://arxiv.org/abs/1703.01296",
+  "quote": "Parity games play an important role in model checking and synthesis.",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Marcin Jurdzinski",
+  "title": "Deciding the winner in parity games is in UP intersect co-UP",
+  "year": 1998,
+  "venue": "Information Processing Letters",
+  "url": "https://doi.org/10.1016/S0020-0190(98)00150-1"
+ },
+ "additional_refs": [
+  {
+   "authors": "Cristian S. Calude, Sanjay Jain, Bakhadyr Khoussainov, Wei Li, Frank Stephan",
+   "title": "Deciding Parity Games in Quasi-polynomial Time",
+   "year": 2022,
+   "venue": "SIAM Journal on Computing",
+   "url": "https://doi.org/10.1137/17M1145288"
+  },
+  {
+   "authors": "John Fearnley, Sanjay Jain, Sven Schewe, Frank Stephan, Dominik Wojtczak",
+   "title": "An Ordered Approach to Solving Parity Games in Quasi Polynomial Time and Quasi Linear Space",
+   "year": 2017,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/1703.01296"
+  },
+  {
+   "authors": "Pawel Parys",
+   "title": "Parity Games: Zielonka's Algorithm in Quasi-Polynomial Time",
+   "year": 2019,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/1904.12446"
+  }
+ ],
+ "bibtex": "@misc{Jurdzinski1998,\n  author = {Marcin Jurdzinski},\n  title = {Deciding the winner in parity games is in UP intersect co-UP},\n  year = {1998},\n  howpublished = {Information Processing Letters},\n  url = {https://doi.org/10.1016/S0020-0190(98)00150-1},\n  note = {Source of ORdős Problem ORDOS-168}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/parity-games-polynomial-time.html",
+  "api": "https://ordos-problems.github.io/api/problems/parity-games-polynomial-time.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

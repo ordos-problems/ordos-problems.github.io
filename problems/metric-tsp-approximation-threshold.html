@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>The true approximation threshold for metric TSP | ORdős Problems</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script>
+(function(){
+  try{
+    var saved=localStorage.getItem('ordos-theme');
+    var theme=saved||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+    document.documentElement.dataset.theme=theme;
+  }catch(e){document.documentElement.dataset.theme='light';}
+})();
+</script>
+<style>
+  :root{
+    color-scheme:light;
+    --bg:#ffffeb; --paper:#fffef6; --card:#fffdf2; --paper2:#fff9fd; --ink:#1a1a1a; --soft:#4b514d; --faint:#7b7d6f;
+    --line:#e4e4d0; --line2:#eeeedd; --strong:#1a1a1a; --accent:#034f46; --accent2:#0f675d;
+    --pink:#f0d7ff; --pink2:#f8edff; --pinkhover:#f5e5ff; --orange:#ffa946; --link:#034f46; --tagink:#46514d;
+    --short:#27302c; --bodytext:#252b28; --bodytext2:#303633; --open:#7a5400; --partial:#155879; --med:#97402d;
+    --focus:#d8ece7; --focus-border:#74aaa1; --controlbg:rgba(255,255,235,.96); --modalbg:rgba(26,26,26,.32);
+    --okbg:#d8ead8; --okink:#064d20; --warning-bg:#fff3df; --warning-line:#d88a3d; --warning-ink:#5f3411;
+    --logo-fill:#eef6f5; --logo-stroke:#034f46; --badge-ink:#fff; --badge-hover:#063f39; --toastbg:#1a1a1a; --toastink:#fff;
+    --maxw:1120px; --measure:860px; --radius:8px;
+    --ui:"Figtree","Avenir Next","Avenir",-apple-system,system-ui,"Segoe UI",Arial,sans-serif;
+    --display:"EB Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  }
+  html[data-theme="dark"]{
+    color-scheme:dark;
+    --bg:#18170f; --paper:#232217; --card:#202016; --paper2:#2a2330; --ink:#f4f0df; --soft:#c9c2a8; --faint:#9e967d;
+    --line:#3b3928; --line2:#343224; --strong:#f4f0df; --accent:#8fd8cc; --accent2:#b4ebe3;
+    --pink:#5c365f; --pink2:#33213b; --pinkhover:#6b426f; --orange:#ffbd69; --link:#9be2d6; --tagink:#c9c2a8;
+    --short:#e4ddc7; --bodytext:#e7e0cc; --bodytext2:#d9d0b8; --open:#f5c66a; --partial:#87c8ef; --med:#efaa94;
+    --focus:#24564f; --focus-border:#8fd8cc; --controlbg:rgba(24,23,15,.94); --modalbg:rgba(0,0,0,.56);
+    --okbg:#21452c; --okink:#c7f0cf; --warning-bg:#3a2a18; --warning-line:#d1934f; --warning-ink:#ffd8a5;
+    --logo-fill:#202f2c; --logo-stroke:#8fd8cc; --badge-ink:#18170f; --badge-hover:#b4ebe3; --toastbg:#f4f0df; --toastink:#18170f;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ui);font-size:17px;line-height:1.62;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;}
+  a{color:var(--link);text-decoration-thickness:1px;text-underline-offset:3px;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px 96px;}
+
+  header.site{padding:42px 0 22px;border-bottom:1px solid var(--line);}
+  .headbar{display:grid;grid-template-columns:minmax(320px,max-content) minmax(280px,1fr);gap:22px;align-items:center;}
+  .brand{display:flex;align-items:center;gap:14px;min-width:0;}
+  .logo-link{display:block;width:42px;height:42px;flex:0 0 auto;border-radius:8px;line-height:0;}
+  .logo-link:focus-visible{outline:3px solid var(--orange);outline-offset:3px;}
+  .mono{width:42px;height:42px;flex:0 0 auto;}
+  .mono rect{fill:var(--logo-fill);stroke:var(--logo-stroke);}
+  .mono text{fill:var(--logo-stroke);}
+  h1{font-family:var(--display);font-weight:600;font-size:3rem;letter-spacing:0;margin:0;line-height:1;color:var(--ink);}
+  h1 .or{color:var(--accent);}
+  .aboutbtn{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
+    border-radius:8px;padding:7px 12px;min-width:98px;min-height:38px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;}
+  .aboutbtn:hover{background:var(--pinkhover);}
+  .theme-toggle{width:38px;height:38px;min-width:38px;min-height:38px;padding:0;border-radius:999px;line-height:1;}
+  .theme-mark{font-size:1.05rem;line-height:1;}
+  .simple-headbar{display:flex;align-items:center;justify-content:space-between;gap:18px;}
+  .sub{color:var(--soft);font-size:1.03rem;margin:16px 0 0;max-width:78ch;font-weight:450;}
+  .headsearch{display:flex;justify-content:flex-end;align-items:center;gap:10px;flex-wrap:wrap;}
+  .headsearch input{flex:1 1 260px;min-width:220px;max-width:460px;}
+
+  .tagfilters{margin-top:20px;}
+  .statbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+  .statbtn{appearance:none;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:6px 10px;min-height:34px;min-width:0;display:flex;align-items:center;gap:6px;cursor:pointer;
+    color:var(--faint);font-family:var(--ui);transition:background .15s,border-color .15s,transform .15s;}
+  .statbtn b{display:block;color:var(--ink);font-size:.78rem;line-height:1;font-weight:800;}
+  .statbtn span{font-size:.78rem;line-height:1;color:var(--tagink);overflow-wrap:anywhere;}
+  .statbtn:hover{background:var(--pink2);border-color:var(--focus-border);transform:translateY(-1px);}
+  .statbtn.active{background:var(--pink);border:2px solid var(--strong);padding:5px 9px;color:var(--ink);}
+  .moretags{display:flex;align-items:center;gap:8px;margin-top:10px;}
+  .moretags label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:0;}
+  #tagselect{min-width:230px;max-width:100%;padding:8px 10px;font-size:.82rem;border:1px solid var(--line);
+    border-radius:var(--radius);background:var(--paper);color:var(--ink);font-family:var(--ui);}
+  #tagselect:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
+
+  .modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:24px;background:var(--modalbg);}
+  .modal.open{display:flex;}
+  .modal-card{width:min(760px,100%);max-height:min(86vh,760px);overflow:auto;background:var(--card);border:2px solid var(--strong);
+    border-radius:var(--radius);box-shadow:0 18px 60px rgba(0,0,0,.18);padding:28px 32px;}
+  .modal-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:14px;}
+  .modal-card h2{font-family:var(--display);font-weight:600;font-size:2.1rem;line-height:1.05;margin:0;color:var(--ink);}
+  .modal-card h3{font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:22px 0 7px;}
+  .modal-card p{font-size:1rem;line-height:1.7;color:var(--bodytext2);margin:.7em 0;}
+  .closemodal{appearance:none;border:2px solid var(--strong);border-radius:8px;background:var(--pink);color:var(--ink);
+    font-family:var(--ui);font-weight:800;cursor:pointer;padding:5px 10px;box-shadow:0 1px 0 var(--strong);}
+
+  .controls{position:sticky;top:0;z-index:20;background:var(--controlbg);backdrop-filter:saturate(1.05) blur(10px);
+    border-bottom:1px solid var(--line);padding:11px 0;margin:18px 0 14px;}
+  #q{width:100%;padding:12px 14px;font-size:.94rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);color:var(--ink);font-family:var(--ui);}
+  #q:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
+  .ctl-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;}
+  .filterstate{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .count{font-size:.8rem;color:var(--faint);}
+  .selectedtags{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+  .selectedtag{appearance:none;border:1px solid var(--strong);background:var(--pink);border-radius:999px;padding:4px 8px;
+    font-family:var(--ui);font-size:.74rem;font-weight:750;color:var(--ink);cursor:pointer;}
+  .selectedtag:hover{background:var(--pinkhover);}
+  .clearfilter{font-size:.8rem;color:var(--link);background:none;border:none;cursor:pointer;font-family:var(--ui);padding:0;font-weight:700;}
+
+  .grouphdr{font-weight:800;font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);
+    margin:34px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+  .grouphdr .gn{color:var(--faint);font-weight:500;}
+
+  article.p{background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);
+    padding:20px 22px 19px;margin:12px 0;scroll-margin-top:96px;}
+  article.p:target{box-shadow:0 0 0 3px var(--focus);}
+  .p .top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px;}
+  .num{font-weight:800;font-size:.76rem;color:var(--badge-ink);background:var(--accent);padding:3px 9px;border-radius:7px;text-decoration:none;}
+  .num:hover{background:var(--badge-hover);}
+  .tagline{display:flex;gap:9px;flex-wrap:wrap;align-items:center;min-width:0;color:var(--tagink);font-size:.9rem;}
+  .tag{color:var(--tagink);white-space:nowrap;}
+  .tag.status-open{color:var(--open);}
+  .tag.status-partial{color:var(--partial);}
+  .tag.med{color:var(--med);}
+  .spacer{flex:1 1 auto;}
+  .copy,.open-link,.back-link{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
+    border-radius:8px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+  .copy:hover,.open-link:hover,.back-link:hover{background:var(--pinkhover);}
+  .copy.ok{background:var(--okbg);color:var(--okink);}
+
+  .problem-title{font-family:var(--display);font-size:1.42rem;line-height:1.18;font-weight:600;margin:0 0 8px;color:var(--ink);letter-spacing:0;}
+  .problem-title a{text-decoration:none;color:inherit;}
+  .problem-title a:hover{text-decoration:underline;text-decoration-thickness:1px;}
+  .short{font-size:1rem;line-height:1.62;font-weight:500;margin:0 0 14px;color:var(--short);max-width:88ch;letter-spacing:0;}
+  .card-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .pagination{display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:nowrap;margin:24px 0 0;overflow-x:auto;padding-bottom:3px;}
+  .pagebtn{font-size:.76rem;color:var(--ink);background:var(--card);border:2px solid var(--strong);border-radius:8px;
+    padding:5px 8px;cursor:pointer;font-family:var(--ui);font-weight:800;min-width:30px;box-shadow:0 1px 0 var(--strong);white-space:nowrap;}
+  .pagebtn:hover:not(:disabled),.pagebtn.active{background:var(--pink);}
+  .pagebtn:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+  .pagegap,.pageinfo{font-size:.76rem;color:var(--faint);font-weight:750;padding:0 3px;white-space:nowrap;}
+
+  .detail-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 28px;}
+  .detail-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end;}
+  .detail-title{font-family:var(--display);font-size:3rem;line-height:1.04;font-weight:600;margin:0;color:var(--ink);max-width:900px;}
+  .detail-meta{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0;}
+  .problem-nav{display:flex;gap:10px;align-items:stretch;justify-content:space-between;margin:22px 0 24px;max-width:var(--measure);}
+  .problem-nav .navlink{flex:1 1 0;background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);padding:12px 14px;
+    text-decoration:none;color:var(--ink);font-weight:750;min-width:0;}
+  .problem-nav .navlink:hover{background:var(--pink2);}
+  .problem-nav .navlink.next{text-align:right;}
+  .problem-nav .navlink.empty{visibility:hidden;}
+  .problem-nav .navlabel{display:block;font-size:.72rem;letter-spacing:0;text-transform:uppercase;color:var(--faint);font-weight:800;margin-bottom:2px;}
+  .detail-card{background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);padding:28px 32px;margin:24px 0;max-width:var(--measure);}
+  .detail-card h2{font-size:.8rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:0 0 15px;}
+  .prose{font-size:1.04rem;line-height:1.86;color:var(--bodytext);}
+  .prose p{margin:0 0 1.15em;}
+  .prose .katex-display{margin:1.15em 0;}
+  .known-prose{font-size:1rem;line-height:1.8;color:var(--bodytext2);}
+  .remaining-open{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);}
+  .remaining-open strong{color:var(--accent);}
+  .source-list{font-size:.94rem;line-height:1.7;color:var(--soft);}
+  .source-list p{margin:.65em 0;}
+  .source-list .k{font-weight:800;color:var(--accent);}
+  .refs{margin:8px 0 0;padding-left:21px;}
+  .refs li{margin:.55em 0;color:var(--soft);}
+
+  .form-shell{max-width:var(--measure);margin:28px 0 0;}
+  .form-card{background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);padding:28px 32px;margin:20px 0;}
+  .form-card h2{font-family:var(--display);font-size:2.35rem;line-height:1.06;font-weight:600;margin:0 0 8px;color:var(--ink);}
+  .form-card p{font-size:1rem;line-height:1.7;color:var(--bodytext2);margin:.7em 0 1.2em;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .field{display:flex;flex-direction:column;gap:6px;margin:14px 0;}
+  .field.full{grid-column:1/-1;}
+  .field label{font-size:.78rem;font-weight:800;letter-spacing:0;text-transform:uppercase;color:var(--accent);}
+  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);
+    font-family:var(--ui);font-size:.96rem;line-height:1.45;padding:11px 12px;}
+  .field textarea{min-height:118px;resize:vertical;}
+  .field input:focus,.field textarea:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
+  .field-note{font-size:.82rem;color:var(--faint);line-height:1.5;}
+  .form-warning{display:none;margin:14px 0 0;padding:10px 12px;border:1px solid var(--warning-line);border-radius:8px;background:var(--warning-bg);color:var(--warning-ink);
+    font-size:.9rem;line-height:1.55;}
+  .form-warning.show{display:block;}
+  .submit-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;}
+  .submit-btn{font-size:.84rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
+    border-radius:8px;padding:9px 14px;cursor:pointer;font-family:var(--ui);font-weight:800;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+  .submit-btn:hover{background:var(--pinkhover);}
+
+  .katex{font-size:1.04em;}
+  .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
+
+  footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
+  footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid var(--line);}
+  footer a:hover{border-bottom-color:var(--accent);}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toastbg);color:var(--toastink);font-size:.85rem;padding:10px 18px;border-radius:8px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+  @media (max-width:900px){
+    .headbar{grid-template-columns:1fr;}
+    .headsearch{justify-content:flex-start;}
+    .headsearch input{max-width:none;}
+  }
+  @media (max-width:760px){
+    .wrap{padding:0 16px 72px;}
+    header.site{padding-top:30px;}
+    .brand{align-items:flex-start;}
+    .brand h1{min-width:0;overflow-wrap:anywhere;}
+    .simple-headbar{align-items:flex-start;}
+    h1{font-size:2.15rem}
+    .about,.problem-title,.short,.prose,.known-prose{overflow-wrap:anywhere;}
+    .statbar{gap:6px;}
+    .statbtn{padding:5px 8px;}
+    .moretags{align-items:flex-start;flex-direction:column;}
+    .ctl-meta{align-items:flex-start;gap:8px;flex-direction:column;}
+    article.p{padding:17px 15px;}
+    .copy,.open-link{width:100%;text-align:center;}
+    .detail-title{font-size:2.2rem;}
+    .detail-top{align-items:flex-start;flex-direction:column;}
+    .detail-actions{width:100%;justify-content:flex-start;}
+    .problem-nav{flex-direction:column;}
+    .problem-nav .navlink{width:100%;}
+    .problem-nav .navlink.next{text-align:left;}
+    .detail-card{padding:22px 18px;}
+    .form-grid{grid-template-columns:1fr;}
+    .form-card{padding:22px 18px;}
+    .modal{padding:14px;}
+    .modal-card{padding:22px 18px;}
+    .modal-card h2{font-size:1.7rem;}
+  }
+
+  .tag.status-claimed{color:var(--med);}
+  .tag.status-resolved{color:var(--okink);}
+  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0;}
+  .badge{font-size:.8rem;color:var(--soft);}
+  .badge+.badge::before{content:" / ";margin-right:8px;color:var(--faint);}
+  .posed-quote{margin:16px 0;padding-left:18px;border-left:2px solid var(--line);color:var(--soft);}
+  .posed-quote .loc{display:block;margin-top:8px;font-size:.8rem;}
+  .lit-list{padding-left:22px;}
+  .lit-list li{margin:1em 0;}
+  .lit-list .rel{display:block;font-size:.75rem;color:var(--faint);}
+  .subm-item{padding:16px 0;border-bottom:1px solid var(--line);}
+  .subm-head{font-size:.8rem;color:var(--soft);}
+  .headsearch input{min-width:0;}
+  .tag{white-space:normal;overflow-wrap:anywhere;}
+  .detail-top{align-items:flex-start;}
+  .detail-top>div:first-child{min-width:0;flex:1;}
+  .detail-actions{flex:0 0 180px;}
+  .detail-actions .back-link{width:100%;text-align:center;}
+  .detail-title{font-size:2.6rem;overflow-wrap:anywhere;}
+  .problem-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+  .problem-nav .navlink{height:104px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow-wrap:anywhere;font-size:.9rem;}
+  .detail-card{background:transparent;border:0;border-top:2px solid var(--strong);border-radius:0;padding:28px 0;}
+  .form-card{background:transparent;border:0;border-radius:0;padding:28px 0;}
+  @media(max-width:760px){
+    .detail-title{font-size:2.2rem;}
+    .detail-actions{flex:0 0 auto;}
+    .detail-actions .back-link{width:auto;}
+    .problem-nav{grid-template-columns:1fr;grid-auto-rows:104px;}
+    .problem-nav .navlink{height:104px;}
+    .problem-nav .navlink.empty{display:none;}
+    .detail-card,.form-card{padding:22px 0;}
+    .pagination{gap:3px;}
+    .pagebtn{min-width:26px;padding:5px 6px;}
+    .pageinfo{display:none;}
+  }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <div class="simple-headbar">
+      <div class="brand">
+        <a class="logo-link" href="../index.html" aria-label="ORdős Problems home"><svg class="mono" viewBox="0 0 100 100" aria-hidden="true">
+        <rect x="3" y="3" width="94" height="94" rx="18" fill="#eef6f5" stroke="#034f46" stroke-width="5"/>
+        <text x="50" y="63" text-anchor="middle" font-family="Figtree, Arial, sans-serif" font-size="36" font-weight="800" fill="#034f46">OP</text>
+      </svg></a>
+        <h1><a href="../index.html" style="color:inherit;text-decoration:none"><span class="or">OR</span>dős Problems</a></h1>
+      </div>
+      <button class="aboutbtn theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme" title="Switch color theme"><span class="theme-mark" aria-hidden="true">☾</span></button>
+    </div>
+  </header>
+
+  <div class="detail-top">
+    <div>
+      <div class="tagline"><span class="tag">#routing-and-approximation-algorithms</span>
+<span class="tag">#open</span>
+<span class="tag">#operations-research</span>
+<span class="tag">#traveling-salesman-problem</span>
+<span class="tag">#metric-tsp</span>
+<span class="tag">#routing</span>
+<span class="tag">#approximation-algorithms</span>
+<span class="tag">#integrality-gap</span></div>
+      <h1 class="detail-title">The true approximation threshold for metric TSP</h1>
+      <div class="detail-meta"><span class="num">175</span><span class="tag">Problem 175 of 182</span><span class="tag">#ordos-175</span></div>
+      <div class="meta-badges"><span class="badge progress-partial">Partial progress</span></div>
+    </div>
+    <div class="detail-actions">
+      <a class="back-link" href="../correction.html?ref=ORDOS-175&amp;title=The%20true%20approximation%20threshold%20for%20metric%20TSP&amp;page=https%3A//ordos-problems.github.io/problems/metric-tsp-approximation-threshold.html" target="_blank" rel="noopener">Suggest edit</a>
+      <a class="back-link" href="../index.html">Back to all problems</a>
+    </div>
+  </div>
+
+  <nav class="problem-nav" aria-label="Problem navigation">
+    <a class="navlink prev" href="forest-augmentation-approximation-threshold.html" title="Approximation threshold for the Forest Augmentation Problem"><span class="navlabel">Previous problem</span>#174 · Approximation threshold for the Forest Augmentation Problem</a>
+    <a class="navlink next" href="queueing-network-stability-clean-undecidability.html" title="Undecidability of stability for clean multiclass queueing networks"><span class="navlabel">Next problem</span>#176 · Undecidability of stability for clean multiclass queueing networks</a>
+  </nav>
+
+  <section class="detail-card statement">
+    <h2>Short Statement</h2>
+    <div class="prose"><p>Christofides' <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">3/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3/2</span></span></span></span> barrier for metric TSP was finally beaten, but only by a tiny constant; the true polynomial-time approximation threshold is still unknown.</p></div>
+  </section>
+
+  <section class="detail-card statement">
+    <h2>Open Problem</h2>
+    <div class="prose"><p>Close the metric TSP approximability gap: prove a meaningfully better constant-factor approximation than <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>2</mn><mo>−</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>36</mn></mrow></msup></mrow><annotation encoding="application/x-tex">3/2-10^{-36}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3/2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">36</span></span></span></span></span></span></span></span></span></span></span></span>, or prove a substantially stronger hardness threshold for arbitrary symmetric metrics.</p></div>
+  </section>
+
+
+  <section class="detail-card statement">
+    <h2>Background &amp; Context</h2>
+    <div class="prose">Metric TSP is one of the canonical routing models in operations research and one of the first problems that made worst-case approximation guarantees central to combinatorial optimization. The model is clean: the metric closure abstracts away road-network details and keeps only pairwise shortest-path distances. Christofides' analysis is also clean, which partly explains why it became a benchmark. The algorithm's two ingredients, a spanning tree and a parity-correction matching, can be interpreted through the subtour-elimination relaxation and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">T</span></span></span></span>-join structure. The long-standing difficulty is that the obvious proof has tight examples, but those examples need not be tight for every algorithm. Modern progress uses maximum-entropy distributions over spanning trees and delicate negative-dependence properties, showing that the old <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">3/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3/2</span></span></span></span> wall was not a theorem-level barrier. The remaining question is whether that breakthrough is the start of a path toward constants such as <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi mathvariant="normal">/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">4/3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4/3</span></span></span></span>, or whether metric TSP has hard instances requiring ratios much closer to <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">3/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3/2</span></span></span></span>.</div>
+  </section>
+
+  <section class="detail-card statement">
+    <h2>Statement &amp; Model</h2>
+    <div class="prose">In the symmetric metric Traveling Salesman Problem, the input is a complete graph on vertex set <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.2222em;">V</span></span></span></span> with nonnegative distances <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mrow><mi>u</mi><mi>v</mi></mrow></msub></mrow><annotation encoding="application/x-tex">c_{uv}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0359em;">uv</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> satisfying symmetry and the triangle inequality. A feasible solution is a Hamiltonian cycle, and the goal is to minimize its total length. Christofides' algorithm, independently found by Serdyukov, gives a <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">3/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3/2</span></span></span></span>-approximation by combining a minimum spanning tree with a minimum perfect matching on odd-degree vertices. For more than forty years this was the best general polynomial-time guarantee. Karlin, Klein, and Oveis Gharan recently gave a randomized <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mi mathvariant="normal">/</mi><mn>2</mn><mo>−</mo><mi>ϵ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3/2-\epsilon)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">3/2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">ϵ</span><span class="mclose">)</span></span></span></span>-approximation for some explicit but extremely small <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi><mo>&gt;</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>36</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\epsilon&gt;10^{-36}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">ϵ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">36</span></span></span></span></span></span></span></span></span></span></span></span>, and subsequent work derandomized the guarantee. The open problem is to determine the true polynomial-time approximation threshold for metric TSP: is there a substantially better constant than <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">3/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3/2</span></span></span></span>, perhaps approaching the conjectural <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi mathvariant="normal">/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">4/3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4/3</span></span></span></span> behavior suggested by the subtour LP, or is there a hardness barrier far above the current <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>123</mn><mi mathvariant="normal">/</mi><mn>122</mn></mrow><annotation encoding="application/x-tex">123/122</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">123/122</span></span></span></span> inapproximability bound? A solution should apply to arbitrary finite metrics, not only Euclidean, graphic, bounded-genus, or other structured metrics.</div>
+  </section>
+
+  <section class="detail-card">
+    <h2>What Is Known</h2>
+    <div class="known-prose">Christofides' algorithm gives a <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">3/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3/2</span></span></span></span> approximation for every metric instance, and examples show that this analysis is tight for that algorithm. The strongest general hardness results are much weaker: Karpinski, Lampis, and Schmied prove APX-hardness and an explicit inapproximability threshold of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>123</mn><mi mathvariant="normal">/</mi><mn>122</mn></mrow><annotation encoding="application/x-tex">123/122</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">123/122</span></span></span></span> for symmetric metric TSP. Karlin, Klein, and Oveis Gharan break the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">3/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3/2</span></span></span></span> barrier with a randomized <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>2</mn><mo>−</mo><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">3/2-\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3/2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">ϵ</span></span></span></span> algorithm for an explicit tiny <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi><mo>&gt;</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>36</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\epsilon&gt;10^{-36}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">ϵ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">36</span></span></span></span></span></span></span></span></span></span></span></span>; a later paper derandomizes the relevant max-entropy approach. Related work gives slightly improved upper bounds on the subtour-LP integrality gap, and the famous <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi mathvariant="normal">/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">4/3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4/3</span></span></span></span> conjecture for the subtour LP remains unresolved. Thus the open part is enormous: the best algorithmic constant is essentially <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.5</mn></mrow><annotation encoding="application/x-tex">1.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.5</span></span></span></span>, while the best hardness is barely above <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>.<p class="remaining-open"><strong>Remaining open problem.</strong> Close the metric TSP approximability gap: prove a meaningfully better constant-factor approximation than <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>2</mn><mo>−</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>36</mn></mrow></msup></mrow><annotation encoding="application/x-tex">3/2-10^{-36}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3/2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">36</span></span></span></span></span></span></span></span></span></span></span></span>, or prove a substantially stronger hardness threshold for arbitrary symmetric metrics.</p></div>
+  </section>
+
+  <section class="detail-card">
+    <h2>Progress &amp; Literature</h2>
+    <div class="known-prose"><p><strong>Latest progress (Partial progress).</strong> The <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">3/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3/2</span></span></span></span> approximation barrier has been broken only by a tiny constant; the exact threshold and subtour-LP gap remain open. </p><div class="prose">The literature has three distinct layers. The classical algorithmic layer is Christofides' tree-plus-matching method, which gives <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">3/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3/2</span></span></span></span> and remains practically and conceptually central. The LP layer studies the subtour-elimination relaxation and its integrality gap; the conjectured <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi mathvariant="normal">/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">4/3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4/3</span></span></span></span> value would imply a much more structured view of metric TSP, but current general upper bounds are still close to <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">3/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3/2</span></span></span></span>. The recent max-entropy layer proves that carefully sampled spanning trees have enough structure to beat the old barrier, but the improvement is minuscule. On the hardness side, reductions show APX-hardness but leave a vast gap between <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>123</mn><mi mathvariant="normal">/</mi><mn>122</mn></mrow><annotation encoding="application/x-tex">123/122</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">123/122</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">3/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3/2</span></span></span></span>. The open problem is therefore not a matter of polishing constants. It asks for either a new global decomposition of metric tours, a much sharper use of the subtour LP, or a reduction that finally explains why routing in arbitrary metrics is hard beyond tiny constant factors.</div><ul class="lit-list"><li><span class="rel">partial progress</span><strong>Karlin, Klein, Oveis Gharan, A (Slightly) Improved Approximation Algorithm for Metric TSP, STOC 2021</strong> — Gives a randomized <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>2</mn><mo>−</mo><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">3/2-\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3/2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">ϵ</span></span></span></span> approximation for metric TSP. <a href="https://arxiv.org/abs/2007.01409" target="_blank" rel="noopener">link</a></li><li><span class="rel">partial progress</span><strong>Karlin, Klein, Oveis Gharan, A (Slightly) Improved Deterministic Approximation Algorithm for Metric TSP, 2022</strong> — Derandomizes the relevant max-entropy objective for the improved guarantee. <a href="https://arxiv.org/abs/2212.06296" target="_blank" rel="noopener">link</a></li><li><span class="rel">hardness</span><strong>Karpinski, Lampis, Schmied, New Inapproximability Bounds for TSP, 2013</strong> — Improves explicit metric TSP hardness to <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>123</mn><mi mathvariant="normal">/</mi><mn>122</mn></mrow><annotation encoding="application/x-tex">123/122</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">123/122</span></span></span></span>. <a href="https://arxiv.org/abs/1303.6437" target="_blank" rel="noopener">link</a></li></ul></div>
+  </section>
+
+  <section class="detail-card" id="submissions">
+    <h2>Posted Solutions &amp; Verification</h2>
+    <div class="known-prose"><p class="subm-empty">No solutions or partial-progress submissions have been posted for this problem yet.</p>
+    <p>Submit a result or a review through the <a href="../agents.html">submission guidelines</a>, or suggest a correction using the link above.</p></div>
+  </section>
+  <section class="detail-card">
+    <h2>Sources</h2>
+    <div class="source-list">
+      <p><span class="k">Where posed:</span> The gap is implicit in the metric TSP literature after the Karlin-Klein-Oveis Gharan breakthrough and the much weaker known hardness threshold. <a href="https://arxiv.org/abs/2007.01409" target="_blank" rel="noopener">link</a></p>
+      <blockquote class="posed-quote">&ldquo;For some <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi><mo>&gt;</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>36</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\epsilon &gt; 10^{-36}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">ϵ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">36</span></span></span></span></span></span></span></span></span></span></span></span> we give a randomized <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>2</mn><mo>−</mo><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">3/2-\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3/2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">ϵ</span></span></span></span> approximation algorithm.&rdquo;<span class="loc">&mdash; Abstract and follow-up literature on the metric TSP approximation gap.</span></blockquote>
+      <p><span class="k">Source:</span> Anna R. Karlin, Nathan Klein, Shayan Oveis Gharan, <em>A (Slightly) Improved Approximation Algorithm for Metric TSP</em> (2020, arXiv / STOC 2021) <a href="https://arxiv.org/abs/2007.01409" target="_blank" rel="noopener">link</a></p>
+      <p><span class="k">Related references:</span></p><ol class="refs"><li>Anna R. Karlin, Nathan Klein, Shayan Oveis Gharan, <em>A (Slightly) Improved Deterministic Approximation Algorithm for Metric TSP</em> (2022, arXiv) <a href="https://arxiv.org/abs/2212.06296" target="_blank" rel="noopener">link</a></li><li>Anna Karlin, Nathan Klein, Shayan Oveis Gharan, <em>A (Slightly) Improved Bound on the Integrality Gap of the Subtour LP for TSP</em> (2021, arXiv) <a href="https://arxiv.org/abs/2105.10043" target="_blank" rel="noopener">link</a></li><li>Marek Karpinski, Michael Lampis, Richard Schmied, <em>New Inapproximability Bounds for TSP</em> (2013, arXiv) <a href="https://arxiv.org/abs/1303.6437" target="_blank" rel="noopener">link</a></li></ol>
+    </div>
+  </section>
+
+  <section class="detail-card">
+    <h2>Copy</h2>
+    <p class="known-prose">Copy the full statement, known results, and source information as plain text.</p>
+    <button class="copy" id="copybtn">Copy</button>
+  </section>
+
+  <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
+</div>
+<div class="toast" id="toast">Copied</div>
+<script type="application/json" id="copy-data">"ORdős Problems #175 — The true approximation threshold for metric TSP\n\nSHORT STATEMENT\nChristofides' $3/2$ barrier for metric TSP was finally beaten, but only by a tiny constant; the true polynomial-time approximation threshold is still unknown.\n\nSTATUS: open\n\nOPEN PROBLEM\nClose the metric TSP approximability gap: prove a meaningfully better constant-factor approximation than $3/2-10^{-36}$, or prove a substantially stronger hardness threshold for arbitrary symmetric metrics.\n\nBACKGROUND\nMetric TSP is one of the canonical routing models in operations research and one of the first problems that made worst-case approximation guarantees central to combinatorial optimization. The model is clean: the metric closure abstracts away road-network details and keeps only pairwise shortest-path distances. Christofides' analysis is also clean, which partly explains why it became a benchmark. The algorithm's two ingredients, a spanning tree and a parity-correction matching, can be interpreted through the subtour-elimination relaxation and $T$-join structure. The long-standing difficulty is that the obvious proof has tight examples, but those examples need not be tight for every algorithm. Modern progress uses maximum-entropy distributions over spanning trees and delicate negative-dependence properties, showing that the old $3/2$ wall was not a theorem-level barrier. The remaining question is whether that breakthrough is the start of a path toward constants such as $4/3$, or whether metric TSP has hard instances requiring ratios much closer to $3/2$.\n\nPROBLEM (full statement with model)\nIn the symmetric metric Traveling Salesman Problem, the input is a complete graph on vertex set $V$ with nonnegative distances $c_{uv}$ satisfying symmetry and the triangle inequality. A feasible solution is a Hamiltonian cycle, and the goal is to minimize its total length. Christofides' algorithm, independently found by Serdyukov, gives a $3/2$-approximation by combining a minimum spanning tree with a minimum perfect matching on odd-degree vertices. For more than forty years this was the best general polynomial-time guarantee. Karlin, Klein, and Oveis Gharan recently gave a randomized $(3/2-\\epsilon)$-approximation for some explicit but extremely small $\\epsilon>10^{-36}$, and subsequent work derandomized the guarantee. The open problem is to determine the true polynomial-time approximation threshold for metric TSP: is there a substantially better constant than $3/2$, perhaps approaching the conjectural $4/3$ behavior suggested by the subtour LP, or is there a hardness barrier far above the current $123/122$ inapproximability bound? A solution should apply to arbitrary finite metrics, not only Euclidean, graphic, bounded-genus, or other structured metrics.\n\nKNOWN RESULTS\nChristofides' algorithm gives a $3/2$ approximation for every metric instance, and examples show that this analysis is tight for that algorithm. The strongest general hardness results are much weaker: Karpinski, Lampis, and Schmied prove APX-hardness and an explicit inapproximability threshold of $123/122$ for symmetric metric TSP. Karlin, Klein, and Oveis Gharan break the $3/2$ barrier with a randomized $3/2-\\epsilon$ algorithm for an explicit tiny $\\epsilon>10^{-36}$; a later paper derandomizes the relevant max-entropy approach. Related work gives slightly improved upper bounds on the subtour-LP integrality gap, and the famous $4/3$ conjecture for the subtour LP remains unresolved. Thus the open part is enormous: the best algorithmic constant is essentially $1.5$, while the best hardness is barely above $1$.\n\nLITERATURE SYNTHESIS\nThe literature has three distinct layers. The classical algorithmic layer is Christofides' tree-plus-matching method, which gives $3/2$ and remains practically and conceptually central. The LP layer studies the subtour-elimination relaxation and its integrality gap; the conjectured $4/3$ value would imply a much more structured view of metric TSP, but current general upper bounds are still close to $3/2$. The recent max-entropy layer proves that carefully sampled spanning trees have enough structure to beat the old barrier, but the improvement is minuscule. On the hardness side, reductions show APX-hardness but leave a vast gap between $123/122$ and $3/2$. The open problem is therefore not a matter of polishing constants. It asks for either a new global decomposition of metric tours, a much sharper use of the subtour LP, or a reduction that finally explains why routing in arbitrary metrics is hard beyond tiny constant factors.\n\nREMAINING OPEN PROBLEM\nClose the metric TSP approximability gap: prove a meaningfully better constant-factor approximation than $3/2-10^{-36}$, or prove a substantially stronger hardness threshold for arbitrary symmetric metrics.\n\nVERIFICATION NOTES\nA claimed algorithmic improvement must run in polynomial time for arbitrary symmetric metrics and compare its tour cost against the optimum, or against a valid lower bound such as the subtour LP. A claimed hardness result must state the assumption and approximation factor precisely. A claimed integrality-gap lower bound should provide the metric, the subtour-LP value, and a rigorous lower bound on every tour. Do not count Euclidean PTAS results, graphic-TSP constants, or asymmetric-TSP bounds as resolving this metric symmetric problem.\n\nPOSED AS: \"For some $\\epsilon > 10^{-36}$ we give a randomized $3/2-\\epsilon$ approximation algorithm.\"\n\nWHERE POSED: The gap is implicit in the metric TSP literature after the Karlin-Klein-Oveis Gharan breakthrough and the much weaker known hardness threshold. (https://arxiv.org/abs/2007.01409)\nSOURCE: Anna R. Karlin, Nathan Klein, Shayan Oveis Gharan, A (Slightly) Improved Approximation Algorithm for Metric TSP (2020, arXiv / STOC 2021) https://arxiv.org/abs/2007.01409\nRELATED:\n- Anna R. Karlin, Nathan Klein, Shayan Oveis Gharan, A (Slightly) Improved Deterministic Approximation Algorithm for Metric TSP (2022, arXiv) https://arxiv.org/abs/2212.06296\n- Anna Karlin, Nathan Klein, Shayan Oveis Gharan, A (Slightly) Improved Bound on the Integrality Gap of the Subtour LP for TSP (2021, arXiv) https://arxiv.org/abs/2105.10043\n- Marek Karpinski, Michael Lampis, Richard Schmied, New Inapproximability Bounds for TSP (2013, arXiv) https://arxiv.org/abs/1303.6437\n\nTask: Resolve the remaining open problem, taking the cited results and their assumptions into account. Math is in LaTeX."</script>
+<script>
+(function(){
+  var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;
+  function show(m){toast.textContent=m;toast.classList.add('show');clearTimeout(timer);timer=setTimeout(function(){toast.classList.remove('show');},1500);}
+  btn.addEventListener('click',function(){
+    navigator.clipboard.writeText(JSON.parse(document.getElementById('copy-data').textContent)).then(function(){
+      btn.textContent='Copied';btn.classList.add('ok');show('Full problem copied');
+      setTimeout(function(){btn.textContent='Copy';btn.classList.remove('ok');},1500);
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  function setTheme(theme){
+    document.documentElement.dataset.theme=theme;
+    try{localStorage.setItem('ordos-theme',theme);}catch(e){}
+    document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+      var dark=theme==='dark';
+      var mark=btn.querySelector('.theme-mark');
+      if(mark)mark.textContent=dark?'☀':'☾';
+      btn.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');
+      btn.setAttribute('title',dark?'Switch to light mode':'Switch to dark mode');
+    });
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    var current=document.documentElement.dataset.theme==='dark'?'dark':'light';
+    setTheme(current);
+    document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

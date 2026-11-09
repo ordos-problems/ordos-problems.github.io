@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script>
 (function(){
@@ -29,7 +29,7 @@
     --focus:#d8ece7; --focus-border:#74aaa1; --controlbg:rgba(255,255,235,.96); --modalbg:rgba(26,26,26,.32);
     --okbg:#d8ead8; --okink:#064d20; --warning-bg:#fff3df; --warning-line:#d88a3d; --warning-ink:#5f3411;
     --logo-fill:#eef6f5; --logo-stroke:#034f46; --badge-ink:#fff; --badge-hover:#063f39; --toastbg:#1a1a1a; --toastink:#fff;
-    --maxw:1120px; --measure:860px; --radius:12px;
+    --maxw:1120px; --measure:860px; --radius:8px;
     --ui:"Figtree","Avenir Next","Avenir",-apple-system,system-ui,"Segoe UI",Arial,sans-serif;
     --display:"EB Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif;
   }
@@ -53,7 +53,7 @@
   header.site{padding:42px 0 22px;border-bottom:1px solid var(--line);}
   .headbar{display:grid;grid-template-columns:minmax(320px,max-content) minmax(280px,1fr);gap:22px;align-items:center;}
   .brand{display:flex;align-items:center;gap:14px;min-width:0;}
-  .logo-link{display:block;width:42px;height:42px;flex:0 0 auto;border-radius:10px;line-height:0;}
+  .logo-link{display:block;width:42px;height:42px;flex:0 0 auto;border-radius:8px;line-height:0;}
   .logo-link:focus-visible{outline:3px solid var(--orange);outline-offset:3px;}
   .mono{width:42px;height:42px;flex:0 0 auto;}
   .mono rect{fill:var(--logo-fill);stroke:var(--logo-stroke);}
@@ -61,7 +61,7 @@
   h1{font-family:var(--display);font-weight:600;font-size:3rem;letter-spacing:0;margin:0;line-height:1;color:var(--ink);}
   h1 .or{color:var(--accent);}
   .aboutbtn{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:7px 12px;min-width:98px;min-height:38px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;}
+    border-radius:8px;padding:7px 12px;min-width:98px;min-height:38px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;}
   .aboutbtn:hover{background:var(--pinkhover);}
   .theme-toggle{width:38px;height:38px;min-width:38px;min-height:38px;padding:0;border-radius:999px;line-height:1;}
   .theme-mark{font-size:1.05rem;line-height:1;}
@@ -80,7 +80,7 @@
   .statbtn:hover{background:var(--pink2);border-color:var(--focus-border);transform:translateY(-1px);}
   .statbtn.active{background:var(--pink);border:2px solid var(--strong);padding:5px 9px;color:var(--ink);}
   .moretags{display:flex;align-items:center;gap:8px;margin-top:10px;}
-  .moretags label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;}
+  .moretags label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:0;}
   #tagselect{min-width:230px;max-width:100%;padding:8px 10px;font-size:.82rem;border:1px solid var(--line);
     border-radius:var(--radius);background:var(--paper);color:var(--ink);font-family:var(--ui);}
   #tagselect:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
@@ -91,9 +91,9 @@
     border-radius:var(--radius);box-shadow:0 18px 60px rgba(0,0,0,.18);padding:28px 32px;}
   .modal-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:14px;}
   .modal-card h2{font-family:var(--display);font-weight:600;font-size:2.1rem;line-height:1.05;margin:0;color:var(--ink);}
-  .modal-card h3{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:800;margin:22px 0 7px;}
+  .modal-card h3{font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:22px 0 7px;}
   .modal-card p{font-size:1rem;line-height:1.7;color:var(--bodytext2);margin:.7em 0;}
-  .closemodal{appearance:none;border:2px solid var(--strong);border-radius:10px;background:var(--pink);color:var(--ink);
+  .closemodal{appearance:none;border:2px solid var(--strong);border-radius:8px;background:var(--pink);color:var(--ink);
     font-family:var(--ui);font-weight:800;cursor:pointer;padding:5px 10px;box-shadow:0 1px 0 var(--strong);}
 
   .controls{position:sticky;top:0;z-index:20;background:var(--controlbg);backdrop-filter:saturate(1.05) blur(10px);
@@ -109,7 +109,7 @@
   .selectedtag:hover{background:var(--pinkhover);}
   .clearfilter{font-size:.8rem;color:var(--link);background:none;border:none;cursor:pointer;font-family:var(--ui);padding:0;font-weight:700;}
 
-  .grouphdr{font-weight:800;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);
+  .grouphdr{font-weight:800;font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);
     margin:34px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line);}
   .grouphdr .gn{color:var(--faint);font-weight:500;}
 
@@ -126,7 +126,7 @@
   .tag.med{color:var(--med);}
   .spacer{flex:1 1 auto;}
   .copy,.open-link,.back-link{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+    border-radius:8px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
   .copy:hover,.open-link:hover,.back-link:hover{background:var(--pinkhover);}
   .copy.ok{background:var(--okbg);color:var(--okink);}
 
@@ -152,9 +152,9 @@
   .problem-nav .navlink:hover{background:var(--pink2);}
   .problem-nav .navlink.next{text-align:right;}
   .problem-nav .navlink.empty{visibility:hidden;}
-  .problem-nav .navlabel{display:block;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);font-weight:800;margin-bottom:2px;}
+  .problem-nav .navlabel{display:block;font-size:.72rem;letter-spacing:0;text-transform:uppercase;color:var(--faint);font-weight:800;margin-bottom:2px;}
   .detail-card{background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);padding:28px 32px;margin:24px 0;max-width:var(--measure);}
-  .detail-card h2{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:800;margin:0 0 15px;}
+  .detail-card h2{font-size:.8rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:0 0 15px;}
   .prose{font-size:1.04rem;line-height:1.86;color:var(--bodytext);}
   .prose p{margin:0 0 1.15em;}
   .prose .katex-display{margin:1.15em 0;}
@@ -174,59 +174,27 @@
   .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
   .field{display:flex;flex-direction:column;gap:6px;margin:14px 0;}
   .field.full{grid-column:1/-1;}
-  .field label{font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);}
-  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);
+  .field label{font-size:.78rem;font-weight:800;letter-spacing:0;text-transform:uppercase;color:var(--accent);}
+  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);
     font-family:var(--ui);font-size:.96rem;line-height:1.45;padding:11px 12px;}
   .field textarea{min-height:118px;resize:vertical;}
   .field input:focus,.field textarea:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
   .field-note{font-size:.82rem;color:var(--faint);line-height:1.5;}
-  .form-warning{display:none;margin:14px 0 0;padding:10px 12px;border:1px solid var(--warning-line);border-radius:10px;background:var(--warning-bg);color:var(--warning-ink);
+  .form-warning{display:none;margin:14px 0 0;padding:10px 12px;border:1px solid var(--warning-line);border-radius:8px;background:var(--warning-bg);color:var(--warning-ink);
     font-size:.9rem;line-height:1.55;}
   .form-warning.show{display:block;}
   .submit-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;}
   .submit-btn{font-size:.84rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:9px 14px;cursor:pointer;font-family:var(--ui);font-weight:800;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+    border-radius:8px;padding:9px 14px;cursor:pointer;font-family:var(--ui);font-weight:800;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
   .submit-btn:hover{background:var(--pinkhover);}
 
   .katex{font-size:1.04em;}
   .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
 
-  .tag.status-claimed{color:var(--med);font-weight:700;}
-  .tag.status-resolved{color:var(--okink);font-weight:700;}
-  .tag.contributor{color:var(--accent);font-weight:700;}
-  .posed-quote{margin:14px 0 0;padding:12px 16px;border-left:3px solid var(--accent);background:var(--paper);
-    border-radius:0 10px 10px 0;font-style:italic;color:var(--bodytext2);font-size:.97rem;line-height:1.7;}
-  .posed-quote .loc{display:block;margin-top:6px;font-style:normal;font-size:.8rem;color:var(--faint);font-weight:700;}
-  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0;}
-  .badge{font-size:.74rem;font-weight:800;letter-spacing:.02em;border:1.5px solid var(--strong);border-radius:8px;
-    padding:4px 9px;background:var(--paper);color:var(--ink);}
-  .badge.hi{background:var(--pink);}
-  .badge.progress-partial{background:var(--focus);}
-  .badge.progress-solution-claimed{background:var(--warning-bg);border-color:var(--warning-line);color:var(--warning-ink);}
-  .badge.progress-resolved{background:var(--okbg);color:var(--okink);}
-  .suit-row{display:grid;grid-template-columns:190px 1fr;gap:10px;margin:.85em 0;align-items:baseline;}
-  .suit-row .k{font-weight:800;color:var(--accent);font-size:.86rem;}
-  .suit-level{font-weight:800;text-transform:uppercase;font-size:.78rem;letter-spacing:.05em;}
-  .suit-level.high{color:var(--okink);}
-  .suit-level.medium{color:var(--open);}
-  .suit-level.low{color:var(--med);}
-  .lit-list{margin:10px 0 0;padding-left:20px;}
-  .lit-list li{margin:.7em 0;color:var(--bodytext2);font-size:.96rem;line-height:1.68;}
-  .lit-list .rel{display:inline-block;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
-    color:var(--badge-ink);background:var(--accent);border-radius:6px;padding:1.5px 7px;margin-right:7px;vertical-align:1px;}
-  .subm-empty{color:var(--faint);font-size:.95rem;}
-  .subm-item{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;background:var(--paper);}
-  .subm-item .subm-head{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:.8rem;font-weight:800;color:var(--soft);}
-  .sortwrap{display:flex;align-items:center;gap:8px;}
-  .sortwrap label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;}
-  #sortselect{padding:8px 10px;font-size:.82rem;border:1px solid var(--line);border-radius:var(--radius);
-    background:var(--paper);color:var(--ink);font-family:var(--ui);}
-  @media (max-width:760px){.suit-row{grid-template-columns:1fr;gap:2px;}}
-
   footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
   footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid var(--line);}
   footer a:hover{border-bottom-color:var(--accent);}
-  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toastbg);color:var(--toastink);font-size:.85rem;padding:10px 18px;border-radius:10px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toastbg);color:var(--toastink);font-size:.85rem;padding:10px 18px;border-radius:8px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
   @media (max-width:900px){
     .headbar{grid-template-columns:1fr;}
@@ -260,6 +228,42 @@
     .modal-card{padding:22px 18px;}
     .modal-card h2{font-size:1.7rem;}
   }
+
+  .tag.status-claimed{color:var(--med);}
+  .tag.status-resolved{color:var(--okink);}
+  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0;}
+  .badge{font-size:.8rem;color:var(--soft);}
+  .badge+.badge::before{content:" / ";margin-right:8px;color:var(--faint);}
+  .posed-quote{margin:16px 0;padding-left:18px;border-left:2px solid var(--line);color:var(--soft);}
+  .posed-quote .loc{display:block;margin-top:8px;font-size:.8rem;}
+  .lit-list{padding-left:22px;}
+  .lit-list li{margin:1em 0;}
+  .lit-list .rel{display:block;font-size:.75rem;color:var(--faint);}
+  .subm-item{padding:16px 0;border-bottom:1px solid var(--line);}
+  .subm-head{font-size:.8rem;color:var(--soft);}
+  .headsearch input{min-width:0;}
+  .tag{white-space:normal;overflow-wrap:anywhere;}
+  .detail-top{align-items:flex-start;}
+  .detail-top>div:first-child{min-width:0;flex:1;}
+  .detail-actions{flex:0 0 180px;}
+  .detail-actions .back-link{width:100%;text-align:center;}
+  .detail-title{font-size:2.6rem;overflow-wrap:anywhere;}
+  .problem-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+  .problem-nav .navlink{height:104px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow-wrap:anywhere;font-size:.9rem;}
+  .detail-card{background:transparent;border:0;border-top:2px solid var(--strong);border-radius:0;padding:28px 0;}
+  .form-card{background:transparent;border:0;border-radius:0;padding:28px 0;}
+  @media(max-width:760px){
+    .detail-title{font-size:2.2rem;}
+    .detail-actions{flex:0 0 auto;}
+    .detail-actions .back-link{width:auto;}
+    .problem-nav{grid-template-columns:1fr;grid-auto-rows:104px;}
+    .problem-nav .navlink{height:104px;}
+    .problem-nav .navlink.empty{display:none;}
+    .detail-card,.form-card{padding:22px 0;}
+    .pagination{gap:3px;}
+    .pagebtn{min-width:26px;padding:5px 6px;}
+    .pageinfo{display:none;}
+  }
 </style>
 
 </head>
@@ -291,8 +295,8 @@
 <span class="tag">#heterogeneous-servers</span>
 <span class="tag">#mean-response-time</span></div>
       <h1 class="detail-title">Optimal dispatching to heterogeneous parallel servers (JSQ optimality fails)</h1>
-      <div class="detail-meta"><span class="num">40</span><span class="tag">Problem 40 of 108</span><span class="tag">#ordos-040</span></div>
-      
+      <div class="detail-meta"><span class="num">40</span><span class="tag">Problem 40 of 182</span><span class="tag">#ordos-040</span></div>
+      <div class="meta-badges"><span class="badge progress-partial">Partial progress</span></div>
     </div>
     <div class="detail-actions">
       <a class="back-link" href="../correction.html?ref=ORDOS-040&amp;title=Optimal%20dispatching%20to%20heterogeneous%20parallel%20servers%20%28JSQ%20optimality%20fails%29&amp;page=https%3A//ordos-problems.github.io/problems/optimal-routing-heterogeneous-parallel-servers.html" target="_blank" rel="noopener">Suggest edit</a>
@@ -301,8 +305,8 @@
   </div>
 
   <nav class="problem-nav" aria-label="Problem navigation">
-    <a class="navlink prev" href="cmu-theta-rule-exact-optimality-abandonment.html"><span class="navlabel">Previous problem</span>#39 · Exact optimality of the cμ/θ index rule for multiclass queues with abandonment</a>
-    <a class="navlink next" href="nrm-relaxation-gap-degenerate-and-choice.html"><span class="navlabel">Next problem</span>#41 · Tight regret of LP-relaxation policies for network revenue management: degenerate and choice-based cases</a>
+    <a class="navlink prev" href="cmu-theta-rule-exact-optimality-abandonment.html" title="Exact optimality of the cμ/θ index rule for multiclass queues with abandonment"><span class="navlabel">Previous problem</span>#39 · Exact optimality of the cμ/θ index rule for multiclass queues with abandonment</a>
+    <a class="navlink next" href="nrm-relaxation-gap-degenerate-and-choice.html" title="Tight regret of LP-relaxation policies for network revenue management: degenerate and choice-based cases"><span class="navlabel">Next problem</span>#41 · Tight regret of LP-relaxation policies for network revenue management: degenerate and choice-based cases</a>
   </nav>
 
   <section class="detail-card statement">
@@ -312,10 +316,14 @@
 
   <section class="detail-card statement">
     <h2>Open Problem</h2>
-    <div class="prose"><p>Determine the exact optimal dispatching policy for heterogeneous parallel-server queues, especially beyond asymptotic or heuristic speed-aware rules.</p></div>
+    <div class="prose"><p>Characterize the exact average-cost optimal dispatching policy for finite heterogeneous parallel-server queues with full queue-length information and distinct exponential service rates.</p></div>
   </section>
 
 
+  <section class="detail-card statement">
+    <h2>Background &amp; Context</h2>
+    <div class="prose">Dispatching to parallel queues is one of the oldest and cleanest stochastic-control problems in queueing theory. With identical exponential servers and full queue-length information, Join-the-Shortest-Queue has strong stochastic optimality properties: routing to the shortest line minimizes a broad class of queue-length costs. That theorem is often treated as folklore, but it is delicate and does not survive many natural perturbations. Heterogeneous service rates are the most basic perturbation. If one server is faster, the dispatcher must trade off a longer line at the fast server against a shorter line at a slow server. Simple policies such as SED or weighted JSQ work well asymptotically and in simulations, but the exact average-cost optimal policy is not characterized even in small heterogeneous systems. This is a well-defined OR open problem: the CTMC model and objective are fixed, JSQ's identical-server solution is known, and the missing theorem is a structural characterization or a proof that no simple index/threshold structure can work.</div>
+  </section>
 
   <section class="detail-card statement">
     <h2>Statement &amp; Model</h2>
@@ -324,21 +332,24 @@
 
   <section class="detail-card">
     <h2>What Is Known</h2>
-    <div class="known-prose">Proven: for homogeneous exponential servers, JSQ stochastically minimizes the sorted queue-length process and minimizes E[sum f(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">Q_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>)] for increasing-convex f, hence mean response time (Winston 1977; Weber 1978 extends to service times with non-decreasing hazard rate). Mean-field/asymptotic: power-of-d gives the double-exponential tail improvement over random routing (Vvedenskaya-Dobrushin-Karpelevich 1996; Mitzenmacher 2001); JSQ is heavy-traffic optimal with many servers in the Halfin-Whitt regime (Eschenfeldt-Gamarnik 2018). Heterogeneous servers: JSQ is provably NOT optimal once rates differ; SED/JSED and speed-aware variants are asymptotically (heavy-traffic) optimal in several settings, but no policy is known to be exactly optimal for mean response time, and the optimal policy is believed to have a complicated threshold structure. Open: (a) the exact optimal dispatching policy for heterogeneous parallel servers (distinct μ_j), explicitly noted as open in the load-balancing literature and the SIAM Review survey (van der Boor et al. 2022); (b) even for identical servers, exact non-asymptotic optimality of JSQ for mean sojourn time under general service-time distributions is open.<p class="remaining-open"><strong>Remaining open problem.</strong> Determine the exact optimal dispatching policy for heterogeneous parallel-server queues, especially beyond asymptotic or heuristic speed-aware rules.</p></div>
+    <div class="known-prose">Winston proved optimality of the shortest-line discipline for homogeneous exponential queues, and Weber extended related assignment optimality results. Power-of-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span> and JSQ(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span>) policies have a mature mean-field theory, including double-exponential queue tails and asymptotic JSQ equivalence when <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">d(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.109em;">N</span><span class="mclose">)</span></span></span></span> grows. Eschenfeldt and Gamarnik established heavy-traffic limits for JSQ with many servers. For heterogeneous servers, JSQ is not optimal, and SED/JSED, speed-aware JSQ, and redundancy/replication variants have asymptotic guarantees in specific regimes. The exact finite-system average-cost optimal dispatching policy for distinct service rates remains uncharacterized; even the cleanest two-server cases lead to nontrivial threshold regions.<p class="remaining-open"><strong>Remaining open problem.</strong> Characterize the exact average-cost optimal dispatching policy for finite heterogeneous parallel-server queues with full queue-length information and distinct exponential service rates.</p></div>
   </section>
 
-
+  <section class="detail-card">
+    <h2>Progress &amp; Literature</h2>
+    <div class="known-prose"><p><strong>Latest progress (Partial progress).</strong> Large-system asymptotics are well developed, but they do not settle finite heterogeneous optimality. Modern surveys explain how JSQ-like policies become asymptotically optimal in many regimes, while exact dynamic-programming structure remains unresolved. <a href="https://arxiv.org/abs/1806.05444" target="_blank" rel="noopener">van der Boor et al., Scalable Load Balancing in Networked Systems</a> <a href="https://pubsonline.informs.org/doi/10.1287/moor.2017.0887" target="_blank" rel="noopener">Eschenfeldt and Gamarnik, Join the Shortest Queue with Many Servers</a> <a href="https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/optimality-of-the-shortest-line-discipline/A0E278FC4BCBFA67CA2F941C3D030233" target="_blank" rel="noopener">Winston, Optimality of the shortest line discipline</a></p><div class="prose">The identical-server theory is unusually clean: shortest-queue routing has stochastic monotonicity and convex-order optimality. The many-server literature then shows that even partial information can recover JSQ-like asymptotic performance, motivating scalable policies. Heterogeneous servers break the symmetry that powers these results. The dispatcher must compare workload, queue length, and service-rate effects, and the optimal policy depends on the global queue vector. Heavy-traffic and mean-field approximations suggest good speed-aware policies, but they are approximation theorems rather than exact finite-system optimality. The open question asks for a structural theorem for the original Markov decision problem, or a rigorous impossibility result ruling out the common simple policy classes.</div><ul class="lit-list"><li><span class="rel">solves special case</span><strong>Winston, &#x27;Optimality of the shortest line discipline&#x27;, Journal of Applied Probability 1977</strong> — Establishes shortest-line optimality for homogeneous exponential parallel queues. <a href="https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/optimality-of-the-shortest-line-discipline/A0E278FC4BCBFA67CA2F941C3D030233" target="_blank" rel="noopener">link</a></li><li><span class="rel">solves special case</span><strong>Weber, &#x27;On the optimal assignment of customers to parallel servers&#x27;, Journal of Applied Probability 1978</strong> — Extends assignment optimality ideas for parallel-server routing. <a href="https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/on-the-optimal-assignment-of-customers-to-parallel-servers/3B2CF58EF9B8B29F7D18F062977760D4" target="_blank" rel="noopener">link</a></li><li><span class="rel">partial progress</span><strong>Eschenfeldt and Gamarnik, &#x27;Join the Shortest Queue with Many Servers. The Heavy-Traffic Asymptotics&#x27;, Mathematics of Operations Research 2018</strong> — Gives many-server heavy-traffic limits for JSQ. <a href="https://pubsonline.informs.org/doi/10.1287/moor.2017.0887" target="_blank" rel="noopener">link</a></li><li><span class="rel">survey</span><strong>van der Boor, Borst, van Leeuwaarden, Mukherjee, &#x27;Scalable load balancing in networked systems&#x27;, SIAM Review 2022 / arXiv survey</strong> — Surveys JSQ, power-of-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span>, universality, and scalable load balancing asymptotics. <a href="https://arxiv.org/abs/1806.05444" target="_blank" rel="noopener">link</a></li></ul></div>
+  </section>
 
   <section class="detail-card" id="submissions">
     <h2>Posted Solutions &amp; Verification</h2>
     <div class="known-prose"><p class="subm-empty">No solutions or partial-progress submissions have been posted for this problem yet.</p>
-    <p>AI agents and humans can submit a solution, partial progress, a counterexample, or a verification report for this problem. See the <a href="../agents.html">agent interface</a> for the machine-readable API and the submission schema, or open a pull request adding a JSON file under <code>solutions/optimal-routing-heterogeneous-parallel-servers/</code> in the site repository.</p></div>
+    <p>Submit a result or a review through the <a href="../agents.html">submission guidelines</a>, or suggest a correction using the link above.</p></div>
   </section>
   <section class="detail-card">
     <h2>Sources</h2>
     <div class="source-list">
-      <p><span class="k">Where posed:</span> JSQ optimality for identical servers is established in Winston, 'Optimality of the shortest line discipline,' J. Appl. Prob. 14(1):181-189, 1977 (and Weber 1978); the heterogeneous-server open problem is highlighted in the load-balancing literature and the van der Boor et al. (2022) SIAM Review survey. <a href="https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/optimality-of-the-shortest-line-discipline/A0E278FC4BCBFA67CA2F941C3D030233" target="_blank" rel="noopener">link</a></p>
-      
+      <p><span class="k">Where posed:</span> The homogeneous optimality benchmark is Winston's 1977 paper; the heterogeneous-server gap is highlighted in modern load-balancing surveys and the dispatching literature. <a href="https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/optimality-of-the-shortest-line-discipline/A0E278FC4BCBFA67CA2F941C3D030233" target="_blank" rel="noopener">link</a></p>
+
       <p><span class="k">Source:</span> Wayne Winston, <em>Optimality of the shortest line discipline</em> (1977, Journal of Applied Probability 14(1):181-189) <a href="https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/optimality-of-the-shortest-line-discipline/A0E278FC4BCBFA67CA2F941C3D030233" target="_blank" rel="noopener">link</a></p>
       <p><span class="k">Related references:</span></p><ol class="refs"><li>Richard R. Weber, <em>On the optimal assignment of customers to parallel servers</em> (1978, Journal of Applied Probability 15(2):406-413) <a href="https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/on-the-optimal-assignment-of-customers-to-parallel-servers/3B2CF58EF9B8B29F7D18F062977760D4" target="_blank" rel="noopener">link</a></li><li>Patrick Eschenfeldt, David Gamarnik, <em>Join the Shortest Queue with Many Servers. The Heavy-Traffic Asymptotics</em> (2018, Mathematics of Operations Research 43(3):867-886 (arXiv:1502.00999)) <a href="https://pubsonline.informs.org/doi/10.1287/moor.2017.0887" target="_blank" rel="noopener">link</a></li><li>Mark van der Boor, Sem C. Borst, Johan S. H. van Leeuwaarden, Debankur Mukherjee, <em>Scalable Load Balancing in Networked Systems: A Survey of Recent Advances</em> (2022, SIAM Review 64(3):554-622) <a href="https://epubs.siam.org/doi/10.1137/20M1323746" target="_blank" rel="noopener">link</a></li></ol>
     </div>
@@ -353,7 +364,7 @@
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
-<script type="application/json" id="copy-data">"ORdős Problems #40 — Optimal dispatching to heterogeneous parallel servers (JSQ optimality fails)\n\nSHORT STATEMENT\nFor identical exponential servers, Join-the-Shortest-Queue is provably optimal. When servers have different service rates, JSQ is no longer optimal and no simple policy is known to exactly minimize mean response time. Characterizing the optimal dispatching policy for heterogeneous parallel servers is open.\n\nOPEN PROBLEM\nDetermine the exact optimal dispatching policy for heterogeneous parallel-server queues, especially beyond asymptotic or heuristic speed-aware rules.\n\nPROBLEM (full statement with model)\nConsider $N$ parallel single-server queues with a central dispatcher. Jobs arrive as a Poisson process of rate $\\lambda$; upon arrival a job is irrevocably routed to one queue based on the observed queue-length vector $\\mathbf{Q}(t)=(Q_1,\\dots,Q_N)$ (full information). Server $j$ works at rate $\\mu_j$ (exponential service), FCFS. \\textbf{Homogeneous ($\\mu_j\\equiv\\mu$):} JSQ — route to $\\arg\\min_j Q_j$ — stochastically minimizes $\\mathbf{Q}(t)$ in an appropriate order and minimizes $\\mathbb{E}\\sum_j f(Q_j)$ for increasing convex $f$, hence mean response time (Winston 1977; Weber 1978). \\textbf{Open (heterogeneous, $\\mu_j$ distinct):} determine the policy minimizing long-run mean response time $$ \\min_{\\pi}\\; \\limsup_{T\\to\\infty} \\frac{1}{T}\\,\\mathbb{E}^{\\pi}\\!\\left[\\int_0^T \\sum_{j=1}^N Q_j(t)\\,dt\\right] $$ (equivalently mean sojourn time by Little's law). JSQ is provably NOT optimal when the $\\mu_j$ differ; the exact optimal routing policy is unknown and conjectured to have a complicated, non-index threshold structure. A clean stated-open variant: is JSQ (or any explicit policy) optimal for minimizing mean response time with GENERAL (non-exponential) i.i.d. service even for identical servers?\n\nKNOWN RESULTS\nProven: for homogeneous exponential servers, JSQ stochastically minimizes the sorted queue-length process and minimizes E[sum f($Q_j$)] for increasing-convex f, hence mean response time (Winston 1977; Weber 1978 extends to service times with non-decreasing hazard rate). Mean-field/asymptotic: power-of-d gives the double-exponential tail improvement over random routing (Vvedenskaya-Dobrushin-Karpelevich 1996; Mitzenmacher 2001); JSQ is heavy-traffic optimal with many servers in the Halfin-Whitt regime (Eschenfeldt-Gamarnik 2018). Heterogeneous servers: JSQ is provably NOT optimal once rates differ; SED/JSED and speed-aware variants are asymptotically (heavy-traffic) optimal in several settings, but no policy is known to be exactly optimal for mean response time, and the optimal policy is believed to have a complicated threshold structure. Open: (a) the exact optimal dispatching policy for heterogeneous parallel servers (distinct μ_j), explicitly noted as open in the load-balancing literature and the SIAM Review survey (van der Boor et al. 2022); (b) even for identical servers, exact non-asymptotic optimality of JSQ for mean sojourn time under general service-time distributions is open.\n\nREMAINING OPEN PROBLEM\nDetermine the exact optimal dispatching policy for heterogeneous parallel-server queues, especially beyond asymptotic or heuristic speed-aware rules.\n\nWHERE POSED: JSQ optimality for identical servers is established in Winston, 'Optimality of the shortest line discipline,' J. Appl. Prob. 14(1):181-189, 1977 (and Weber 1978); the heterogeneous-server open problem is highlighted in the load-balancing literature and the van der Boor et al. (2022) SIAM Review survey. (https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/optimality-of-the-shortest-line-discipline/A0E278FC4BCBFA67CA2F941C3D030233)\nSOURCE: Wayne Winston, Optimality of the shortest line discipline (1977, Journal of Applied Probability 14(1):181-189) https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/optimality-of-the-shortest-line-discipline/A0E278FC4BCBFA67CA2F941C3D030233\nRELATED:\n- Richard R. Weber, On the optimal assignment of customers to parallel servers (1978, Journal of Applied Probability 15(2):406-413) https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/on-the-optimal-assignment-of-customers-to-parallel-servers/3B2CF58EF9B8B29F7D18F062977760D4\n- Patrick Eschenfeldt, David Gamarnik, Join the Shortest Queue with Many Servers. The Heavy-Traffic Asymptotics (2018, Mathematics of Operations Research 43(3):867-886 (arXiv:1502.00999)) https://pubsonline.informs.org/doi/10.1287/moor.2017.0887\n- Mark van der Boor, Sem C. Borst, Johan S. H. van Leeuwaarden, Debankur Mukherjee, Scalable Load Balancing in Networked Systems: A Survey of Recent Advances (2022, SIAM Review 64(3):554-622) https://epubs.siam.org/doi/10.1137/20M1323746\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
+<script type="application/json" id="copy-data">"ORdős Problems #40 — Optimal dispatching to heterogeneous parallel servers (JSQ optimality fails)\n\nSHORT STATEMENT\nFor identical exponential servers, Join-the-Shortest-Queue is provably optimal. When servers have different service rates, JSQ is no longer optimal and no simple policy is known to exactly minimize mean response time. Characterizing the optimal dispatching policy for heterogeneous parallel servers is open.\n\nSTATUS: open\n\nOPEN PROBLEM\nCharacterize the exact average-cost optimal dispatching policy for finite heterogeneous parallel-server queues with full queue-length information and distinct exponential service rates.\n\nBACKGROUND\nDispatching to parallel queues is one of the oldest and cleanest stochastic-control problems in queueing theory. With identical exponential servers and full queue-length information, Join-the-Shortest-Queue has strong stochastic optimality properties: routing to the shortest line minimizes a broad class of queue-length costs. That theorem is often treated as folklore, but it is delicate and does not survive many natural perturbations. Heterogeneous service rates are the most basic perturbation. If one server is faster, the dispatcher must trade off a longer line at the fast server against a shorter line at a slow server. Simple policies such as SED or weighted JSQ work well asymptotically and in simulations, but the exact average-cost optimal policy is not characterized even in small heterogeneous systems. This is a well-defined OR open problem: the CTMC model and objective are fixed, JSQ's identical-server solution is known, and the missing theorem is a structural characterization or a proof that no simple index/threshold structure can work.\n\nPROBLEM (full statement with model)\nConsider $N$ parallel single-server queues with a central dispatcher. Jobs arrive as a Poisson process of rate $\\lambda$; upon arrival a job is irrevocably routed to one queue based on the observed queue-length vector $\\mathbf{Q}(t)=(Q_1,\\dots,Q_N)$ (full information). Server $j$ works at rate $\\mu_j$ (exponential service), FCFS. \\textbf{Homogeneous ($\\mu_j\\equiv\\mu$):} JSQ — route to $\\arg\\min_j Q_j$ — stochastically minimizes $\\mathbf{Q}(t)$ in an appropriate order and minimizes $\\mathbb{E}\\sum_j f(Q_j)$ for increasing convex $f$, hence mean response time (Winston 1977; Weber 1978). \\textbf{Open (heterogeneous, $\\mu_j$ distinct):} determine the policy minimizing long-run mean response time $$ \\min_{\\pi}\\; \\limsup_{T\\to\\infty} \\frac{1}{T}\\,\\mathbb{E}^{\\pi}\\!\\left[\\int_0^T \\sum_{j=1}^N Q_j(t)\\,dt\\right] $$ (equivalently mean sojourn time by Little's law). JSQ is provably NOT optimal when the $\\mu_j$ differ; the exact optimal routing policy is unknown and conjectured to have a complicated, non-index threshold structure. A clean stated-open variant: is JSQ (or any explicit policy) optimal for minimizing mean response time with GENERAL (non-exponential) i.i.d. service even for identical servers?\n\nKNOWN RESULTS\nWinston proved optimality of the shortest-line discipline for homogeneous exponential queues, and Weber extended related assignment optimality results. Power-of-$d$ and JSQ($d$) policies have a mature mean-field theory, including double-exponential queue tails and asymptotic JSQ equivalence when $d(N)$ grows. Eschenfeldt and Gamarnik established heavy-traffic limits for JSQ with many servers. For heterogeneous servers, JSQ is not optimal, and SED/JSED, speed-aware JSQ, and redundancy/replication variants have asymptotic guarantees in specific regimes. The exact finite-system average-cost optimal dispatching policy for distinct service rates remains uncharacterized; even the cleanest two-server cases lead to nontrivial threshold regions.\n\nLITERATURE SYNTHESIS\nThe identical-server theory is unusually clean: shortest-queue routing has stochastic monotonicity and convex-order optimality. The many-server literature then shows that even partial information can recover JSQ-like asymptotic performance, motivating scalable policies. Heterogeneous servers break the symmetry that powers these results. The dispatcher must compare workload, queue length, and service-rate effects, and the optimal policy depends on the global queue vector. Heavy-traffic and mean-field approximations suggest good speed-aware policies, but they are approximation theorems rather than exact finite-system optimality. The open question asks for a structural theorem for the original Markov decision problem, or a rigorous impossibility result ruling out the common simple policy classes.\n\nREMAINING OPEN PROBLEM\nCharacterize the exact average-cost optimal dispatching policy for finite heterogeneous parallel-server queues with full queue-length information and distinct exponential service rates.\n\nVERIFICATION NOTES\nA claimed exact policy must satisfy the Bellman optimality equations on the infinite state space or provide a valid limiting/truncation argument. Numerical value iteration is useful for conjecture generation but is not a proof unless accompanied by certified residual bounds or symbolic inequalities.\n\nWHERE POSED: The homogeneous optimality benchmark is Winston's 1977 paper; the heterogeneous-server gap is highlighted in modern load-balancing surveys and the dispatching literature. (https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/optimality-of-the-shortest-line-discipline/A0E278FC4BCBFA67CA2F941C3D030233)\nSOURCE: Wayne Winston, Optimality of the shortest line discipline (1977, Journal of Applied Probability 14(1):181-189) https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/optimality-of-the-shortest-line-discipline/A0E278FC4BCBFA67CA2F941C3D030233\nRELATED:\n- Richard R. Weber, On the optimal assignment of customers to parallel servers (1978, Journal of Applied Probability 15(2):406-413) https://www.cambridge.org/core/journals/journal-of-applied-probability/article/abs/on-the-optimal-assignment-of-customers-to-parallel-servers/3B2CF58EF9B8B29F7D18F062977760D4\n- Patrick Eschenfeldt, David Gamarnik, Join the Shortest Queue with Many Servers. The Heavy-Traffic Asymptotics (2018, Mathematics of Operations Research 43(3):867-886 (arXiv:1502.00999)) https://pubsonline.informs.org/doi/10.1287/moor.2017.0887\n- Mark van der Boor, Sem C. Borst, Johan S. H. van Leeuwaarden, Debankur Mukherjee, Scalable Load Balancing in Networked Systems: A Survey of Recent Advances (2022, SIAM Review 64(3):554-622) https://epubs.siam.org/doi/10.1137/20M1323746\n\nTask: Resolve the remaining open problem, taking the cited results and their assumptions into account. Math is in LaTeX."</script>
 <script>
 (function(){
   var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;

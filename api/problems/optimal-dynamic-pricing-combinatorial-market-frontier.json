@@ -1,0 +1,125 @@
+{
+ "number": 140,
+ "ref": "ORDOS-140",
+ "id": "optimal-dynamic-pricing-combinatorial-market-frontier",
+ "title": "Frontier of combinatorial markets admitting optimal dynamic prices",
+ "collection": "Economics",
+ "area": "Market Design",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "dynamic pricing",
+  "combinatorial markets",
+  "welfare maximization",
+  "gross substitutes",
+  "multi-demand valuations",
+  "posted prices",
+  "market design"
+ ],
+ "short_statement": "Characterize which valuation domains admit welfare-optimal dynamic posted prices in combinatorial markets.",
+ "open_problem": "Characterize the exact frontier of valuation functions for which optimal dynamic pricing schemes exist in combinatorial markets.",
+ "background": "Dynamic posted pricing is a decentralized alternative to direct welfare maximization in markets for indivisible goods. A seller posts prices, buyers arrive sequentially, each buyer chooses a utility-maximizing bundle among remaining items, and prices may be updated after each arrival based on the remaining market. The goal is not revenue learning; it is exact welfare implementation by prices. Unit-demand buyers admit optimal dynamic prices, while coverage valuations can fail to admit them. This creates a clean structural question parallel to the role of gross substitutes in Walrasian equilibrium: which valuation domains are exactly those where dynamic prices can implement an optimal allocation without a central coordinator? Berger, Eden, and Feldman narrow this frontier with positive results for small multi-demand markets and a maximal-domain negative theorem around non-gross-substitutes valuations, but the full characterization remains open.",
+ "full_statement": "Consider a finite set $M$ of indivisible items and buyers $1,\\dots,n$ arriving in a known or adversarially fixed order. Buyer $i$ has valuation $v_i:2^M\\to\\mathbb{R}_{+}$. A dynamic pricing scheme chooses a price vector $p^t$ over the remaining items before buyer $t$ arrives; the buyer then selects a demanded bundle from the remaining items, and sold items are removed. The scheme is welfare-optimal for a valuation profile if, under an appropriate tie-breaking rule or robust choice condition, the resulting allocation maximizes $\\sum_i v_i(S_i)$ over feasible allocations. The open problem is to characterize the valuation domains $\\mathcal{V}$ for which every market with buyers from $\\mathcal{V}$ admits an efficiently computable welfare-optimal dynamic pricing scheme. In particular, determine whether gross substitutes, multi-demand subclasses, or a different domain form the exact frontier, and settle the status of multi-demand valuations with arbitrary numbers of buyers.",
+ "known_results": "Cohen-Addad and coauthors showed that unit-demand buyers admit optimal dynamic prices and gave examples, such as coverage valuations, where optimal dynamic prices need not exist. Berger, Eden, and Feldman sharpened the picture. On the positive side, they characterized optimal allocations in multi-demand markets and used this structure to give a polynomial-time optimal dynamic pricing algorithm for up to three multi-demand buyers. On the negative side, they proved a maximal-domain theorem: for every non-gross-substitutes valuation, one can add unit-demand valuations so that the resulting market does not admit optimal dynamic prices. Berczi, Berczi-Kovacs, and Szogi later gave a dual approach, rederived the unit-demand and up-to-three multi-demand results, and proved optimal dynamic prices for bi-demand valuations with an arbitrary number of buyers. These results leave open the full valuation-domain frontier, especially for general multi-demand valuations and for the relationship between gross substitutes and dynamic-price implementability.",
+ "progress": {
+  "state": "partial",
+  "summary": "Unit-demand markets, up to three multi-demand buyers, and arbitrary many bi-demand buyers are covered. Non-gross-substitutes valuations cannot be included in a maximal universal domain with unit-demand valuations. The exact frontier remains open.",
+  "links": [
+   {
+    "title": "On the Power and Limits of Dynamic Pricing in Combinatorial Markets",
+    "url": "https://arxiv.org/abs/2002.06863"
+   },
+   {
+    "title": "A dual approach for dynamic pricing in multi-demand markets",
+    "url": "https://arxiv.org/abs/2107.05131"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Nonexistence can be witnessed by finite markets with explicit valuation tables and a proof that no dynamic price path implements any welfare-optimal allocation.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Search over small valuation tables, buyer orders, and optimal allocations can find minimal markets that separate candidate valuation domains or suggest new sufficient conditions.",
+ "literature": {
+  "synthesis": "The problem is structurally close to Walrasian equilibrium theory but not identical. Gross substitutes are the maximal domain for several equilibrium guarantees, yet dynamic prices are sequential and can condition on previous sales, so the domain could be larger or organized differently. Existing positive results exploit special allocation structure in unit-demand, bi-demand, and small multi-demand markets. Existing negative results show that non-gross-substitutes valuations create obstructions once combined with unit-demand buyers. The unresolved part is to turn these pieces into an exact theorem: either a maximal domain, a complete classification for multi-demand valuations, or a sharp obstruction criterion.",
+  "reviewed": [
+   {
+    "ref": "Cohen-Addad et al., 'Optimal Dynamic Pricing for Welfare Maximization', EC 2016",
+    "result": "Shows existence of optimal dynamic prices for unit-demand buyers and gives valuation classes where such prices need not exist.",
+    "relevance": "baseline",
+    "url": "https://dl.acm.org/doi/10.1145/2940716.2940757"
+   },
+   {
+    "ref": "Ben Berger, Alon Eden, and Michal Feldman, 'On the Power and Limits of Dynamic Pricing in Combinatorial Markets', arXiv 2020",
+    "result": "Proves positive results for up to three multi-demand buyers and a maximal-domain obstruction for non-gross-substitutes valuations.",
+    "relevance": "open-problem-source",
+    "url": "https://arxiv.org/abs/2002.06863"
+   },
+   {
+    "ref": "Kristof Berczi, Erika R. Berczi-Kovacs, and Evelin Szogi, 'A dual approach for dynamic pricing in multi-demand markets', arXiv 2021",
+    "result": "Gives dual certificates for known positive results and proves optimal dynamic prices for bi-demand valuations with arbitrary many buyers.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2107.05131"
+   },
+   {
+    "ref": "Faruk Gul and Ennio Stacchetti, 'Walrasian Equilibrium with Gross Substitutes', Journal of Economic Theory 1999",
+    "result": "Provides the classical gross-substitutes maximal-domain benchmark for indivisible-goods equilibrium theory.",
+    "relevance": "background",
+    "url": "https://doi.org/10.1006/jeth.1999.2531"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Start with finite valuation tables and formulate dynamic-pricing existence as a search over price vectors, demanded bundles, and tie-breaking constraints. For positive results, look for dual certificates of the welfare LP or structural decompositions of optimal allocations. For negative results, search for small valuation profiles where every possible first price vector leads to a continuation that cannot remain optimal.",
+  "verification_notes": "A claimed positive theorem must state the valuation domain, buyer-order assumptions, tie-breaking model, and whether prices are efficiently computable. It must prove that the induced allocation is welfare-optimal for every valuation profile in the domain. A claimed counterexample must give explicit valuations, list the welfare-optimal allocations, and prove that no sequence of posted prices can force or robustly support one of them.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "Berger, Eden, and Feldman explicitly identify the frontier of markets admitting optimal dynamic prices as open.",
+  "url": "https://arxiv.org/abs/2002.06863",
+  "quote": "finding the frontier of markets (i.e., valuation functions) that admit optimal dynamic prices remains an open problem",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Ben Berger, Alon Eden, Michal Feldman",
+  "title": "On the Power and Limits of Dynamic Pricing in Combinatorial Markets",
+  "year": 2020,
+  "venue": "arXiv:2002.06863",
+  "url": "https://arxiv.org/abs/2002.06863"
+ },
+ "additional_refs": [
+  {
+   "title": "A dual approach for dynamic pricing in multi-demand markets",
+   "url": "https://arxiv.org/abs/2107.05131",
+   "authors": "Kristof Bérczi, Erika R. Bérczi-Kovács, Evelin Szögi",
+   "year": 2021,
+   "venue": "arXiv:2107.05131"
+  },
+  {
+   "title": "Walrasian Equilibrium with Gross Substitutes",
+   "url": "https://doi.org/10.1006/jeth.1999.2531",
+   "authors": "Faruk Gul, Ennio Stacchetti",
+   "year": 1999,
+   "venue": "Journal of Economic Theory"
+  },
+  {
+   "title": "Optimal Dynamic Pricing for Welfare Maximization",
+   "url": "https://dl.acm.org/doi/10.1145/2940716.2940757",
+   "authors": "Vincent Cohen-Addad, Alon Eden, Michal Feldman, Amos Fiat",
+   "year": 2016,
+   "venue": "ACM Conference on Economics and Computation"
+  }
+ ],
+ "bibtex": "@misc{Berger2020,\n  author = {Ben Berger and Alon Eden and Michal Feldman},\n  title = {On the Power and Limits of Dynamic Pricing in Combinatorial Markets},\n  year = {2020},\n  howpublished = {arXiv:2002.06863},\n  url = {https://arxiv.org/abs/2002.06863},\n  note = {Source of ORdős Problem ORDOS-140}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/optimal-dynamic-pricing-combinatorial-market-frontier.html",
+  "api": "https://ordos-problems.github.io/api/problems/optimal-dynamic-pricing-combinatorial-market-frontier.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

@@ -1,0 +1,107 @@
+{
+  "id": "weighted-k-server-uniform-randomized-ratio",
+  "additional_refs": [
+    {
+      "authors": "Nikhil Ayyadevara, Ashish Chiplunkar",
+      "title": "The Randomized Competitive Ratio of Weighted k-server is at least Exponential",
+      "year": 2021,
+      "venue": "arXiv:2102.11119",
+      "url": "https://arxiv.org/abs/2102.11119"
+    },
+    {
+      "authors": "Adithya Bijoy, Ankit Mondal, Ashish Chiplunkar",
+      "title": "Weighted k-Server Admits an Exponentially Competitive Algorithm",
+      "year": 2025,
+      "venue": "arXiv:2507.12130",
+      "url": "https://arxiv.org/abs/2507.12130"
+    },
+    {
+      "authors": "Nikhil Bansal, Marek Elias, Grigorios Koumoutsos, Jesper Nederlof",
+      "title": "Competitive Algorithms for Generalized k-Server in Uniform Metrics",
+      "year": 2017,
+      "venue": "arXiv:1707.04519",
+      "url": "https://arxiv.org/abs/1707.04519"
+    },
+    {
+      "authors": "Junho Hwang",
+      "title": "Tight Bounds for Randomized Generalized k-Server on Uniform Metrics",
+      "year": 2026,
+      "venue": "arXiv:2610.37192v1, 27 October 2026",
+      "url": "https://arxiv.org/abs/2610.37192v1"
+    }
+  ],
+  "status": "solution claimed",
+  "short_statement": "A 2026 preprint claims an exponential-in-k randomized ratio on uniform metrics; the exact exponential base is not settled.",
+  "full_statement": "Fix $k$ servers with weights $w_1\\le\\cdots\\le w_k$ on a uniform metric space with sufficiently many points. At each online request, a point is revealed; if no server is currently at the point, the algorithm must move one server there and pays that server's weight times the unit distance. The offline optimum knows the full request sequence. Determine the optimal randomized competitive ratio against an oblivious adversary as a function of $k$, or at least close the asymptotic gap between the best lower and upper bounds. In particular, is the true ratio $2^{\\Theta(k)}$, $2^{\\Theta(k^2)}$, or something else between the known singly exponential lower bound and the previously known $\\exp(O(k^2))$ randomized upper bound? Hwang (2026), Theorem 1.3 and Corollary 1.4, claims the $2^{\\Theta(k)}$ alternative: ordinary weighted k-server is the diagonal-request special case of its generalized model. This records a preprint claim, not an independently certified proof or the exact optimal exponential base.",
+  "open_problem": "Historical target: determine the randomized competitive ratio against an oblivious adversary. A preprint claims to close the exponent-order gap to exp(Theta(k)); the exact optimal exponential base is not thereby determined.",
+  "background": "The weighted $k$-server problem is a natural variant of the classical $k$-server problem. There are $k$ servers with different weights, and moving server $i$ through distance $d$ costs $w_i d$. Even on a uniform metric, where every requested point is equally far from every other point, the weighted problem is much less understood than ordinary paging. A request names a point, and the algorithm must ensure that some server is at that point after the request. The unweighted uniform case has logarithmic randomized behavior, while the weighted uniform case has exponential lower bounds and historically only very large upper bounds. Recent work has finally broken the doubly exponential deterministic barrier for randomized algorithms, and an October 2026 preprint claims to close the remaining exponent-order gap. This makes the problem a clean, well-defined constant-in-$n$ but parameterized-in-$k$ competitive-analysis question.",
+  "known_results": "Fiat and Ricklin introduced weighted server variants, and later work showed that the deterministic behavior can be extremely large. Bansal, Elias, Koumoutsos, and Nederlof gave algorithms for generalized $k$-server in uniform metrics and a doubly exponential deterministic guarantee for weighted uniform metrics. Ayyadevara and Chiplunkar proved that the randomized competitive ratio for weighted $k$-server on uniform metrics is at least exponential in $k$, improving the earlier logarithmic-style lower-bound picture. Ayyadevara, Chiplunkar, and Sharma then proposed a decomposition program that reduced part of the randomized upper-bound challenge to relaxed service-pattern problems. Bijoy, Mondal, and Chiplunkar subsequently gave an $\\exp(O(k^2))$-competitive randomized algorithm on uniform metrics, the first randomized upper bound beating the doubly exponential deterministic barrier. This left a gap between $\\Omega(2^k)$ and $\\exp(O(k^2))$. Hwang's arXiv:2610.37192v1, Theorem 1.3, states $\\mathbb E[\\mathrm{ALG}]\\le 20^k\\mathrm{OPT}+10^k w_k$ for arbitrary weighted uniform spaces and fixed initial configuration. Corollary 1.4 specializes to ordinary weighted k-server. Combined with the lower bound, this claims exp(Theta(k)) against an oblivious adversary, not a matching exponential base.",
+  "progress": {
+    "state": "solution-claimed",
+    "summary": "Preprint claims to close the exponent-order gap; exact base and full proof certification are not supplied by this audit.",
+    "links": [
+      {
+        "title": "The Randomized Competitive Ratio of Weighted k-server is at least Exponential",
+        "url": "https://arxiv.org/abs/2102.11119"
+      },
+      {
+        "title": "A Decomposition Approach to the Weighted k-server Problem",
+        "url": "https://arxiv.org/abs/2410.06485"
+      },
+      {
+        "title": "Weighted k-Server Admits an Exponentially Competitive Algorithm",
+        "url": "https://arxiv.org/abs/2507.12130"
+      },
+      {
+        "title": "Hwang, Theorem 1.3 and Corollary 1.4 (2026)",
+        "url": "https://arxiv.org/abs/2610.37192v1"
+      }
+    ]
+  },
+  "literature": {
+    "synthesis": "The original exponent-order question has a direct preprint claim covering this model via diagonal requests. Its additive term is compatible with competitive analysis. The exact base remains a stronger question; selected theorem reading is not full proof certification.",
+    "reviewed": [
+      {
+        "ref": "Nikhil Bansal, Marek Elias, Grigorios Koumoutsos, and Jesper Nederlof, 'Competitive Algorithms for Generalized k-Server in Uniform Metrics', SODA 2018 / arXiv 2017",
+        "result": "Gives finite competitive algorithms for generalized and weighted variants on uniform metrics, including a doubly exponential deterministic bound for weighted uniform metrics.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1707.04519"
+      },
+      {
+        "ref": "Nikhil Ayyadevara and Ashish Chiplunkar, 'The Randomized Competitive Ratio of Weighted k-server is at least Exponential', arXiv 2021",
+        "result": "Proves an $\\Omega(2^k)$ randomized lower bound on uniform metrics.",
+        "relevance": "hardness",
+        "url": "https://arxiv.org/abs/2102.11119"
+      },
+      {
+        "ref": "Nikhil Ayyadevara, Ashish Chiplunkar, and Amatya Sharma, 'A Decomposition Approach to the Weighted k-server Problem', arXiv 2024",
+        "result": "Frames the open randomized-ratio problem and reduces part of the challenge to relaxed service-pattern subproblems.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2410.06485"
+      },
+      {
+        "ref": "Adithya Bijoy, Ankit Mondal, and Ashish Chiplunkar, 'Weighted k-Server Admits an Exponentially Competitive Algorithm', arXiv 2025",
+        "result": "Gives an $\\exp(O(k^2))$ randomized upper bound on uniform metrics.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2507.12130"
+      },
+      {
+        "ref": "Junho Hwang, Tight Bounds for Randomized Generalized k-Server on Uniform Metrics (2026), arXiv:2610.37192v1",
+        "result": "Theorem 1.3 and Corollary 1.4 claim exponential-in-k competitiveness including ordinary weighted k-server; proof not independently certified.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/html/2610.37192v1"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Verify the weighted theorem and diagonal-request specialization before pursuing the old exponent-order gap. Refining the base is a distinct stronger target.",
+    "verification_notes": "A claimed upper bound must be randomized against an oblivious adversary, state whether the metric is uniform and has enough points, and prove the expected-cost bound for arbitrary weights. A claimed lower bound must define the request distribution and compare expected online cost with the offline optimum under Yao's principle or an equivalent adversarial model. Do not mix this problem with the unweighted randomized $k$-server conjecture or with deterministic weighted-server bounds. For the new claim, check fixed initial configuration, sequence-independent additive term, arbitrary weight ratios, and oblivious adversary. Do not substitute the unit-weight generalized theorem.",
+    "machine_checkable": true
+  },
+  "where_posed": {
+    "text": "Historical target: Ayyadevara, Chiplunkar, and Sharma asked for the optimum randomized ratio; Bijoy, Mondal, and Chiplunkar subsequently improved the upper bound while leaving the exponent-order gap.",
+    "url": "https://arxiv.org/abs/2410.06485",
+    "quote": "finding the optimum competitive ratio of randomized algorithms remains an open problem",
+    "location": "Abstract"
+  }
+}

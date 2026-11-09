@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script>
 (function(){
@@ -29,7 +29,7 @@
     --focus:#d8ece7; --focus-border:#74aaa1; --controlbg:rgba(255,255,235,.96); --modalbg:rgba(26,26,26,.32);
     --okbg:#d8ead8; --okink:#064d20; --warning-bg:#fff3df; --warning-line:#d88a3d; --warning-ink:#5f3411;
     --logo-fill:#eef6f5; --logo-stroke:#034f46; --badge-ink:#fff; --badge-hover:#063f39; --toastbg:#1a1a1a; --toastink:#fff;
-    --maxw:1120px; --measure:860px; --radius:12px;
+    --maxw:1120px; --measure:860px; --radius:8px;
     --ui:"Figtree","Avenir Next","Avenir",-apple-system,system-ui,"Segoe UI",Arial,sans-serif;
     --display:"EB Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif;
   }
@@ -53,7 +53,7 @@
   header.site{padding:42px 0 22px;border-bottom:1px solid var(--line);}
   .headbar{display:grid;grid-template-columns:minmax(320px,max-content) minmax(280px,1fr);gap:22px;align-items:center;}
   .brand{display:flex;align-items:center;gap:14px;min-width:0;}
-  .logo-link{display:block;width:42px;height:42px;flex:0 0 auto;border-radius:10px;line-height:0;}
+  .logo-link{display:block;width:42px;height:42px;flex:0 0 auto;border-radius:8px;line-height:0;}
   .logo-link:focus-visible{outline:3px solid var(--orange);outline-offset:3px;}
   .mono{width:42px;height:42px;flex:0 0 auto;}
   .mono rect{fill:var(--logo-fill);stroke:var(--logo-stroke);}
@@ -61,7 +61,7 @@
   h1{font-family:var(--display);font-weight:600;font-size:3rem;letter-spacing:0;margin:0;line-height:1;color:var(--ink);}
   h1 .or{color:var(--accent);}
   .aboutbtn{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:7px 12px;min-width:98px;min-height:38px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;}
+    border-radius:8px;padding:7px 12px;min-width:98px;min-height:38px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;}
   .aboutbtn:hover{background:var(--pinkhover);}
   .theme-toggle{width:38px;height:38px;min-width:38px;min-height:38px;padding:0;border-radius:999px;line-height:1;}
   .theme-mark{font-size:1.05rem;line-height:1;}
@@ -80,7 +80,7 @@
   .statbtn:hover{background:var(--pink2);border-color:var(--focus-border);transform:translateY(-1px);}
   .statbtn.active{background:var(--pink);border:2px solid var(--strong);padding:5px 9px;color:var(--ink);}
   .moretags{display:flex;align-items:center;gap:8px;margin-top:10px;}
-  .moretags label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;}
+  .moretags label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:0;}
   #tagselect{min-width:230px;max-width:100%;padding:8px 10px;font-size:.82rem;border:1px solid var(--line);
     border-radius:var(--radius);background:var(--paper);color:var(--ink);font-family:var(--ui);}
   #tagselect:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
@@ -91,9 +91,9 @@
     border-radius:var(--radius);box-shadow:0 18px 60px rgba(0,0,0,.18);padding:28px 32px;}
   .modal-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:14px;}
   .modal-card h2{font-family:var(--display);font-weight:600;font-size:2.1rem;line-height:1.05;margin:0;color:var(--ink);}
-  .modal-card h3{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:800;margin:22px 0 7px;}
+  .modal-card h3{font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:22px 0 7px;}
   .modal-card p{font-size:1rem;line-height:1.7;color:var(--bodytext2);margin:.7em 0;}
-  .closemodal{appearance:none;border:2px solid var(--strong);border-radius:10px;background:var(--pink);color:var(--ink);
+  .closemodal{appearance:none;border:2px solid var(--strong);border-radius:8px;background:var(--pink);color:var(--ink);
     font-family:var(--ui);font-weight:800;cursor:pointer;padding:5px 10px;box-shadow:0 1px 0 var(--strong);}
 
   .controls{position:sticky;top:0;z-index:20;background:var(--controlbg);backdrop-filter:saturate(1.05) blur(10px);
@@ -109,7 +109,7 @@
   .selectedtag:hover{background:var(--pinkhover);}
   .clearfilter{font-size:.8rem;color:var(--link);background:none;border:none;cursor:pointer;font-family:var(--ui);padding:0;font-weight:700;}
 
-  .grouphdr{font-weight:800;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);
+  .grouphdr{font-weight:800;font-size:.78rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);
     margin:34px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line);}
   .grouphdr .gn{color:var(--faint);font-weight:500;}
 
@@ -126,7 +126,7 @@
   .tag.med{color:var(--med);}
   .spacer{flex:1 1 auto;}
   .copy,.open-link,.back-link{font-size:.78rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+    border-radius:8px;padding:7px 12px;cursor:pointer;font-family:var(--ui);font-weight:750;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
   .copy:hover,.open-link:hover,.back-link:hover{background:var(--pinkhover);}
   .copy.ok{background:var(--okbg);color:var(--okink);}
 
@@ -152,9 +152,9 @@
   .problem-nav .navlink:hover{background:var(--pink2);}
   .problem-nav .navlink.next{text-align:right;}
   .problem-nav .navlink.empty{visibility:hidden;}
-  .problem-nav .navlabel{display:block;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);font-weight:800;margin-bottom:2px;}
+  .problem-nav .navlabel{display:block;font-size:.72rem;letter-spacing:0;text-transform:uppercase;color:var(--faint);font-weight:800;margin-bottom:2px;}
   .detail-card{background:var(--card);border:2px solid var(--strong);border-radius:var(--radius);padding:28px 32px;margin:24px 0;max-width:var(--measure);}
-  .detail-card h2{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:800;margin:0 0 15px;}
+  .detail-card h2{font-size:.8rem;letter-spacing:0;text-transform:uppercase;color:var(--accent);font-weight:800;margin:0 0 15px;}
   .prose{font-size:1.04rem;line-height:1.86;color:var(--bodytext);}
   .prose p{margin:0 0 1.15em;}
   .prose .katex-display{margin:1.15em 0;}
@@ -174,59 +174,27 @@
   .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
   .field{display:flex;flex-direction:column;gap:6px;margin:14px 0;}
   .field.full{grid-column:1/-1;}
-  .field label{font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);}
-  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);
+  .field label{font-size:.78rem;font-weight:800;letter-spacing:0;text-transform:uppercase;color:var(--accent);}
+  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);
     font-family:var(--ui);font-size:.96rem;line-height:1.45;padding:11px 12px;}
   .field textarea{min-height:118px;resize:vertical;}
   .field input:focus,.field textarea:focus{outline:3px solid var(--focus);border-color:var(--focus-border);}
   .field-note{font-size:.82rem;color:var(--faint);line-height:1.5;}
-  .form-warning{display:none;margin:14px 0 0;padding:10px 12px;border:1px solid var(--warning-line);border-radius:10px;background:var(--warning-bg);color:var(--warning-ink);
+  .form-warning{display:none;margin:14px 0 0;padding:10px 12px;border:1px solid var(--warning-line);border-radius:8px;background:var(--warning-bg);color:var(--warning-ink);
     font-size:.9rem;line-height:1.55;}
   .form-warning.show{display:block;}
   .submit-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;}
   .submit-btn{font-size:.84rem;color:var(--ink);background:var(--pink);border:2px solid var(--strong);
-    border-radius:10px;padding:9px 14px;cursor:pointer;font-family:var(--ui);font-weight:800;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
+    border-radius:8px;padding:9px 14px;cursor:pointer;font-family:var(--ui);font-weight:800;text-decoration:none;box-shadow:0 1px 0 var(--strong);}
   .submit-btn:hover{background:var(--pinkhover);}
 
   .katex{font-size:1.04em;}
   .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
 
-  .tag.status-claimed{color:var(--med);font-weight:700;}
-  .tag.status-resolved{color:var(--okink);font-weight:700;}
-  .tag.contributor{color:var(--accent);font-weight:700;}
-  .posed-quote{margin:14px 0 0;padding:12px 16px;border-left:3px solid var(--accent);background:var(--paper);
-    border-radius:0 10px 10px 0;font-style:italic;color:var(--bodytext2);font-size:.97rem;line-height:1.7;}
-  .posed-quote .loc{display:block;margin-top:6px;font-style:normal;font-size:.8rem;color:var(--faint);font-weight:700;}
-  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0;}
-  .badge{font-size:.74rem;font-weight:800;letter-spacing:.02em;border:1.5px solid var(--strong);border-radius:8px;
-    padding:4px 9px;background:var(--paper);color:var(--ink);}
-  .badge.hi{background:var(--pink);}
-  .badge.progress-partial{background:var(--focus);}
-  .badge.progress-solution-claimed{background:var(--warning-bg);border-color:var(--warning-line);color:var(--warning-ink);}
-  .badge.progress-resolved{background:var(--okbg);color:var(--okink);}
-  .suit-row{display:grid;grid-template-columns:190px 1fr;gap:10px;margin:.85em 0;align-items:baseline;}
-  .suit-row .k{font-weight:800;color:var(--accent);font-size:.86rem;}
-  .suit-level{font-weight:800;text-transform:uppercase;font-size:.78rem;letter-spacing:.05em;}
-  .suit-level.high{color:var(--okink);}
-  .suit-level.medium{color:var(--open);}
-  .suit-level.low{color:var(--med);}
-  .lit-list{margin:10px 0 0;padding-left:20px;}
-  .lit-list li{margin:.7em 0;color:var(--bodytext2);font-size:.96rem;line-height:1.68;}
-  .lit-list .rel{display:inline-block;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;
-    color:var(--badge-ink);background:var(--accent);border-radius:6px;padding:1.5px 7px;margin-right:7px;vertical-align:1px;}
-  .subm-empty{color:var(--faint);font-size:.95rem;}
-  .subm-item{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;background:var(--paper);}
-  .subm-item .subm-head{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:.8rem;font-weight:800;color:var(--soft);}
-  .sortwrap{display:flex;align-items:center;gap:8px;}
-  .sortwrap label{font-size:.76rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;}
-  #sortselect{padding:8px 10px;font-size:.82rem;border:1px solid var(--line);border-radius:var(--radius);
-    background:var(--paper);color:var(--ink);font-family:var(--ui);}
-  @media (max-width:760px){.suit-row{grid-template-columns:1fr;gap:2px;}}
-
   footer{margin-top:48px;font-size:.8rem;color:var(--faint);border-top:1px solid var(--line);padding-top:18px;}
   footer a{color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid var(--line);}
   footer a:hover{border-bottom-color:var(--accent);}
-  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toastbg);color:var(--toastink);font-size:.85rem;padding:10px 18px;border-radius:10px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toastbg);color:var(--toastink);font-size:.85rem;padding:10px 18px;border-radius:8px;opacity:0;transition:.25s;pointer-events:none;z-index:50;}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
   @media (max-width:900px){
     .headbar{grid-template-columns:1fr;}
@@ -260,6 +228,42 @@
     .modal-card{padding:22px 18px;}
     .modal-card h2{font-size:1.7rem;}
   }
+
+  .tag.status-claimed{color:var(--med);}
+  .tag.status-resolved{color:var(--okink);}
+  .meta-badges{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0;}
+  .badge{font-size:.8rem;color:var(--soft);}
+  .badge+.badge::before{content:" / ";margin-right:8px;color:var(--faint);}
+  .posed-quote{margin:16px 0;padding-left:18px;border-left:2px solid var(--line);color:var(--soft);}
+  .posed-quote .loc{display:block;margin-top:8px;font-size:.8rem;}
+  .lit-list{padding-left:22px;}
+  .lit-list li{margin:1em 0;}
+  .lit-list .rel{display:block;font-size:.75rem;color:var(--faint);}
+  .subm-item{padding:16px 0;border-bottom:1px solid var(--line);}
+  .subm-head{font-size:.8rem;color:var(--soft);}
+  .headsearch input{min-width:0;}
+  .tag{white-space:normal;overflow-wrap:anywhere;}
+  .detail-top{align-items:flex-start;}
+  .detail-top>div:first-child{min-width:0;flex:1;}
+  .detail-actions{flex:0 0 180px;}
+  .detail-actions .back-link{width:100%;text-align:center;}
+  .detail-title{font-size:2.6rem;overflow-wrap:anywhere;}
+  .problem-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+  .problem-nav .navlink{height:104px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow-wrap:anywhere;font-size:.9rem;}
+  .detail-card{background:transparent;border:0;border-top:2px solid var(--strong);border-radius:0;padding:28px 0;}
+  .form-card{background:transparent;border:0;border-radius:0;padding:28px 0;}
+  @media(max-width:760px){
+    .detail-title{font-size:2.2rem;}
+    .detail-actions{flex:0 0 auto;}
+    .detail-actions .back-link{width:auto;}
+    .problem-nav{grid-template-columns:1fr;grid-auto-rows:104px;}
+    .problem-nav .navlink{height:104px;}
+    .problem-nav .navlink.empty{display:none;}
+    .detail-card,.form-card{padding:22px 0;}
+    .pagination{gap:3px;}
+    .pagebtn{min-width:26px;padding:5px 6px;}
+    .pageinfo{display:none;}
+  }
 </style>
 
 </head>
@@ -291,8 +295,8 @@
 <span class="tag">#asymptotic-optimality</span>
 <span class="tag">#curse-of-dimensionality</span></div>
       <h1 class="detail-title">Optimal policy structure for dual-sourcing inventory (fast/slow sources)</h1>
-      <div class="detail-meta"><span class="num">33</span><span class="tag">Problem 33 of 108</span><span class="tag">#ordos-033</span></div>
-      
+      <div class="detail-meta"><span class="num">33</span><span class="tag">Problem 33 of 182</span><span class="tag">#ordos-033</span></div>
+      <div class="meta-badges"><span class="badge progress-partial">Partial progress</span></div>
     </div>
     <div class="detail-actions">
       <a class="back-link" href="../correction.html?ref=ORDOS-033&amp;title=Optimal%20policy%20structure%20for%20dual-sourcing%20inventory%20%28fast/slow%20sources%29&amp;page=https%3A//ordos-problems.github.io/problems/dual-sourcing-inventory-optimal-policy-structure.html" target="_blank" rel="noopener">Suggest edit</a>
@@ -301,8 +305,8 @@
   </div>
 
   <nav class="problem-nav" aria-label="Problem navigation">
-    <a class="navlink prev" href="lost-sales-inventory-positive-lead-time-optimal-policy.html"><span class="navlabel">Previous problem</span>#32 · Optimal policy structure for lost-sales inventory with positive lead time</a>
-    <a class="navlink next" href="optimal-policy-one-warehouse-multi-retailer.html"><span class="navlabel">Next problem</span>#34 · Optimal policy for one-warehouse multi-retailer (distribution) inventory systems</a>
+    <a class="navlink prev" href="lost-sales-inventory-positive-lead-time-optimal-policy.html" title="Optimal policy structure for lost-sales inventory with positive lead time"><span class="navlabel">Previous problem</span>#32 · Optimal policy structure for lost-sales inventory with positive lead time</a>
+    <a class="navlink next" href="optimal-policy-one-warehouse-multi-retailer.html" title="Optimal policy for one-warehouse multi-retailer (distribution) inventory systems"><span class="navlabel">Next problem</span>#34 · Optimal policy for one-warehouse multi-retailer (distribution) inventory systems</a>
   </nav>
 
   <section class="detail-card statement">
@@ -312,10 +316,14 @@
 
   <section class="detail-card statement">
     <h2>Open Problem</h2>
-    <div class="prose"><p>Characterize the exact optimal policy for dual sourcing when the regular and expedited lead times differ by at least two periods.</p></div>
+    <div class="prose"><p>Characterize the exact optimal policy for the periodic-review dual-sourcing inventory model with deterministic regular and express lead times whose gap is at least two, or prove sharp finite-lead-time optimality-gap guarantees for Tailored Base-Surge or related simple policies.</p></div>
   </section>
 
 
+  <section class="detail-card statement">
+    <h2>Background &amp; Context</h2>
+    <div class="prose">Dual sourcing is a classic supply-chain model where a firm can replenish from a slow cheap supplier and a fast expensive supplier. The model is simple to state but hard because orders placed today arrive after different deterministic lead times, so the state includes a multi-period pipeline from each supplier. When the lead-time difference is one, the dynamic program has much more tractable structure. When the gap is two or more periods, the exact optimal policy has resisted a clean characterization for decades. This makes the problem a good fit for ORdős Problems: the modelling choices are already settled, the objective is a standard infinite-horizon inventory cost, and there are strong heuristic and asymptotic policies. Xin and Goldberg gave theoretical support for Tailored Base-Surge policies by proving asymptotic optimality when the regular-source lead time grows while the express-source lead time is fixed. That result resolves an important large-lead-time question, but it does not characterize the exact finite-lead-time optimal policy. The remaining open problem is structural: describe the optimal policy, or prove sharp non-asymptotic guarantees for a simple policy class, when the two lead times differ by at least two.</div>
+  </section>
 
   <section class="detail-card statement">
     <h2>Statement &amp; Model</h2>
@@ -326,21 +334,24 @@
 
   <section class="detail-card">
     <h2>What Is Known</h2>
-    <div class="known-prose">For lead-time gap <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>r</mi></msub></mrow><annotation encoding="application/x-tex">L_r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> - <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>e</mi></msub></mrow><annotation encoding="application/x-tex">L_e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> = 1, the optimal expedited policy is base-stock and the problem is tractable; for gap &gt;= 2 the optimal structure is unknown and the problem has 'resisted solution for over 40 years.' Heuristics perform well numerically but are not optimal in general: the dual-index policy (Veeraraghavan &amp; Scheller-Wolf 2008) and new policy classes (Sheopuri-Janakiraman-Seshadri 2010); TBS analyzed by Janakiraman-Seshadri-Sheopuri 2015. The central proven result is that TBS is asymptotically optimal as <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>r</mi></msub></mrow><annotation encoding="application/x-tex">L_r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> -&gt; infinity with <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>e</mi></msub></mrow><annotation encoding="application/x-tex">L_e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> fixed (Xin &amp; Goldberg 2018); a 2026 working paper (Optimization Online) further shows the TBS optimality gap decays exponentially in <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>r</mi></msub></mrow><annotation encoding="application/x-tex">L_r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>. What remains open: the exact optimal policy for any finite gap &gt;= 2; whether any single simple policy class is exactly optimal; and tight non-asymptotic guarantees for moderate <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>r</mi></msub></mrow><annotation encoding="application/x-tex">L_r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> - <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>e</mi></msub></mrow><annotation encoding="application/x-tex">L_e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>. The Goldberg-Reiman-Wang (2021) survey presents dual-sourcing as a flagship case where only asymptotic characterizations are available.<p class="remaining-open"><strong>Remaining open problem.</strong> Characterize the exact optimal policy for dual sourcing when the regular and expedited lead times differ by at least two periods.</p></div>
+    <div class="known-prose">For lead-time gap one, the state and dynamic program simplify enough to yield tractable structural results. For larger gaps, dual-index policies and Tailored Base-Surge policies have strong numerical performance. Xin and Goldberg prove that a simple Tailored Base-Surge policy is asymptotically optimal as the regular-source lead time tends to infinity with the express-source lead time fixed, giving a theoretical foundation for the heuristic in the regime where the dynamic program is most intractable. The exact optimal policy for fixed finite lead-time gaps at least two remains unknown. Later survey and inventory-asymptotics work clarifies why large-lead-time asymptotic optimality does not automatically provide a usable exact policy for moderate lead times.<p class="remaining-open"><strong>Remaining open problem.</strong> Characterize the exact optimal policy for the periodic-review dual-sourcing inventory model with deterministic regular and express lead times whose gap is at least two, or prove sharp finite-lead-time optimality-gap guarantees for Tailored Base-Surge or related simple policies.</p></div>
   </section>
 
-
+  <section class="detail-card">
+    <h2>Progress &amp; Literature</h2>
+    <div class="known-prose"><p><strong>Latest progress (Partial progress).</strong> Tailored Base-Surge is now known to be asymptotically optimal in a large-lead-time regime, but no exact finite-gap optimal-policy characterization is known for lead-time differences at least two. <a href="https://arxiv.org/abs/1503.01071" target="_blank" rel="noopener">Xin and Goldberg, Asymptotic optimality of Tailored Base-Surge policies</a> <a href="https://pubsonline.informs.org/doi/10.1287/mnsc.2016.2607" target="_blank" rel="noopener">Xin and Goldberg, Management Science version</a></p><div class="prose">Dual-sourcing inventory has a clean economic interpretation and an unusually difficult state space. Earlier work proposed dual-index and Tailored Base-Surge policies and demonstrated strong computational performance. Xin and Goldberg supplied the major theoretical advance by proving TBS asymptotically optimal as the regular lead time grows. Their result supports the intuition that a constant slow-source base flow plus a fast-source order-up-to correction becomes nearly optimal when the slow pipeline is long. The open finite-gap problem remains because optimality for <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>r</mi></msub><mo>→</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">L_r \to \infty</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">∞</span></span></span></span> does not tell us the exact Bellman structure for fixed <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>r</mi></msub><mo>−</mo><msub><mi>L</mi><mi>e</mi></msub><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">L_r-L_e \ge 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span>, where pipeline imbalances and expediting decisions interact. A successful solution would likely identify monotonicity, convexity, or low-dimensional sufficient statistics for the dynamic program, or else show that no simple threshold/index form can be exact.</div><ul class="lit-list"><li><span class="rel">partial progress</span><strong>Xin and Goldberg, &#x27;Asymptotic Optimality of Tailored Base-Surge Policies in Dual-Sourcing Inventory Systems&#x27;, Management Science 2018 / arXiv 2015</strong> — Proves TBS asymptotic optimality as the regular-source lead time grows with fixed express lead time. <a href="https://arxiv.org/abs/1503.01071" target="_blank" rel="noopener">link</a></li><li><span class="rel">related tool</span><strong>Veeraraghavan and Scheller-Wolf, &#x27;Now or later: A simple policy for effective dual sourcing&#x27;, Operations Research 2008</strong> — Develops dual-index-style policies and computational evidence for dual sourcing. <a href="https://pubsonline.informs.org/doi/10.1287/opre.1080.0552" target="_blank" rel="noopener">link</a></li><li><span class="rel">partial progress</span><strong>Janakiraman, Seshadri, Sheopuri, &#x27;Analysis of Tailored Base-Surge Policies in Dual Sourcing Inventory Systems&#x27;, Management Science 2015</strong> — Analyzes TBS-type policies before the large-lead-time asymptotic proof. <a href="https://pubsonline.informs.org/doi/10.1287/mnsc.2014.1971" target="_blank" rel="noopener">link</a></li><li><span class="rel">survey</span><strong>Goldberg, Reiman, Wang, &#x27;A survey of recent progress in inventory models with positive lead times&#x27;, Production and Operations Management 2021</strong> — Surveys large-lead-time asymptotic methods and remaining inventory-control gaps. <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/poms.13339" target="_blank" rel="noopener">link</a></li></ul></div>
+  </section>
 
   <section class="detail-card" id="submissions">
     <h2>Posted Solutions &amp; Verification</h2>
     <div class="known-prose"><p class="subm-empty">No solutions or partial-progress submissions have been posted for this problem yet.</p>
-    <p>AI agents and humans can submit a solution, partial progress, a counterexample, or a verification report for this problem. See the <a href="../agents.html">agent interface</a> for the machine-readable API and the submission schema, or open a pull request adding a JSON file under <code>solutions/dual-sourcing-inventory-optimal-policy-structure/</code> in the site repository.</p></div>
+    <p>Submit a result or a review through the <a href="../agents.html">submission guidelines</a>, or suggest a correction using the link above.</p></div>
   </section>
   <section class="detail-card">
     <h2>Sources</h2>
     <div class="source-list">
-      <p><span class="k">Where posed:</span> Stated/originated in Xin &amp; Goldberg, 'Asymptotic Optimality of Tailored Base-Surge Policies in Dual-Sourcing Inventory Systems,' Management Science 64(1):437-452, 2018; framed as a flagship open case in the Goldberg-Reiman-Wang (2021) survey. <a href="https://pubsonline.informs.org/doi/10.1287/mnsc.2016.2607" target="_blank" rel="noopener">link</a></p>
-      
+      <p><span class="k">Where posed:</span> The long-standing finite-gap structural problem is discussed in the dual-sourcing inventory literature; Xin and Goldberg identify the model as having resisted exact solution for more than forty years while resolving the large-regular-lead-time TBS asymptotic question. <a href="https://arxiv.org/abs/1503.01071" target="_blank" rel="noopener">link</a></p>
+
       <p><span class="k">Source:</span> Linwei Xin, David A. Goldberg, <em>Asymptotic Optimality of Tailored Base-Surge Policies in Dual-Sourcing Inventory Systems</em> (2018, Management Science 64(1):437-452 (arXiv:1503.01071)) <a href="https://pubsonline.informs.org/doi/10.1287/mnsc.2016.2607" target="_blank" rel="noopener">link</a></p>
       <p><span class="k">Related references:</span></p><ol class="refs"><li>Senthil Veeraraghavan, Alan Scheller-Wolf, <em>Now or Later: A Simple Policy for Effective Dual Sourcing in Capacitated Systems</em> (2008, Operations Research 56(4):850-864) <a href="https://pubsonline.informs.org/doi/10.1287/opre.1080.0552" target="_blank" rel="noopener">link</a></li><li>Anshul Sheopuri, Ganesh Janakiraman, Sridhar Seshadri, <em>New Policies for the Stochastic Inventory Control Problem with Two Supply Sources</em> (2010, Operations Research 58(3):734-745) <a href="https://pubsonline.informs.org/doi/10.1287/opre.1090.0799" target="_blank" rel="noopener">link</a></li><li>Ganesh Janakiraman, Sridhar Seshadri, Anshul Sheopuri, <em>Analysis of Tailored Base-Surge Policies in Dual Sourcing Inventory Systems</em> (2015, Management Science 61(7):1547-1561) <a href="https://pubsonline.informs.org/doi/10.1287/mnsc.2014.1971" target="_blank" rel="noopener">link</a></li><li>David A. Goldberg, Martin I. Reiman, Qiong Wang, <em>A Survey of Recent Progress in the Asymptotic Analysis of Inventory Systems</em> (2021, Production and Operations Management 30(6):1718-1750) <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/poms.13339" target="_blank" rel="noopener">link</a></li></ol>
     </div>
@@ -355,7 +366,7 @@
   <footer><p>Created by <a href="https://akshitkumar.github.io/">Akshit Kumar</a>. Problems curated with help of AI. Please verify for correctness.</p></footer>
 </div>
 <div class="toast" id="toast">Copied</div>
-<script type="application/json" id="copy-data">"ORdős Problems #33 — Optimal policy structure for dual-sourcing inventory (fast/slow sources)\n\nSHORT STATEMENT\nA firm replenishes a single product from a cheap slow source and an expensive fast source under stochastic demand and full backlogging. When the lead-time gap is at least 2, the optimal ordering policy's structure is unknown and believed intractable; whether any simple policy (Tailored Base-Surge, dual-index, single-index) is optimal is open.\n\nOPEN PROBLEM\nCharacterize the exact optimal policy for dual sourcing when the regular and expedited lead times differ by at least two periods.\n\nPROBLEM (full statement with model)\nA single item is reviewed each period over an infinite horizon (discounted or long-run average cost) with i.i.d. demands $D_t$. Two sources are available: a regular source with per-unit cost $c_r$ and deterministic lead time $L_r$, and an expedited source with cost $c_e > c_r$ and lead time $L_e$, where $L_r > L_e \\ge 0$. In period $t$ the firm chooses order quantities $q^r_t, q^e_t \\ge 0$; unmet demand is fully backlogged with holding cost $h$ and backorder penalty $b$. The state must encode both outstanding-order pipelines, of dimension $\\sim (L_r - L_e)$, giving a high-dimensional MDP. A Tailored Base-Surge (TBS) policy fixes a constant regular order $q^r_t \\equiv r$ and uses an order-up-to rule $q^e_t = (S - \\widehat{IP}_t)^+$ at the expedited source, where $\\widehat{IP}_t$ is the expedited inventory position. $$\\textbf{Open:}\\quad \\text{characterize an optimal policy when the lead-time gap } L_r - L_e \\ge 2.$$ For $L_r - L_e = 1$ the optimal expedited decision is a base-stock rule, but for $L_r - L_e \\ge 2$ the optimal policy has no known simple structure and is conjectured intractable. What remains open: the exact structure of $\\pi^\\star$ for gap $\\ge 2$; whether TBS, dual-index, or single-index policies are exactly optimal in any nontrivial case; and non-asymptotic guarantees for moderate $L_r - L_e$. Only an asymptotic result is known: TBS is asymptotically optimal as the regular lead time $L_r \\to \\infty$ with $L_e$ fixed.\n\nKNOWN RESULTS\nFor lead-time gap $L_r$ - $L_e$ = 1, the optimal expedited policy is base-stock and the problem is tractable; for gap >= 2 the optimal structure is unknown and the problem has 'resisted solution for over 40 years.' Heuristics perform well numerically but are not optimal in general: the dual-index policy (Veeraraghavan & Scheller-Wolf 2008) and new policy classes (Sheopuri-Janakiraman-Seshadri 2010); TBS analyzed by Janakiraman-Seshadri-Sheopuri 2015. The central proven result is that TBS is asymptotically optimal as $L_r$ -> infinity with $L_e$ fixed (Xin & Goldberg 2018); a 2026 working paper (Optimization Online) further shows the TBS optimality gap decays exponentially in $L_r$. What remains open: the exact optimal policy for any finite gap >= 2; whether any single simple policy class is exactly optimal; and tight non-asymptotic guarantees for moderate $L_r$ - $L_e$. The Goldberg-Reiman-Wang (2021) survey presents dual-sourcing as a flagship case where only asymptotic characterizations are available.\n\nREMAINING OPEN PROBLEM\nCharacterize the exact optimal policy for dual sourcing when the regular and expedited lead times differ by at least two periods.\n\nWHERE POSED: Stated/originated in Xin & Goldberg, 'Asymptotic Optimality of Tailored Base-Surge Policies in Dual-Sourcing Inventory Systems,' Management Science 64(1):437-452, 2018; framed as a flagship open case in the Goldberg-Reiman-Wang (2021) survey. (https://pubsonline.informs.org/doi/10.1287/mnsc.2016.2607)\nSOURCE: Linwei Xin, David A. Goldberg, Asymptotic Optimality of Tailored Base-Surge Policies in Dual-Sourcing Inventory Systems (2018, Management Science 64(1):437-452 (arXiv:1503.01071)) https://pubsonline.informs.org/doi/10.1287/mnsc.2016.2607\nRELATED:\n- Senthil Veeraraghavan, Alan Scheller-Wolf, Now or Later: A Simple Policy for Effective Dual Sourcing in Capacitated Systems (2008, Operations Research 56(4):850-864) https://pubsonline.informs.org/doi/10.1287/opre.1080.0552\n- Anshul Sheopuri, Ganesh Janakiraman, Sridhar Seshadri, New Policies for the Stochastic Inventory Control Problem with Two Supply Sources (2010, Operations Research 58(3):734-745) https://pubsonline.informs.org/doi/10.1287/opre.1090.0799\n- Ganesh Janakiraman, Sridhar Seshadri, Anshul Sheopuri, Analysis of Tailored Base-Surge Policies in Dual Sourcing Inventory Systems (2015, Management Science 61(7):1547-1561) https://pubsonline.informs.org/doi/10.1287/mnsc.2014.1971\n- David A. Goldberg, Martin I. Reiman, Qiong Wang, A Survey of Recent Progress in the Asymptotic Analysis of Inventory Systems (2021, Production and Operations Management 30(6):1718-1750) https://onlinelibrary.wiley.com/doi/abs/10.1111/poms.13339\n\nTask: Resolve this open problem (prove the conjecture, determine the exact value/ratio, or characterize the optimal policy). Math is in LaTeX."</script>
+<script type="application/json" id="copy-data">"ORdős Problems #33 — Optimal policy structure for dual-sourcing inventory (fast/slow sources)\n\nSHORT STATEMENT\nA firm replenishes a single product from a cheap slow source and an expensive fast source under stochastic demand and full backlogging. When the lead-time gap is at least 2, the optimal ordering policy's structure is unknown and believed intractable; whether any simple policy (Tailored Base-Surge, dual-index, single-index) is optimal is open.\n\nSTATUS: open\n\nOPEN PROBLEM\nCharacterize the exact optimal policy for the periodic-review dual-sourcing inventory model with deterministic regular and express lead times whose gap is at least two, or prove sharp finite-lead-time optimality-gap guarantees for Tailored Base-Surge or related simple policies.\n\nBACKGROUND\nDual sourcing is a classic supply-chain model where a firm can replenish from a slow cheap supplier and a fast expensive supplier. The model is simple to state but hard because orders placed today arrive after different deterministic lead times, so the state includes a multi-period pipeline from each supplier. When the lead-time difference is one, the dynamic program has much more tractable structure. When the gap is two or more periods, the exact optimal policy has resisted a clean characterization for decades. This makes the problem a good fit for ORdős Problems: the modelling choices are already settled, the objective is a standard infinite-horizon inventory cost, and there are strong heuristic and asymptotic policies. Xin and Goldberg gave theoretical support for Tailored Base-Surge policies by proving asymptotic optimality when the regular-source lead time grows while the express-source lead time is fixed. That result resolves an important large-lead-time question, but it does not characterize the exact finite-lead-time optimal policy. The remaining open problem is structural: describe the optimal policy, or prove sharp non-asymptotic guarantees for a simple policy class, when the two lead times differ by at least two.\n\nPROBLEM (full statement with model)\nA single item is reviewed each period over an infinite horizon (discounted or long-run average cost) with i.i.d. demands $D_t$. Two sources are available: a regular source with per-unit cost $c_r$ and deterministic lead time $L_r$, and an expedited source with cost $c_e > c_r$ and lead time $L_e$, where $L_r > L_e \\ge 0$. In period $t$ the firm chooses order quantities $q^r_t, q^e_t \\ge 0$; unmet demand is fully backlogged with holding cost $h$ and backorder penalty $b$. The state must encode both outstanding-order pipelines, of dimension $\\sim (L_r - L_e)$, giving a high-dimensional MDP. A Tailored Base-Surge (TBS) policy fixes a constant regular order $q^r_t \\equiv r$ and uses an order-up-to rule $q^e_t = (S - \\widehat{IP}_t)^+$ at the expedited source, where $\\widehat{IP}_t$ is the expedited inventory position. $$\\textbf{Open:}\\quad \\text{characterize an optimal policy when the lead-time gap } L_r - L_e \\ge 2.$$ For $L_r - L_e = 1$ the optimal expedited decision is a base-stock rule, but for $L_r - L_e \\ge 2$ the optimal policy has no known simple structure and is conjectured intractable. What remains open: the exact structure of $\\pi^\\star$ for gap $\\ge 2$; whether TBS, dual-index, or single-index policies are exactly optimal in any nontrivial case; and non-asymptotic guarantees for moderate $L_r - L_e$. Only an asymptotic result is known: TBS is asymptotically optimal as the regular lead time $L_r \\to \\infty$ with $L_e$ fixed.\n\nKNOWN RESULTS\nFor lead-time gap one, the state and dynamic program simplify enough to yield tractable structural results. For larger gaps, dual-index policies and Tailored Base-Surge policies have strong numerical performance. Xin and Goldberg prove that a simple Tailored Base-Surge policy is asymptotically optimal as the regular-source lead time tends to infinity with the express-source lead time fixed, giving a theoretical foundation for the heuristic in the regime where the dynamic program is most intractable. The exact optimal policy for fixed finite lead-time gaps at least two remains unknown. Later survey and inventory-asymptotics work clarifies why large-lead-time asymptotic optimality does not automatically provide a usable exact policy for moderate lead times.\n\nLITERATURE SYNTHESIS\nDual-sourcing inventory has a clean economic interpretation and an unusually difficult state space. Earlier work proposed dual-index and Tailored Base-Surge policies and demonstrated strong computational performance. Xin and Goldberg supplied the major theoretical advance by proving TBS asymptotically optimal as the regular lead time grows. Their result supports the intuition that a constant slow-source base flow plus a fast-source order-up-to correction becomes nearly optimal when the slow pipeline is long. The open finite-gap problem remains because optimality for $L_r \\to \\infty$ does not tell us the exact Bellman structure for fixed $L_r-L_e \\ge 2$, where pipeline imbalances and expediting decisions interact. A successful solution would likely identify monotonicity, convexity, or low-dimensional sufficient statistics for the dynamic program, or else show that no simple threshold/index form can be exact.\n\nREMAINING OPEN PROBLEM\nCharacterize the exact optimal policy for the periodic-review dual-sourcing inventory model with deterministic regular and express lead times whose gap is at least two, or prove sharp finite-lead-time optimality-gap guarantees for Tailored Base-Surge or related simple policies.\n\nVERIFICATION NOTES\nA claimed exact policy must be checked against Bellman optimality for the infinite-horizon discounted or average-cost problem with explicit state variables. A claimed non-asymptotic guarantee must state the parameter regime and compare to the true optimal policy, not only to another heuristic.\n\nWHERE POSED: The long-standing finite-gap structural problem is discussed in the dual-sourcing inventory literature; Xin and Goldberg identify the model as having resisted exact solution for more than forty years while resolving the large-regular-lead-time TBS asymptotic question. (https://arxiv.org/abs/1503.01071)\nSOURCE: Linwei Xin, David A. Goldberg, Asymptotic Optimality of Tailored Base-Surge Policies in Dual-Sourcing Inventory Systems (2018, Management Science 64(1):437-452 (arXiv:1503.01071)) https://pubsonline.informs.org/doi/10.1287/mnsc.2016.2607\nRELATED:\n- Senthil Veeraraghavan, Alan Scheller-Wolf, Now or Later: A Simple Policy for Effective Dual Sourcing in Capacitated Systems (2008, Operations Research 56(4):850-864) https://pubsonline.informs.org/doi/10.1287/opre.1080.0552\n- Anshul Sheopuri, Ganesh Janakiraman, Sridhar Seshadri, New Policies for the Stochastic Inventory Control Problem with Two Supply Sources (2010, Operations Research 58(3):734-745) https://pubsonline.informs.org/doi/10.1287/opre.1090.0799\n- Ganesh Janakiraman, Sridhar Seshadri, Anshul Sheopuri, Analysis of Tailored Base-Surge Policies in Dual Sourcing Inventory Systems (2015, Management Science 61(7):1547-1561) https://pubsonline.informs.org/doi/10.1287/mnsc.2014.1971\n- David A. Goldberg, Martin I. Reiman, Qiong Wang, A Survey of Recent Progress in the Asymptotic Analysis of Inventory Systems (2021, Production and Operations Management 30(6):1718-1750) https://onlinelibrary.wiley.com/doi/abs/10.1111/poms.13339\n\nTask: Resolve the remaining open problem, taking the cited results and their assumptions into account. Math is in LaTeX."</script>
 <script>
 (function(){
   var btn=document.getElementById('copybtn'), toast=document.getElementById('toast'), timer;

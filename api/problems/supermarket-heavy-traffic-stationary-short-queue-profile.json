@@ -1,0 +1,125 @@
+{
+ "number": 138,
+ "ref": "ORDOS-138",
+ "id": "supermarket-heavy-traffic-stationary-short-queue-profile",
+ "title": "Stationary short-queue profile in the heavy-traffic supermarket model",
+ "collection": "Applied Probability",
+ "area": "Queueing Theory",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "queueing theory",
+  "supermarket model",
+  "power-of-d choices",
+  "heavy traffic",
+  "stationary distribution",
+  "mean field limits",
+  "applied probability"
+ ],
+ "short_statement": "Prove the Eschenfeldt-Gamarnik conjecture for the stationary short-queue profile of JSQ($d$) in the many-server heavy-traffic supermarket model.",
+ "open_problem": "Prove or refute the conjectured stationary fixed-point limit for the short-queue profile in the heavy-traffic supermarket model.",
+ "background": "The supermarket model is a canonical queueing model for randomized load balancing. There are $n$ parallel single-server queues, arrivals occur at total rate $n\\lambda$, each arrival samples $d$ queues uniformly at random, and the job joins a shortest sampled queue. For fixed $\\lambda<1$, the power-of-$d$ rule produces a doubly exponential stationary queue-length tail and a maximum queue length of order $\\log\\log n$. Heavy traffic is subtler: as $\\lambda_n\\uparrow 1$, the typical queue length grows, and the behavior of queues shorter than the typical scale is not diffusive. Eschenfeldt and Gamarnik identify a deterministic infinite-dimensional dynamical system for the short-queue profile and compute its unique fixed point. They conjecture that this fixed point is the limiting stationary short-queue profile. The open problem is to prove the steady-state version, i.e. an interchange-of-limits theorem and stationary convergence result for this heavy-traffic mean-field system.",
+ "full_statement": "Consider $n$ queues with exponential service rate $1$ at each server and Poisson arrivals of rate $n\\lambda_n$. Each arriving job samples $d\\ge2$ queues uniformly and joins a shortest sampled queue, ties arbitrary. Let $Q_i^n(t)$ be the number of queues with length at least $i$ at time $t$. In the heavy-traffic regime $\\lambda_n\\uparrow1$, with $\\lambda_n$ approaching $1$ no faster than the scale specified in Eschenfeldt and Gamarnik, the natural center for queue lengths is approximately $\\log_d(1-\\lambda_n)^{-1}$. Define a rescaled short-queue profile below this center, for example by tracking the appropriately scaled deficits in $Q_i^n$ for levels $i$ below $\\log_d(1-\\lambda_n)^{-1}-O(1)$. Eschenfeldt and Gamarnik prove that the transient dynamics of this profile are described by an infinite system of deterministic linear differential equations and that the system has a unique fixed point of the form $\\pi_1(d^i-1)/(d-1)$ for $i\\ge1$. Prove that, in stationarity, the corresponding rescaled queue-length profile converges to this fixed point. Equivalently, justify the conjectured interchange between the many-server heavy-traffic limit and the stationary distribution for the short-queue process.",
+ "known_results": "Classical supermarket-model work by Vvedenskaya, Dobrushin, and Karpelevich and by Mitzenmacher established the mean-field picture for fixed load $\\lambda<1$, including the power-of-two phenomenon and doubly exponential queue tails. Luczak and McDiarmid proved rapid mixing and showed that, in equilibrium for fixed $\\lambda<1$, the maximum queue length concentrates on at most two adjacent values around $\\log\\log n/\\log d$. Eschenfeldt and Gamarnik analyze the regime $\\lambda_n\\uparrow1$. They prove that most queues have length at least $\\log_d(1-\\lambda_n)^{-1}-O(1)$ with high probability and derive a deterministic infinite-dimensional description for the dynamics of shorter queues after rescaling. They compute the unique fixed point $\\pi_1(d^i-1)/(d-1)$ and explicitly conjecture that it describes the steady-state short-queue profile. The remaining difficulty is the steady-state limit: proving tightness, controlling the stationary process, and interchanging the limit in $n$ with the long-time limit.",
+ "progress": {
+  "state": "partial",
+  "summary": "Transient rescaled dynamics and the candidate fixed point are known. The stationary convergence/interchange-of-limits theorem remains open.",
+  "links": [
+   {
+    "title": "Supermarket Queueing System in the Heavy Traffic Regime. Short Queue Dynamics",
+    "url": "https://arxiv.org/abs/1610.03522"
+   },
+   {
+    "title": "On the maximum queue length in the supermarket model",
+    "url": "https://arxiv.org/abs/math/0605639"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "Simulations can test the conjectured stationary profile and may expose missing scaling conditions, but a refutation would still require an asymptotic probabilistic argument or a rigorously analyzed alternative limit.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Automated experiments can estimate stationary profiles across $n,\\lambda_n,d$ and suggest Lyapunov functions or tightness bounds, but the main resolution is analytic.",
+ "literature": {
+  "synthesis": "This is a precise open problem about a classical load-balancing queue. The fixed-load supermarket model is well understood, but heavy traffic changes the scale and removes the usual diffusion intuition for short queues. Eschenfeldt and Gamarnik provide the limiting dynamical equations and the unique candidate fixed point, so the remaining task is not to invent a model; it is to prove that the actual stationary distribution follows the candidate limit. A proof would likely require uniform-in-time control of the centered occupancy process, tightness of the short-queue coordinates, and a Lyapunov or generator argument ruling out non-fixed stationary subsequential limits.",
+  "reviewed": [
+   {
+    "ref": "N. D. Vvedenskaya, R. L. Dobrushin, and F. I. Karpelevich, 'Queueing system with selection of the shortest of two queues: an asymptotic approach', Problems of Information Transmission 1996",
+    "result": "Establishes the mean-field supermarket-model limit and doubly exponential tail behavior in the fixed-load regime.",
+    "relevance": "baseline",
+    "url": "https://link.springer.com/article/10.1007/BF02352927"
+   },
+   {
+    "ref": "Michael Mitzenmacher, 'The Power of Two Choices in Randomized Load Balancing', PhD thesis, University of California Berkeley 1996",
+    "result": "Develops the power-of-two-choices load-balancing framework and its queueing consequences.",
+    "relevance": "baseline",
+    "url": "https://www.eecs.harvard.edu/~michaelm/postscripts/mythesis.pdf"
+   },
+   {
+    "ref": "Malwina J. Luczak and Colin McDiarmid, 'On the maximum queue length in the supermarket model', Annals of Probability 2006 / arXiv",
+    "result": "Proves rapid mixing and sharp equilibrium maximum-queue-length concentration for fixed load.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/math/0605639"
+   },
+   {
+    "ref": "Patrick Eschenfeldt and David Gamarnik, 'Supermarket Queueing System in the Heavy Traffic Regime. Short Queue Dynamics', arXiv 2016",
+    "result": "Derives the heavy-traffic short-queue dynamics and states the stationary fixed-point conjecture.",
+    "relevance": "open-problem-source",
+    "url": "https://arxiv.org/abs/1610.03522"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Try Stein-generator arguments for the stationary occupancy process, Lyapunov functions for the short-queue coordinates, coupling to the deterministic infinite-dimensional system, or simulation-guided discovery of tightness estimates. Another route is to prove uniqueness of any stationary subsequential limit and identify it with the fixed point.",
+  "verification_notes": "A claimed proof must specify the scaling of $\\lambda_n$, the centered queue-level coordinates, the topology of convergence, and whether convergence is in probability, distribution, or expectation. It must control stationarity directly; proving only transient convergence from fixed initial conditions is not enough. A counterexample should identify a valid heavy-traffic scaling and show that the stationary short-queue profile has a different subsequential limit.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "Eschenfeldt and Gamarnik state the fixed-point stationary-profile conjecture in their heavy-traffic supermarket-model paper.",
+  "url": "https://arxiv.org/abs/1610.03522",
+  "quote": "we conjecture describes the steady state behavior",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Patrick Eschenfeldt, David Gamarnik",
+  "title": "Supermarket Queueing System in the Heavy Traffic Regime. Short Queue Dynamics",
+  "year": 2016,
+  "venue": "arXiv:1610.03522",
+  "url": "https://arxiv.org/abs/1610.03522"
+ },
+ "additional_refs": [
+  {
+   "title": "On the maximum queue length in the supermarket model",
+   "url": "https://arxiv.org/abs/math/0605639",
+   "authors": "Malwina J. Luczak, Colin McDiarmid",
+   "year": 2006,
+   "venue": "Annals of Probability / arXiv"
+  },
+  {
+   "title": "Queueing system with selection of the shortest of two queues: an asymptotic approach",
+   "url": "https://link.springer.com/article/10.1007/BF02352927",
+   "authors": "N. D. Vvedenskaya, R. L. Dobrushin, F. I. Karpelevich",
+   "year": 1996,
+   "venue": "Problems of Information Transmission"
+  },
+  {
+   "title": "The Power of Two Choices in Randomized Load Balancing",
+   "url": "https://www.eecs.harvard.edu/~michaelm/postscripts/mythesis.pdf",
+   "authors": "Michael Mitzenmacher",
+   "year": 1996,
+   "venue": "PhD thesis, University of California, Berkeley"
+  }
+ ],
+ "bibtex": "@misc{Eschenfeldt2016,\n  author = {Patrick Eschenfeldt and David Gamarnik},\n  title = {Supermarket Queueing System in the Heavy Traffic Regime. Short Queue Dynamics},\n  year = {2016},\n  howpublished = {arXiv:1610.03522},\n  url = {https://arxiv.org/abs/1610.03522},\n  note = {Source of ORdős Problem ORDOS-138}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/supermarket-heavy-traffic-stationary-short-queue-profile.html",
+  "api": "https://ordos-problems.github.io/api/problems/supermarket-heavy-traffic-stationary-short-queue-profile.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

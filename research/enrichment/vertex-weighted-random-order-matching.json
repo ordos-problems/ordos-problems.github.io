@@ -1,0 +1,96 @@
+{
+  "id": "vertex-weighted-random-order-matching",
+  "background": "Vertex-weighted online bipartite matching is one of the main bridges between classical online matching and advertising allocation. Offline vertices represent resources or advertisers with values, online vertices represent arriving opportunities, and the goal is to match high-value offline vertices whenever possible. In adversarial arrival order, the optimal ratio is $1-1/e$, matching the classical unweighted barrier. Random arrival order should make the problem easier because the algorithm can use time as statistical information: early arrivals reveal neighborhoods, and late arrivals can be treated more aggressively. The challenge is that vertex weights destroy much of the symmetry used in the unweighted random-order analysis. The current lower bounds come from delicate randomized primal-dual analyses and computer-assisted variational programs, while the exact constant remains unknown.",
+  "short_statement": "For online bipartite matching with weighted offline vertices and uniformly random online arrival order, determine the exact optimal competitive ratio.",
+  "full_statement": "Let $G=(L,R,E)$ be a bipartite graph. Offline vertices $u\\in L$ have nonnegative weights $w_u$, and online vertices $v\\in R$ arrive in uniformly random order. When $v$ arrives, its incident edges to currently unmatched offline vertices are revealed, and the algorithm must irrevocably either match $v$ to an available neighbor or discard it. The value of a matching is the total weight of matched offline vertices. The benchmark is the maximum-weight offline matching in $G$. Determine the largest constant $\\rho$ such that some online algorithm always satisfies $\\mathbb{E}[w(\\mathrm{ALG})]\\ge \\rho\\,w(\\mathrm{OPT})$ in the random-order model. Assume the number of online arrivals is known, as required by the new guarantee below.",
+  "known_results": "Earlier random-order weighted Ranking guarantees include $0.6534$ and $0.6629$; limitations of their analyses are not upper bounds on all algorithms. Peng and Tang, 'Harmonic Ranking for Edge-Weighted Oblivious Matching' (arXiv:2608.12176v1), Corollary 1.2, give $0.698015475248$ for online vertex-weighted matching with uniformly random arrivals and known number of arrivals. Their edge-weighted oblivious-probing model is different from standard edge-weighted online matching with free disposal.",
+  "open_problem": "Determine the exact random-order competitive ratio for vertex-weighted online bipartite matching, and decide whether Ranking or a variant of Ranking is optimal.",
+  "where_posed": {
+    "text": "Stated in Huang, Tang, Wu, and Zhang, 'Online Vertex-Weighted Bipartite Matching: Beating 1-1/e with Random Arrivals', ICALP 2018 / TALG 2019.",
+    "url": "https://arxiv.org/abs/1804.07458",
+    "quote": "random arrivals help beating the 1-1/e barrier",
+    "location": "Abstract and concluding gap"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The Harmonic Ranking corollary improves the attainable ratio; the optimal constant is not determined.",
+    "links": [
+      {
+        "title": "Huang-Tang-Wu-Zhang",
+        "url": "https://arxiv.org/abs/1804.07458"
+      },
+      {
+        "title": "Jin-Williamson improved analysis",
+        "url": "https://arxiv.org/abs/2007.12823"
+      },
+      {
+        "title": "Harmonic Ranking for Edge-Weighted Oblivious Matching",
+        "url": "https://arxiv.org/abs/2608.12176"
+      }
+    ]
+  },
+  "importance": 7,
+  "difficulty": 7,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Upper bounds can be finite weighted bipartite graphs with optimized weights and arrival distributions. Search over small weighted instances may identify hard examples for Ranking or for broader algorithm classes.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Computer-assisted LPs already drive the best analyses. Automated search can optimize gain-sharing functions, discretizations, and hard weighted graphs.",
+  "literature": {
+    "synthesis": "The new corollary supersedes the old lower-bound summary. It does not identify the exact performance of ordinary Ranking or transfer to adversarial edge-weighted arrivals.",
+    "reviewed": [
+      {
+        "ref": "Zhiyi Huang, Zhihao Gavin Tang, Xiaowei Wu, Yuhao Zhang, 'Online Vertex-Weighted Bipartite Matching: Beating 1-1/e with Random Arrivals', TALG 2019",
+        "result": "Gives a $0.6534$-competitive weighted Ranking algorithm in random order.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/1804.07458"
+      },
+      {
+        "ref": "Billy Jin, David P. Williamson, 'Improved Analysis of RANKING for Online Vertex-Weighted Bipartite Matching in the Random Order Model', WINE 2021",
+        "result": "Improves the lower bound to $0.6629$ via a discretized LP and shows a $0.6688$ ceiling for that approach.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2007.12823"
+      },
+      {
+        "ref": "Bo Peng, Zhihao Gavin Tang, 'Revisiting Ranking for Online Bipartite Matching with Random Arrivals: the Primal-Dual Analysis', arXiv 2025",
+        "result": "Refines primal-dual analysis of Ranking in random-order matching and explores limitations of the framework.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/2503.04196"
+      },
+      {
+        "ref": "Bo Peng, Zhihao Gavin Tang, 'Harmonic Ranking for Edge-Weighted Oblivious Matching' (2026)",
+        "result": "Corollary 1.2 supplies the random-arrival vertex-weighted guarantee.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2608.12176"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Extend the LP-based gain-sharing search with richer state variables or derive upper-bound instances for Ranking and for all algorithms. Another route is to compare vertex-weighted random-order matching to known-i.i.d. stochastic matching through reductions preserving weights.",
+    "verification_notes": "A claimed lower bound needs a proof for arbitrary weighted graphs and uniformly random arrivals, not just simulated random graphs. A claimed upper bound must apply to all randomized algorithms via Yao's principle or another adversarial distribution argument. For the new corollary, retain the known-arrival-count assumption. The paper's exact max-flow certificate was not rerun here.",
+    "machine_checkable": true
+  },
+  "additional_refs": [
+    {
+      "authors": "Billy Jin, David P. Williamson",
+      "title": "Improved Analysis of RANKING for Online Vertex-Weighted Bipartite Matching in the Random Order Model",
+      "year": 2021,
+      "venue": "WINE",
+      "url": "https://arxiv.org/abs/2007.12823"
+    },
+    {
+      "authors": "Bo Peng, Zhihao Gavin Tang",
+      "title": "Revisiting Ranking for Online Bipartite Matching with Random Arrivals: the Primal-Dual Analysis",
+      "year": 2025,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/2503.04196"
+    },
+    {
+      "authors": "Bo Peng, Zhihao Gavin Tang",
+      "title": "Harmonic Ranking for Edge-Weighted Oblivious Matching",
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2608.12176"
+    }
+  ],
+  "confidence": "medium"
+}

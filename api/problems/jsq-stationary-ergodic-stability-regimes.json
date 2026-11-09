@@ -1,0 +1,104 @@
+{
+ "number": 134,
+ "ref": "ORDOS-134",
+ "id": "jsq-stationary-ergodic-stability-regimes",
+ "title": "Stationary regimes of stationary-ergodic join-the-shortest-queue systems",
+ "collection": "Applied Probability",
+ "area": "Queueing Theory",
+ "status": "open",
+ "confidence": "medium",
+ "tags": [
+  "queueing theory",
+  "join-the-shortest-queue",
+  "load balancing",
+  "stability",
+  "stationary ergodic input",
+  "applied probability"
+ ],
+ "short_statement": "For a stable multi-server join-the-shortest-queue system with stationary ergodic input, characterize stationary regimes, uniqueness, and weak or total-variation convergence.",
+ "open_problem": "Characterize existence, uniqueness, and convergence of stationary regimes for stable join-the-shortest-queue systems under stationary ergodic input.",
+ "background": "Join-the-shortest-queue is one of the canonical load-balancing policies: arrivals are routed to the currently shorter queue, and the policy is locally sensible in every finite state. Under Markovian assumptions, JSQ systems have a rich and useful stability theory. Foss's open problem asks what survives when the primitive input is only stationary ergodic. This is a natural stress test for queueing stability methods because JSQ lacks the monotonicity that makes FCFS workload recursions tractable. Without monotonicity, Loynes-type constructions do not directly define minimal and maximal stationary versions, and it becomes unclear whether the obvious load condition plus ergodicity determines a unique stationary law. The problem is not about choosing a better model; the routing rule and primitives are fixed. It is a foundational question about whether a simple load-balancing system has robust stability under weak assumptions on the input process.",
+ "full_statement": "Consider $m\\ge2$ single-server queues in parallel. Customers arrive with stationary ergodic interarrival and service primitives satisfying the natural load condition that the long-run offered work per unit time is less than total service capacity. Upon arrival, each customer immediately joins a shortest queue, with ties broken by a fixed deterministic or randomized rule. Services at each queue are FCFS. Let $X_n$ denote the vector of queue lengths and residual workloads seen at arrival epochs, or the corresponding continuous-time Markov/ergodic state descriptor when service times are included. The open problem is to characterize the stationary regimes of this JSQ system under stationary ergodic input alone: how many stationary versions can exist, what additional conditions if any imply uniqueness, and whether $X_n$ started from an empty state converges weakly or in total variation to a stationary law. A particularly sharp target is to prove positive recurrence and uniqueness under the natural load condition, or to construct a stable stationary ergodic input for which multiple stationary regimes or nonconvergence occur.",
+ "known_results": "For Markovian and iid models, JSQ stability and stationary behavior can often be handled using Foster-Lyapunov, coupling, fluid-limit, or diffusion techniques. Classical supermarket and JSQ($d$) limits also give detailed behavior in large-server asymptotic regimes, but these rely on independence and Markovian structure that is stronger than stationarity and ergodicity. The stationary-ergodic setting is much less understood because the JSQ routing map is not monotone in the relevant workload state. Foss describes even the two-server stationary-ergodic JSQ problem as open beyond the obvious load condition and asks how many stationary regimes may exist, what assumptions imply uniqueness, and when weak or total-variation convergence holds.",
+ "progress": {
+  "state": "partial",
+  "summary": "Classical Markovian and iid JSQ models have substantial stability theory, but Foss's stationary-ergodic formulation remains unresolved because the usual monotone Loynes machinery is unavailable.",
+  "links": [
+   {
+    "title": "Foss, Some Open Problems Related to Stability",
+    "url": "https://arxiv.org/abs/0909.0462"
+   },
+   {
+    "title": "Join-shortest-queue model background",
+    "url": "https://en.wikipedia.org/wiki/Join-shortest-queue"
+   }
+  ]
+ },
+ "importance": 7,
+ "difficulty": 8,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "A counterexample could be an explicit stationary ergodic input with stable average load but multiple stationary versions or persistent phase dependence. Constructing and proving such an example would be hard but finite-state or periodic approximations may guide it.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Search over deterministic ergodic sequences, Markov-modulated inputs, or adversarial tie-breaking patterns may reveal candidate nonmonotone mechanisms. Verification requires rigorous queueing stability proofs.",
+ "literature": {
+  "synthesis": "The contrast with FCFS multi-server queues is instructive. FCFS has an ordered workload-vector recursion with partial monotonicity, which makes Loynes-type stationary constructions possible under weak assumptions. JSQ makes a state-dependent routing decision that can reverse order and amplify small workload differences, so the usual monotone coupling is unavailable. In Markovian settings this is usually handled by Lyapunov drift or regenerative arguments, but stationary ergodic primitives need pathwise constructions rather than transition-kernel recurrence. The known gap is therefore structural: either find a new ergodic stability method for nonmonotone queueing recursions, or exhibit a stationary ergodic input whose long memory defeats uniqueness despite subcritical load.",
+  "reviewed": [
+   {
+    "ref": "Foss, 'Some Open Problems Related to Stability', 2009",
+    "result": "Identifies the stationary-ergodic JSQ problem and emphasizes that the model lacks monotonicity and is not amenable to Loynes-type schemes.",
+    "relevance": "open-problem-source",
+    "url": "https://arxiv.org/abs/0909.0462"
+   },
+   {
+    "ref": "Foss and Konstantopoulos, 'An Overview of Some Stochastic Stability Methods', Journal of the Operations Research Society of Japan 2004",
+    "result": "Surveys stability methods for stochastic networks and queueing recursions.",
+    "relevance": "related-tool",
+    "url": "https://www.jstage.jst.go.jp/article/jorsj/47/4/47_KJ00003423378/_article"
+   },
+   {
+    "ref": "Mitzenmacher, 'The Power of Two Choices in Randomized Load Balancing', IEEE Transactions on Parallel and Distributed Systems 2001",
+    "result": "Survey-style background on JSQ-style load balancing under stronger stochastic assumptions.",
+    "relevance": "survey",
+    "url": "https://doi.org/10.1109/71.963420"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "For positive results, look for fluid limits that can be constructed pathwise for stationary ergodic inputs and imply renovating events. For negative results, search for inputs with alternating long bursts that keep the shorter-queue decision locked into different phases. Comparing deterministic tie-breaking and random tie-breaking may separate real instability from tie artifacts.",
+  "verification_notes": "A solution must state the exact input assumptions, including whether arrivals are simple, whether service times are attached to arrivals or servers, tie-breaking, and whether residual workloads are part of the state. A positive recurrence proof under iid, renewal, Poisson, or Markov-modulated assumptions does not resolve the stationary-ergodic problem unless it extends to arbitrary stationary ergodic primitives under the stated load condition. A uniqueness proof should identify the stationary version and convergence mode. A counterexample must prove stationary ergodicity of the driving process, subcritical load, and the claimed multiplicity or nonconvergence, not merely display a long transient burst pattern.",
+  "machine_checkable": false
+ },
+ "where_posed": {
+  "text": "Stated by Sergey Foss, 'Some Open Problems Related to Stability', 2009, Section 2.",
+  "url": "https://arxiv.org/abs/0909.0462",
+  "quote": "",
+  "location": "Section 2, further problems on multi-server queues"
+ },
+ "source": {
+  "authors": "Sergey Foss",
+  "title": "Some Open Problems Related to Stability",
+  "year": 2009,
+  "venue": "arXiv:0909.0462",
+  "url": "https://arxiv.org/abs/0909.0462"
+ },
+ "additional_refs": [
+  {
+   "authors": "Sergey Foss and Takis Konstantopoulos",
+   "title": "An Overview of Some Stochastic Stability Methods",
+   "year": 2004,
+   "venue": "Journal of the Operations Research Society of Japan",
+   "url": "https://arxiv.org/abs/0909.0462"
+  }
+ ],
+ "bibtex": "@misc{Foss2009,\n  author = {Sergey Foss},\n  title = {Some Open Problems Related to Stability},\n  year = {2009},\n  howpublished = {arXiv:0909.0462},\n  url = {https://arxiv.org/abs/0909.0462},\n  note = {Source of ORdős Problem ORDOS-134}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/jsq-stationary-ergodic-stability-regimes.html",
+  "api": "https://ordos-problems.github.io/api/problems/jsq-stationary-ergodic-stability-regimes.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

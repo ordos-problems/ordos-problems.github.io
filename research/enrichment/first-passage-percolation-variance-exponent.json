@@ -1,0 +1,111 @@
+{
+  "id": "first-passage-percolation-variance-exponent",
+  "title": "Subpolynomial versus KPZ-scale variance in lattice first-passage percolation",
+  "collection": "Applied Probability",
+  "area": "Random Growth Models",
+  "tags": [
+    "first-passage percolation",
+    "KPZ",
+    "variance",
+    "geodesics",
+    "random metrics"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "For i.i.d. first-passage percolation on $\\mathbb Z^d$, prove a polynomial sublinear variance bound, or determine the true fluctuation exponent.",
+  "full_statement": "Consider nearest-neighbor first-passage percolation on $\\mathbb Z^d$, $d\\ge 2$. Each edge $e$ receives an independent nonnegative passage time $t_e$ from a common distribution satisfying the standard assumptions that avoid degeneracy and ensure finite moments. For vertices $x,y\\in\\mathbb Z^d$, define $$T(x,y)=\\inf_{\\gamma:x\\to y}\\sum_{e\\in\\gamma} t_e,$$ where the infimum is over nearest-neighbor paths. Fix a direction, for instance $e_1=(1,0,\\ldots,0)$, and study the variance $\\operatorname{Var} T(0,ne_1)$ as $n\\to\\infty$. The shape theorem gives first-order linear growth. The open problem is to determine the correct fluctuation scale. A concrete intermediate target is to prove that for ordinary i.i.d. lattice FPP there exists $\\varepsilon>0$ such that $\\operatorname{Var} T(0,ne_1)=O(n^{1-\\varepsilon})$ under natural moment assumptions. In two dimensions, the KPZ prediction is much sharper: fluctuations should be of order $n^{1/3}$ and variance of order $n^{2/3}$ for broad continuous distributions. None of these polynomial improvements is known for the classical lattice model in this generality.",
+  "background": "First-passage percolation is one of the central random optimization models in probability. It turns a lattice into a random metric space and asks for the fastest route through a random medium. The model has direct OR intuition: it is a stochastic shortest-path problem on a huge random network. The shape theorem describes the deterministic large-scale growth ball, but the second-order behavior is much harder. In exactly solvable directed last-passage models, KPZ theory predicts and often proves $1/3$ passage-time fluctuations and $2/3$ transversal fluctuations. Undirected lattice FPP is not integrable, so even proving any polynomial improvement over linear variance has resisted the standard concentration and martingale methods. This makes the problem a clean test of whether KPZ-type behavior can be proved without exact formulas.",
+  "known_results": "Kesten proved foundational concentration and linear-variance-type bounds. Benjamini, Kalai, and Schramm used hypercontractivity to improve the variance upper bound to $O(n/\\log n)$ for certain two-valued passage-time distributions, and later work extended sublinear variance bounds under broader assumptions. The Auffinger-Damron-Hanson survey records the state of the art and many related open questions on geodesics, Busemann functions, and fluctuations. For exactly solvable directed last-passage percolation models, KPZ exponents are known in many cases, but these techniques do not transfer to undirected i.i.d. FPP. In 2026, Basu, Sidoravicius, and Sly proved a polynomial variance improvement for a rotationally invariant Riemannian FPP model, breaking the $n/\\log n$ barrier in a continuous setting. That result is strong evidence for the right phenomenon, but it does not resolve the classical lattice FPP variance problem.",
+  "where_posed": {
+    "text": "Collected as a central open direction in Auffinger, Damron, Hanson, '50 years of first passage percolation', 2015.",
+    "url": "https://arxiv.org/abs/1511.03262",
+    "quote": "We also provide a collection of (old and new) open questions, hoping to solve them before the 100th birthday.",
+    "location": "Abstract"
+  },
+  "source": {
+    "authors": "Antonio Auffinger, Michael Damron, Jack Hanson",
+    "title": "50 years of first passage percolation",
+    "year": 2017,
+    "venue": "University Lecture Series, AMS",
+    "url": "https://arxiv.org/abs/1511.03262"
+  },
+  "additional_refs": [
+    {
+      "authors": "Itai Benjamini, Gil Kalai, Oded Schramm",
+      "title": "First Passage Percolation Has Sublinear Distance Variance",
+      "year": 2003,
+      "venue": "Annals of Probability",
+      "url": "https://doi.org/10.1214/aop/1048516537"
+    },
+    {
+      "authors": "Harry Kesten",
+      "title": "On the Speed of Convergence in First-Passage Percolation",
+      "year": 1993,
+      "venue": "Annals of Applied Probability",
+      "url": "https://doi.org/10.1214/aoap/1177005426"
+    },
+    {
+      "authors": "Riddhipratim Basu, Vladas Sidoravicius, Allan Sly",
+      "title": "Rotationally invariant first passage percolation: Breaking the n/log n variance barrier",
+      "year": 2026,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/2604.01214"
+    }
+  ],
+  "enabled": true,
+  "progress": {
+    "state": "partial",
+    "summary": "Classical lattice FPP has sublinear variance bounds of $n/\\log n$ type under broad conditions, but no polynomial sublinear bound is known. A 2026 rotationally invariant continuous model achieves $O(n^{1-\\varepsilon})$, leaving the lattice problem open.",
+    "links": [
+      {
+        "title": "50 years of first passage percolation",
+        "url": "https://arxiv.org/abs/1511.03262"
+      },
+      {
+        "title": "Rotationally invariant FPP variance breakthrough",
+        "url": "https://arxiv.org/abs/2604.01214"
+      }
+    ]
+  },
+  "importance": 9,
+  "difficulty": 10,
+  "counterexample_suitability": "low",
+  "counterexample_rationale": "The central conjectures are asymptotic probabilistic upper and lower bounds, not finite counterexample statements. Simulations can falsify proposed exponents only heuristically.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Automated experimentation can estimate exponents and test geodesic-overlap or resampling-chaos hypotheses, but a solution requires rigorous multiscale probability estimates.",
+  "literature": {
+    "synthesis": "The variance problem has evolved through concentration inequalities, influence bounds, and geodesic geometry. Kesten's work gave the basic quantitative framework. Benjamini, Kalai, and Schramm introduced a hypercontractive method showing that individual edges have small influence, yielding $n/\\log n$-scale variance bounds in important cases. Later work generalized this sublinear improvement, but the logarithmic saving remains far from the KPZ prediction. The Auffinger-Damron-Hanson survey places variance among a web of open problems involving geodesics, Busemann functions, limit-shape curvature, and competition interfaces. Basu-Sidoravicius-Sly's rotationally invariant result suggests that disorder chaos and multiscale geodesic decorrelation can produce polynomial savings, but the lattice model lacks the same symmetry and currently has no comparable theorem.",
+    "reviewed": [
+      {
+        "ref": "Kesten, 'On the Speed of Convergence in First-Passage Percolation', Annals of Applied Probability 1993",
+        "result": "Foundational concentration and convergence-rate bounds.",
+        "relevance": "partial-progress",
+        "url": "https://doi.org/10.1214/aoap/1177005426"
+      },
+      {
+        "ref": "Benjamini, Kalai, Schramm, 'First Passage Percolation Has Sublinear Distance Variance', Annals of Probability 2003",
+        "result": "Proves an $O(n/\\log n)$-type variance upper bound in key settings.",
+        "relevance": "partial-progress",
+        "url": "https://doi.org/10.1214/aop/1048516537"
+      },
+      {
+        "ref": "Auffinger, Damron, Hanson, '50 years of first passage percolation', AMS 2017",
+        "result": "Survey of classical results and open questions, including fluctuation and geodesic problems.",
+        "relevance": "survey",
+        "url": "https://arxiv.org/abs/1511.03262"
+      },
+      {
+        "ref": "Basu, Sidoravicius, Sly, 'Rotationally invariant first passage percolation', arXiv 2026",
+        "result": "Proves a polynomial variance improvement in a rotationally invariant continuous FPP model.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2604.01214"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Study resampling-chaos and geodesic-overlap estimates that could transfer from rotationally invariant models to lattice FPP. Try to prove quantitative transversal fluctuation or curvature inputs sufficient for polynomial variance. Computationally, simulate edge resampling and geodesic overlap across scales to identify candidate multiscale inequalities.",
+    "verification_notes": "A claimed polynomial sublinear variance bound must state the dimension, passage-time distribution assumptions, and exact exponent. It must apply to the ordinary nearest-neighbor lattice model if it claims to solve this record. A verifier should distinguish directed last-passage results, rotationally invariant continuous FPP, and lattice undirected FPP. Numerical exponent estimates or physics KPZ predictions are not proofs; the proof must control all $n$ with explicit constants or asymptotic bounds.",
+    "machine_checkable": false
+  },
+  "notes_for_maintainer": "Recent 2026 progress is included because it changes the context while leaving the classical lattice problem open."
+}

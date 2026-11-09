@@ -1,0 +1,60 @@
+{
+  "id": "static-threshold-half-without-randomization-or-cardinal",
+  "source": {
+    "authors": "Ester Samuel-Cahn",
+    "title": "Comparison of Threshold Stop Rules and Maximum for Independent Nonnegative Random Variables",
+    "year": 1984,
+    "venue": "Annals of Probability",
+    "url": "https://www.jstor.org/stable/2243359"
+  },
+  "full_statement": "Consider the single-choice prophet inequality with independent nonnegative random variables $X_1,\\ldots,X_T$ and benchmark $E[\\max_t X_t]$. In the classical known-distribution model, a deterministic static value threshold can guarantee one half of this benchmark. In the ordinal version from Will Ma's notes, the algorithm is given only ordered rank information, represented by a probability vector or ordered list of ranks, not the cardinal values that those ranks will later take. The algorithm must commit before seeing the online values to a deterministic static threshold specified only by an index $J$ in that rank order, with any tie-breaking rule also deterministic. After the index is chosen, the actual cardinal values consistent with the order may be set adversarially. The open problem is whether such a nonrandomized ordinal static-threshold policy can still guarantee $E[ALG]\\ge \\frac12 E[\\max_t X_t]$ for every instance.",
+  "background": "The classical single-choice prophet inequality says that a gambler observing independent nonnegative values online can secure at least half of the expected maximum. This $1/2$ guarantee is robust in several separate ways. With full distributional knowledge, a deterministic static threshold suffices. With less cardinal information, median-style or ordinal approaches can also recover the half guarantee in related formulations. Will Ma's problem asks whether these two kinds of simplicity can coexist. The algorithm should commit to a deterministic threshold described only by an index in an ordered list of possible ranks, without using the actual cardinal values and without randomization. After that index is chosen, an adversary may assign the actual values consistent with the order. This matters for data-poor posted-pricing settings, where a seller may trust quantile ranks more than exact valuations. This is a small-looking question, but it probes what information the prophet inequality really needs: is the half guarantee fundamentally cardinal, fundamentally randomized, or can it be obtained by a purely ordinal deterministic threshold?",
+  "known_results": "Samuel-Cahn proved the classic threshold comparison theorem giving the $1/2$ prophet guarantee for independent nonnegative random variables. Deterministic threshold rules can achieve $1/2$ when cardinal distributional information is available. Rubinstein, Wang, and Weinberg showed that sample-based information can recover the optimal $1/2$ guarantee in the single-choice case, while later work on sample and ordinal static thresholds shows that natural ordinal threshold classes can fall below $1/2$ in related sample models. The unresolved part of Will Ma's formulation is the simultaneous restriction: one deterministic static threshold, no randomization, and no cardinal values, under the precise adversarial cardinal-realization model in the notes. The current source sweep found neither a construction meeting all three requirements nor a separating counterexample.",
+  "open_problem": "Decide whether a deterministic ordinal static threshold can guarantee the tight $1/2$ single-choice prophet ratio without using cardinal values or randomization.",
+  "status": "open",
+  "where_posed": {
+    "text": "Posed in Will Ma's Online Resource Allocation course notes, Appendix C, Open Problems about Prophet Inequalities, Problem 5.",
+    "url": "",
+    "quote": "",
+    "location": "Appendix C, Prophet Inequalities #5"
+  },
+  "progress": {
+    "state": "none",
+    "summary": "The separate ingredients are classical, but the combined ordinal-deterministic-static version remains open in the site sources.",
+    "links": []
+  },
+  "importance": 6,
+  "difficulty": 6,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "A negative answer may be witnessed by a finite ordered support and adversarial cardinal assignment. Such examples are suitable for exhaustive search over small supports.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Automated search can alternate between candidate threshold-index rules and adversarial cardinal assignments, producing either counterexamples or patterns for a proof.",
+  "literature": {
+    "synthesis": "Prophet inequalities often look cardinal because thresholds are expressed as values, but many proofs ultimately use quantiles, medians, or exceedance probabilities. Samuel-Cahn's threshold rule is the classical benchmark for the half guarantee. Sample-based prophet inequalities show that surprisingly little distributional information can suffice in some models, but Ezra's 2024 sample-threshold result warns that natural ordinal static threshold classes can have ratios below one half in adjacent formulations. Will Ma's formulation strips the model down to an ordinal minimax decision: pick a rank-index threshold before the actual values are known. A proof would likely identify an ordinal threshold index whose worst cardinal realization is balanced; a disproof would find a finite family where every deterministic index can be exploited.",
+    "reviewed": [
+      {
+        "ref": "Ester Samuel-Cahn, 'Comparison of Threshold Stop Rules and Maximum for Independent Nonnegative Random Variables', Annals of Probability 1984",
+        "result": "Classical static-threshold proof of the $1/2$ prophet inequality.",
+        "relevance": "related-tool",
+        "url": "https://www.jstor.org/stable/2243359"
+      },
+      {
+        "ref": "Aviad Rubinstein, Jack Z. Wang, S. Matthew Weinberg, 'Optimal Single-Choice Prophet Inequalities from Samples', ITCS 2020",
+        "result": "Shows that one sample from each distribution can recover the optimal $1/2$ ratio in the single-choice sample model.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/1911.07945"
+      },
+      {
+        "ref": "Tomer Ezra, 'Prophet Inequality from Samples: Is the More the Merrier?', arXiv 2024",
+        "result": "Studies ordinal static threshold algorithms from samples and shows a best possible ratio below $1/2$ in that class.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/2409.00559"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Model the problem as a minimax game over finite ordered supports. Search for small counterexamples using linear programming over cardinal values, or try to prove that a median-like index equalizes the adversary's two failure modes.",
+    "verification_notes": "A positive solution must use neither randomization nor actual value magnitudes and must work for every admissible ordered cardinal realization in Will Ma's model. A counterexample must show that every deterministic ordinal threshold index falls below $1/2$ after an adversarial cardinal assignment; evidence against sample-based ordinal thresholds is relevant but does not automatically settle this exact formulation.",
+    "machine_checkable": true
+  }
+}

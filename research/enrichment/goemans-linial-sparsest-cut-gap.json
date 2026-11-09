@@ -1,0 +1,101 @@
+{
+  "id": "goemans-linial-sparsest-cut-gap",
+  "title": "Exact integrality gap of the Goemans-Linial SDP for uniform Sparsest Cut",
+  "collection": "Approximation & Discrepancy",
+  "area": "Approximation Algorithms",
+  "tags": [
+    "sparsest cut",
+    "semidefinite programming",
+    "integrality gap",
+    "metric embeddings",
+    "graph partitioning"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "Determine the asymptotic integrality gap of the Goemans-Linial semidefinite relaxation for uniform Sparsest Cut.",
+  "full_statement": "In uniform Sparsest Cut, the input is an undirected graph $G=(V,E)$ with $|V|=n$, and the objective is to find a nontrivial cut $S\\subset V$ minimizing $$\\Phi(S)=\\frac{|E(S,V\\setminus S)|}{|S|\\,|V\\setminus S|}$$ up to the conventional normalization. The Goemans-Linial semidefinite relaxation assigns vectors to vertices and enforces squared Euclidean distances satisfying triangle inequalities, producing an SDP value that lower-bounds the optimum cut sparsity. Its integrality gap is the worst-case ratio between the true optimum and the SDP optimum over $n$-vertex instances. The open problem is to determine this gap up to constants or sharp asymptotics. Known lower bounds are superpolylogarithmic in $\\log\\log n$ but far below the known upper bounds from rounding/embedding theory. Equivalently, characterize how well negative-type metrics embed into $L_1$ for the uniform sparsest-cut setting.",
+  "background": "Sparsest Cut is a central graph-partitioning problem with applications in clustering, VLSI, divide-and-conquer graph algorithms, metric embeddings, and flow-cut gaps. The Goemans-Linial SDP was one of the major semidefinite relaxations in approximation algorithms. Arora, Rao, and Vazirani's rounding breakthrough gave an $O(\\sqrt{\\log n})$ approximation for Sparsest Cut and Balanced Separator and made the geometry of negative-type metrics a central object. Understanding the exact performance of this SDP would clarify whether the ARV rounding paradigm is close to optimal or whether a better geometric theorem exists. The problem is clean: the relaxation is fixed, the objective is fixed, and both upper and lower bounds are mathematical statements about finite metrics and graph cuts.",
+  "known_results": "The ARV framework gives an $O(\\sqrt{\\log n})$-type upper bound for rounding the SDP. Earlier lower bounds showed an $\\Omega(\\log\\log n)$ integrality gap. Kane and Meka used pseudorandom generators for Lipschitz functions of low-degree polynomials to construct uniform Sparsest Cut instances with Goemans-Linial SDP gap $\\exp(\\Omega((\\log\\log n)^{1/2}))$, a near-exponential improvement over the previous lower bound in the iterated-log scale. This still leaves a large gap to the $O(\\sqrt{\\log n})$ upper bound. Related work on metric embeddings and Unique Games explains why some stronger approximation goals are hard, but the precise integrality gap of this particular SDP in the uniform setting remains unresolved.",
+  "where_posed": {
+    "text": "Stated in Kane and Meka, 'A PRG for Lipschitz Functions of Polynomials with Applications to Sparsest Cut', 2012.",
+    "url": "https://arxiv.org/abs/1211.1109",
+    "quote": "Understanding the performance of the Goemans-Linial SDP for uniform sparsest cut is an important open problem in approximation algorithms and metric embeddings.",
+    "location": "Abstract"
+  },
+  "source": {
+    "authors": "Daniel Kane, Raghu Meka",
+    "title": "A PRG for Lipschitz Functions of Polynomials with Applications to Sparsest Cut",
+    "year": 2013,
+    "venue": "STOC",
+    "url": "https://arxiv.org/abs/1211.1109"
+  },
+  "additional_refs": [
+    {
+      "authors": "Sanjeev Arora, Satish Rao, Umesh Vazirani",
+      "title": "Expander Flows, Geometric Embeddings and Graph Partitioning",
+      "year": 2009,
+      "venue": "Journal of the ACM",
+      "url": "https://doi.org/10.1145/1507244.1507245"
+    },
+    {
+      "authors": "James R. Lee, Assaf Naor",
+      "title": "L_p Metrics on the Heisenberg Group and the Goemans-Linial Conjecture",
+      "year": 2006,
+      "venue": "FOCS",
+      "url": "https://doi.org/10.1109/FOCS.2006.39"
+    },
+    {
+      "authors": "Subhash Khot, Nisheeth K. Vishnoi",
+      "title": "The Unique Games Conjecture, Integrality Gap for Cut Problems and Embeddability of Negative Type Metrics into l1",
+      "year": 2005,
+      "venue": "FOCS",
+      "url": "https://doi.org/10.1109/SFCS.2005.74"
+    }
+  ],
+  "enabled": true,
+  "progress": {
+    "state": "partial",
+    "summary": "The best known upper bound is of ARV type, while Kane and Meka improved lower bounds to $\\exp(\\Omega((\\log\\log n)^{1/2}))$. The asymptotic gap remains far from determined.",
+    "links": [
+      {
+        "title": "Kane-Meka sparsest-cut SDP lower bound",
+        "url": "https://arxiv.org/abs/1211.1109"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 9,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Lower bounds are explicit finite graph or metric families with SDP and cut values. Candidate instances can be searched computationally, though asymptotic proof remains necessary.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Search may find small negative-type metric or graph instances with large SDP gaps, but proving asymptotic embeddings or rounding bounds is primarily theoretical.",
+  "literature": {
+    "synthesis": "The Goemans-Linial SDP gap problem sits at the intersection of approximation algorithms and metric geometry. ARV-style rounding gives the principal upper bound by showing that negative-type metrics contain useful separated sets. Lower bounds construct negative-type metrics that are hard to embed into $L_1$, then realize or relate them to cut instances. Khot and Vishnoi gave influential integrality-gap constructions tied to Unique Games. Lee and Naor disproved the original Goemans-Linial embedding conjecture in strong form. Kane and Meka improved the uniform Sparsest Cut SDP gap lower bound using pseudorandomness tools. The remaining gap is still broad: the known lower bound grows much slower than $\\sqrt{\\log n}$, and no matching upper or lower asymptotic is known.",
+    "reviewed": [
+      {
+        "ref": "Arora, Rao, Vazirani, 'Expander Flows, Geometric Embeddings and Graph Partitioning', JACM 2009",
+        "result": "Gives the landmark $O(\\sqrt{\\log n})$ SDP rounding framework.",
+        "relevance": "partial-progress",
+        "url": "https://doi.org/10.1145/1507244.1507245"
+      },
+      {
+        "ref": "Khot and Vishnoi, 'The Unique Games Conjecture, Integrality Gap for Cut Problems and Embeddability of Negative Type Metrics into l1', FOCS 2005",
+        "result": "Provides influential integrality-gap and metric-embedding lower-bound machinery.",
+        "relevance": "hardness",
+        "url": "https://doi.org/10.1109/SFCS.2005.74"
+      },
+      {
+        "ref": "Kane and Meka, 'A PRG for Lipschitz Functions of Polynomials with Applications to Sparsest Cut', STOC 2013",
+        "result": "Improves the uniform Sparsest Cut Goemans-Linial SDP lower bound to $\\exp(\\Omega((\\log\\log n)^{1/2}))$.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1211.1109"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "For lower bounds, search for negative-type metrics or graph constructions with poor $L_1$ distortion and then certify SDP/cut values. For upper bounds, examine whether ARV separated-set arguments can be sharpened for uniform demands or whether additional SDP constraints change the geometry.",
+    "verification_notes": "A lower-bound claim must provide a family of instances, feasible SDP solutions with objective value, and lower bounds on every cut value. A computational certificate for a finite instance should include the graph, SDP solution or dual bound, and exact cut optimum or a rigorous lower bound. An upper-bound proof must apply to all uniform Sparsest Cut instances and the specific Goemans-Linial relaxation, not a strengthened hierarchy. A verifier should check normalization conventions for sparsity, since constants can move between numerator and denominator. For metric formulations, verify negative type, triangle inequalities, and the claimed $L_1$ distortion connection rather than assuming every metric gap realizes a graph cut gap.",
+    "machine_checkable": true
+  },
+  "notes_for_maintainer": "Primary source checked via arXiv on 2026-07-02."
+}

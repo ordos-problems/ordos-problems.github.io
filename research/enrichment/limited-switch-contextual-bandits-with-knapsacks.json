@@ -1,0 +1,64 @@
+{
+  "id": "limited-switch-contextual-bandits-with-knapsacks",
+  "background": "Bandits with knapsacks capture online allocation with learning and finite resources: each action earns stochastic reward and consumes one or more budgeted resources. Contextual versions are central in pricing, ad allocation, and revenue management because customer covariates change the reward and consumption distributions. Separately, limited-switch models impose a practical operational constraint: prices, assortments, or allocation rules cannot be changed every period. Simchi-Levi, Xu, and Zhao recently give a sharp limited-switch theory for blind network revenue management and bandits with knapsacks, showing a piecewise-constant dependence of regret on the switching budget and the number of resources. A possible research direction is their intersection with contextual BwK. However, combining the frameworks does not uniquely specify a model: the switching convention, context process, and comparator must first be fixed. This entry is provisional, not a verified clean open problem.",
+  "full_statement": "Consider a contextual bandits-with-knapsacks problem over horizon $T$. At each round $t$, a context $x_t$ is observed, the learner chooses an action $a_t$, receives stochastic reward $r_t(a_t,x_t)$, and consumes a vector $c_t(a_t,x_t)\\in\\mathbb R_+^d$ of resources from budgets $B_1,\\ldots,B_d$. The learner competes with a benchmark class $\\Pi$ of policies mapping contexts to actions, subject to the same resource budgets, and the process stops or must choose null actions when a budget is exhausted. Add a switching constraint: one may count either changes of realized actions or changes of the deployed context-to-action mapping. These are different models, not equivalent conventions. Under mapping switches, at most $S+1$ epochs can use fixed deployed policies even though actions vary with contexts. The open problem is to characterize the minimax regret as a function of $T$, the budgets, resource dimension $d$, policy-class complexity or oracle access, and switch budget $S$. The result should recover known contextual BwK rates when switching is unconstrained and known limited-switch BwK rates when there are no contexts.",
+  "open_problem": "Characterize the minimax regret of contextual bandits with knapsacks under a switching budget, including the correct dependence on horizon, budgets, resource dimension, policy-class complexity, and number of allowed switches.",
+  "known_results": "Simchi-Levi, Xu, and Zhao prove matching upper and lower bounds for blind network revenue management and bandits with knapsacks under limited switches. Their optimal regret rate is governed by a piecewise-constant function of the switch budget and the number of resource constraints. Agrawal, Devanur, and Li give efficient algorithms for contextual bandits with knapsacks without switching constraints. These results motivate asking whether the noncontextual switch-budget structure survives in a specified contextual model. The search conducted for this audit did not establish a sharp theorem for the combined setting, but that absence is not evidence that every such variant is open.\n\nAudit caveat (2026-11-09): changing the realized action and changing a mapping from contexts to actions are not equivalent switching constraints. A fixed mapping can choose different actions on successive contexts. This record needs one explicit switching convention, context process, and benchmark before its combined open-status claim can be considered verified.",
+  "status": "open",
+  "where_posed": {
+    "text": "This problem is the explicit combination of the limited-switch BwK theory of Simchi-Levi, Xu, and Zhao with the contextual BwK framework of Agrawal, Devanur, and Li.",
+    "url": "https://arxiv.org/abs/1911.01067",
+    "quote": "",
+    "location": "Open direction following the limited-switch BwK and contextual BwK models."
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The cited sources treat the noncontextual limited-switch case and contextual BwK without switching. The status of a combined target is unverified because this entry has not fixed a unique switching convention and benchmark.",
+    "links": [
+      {
+        "title": "Simchi-Levi, Xu, Zhao, Blind Network Revenue Management and Bandits with Knapsacks under Limited Switches",
+        "url": "https://arxiv.org/abs/1911.01067"
+      },
+      {
+        "title": "Agrawal, Devanur, Li, Contextual Bandits with Knapsacks",
+        "url": "https://arxiv.org/abs/1506.03374"
+      }
+    ]
+  },
+  "importance": 7,
+  "difficulty": 8,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Lower-bound instances can be finite contextual distributions with a small number of resources and switches. Counterexamples to proposed regret rates are plausible through constructed hard instances, but full minimax lower bounds require information-theoretic proof.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Search can help discover hard finite instances and test algorithm schedules for limited switches. Evolutionary methods could optimize adversarial context distributions or switch budgets against candidate policies.",
+  "literature": {
+    "synthesis": "The noncontextual limited-switch results and contextual BwK results supply useful starting points, but do not by themselves establish an open problem at their intersection. A fixed context-to-action policy can change realized actions on every round, so counting policy changes and counting action changes yield different feasible sets. Before asserting a remaining minimax gap, specify the context process, switching convention, comparator, resource-feasibility convention, and oracle access, then check the literature for that exact model. This audit did not complete that model-specific verification.",
+    "reviewed": [
+      {
+        "ref": "Simchi-Levi, Xu, Zhao, 'Blind Network Revenue Management and Bandits with Knapsacks under Limited Switches', arXiv 2019/2025",
+        "result": "Matching regret upper and lower bounds under limited switches for blind NRM and BwK.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1911.01067"
+      },
+      {
+        "ref": "Agrawal, Devanur, Li, 'An efficient algorithm for contextual bandits with knapsacks, and an extension to concave objectives', COLT 2016",
+        "result": "Efficient contextual BwK algorithms without switching constraints.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/1506.03374"
+      },
+      {
+        "ref": "Badanidiyuru, Kleinberg, Slivkins, 'Bandits with Knapsacks', FOCS 2013 / JACM 2018",
+        "result": "Introduces BwK and gives near-optimal algorithms for the noncontextual resource-constrained learning model.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/1305.2545"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Try batched primal-dual or optimistic algorithms that update policies only at switch epochs. Lower bounds should adapt limited-switch price-learning constructions while embedding covariate uncertainty. A useful first target is finite policy classes with stochastic iid contexts and linear resource consumptions.",
+    "verification_notes": "A claimed rate must specify whether it is minimax, instance-dependent, Bayesian, or oracle-class dependent, and it must define the benchmark policy class. It must state exactly what counts as a switch: changing the concrete action, changing a mapping from contexts to actions, changing randomized mixture weights, or changing posted prices can lead to different models. Resource feasibility must hold for realized play, not only in expectation, unless the benchmark is also expectation-constrained. A positive theorem should reduce to the Simchi-Levi-Xu-Zhao limited-switch rate in the noncontextual case and to contextual BwK rates when $S$ is large. A lower bound should separate the contribution of switching scarcity from ordinary contextual learning and knapsack scarcity.",
+    "machine_checkable": false
+  },
+  "notes_for_maintainer": "2026-11-09 targeted status screen: verified the Simchi-Levi-Xu-Zhao arXiv v5 listing, but did not find a directly matching resolution of the combined contextual model. This is NOT open-status certification. The record conflates switches of realized actions with switches of a context-to-action mapping; those constraints are inequivalent. It also leaves the context process and benchmark ambiguous. Needs a separately fixed formal model and forward-citation review before being promoted as a verified clean open problem.",
+  "confidence": "low"
+}

@@ -1,0 +1,125 @@
+{
+  "id": "tusnady-low-dimensional-box-discrepancy",
+  "title": "Tusnady's problem for low-dimensional boxes",
+  "collection": "Approximation & Discrepancy",
+  "area": "Geometric Discrepancy",
+  "tags": [
+    "discrepancy",
+    "geometric discrepancy",
+    "Tusnady problem",
+    "axis-parallel boxes",
+    "vector balancing"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "Close the logarithmic gaps in Tusnady's discrepancy problem for axis-parallel boxes in dimensions 2, 3, and 4.",
+  "full_statement": "Let $P\\subset[0,1]^d$ be an $n$-point set and let $\\mathcal R_d$ be the family of all axis-parallel boxes in $[0,1]^d$. The combinatorial discrepancy of $P$ with respect to boxes is $$\\operatorname{disc}(P,\\mathcal R_d)=\\min_{\\chi:P\\to\\{-1,+1\\}}\\max_{R\\in\\mathcal R_d}\\left|\\sum_{p\\in P\\cap R}\\chi(p)\\right|.$$ Tusnady's problem asks for the worst-case asymptotic order $$D_d(n)=\\sup_{|P|=n}\\operatorname{disc}(P,\\mathcal R_d)$$ as a function of $n$ and fixed dimension $d$. The conjectural or benchmark lower-bound scale is roughly $(\\log n)^{d-1}$ for fixed $d$. The established general bounds reviewed here are $\\Omega_d((\\log n)^{d-1})$ and $O_d((\\log n)^{d-1/2})$ (Nikolov, Theorem 1). Dutta's claimed stronger bounds and resolution for $d\\ge5$ were withdrawn and cannot be used. The open problem is to determine the correct order of $D_d(n)$ for $d=2,3,4$, ideally proving $D_d(n)=\\Theta_d((\\log n)^{d-1})$ or constructing point sets requiring larger discrepancy.",
+  "open_problem": "Determine the asymptotic discrepancy of axis-parallel boxes for fixed low dimensions $d=2,3,4$.",
+  "background": "Geometric discrepancy asks how evenly finite point sets can be two-colored against geometric ranges. It is a bridge between combinatorics, approximation algorithms, numerical integration, data structures, and randomized rounding. Axis-parallel boxes are the most basic multidimensional range family beyond intervals, and Tusnady's problem is the flagship open question for this setting. The problem is clean: the input is an arbitrary finite point set, the allowed ranges are fixed, and the goal is a worst-case logarithmic exponent. It complements the repository's existing Spencer/Komlos/Beck-Fiala discrepancy entries by focusing on a geometric set system where the best known bounds are dimension-sensitive and where existential and algorithmic bounds must be distinguished.",
+  "known_results": "For intervals, alternating sorted points gives discrepancy at most one. Beck initiated the box-discrepancy problem; Matousek developed geometric decompositions. Nikolov's Theorem 1 gives $O_d(\\log^{d-1/2}n)$, compared with lower bound $\\Omega_d(\\log^{d-1}n)$. Thus verified baseline upper exponents for $d=2,3,4$ are $3/2,5/2,7/2$. Bansal and Garg give algorithmic $O_d(\\log^d n)$ bounds. Dutta's 2021 manuscript claimed exponents $7/4,5/2,13/4$ and a matching result for $d\\ge5$, but arXiv v2 (February 10, 2022) withdraws it because Claim 4.7 has an unfixable flaw. Those claims are not established progress. No resolution of the intended low-dimensional target was verified in this audit.",
+  "where_posed": {
+    "text": "Historical Tusnady box-discrepancy problem, discussed in Nikolov's introduction. The previously cited Dutta manuscript was withdrawn and is not evidence of a high-dimensional resolution.",
+    "url": "https://arxiv.org/pdf/1701.05532",
+    "quote": "",
+    "location": "Introduction, Theorem 1"
+  },
+  "source": {
+    "authors": "Jozsef Beck",
+    "title": "Balanced two-colorings of finite sets in the square",
+    "year": 1981,
+    "venue": "Combinatorica",
+    "url": "https://doi.org/10.1007/BF02579327"
+  },
+  "additional_refs": [
+    {
+      "authors": "Jiri Matousek",
+      "title": "Geometric Discrepancy: An Illustrated Guide",
+      "year": 1999,
+      "venue": "Springer",
+      "url": "https://doi.org/10.1007/978-3-642-03942-3"
+    },
+    {
+      "authors": "Aleksandar Nikolov",
+      "title": "Tighter Bounds for the Discrepancy of Boxes and Polytopes",
+      "year": 2017,
+      "venue": "Mathematika",
+      "url": "https://arxiv.org/abs/1701.05532"
+    },
+    {
+      "authors": "Nikhil Bansal, Shashwat Garg",
+      "title": "Algorithmic Discrepancy Beyond Partial Coloring",
+      "year": 2017,
+      "venue": "STOC",
+      "url": "https://arxiv.org/abs/1611.01805"
+    },
+    {
+      "authors": "Kunal Dutta",
+      "title": "On Shallow Packings and Tusnady's Problem",
+      "year": 2021,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/2109.05693"
+    }
+  ],
+  "enabled": true,
+  "progress": {
+    "state": "partial",
+    "summary": "Removed reliance on withdrawn Dutta claims. Reviewed established bounds leave a square-root-logarithmic gap: $\\Omega_d(\\log^{d-1}n)$ versus $O_d(\\log^{d-1/2}n)$.",
+    "links": [
+      {
+        "title": "Bansal-Garg framework",
+        "url": "https://arxiv.org/abs/1611.01805"
+      },
+      {
+        "title": "Dutta shallow packing",
+        "url": "https://arxiv.org/abs/2109.05693"
+      },
+      {
+        "title": "Aleksandar Nikolov, Tighter Bounds for the Discrepancy of Boxes and Polytopes (2017), Theorem 1",
+        "url": "https://arxiv.org/pdf/1701.05532"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Lower bounds are explicit or probabilistic point-set constructions. Candidate point sets and range families can be tested by exact or integer-programming discrepancy computations at moderate sizes.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Search can look for planar or low-dimensional point sets with high box discrepancy, or for decompositions that reduce observed discrepancy. Machine experiments may reveal extremal configurations and guide lower-bound constructions.",
+  "literature": {
+    "synthesis": "Geometric decompositions and factorization norms underlie the established polylogarithmic bounds. Nikolov combines these with vector balancing to give the stated existential upper bound; Bansal-Garg supply constructive bounds. Dutta's shallow-packing claims must not be used because the manuscript was withdrawn. This audit verifies these baseline results and the withdrawal, not a complete derivation of possible consequences of all new 2026 discrepancy preprints.",
+    "reviewed": [
+      {
+        "ref": "Beck, 'Balanced two-colorings of finite sets in the square', Combinatorica 1981",
+        "result": "Initiates the modern study of rectangle discrepancy and proves early upper/lower bounds.",
+        "relevance": "related-tool",
+        "url": "https://doi.org/10.1007/BF02579327",
+        "relevance_detail": "poses-problem"
+      },
+      {
+        "ref": "Bansal and Garg, 'Algorithmic Discrepancy Beyond Partial Coloring', STOC 2017",
+        "result": "Gives improved algorithmic bounds including $O(\\log^2 n)$ for planar rectangles.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1611.01805"
+      },
+      {
+        "ref": "Dutta, 'On Shallow Packings and Tusnady's Problem', arXiv 2021 [WITHDRAWN, 2022]",
+        "result": "The claimed low-dimensional improvements and high-dimensional resolution were withdrawn: arXiv v2 reports an unfixable flaw in Claim 4.7.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/2109.05693",
+        "relevance_detail": "withdrawn-claim"
+      },
+      {
+        "ref": "Aleksandar Nikolov, Tighter Bounds for the Discrepancy of Boxes and Polytopes (2017), Theorem 1",
+        "result": "Established existential box bound $O_d(\\log^{d-1/2}n)$, with lower-bound scale $\\Omega_d(\\log^{d-1}n)$ recalled in the introduction.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/pdf/1701.05532"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "For upper bounds, study low-dimensional range decompositions that avoid the losses in generic chaining or shallow-packing arguments. For lower bounds, search for planar point configurations whose box incidence matrices have high hereditary discrepancy, using determinant lower bounds, gamma2/factorization norms, or integer programming.",
+    "verification_notes": "A claimed upper bound must hold uniformly over all $n$-point sets in $[0,1]^d$ and all axis-parallel boxes, not only anchored boxes or random point sets. A lower bound must exhibit or probabilistically prove point sets with hereditary or ordinary box discrepancy at the claimed scale. State the dimension carefully; the claimed $d\\ge5$ resolution in Dutta is withdrawn and cannot be used. Check any use of Claim 4.7 against the withdrawal notice. Computational certificates should specify the finite point set, the discretized box family induced by point coordinates, and an exact discrepancy or lower-bound certificate.",
+    "machine_checkable": true
+  },
+  "notes_for_maintainer": "Status audit 2026-11-09: Withdrawal notice and Nikolov Theorem 1 read. No claim that every 2026 consequence has been exhausted."
+}

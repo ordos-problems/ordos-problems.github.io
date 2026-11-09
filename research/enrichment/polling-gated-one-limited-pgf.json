@@ -1,0 +1,41 @@
+{
+  "id": "polling-gated-one-limited-pgf",
+  "background": "Polling systems are queueing networks in which one server visits several queues cyclically. They model communication protocols, manufacturing cells, traffic signals, and service systems. Many polling disciplines are exactly solvable because their queue-length transforms satisfy branching-type recursions or boundary-value problems. The mixed gated/one-limited two-queue system is striking because it is small, concrete, and still unresolved. Queue 1 uses gated service, so all customers present at the start of a visit are served; queue 2 uses one-limited service, so at most one customer is served per visit. Boon, Boxma, and Winands isolate this as an open problem: the functional equation for the joint queue-length probability generating function is known, but standard substitutions do not close it. This is a crisp applied-probability target, not a modelling exercise.",
+  "full_statement": "Consider a stable two-queue cyclic polling system with one server. Customers arrive to queue $i$ according to independent Poisson processes with rates $\\lambda_i$, service times at queue $i$ have known distributions with finite means, and switch-over times between queues are included as in the standard polling formulation. The server alternates between queue 1 and queue 2. Queue 1 uses gated service: during a visit, the server serves exactly those queue-1 customers present when the visit began, while arrivals during the visit wait for the next cycle. Queue 2 uses one-limited service: during a visit, the server serves at most one queue-2 customer, if any are present. Let $(N_1,N_2)$ be the stationary queue-length vector at an agreed embedded polling epoch, and let $P(z_1,z_2)=\\mathbb E[z_1^{N_1}z_2^{N_2}]$ be its joint probability generating function. The open problem is to obtain an exact expression, boundary-value characterization, or other complete transform solution for this joint PGF and the associated stationary queue-length or waiting-time transforms.",
+  "open_problem": "Determine the joint queue-length probability generating function, or an equivalent exact transform characterization, for the two-queue polling system with one gated queue and one one-limited queue.",
+  "known_results": "Branching-type polling systems and several mixed two-queue disciplines have exact transform solutions. Classical polling theory gives product-form or recursive PGF equations for gated, exhaustive, globally gated, and other branching-type disciplines. Boon, Boxma, and Winands explain that the corresponding exhaustive/one-limited two-queue model can be handled, but the gated/one-limited case resists the usual approach even though gated and exhaustive service often have comparable analytic complexity. They derive the relevant functional equation and show why the natural substitution that solves the exhaustive/one-limited case does not close the unknown transform. As of their open-problems paper and the source sweep here, the exact joint PGF for the gated/one-limited case remains open.",
+  "status": "open",
+  "where_posed": {
+    "text": "Open Problem 1 in Boon, Boxma, and Winands, 'On open problems in polling systems'.",
+    "url": "https://arxiv.org/abs/1408.0142",
+    "quote": "",
+    "location": "Open Problem 1."
+  },
+  "progress": {
+    "state": "none",
+    "summary": "The functional equation and related solvable models are known, but no exact joint transform for the gated/one-limited system is known in the cited open-problems paper.",
+    "links": [
+      {"title": "Boon, Boxma, Winands, On open problems in polling systems", "url": "https://arxiv.org/abs/1408.0142"}
+    ]
+  },
+  "importance": 6,
+  "difficulty": 7,
+  "counterexample_suitability": "low",
+  "counterexample_rationale": "This asks for an exact transform solution of a specified stochastic model, not for proving or refuting a finite conjecture.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Symbolic computation may help discover substitutions, invariants, or kernel factorizations for the functional equation. Numerical transform inversion can test candidate formulas.",
+  "literature": {
+    "synthesis": "Polling-system analysis often succeeds when the service discipline has a branching property: each customer present at a visit beginning can be replaced by an independent offspring population generated during service. Gated service has this property, but one-limited service does not fit the same branching template because a visit removes at most one customer regardless of queue length. The mixed gated/one-limited system therefore has just enough structure to write a functional equation, but not enough for the usual recursive PGF closure. Boon, Boxma, and Winands present it as a benchmark open problem because it is minimal, concrete, and analytically resistant. A solution may require a boundary-value problem on the bidisk, a kernel-canceling substitution not yet identified, or a regenerative representation that bypasses the missing branching property.",
+    "reviewed": [
+      {"ref": "Boon, Boxma, Winands, 'On open problems in polling systems', Queueing Systems / arXiv 2014", "result": "States the gated/one-limited joint-PGF problem and explains why standard methods fail.", "relevance": "partial-progress", "url": "https://arxiv.org/abs/1408.0142"},
+      {"ref": "Takagi, 'Analysis and application of polling models', Performance Evaluation 1988", "result": "Classical survey of exact polling-system transform methods and service disciplines.", "relevance": "survey", "url": "https://doi.org/10.1016/0166-5316(88)90027-7"},
+      {"ref": "Boxma and Groenendijk, 'Two queues with alternating service and switching times', Queueing Systems 1987", "result": "Develops analytic methods for two-queue alternating-service polling systems.", "relevance": "related-tool", "url": "https://doi.org/10.1007/BF01149336"}
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Derive the embedded polling-instant functional equation and look for kernel-canceling substitutions or boundary-value formulations. Compare with exhaustive/one-limited solutions to isolate exactly where gated service changes the analytic structure.",
+    "verification_notes": "A proposed solution should specify the embedded epoch and derive a valid joint PGF or equivalent transform for that epoch. The transform must be normalized at $(1,1)$, analytic in the relevant unit disk or polydisk, satisfy the Boon-Boxma-Winands functional equation, and imply nonnegative probabilities or valid moments. If the solution is a boundary-value characterization, it must include uniqueness conditions. If it claims waiting-time transforms, it must connect them rigorously to the queue-length PGF through distributional Little laws or polling identities. Simulations or moment recursions are useful checks but do not resolve the problem without the transform characterization.",
+    "machine_checkable": true
+  },
+  "notes_for_maintainer": "This is a small exact queueing-transform problem from a primary open-problems paper."
+}

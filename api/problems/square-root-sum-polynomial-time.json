@@ -1,0 +1,130 @@
+{
+ "number": 182,
+ "ref": "ORDOS-182",
+ "id": "square-root-sum-polynomial-time",
+ "title": "Polynomial-Time Complexity of the Square-Root-Sum Problem",
+ "collection": "Computer Science",
+ "area": "Computational Geometry and Numerical Complexity",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "computational geometry",
+  "numerical complexity",
+  "sum of square roots",
+  "geometric optimization",
+  "exact algorithms"
+ ],
+ "short_statement": "Many Euclidean optimization algorithms need to compare sums of distances exactly; the basic Turing-model complexity of comparing integer square-root sums is still unresolved.",
+ "open_problem": "Decide whether the square-root-sum problem is solvable in polynomial time on a Turing machine.",
+ "background": "This is a small-looking numerical problem with outsized consequences for computational geometry and geometric optimization. Lengths of Euclidean paths, tours, triangulations, matchings, and Steiner or network-design objects are often sums of square roots of integers. Approximation algorithms can usually avoid exact comparison, but exact decision problems and membership in classes such as NP can depend on whether one can compare such sums within polynomially many bits. For example, the exact complexity of minimum-weight triangulation is entangled with this issue: NP-hardness is known, but NP membership for the Euclidean-length decision version is delicate because a certificate may require comparing sums of radicals. The problem is therefore not about choosing a model of a real-world system; the model is a finite integer expression, and the hard part is the bit-complexity of exact sign determination.",
+ "full_statement": "The square-root-sum problem asks, given integers $x_1,\\ldots,x_n\\in\\mathbb Z$ and positive integers $a_1,\\ldots,a_n\\in\\mathbb N$, to decide the sign of $E=\\sum_{i=1}^n x_i\\sqrt{a_i}$, for example whether $E\\ge 0$. A common equivalent form asks whether $\\sum_i \\sqrt{a_i}\\le t$ for a given integer threshold $t$, or whether one sum of square roots is at most another. The open problem is to determine whether this decision problem is solvable in time polynomial in the bit length of the integer input on an ordinary Turing machine. A sufficiently strong polynomially bounded separation theorem for nonzero values of $E$ would imply such an algorithm, because one could compute the square roots to enough precision and compare safely. Conversely, proving that no such algorithm exists under standard complexity assumptions would separate this exact numerical-comparison problem from the real-RAM intuition that square roots can be manipulated at unit cost.",
+ "known_results": "The problem is easy in a unit-cost real-RAM model but its bit-complexity on Turing machines is open. Allender, Burgisser, Kjeldgaard-Pedersen, and Miltersen placed square-root-sum inside the counting hierarchy, giving a strong upper bound well below arbitrary PSPACE reasoning but not a polynomial-time algorithm. Separation-bound approaches give algorithms whose running time depends on lower bounds for the smallest nonzero value of a square-root sum. Burnikel, Fleischer, Mehlhorn, and Schirra proved a strong computable separation bound for radical expressions, but the dependence remains exponential in the number of terms. Cheng, Meng, Sun, and Chen related the relevant separation quantity to lattice reduction and gave conditional and experimental evidence for sharper behavior. Eisenbrand, Haeberle, and Singer used the subspace theorem to improve the bound to a singly exponential form for fixed radicands, but their constant is ineffective and the result still does not yield a general polynomial-time algorithm. Thus the open part is still the same sharp question: can signs of arbitrary integer square-root sums be decided in polynomial time?",
+ "progress": {
+  "state": "partial",
+  "summary": "The problem lies in the counting hierarchy and admits exponential or special-case separation bounds, including a 2023 subspace-theorem improvement, but no polynomial-time algorithm or hardness barrier is known.",
+  "links": [
+   {
+    "title": "Eisenbrand-Haeberle-Singer 2023",
+    "url": "https://arxiv.org/abs/2312.02057"
+   },
+   {
+    "title": "Cheng-Meng-Sun-Chen lattice-reduction paper",
+    "url": "https://arxiv.org/abs/0905.4487"
+   }
+  ]
+ },
+ "importance": 7,
+ "difficulty": 8,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "There is no finite counterexample to polynomial-time solvability in the usual sense, but explicit near-collisions between square-root sums are valuable because they test proposed separation bounds and precision claims.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Search can look for unusually small nonzero square-root sums, conjecture lattice patterns, or test candidate separation bounds over finite ranges. Any discovered family with unexpectedly tiny gaps would sharpen the barrier.",
+ "literature": {
+  "synthesis": "The square-root-sum problem is a bridge between exact numerical computation and discrete optimization. Its input is completely finite and integer-valued, yet deciding the sign may require ruling out extremely small nonzero gaps between algebraic sums. Allender and coauthors gave a structural upper bound through the counting hierarchy, showing that the problem is not arbitrary real computation. Separation-bound work supplies algorithms by proving that nonzero sums cannot be too close to zero, but known bounds still lead to superpolynomial precision in the number of terms. The Eisenbrand-Haeberle-Singer bound is a real advance for fixed radicands, but because its constant is ineffective and radicands vary with the input, it does not settle the original polynomial-time question. The remaining gap is therefore exact and clean: either prove a polynomial bit-complexity comparison algorithm, likely via stronger effective separation, or show that such a comparison would imply an unexpected complexity collapse.",
+  "reviewed": [
+   {
+    "ref": "Friedrich Eisenbrand, Matthieu Haeberle, Neta Singer, 'An improved bound on sums of square roots via the subspace theorem', arXiv 2023",
+    "result": "Improves separation bounds using the subspace theorem and explicitly restates polynomial-time decidability as open.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2312.02057"
+   },
+   {
+    "ref": "Eric Allender, Peter Burgisser, Johan Kjeldgaard-Pedersen, Peter Bro Miltersen, 'On the Complexity of Numerical Analysis', SIAM Journal on Computing 2009",
+    "result": "Places square-root-sum in the counting hierarchy, giving the main known complexity-class upper bound.",
+    "relevance": "partial-progress",
+    "url": "https://doi.org/10.1137/070697926"
+   },
+   {
+    "ref": "Qi Cheng, Xianmeng Meng, Celi Sun, Jiazhe Chen, 'Bounding the Sum of Square Roots via Lattice Reduction', Mathematics of Computation 2010",
+    "result": "Connects separation bounds to lattice reduction and formulates conjectural behavior that would imply polynomial-time comparison.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/0905.4487"
+   },
+   {
+    "ref": "Christoph Burnikel, Rudolf Fleischer, Kurt Mehlhorn, Stefan Schirra, 'A Strong and Easily Computable Separation Bound for Arithmetic Expressions Involving Radicals', Algorithmica 2000",
+    "result": "Gives computable separation bounds for radical expressions, a main algorithmic route to exact comparison.",
+    "relevance": "technical-tool",
+    "url": "https://link.springer.com/search?query=A+Strong+and+Easily+Computable+Separation+Bound+for+Arithmetic+Expressions+Involving+Radicals"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Search for effective separation bounds for $\\sum_i x_i\\sqrt{a_i}$ in terms of input bit length, especially bounds polynomial in $n$ and $\\log\\max a_i$. Explore lattice-reduction formulations, algebraic-number norm arguments, and explicit near-collision constructions. Computational agents can enumerate small radicands and coefficients to find extremal gaps and test conjectured exponent patterns.",
+  "verification_notes": "A polynomial-time algorithm must run in the Turing bit model and handle arbitrary integer coefficients and radicands encoded in binary. A claimed separation bound must be effective: it must provide a computable lower bound large enough to determine the sign using polynomially many bits of precision. A randomized or average-case algorithm does not settle the decision problem unless it has the required worst-case correctness guarantee. Near-collision examples should provide exact integer data and a rigorous certificate that the displayed nonzero sum has the claimed magnitude.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "Problem 33 of the Open Problems Project / TOPP, restated in Eisenbrand, Haeberle, and Singer's 2023 separation-bound paper.",
+  "url": "https://arxiv.org/abs/2312.02057",
+  "quote": "whether this can be decided in polynomial time",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Friedrich Eisenbrand, Matthieu Haeberle, Neta Singer",
+  "title": "An improved bound on sums of square roots via the subspace theorem",
+  "year": 2023,
+  "venue": "arXiv preprint arXiv:2312.02057",
+  "url": "https://arxiv.org/abs/2312.02057"
+ },
+ "additional_refs": [
+  {
+   "authors": "Eric Allender, Peter Burgisser, Johan Kjeldgaard-Pedersen, Peter Bro Miltersen",
+   "title": "On the Complexity of Numerical Analysis",
+   "year": 2009,
+   "venue": "SIAM Journal on Computing",
+   "url": "https://doi.org/10.1137/070697926"
+  },
+  {
+   "authors": "Christoph Burnikel, Rudolf Fleischer, Kurt Mehlhorn, Stefan Schirra",
+   "title": "A Strong and Easily Computable Separation Bound for Arithmetic Expressions Involving Radicals",
+   "year": 2000,
+   "venue": "Algorithmica",
+   "url": "https://link.springer.com/search?query=A+Strong+and+Easily+Computable+Separation+Bound+for+Arithmetic+Expressions+Involving+Radicals"
+  },
+  {
+   "authors": "Qi Cheng, Xianmeng Meng, Celi Sun, Jiazhe Chen",
+   "title": "Bounding the Sum of Square Roots via Lattice Reduction",
+   "year": 2010,
+   "venue": "Mathematics of Computation",
+   "url": "https://arxiv.org/abs/0905.4487"
+  },
+  {
+   "authors": "Jianbo Qian, Cao An Wang",
+   "title": "How much precision is needed to compare two sums of square roots of integers?",
+   "year": 2006,
+   "venue": "Information Processing Letters",
+   "url": "https://doi.org/10.1016/j.ipl.2006.06.015"
+  }
+ ],
+ "bibtex": "@misc{Eisenbrand2023,\n  author = {Friedrich Eisenbrand and Matthieu Haeberle and Neta Singer},\n  title = {An improved bound on sums of square roots via the subspace theorem},\n  year = {2023},\n  howpublished = {arXiv preprint arXiv:2312.02057},\n  url = {https://arxiv.org/abs/2312.02057},\n  note = {Source of ORdős Problem ORDOS-182}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/square-root-sum-polynomial-time.html",
+  "api": "https://ordos-problems.github.io/api/problems/square-root-sum-polynomial-time.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

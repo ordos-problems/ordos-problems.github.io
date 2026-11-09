@@ -1,0 +1,155 @@
+{
+  "id": "nash-social-welfare-approximation",
+  "background": "The Nash Social Welfare (NSW) objective — the geometric mean of agents' utilities — occupies a sweet spot between the utilitarian objective (sum of utilities, efficient but potentially very unfair) and the egalitarian objective (minimum utility, fair but potentially very inefficient). It is scale-free (multiplying one agent's valuation by a constant does not change the optimizer), and for divisible goods its maximizer coincides with the celebrated competitive equilibrium from equal incomes. Caragiannis, Kurokawa, Moulin, Procaccia, Shah, and Wang further showed that for indivisible goods the NSW maximizer is envy-free up to one good and Pareto-optimal, cementing NSW maximization as a canonical 'fairness plus efficiency' benchmark used in deployed systems such as Spliddit. For indivisible goods, however, maximizing NSW is NP-hard even with two agents (via Subset-Sum-type reductions), so the algorithmic question becomes one of approximation. The breakthrough of Cole and Gkatzelis (STOC 2015) gave the first constant-factor approximation for additive valuations via a spending-restricted Fisher-market relaxation, launching a decade-long program that has produced a rich toolkit: market equilibria and price-based rounding, stable polynomials and real stability, configuration LPs with nontrivial separation oracles, and mixed local-search/matching algorithms. The problem has become a proving ground for approximation-algorithm techniques in the same way max-cut or scheduling problems once were, and progress has marched up the valuation hierarchy from additive to budget-additive, Rado, submodular, and finally subadditive valuations. Yet in every class the optimal approximation constant remains unknown: the gaps between the best algorithms and the best hardness results are still substantial, and closing them — even just for additive valuations — is a central open problem in fair division and approximation algorithms.",
+  "short_statement": "Nash Social Welfare is the geometric mean of agents' utilities; maximizing it over indivisible goods is NP-hard. What is the best constant approximation factor achievable in polynomial time, for additive, submodular, and subadditive valuations?",
+  "full_statement": "There is a set of agents $N$ ($|N|=n$) and a set of indivisible goods $M$, with each agent $i$ having a monotone valuation $v_i:2^M\\to\\mathbb{R}_{\\ge 0}$. For an allocation $A=(A_1,\\dots,A_n)$ partitioning $M$, the Nash Social Welfare is the geometric mean of the agents' utilities, $$\\mathrm{NSW}(A)=\\left(\\prod_{i\\in N} v_i(A_i)\\right)^{1/n}.$$ A deterministic polynomial-time algorithm is an $\\alpha$-approximation (for $\\alpha\\ge 1$) if it always outputs an allocation $A$ with $\\mathrm{NSW}(A)\\ge \\mathrm{OPT}/\\alpha$, where $\\mathrm{OPT}$ is the maximum NSW over all allocations. Maximizing NSW exactly is NP-hard already for two agents with additive valuations. Determine $\\alpha^*=\\inf\\{\\alpha:$ a poly-time $\\alpha$-approximation exists$\\}$ for each valuation class in the hierarchy additive $\\subset$ submodular $\\subset$ XOS $\\subset$ subadditive (assuming appropriate value/demand oracle access for the richer classes). For unweighted additive valuations, the new randomized upper bound is strictly below $e^{1/e}$; see the What Is Known section. For randomized algorithms, distinguish an expected-welfare guarantee $\\mathbb E[\\mathrm{NSW}(A)]\\ge\\mathrm{OPT}/\\alpha$ from a per-execution guarantee; the new result is randomized.",
+  "known_results": "Additive valuations: the earlier polynomial-time algorithm achieves $e^{1/e}+\\varepsilon\\approx 1.445$ (Barman, Krishnamurthy, Vaish, EC 2018), and the same factor was extended to the weighted (asymmetric) NSW objective by Feng and Li (ICALP 2024). The best hardness is $\\sqrt{8/7}\\approx 1.069$ (Garg, Hoefer, Mehlhorn, SODA 2018 / Math. Oper. Res. 2024, via Max-E3-Lin-2). Bei, Feng, Hu, Li, Zhang (arXiv 2504.09669, 2025) show the configuration LP for weighted additive NSW has integrality gap $e^{1/e}-\\varepsilon$ (so configuration-LP-based algorithms cannot beat 1.445), and for unweighted additive NSW they show an integrality gap of $2^{1/4}\\approx 1.189$, strictly above the known $1.069$ NP-hardness. Submodular valuations: Garg, Husic, Li, Vegh, Vondrak (STOC 2023) gave a $(4+\\varepsilon)$-approximation (unweighted); Feng, Hu, Li, Zhang (STOC 2025) gave the first constant, $(233+\\varepsilon)$, for the weighted case; and Bei, Feng, Hu, Li, Zhang (2025) improved both to $(3.56+\\varepsilon)$ for weighted (hence also unweighted) submodular NSW. Hardness for submodular is $e/(e-1)\\approx 1.582$ (Garg, Kulkarni, Kulkarni, SODA 2020), and the submodular configuration LP has integrality gap at least $2^{\\ln 2}\\approx 1.617$. Subadditive valuations: Dobzinski, Li, Rubinstein, Vondrak (STOC 2024) gave the first constant-factor approximation with demand oracles (a large, unoptimized constant). Viswanathan, 'A Better-than-e^{1/e} Approximation Algorithm for Nash Social Welfare under Additive Valuations' (arXiv:2607.13340v1), Theorem 1.1, reports an efficient randomized $(e^{1/e}-c)$ approximation for an absolute $c>0$ by rounding the configuration LP. This concerns unweighted additive NSW, not the weighted objective. The exact optimum approximation factor is not established. No explicit numerical value for c is asserted here.",
+  "status": "open",
+  "where_posed": {
+    "text": "The constant-factor approximability question was opened by Cole, Gkatzelis, 'Approximating the Nash Social Welfare with Indivisible Items', STOC 2015 (SICOMP 2018), which gave the first constant factor for additive valuations; the quest for the optimal constant in each valuation class is restated throughout the subsequent literature.",
+    "url": "https://arxiv.org/abs/1507.06457",
+    "quote": "",
+    "location": ""
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The unweighted additive upper bound improves. The weighted additive configuration-LP barrier must not be applied to the unweighted objective.",
+    "links": [
+      {
+        "title": "Nash Social Welfare with Submodular Valuations: Approximation Algorithms and Integrality Gaps (Bei, Feng, Hu, Li, Zhang, 2025)",
+        "url": "https://arxiv.org/abs/2504.09669"
+      },
+      {
+        "title": "A Constant-Factor Approximation for Nash Social Welfare with Subadditive Valuations (Dobzinski, Li, Rubinstein, Vondrak, STOC 2024)",
+        "url": "https://arxiv.org/abs/2309.04656"
+      },
+      {
+        "title": "A Note on Approximating Weighted Nash Social Welfare with Additive Valuations (Feng, Li, ICALP 2024)",
+        "url": "https://arxiv.org/abs/2404.15607"
+      },
+      {
+        "title": "A Better-than-e^{1/e} Approximation Algorithm for Nash Social Welfare under Additive Valuations",
+        "url": "https://arxiv.org/abs/2607.13340"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "low",
+  "counterexample_rationale": "The question asks for an optimal approximation constant, not the existence of a finite object; a counterexample cannot settle it. Explicit instances can only contribute integrality-gap constructions for specific relaxations (as Bei et al. 2025 did for the configuration LP), which constrain algorithmic techniques but do not resolve the problem.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Evolutionary search could plausibly discover improved integrality-gap instances for the configuration LP or Fisher-market relaxations, better rounding/gadget parameters (the current $3.56+\\varepsilon$ submodular analysis already relies on computer-assisted mathematical programs), or hard instances sharpening the $2^{1/4}$ unweighted-additive gap. It cannot by itself prove new approximation guarantees or NP-hardness.",
+  "literature": {
+    "synthesis": "The configuration-LP gap at $e^{1/e}$ concerns weighted additive NSW. It is not a barrier at that value for unweighted additive NSW, whose new algorithm uses this very relaxation. Richer valuation classes and their oracle models remain separate.",
+    "reviewed": [
+      {
+        "ref": "Cole, Gkatzelis, 'Approximating the Nash Social Welfare with Indivisible Items', STOC 2015 / SICOMP 2018",
+        "result": "First constant-factor approximation for additive valuations via a spending-restricted Fisher market relaxation ($2e^{1/e}$, improved to 2 in the journal version).",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1507.06457"
+      },
+      {
+        "ref": "Barman, Krishnamurthy, Vaish, 'Finding Fair and Efficient Allocations', EC 2018",
+        "result": "$e^{1/e}+\\varepsilon$ approximation for additive valuations via price-envy-freeness and local search; historical predecessor of the new randomized guarantee.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1707.04731"
+      },
+      {
+        "ref": "Garg, Hoefer, Mehlhorn, 'Satiation in Fisher Markets and Approximation of Nash Social Welfare', SODA 2018 / Math. Oper. Res. 2024",
+        "result": "NP-hardness of approximation $\\sqrt{8/7}\\approx1.069$ for additive NSW via reduction from Max-E3-Lin-2; distinguish this from hardness under stronger conjectures.",
+        "relevance": "hardness",
+        "url": "https://arxiv.org/abs/1707.04428"
+      },
+      {
+        "ref": "Garg, Husic, Li, Vegh, Vondrak, 'Approximating Nash Social Welfare by Matching and Local Search', STOC 2023",
+        "result": "$(4+\\varepsilon)$-approximation for (unweighted) submodular NSW via a simple matching-plus-local-search algorithm.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2211.03883"
+      },
+      {
+        "ref": "Dobzinski, Li, Rubinstein, Vondrak, 'A Constant-Factor Approximation for Nash Social Welfare with Subadditive Valuations', STOC 2024",
+        "result": "First constant-factor approximation for subadditive valuations (demand-oracle model); the constant is large and unoptimized.",
+        "relevance": "solves-special-case",
+        "url": "https://arxiv.org/abs/2309.04656"
+      },
+      {
+        "ref": "Bei, Feng, Hu, Li, Zhang, 'Nash Social Welfare with Submodular Valuations: Approximation Algorithms and Integrality Gaps', arXiv 2504.09669, 2025",
+        "result": "$(3.56+\\varepsilon)$-approximation for weighted submodular NSW; integrality gaps of $e^{1/e}-\\varepsilon$ (weighted additive configuration LP), $2^{1/4}-\\varepsilon$ (unweighted additive), and $2^{\\ln 2}-\\varepsilon\\approx 1.617$ (submodular configuration LP).",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2504.09669"
+      },
+      {
+        "ref": "Vignesh Viswanathan, 'A Better-than-e^{1/e} Approximation Algorithm for Nash Social Welfare under Additive Valuations' (2026)",
+        "result": "Theorem 1.1 reports a strict improvement for the unweighted additive objective.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2607.13340"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Distinguish weighted from unweighted relaxations before using integrality gaps as barriers. Review the new configuration-LP rounding and seek a sharper upper or hardness bound in a precisely specified valuation/oracle model.",
+    "verification_notes": "State valuation class, oracle access, weights, polynomial runtime, and the randomized approximation convention. Compare to the updated bound in the What Is Known section; integrality gaps are not automatically computational hardness.",
+    "machine_checkable": false
+  },
+  "additional_refs": [
+    {
+      "authors": "Siddharth Barman, Sanath Kumar Krishnamurthy, Rohit Vaish",
+      "title": "Finding Fair and Efficient Allocations",
+      "year": 2018,
+      "venue": "EC",
+      "url": "https://arxiv.org/abs/1707.04731"
+    },
+    {
+      "authors": "Shahar Dobzinski, Wenzheng Li, Aviad Rubinstein, Jan Vondrak",
+      "title": "A Constant-Factor Approximation for Nash Social Welfare with Subadditive Valuations",
+      "year": 2024,
+      "venue": "STOC",
+      "url": "https://arxiv.org/abs/2309.04656"
+    },
+    {
+      "authors": "Jugal Garg, Edin Husic, Wenzheng Li, Laszlo A. Vegh, Jan Vondrak",
+      "title": "Approximating Nash Social Welfare by Matching and Local Search",
+      "year": 2023,
+      "venue": "STOC",
+      "url": "https://arxiv.org/abs/2211.03883"
+    },
+    {
+      "authors": "Yuda Feng, Shi Li",
+      "title": "A Note on Approximating Weighted Nash Social Welfare with Additive Valuations",
+      "year": 2024,
+      "venue": "ICALP",
+      "url": "https://arxiv.org/abs/2404.15607"
+    },
+    {
+      "authors": "Xiaohui Bei, Yuda Feng, Yang Hu, Shi Li, Ruilong Zhang",
+      "title": "Nash Social Welfare with Submodular Valuations: Approximation Algorithms and Integrality Gaps",
+      "year": 2025,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/2504.09669"
+    },
+    {
+      "authors": "Jugal Garg, Martin Hoefer, Kurt Mehlhorn",
+      "title": "Satiation in Fisher Markets and Approximation of Nash Social Welfare",
+      "year": 2024,
+      "venue": "Mathematics of Operations Research (SODA 2018)",
+      "url": "https://arxiv.org/abs/1707.04428"
+    },
+    {
+      "authors": "Vignesh Viswanathan",
+      "title": "A Better-than-e^{1/e} Approximation Algorithm for Nash Social Welfare under Additive Valuations",
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2607.13340"
+    }
+  ],
+  "tags": [
+    "fair division",
+    "Nash social welfare",
+    "approximation algorithms",
+    "configuration LP",
+    "Fisher markets",
+    "submodular valuations"
+  ],
+  "notes_for_maintainer": "2026-11-09: corrected the weighted/unweighted configuration-LP conflation throughout. The new unweighted additive approximation is reported in a primary preprint; no complete proof check. Other valuation-class results are retained from the prior enrichment, not freshly certified.",
+  "confidence": "medium"
+}

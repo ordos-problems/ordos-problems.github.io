@@ -1,0 +1,111 @@
+{
+  "id": "identical-machines-high-multiplicity-distinct-times-fpt",
+  "short_statement": "A September 2026 preprint claims FPT for fully binary high-multiplicity bin packing, which would settle the corresponding identical-machine makespan target.",
+  "full_statement": "Consider identical parallel-machine makespan scheduling $P||C_{\\max}$ under high-multiplicity input. Instead of listing all jobs individually, the input gives distinct positive integer processing times $a_1,\\ldots,a_k$, binary-encoded multiplicities $m_1,\\ldots,m_k$, and the number of identical machines $M$. A schedule chooses, for each machine, a vector $c\\in\\mathbb Z_{\\ge0}^k$ of job-type counts, and the total count over all machines must equal $(m_1,\\ldots,m_k)$. The load of a machine using configuration $c$ is $\\sum_{r=1}^k c_ra_r$, and the objective is to minimize the maximum load. The parameter is $k$, the number of distinct processing times, while multiplicities, machine count, and processing times are part of the compact binary input. The open problem is whether exact makespan minimization is fixed-parameter tractable in $k$, with running time $f(k)\\,poly(|I|)$, or whether compact multiplicities make the problem W-hard or otherwise unlikely to be FPT. A September 2026 preprint now claims an FPT decision theorem for the equivalent bin-packing problem. For a candidate makespan $B$, take item sizes $a_r$, multiplicities $m_r$, bin bound $M$, and capacity $B$. Binary search on the integer makespan between zero and total processing load has polynomially many iterations in the binary input length, so the claimed theorem implies FPT computation of the optimum value. This transfer is an inference from the stated decision theorem, not an independent verification of its proof.",
+  "background": "High-multiplicity encoding is natural in operations settings with many identical jobs of a few types: production lots, cloud tasks, appointment templates, and repeated batch work. It changes the algorithmic question because the explicit number of jobs may be exponentially larger than the input length. For ordinary explicit scheduling, a small number of processing times often enables dynamic programming. Under compact multiplicities, the same intuition can fail because counts are large binary numbers and the algorithm must reason about integer decompositions of machine loads. Mnich and van Bevern include this problem in their parameterized scheduling list as a clean open case at the interface of scheduling, integer programming, and fixed-parameter algorithms. The 2025 high-multiplicity scheduling work sharpens the integer-cone toolkit but did not settle the fully binary case. The September 2026 preprint now claims to do so.",
+  "known_results": "Koana and Kumabe, 'High-Multiplicity Bin Packing is FPT' (arXiv:2609.16923v1, September 2026), Theorem 1, claim a deterministic $O^*(2^{k^{O(k)}})$ decision algorithm with all sizes, multiplicities, capacity, and bin bound encoded in binary. The suppressed factor is polynomial in binary input length with exponent independent of $k$. Setting bin capacity equal to a candidate makespan and the bin bound equal to the number of machines gives the stated scheduling decision problem exactly. Binary search then yields the optimum makespan in FPT time, assuming the theorem. The preprint's proof has not been independently certified here.\n\nHistorical context: Koutecky and Zink (2020) distinguish the ordinary explicit-job problem, which is FPT in the number of processing times, from the high-multiplicity version. Their positive result must not be applied by expanding binary multiplicities. Jansen, Kahler, and Zwanger (CIAC 2025; arXiv v2), Theorem 1.1 and Section 6, give a running time of the form $(\\log p_{\\max})^{2^{O(k)}}|I|^{O(1)}$. This does not establish $f(k)|I|^{O(1)}$ for binary processing times, because the exponent on their bit length depends on $k$. Their Theorem 0.D.1 relates the target to uniformly related machines parameterized by job and machine types, both with compact multiplicities.\n\nRohwedder (ICALP 2025), Section 5, obtains $p_{\\max}^{O(k)}\\langle\\mathrm{enc}\\rangle^{O(1)}$ for a related uniform-machine formulation with high job multiplicities. This retains numerical dependence on $p_{\\max}$ and explicitly lists machine speeds, so it does not resolve the fully compact, parameter-$k$ target here.",
+  "open_problem": "Verify the September 2026 FPT claim and its consequence for exact high-multiplicity makespan minimization. The original parameter-$k$ question is no longer listed as an unaddressed target.",
+  "status": "solution claimed",
+  "where_posed": {
+    "text": "Listed as Open Problem 5 in Mnich and van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems'.",
+    "url": "https://arxiv.org/abs/1709.01670",
+    "quote": "",
+    "location": "Open Problem 5"
+  },
+  "progress": {
+    "state": "solution-claimed",
+    "summary": "Koana-Kumabe claim FPT for the exact fully binary decision model; the makespan consequence follows by capacity search, conditional on the theorem.",
+    "links": [
+      {
+        "title": "Koana and Kumabe, High-Multiplicity Bin Packing is FPT (2026)",
+        "url": "https://arxiv.org/abs/2609.16923v1"
+      },
+      {
+        "title": "Mnich and van Bevern, 15 open problems",
+        "url": "https://arxiv.org/abs/1709.01670"
+      },
+      {
+        "title": "Jansen, Kahler, Zwanger, high-multiplicity scheduling",
+        "url": "https://arxiv.org/abs/2404.17274"
+      }
+    ]
+  },
+  "importance": 6,
+  "difficulty": 7,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Hardness would likely be a finite arithmetic reduction with few job types. Small computational searches can test whether compact multiplicities encode difficult Diophantine behavior.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Search may find normal-form configuration bounds or hard compact-count gadgets. A final answer needs either an FPT algorithm or a parameterized hardness proof.",
+  "literature": {
+    "synthesis": "Earlier partial results depend on unary encodings or numerical processing times. The September 2026 claim instead covers the fully binary bin-packing decision model. Interpreting bins as identical machines gives the target decision problem; polynomially many capacity queries determine the optimum integer makespan. The verification priority is the claimed separation-oracle and integer-decomposition argument, including bit complexity, not a new proof of the already-claimed target.",
+    "reviewed": [
+      {
+        "ref": "Matthias Mnich, Rene van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems', Computers & Operations Research 2018",
+        "result": "Identifies high-multiplicity $P||C_{\\max}$ parameterized by the number of distinct processing times as an open problem.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/1709.01670"
+      },
+      {
+        "ref": "Klaus Jansen, Kai Kahler, Esther Zwanger, 'Exact and Approximate High-Multiplicity Scheduling on Identical Machines', CIAC 2025, pp. 1-17",
+        "result": "Theorem 1.1 improves bit-length dependence; Theorem 0.D.1 relates the compact identical- and uniform-machine targets.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2404.17274"
+      },
+      {
+        "ref": "Dusan Knop, Martin Koutecky, 'Scheduling meets n-fold Integer Programming', arXiv 2016",
+        "result": "Shows how variable-dimension integer programming yields FPT algorithms for several scheduling parameters.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/1603.02611"
+      },
+      {
+        "ref": "Lars Rohwedder, 'ETH-Tight FPT Algorithm for Makespan Minimization on Uniform Machines', ICALP 2025",
+        "result": "Section 5 handles compact job counts but retains numerical processing-time dependence and explicitly listed machines.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/html/2501.04859v1"
+      },
+      {
+        "ref": "Tomohiro Koana, Soh Kumabe, 'High-Multiplicity Bin Packing is FPT', arXiv:2609.16923v1 (2026)",
+        "result": "Theorem 1 claims FPT with binary sizes, multiplicities, capacity and bin bound. The scheduling implication is a direct reduction; proof not independently certified.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/html/2609.16923v1"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Verify the preprint's integer-decomposition and strong separation arguments, bit complexity, and treatment of binary bin counts. Do not confuse computing an optimum value with explicitly printing an exponentially long schedule.",
+    "verification_notes": "A positive algorithm must be polynomial in the binary input length for each fixed $k$, and the polynomial exponent may not depend on multiplicities, machine count, or numeric processing-time values. A pseudo-polynomial algorithm in $\\sum_r m_r$, $C_{\\max}$, or the largest processing time does not resolve the high-multiplicity version. A hardness result should keep $k$ as the parameter being lower-bounded. The polynomial exponent must also be independent of k. A runtime with a k-dependent power of the binary input length is XP, not the requested FPT bound.",
+    "machine_checkable": false
+  },
+  "additional_refs": [
+    {
+      "authors": "Klaus Jansen, Kai Kahler, Esther Zwanger",
+      "title": "Exact and Approximate High-Multiplicity Scheduling on Identical Machines",
+      "year": 2025,
+      "venue": "CIAC 2025, LNCS 15679, pp. 1-17",
+      "url": "https://doi.org/10.1007/978-3-031-92932-8_1"
+    },
+    {
+      "authors": "Lars Rohwedder",
+      "title": "ETH-Tight FPT Algorithm for Makespan Minimization on Uniform Machines",
+      "year": 2025,
+      "venue": "ICALP 2025, LIPIcs 334, article 126",
+      "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol334-icalp2025/LIPIcs.ICALP.2025.126/LIPIcs.ICALP.2025.126.pdf"
+    },
+    {
+      "authors": "Martin Koutecky, Johannes Zink",
+      "title": "Complexity of Scheduling Few Types of Jobs on Related and Unrelated Machines",
+      "year": 2020,
+      "venue": "arXiv:2009.11840",
+      "url": "https://arxiv.org/abs/2009.11840"
+    },
+    {
+      "authors": "Tomohiro Koana, Soh Kumabe",
+      "title": "High-Multiplicity Bin Packing is FPT",
+      "year": 2026,
+      "venue": "arXiv:2609.16923v1",
+      "url": "https://arxiv.org/abs/2609.16923v1"
+    }
+  ],
+  "notes_for_maintainer": "2026-11-09: reviewed Jansen-Kahler-Zwanger v2 Theorem1.1, Section6, Theorem0.D.1; Rohwedder Sections4-5; Koutecky-Zink abstract. No complete forward-citation review. Machine encoding and numeric processing times are essential qualifications. Final cross-audit identified Koana-Kumabe September2026 preprint. Read the binary input definition, Theorem1, ILP formulation and separation framework; added conditional capacity-search consequence. No independent proof verification.",
+  "confidence": "medium"
+}

@@ -1,0 +1,77 @@
+{
+  "id": "open-shop-setup-times-fpt-batches",
+  "title": "Open-shop scheduling with sequence-dependent batch setup times",
+  "short_statement": "Is unit-time open-shop makespan scheduling with sequence-dependent batch setup times fixed-parameter tractable in the number of batches?",
+  "full_statement": "In $O|p_{ij}=1,ST_{sd,b}|C_{\\max}$, there are $m$ machines and jobs partitioned into $g$ batches. Each job has one unit-time operation on every machine. A machine may process at most one operation at a time, a job may be processed by at most one machine at a time, and the order of a job's operations is not fixed. If a machine switches from processing a job of batch $p$ to a job of batch $q$, it incurs a sequence-dependent setup time $s_{pq}$. The objective is to minimize the makespan. The open problem is whether this problem can be solved in $f(g)\\mathrm{poly}(n,m,\\log S)$ time when parameterized only by the number $g$ of batches, preferably even under high-multiplicity encoding where the number of jobs in each batch is written in binary rather than expanded job by job.",
+  "background": "Setup times are a major source of scheduling complexity: changing from one batch or product family to another may require cleaning, tooling, calibration, or travel. In open-shop scheduling, every job has one operation on each machine and the operation order is not prescribed. The batch setup variant groups jobs into batches and charges sequence-dependent setup time whenever a machine switches batch. Even with unit processing times, the model combines shop-scheduling constraints with a sequencing problem resembling TSP on batch labels. Van Bevern and Pyatkin obtained algorithms for important restricted cases, including settings where every batch is larger than the number of machines and settings where both the number of machines and number of batches are constants. Mnich and van Bevern ask for the clean parameterized classification by the number of batches alone. This is a natural OR question because product families may be few while the number of jobs and machines is large.",
+  "open_problem": "Is $O|p_{ij}=1,ST_{sd,b}|C_{\\max}$ fixed-parameter tractable in the number of batches $g$ alone, and can such an algorithm be made polynomial in the binary high-multiplicity encoding of batch sizes?",
+  "known_results": "The model is NP-hard already for one machine because sequence-dependent setup times generalize routing/TSP-style sequencing. Van Bevern and Pyatkin showed that if each batch contains more jobs than the number of machines, the problem is solvable in time roughly exponential only in $g$ plus near-linear input handling, and they also obtained polynomial-time solvability when both the number of machines $m$ and the number of batches $g$ are constants. Mnich and van Bevern state the remaining question as Open Problem 14: FPT in $g$ alone. Their discussion emphasizes high-multiplicity encoding, because an algorithm that expands all jobs may be pseudo-polynomial in the batch counts rather than truly efficient for compact instances.",
+  "status": "open",
+  "where_posed": {
+    "text": "Open Problem 14 in Mnich and van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems'.",
+    "url": "https://arxiv.org/pdf/1709.01670",
+    "quote": "",
+    "location": "Section 5.3, Open Problem 14"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "Restricted large-batch and constant-$(m,g)$ cases have algorithms, and high-multiplicity computation is understood for those restricted makespan calculations. The single-parameter dependence on the number of batches remains unresolved.",
+    "links": [
+      {
+        "title": "Mnich and van Bevern, 15 open problems",
+        "url": "https://arxiv.org/abs/1709.01670"
+      },
+      {
+        "title": "van Bevern and Pyatkin, routing open shop with unit processing times",
+        "url": "https://arxiv.org/abs/1603.01191"
+      }
+    ]
+  },
+  "importance": 6,
+  "difficulty": 7,
+  "counterexample_suitability": "low",
+  "counterexample_rationale": "The question asks for FPT algorithms or parameterized hardness. Small instances can suggest canonical batch sequences or disprove proposed dominance rules, but they cannot decide the classification.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Search can explore normal forms for machine schedules as words over $g$ batch labels and look for bounded-state descriptions. It can also generate compact bad instances for natural dynamic programs, but formal proof is still required.",
+  "literature": {
+    "synthesis": "The number of batches is a plausible practical parameter because batch families are often few, but the open-shop constraints allow many interleavings across machines. The known large-batch algorithm suggests that once each batch has enough jobs, machine schedules can be regularized; the unresolved case is where small batches create scarcity and synchronization effects. A positive result would need to show that all relevant setup patterns can be represented by a bounded object depending only on $g$, even while $m$ and the job counts vary. A high-multiplicity result would be stronger: it must reason about counts arithmetically rather than by expanding every job. A negative result would likely need a reduction in which the number of batch labels stays small but their transition matrix and counts encode a hard selection problem.",
+    "reviewed": [
+      {
+        "ref": "Matthias Mnich and Rene van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems', Computers & Operations Research 2018",
+        "result": "States Open Problem 14 on FPT by number of batches and highlights high-multiplicity encoding as the desirable target.",
+        "relevance": "poses-problem",
+        "url": "https://arxiv.org/abs/1709.01670"
+      },
+      {
+        "ref": "Rene van Bevern and Artem V. Pyatkin, 'A fixed-parameter algorithm for a routing open shop problem: unit processing times, few machines and locations', CSR 2016",
+        "result": "Gives algorithms for related unit-time routing/open-shop cases with few locations/batches and machines, including the large-batch structural regime cited in the survey.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1603.01191"
+      },
+      {
+        "ref": "A. Allahverdi, C. T. Ng, T. C. E. Cheng, and M. Y. Kovalyov, 'A survey of scheduling problems with setup times or costs', European Journal of Operational Research 2008",
+        "result": "Provides the setup-time scheduling taxonomy and the $ST_{sd,b}$ notation used for sequence-dependent batch setup times.",
+        "relevance": "survey",
+        "url": "https://doi.org/10.1016/j.ejor.2006.06.060"
+      },
+      {
+        "ref": "Teofilo F. Gonzalez and Sartaj Sahni, 'Open shop scheduling to minimize finish time', Journal of the ACM 1976",
+        "result": "Classical foundation for open-shop scheduling and polynomial cases such as two-machine open shop.",
+        "relevance": "background",
+        "url": "https://doi.org/10.1145/321958.321975"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Represent each machine's schedule as a word over batch labels and ask whether only boundedly many word patterns are needed for fixed $g$. Study whether setup-sequence choices can be separated from assigning individual jobs to positions. For hardness, try reductions where the sequence-dependent setup matrix encodes a small-label routing gadget and job multiplicities enforce choices; for high-multiplicity algorithms, look for integer-programming formulations with dimension depending only on $g$.",
+    "verification_notes": "A positive result must be FPT in $g$ alone; dependence on both machines and batches is not enough. For high-multiplicity claims, verify that the algorithm is polynomial in the bit length of the batch counts and does not expand one variable or state per job. A hardness result should preserve unit processing times and the open-shop no-overlap constraints, since hardness for a more general setup model would not settle this record.",
+    "machine_checkable": false
+  },
+  "tags": [
+    "open-shop",
+    "setup-times",
+    "batch-scheduling",
+    "parameterized-complexity",
+    "makespan"
+  ]
+}

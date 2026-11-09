@@ -1,0 +1,126 @@
+{
+  "checked_on": "2026-11-09",
+  "scope": "Targeted checks of five bandit records; evidence review, not independent proof verification.",
+  "records": [
+    {
+      "id": "fixed-budget-best-arm-identification-complexity",
+      "queries": [
+        "\"fixed budget best arm identification\" \"2025\" \"complexity\"",
+        "\"Fundamental Limitations of Fixed-Budget Best-Arm Identification\"",
+        "Degenne 2023 fixed budget complexity best arm identification no complexity",
+        "\"best-arm\" \"uniform sampling\" Wang 2024"
+      ],
+      "review_level": "theorem-checked",
+      "disposition": "updated-partial",
+      "sources": [
+        {
+          "url": "https://proceedings.mlr.press/v195/degenne23a/degenne23a.pdf",
+          "read": "Theorem 10, Section 6; definitions and algorithm-class restrictions"
+        },
+        {
+          "url": "https://arxiv.org/html/2607.11635v1",
+          "read": "Theorem 3.2, extension and discussion; preprint, no independent proof certification"
+        },
+        {
+          "url": "https://arxiv.org/html/2506.05329v1",
+          "read": "Assumption 1, Theorem 5, Gaussian and objective restrictions"
+        },
+        {
+          "url": "https://proceedings.mlr.press/v235/wang24c.html",
+          "read": "publication abstract"
+        }
+      ],
+      "summary": "Removed stale universal-positive target; added impossibility and uniform-admissibility results. Restricted-class follow-up remains broadly formulated."
+    },
+    {
+      "id": "contextual-bandit-model-selection-optimal-regret",
+      "queries": [
+        "\"Open Problem\" \"Model Selection for Contextual Bandits\" solved",
+        "\"model selection\" \"realizable\" \"Marinov\" \"Zimmert\""
+      ],
+      "review_level": "theorem-checked",
+      "disposition": "resolved-general-target",
+      "sources": [
+        {
+          "url": "https://proceedings.neurips.cc/paper/2021/file/9570efef719d705326f0ff817ef084e6-Paper.pdf",
+          "read": "Theorems 4/5, Corollary 1, footnote 3, Section 4.2"
+        },
+        {
+          "url": "https://arxiv.org/html/2106.06483v3",
+          "read": "Sections 1/4: negative general result and structured positive guarantees"
+        },
+        {
+          "url": "https://proceedings.mlr.press/v125/foster20a/foster20a.pdf",
+          "read": "Problem 1/2 formulations"
+        }
+      ],
+      "summary": "General nested-policy target answered negatively in 2021. Record now archives it; structured realizable variants explicitly not all claimed settled."
+    },
+    {
+      "id": "oracle-efficient-agnostic-contextual-bandits",
+      "queries": [
+        "\"oracle-efficient\" \"agnostic\" \"contextual\" bandits arxiv",
+        "\"contextual bandits\" \"misspecification\" \"offline regression\" optimal"
+      ],
+      "review_level": "theorem-checked",
+      "disposition": "updated-needs-reformulation",
+      "sources": [
+        {
+          "url": "https://proceedings.mlr.press/v139/krishnamurthy21a/krishnamurthy21a.pdf",
+          "read": "Assumption 1, Theorems 1/2 and model interpretation"
+        },
+        {
+          "url": "https://arxiv.org/html/2602.09456v2",
+          "read": "Appendix D.1 Corollary 8 and explicit misspecification parameter"
+        }
+      ],
+      "summary": "Finite-action misspecification guarantees already known; added concrete theorem and 2026 extension, lowered confidence in residual question's formulation."
+    },
+    {
+      "id": "submodular-bandit-cardinality-dependence",
+      "queries": [
+        "\"submodular\" \"bandit\" \"cardinality\" \"2025\" regret",
+        "\"submodular\" \"Tajdini\" \"2026\" \"regret\"",
+        "\"Nearly Minimax Optimal Submodular Maximization\" follow-up regret"
+      ],
+      "review_level": "theorem-checked",
+      "disposition": "corrected-model-no-closure-found",
+      "sources": [
+        {
+          "url": "https://arxiv.org/pdf/2310.18465",
+          "read": "Section 1.1 equation 3, Theorems 2.1/2.3, upper-bound discussion"
+        },
+        {
+          "url": "https://proceedings.mlr.press/v272/zhou25a.html",
+          "read": "abstract and bibliographic data"
+        },
+        {
+          "url": "https://ifaamas.csc.liv.ac.uk/Proceedings/aamas2025/pdfs/p2696.pdf",
+          "read": "abstract and model distinction"
+        }
+      ],
+      "summary": "Corrected robust-greedy versus approximation-regret conflation and anonymous citations. Targeted search, not exhaustive absence proof."
+    },
+    {
+      "id": "limited-switch-contextual-bandits-with-knapsacks",
+      "queries": [
+        "\"limited switch\" \"contextual\" \"knapsack\"",
+        "\"limited-switch\" \"contextual bandits\" 2025 2026",
+        "\"contextual bandits with knapsacks\" \"switching\""
+      ],
+      "review_level": "abstract-screened",
+      "disposition": "needs-model-review",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/1911.01067",
+          "read": "v5 abstract and revision history"
+        },
+        {
+          "url": "https://proceedings.mlr.press/v195/foster23c/foster23c.pdf",
+          "read": "search excerpt only; environment switching not learner switching"
+        }
+      ],
+      "summary": "No direct resolution verified. Realized-action and policy-map switches conflated in record; confidence lowered. Full-text forward review pending."
+    }
+  ]
+}

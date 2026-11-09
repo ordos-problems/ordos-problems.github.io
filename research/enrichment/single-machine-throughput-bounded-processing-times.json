@@ -1,0 +1,101 @@
+{
+  "id": "single-machine-throughput-bounded-processing-times",
+  "title": "Throughput scheduling with release dates and bounded processing times",
+  "collection": "Operations Research",
+  "area": "Scheduling Theory",
+  "status": "open",
+  "confidence": "medium",
+  "tags": [
+    "scheduling",
+    "throughput maximization",
+    "release dates",
+    "bounded processing times",
+    "parameterized complexity",
+    "single-machine scheduling"
+  ],
+  "short_statement": "Resolve the complexity of $1|r_j,p_j\\le c|\\sum_j U_j$ for constant $c$, and the corresponding weighted/FPT variants.",
+  "background": "Maximum-throughput scheduling asks which jobs can be completed by their deadlines. It is a clean single-machine model for admission control: each job has a release date, deadline, and processing time; jobs completed late contribute no throughput. The unit-processing-time case is tractable by matching or greedy methods, while arbitrary processing times make the problem NP-hard. The boundary where processing times are bounded by a fixed constant is surprisingly delicate. Sgall's survey and Mnich-van Bevern's parameterized open-problem list highlight the question $1|r_j,p_j\\le c|\\sum_j U_j$: for each fixed constant $c$, is there a polynomial-time algorithm for maximizing the number of on-time jobs? The weighted version and parameterized versions are also open-looking. This is exactly the kind of problem the repository is meant to include: the model is fixed, small, and classical, but the complexity frontier is not known.",
+  "full_statement": "An instance consists of jobs $j=1,\\ldots,n$ on one nonpreemptive machine. Job $j$ has release date $r_j$, deadline $d_j$, processing time $p_j\\in\\{1,\\ldots,c\\}$ for a fixed constant $c$, and optionally weight $w_j$. A schedule chooses a subset of jobs and start times so that each scheduled job starts no earlier than $r_j$, runs for $p_j$ uninterrupted, no two jobs overlap, and job $j$ is counted as on time only if it completes by $d_j$. In Graham notation, the unweighted objective is $1|r_j,p_j\\le c|\\sum_j U_j$, equivalently maximizing the number of on-time jobs; the weighted objective is $1|r_j,p_j\\le c|\\sum_j w_jU_j$. Determine whether the unweighted problem is polynomial-time solvable for every fixed constant $c$, whether the weighted version is NP-hard for fixed $c$, and whether the natural parameterized versions are fixed-parameter tractable when parameterized by $c$ and/or the number of distinct processing times.",
+  "open_problem": "Settle the polynomial-time and parameterized complexity of single-machine throughput scheduling with release dates and constant-bounded processing times.",
+  "known_results": "When all processing times are unit, maximum throughput on one machine with release dates and deadlines has classical polynomial algorithms. With arbitrary processing times, throughput scheduling is NP-hard and heavily studied in approximation and online scheduling. Sgall's survey on maximum throughput scheduling asked whether $1|r_j,p_j\\le c|\\sum_j U_j$ is polynomial-time solvable for constant $c$; Mnich and van Bevern restate this and add parameterized versions. They also note that the NP-hardness of the weighted case for constant $c$ is open. The issue is that bounded processing times make time-indexed dynamic programs plausible, but release-date/deadline interactions still create global interval-packing structure. A later search did not find a source resolving the exact fixed-$c$ complexity frontier.",
+  "where_posed": {
+    "text": "Discussed in Sgall's survey on maximum-throughput scheduling and posed as Open Problem 3 in Mnich and van Bevern's 15 scheduling open problems.",
+    "url": "https://arxiv.org/abs/1709.01670",
+    "quote": "Sgall (2012) asked whether there is a polynomial-time algorithm for 1|rj, pj≤c|ΣUj for constant c.",
+    "location": "Section 3.3, Open Problem 3"
+  },
+  "source": {
+    "authors": "Matthias Mnich, Rene van Bevern",
+    "title": "Parameterized complexity of machine scheduling: 15 open problems",
+    "year": 2018,
+    "venue": "Computers & Operations Research",
+    "url": "https://arxiv.org/abs/1709.01670"
+  },
+  "additional_refs": [
+    {
+      "authors": "Jiri Sgall",
+      "title": "Open problems in throughput scheduling",
+      "year": 2012,
+      "venue": "ESA workshop / survey",
+      "url": "https://kam.mff.cuni.cz/~sgall/papers/open-throughput.pdf"
+    },
+    {
+      "authors": "Matthias Mnich, Rene van Bevern",
+      "title": "Parameterized complexity of machine scheduling: 15 open problems",
+      "year": 2018,
+      "venue": "Computers & Operations Research",
+      "url": "https://doi.org/10.1016/j.cor.2018.07.020"
+    },
+    {
+      "authors": "Peter Brucker",
+      "title": "Scheduling Algorithms",
+      "year": 2007,
+      "venue": "Springer",
+      "url": "https://doi.org/10.1007/978-3-540-69516-5"
+    }
+  ],
+  "progress": {
+    "state": "open",
+    "summary": "Polynomial algorithms are known for unit processing times, and hardness is known for broader processing-time regimes. The fixed constant-bounded processing-time frontier remains unresolved in the cited open-problem list.",
+    "links": [
+      {
+        "title": "Parameterized complexity of machine scheduling: 15 open problems",
+        "url": "https://arxiv.org/abs/1709.01670"
+      }
+    ]
+  },
+  "importance": 7,
+  "difficulty": 7,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Small fixed-$c$ instances can falsify candidate greedy rules or reveal state-space explosions, but polynomial-time versus NP-hardness cannot be resolved by one instance.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Automated search can test dynamic-programming state compressions and discover minimal counterexamples to structural lemmas. Complexity classification still needs a proof or reduction.",
+  "literature": {
+    "synthesis": "The problem is a boundary case in single-machine scheduling. Unit jobs can be handled because the time axis decomposes cleanly, but arbitrary processing times allow knapsack-like hardness. If every processing time is at most a fixed constant $c$, the input has only a bounded set of job lengths, suggesting that a clever dynamic program or flow formulation may exist. On the other hand, release dates and deadlines can encode many interval interactions even with short jobs. Mnich and van Bevern propose parameterized complexity as an intermediate route: even if the polynomial-time question is difficult, classifying FPT behavior with respect to $c$ or the number of distinct processing times may expose the right structure.",
+    "reviewed": [
+      {
+        "ref": "Mnich and van Bevern, 'Parameterized complexity of machine scheduling: 15 open problems', Computers & Operations Research 2018",
+        "result": "Restates Sgall's fixed-$c$ throughput scheduling question and poses parameterized variants.",
+        "relevance": "open-problem-source",
+        "url": "https://arxiv.org/abs/1709.01670"
+      },
+      {
+        "ref": "Sgall, 'Open problems in throughput scheduling', 2012",
+        "result": "Surveys maximum-throughput scheduling gaps and asks about constant-bounded processing times.",
+        "relevance": "open-problem-source",
+        "url": "https://kam.mff.cuni.cz/~sgall/papers/open-throughput.pdf"
+      },
+      {
+        "ref": "Brucker, 'Scheduling Algorithms', Springer 2007",
+        "result": "Standard reference for deterministic scheduling models, release dates, deadlines, and throughput-type objectives.",
+        "relevance": "background",
+        "url": "https://doi.org/10.1007/978-3-540-69516-5"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Try fixed-$c$ dynamic programs over the active interval graph, min-cost flow formulations for small processing-time alphabets, or reductions from partition-like problems that preserve $p_j\\le c$. For weighted hardness, search for gadgets using only two or three processing times. For positive results, prove that the number of relevant deadline/release-date states can be compressed polynomially for fixed $c$.",
+    "verification_notes": "A polynomial-time algorithm must run in $n^{O(1)}$ for each fixed $c$ and should state whether the exponent depends on $c$. An FPT algorithm must have running time $f(c)n^{O(1)}$ or the stated parameter dependence. A hardness proof must keep $c$ fixed and distinguish the weighted and unweighted objectives. Algorithms for unit processing times or approximations for arbitrary processing times do not resolve the problem.",
+    "machine_checkable": true
+  }
+}

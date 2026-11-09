@@ -1,0 +1,83 @@
+{
+  "id": "known-iid-online-stochastic-matching-ratio",
+  "background": "Known-law stochastic matching separates distributional knowledge from foresight of realized arrivals. The relevant benchmark here is expected offline maximum cardinality, not a fluid LP. A new information-theoretic theorem now addresses the basic asymptotic ratio.",
+  "short_statement": "A recent paper reports the optimal asymptotic ratio for unweighted known-i.i.d. stochastic matching; polynomial-time attainment is separate.",
+  "full_statement": "Let $G=(Y,Z,E)$ be a bipartite graph. Vertices in $Z$ are offline bins/resources and can be matched at most once. Vertices in $Y$ are online types. A horizon $b$ and arrival rates $r_y\\ge0$ are known in advance, with $\\sum_y r_y=b$; at each time $t=1,\\ldots,b$, a type $y$ is sampled independently with probability proportional to $r_y$. When a ball/customer of type $y$ arrives, the algorithm may irrevocably match it to one currently unmatched neighbor $z\\in N(y)$ or discard it. The unweighted objective is the expected number of matched offline vertices; weighted variants attach edge or vertex weights. The benchmark is the expected value of the offline optimum that observes the entire realized sequence $\\omega=(y_1,\\ldots,y_b)$ and then computes a maximum matching. The competitive ratio is $\\mathbb E[\\mathrm{ALG}]/\\mathbb E[\\mathrm{OPT}]$. Determine the optimal asymptotic competitive ratio for the basic unweighted known-i.i.d. model with arbitrary rates, and clarify whether the integral-rate case has a different tight constant. The basic unweighted asymptotic target has the reported solution in the What Is Known section; weighted variants and the separate integral-rate comparison are not resolved by this audit.",
+  "known_results": "Duetting, Feldman, and Molina, 'Optimal Online Stochastic Matching' (arXiv:2610.19866v1), Theorem 1.1 and Section 5, report the exact Poisson-arrival ratio $1-e/e^e\\approx0.8206$ and $1-e/e^e-O(n^{-1/2})$ for exactly n IID arrivals from a known law, with arbitrary rates. The benchmark is expected offline maximum cardinality. The policy is not polynomial-time. This matches the asymptotic impossibility bound and supersedes the older $0.702$-$0.823$ summary. Weighted offline equivalence in the paper does not itself establish the same online weighted ratio.",
+  "open_problem": "Verify the reported asymptotic resolution for the basic unweighted arbitrary-rate model. Exact finite-horizon performance, polynomial-time attainment, and any separate integral-rate optimum are not certified by this audit.",
+  "where_posed": {
+    "text": "The gap is left by Manshadi, Oveis Gharan, and Saberi, 'Online Stochastic Matching: Online Actions Based on Offline Statistics', Mathematics of Operations Research 2012.",
+    "url": "https://arxiv.org/abs/1007.1673",
+    "quote": "no online algorithm can have a competitive ratio better than 0.823",
+    "location": "Abstract and main results"
+  },
+  "progress": {
+    "state": "solution-claimed",
+    "summary": "The basic asymptotic constant is reported tight. The theorem is information-theoretic and does not settle every companion question in the record.",
+    "links": [
+      {
+        "title": "Manshadi-Oveis Gharan-Saberi",
+        "url": "https://arxiv.org/abs/1007.1673"
+      },
+      {
+        "title": "Brubach-Sankararaman-Srinivasan-Xu",
+        "url": "https://arxiv.org/abs/1606.06395"
+      },
+      {
+        "title": "Optimal Online Stochastic Matching",
+        "url": "https://arxiv.org/abs/2610.19866"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Upper bounds are finite stochastic type distributions and graphs. Automated search over small distributions can generate candidate hard instances and estimate optimal online policies by dynamic programming.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "The model is well suited to exact finite-horizon dynamic programming, LP relaxations, and hard-instance search. Candidate algorithms can also be tested against exhaustive small instances.",
+  "literature": {
+    "synthesis": "Earlier bounds are historical. The new Poisson/exponential correspondence preserves the expected offline benchmark and supports the reported asymptotic result, without implying polynomial-time or weighted attainment.",
+    "reviewed": [
+      {
+        "ref": "Vahideh H. Manshadi, Shayan Oveis Gharan, Amin Saberi, 'Online Stochastic Matching: Online Actions Based on Offline Statistics', Mathematics of Operations Research 2012",
+        "result": "Gives a $0.702$ algorithm, $0.705$ with integral rates, and a $0.823$ upper bound.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/1007.1673"
+      },
+      {
+        "ref": "Jon Feldman, Aranyak Mehta, Vahab Mirrokni, S. Muthukrishnan, 'Online Stochastic Matching: Beating 1-1/e', FOCS 2009",
+        "result": "Initiates the known-distribution stochastic matching model and beats the adversarial barrier in structured cases.",
+        "relevance": "partial-progress",
+        "url": "https://doi.org/10.1109/FOCS.2009.72"
+      },
+      {
+        "ref": "Brian Brubach, Karthik A. Sankararaman, Aravind Srinivasan, Pan Xu, 'Online Stochastic Matching: New Algorithms and Bounds', Algorithmica 2019",
+        "result": "Improves algorithms and bounds for several stochastic matching variants.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1606.06395"
+      },
+      {
+        "ref": "Paul Duetting, Michal Feldman, Mathieu Molina, 'Optimal Online Stochastic Matching' (2026)",
+        "result": "Theorem 1.1 and Section 5 address the basic asymptotic unweighted model.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2610.19866"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Verify the new benchmark-preserving reduction and finite-horizon transfer before proposing improvements to the historical constant gap.",
+    "verification_notes": "A new algorithmic guarantee must state whether rates are arbitrary or integral, whether the graph is unweighted, edge-weighted, or vertex-weighted, and whether the benchmark is the expected offline maximum matching or a relaxation. If the analysis uses offline-optimum marginals $f$, verify that $f$ is feasible for the matching polytope and that sampling/estimation errors vanish in the stated asymptotic regime. A lower-bound hard instance should specify the type distribution, horizon, and graph family, then prove an upper bound on every adaptive online policy using Yao's principle, dynamic programming, or an analytic argument; comparing only against nonadaptive policies is insufficient. Computational evidence is useful for small instances, but a claimed asymptotic constant must include rigorous limiting analysis of both online and offline values.",
+    "machine_checkable": true
+  },
+  "status": "solution claimed",
+  "confidence": "medium",
+  "additional_refs": [
+    {
+      "authors": "Paul Duetting, Michal Feldman, Mathieu Molina",
+      "title": "Optimal Online Stochastic Matching",
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2610.19866"
+    }
+  ]
+}

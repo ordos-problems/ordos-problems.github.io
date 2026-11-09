@@ -1,0 +1,58 @@
+{
+  "id": "adwords-general-bids",
+  "background": "AdWords is one of the central online allocation models linking matching theory, online algorithms, and revenue management. Advertisers have budgets, queries arrive online, and assigning a query consumes part of an advertiser's budget. The celebrated MSVV algorithm achieves the optimal $1-1/e$ ratio when every bid is tiny relative to the advertiser budget. That small-bid assumption is mathematically powerful because it makes budgets behave like continuous resources. General bids are much rougher: a single assignment can consume a large fraction of a budget, so the algorithm faces indivisibility effects similar to matching and knapsack. For a long time the only robust guarantee in this regime was Greedy's $1/2$. Recent work barely broke that barrier, showing the model has exploitable structure, but the optimal constant remains unknown.",
+  "short_statement": "For AdWords without the small-bid assumption, determine the optimal competitive ratio; in particular, decide whether ratios near $1-1/e$ are achievable.",
+  "full_statement": "There are advertisers $i=1,\\ldots,n$ with budgets $B_i>0$. Queries arrive online in an adversarial sequence. When query $j$ arrives, the algorithm observes bids $b_{ij}\\ge0$ from eligible advertisers and must either assign $j$ irrevocably to one advertiser or discard it. If advertiser $i$ has remaining budget $R_i$, the assignment earns revenue $\\min\\{b_{ij},R_i\\}$ and reduces $R_i$ by that amount. The offline optimum sees the entire query sequence and chooses an allocation maximizing total revenue subject to the same budget constraints. In the classical small-bid regime, $\\max_j b_{ij}/B_i\\to0$ for every advertiser, so budgets behave almost continuously. In the general-bids regime considered here, bids may be a constant fraction of a budget or equal to a whole budget. Determine the optimal competitive ratio for randomized online algorithms in this arbitrary-bid model. Equivalently, close the gap between the current barely-above-$1/2$ algorithms and the $1-1/e$ benchmark known for infinitesimal bids and online matching.",
+  "known_results": "Mehta, Saberi, Vazirani, and Vazirani introduced AdWords as a budgeted generalization of online bipartite matching and gave a deterministic $(1-1/e)$-competitive algorithm under the small-bid assumption using a budget-spent tradeoff function derived by tradeoff-revealing LPs; they also showed this ratio is optimal in that setting. The small-bid assumption is essential to their discretized budget-slab analysis because individual queries must not straddle large portions of an advertiser budget. With arbitrary bids, the simple greedy algorithm is $1/2$-competitive and this analysis is tight for greedy. Huang, Zhang, and Zhang gave the first algorithm beating $1/2$ for general bids, with competitive ratio $0.5016$. Their algorithm combines an online primal-dual framework, a configuration-LP view imported from matching, a panorama representation of budget consumption, and panoramic online correlated selection. This proves general-bids AdWords is not stuck at the greedy barrier, but the improvement is tiny and no source-checked global upper bound below $1-1/e$ is known. Thus the central quantitative problem is still open: general bids may be only slightly easier than greedy suggests, or they may admit a much larger constant via a better indivisible-budget analysis.",
+  "open_problem": "Close the competitive-ratio gap for AdWords with general bids: determine whether the optimal ratio is close to $0.5016$, close to $1-1/e$, or some different constant.",
+  "where_posed": {
+    "text": "The general-bids gap is highlighted in Huang, Zhang, and Zhang, 'Adwords in a Panorama', FOCS 2020.",
+    "url": "https://arxiv.org/abs/2009.04114",
+    "quote": "open ever since",
+    "location": "Abstract"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The qualitative $1/2$ barrier has been broken, but only by a very small amount. The true constant for general bids is still wide open.",
+    "links": [
+      {
+        "title": "Adwords in a Panorama",
+        "url": "https://arxiv.org/abs/2009.04114"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Hard instances can be finite budget/bid matrices and arrival sequences. Automated adversarial search may produce upper-bound candidates or stress-test conjectured algorithms.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "The problem naturally supports factor-revealing LPs, configuration relaxations, and finite hard-instance search. Code loops can optimize both algorithms and adversarial examples.",
+  "literature": {
+    "synthesis": "The small-bid AdWords problem is well understood through primal-dual budget scaling and the MSVV tradeoff function $\\psi(x)=1-e^{x-1}$, where $x$ is the spent fraction of a budget. That analysis relies on bids being negligible compared with budgets, so each advertiser can be treated like a continuous resource. General bids destroy this smooth marginal picture: a single query can consume the option value of a large part of the budget, and the online algorithm must reason about indivisible configurations of budget usage. Huang, Zhang, and Zhang's panorama formulation reinterprets a large bid through possible budget-consumption configurations and uses panoramic OCS to correlate choices across those configurations. The improvement to $0.5016$ is numerically tiny but structurally important because it proves the $1/2$ greedy barrier is not an inherent barrier of the model. The remaining gap is enormous. A solution might come from a stronger configuration LP with better online rounding, a sharper correlated-selection primitive, or a hard instance showing that large bids fundamentally prevent the $1-1/e$ small-bid ratio.",
+    "reviewed": [
+      {
+        "ref": "Aranyak Mehta, Amin Saberi, Umesh Vazirani, Vijay Vazirani, 'AdWords and Generalized Online Matching', JACM 2007",
+        "result": "Proves the optimal $1-1/e$ guarantee for small bids and frames AdWords as generalized online matching.",
+        "relevance": "poses-problem",
+        "url": "https://people.eecs.berkeley.edu/~vazirani/pubs/adwords.pdf"
+      },
+      {
+        "ref": "Zhiyi Huang, Qiankun Zhang, Yuhao Zhang, 'Adwords in a Panorama', FOCS 2020",
+        "result": "Gives a $0.5016$-competitive algorithm for arbitrary bids.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2009.04114"
+      },
+      {
+        "ref": "Matthew Fahrbach, Zhiyi Huang, Runzhou Tao, Morteza Zadimoghaddam, 'Edge-Weighted Online Bipartite Matching', JACM 2022",
+        "result": "Introduces online correlated selection, a key tool adapted by the panorama algorithm.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/2005.01929"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Investigate stronger configuration-LP rounding schemes, generalized OCS primitives, and hard instances with a few advertisers but large indivisible bids. Try to identify whether budget indivisibility creates a true upper bound below $1-1/e$.",
+    "verification_notes": "A claimed algorithmic lower bound must handle arbitrary bid-to-budget ratios, including bids that exhaust an advertiser in one assignment, and must compare with the offline budget-feasible optimum rather than with a configuration LP unless the LP is proved to upper-bound the offline benchmark. The proof should specify whether the adversary is oblivious or adaptive and whether randomization is internal to the algorithm only. A claimed upper bound must use hard instances with genuinely large bids; examples whose bids vanish relative to budgets only reproduce the small-bid $1-1/e$ barrier. Be careful not to conflate this problem with online matching, edge-weighted matching with free disposal, or stochastic AdWords: all are related but have different resource semantics. Framework limitations, such as a barrier for a particular OCS or LP rounding scheme, should be stated separately from global impossibility results.",
+    "machine_checkable": true
+  }
+}

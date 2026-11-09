@@ -1,0 +1,66 @@
+{
+  "id": "strongly-polynomial-mdp",
+  "background": "Finite Markov decision processes are the dynamic-programming analogue of linear programming: a finite set of states, a finite set of actions, transition probabilities, and rewards define an optimal control problem. Discounted MDPs can be solved by value iteration, policy iteration, or LP formulations, and these methods are fundamental in OR, reinforcement learning, and stochastic control. Complexity becomes delicate when the discount factor $\\gamma$ approaches one. A bound polynomial in $1/(1-\\gamma)$ is useful for fixed discount, but it is not strongly polynomial when $\\gamma$ is part of the input. Ye proved a strong polynomiality result for fixed $\\gamma$, and Post and Ye later obtained strongly polynomial simplex bounds for deterministic MDPs independent of the discount factor. The general stochastic case remains unresolved and is closely connected to whether special LP structure can be exploited more deeply than in arbitrary linear programming.",
+  "short_statement": "Is there a strongly polynomial algorithm for general finite discounted MDPs when the discount factor is part of the input?",
+  "full_statement": "Let an MDP have finite state set $S$, finite action sets $A(s)$, rational rewards $r(s,a)$, rational transition probabilities $P(\\cdot\\mid s,a)$, and discount factor $\\gamma\\in(0,1)$ given as part of the input. A stationary deterministic policy chooses one action in each state, inducing a value vector $v^\\pi$ satisfying $v^\\pi=r^\\pi+\\gamma P^\\pi v^\\pi$; an optimal policy maximizes $v^\\pi$ componentwise and can be found by solving the associated Bellman optimality equations or an LP. Weakly polynomial algorithms exist through linear programming and dynamic programming. The open problem asks for a strongly polynomial algorithm: an algorithm whose number of arithmetic operations is bounded by a polynomial in the number of states $n=|S|$ and total actions $m=\\sum_s |A(s)|$, independent of the bit lengths of rewards/probabilities and independent of the numerical size of $1/(1-\\gamma)$, with intermediate numbers controlled in the usual strongly-polynomial sense. Equivalently, can the special LP structure of discounted stochastic MDPs be exploited to avoid any pseudo-polynomial dependence as $\\gamma\\to1$?",
+  "open_problem": "Give a strongly polynomial algorithm for general discounted MDPs with input discount factor, or prove that policy iteration/simplex-type algorithms cannot be strongly polynomial in a precise model. The open issue is the regime $\\gamma \\to 1$ for stochastic MDPs, not fixed-discount MDPs.",
+  "known_results": "Ye (2011) proved polynomial iteration bounds for Howard policy iteration and the simplex method for discounted MDPs with a fixed discount factor; more precisely, the bounds scale polynomially in $n,m$ and in quantities such as $1/(1-\\gamma)$, so they are strongly polynomial only when the discount factor is treated as a fixed constant. Hansen, Miltersen, and Zwick improved and extended fixed-discount strategy-iteration analysis to two-player turn-based stochastic games, again with explicit dependence on $1/(1-\\gamma)$. Post and Ye proved a genuinely strongly polynomial simplex bound for deterministic MDPs independent of the discount factor, using layered progress/milestone arguments; their result covers deterministic transitions, not general stochastic transition matrices. General finite discounted MDPs with stochastic transitions and input discount factor remain open. The average-reward/undiscounted limiting regime is closely related because hard behavior may appear as $\\gamma$ approaches one.",
+  "status": "open",
+  "where_posed": {
+    "text": "Explicitly discussed in Ye's work on simplex and policy iteration for MDPs, where the fixed-discount result is contrasted with the open input-discount case.",
+    "url": "https://web.stanford.edu/~yyye/SimplexMDP4.pdf",
+    "quote": "",
+    "location": "Discussion around strongly polynomial MDP and LP complexity"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The deterministic case is strongly polynomial, and fixed-discount stochastic MDPs have polynomial iteration bounds. The unresolved gap is stochastic transitions with discount factor encoded in the input or average-reward limiting behavior.",
+    "links": [
+      {
+        "title": "The simplex method is strongly polynomial for deterministic Markov decision processes",
+        "url": "https://arxiv.org/abs/1208.5083"
+      }
+    ]
+  },
+  "importance": 9,
+  "difficulty": 9,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Finite MDPs can refute proposed policy-iteration bounds or reveal exponential behavior for a specific rule. They cannot by themselves rule out all possible strongly polynomial algorithms.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Search over small stochastic MDPs is well suited for finding hard instances for policy iteration, value-iteration variants, and LP pivot rules. Candidate counterexamples can be verified exactly using rational arithmetic.",
+  "literature": {
+    "synthesis": "Known results show a sharp divide between fixed-discount or deterministic structure and the fully stochastic input-discount case. Ye's analysis gives polynomial iteration bounds for Howard policy iteration and simplex when the discount factor is fixed, but the dependence on $1/(1-\\gamma)$ is exactly what prevents a strongly polynomial theorem for input discounts near one. Post and Ye remove the discount dependence for deterministic MDPs by exploiting the structure of deterministic transitions: the induced policy graph has cycles and paths whose primal/dual values move through a polynomial number of layers or milestones. In stochastic MDPs, transition matrices mix states, values can change gradually, and the deterministic graph-layer argument no longer applies. A solution could come from a new progress measure for policy iteration, a different combinatorial algorithm for the Bellman inequalities, or a reduction to a special LP class with known strongly polynomial algorithms. A negative result for a specific policy-iteration rule would be useful but would not rule out all strongly polynomial algorithms.",
+    "reviewed": [
+      {
+        "ref": "Yinyu Ye, 'The simplex and policy-iteration methods are strongly polynomial for the Markov decision problem with a fixed discount rate', Mathematics of Operations Research 2011",
+        "result": "Proves strong polynomiality for fixed-discount MDPs, with bounds depending on $1/(1-\\gamma)$.",
+        "relevance": "partial-progress",
+        "url": "https://web.stanford.edu/~yyye/SimplexMDP4.pdf"
+      },
+      {
+        "ref": "Thomas Dueholm Hansen, Peter Bro Miltersen, and Uri Zwick, 'Strategy iteration is strongly polynomial for 2-player turn-based stochastic games with a constant discount factor', arXiv 2010",
+        "result": "Extends fixed-discount strategy-iteration bounds to discounted turn-based stochastic games.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/1008.0530"
+      },
+      {
+        "ref": "Ian Post and Yinyu Ye, 'The simplex method is strongly polynomial for deterministic Markov decision processes', arXiv 2012",
+        "result": "Gives strongly polynomial simplex bounds for deterministic MDPs independent of the discount factor.",
+        "relevance": "solves-special-case",
+        "url": "https://arxiv.org/abs/1208.5083"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Promising directions include exact rational search for hard stochastic MDP families, potential functions based on Blackwell optimality or bias/span rather than discounted value, and reductions to special LP classes with known strongly polynomial algorithms.",
+    "verification_notes": "A claimed algorithm must handle arbitrary rational stochastic transition probabilities and discount factors supplied as part of the input. The operation count must be polynomial in state/action counts and not merely polynomial in $1/(1-\\gamma)$ or the input bit length. If the result is for a pivot rule or policy-iteration rule, verify that the rule is exactly specified and that the proof bounds policy changes uniformly over all reward and transition encodings. Counterexamples to a named rule should distinguish exponential dependence on $1/(1-\\gamma)$ from exponential dependence on $n,m$; such counterexamples refute that rule but not the existence of some other strongly polynomial algorithm. Average-reward or deterministic-transition results should be clearly labeled as special cases.",
+    "machine_checkable": true
+  },
+  "tags": [
+    "Markov decision process",
+    "policy iteration",
+    "strongly polynomial",
+    "dynamic programming",
+    "reinforcement learning"
+  ]
+}

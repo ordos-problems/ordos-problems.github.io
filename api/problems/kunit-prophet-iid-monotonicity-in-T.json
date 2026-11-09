@@ -15,22 +15,64 @@
   "optimal stopping",
   "correlation gap",
   "will-ma-notes",
-  "permission-pending"
+  "contributed by Will Ma"
  ],
  "short_statement": "For the i.i.d. prophet inequality accepting up to $k$ of $T$ values, an LP captures the tight online-to-offline ratio. Numerically the ratio decreases in $T$; the conjecture is to prove this monotonicity for general $k$, which would fully characterize the tight $k$-unit IID prophet guarantee.",
  "open_problem": "Show that for each fixed $k$, $\\mathrm{val}(k,T)$ is decreasing in $T$ (more arrivals make the gambler's task relatively harder). For $k=1$ this monotonicity was established by Correa et al.",
+ "background": "The i.i.d. prophet inequality is one of the cleanest models in online selection. A decision maker observes $T$ independent draws from a known common distribution and must decide online which values to keep. In the $k$-unit version, at most $k$ values may be accepted, so the model interpolates between the classical single-choice prophet inequality and online resource allocation with a homogeneous capacity. The benchmark is the offline prophet, who sees all $T$ draws and keeps the best $k$. For $k=1$, the tight i.i.d. ratio is the Hill-Kertz constant, approximately $0.745$, and the underlying finite-horizon values are known to decrease to that limit. For larger $k$, Jiang, Ma, and Zhang show that the relevant tight ratio can be represented by an LP, but a simple structural fact remains missing: for fixed $k$, does the worst-case ratio decrease as the number of periods $T$ grows? A proof would turn a computationally defined finite-horizon family into a clean characterization of the tight $k$-unit i.i.d. prophet guarantee.",
  "full_statement": "Consider the IID prophet inequality with $T$ values and capacity $k$: T values arrive i.i.d. from a distribution $\\mathbf F$, and the gambler may accept up to $k$ of them online, comparing against the offline optimum. Let $\\mathrm{val}(k,T)=\\inf_{\\mathbf F}\\mathrm{ONL}/\\mathrm{OFF}$ be the tight competitive ratio (online versus offline) for given $k$ and $T$, captured by a known LP (the LP of the notes without the normalization constraint). \\textbf{Open:} Show that for each fixed $k$, $\\mathrm{val}(k,T)$ is decreasing in $T$ (more arrivals make the gambler's task relatively harder). For $k=1$ this monotonicity was established by Correa et al. (2017); the general $k$ case is open. Proving it would fully characterize the tight $k$-unit IID prophet guarantee.",
- "known_results": "Established for $k = 1$ (Correa-Foncea-Hoeksma-Oosterwijk-Vredeveld 2017; the tight single-item IID constant is ~0.745, problem known since Hill-Kertz 1982). Proving monotonicity in T for general k is open and would fully characterize the tight k-unit IID prophet inequality.",
+ "known_results": "For $k=1$, Hill and Kertz identified the limiting i.i.d. prophet constant and later work by Correa, Foncea, Hoeksma, Oosterwijk, and Vredeveld gave the tight finite-horizon interpretation used in posted-price mechanisms. Jiang, Ma, and Zhang characterize the tight multi-unit ratio relative to the standard LP/fluid relaxation and show that Alaei's widely used $1-1/\\sqrt{k+3}$ guarantee is not tight for $k>1$. The open monotonicity question is about the online-to-offline finite-horizon ratio captured by the LP from Will Ma's notes: numerical evidence suggests $\\mathrm{val}(k,T)$ decreases in $T$ for every fixed $k$, but no proof is known beyond $k=1$.",
+ "progress": {
+  "state": "none",
+  "summary": "No general-$k$ proof of monotonicity is known in the site sources. The problem remains a finite-dimensional inequality/LP-structure question rather than a modelling question.",
+  "links": []
+ },
+ "importance": 7,
+ "difficulty": 7,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "For fixed small $k$ and $T$, the conjecture can be stress-tested by solving the finite LPs and searching for a monotonicity violation. A counterexample would likely be a finite certificate.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "An evolutionary or symbolic-search loop could look for dual certificates, reductions between adjacent horizons, or finite counterexamples. A final proof would still need a rigorous LP or coupling argument.",
+ "literature": {
+  "synthesis": "The single-item i.i.d. prophet inequality has a long optimal-stopping history, with the Hill-Kertz constant giving the limiting worst-case ratio and later algorithmic work connecting the same constant to posted prices. Multi-unit prophet inequalities became central because they are used as subroutines for ad allocation, appointment scheduling, and revenue-management relaxations. Jiang, Ma, and Zhang show that the tight multi-unit guarantee in Alaei's LP setting is strictly better than the classical bound, and their analysis supplies the LP objects behind Will Ma's course-note open problem. What is missing is a monotonicity theorem in the horizon $T$. Such a theorem would let one identify the worst case by passing to the infinite-horizon limit, rather than treating each $T$ separately.",
+  "reviewed": [
+   {
+    "ref": "Jiashuo Jiang, Will Ma, Jiawei Zhang, 'Tight Guarantees for Multi-unit Prophet Inequalities and Online Stochastic Knapsack', SODA 2022",
+    "result": "Characterizes tight guarantees for multi-unit prophet inequalities relative to the standard LP/fluid benchmark and improves online stochastic knapsack guarantees.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2107.02058"
+   },
+   {
+    "ref": "Jose Correa, Patricio Foncea, Ruben Hoeksma, Tim Oosterwijk, Tjark Vredeveld, 'Posted Price Mechanisms for a Random Stream of Customers', EC 2017",
+    "result": "Gives the tight single-item i.i.d. prophet/posting-price guarantee and finite-horizon structure used as the $k=1$ analogue.",
+    "relevance": "solves-special-case",
+    "url": "https://doi.org/10.1145/3033274.3085137"
+   },
+   {
+    "ref": "Theodore P. Hill, Robert P. Kertz, 'Comparisons of stop rule and supremum expectations of i.i.d. random variables', Annals of Probability 1982",
+    "result": "Classical source for the limiting i.i.d. prophet constant.",
+    "relevance": "related-tool",
+    "url": "https://www.jstor.org/stable/2243440"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Good attack routes include deriving an explicit dual for the finite-horizon LP, proving a horizon-extension coupling from $T$ to $T+1$, or finding a total-positivity/majorization property of the worst-case distribution. A computational agent should first reproduce small-$k$ LP values and inspect dual variables for a pattern.",
+  "verification_notes": "A correct proof must compare the exact worst-case ratios for adjacent horizons at fixed $k$, not just show monotonicity for a particular policy or distribution family. A counterexample must include enough numerical precision and preferably rational LP data so the strict violation can be independently certified.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Appendix C (Open Problems about Prophet Inequalities, #1).",
-  "url": ""
+  "text": "Posed in Will Ma's Online Resource Allocation course notes, Appendix C, Open Problems about Prophet Inequalities, Problem 1.",
+  "url": "",
+  "quote": "",
+  "location": "Appendix C, Prophet Inequalities #1"
  },
  "source": {
-  "authors": "Will Ma",
-  "title": "Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #1)",
-  "year": 2024,
-  "venue": "Lecture notes (uploaded)",
-  "url": ""
+  "authors": "Jiashuo Jiang, Will Ma, Jiawei Zhang",
+  "title": "Tightness without Counterexamples: A New Approach and New Results for Prophet Inequalities",
+  "year": 2022,
+  "venue": "arXiv:2205.00588",
+  "url": "https://arxiv.org/abs/2205.00588"
  },
  "additional_refs": [
   {
@@ -48,7 +90,7 @@
    "url": "https://www.jstor.org/stable/2243440"
   }
  ],
- "bibtex": "@misc{Ma2024,\n  author = {Will Ma},\n  title = {Online Resource Allocation — Course Notes, Appendix C (Open Problems about Prophet Inequalities, #1)},\n  year = {2024},\n  howpublished = {Lecture notes (uploaded)},\n  note = {Source of ORdős Problem ORDOS-058}\n}",
+ "bibtex": "@misc{Jiang2022,\n  author = {Jiashuo Jiang and Will Ma and Jiawei Zhang},\n  title = {Tightness without Counterexamples: A New Approach and New Results for Prophet Inequalities},\n  year = {2022},\n  howpublished = {arXiv:2205.00588},\n  url = {https://arxiv.org/abs/2205.00588},\n  note = {Source of ORdős Problem ORDOS-058}\n}",
  "urls": {
   "human": "https://ordos-problems.github.io/problems/kunit-prophet-iid-monotonicity-in-T.html",
   "api": "https://ordos-problems.github.io/api/problems/kunit-prophet-iid-monotonicity-in-T.json",

@@ -1,0 +1,105 @@
+{
+  "id": "capacitated-facility-location-relaxation-gap",
+  "title": "Relaxation-based approximation for capacitated facility location",
+  "collection": "Operations Research",
+  "area": "Facility Location and Approximation Algorithms",
+  "tags": [
+    "capacitated facility location",
+    "linear programming",
+    "integrality gap",
+    "approximation algorithms",
+    "facility location"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "Find a polynomial-size relaxation with constant integrality gap for metric capacitated facility location, or prove that broad classes of relaxations cannot achieve one.",
+  "full_statement": "In metric capacitated facility location, there is a set $F$ of facilities, a set $C$ of clients, opening costs $f_i\\ge0$, capacities $u_i$, client demands (unit demands in the basic version), and a metric connection cost $d(i,j)$ on $F\\cup C$. A feasible integral solution opens facilities and assigns each client to an open facility so that the total demand assigned to facility $i$ is at most $u_i$, paying opening plus connection cost. Constant-factor approximation algorithms are known by combinatorial and local-search methods, but the natural LP relaxation and many strengthened variants have unbounded integrality gap. The open problem is to design a computationally useful linear, convex, or extended formulation of polynomial size with constant integrality gap for capacitated facility location, together with a rounding algorithm, or to prove impossibility for a sufficiently broad class of relaxations. The target is not merely another constant approximation algorithm; it is a relaxation-based explanation comparable to the LP theory for uncapacitated facility location.",
+  "open_problem": "Does metric capacitated facility location admit a polynomial-time relaxation-based constant-factor approximation, via a relaxation with constant integrality gap and an efficient rounding algorithm?",
+  "background": "Facility location is one of the central models of operations research, and LP relaxations have been extremely successful for its uncapacitated version. Capacities are operationally unavoidable: warehouses, schools, clinics, and servers all have finite service capacity. Yet the introduction of capacities makes the standard LP picture collapse. A fractional solution can open small fractions of many facilities and route clients cheaply in ways that no integral solution can emulate. Local-search algorithms still obtain constant factors, so the problem is not inapproximable at that level; what is missing is a strong relaxation that captures the combinatorial structure of capacities. This makes the problem especially important for OR: relaxations are not just proof devices but also the basis of exact solvers, decomposition, branch-and-cut, and computational practice.",
+  "known_results": "The natural LP relaxation for capacitated facility location has unbounded integrality gap. Shmoys and Williamson highlighted the existence of a relaxation-based algorithm for capacitated facility location as one of the top open problems in approximation algorithms. Kolliopoulos and Moysoglou showed that several strengthened formulations still have unbounded gaps, including relaxations obtained after many Lovasz-Schrijver rounds and broad classes of proper relaxations. Their later work with Sherali-Adams gaps, flow-cover inequalities, and generalized configurations gave further negative evidence: even substantial lift-and-project and flow-cover strengthening does not automatically yield a constant-gap relaxation. Separate work on exponential lower bounds shows that, in the natural encoding, small approximate formulations cannot achieve constant gaps. These results do not rule out every possible extended formulation, semidefinite relaxation, or nonstandard configuration system, but they show that the obvious LP-strengthening routes are inadequate.",
+  "where_posed": {
+    "text": "Kolliopoulos and Moysoglou quote the Shmoys-Williamson open problem and develop integrality-gap evidence against several strengthened relaxation families.",
+    "url": "https://arxiv.org/abs/1305.5998",
+    "quote": "one of the top 10 open problems in approximation algorithms",
+    "location": "Abstract"
+  },
+  "source": {
+    "authors": "Stavros G. Kolliopoulos, Yannis Moysoglou",
+    "title": "Integrality gaps for strengthened LP relaxations of Capacitated and Lower-Bounded Facility Location",
+    "year": 2013,
+    "venue": "arXiv",
+    "url": "https://arxiv.org/abs/1305.5998"
+  },
+  "additional_refs": [
+    {
+      "authors": "Stavros G. Kolliopoulos, Yannis Moysoglou",
+      "title": "Sherali-Adams gaps, flow-cover inequalities and generalized configurations for capacity-constrained Facility Location",
+      "year": 2013,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/1312.0722"
+    },
+    {
+      "authors": "Stavros G. Kolliopoulos, Yannis Moysoglou",
+      "title": "Exponential lower bounds on the size of approximate formulations in the natural encoding for Capacitated Facility Location",
+      "year": 2013,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/1312.1819"
+    },
+    {
+      "authors": "Fabian Chudak, David P. Williamson",
+      "title": "Improved Approximation Algorithms for Capacitated Facility Location Problems",
+      "year": 2005,
+      "venue": "Mathematical Programming",
+      "url": "https://doi.org/10.1007/s10107-004-0504-9"
+    }
+  ],
+  "enabled": true,
+  "progress": {
+    "state": "partial",
+    "summary": "Local-search and other non-LP approaches give constant approximations, but broad families of strengthened LP relaxations have unbounded gaps. A satisfactory constant-gap relaxation remains unknown.",
+    "links": [
+      {
+        "title": "Strengthened LP gaps",
+        "url": "https://arxiv.org/abs/1305.5998"
+      },
+      {
+        "title": "Sherali-Adams and flow-cover gaps",
+        "url": "https://arxiv.org/abs/1312.0722"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Most negative progress consists of explicit finite facility-location instances producing integrality gaps for proposed relaxations. Candidate relaxations can often be stress-tested by exact LP/IP computation on small constructed instances.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Automated search can generate metric-capacitated instances with large gaps for proposed formulations, optimize facility/client gadgets, and test whether new inequalities cut off known fractional patterns.",
+  "literature": {
+    "synthesis": "The open problem is sharper than simply approximating capacitated facility location. Constant approximations demonstrate that the integral problem has exploitable structure, but the known algorithms do not pass through a clean polynomial-size relaxation with bounded gap. The negative LP results identify recurring fractional pathologies: facilities can be fractionally opened in tiny amounts, clients can spread demand across many partially open facilities, and common valid inequalities fail to encode the global coupling between opening and assignment. Lift-and-project hierarchies and flow-cover inequalities help in many integer programs, but the Kolliopoulos-Moysoglou results show that substantial levels still leave unbounded gaps in CFL. A breakthrough may require a qualitatively different extended formulation, perhaps with configuration variables that encode demand groups and capacity slack, or a proof that any natural relaxation family must be exponentially large.",
+    "reviewed": [
+      {
+        "ref": "Kolliopoulos and Moysoglou, 'Integrality gaps for strengthened LP relaxations of Capacitated and Lower-Bounded Facility Location', arXiv 2013",
+        "result": "Shows unbounded gaps for Lovasz-Schrijver strengthened relaxations and proper relaxations.",
+        "relevance": "lower-bound-evidence",
+        "url": "https://arxiv.org/abs/1305.5998"
+      },
+      {
+        "ref": "Kolliopoulos and Moysoglou, 'Sherali-Adams gaps, flow-cover inequalities and generalized configurations for capacity-constrained Facility Location', arXiv 2013",
+        "result": "Shows further unbounded gaps for strengthened capacity-constrained facility-location relaxations.",
+        "relevance": "lower-bound-evidence",
+        "url": "https://arxiv.org/abs/1312.0722"
+      },
+      {
+        "ref": "Chudak and Williamson, 'Improved Approximation Algorithms for Capacitated Facility Location Problems', Mathematical Programming 2005",
+        "result": "Provides influential approximation algorithms for capacitated facility location, demonstrating constant-factor approximability apart from the relaxation question.",
+        "relevance": "algorithmic-background",
+        "url": "https://doi.org/10.1007/s10107-004-0504-9"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Search for extended formulations based on facility configurations, demand clustering, knapsack-cover inequalities, or decomposition into local assignment gadgets. On the negative side, generate gap instances for candidate relaxations and try to lift them into extension-complexity lower bounds.",
+    "verification_notes": "A claimed relaxation-based solution must specify the relaxation size, separation/optimization complexity, and an explicit rounding algorithm with constant loss for metric CFL. A verifier should distinguish CFL from capacitated $k$-median, lower-bounded facility location, soft capacities, uniform capacities, and bicriteria variants. The relaxation must encode exact capacities and facility-opening decisions, not rely on opening extra facilities or violating capacities unless the claim is explicitly bicriteria. A negative result should state the relaxation family precisely; showing a gap for the natural LP or a fixed hierarchy level is not a global impossibility theorem.",
+    "machine_checkable": true
+  }
+}

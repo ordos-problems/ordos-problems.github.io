@@ -1,0 +1,117 @@
+{
+ "number": 171,
+ "ref": "ORDOS-171",
+ "id": "directed-steiner-tree-polylog-approximation",
+ "title": "Polynomial-time polylogarithmic approximation for Directed Steiner Tree",
+ "collection": "Operations Research",
+ "area": "Network Design and Approximation Algorithms",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "directed steiner tree",
+  "network design",
+  "approximation algorithms",
+  "quasi-polynomial time",
+  "directed graphs"
+ ],
+ "short_statement": "Determine whether Directed Steiner Tree admits a polynomial-time polylogarithmic approximation, or prove a separation between polynomial and quasi-polynomial time.",
+ "open_problem": "Give a polynomial-time polylogarithmic approximation for Directed Steiner Tree in general directed graphs, or prove that no such algorithm exists under a standard complexity assumption.",
+ "background": "Directed Steiner Tree is one of the basic survivable/network-design problems where directionality changes the approximation landscape completely. Undirected Steiner Tree has constant-factor approximations, while the directed version must choose a rooted arborescence through an asymmetric graph and can encode Set Cover-like structure. The model is clean and operationally meaningful: build the cheapest directed distribution, communication, or dependency network from a source to required sinks. For decades the field has had a striking time-approximation tradeoff. Quasi-polynomial algorithms can achieve polylogarithmic ratios essentially matching known quasi-polynomial hardness, but polynomial-time algorithms are stuck at $k^\\varepsilon$. This makes the problem a benchmark for whether lift-and-round, height-reduction, or recursive-density methods can be made efficient without losing the polylogarithmic guarantee.",
+ "full_statement": "In Directed Steiner Tree, the input is a directed graph $G=(V,E)$ with nonnegative edge costs $c_e$, a root vertex $r\\in V$, and a set $K\\subseteq V$ of $k$ terminals. A feasible solution is a subgraph, equivalently an $r$-rooted arborescence after pruning, that contains a directed path from $r$ to every terminal $t\\in K$. The objective is to minimize the total cost of selected edges. The problem is a central directed network-design model and generalizes Set Cover. The best reliable general results give $O(\\log^2 k/\\log\\log k)$ approximations in quasi-polynomial time and $O(k^\\varepsilon)$ approximations in polynomial time for every fixed $\\varepsilon>0$. The open problem is whether there is a polynomial-time $(\\log k)^{O(1)}$-approximation for arbitrary directed graphs, or whether one can prove that quasi-polynomial time is inherently stronger for achieving polylogarithmic ratios. A solution must be for the standard single-root directed Steiner tree problem, not only planar digraphs, bounded-depth graphs, bounded-treewidth graphs, or bicriteria variants.",
+ "known_results": "Charikar, Chekuri, Cheung, Dai, Goel, Guha, and Li gave the classical quasi-polynomial framework for Directed Steiner Tree. Later work clarified and improved the ratio: Grandoni, Laekhanukit, and Li obtained an $O(\\log^2 k/\\log\\log k)$ approximation in quasi-polynomial time and showed tightness for quasi-polynomial algorithms by tuning Halperin-Krauthgamer-type hardness. Independently, Ghuge and Nagarajan obtained matching quasi-polynomial guarantees through a broader submodular tree-orienteering framework. In polynomial time, the best general guarantee remains $O(k^\\varepsilon)$ for every fixed $\\varepsilon>0$. Planar digraphs are a major positive special case: Friggstad and Mousavi obtained a polynomial-time $O(\\log k)$ approximation, and Chekuri, Jain, Kulkarni, Zheng, and Zhu extended tree-embedding and LP ideas to planar directed polymatroid variants. These special cases do not resolve the arbitrary directed-graph problem. A 2024 arXiv attempt claiming a polynomial-time polylogarithmic result for general DST was later marked on arXiv as withdrawn/proof-collapsed, so it should not be treated as a resolution.",
+ "progress": {
+  "state": "partial",
+  "summary": "Quasi-polynomial-time algorithms achieve $O(\\log^2 k/\\log\\log k)$ and polynomial-time algorithms achieve $O(k^\\varepsilon)$. Planar digraphs have polynomial-time $O(\\log k)$-type guarantees, but arbitrary directed graphs remain unresolved.",
+  "links": [
+   {
+    "title": "Planar directed Steiner generalizations",
+    "url": "https://arxiv.org/abs/2407.01904"
+   },
+   {
+    "title": "Tight quasi-polynomial algorithm",
+    "url": "https://arxiv.org/abs/1811.03020"
+   }
+  ]
+ },
+ "importance": 9,
+ "difficulty": 9,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "Finite instances can refute proposed LP relaxations or rounding schemes, but the main open problem is an asymptotic algorithmic/hardness separation and will require structural proofs or reductions.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Automated search can generate hard directed graphs for LPs and recursive-density heuristics, but a polynomial-time polylogarithmic algorithm or hardness theorem is unlikely to emerge from finite search alone.",
+ "literature": {
+  "synthesis": "Directed Steiner Tree has a clean divide between what is possible with quasi-polynomial recursion and what is known in polynomial time. Height-reduction and recursive greedy ideas can reduce the instance to bounded-depth structures, but preserving enough terminal coverage information creates quasi-polynomial state spaces. Sherali-Adams and label-consistent subtree formulations sharpen this into the current $O(\\log^2 k/\\log\\log k)$ quasi-polynomial guarantee. Polynomial time loses this structure and falls back to $k^\\varepsilon$ ratios. Planar directed graphs show that graph structure can collapse the difficulty through separators and embeddings, suggesting that the general obstacle is not merely directedness but the absence of compressible decomposition. A resolution likely needs either a new polynomial-size relaxation/rounding framework or a complexity result separating polynomial from quasi-polynomial approximation power for this rooted network-design problem.",
+  "reviewed": [
+   {
+    "ref": "Grandoni, Laekhanukit, Li, 'O(log^2 k / log log k)-Approximation Algorithm for Directed Steiner Tree', arXiv 2018",
+    "result": "Gives a tight quasi-polynomial-time approximation ratio for DST.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1811.03020"
+   },
+   {
+    "ref": "Ghuge and Nagarajan, 'Quasi-Polynomial Algorithms for Submodular Tree Orienteering and Other Directed Network Design Problems', arXiv 2018",
+    "result": "Obtains matching quasi-polynomial guarantees through a broader directed network-design framework.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1812.01768"
+   },
+   {
+    "ref": "Chekuri, Jain, Kulkarni, Zheng, Zhu, 'From Directed Steiner Tree to Directed Polymatroid Steiner Tree in Planar Graphs', arXiv 2024",
+    "result": "Gives polynomial-time polylogarithmic guarantees in planar digraphs and explicitly records the general problem as open.",
+    "relevance": "solves-special-case",
+    "url": "https://arxiv.org/abs/2407.01904"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Study whether quasi-polynomial label-consistent subtree or Sherali-Adams constructions can be compressed to polynomial size. Search for stronger LP/SDP relaxations, recursive decompositions with polynomially many states, or hardness reductions showing that polylogarithmic approximation encodes quasi-polynomial Label Cover structure. Planar separator methods may suggest what structural property is missing in general graphs.",
+  "verification_notes": "A claimed positive result must run in polynomial time in $n$ and $k$ and achieve $(\\log k)^{O(1)}$ approximation on arbitrary directed graphs. Check carefully whether any proof relies on planar separators, bounded depth, quasi-polynomial enumeration, bicriteria violations, or a withdrawn preprint. A hardness result should state its assumption and distinguish ordinary polynomial-time hardness from quasi-polynomial-time hardness. A new LP-gap instance should specify the relaxation and provide exact integral and fractional values or reproducible certificates.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "Chekuri et al. describe polynomial-time polylogarithmic approximation for Directed Steiner Tree as a major open problem in approximation algorithms.",
+  "url": "https://arxiv.org/abs/2407.01904",
+  "quote": "Resolving the existence of a polynomial-time poly-logarithmic approximation is a major open problem in approximation algorithms.",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Chandra Chekuri, Rhea Jain, Shubhang Kulkarni, Da Wei Zheng, Weihao Zhu",
+  "title": "From Directed Steiner Tree to Directed Polymatroid Steiner Tree in Planar Graphs",
+  "year": 2024,
+  "venue": "arXiv",
+  "url": "https://arxiv.org/abs/2407.01904"
+ },
+ "additional_refs": [
+  {
+   "authors": "Fabrizio Grandoni, Bundit Laekhanukit, Shi Li",
+   "title": "O(log^2 k / log log k)-Approximation Algorithm for Directed Steiner Tree: A Tight Quasi-Polynomial-Time Algorithm",
+   "year": 2018,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/1811.03020"
+  },
+  {
+   "authors": "Rohan Ghuge, Viswanath Nagarajan",
+   "title": "Quasi-Polynomial Algorithms for Submodular Tree Orienteering and Other Directed Network Design Problems",
+   "year": 2018,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/1812.01768"
+  },
+  {
+   "authors": "Moses Charikar, Chandra Chekuri, To-Yat Cheung, Zuo Dai, Ashish Goel, Sudipto Guha, Ming Li",
+   "title": "Approximation algorithms for directed Steiner problems",
+   "year": 1999,
+   "venue": "Journal of Algorithms",
+   "url": "https://doi.org/10.1006/jagm.1998.0960"
+  }
+ ],
+ "bibtex": "@misc{Chekuri2024,\n  author = {Chandra Chekuri and Rhea Jain and Shubhang Kulkarni and Da Wei Zheng and Weihao Zhu},\n  title = {From Directed Steiner Tree to Directed Polymatroid Steiner Tree in Planar Graphs},\n  year = {2024},\n  howpublished = {arXiv},\n  url = {https://arxiv.org/abs/2407.01904},\n  note = {Source of ORdős Problem ORDOS-171}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/directed-steiner-tree-polylog-approximation.html",
+  "api": "https://ordos-problems.github.io/api/problems/directed-steiner-tree-polylog-approximation.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

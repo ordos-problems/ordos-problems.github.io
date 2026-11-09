@@ -1,0 +1,137 @@
+{
+ "number": 181,
+ "ref": "ORDOS-181",
+ "id": "gilbert-pollak-steiner-ratio",
+ "title": "The Gilbert-Pollak Steiner Ratio Conjecture",
+ "collection": "Operations Research",
+ "area": "Geometric Network Optimization",
+ "status": "conjecture",
+ "confidence": "high",
+ "tags": [
+  "Steiner tree",
+  "geometric optimization",
+  "network design",
+  "approximation constants",
+  "AI-assisted mathematics"
+ ],
+ "short_statement": "The equilateral triangle gives the apparent worst-case gap between the Euclidean minimum spanning tree and the Euclidean Steiner minimum tree, but no complete proof of this sharp constant is known.",
+ "open_problem": "Prove or disprove that every finite planar point set satisfies $\\operatorname{SMT}(P)\\ge (\\sqrt{3}/2)\\operatorname{MST}(P)$.",
+ "background": "The Euclidean Steiner tree problem is one of the classical network-design problems in geometric optimization. The input is already completely specified by finitely many points; the extra modeling choice is not the issue. What is hard is understanding the sharp loss incurred by the minimum spanning tree heuristic when the true optimum is allowed to introduce Steiner points. This sharp constant matters because MST-based networks are simple, canonical, and easy to compute, while Euclidean Steiner trees expose the geometric value of adding junctions. Gilbert and Pollak formulated the conjecture in 1968. A proof announced by Du and Hwang around 1990 was widely cited for years, but later clarification work identified a serious gap, so the conjecture remains open. The problem has recently become relevant to AI-agent mathematics because Ke, Huang, Shu, He, Gai, and Wang use LLM-generated geometric lemmas plus executable verification functions to improve certified lower bounds toward the conjectured constant.",
+ "full_statement": "Let $P\\subset \\mathbb R^2$ be a finite set of terminal points. Let $\\operatorname{MST}(P)$ be the length of a Euclidean minimum spanning tree on $P$, where edges must join terminals directly. Let $\\operatorname{SMT}(P)$ be the length of a Euclidean Steiner minimum tree connecting all terminals in $P$, where the network may use additional Steiner points in the plane. Define the Euclidean Steiner ratio in the $\\operatorname{SMT}/\\operatorname{MST}$ convention by $\\rho = \\inf_P \\operatorname{SMT}(P)/\\operatorname{MST}(P)$. For three terminals forming an equilateral triangle, $\\operatorname{SMT}/\\operatorname{MST}=\\sqrt{3}/2$. The Gilbert-Pollak conjecture asserts that this is the worst case: for every finite $P\\subset \\mathbb R^2$, $\\operatorname{SMT}(P)\\ge (\\sqrt{3}/2)\\operatorname{MST}(P)$. Equivalently, in the reciprocal ratio convention $\\Gamma=\\sup_P \\operatorname{MST}(P)/\\operatorname{SMT}(P)$, the conjecture says $\\Gamma=2/\\sqrt{3}$. The open problem is to prove this inequality for all finite planar point sets or produce a rigorously certified counterexample with ratio below $\\sqrt{3}/2$ in the $\\operatorname{SMT}/\\operatorname{MST}$ convention.",
+ "known_results": "The equilateral triangle shows that no bound larger than $\\sqrt{3}/2$ is possible for $\\operatorname{SMT}(P)/\\operatorname{MST}(P)$. Classical lower-bound work before the 1990s reached a certified lower bound around $0.824$ in this convention. Du and Hwang published a claimed proof of the exact $\\sqrt{3}/2$ bound, but later papers by Innami, Kim, Mashiko, Shiohama and by Ivanov and Tuzhilin explained that the proof has an unresolved gap, so it cannot be used as a resolution. The best widely cited older upper bound on the reciprocal ratio is about $1.2134$, while the conjectured reciprocal value is $2/\\sqrt{3}\\approx 1.1547$. In 2026, Ke and coauthors reported an AI-assisted certified lower bound of $0.8559$ for $\\operatorname{SMT}/\\operatorname{MST}$, substantially closer to $\\sqrt{3}/2\\approx0.8660$ but still short of the conjecture. Thus the open part is not to formulate a new geometric network model; it is to close the remaining constant gap or disprove the sharp equilateral-triangle conjecture.",
+ "progress": {
+  "state": "partial",
+  "summary": "The conjectured constant is $\\sqrt{3}/2$ for $\\operatorname{SMT}/\\operatorname{MST}$. A 2026 AI-assisted proof system gives a certified lower bound of $0.8559$, leaving a narrow but real gap to $0.8660\\ldots$.",
+  "links": [
+   {
+    "title": "Ke et al. AI-assisted lower bound",
+    "url": "https://arxiv.org/abs/2601.22365"
+   },
+   {
+    "title": "Gilbert-Pollak conjecture overview",
+    "url": "https://en.wikipedia.org/wiki/Gilbert%E2%80%93Pollak_conjecture"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "A counterexample would be a finite point set whose Steiner tree length is certified to be below $(\\sqrt{3}/2)$ times its MST length. Numerical search can propose candidates, but the final object must come with rigorous interval or exact certification of both lengths.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "The latest progress explicitly uses generated geometric lemmas implemented as executable verification functions, making this a natural target for agentic search over lemmas, finite configurations, and proof certificates.",
+ "literature": {
+  "synthesis": "This problem is unusually suitable for the repository because it combines a clean finite geometric optimization model with a sharp conjectural constant and a documented gap in the historical proof record. Gilbert and Pollak posed the sharp $\\sqrt{3}/2$ lower bound for the Steiner-to-spanning-tree ratio. Du and Hwang's proof attempt made the problem look settled, but later clarification work reopened it by identifying an unclosed step in the argument. Ke and coauthors then reframed the remaining gap as a certified-lower-bound problem and improved the lower bound to $0.8559$ using LLM-generated geometric lemmas. The remaining open part is exactly the difference between this certified lower bound and $\\sqrt{3}/2$, or a finite counterexample refuting the equilateral-triangle extremal picture.",
+  "reviewed": [
+   {
+    "ref": "E. N. Gilbert and H. O. Pollak, 'Steiner Minimal Trees', SIAM Journal on Applied Mathematics 1968",
+    "result": "Introduces the Euclidean Steiner ratio conjecture and identifies the equilateral-triangle value.",
+    "relevance": "poses-problem",
+    "url": "https://doi.org/10.1137/0116001"
+   },
+   {
+    "ref": "Ding-Zhu Du and Frank K. Hwang, 'The Steiner ratio conjecture of Gilbert and Pollak is true', PNAS 1990",
+    "result": "Published a claimed proof that later became the subject of gap analyses.",
+    "relevance": "historical-claim",
+    "url": "https://doi.org/10.1073/pnas.87.23.9464"
+   },
+   {
+    "ref": "N. Innami, B. H. Kim, Y. Mashiko, K. Shiohama, 'The Steiner Ratio Conjecture of Gilbert-Pollak May Still Be Open', Algorithmica 2008",
+    "result": "Explains why the earlier proof should not be treated as complete.",
+    "relevance": "open-status",
+    "url": "https://link.springer.com/search?query=The+Steiner+Ratio+Conjecture+of+Gilbert-Pollak+May+Still+Be+Open"
+   },
+   {
+    "ref": "Yisi Ke, Tianyu Huang, Yankai Shu, Di He, Jingchu Gai, Liwei Wang, 'Towards Solving the Gilbert-Pollak Conjecture via Large Language Models', arXiv 2026",
+    "result": "Reports a certified lower bound of $0.8559$ for the Steiner ratio in the $\\operatorname{SMT}/\\operatorname{MST}$ convention.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2601.22365"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Search for sharper geometric lemmas that certify lower bounds on $\\operatorname{SMT}/\\operatorname{MST}$ over classes of full Steiner topologies. Combine exact geometric optimization, interval arithmetic, and decomposition of point configurations. Counterexample search should generate finite point sets, solve or certify their Euclidean Steiner minimal trees, and compare against exact MST lengths.",
+  "verification_notes": "A proof must state which ratio convention is being used; $\\operatorname{SMT}/\\operatorname{MST}$ has conjectured lower bound $\\sqrt{3}/2$, while $\\operatorname{MST}/\\operatorname{SMT}$ has conjectured upper bound $2/\\sqrt{3}$. A full proof must cover all finite planar point sets and cannot rely on the incomplete Du-Hwang step unless it supplies the missing argument. A counterexample must give explicit coordinates and a rigorous certificate of the optimal Steiner tree, not only a floating-point GeoSteiner output. A lower-bound improvement must specify the certified constant, the class of configurations covered, and the interval or symbolic verification method used to rule out missed Steiner topologies.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "Gilbert and Pollak's 1968 Steiner ratio conjecture, restated in Ke et al.'s 2026 AI-assisted lower-bound paper.",
+  "url": "https://arxiv.org/abs/2601.22365",
+  "quote": "the Steiner minimum tree has length at least $\\sqrt{3}/2$",
+  "location": "Abstract and introduction"
+ },
+ "source": {
+  "authors": "Yisi Ke, Tianyu Huang, Yankai Shu, Di He, Jingchu Gai, Liwei Wang",
+  "title": "Towards Solving the Gilbert-Pollak Conjecture via Large Language Models",
+  "year": 2026,
+  "venue": "arXiv preprint arXiv:2601.22365",
+  "url": "https://arxiv.org/abs/2601.22365"
+ },
+ "additional_refs": [
+  {
+   "authors": "E. N. Gilbert, H. O. Pollak",
+   "title": "Steiner Minimal Trees",
+   "year": 1968,
+   "venue": "SIAM Journal on Applied Mathematics",
+   "url": "https://doi.org/10.1137/0116001"
+  },
+  {
+   "authors": "Ding-Zhu Du, Frank K. Hwang",
+   "title": "The Steiner ratio conjecture of Gilbert and Pollak is true",
+   "year": 1990,
+   "venue": "Proceedings of the National Academy of Sciences",
+   "url": "https://doi.org/10.1073/pnas.87.23.9464"
+  },
+  {
+   "authors": "N. Innami, B. H. Kim, Y. Mashiko, K. Shiohama",
+   "title": "The Steiner Ratio Conjecture of Gilbert-Pollak May Still Be Open",
+   "year": 2008,
+   "venue": "Algorithmica",
+   "url": "https://link.springer.com/search?query=The+Steiner+Ratio+Conjecture+of+Gilbert-Pollak+May+Still+Be+Open"
+  },
+  {
+   "authors": "Alexander O. Ivanov, Alexey A. Tuzhilin",
+   "title": "The Steiner Ratio Gilbert-Pollak Conjecture Is Still Open: Clarification Statement",
+   "year": 2012,
+   "venue": "Algorithmica",
+   "url": "https://link.springer.com/search?query=The+Steiner+Ratio+Gilbert-Pollak+Conjecture+Is+Still+Open"
+  },
+  {
+   "authors": "D. Juhl, D. M. Warme, P. Winter, M. Zachariasen",
+   "title": "The GeoSteiner Software Package for Computing Steiner Trees in the Plane: An Updated Computational Study",
+   "year": 2018,
+   "venue": "Mathematical Programming Computation",
+   "url": "https://doi.org/10.1007/s12532-017-0127-0"
+  }
+ ],
+ "bibtex": "@misc{Ke2026,\n  author = {Yisi Ke and Tianyu Huang and Yankai Shu and Di He and Jingchu Gai and Liwei Wang},\n  title = {Towards Solving the Gilbert-Pollak Conjecture via Large Language Models},\n  year = {2026},\n  howpublished = {arXiv preprint arXiv:2601.22365},\n  url = {https://arxiv.org/abs/2601.22365},\n  note = {Source of ORdős Problem ORDOS-181}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/gilbert-pollak-steiner-ratio.html",
+  "api": "https://ordos-problems.github.io/api/problems/gilbert-pollak-steiner-ratio.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

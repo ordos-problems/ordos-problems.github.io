@@ -1,0 +1,32 @@
+{
+  "id": "jsq-stationary-ergodic-stability-regimes",
+  "known_results": "For Markovian and iid models, JSQ stability and stationary behavior can often be handled using Foster-Lyapunov, coupling, fluid-limit, or diffusion techniques. Classical supermarket and JSQ($d$) limits also give detailed behavior in large-server asymptotic regimes, but these rely on independence and Markovian structure that is stronger than stationarity and ergodicity. The stationary-ergodic setting is much less understood because the JSQ routing map is not monotone in the relevant workload state. Foss describes even the two-server stationary-ergodic JSQ problem as open beyond the obvious load condition and asks how many stationary regimes may exist, what assumptions imply uniqueness, and when weak or total-variation convergence holds.",
+  "literature": {
+    "synthesis": "The contrast with FCFS multi-server queues is instructive. FCFS has an ordered workload-vector recursion with partial monotonicity, which makes Loynes-type stationary constructions possible under weak assumptions. JSQ makes a state-dependent routing decision that can reverse order and amplify small workload differences, so the usual monotone coupling is unavailable. In Markovian settings this is usually handled by Lyapunov drift or regenerative arguments, but stationary ergodic primitives need pathwise constructions rather than transition-kernel recurrence. The known gap is therefore structural: either find a new ergodic stability method for nonmonotone queueing recursions, or exhibit a stationary ergodic input whose long memory defeats uniqueness despite subcritical load.",
+    "reviewed": [
+      {
+        "ref": "Foss, 'Some Open Problems Related to Stability', 2009",
+        "result": "Identifies the stationary-ergodic JSQ problem and emphasizes that the model lacks monotonicity and is not amenable to Loynes-type schemes.",
+        "relevance": "open-problem-source",
+        "url": "https://arxiv.org/abs/0909.0462"
+      },
+      {
+        "ref": "Foss and Konstantopoulos, 'An Overview of Some Stochastic Stability Methods', Journal of the Operations Research Society of Japan 2004",
+        "result": "Surveys stability methods for stochastic networks and queueing recursions.",
+        "relevance": "related-tool",
+        "url": "https://www.jstage.jst.go.jp/article/jorsj/47/4/47_KJ00003423378/_article"
+      },
+      {
+        "ref": "Mitzenmacher, 'The Power of Two Choices in Randomized Load Balancing', IEEE Transactions on Parallel and Distributed Systems 2001",
+        "result": "Survey-style background on JSQ-style load balancing under stronger stochastic assumptions.",
+        "relevance": "survey",
+        "url": "https://doi.org/10.1109/71.963420"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "For positive results, look for fluid limits that can be constructed pathwise for stationary ergodic inputs and imply renovating events. For negative results, search for inputs with alternating long bursts that keep the shorter-queue decision locked into different phases. Comparing deterministic tie-breaking and random tie-breaking may separate real instability from tie artifacts.",
+    "verification_notes": "A solution must state the exact input assumptions, including whether arrivals are simple, whether service times are attached to arrivals or servers, tie-breaking, and whether residual workloads are part of the state. A positive recurrence proof under iid, renewal, Poisson, or Markov-modulated assumptions does not resolve the stationary-ergodic problem unless it extends to arbitrary stationary ergodic primitives under the stated load condition. A uniqueness proof should identify the stationary version and convergence mode. A counterexample must prove stationary ergodicity of the driving process, subcritical load, and the claimed multiplicity or nonconvergence, not merely display a long transient burst pattern.",
+    "machine_checkable": false
+  }
+}

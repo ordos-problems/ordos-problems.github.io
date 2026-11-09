@@ -1,0 +1,134 @@
+{
+  "id": "truthful-submodular-combinatorial-auctions",
+  "title": "Constant-factor truthful mechanisms for submodular combinatorial auctions",
+  "collection": "Market & Mechanism Design",
+  "area": "Algorithmic Mechanism Design",
+  "tags": [
+    "truthful mechanisms",
+    "combinatorial auctions",
+    "submodular valuations",
+    "welfare maximization",
+    "mechanism design"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "Design a polynomial-time truthful mechanism with a constant approximation to welfare for combinatorial auctions with submodular bidders, or prove that no such mechanism exists under a standard model of access to valuations.",
+  "full_statement": "There are $m$ heterogeneous indivisible items and $n$ bidders. Bidder $i$ has a private normalized monotone submodular valuation $v_i:2^{[m]}\\to\\mathbb R_+$, accessed through value or demand queries as specified by the mechanism model. An allocation is a tuple of disjoint bundles $(S_1,\\ldots,S_n)$, and its welfare is $\\sum_i v_i(S_i)$. Without incentive constraints, the submodular welfare maximization problem admits constant-factor approximation algorithms under standard oracle models. The open problem is to obtain a computationally efficient truthful mechanism, preferably universally truthful randomized and using polynomially many demand/value queries, whose expected welfare is within a constant factor of the optimal welfare for every profile of monotone submodular valuations. A solution must include payments and a proof that truthful reporting is a dominant strategy, not merely an allocation algorithm with good welfare. Conversely, a lower bound must specify the mechanism class, oracle model, and truthfulness notion, and must rule out constant approximation for all mechanisms in that class.",
+  "open_problem": "Is there a polynomial-time truthful constant-approximation mechanism for welfare maximization in combinatorial auctions with monotone submodular bidders?",
+  "background": "Combinatorial auctions are the canonical algorithmic mechanism-design model for allocating heterogeneous resources when bidders have complementarities or substitutes across bundles. For submodular bidders, valuations have diminishing returns and are expressive enough to model substitutes, budgeted preferences, and many allocation environments in platforms and markets. The algorithmic problem without strategic behavior is well understood at the constant-factor level, but truthfulness changes the problem qualitatively: the allocation rule must be implementable with payments so that bidders prefer to report their valuations honestly. This creates a tension between optimization and incentive compatibility. VCG would be truthful but computationally intractable for exact welfare maximization, while approximate allocation rules are usually not monotone or maximal-in-range in the way needed for truthfulness. The remaining problem is clean because the valuation class and objective are fixed; the missing piece is a theorem-level mechanism or impossibility result.",
+  "known_results": "Dobzinski, Nisan, and Schapira gave the first computationally efficient truthful mechanism for submodular bidders with an $O(\\log^2 m)$ approximation. Dobzinski later broke the logarithmic barrier to obtain an $O(\\sqrt{\\log m})$ approximation for submodular and XOS valuations. Assadi and Singla then gave a major improvement to an $O((\\log\\log m)^3)$ approximation in expectation, using only $O(n)$ demand queries and providing a universal truthfulness guarantee. This refuted the possibility that the earlier $\\Theta(\\sqrt{\\log m})$ barrier was inherent. Assadi, Kesselheim, and Singla (SODA 2021), Theorem 2, improve the submodular/XOS guarantee to $O((\\log\\log m)^2)$ with universal truthfulness and polynomial time; their cubic guarantee is for the broader subadditive class. On the negative side, Dobzinski proved strong value-query lower bounds for universally truthful randomized mechanisms: with only value queries, very good approximations require exponentially many queries. Those lower bounds do not rule out constant-factor mechanisms with demand queries or stronger communication. Thus the main gap remains between the current polyloglog approximation and a constant, with the oracle model and truthfulness notion central to the interpretation. Rubinstein and Singla's October 2026 preprint, Theorem 1.2, claims $O(\\log\\log m)$ for every fixed XOS profile in uniformly random arrival order, hence also offline after randomizing bidder order. Its constant-factor theorem instead assumes independent distributions and samples, and does not resolve the prior-free target.",
+  "where_posed": {
+    "text": "Assadi and Singla describe the problem as a longstanding open problem in algorithmic mechanism design and improve the state of the art to $O((\\log\\log m)^3)$, leaving the constant-factor frontier open.",
+    "url": "https://arxiv.org/abs/1911.02716",
+    "quote": "A longstanding open problem in Algorithmic Mechanism Design",
+    "location": "Abstract"
+  },
+  "source": {
+    "authors": "Sepehr Assadi, Sahil Singla",
+    "title": "Improved Truthful Mechanisms for Combinatorial Auctions with Submodular Bidders",
+    "year": 2019,
+    "venue": "arXiv",
+    "url": "https://arxiv.org/abs/1911.02716"
+  },
+  "additional_refs": [
+    {
+      "authors": "Shahar Dobzinski",
+      "title": "Breaking the Logarithmic Barrier for Truthful Combinatorial Auctions with Submodular Bidders",
+      "year": 2016,
+      "venue": "STOC",
+      "url": "https://arxiv.org/abs/1602.05914"
+    },
+    {
+      "authors": "Sepehr Assadi, Thomas Kesselheim, Sahil Singla",
+      "title": "Improved Truthful Mechanisms for Subadditive Combinatorial Auctions: Breaking the Logarithmic Barrier",
+      "year": 2020,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/2010.01420"
+    },
+    {
+      "authors": "Shahar Dobzinski",
+      "title": "An Impossibility Result for Truthful Combinatorial Auctions with Submodular Valuations",
+      "year": 2011,
+      "venue": "STOC",
+      "url": "https://arxiv.org/abs/1011.1830"
+    },
+    {
+      "authors": "Aviad Rubinstein, Sahil Singla",
+      "title": "Improved Combinatorial Auctions with and without Samples",
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2610.17517"
+    }
+  ],
+  "enabled": true,
+  "progress": {
+    "state": "partial",
+    "summary": "Published demand-query benchmark is $O((\\log\\log m)^2)$, not cubic; a 2026 preprint claims $O(\\log\\log m)$ in random order/offline. The prior-free constant-factor question remains open.",
+    "links": [
+      {
+        "title": "Assadi-Singla improvement",
+        "url": "https://arxiv.org/abs/1911.02716"
+      },
+      {
+        "title": "Dobzinski logarithmic-barrier paper",
+        "url": "https://arxiv.org/abs/1602.05914"
+      },
+      {
+        "title": "Assadi, Kesselheim, and Singla, Improved Truthful Mechanisms for Subadditive Combinatorial Auctions: Breaking the Logarithmic Barrier, SODA 2021",
+        "url": "https://arxiv.org/pdf/2010.01420"
+      },
+      {
+        "title": "Rubinstein and Singla, Improved Combinatorial Auctions with and without Samples, arXiv:2610.17517 (2026)",
+        "url": "https://arxiv.org/html/2610.17517v1"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 9,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Lower bounds can sometimes be witnessed by finite valuation families and communication/query reductions, but a full impossibility theorem for demand-query truthful mechanisms is unlikely to be a small explicit counterexample alone.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Automated search may help optimize maximal-in-range families, menu structures, or hard valuation profiles, but truthfulness and approximation proofs require structural arguments beyond finite-instance optimization.",
+  "literature": {
+    "synthesis": "The literature shows a persistent separation between optimization and truthful optimization. Nontruthful submodular welfare algorithms can use continuous greedy, local search, and rounding to obtain constant factors. Truthful mechanisms are constrained to allocation rules that can be paired with payments, and most approximation algorithms fail monotonicity or maximal-in-range requirements. The Dobzinski line made progress by designing carefully restricted allocation ranges and lottery/partition structures that remain implementable. Assadi-Singla's exponential improvement over the $\\sqrt{\\log m}$ barrier suggests that the known polylogarithmic losses are not simply information-theoretic, but the value-query impossibility results also warn that the oracle model matters. A convincing resolution must either build a new truthful range/rounding architecture with constant loss, or prove that any such architecture would need communication or queries beyond polynomial size. The 2021 squared-log-log theorem supersedes the older cubic submodular bound. The 2026 random-order/offline claim is another partial improvement, not a prior-free constant approximation.",
+    "reviewed": [
+      {
+        "ref": "Dobzinski, 'Breaking the Logarithmic Barrier for Truthful Combinatorial Auctions with Submodular Bidders', STOC 2016",
+        "result": "Gives an $O(\\sqrt{\\log m})$ truthful mechanism and establishes the pre-2019 benchmark.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1602.05914"
+      },
+      {
+        "ref": "Assadi and Singla, 'Improved Truthful Mechanisms for Combinatorial Auctions with Submodular Bidders', arXiv 2019",
+        "result": "Improves the approximation to $O((\\log\\log m)^3)$ with universal truthfulness and $O(n)$ demand queries.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1911.02716"
+      },
+      {
+        "ref": "Dobzinski, 'An Impossibility Result for Truthful Combinatorial Auctions with Submodular Valuations', STOC 2011",
+        "result": "Shows severe limitations for value-query universally truthful mechanisms.",
+        "relevance": "hardness",
+        "url": "https://arxiv.org/abs/1011.1830",
+        "relevance_detail": "lower-bound-evidence"
+      },
+      {
+        "ref": "Assadi, Kesselheim, and Singla, Improved Truthful Mechanisms for Subadditive Combinatorial Auctions: Breaking the Logarithmic Barrier, SODA 2021",
+        "result": "Theorem 2 gives squared log-log for XOS/submodular bidders; cubic log-log is for subadditive bidders.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/pdf/2010.01420"
+      },
+      {
+        "ref": "Rubinstein and Singla, Improved Combinatorial Auctions with and without Samples, arXiv:2610.17517 (2026)",
+        "result": "Theorem 1.2 claims log-log for fixed XOS profiles in random order/offline; the constant guarantee in Theorem 1.1 needs independent samples.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/html/2610.17517v1"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Study maximal-in-range mechanisms, demand-query range design, posted-price interpretations, and communication lower bounds for submodular valuations. A useful computational subproblem is to search for allocation ranges that are truthful by construction and empirically approximate submodular welfare well on hard instances.",
+    "verification_notes": "A claimed positive result must prove dominant-strategy truthfulness including payments, specify universal truthfulness or truthfulness in expectation, and count oracle queries or communication in $n$ and $m$. It must handle arbitrary monotone submodular valuations, not only narrower classes such as coverage valuations, small bidders, or bounded curvature. A lower bound must not confuse value-query impossibility with demand-query impossibility, and must identify whether it applies to deterministic, universally truthful randomized, or truthful-in-expectation mechanisms. XOS contains submodular valuations; a theorem for all XOS bidders covers this valuation class, but stochastic/sample assumptions must still match.",
+    "machine_checkable": false
+  },
+  "notes_for_maintainer": "Status audit 2026-11-09: 2021 Theorem 2 and 2026 Theorems 1.1-1.3 plus random-order proof endpoint read. New result remains a preprint claim."
+}

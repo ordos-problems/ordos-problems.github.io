@@ -1,0 +1,147 @@
+{
+ "number": 149,
+ "ref": "ORDOS-149",
+ "id": "steiner-forest-below-two",
+ "title": "Beating the factor-2 barrier for Steiner Forest",
+ "collection": "Approximation & Discrepancy",
+ "area": "Network Design",
+ "status": "resolved",
+ "confidence": "high",
+ "tags": [
+  "Steiner forest",
+  "network design",
+  "approximation algorithms",
+  "primal-dual",
+  "LP rounding"
+ ],
+ "short_statement": "Resolved: undirected Steiner Forest admits a polynomial-time approximation strictly below $2$; a subsequent algorithm achieves $1.994$.",
+ "open_problem": "The original below-$2$ algorithmic target is resolved. Remaining related questions: improve the ratio further, determine the optimal threshold, or prove a below-$2$ gap for the bidirected-cut relaxation.",
+ "background": "Steiner Forest is a central network-design problem. It models building the cheapest communication, transportation, or infrastructure network that connects specified pairs, while allowing unrelated demand pairs to live in different components. The problem generalizes Steiner Tree and is one of the flagship successes of primal-dual approximation algorithms: the Agrawal-Klein-Ravi and Goemans-Williamson style moat-growing method gives a clean factor $2$. For decades, factor $2$ remained the best general guarantee, despite the fact that many related network-design problems have seen improvements through LP rounding, iterative rounding, or probabilistic embedding techniques. The difficulty is that local connectivity requirements interact through shared edges but do not require one global connected component. The breakthrough algorithms exploit sharing between terminal pairs better than the primal-dual algorithm without paying for unnecessary connections. The below-$2$ target was resolved in 2025.",
+ "full_statement": "In the undirected Steiner Forest problem, the input is an undirected graph $G=(V,E)$ with nonnegative edge costs $c_e$ and a collection of terminal pairs $(s_1,t_1),\\ldots,(s_k,t_k)$. A feasible solution is a forest $H\\subseteq E$ such that, for every $i$, vertices $s_i$ and $t_i$ lie in the same connected component of $(V,H)$. The objective is to minimize $c(H)=\\sum_{e\\in H} c_e$. The classical primal-dual algorithm gives a factor-$2$ approximation. The historical target was to design a polynomial-time $(2-\\varepsilon)$-approximation for some universal constant $\\varepsilon>0$, or prove that no such improvement is possible under a standard complexity assumption. This algorithmic target is resolved by Ahmadi et al. (FOCS 2025), followed by Gupta and Traub's $1.994$ algorithm. A separate, still-open LP question asks whether the bidirected-cut relaxation, or another natural relaxation for Steiner Forest, has integrality gap strictly below $2$ and can be rounded constructively. The problem should be distinguished from Steiner Tree, where stronger approximation algorithms are known; multiple disconnected demand components make Steiner Forest harder to couple globally.",
+ "known_results": "The classical Agrawal-Klein-Ravi and Goemans-Williamson primal-dual algorithms achieve factor $2$. Ahmadi, Gholami, Hajiaghayi, Jabbarzade, and Mahdavi (FOCS 2025) break this barrier with a universal improvement of approximately $10^{-11}$. Gupta and Traub subsequently give a $1.994$ algorithm for arbitrary undirected nonnegative-cost instances (Theorem 1.1). Thus the original target is resolved. APX-hardness does not determine the optimal ratio. Byrka, Grandoni, and Traub prove a $16/9$ guarantee for half-integral bidirected-cut solutions; a general LP gap below $2$ remains a distinct open question.",
+ "progress": {
+  "state": "resolved",
+  "summary": "Ahmadi et al. (FOCS 2025) resolve the original below-$2$ algorithmic target; Gupta-Traub improve the ratio to $1.994$. General bidirected-cut LP rounding is a separate unresolved target.",
+  "links": [
+   {
+    "title": "Bidirected cut relaxation for Steiner Forest",
+    "url": "https://arxiv.org/abs/2412.06518"
+   },
+   {
+    "title": "Ahmadi et al., Breaking a Long-Standing Barrier: 2-epsilon Approximation for Steiner Forest, FOCS 2025",
+    "url": "https://arxiv.org/abs/2504.11398"
+   },
+   {
+    "title": "Gupta and Traub, Steiner Forest: A Simplified Better-Than-2 Approximation (2025/2026)",
+    "url": "https://arxiv.org/html/2511.18460v1"
+   }
+  ]
+ },
+ "importance": 9,
+ "difficulty": 9,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "LP gaps and bad examples for candidate algorithms are finite graph instances. Small graph search can be useful for testing relaxations and rounding hypotheses.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Evolutionary search can look for bidirected-cut gap instances, half-integral obstructions, or demand-pair gadgets that stress candidate rounding schemes.",
+ "literature": {
+  "synthesis": "The classical primal-dual factor $2$ was surpassed by combining extended moat growing with additional structural selection and contraction. Gupta and Traub simplify the breakthrough using autarkic pairs and triples and submodular maximization. These algorithmic guarantees are not a proof that the bidirected-cut relaxation has gap below $2$; the half-integral $16/9$ result remains relevant to that separate LP question.",
+  "reviewed": [
+   {
+    "ref": "Agrawal, Klein, Ravi, 'When Trees Collide', SICOMP 1995",
+    "result": "Classical primal-dual approximation framework for generalized Steiner forest-type problems.",
+    "relevance": "partial-progress",
+    "url": "https://doi.org/10.1137/S0097539792236237"
+   },
+   {
+    "ref": "Goemans and Williamson, 'A General Approximation Technique for Constrained Forest Problems', SICOMP 1995",
+    "result": "Primal-dual constrained-forest technique yielding factor-$2$ type guarantees.",
+    "relevance": "partial-progress",
+    "url": "https://doi.org/10.1137/S0097539793242618"
+   },
+   {
+    "ref": "Byrka, Grandoni, Traub, 'On the Bidirected Cut Relaxation for Steiner Forest', arXiv 2024",
+    "result": "Studies an LP relaxation and rounds half-integral solutions within factor $16/9$.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2412.06518"
+   },
+   {
+    "ref": "Ahmadi et al., Breaking a Long-Standing Barrier: 2-epsilon Approximation for Steiner Forest, FOCS 2025",
+    "result": "Published resolution of the original algorithmic target; approximately $2-10^{-11}$.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2504.11398"
+   },
+   {
+    "ref": "Gupta and Traub, Steiner Forest: A Simplified Better-Than-2 Approximation (2025/2026)",
+    "result": "Theorem 1.1 gives a polynomial-time $1.994$ approximation.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/html/2511.18460v1"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Do not resubmit a below-$2$ algorithm as new progress. Study the published breakthrough and Gupta-Traub simplification; seek a stronger ratio or address the separately stated fractional LP question.",
+  "verification_notes": "A claimed $(2-\\varepsilon)$ algorithm must be polynomial time and apply to arbitrary undirected graphs and terminal-pair sets. A claimed LP-gap lower bound must provide a family of instances and compute both the integer optimum and fractional optimum. Numerical LP evidence is useful but must be converted into an exact rational certificate. A verifier should check that the result is for Steiner Forest rather than Steiner Tree, that disconnected components are allowed exactly as in the model, and that any improvement is a universal constant below $2$ rather than an instance-family or half-integral special case. Beating $2$ alone no longer constitutes new progress; compare with the existing $1.994$ guarantee.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "Historical 2024 formulation, superseded by the 2025 algorithmic breakthrough; later versions of this LP paper discuss the new algorithms.",
+  "url": "https://arxiv.org/abs/2412.06518",
+  "quote": "",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Jaroslaw Byrka, Fabrizio Grandoni, Vera Traub",
+  "title": "On the Bidirected Cut Relaxation for Steiner Forest",
+  "year": 2024,
+  "venue": "arXiv",
+  "url": "https://arxiv.org/abs/2412.06518"
+ },
+ "additional_refs": [
+  {
+   "authors": "Ajit Agrawal, Philip Klein, R. Ravi",
+   "title": "When Trees Collide: An Approximation Algorithm for the Generalized Steiner Problem on Networks",
+   "year": 1995,
+   "venue": "SIAM Journal on Computing",
+   "url": "https://doi.org/10.1137/S0097539792236237"
+  },
+  {
+   "authors": "Michel X. Goemans, David P. Williamson",
+   "title": "A General Approximation Technique for Constrained Forest Problems",
+   "year": 1995,
+   "venue": "SIAM Journal on Computing",
+   "url": "https://doi.org/10.1137/S0097539793242618"
+  },
+  {
+   "authors": "Jaroslaw Byrka, Fabrizio Grandoni, Vera Traub",
+   "title": "On the Bidirected Cut Relaxation for Steiner Forest",
+   "year": 2024,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2412.06518"
+  },
+  {
+   "authors": "Ali Ahmadi, Iman Gholami, MohammadTaghi Hajiaghayi, Peyman Jabbarzade, Mohammad Mahdavi",
+   "title": "Breaking a Long-Standing Barrier: 2-epsilon Approximation for Steiner Forest",
+   "year": 2025,
+   "venue": "FOCS",
+   "url": "https://arxiv.org/abs/2504.11398"
+  },
+  {
+   "authors": "Anupam Gupta, Vera Traub",
+   "title": "Steiner Forest: A Simplified Better-Than-2 Approximation",
+   "year": 2025,
+   "venue": "arXiv full text; subsequent conference result",
+   "url": "https://arxiv.org/abs/2511.18460"
+  }
+ ],
+ "bibtex": "@misc{Byrka2024,\n  author = {Jaroslaw Byrka and Fabrizio Grandoni and Vera Traub},\n  title = {On the Bidirected Cut Relaxation for Steiner Forest},\n  year = {2024},\n  howpublished = {arXiv},\n  url = {https://arxiv.org/abs/2412.06518},\n  note = {Source of ORdős Problem ORDOS-149}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/steiner-forest-below-two.html",
+  "api": "https://ordos-problems.github.io/api/problems/steiner-forest-below-two.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

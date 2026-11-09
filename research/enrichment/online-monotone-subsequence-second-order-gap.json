@@ -1,0 +1,101 @@
+{
+  "id": "online-monotone-subsequence-second-order-gap",
+  "background": "Online monotone subsequence selection is a clean sequential-selection problem at the boundary of applied probability, optimal stopping, and online algorithms. A sequence of iid continuous observations arrives one at a time, and the decision maker must irrevocably select an increasing subsequence. The offline longest increasing subsequence has famous $2\\sqrt n$ first-order behavior; the online constrained version has first-order constant $\\sqrt{2}$. The first-order law is classical. The later second-order analysis resolves the bounded-versus-divergent question formerly posed here.",
+  "full_statement": "Let $X_1,\\ldots,X_n$ be i.i.d. observations from a continuous distribution, reduced to uniform observations on $[0,1]$ by the probability integral transform. An online nonanticipating policy irrevocably accepts an increasing subsequence. Write $v_n=\\sup_\\pi\\mathbb E[L_n^\\pi]$ for its optimal expected length and $g(n)=\\sqrt{2n}-v_n$. The historical question asked whether $g(n)$ is bounded or diverges and, if it diverges, at what rate. Seksenbayev (2021), Theorem 1, answers it: $$v_n=\\sqrt{2n}-\\frac{1}{12}\\log n+O(1),\\qquad g(n)=\\frac{1}{12}\\log n+O(1).$$ This is a fixed-sample-size result, not just a Poissonized approximation.",
+  "open_problem": "Resolved: the deficit has logarithmic growth with coefficient $1/12$.",
+  "known_results": "Samuels and Steele established the first-order scale; Arlotto, Wei, and Xie gave an adaptive policy with logarithmic additive guarantees. Seksenbayev, Acta Applicandae Mathematicae 174, article 6 (2021), Theorem 1, proves the expansion in full_statement directly for fixed $n$. Section 2.2 compares trial functions with the discrete Bellman recursion and bounds the remainder. Section 2.3 also proves an $O(1)$ gap for the adaptive square-root-window policy. These results settle this record's stated target, without identifying a limit for the bounded remainder.",
+  "status": "resolved",
+  "where_posed": {
+    "text": "Posed in the concluding discussion of Arlotto, Wei, and Xie, 'An adaptive O(log n)-optimal policy for the online selection of a monotone subsequence from a random sample'.",
+    "url": "https://arxiv.org/abs/1605.03998",
+    "quote": "",
+    "location": "Concluding remarks / second-order behavior discussion."
+  },
+  "progress": {
+    "state": "resolved",
+    "summary": "Theorem 1 identifies the logarithmic deficit and its coefficient, with bounded error.",
+    "links": [
+      {
+        "title": "Arlotto, Wei, Xie, adaptive O(log n)-optimal policy",
+        "url": "https://arxiv.org/abs/1605.03998"
+      },
+      {
+        "title": "Samuels and Steele, Optimal sequential selection of a monotone sequence",
+        "url": "https://doi.org/10.1214/aop/1176994291"
+      },
+      {
+        "title": "Bruss and Delbaen, Optimal rules for sequential selection of monotone subsequences",
+        "url": "https://doi.org/10.1016/S0304-4149(01)00124-7"
+      },
+      {
+        "title": "Seksenbayev (2021), Theorem 1 and Section 2.3",
+        "url": "https://doi.org/10.1007/s10440-021-00424-3"
+      }
+    ]
+  },
+  "importance": 7,
+  "difficulty": 8,
+  "counterexample_suitability": "low",
+  "counterexample_rationale": "The asymptotic deficit question is resolved analytically; finite examples cannot overturn that theorem.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Computation may examine the bounded remainder or illustrate the published asymptotic law, not rediscover the resolved logarithmic term.",
+  "literature": {
+    "synthesis": "First-order asymptotics and logarithmic-gap policies were followed by a direct Bellman comparison establishing the second-order expansion. Thus boundedness of the original deficit is no longer an open alternative. A sharper analysis of the bounded remainder would be a different question.",
+    "reviewed": [
+      {
+        "ref": "Samuels and Steele, 'Optimal Sequential Selection of a Monotone Sequence from a Random Sample', Annals of Probability 1981",
+        "result": "Establishes foundational asymptotics for optimal online monotone subsequence selection.",
+        "relevance": "partial-progress",
+        "url": "https://doi.org/10.1214/aop/1176994291"
+      },
+      {
+        "ref": "Bruss and Delbaen, 'Optimal rules for the sequential selection of monotone subsequences of maximum expected length', Stochastic Processes and their Applications 2001",
+        "result": "Develops optimal-rule analysis and asymptotic tools.",
+        "relevance": "partial-progress",
+        "url": "https://doi.org/10.1016/S0304-4149(01)00124-7"
+      },
+      {
+        "ref": "Arlotto, Wei, Xie, 'An adaptive O(log n)-optimal policy...', Random Structures & Algorithms 2018 / arXiv 2016",
+        "result": "Constructs a simple adaptive policy within $O(\\log n)$ of optimal.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1605.03998"
+      },
+      {
+        "ref": "Amirlan Seksenbayev, 'Asymptotic Expansions and Strategies in the Online Increasing Subsequence Problem', Acta Applicandae Mathematicae 174, 6 (2021)",
+        "result": "Theorem 1 resolves the fixed-n second-order deficit; Section 2.3 sharpens the adaptive-policy guarantee.",
+        "relevance": "solves-special-case",
+        "url": "https://doi.org/10.1007/s10440-021-00424-3"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Verify the discrete Bellman comparison in Seksenbayev, Section 2.2, before proposing any finer-order extension.",
+    "verification_notes": "Use the optimal value v_n, not one policy's value. Check the fixed-n theorem rather than transferring a Poissonized expansion without an error bound.",
+    "machine_checkable": false
+  },
+  "notes_for_maintainer": "Audit 2026-11-09: the 2021 published theorem resolves the exact question. Full-text model, Theorem 1, its comparison argument, and Section 2.3 read. Do not silently replace the record by an unverified higher-order open problem.",
+  "short_statement": "The optimal online expected length is $v_n=\\sqrt{2n}-(1/12)\\log n+O(1)$; the second-order deficit is logarithmic (Seksenbayev, 2021).",
+  "additional_refs": [
+    {
+      "authors": "Stephen M. Samuels, J. Michael Steele",
+      "title": "Optimal sequential selection of a monotone sequence from a random sample",
+      "year": 1981,
+      "venue": "Annals of Probability",
+      "url": "https://doi.org/10.1214/aop/1176994291"
+    },
+    {
+      "authors": "F. Thomas Bruss, Freddy Delbaen",
+      "title": "Optimal rules for the sequential selection of monotone subsequences of maximum expected length",
+      "year": 2001,
+      "venue": "Stochastic Processes and their Applications",
+      "url": "https://doi.org/10.1016/S0304-4149(01)00124-7"
+    },
+    {
+      "authors": "Amirlan Seksenbayev",
+      "title": "Asymptotic Expansions and Strategies in the Online Increasing Subsequence Problem",
+      "year": 2021,
+      "venue": "Acta Applicandae Mathematicae 174, article 6",
+      "url": "https://doi.org/10.1007/s10440-021-00424-3"
+    }
+  ]
+}

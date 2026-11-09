@@ -1,0 +1,77 @@
+{
+  "id": "multiaccess-success-feedback-stable-protocol",
+  "status": "open",
+  "short_statement": "Can a deterministic update using only current attempt probability and the success bit stabilize a positive rate? Extra-randomization results do not settle this restriction.",
+  "full_statement": "Time is slotted. In each slot, a Poisson number of new packets with mean $\\lambda$ enters a shared single channel. At the beginning of slot $n$, every packet currently in the system attempts transmission independently with probability $p_n$. If exactly one packet transmits, the transmission succeeds and that packet leaves; if zero packets transmit, the slot is idle; if two or more transmit, all attempted transmissions collide and remain in the system. Let $W_n$ be the backlog at the beginning of slot $n$. A protocol is restricted to choose $p_{n+1}$ as a function only of $p_n$ and the binary feedback variable indicating whether slot $n$ had a successful transmission. Thus empty slots and collision slots are observationally identical. The pair $(W_n,p_n)$ is then a time-homogeneous Markov chain. The open problem is whether there exists any such protocol and any $\\lambda>0$ for which $(W_n,p_n)$ is positive recurrent. If yes, determine the supremum stabilizable arrival rate under success/non-success feedback; if no, prove impossibility for every positive $\\lambda$. Here 'a function only of' means a deterministic update $p_{n+1}=f(p_n,J_n)$, with $J_n$ the success indicator. Independent packet transmission trials are not an extra common random seed for this update. The later doubly randomized theorem belongs to a larger protocol class and is related progress, not a resolution of this target.",
+  "open_problem": "Original deterministic target: does some update $p_{n+1}=f(p_n,J_n)$ yield positive recurrence at a positive Poisson arrival rate, and what is the supremum stabilizable rate? No answer for this restricted class is certified here.",
+  "background": "Random-access channels are among the classical stochastic-network models behind communication protocols. In slotted ALOHA-type systems, many packets contend for a shared channel, and collisions force retransmission. Stability depends strongly on what feedback the protocol receives. If the controller can distinguish empty slots from nonempty slots, or collisions from noncollisions, classical results give the familiar $e^{-1}$ threshold. Foss highlights a feedback restriction: suppose the update can use only the current transmission probability and a single bit saying whether the previous slot had a success. This bit merges empty slots and collisions into the same observation, depriving the protocol of the usual congestion signal. The model is extremely clean, and the question is binary: does any protocol in this information class stabilize the backlog for any positive arrival rate? A later stability theorem uses additional common randomness, so the feedback alphabet alone does not define the admissible protocol class.",
+  "known_results": "Foss-Hajek-Turlikov (2016) constructs stable doubly randomized protocols for iid finite-mean slot arrivals, including Poisson input. For each fixed interval $0<\\lambda_0<\\lambda_1<e^{-1}$, suitable parameters stabilize all rates in that interval. The feedback merges empty and collision outcomes and no test packets are used. But a shared extra coin randomizes the protocol; the theorem does not establish deterministic f(p,J), nor one parameter choice covering every unknown rate below $e^{-1}$. The original deterministic target is retained without certifying current openness from absence of results.",
+  "progress": {
+    "state": "partial",
+    "summary": "Related progress only: a larger doubly randomized success/non-success class is stabilizable. The deterministic target is not resolved by that theorem.",
+    "links": [
+      {
+        "title": "Foss, Some Open Problems Related to Stability",
+        "url": "https://arxiv.org/abs/0909.0462"
+      },
+      {
+        "title": "Slotted ALOHA background",
+        "url": "https://en.wikipedia.org/wiki/ALOHAnet"
+      },
+      {
+        "title": "Foss-Hajek-Turlikov (2016)",
+        "url": "https://doi.org/10.1134/S0032946016020058"
+      }
+    ]
+  },
+  "literature": {
+    "synthesis": "Observation restrictions and randomization restrictions are distinct. The later construction removes a blanket feedback-based obstruction, but it supplies no deterministic simulation of its extra coin. Its guarantee must not be used to close this record.",
+    "reviewed": [
+      {
+        "ref": "Foss, 'Some Open Problems Related to Stability', 2009",
+        "result": "States the success/non-success feedback protocol problem and summarizes the known $e^{-1}$ result for other binary feedback choices.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/0909.0462"
+      },
+      {
+        "ref": "Classical slotted ALOHA literature",
+        "result": "Establishes the $1/e$ throughput barrier for simple random access with a fixed attempt probability.",
+        "relevance": "related-tool",
+        "url": "https://en.wikipedia.org/wiki/ALOHAnet"
+      },
+      {
+        "ref": "Xie, Walsh, Weber, 'Properties of an Aloha-like Stability Region', arXiv 2014",
+        "result": "Studies stability-region structure for finite-user slotted ALOHA under fixed contention probabilities.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/1408.3469"
+      },
+      {
+        "ref": "Foss, Hajek, Turlikov (2016), Problems of Information Transmission 52(2), 151-160",
+        "result": "Harris ergodicity in a larger doubly randomized class; not a deterministic f(p,J) solution.",
+        "relevance": "partial-progress",
+        "url": "https://doi.org/10.1134/S0032946016020058"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Retain deterministic update maps as the target. Compare with the randomized construction only after accounting for its extra randomness and state. Simulation is not a recurrence proof.",
+    "verification_notes": "Verify that p_next is a deterministic function only of current p and the success bit. Do not introduce fresh common randomness, hidden estimator state, arrival-time information, or stronger feedback without explicitly changing the problem.",
+    "machine_checkable": true
+  },
+  "additional_refs": [
+    {
+      "authors": "Nan Xie, John MacLaren Walsh, Steven Weber",
+      "title": "Properties of an Aloha-like Stability Region",
+      "year": 2014,
+      "venue": "arXiv:1408.3469",
+      "url": "https://arxiv.org/abs/1408.3469"
+    },
+    {
+      "authors": "Sergey G. Foss, Bruce Hajek, Andrey M. Turlikov",
+      "title": "Doubly Randomized Protocols for a Random Multiple Access Channel with Success-Nonsuccess Feedback",
+      "year": 2016,
+      "venue": "Problems of Information Transmission 52(2), 151-160; DOI 10.1134/S0032946016020058",
+      "url": "https://hajek.ece.illinois.edu/Papers/FossTurlikovHajek15.pdf"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "id": "santa-claus-config-lp-integrality-gap",
+  "background": "Restricted Santa Claus, also called restricted max-min fair allocation, is the max-min analogue of scheduling and fair division. There are players and indivisible resources; each resource has a value and is acceptable only to some players. The goal is to allocate resources so that the least-valued player bundle is as large as possible. The configuration LP is the standard relaxation: for a guessed target value $T$, each player may fractionally choose configurations of resources whose total value is at least $T$. The LP is strong enough to certify constant-factor existence results, but rounding it constructively is difficult because feasible configurations form a hypergraph matching problem. The exact integrality gap of this LP is a central structural question: it measures the true power of the canonical relaxation independently of the current limitations of algorithms.",
+  "full_statement": "In the restricted max-min fair allocation problem, let $P$ be a set of players and $R$ a set of indivisible resources. Each resource $r$ has a value $v_r\\ge 0$, and each player $p$ either desires $r$ and values it at $v_r$, or does not desire it and values it at $0$. An allocation partitions resources among players and has value $\\min_{p\\in P}\\sum_{r\\in A_p} v_r$. For a target $T$, the configuration LP has one variable $x_{p,C}$ for every player $p$ and every subset $C\\subseteq R_p$ with $\\sum_{r\\in C}v_r\\ge T$; it requires each player to receive one unit of configurations and each resource to be used fractionally at most once. Let $T_{LP}$ be the largest feasible target and $T_{INT}$ the optimal integral allocation value. Determine the smallest universal constant $\\gamma$ such that $T_{LP}\\le \\gamma T_{INT}$ for every restricted instance. Equivalently, close the gap between the best known lower-bound instances and the best known rounding/existence analyses for this canonical configuration LP.",
+  "open_problem": "Determine the exact integrality gap of the configuration LP for restricted max-min fair allocation.",
+  "known_results": "Bansal and Sviridenko introduced the configuration-LP approach for Santa Claus-type allocation and showed why weaker assignment relaxations are inadequate. Asadpour, Feige, and Saberi proved that the restricted configuration LP has constant integrality gap at most $4$ using hypergraph matching and local-search ideas, but their existence proof did not by itself yield a polynomial-time $4$-approximation. Jansen and Rohwedder gave a shorter analysis improving the upper bound to $3+5/6$, and Cheng and Mao later improved it to $3+21/26\\approx 3.808$ while also developing stronger constructive algorithms. On the lower-bound side, explicit instances show an integrality gap of at least $2$. The remaining gap interval is $[2,53/15]$. Haxell and Szabo (SODA 2023; Combinatorica 2025), Theorem 1.1, improve the restricted configuration-LP gap to $53/15$. This is existential, not a polynomial-time allocation algorithm.",
+  "status": "open",
+  "where_posed": {
+    "text": "Gap left by Asadpour-Feige-Saberi and Cheng-Mao configuration-LP analyses for restricted Santa Claus.",
+    "url": "https://arxiv.org/abs/1905.06084",
+    "quote": "We also improve the upper bound for the integrality gap of the configuration LP to $3 + \\frac{21}{26} \\approx 3.808$.",
+    "location": "Abstract"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The restricted configuration-LP gap lies in $[2,53/15]$; the upper bound is existential.",
+    "links": [
+      {
+        "title": "Cheng and Mao, Restricted Max-Min Allocation",
+        "url": "https://arxiv.org/abs/1905.06084"
+      },
+      {
+        "title": "Annamalai, Kalaitzis, Svensson, combinatorial algorithm",
+        "url": "https://arxiv.org/abs/1409.0607"
+      },
+      {
+        "title": "Haxell and Szabo, Improved Integrality Gap in Max-Min Allocation, or, Topology at the North Pole, Combinatorica 45, 22 (2025)",
+        "url": "https://arxiv.org/pdf/2202.01143"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Lower bounds are explicit finite allocation instances with a certified LP optimum and integral optimum. Such instances can be searched and checked computationally.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Search over hypergraph allocation instances may find stronger LP gaps or patterns suggesting a tight family.",
+  "literature": {
+    "synthesis": "The restricted Santa Claus literature separates three questions: estimating the optimum via the configuration LP, proving existential integrality-gap bounds, and finding polynomial-time algorithms that construct allocations. The configuration LP is the natural relaxation for the first two questions, but its rounding is tied to difficult hypergraph matching local search. The historical $4$ and $3.808$ upper bounds, now improved to $53/15$, show substantial structure, while the lower bound $2$ leaves room for either sharper rounding or stronger gap constructions. A tight answer would clarify whether the algorithmic $4+\\delta$ frontier is close to intrinsic LP limitations or mostly a constructive artifact.",
+    "reviewed": [
+      {
+        "ref": "Arash Asadpour, Uriel Feige, Amin Saberi, 'Santa Claus Meets Hypergraph Matchings', ACM Transactions on Algorithms 2012 / APPROX 2008",
+        "result": "Proves a constant, originally $4$, upper bound on the restricted configuration-LP integrality gap using hypergraph matching ideas.",
+        "relevance": "partial-progress",
+        "url": "https://www.wisdom.weizmann.ac.il/~feige/mypapers/santaclaus1.pdf"
+      },
+      {
+        "ref": "Siu-Wing Cheng, Yuchen Mao, 'Restricted Max-Min Allocation: Approximation and Integrality Gap', Algorithmica 2022",
+        "result": "Improves the configuration-LP integrality-gap upper bound to $3+21/26$ and gives a $4+\\delta$ polynomial-time approximation.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1905.06084"
+      },
+      {
+        "ref": "Chidambaram Annamalai, Christos Kalaitzis, Ola Svensson, 'Combinatorial Algorithm for Restricted Max-Min Fair Allocation', TALG 2017",
+        "result": "Develops polynomial-time local-search techniques for restricted max-min allocation, relevant to constructive rounding.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/1409.0607"
+      },
+      {
+        "ref": "Haxell and Szabo, Improved Integrality Gap in Max-Min Allocation, or, Topology at the North Pole, Combinatorica 45, 22 (2025)",
+        "result": "Theorem 1.1 gives $53/15$ for restricted valuations.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/pdf/2202.01143"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Search for high-gap hypergraph instances and compare against configuration-LP values. For upper bounds, inspect local-search expansion arguments and whether player/resource classifications can be sharpened.",
+    "verification_notes": "Distinguish integrality-gap results from polynomial-time approximation algorithms. A lower-bound claim must specify a finite family of restricted instances, prove a target $T$ is feasible in the configuration LP, and prove every integral allocation has value at most $T/\\gamma$. An upper-bound claim must round every feasible $CLP(T)$ solution into an allocation of value at least $T/\\gamma$ without assuming properties not implied by restricted valuations. Referees should check whether constants are normalized relative to $T_{LP}$ or the true optimum, and whether any local-search termination issue affects existence only or also algorithmic claims.",
+    "machine_checkable": true
+  },
+  "short_statement": "Determine the restricted Santa Claus configuration-LP gap, currently between $2$ and $53/15\\approx3.5333$.",
+  "notes_for_maintainer": "Status audit 2026-11-09: Theorem 1.1 and its proof endpoint read; journal publication DOI 10.1007/s00493-025-00141-7.",
+  "additional_refs": [
+    {
+      "authors": "Nikhil Bansal, Maxim Sviridenko",
+      "title": "The Santa Claus Problem",
+      "year": 2006,
+      "venue": "STOC",
+      "url": "https://doi.org/10.1145/1132516.1132522"
+    },
+    {
+      "authors": "Siu-Wing Cheng, Yuchen Mao",
+      "title": "Restricted Max-Min Allocation: Integrality Gap and Approximation Algorithm",
+      "year": 2022,
+      "venue": "Algorithmica (ICALP 2019)",
+      "url": "https://arxiv.org/abs/1905.06084"
+    },
+    {
+      "authors": "Penny Haxell, Tibor Szabo",
+      "title": "Improved Integrality Gap in Max-Min Allocation: or Topology at the North Pole",
+      "year": 2025,
+      "venue": "Combinatorica 45, 22; SODA 2023",
+      "url": "https://arxiv.org/abs/2202.01143"
+    }
+  ]
+}

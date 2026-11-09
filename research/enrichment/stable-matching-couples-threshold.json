@@ -1,0 +1,62 @@
+{
+  "id": "stable-matching-couples-threshold",
+  "background": "Couples are a central difficulty in real matching markets such as medical residency. A couple submits preferences over pairs of positions, creating complementarities that destroy the lattice and guaranteed existence properties of classical stable matching. Worst-case theory is bleak: stable matchings may fail to exist, and deciding existence is NP-complete. Yet large clearinghouses routinely find stable outcomes. This motivates average-case and large-market theory: if the market is large, preferences are random enough, and couples do not create too many conflicting complementarities, perhaps stable outcomes exist with high probability. The existing results show strong positive regimes and genuine negative regimes, but not a sharp boundary. The problem is clean once the random market model, list lengths, capacities, and couple-preference assumptions are fixed.",
+  "short_statement": "Find the sharp growth threshold for the number of couples in large random matching markets that still admit stable matchings with high probability.",
+  "full_statement": "Consider a sequence of hospitals/residents markets with $n$ positions and applicants consisting of singles and couples. Singles rank individual positions; each couple ranks ordered pairs of positions, and hospitals have responsive preferences or priority orderings over individual residents. A matching is stable if there is no blocking single, blocking couple move, or hospital-side deviation under the standard hospitals/residents-with-couples definition. Fix a random large-market model: for example, bounded or slowly growing preference-list lengths, random acceptable positions or pairs, and hospital capacities scaled with $n$. Let $c(n)$ be the number of couples. Determine the sharp asymptotic boundary, including constants where meaningful, between regimes in which a stable matching exists with high probability and regimes in which nonexistence has probability bounded away from zero or tends to one. The formulation should specify whether couples may be a vanishing, polynomial, near-linear, or constant fraction of the market and how overlap among their acceptable pairs is generated.",
+  "known_results": "Roth showed that stable matchings need not exist with couples, and Ronn showed that deciding existence is NP-complete. Kojima, Pathak, and Roth proved that stable matchings exist with high probability in large markets under assumptions motivated by residency markets when the fraction of couples is sufficiently small, and they connected the theory to observed NRMP behavior. Ashlagi, Braverman, and Hassidim gave a new algorithm and showed high-probability stability for a broad random-market class allowing the number of couples to grow at a near-linear rate. They also proved tightness in the sense that, when the number of couples grows linearly in their model, stable matchings can fail to exist with constant probability. What is still missing is a sharp threshold or phase diagram for concrete random market families, especially constants and intermediate regimes between positive near-linear results and negative linear-density constructions.",
+  "open_problem": "Determine the tight threshold or phase diagram, including model-dependent constants where possible, for stable matching existence in random large markets with couples.",
+  "where_posed": {
+    "text": "Large-market threshold questions are developed by Kojima, Pathak, and Roth and by Ashlagi, Braverman, and Hassidim.",
+    "url": "https://www.nber.org/papers/w16028",
+    "quote": "stable matching may not exist when couples are present",
+    "location": "Abstract"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "Existence is known with high probability under several sparse or near-linear random-market regimes, and failure can occur with constant probability in linear-couple regimes. The sharp threshold and constants for concrete models remain unresolved.",
+    "links": [
+      {
+        "title": "Kojima-Pathak-Roth",
+        "url": "https://www.nber.org/papers/w16028"
+      },
+      {
+        "title": "Ashlagi-Braverman-Hassidim",
+        "url": "https://web.stanford.edu/~iashlagi/papers/couplesFinal1.pdf"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Finite random-market simulations can reveal candidate threshold behavior and minimal obstruction patterns, but proving a sharp threshold requires probabilistic combinatorics.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Search can help identify small nonexistence gadgets and estimate scaling, but rigorous asymptotic threshold proofs are the main obstacle.",
+  "literature": {
+    "synthesis": "The couples problem highlights the gap between worst-case computational theory and observed market performance. Worst-case nonexistence and NP-completeness explain why no simple Gale-Shapley analogue exists. Large-market work shows that random structure and limited overlap among complementarities can restore stability with high probability. Kojima, Pathak, and Roth provide market-design conditions motivated by residency data. Ashlagi, Braverman, and Hassidim sharpen the average-case picture by proving positive results for a broad class of random markets with near-linear couples and by giving linear-couple regimes where nonexistence occurs with constant probability. The unresolved part is not whether sparse random markets can be stable, but where the exact phase boundary lies for specified random preference and capacity models.",
+    "reviewed": [
+      {
+        "ref": "Fuhito Kojima, Parag A. Pathak, Alvin E. Roth, 'Matching with Couples: Stability and Incentives in Large Markets', QJE 2013",
+        "result": "Gives large-market conditions under which stable matchings exist with high probability.",
+        "relevance": "partial-progress",
+        "url": "https://www.nber.org/papers/w16028"
+      },
+      {
+        "ref": "Itai Ashlagi, Mark Braverman, Avinatan Hassidim, 'Stability in Large Matching Markets with Complementarities', Operations Research 2014",
+        "result": "Shows high-probability existence for sparse couples and nonexistence behavior for linear couples.",
+        "relevance": "partial-progress",
+        "url": "https://web.stanford.edu/~iashlagi/papers/couplesFinal1.pdf"
+      },
+      {
+        "ref": "Alvin E. Roth, 'The Evolution of the Labor Market for Medical Interns and Residents', JPE 1984",
+        "result": "Identifies instability/nonexistence phenomena introduced by couples.",
+        "relevance": "related-tool",
+        "url": "https://www.journals.uchicago.edu/doi/10.1086/261272"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Model obstruction formation as a random hypergraph problem and search for minimal unsatisfiable couple gadgets. Try to prove branching-process thresholds for the dependency graph induced by couples' acceptable pairs.",
+    "verification_notes": "Any theorem must state the random preference model precisely: list lengths, hospital capacities, couple-pair generation, acceptability, and tie-breaking conventions can change the answer. A positive result should prove high-probability existence and describe or analyze an algorithm that finds a stable matching. A negative result should prove nonexistence probability, not just failure of a particular algorithm. Empirical NRMP-style evidence is useful motivation but does not establish an asymptotic threshold.",
+    "machine_checkable": false
+  }
+}

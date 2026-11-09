@@ -1,0 +1,41 @@
+{
+  "id": "graph-balancing-makespan",
+  "background": "Graph balancing is a clean special case of unrelated-machine scheduling. Jobs are edges of a weighted multigraph, machines are vertices, and assigning a job to one of its two allowed machines is orienting the edge toward that vertex. The load of a machine is the total weight of incoming edges, and the goal is to minimize maximum load. This model captures restricted two-machine choices while retaining enough structure for graph-theoretic methods. Ebenlendr, Krcal, and Sgall gave a $7/4$ approximation and $3/2$ hardness. Jansen and Rohwedder later showed that a configuration-LP/local-search approach can beat $1.75$ at the level of integrality gap or estimation, but polynomial constructive status and exact approximability remain unresolved.",
+  "full_statement": "Given an undirected weighted multigraph $G=(V,E)$ with edge weights $w_e\\ge 0$, orient every edge toward one of its two endpoints. The load of a vertex is the total weight of edges oriented into it, and the objective is to minimize the maximum vertex load. Equivalently, each job has exactly two eligible machines, its endpoints, and processing time $w_e$ on either endpoint. Determine the best polynomial-time approximation ratio for this graph-balancing problem. In particular, does there exist a polynomial-time algorithm with guarantee strictly below $7/4$, can the nonconstructive configuration-LP/local-search bound around $1.749$ be made constructive, or is there hardness above the known $3/2$ threshold?",
+  "open_problem": "Determine the exact approximability of graph balancing, including whether there is a polynomial-time approximation ratio below $7/4$ and whether the threshold is $3/2$.",
+  "known_results": "Ebenlendr, Krcal, and Sgall established the classical picture: graph balancing is NP-hard to approximate within any factor below $3/2$, and there is a polynomial-time $7/4$ approximation based on LP rounding and structural handling of large and small edges. This left the interval between $3/2$ and $7/4$ open. Verschae and Wiese studied configuration-LP behavior for broader unrelated-machine scheduling settings and showed that some natural relaxations still have significant gaps. Jansen and Rohwedder later proved that, for graph balancing, a configuration-LP/local-search analysis obtains an integrality-gap or estimation bound of about $1.749$, strictly below $7/4$. However, they explicitly note that polynomial-time termination of the local search is unclear, so this does not settle the existence of a polynomial-time sub-$7/4$ approximation. The open problem is to convert this evidence into an efficient algorithm, improve hardness above $3/2$, or identify the exact threshold.",
+  "status": "open",
+  "where_posed": {
+    "text": "Gap left by Ebenlendr-Krcal-Sgall and later local-search/LP progress of Jansen-Rohwedder.",
+    "url": "https://arxiv.org/abs/1811.00955",
+    "quote": "Can we do better than $1.75$?",
+    "location": "Abstract"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "$7/4$ polynomial approximation and $3/2$ hardness are classical. Sub-$1.75$ LP/local-search evidence exists, but exact polynomial-time approximability remains open.",
+    "links": [
+      {"title": "Jansen and Rohwedder, Local Search Breaks 1.75", "url": "https://arxiv.org/abs/1811.00955"},
+      {"title": "Verschae and Wiese, configuration LP on unrelated machines", "url": "https://arxiv.org/abs/1011.4957"}
+    ]
+  },
+  "importance": 7,
+  "difficulty": 8,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "LP-gap and local-search obstruction instances are finite weighted graphs and can be searched by exact optimization.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Search over weighted multigraphs can test tightness of LPs, local-search rules, and rounding algorithms.",
+  "literature": {
+    "synthesis": "Graph balancing is simpler than full unrelated-machine scheduling but still exposes the same makespan-rounding tensions. Heavy edges must be oriented carefully, while many small edges create aggregate load constraints. The $7/4$ algorithm handles this through LP rounding and structural case analysis. The sub-$1.75$ local-search result suggests the configuration LP is stronger than earlier relaxations for this special case, but the lack of polynomial termination leaves a constructive gap. Closing the problem likely requires either a polynomial implementation of the local-search ideas or a stronger hardness construction above $3/2$.",
+    "reviewed": [
+      {"ref": "Tomas Ebenlendr, Marek Krcal, Jiri Sgall, 'Graph Balancing: A Special Case of Scheduling Unrelated Parallel Machines', Algorithmica 2014 / SODA 2008", "result": "Gives $7/4$ approximation and $3/2$ hardness.", "relevance": "partial-progress", "url": "https://doi.org/10.1007/s00453-012-9668-9"},
+      {"ref": "Klaus Jansen, Lars Rohwedder, 'Local Search Breaks 1.75 for Graph Balancing', ICALP 2019", "result": "Shows configuration-LP/local-search bound below $1.75$, with nontrivial constructive caveats.", "relevance": "partial-progress", "url": "https://arxiv.org/abs/1811.00955"},
+      {"ref": "Jose Verschae, Andreas Wiese, 'On the Configuration-LP for Scheduling on Unrelated Machines', arXiv 2010", "result": "Shows limitations of configuration LPs in broader unrelated-machine graph balancing.", "relevance": "related-tool", "url": "https://arxiv.org/abs/1011.4957"}
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Try to make the sub-$1.75$ local search polynomial via potential functions or bounded augmenting structures. Search for weighted graph instances forcing ratios above $3/2$ for natural algorithms.",
+    "verification_notes": "Distinguish graph balancing from full unrelated-machine scheduling, from restricted assignment with arbitrary eligibility sets, and from broader variants sometimes called unrelated graph balancing. A claimed sub-$7/4$ result must output an orientation in polynomial time and prove the load bound against the optimum orientation. If the proof goes through the configuration LP, check whether the LP can be solved or approximated in the required time and whether the local search has polynomially many steps. For counterexamples, verify both the optimal orientation value and any claimed LP or algorithmic lower bound on a finite weighted multigraph.",
+    "machine_checkable": true
+  }
+}

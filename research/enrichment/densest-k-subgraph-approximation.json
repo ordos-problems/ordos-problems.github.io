@@ -1,0 +1,109 @@
+{
+  "id": "densest-k-subgraph-approximation",
+  "title": "Approximability of Densest $k$-Subgraph",
+  "collection": "Computer Science",
+  "area": "Approximation Algorithms",
+  "tags": [
+    "densest k-subgraph",
+    "approximation algorithms",
+    "hardness",
+    "sum-of-squares",
+    "graph algorithms"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "Close the enormous gap between the $O(n^{1/4+\\varepsilon})$ algorithm and the best hardness evidence for worst-case Densest $k$-Subgraph.",
+  "full_statement": "In the Densest $k$-Subgraph problem, the input is an undirected graph $G=(V,E)$ on $n$ vertices and an integer $k$. The goal is to find a vertex subset $S\\subseteq V$ with $|S|=k$ maximizing the number of induced edges $|E(S)|$. The approximation objective is to output a $k$-vertex subgraph whose edge count is within a factor $\\alpha(n,k)$ of the optimum. The best known polynomial-time algorithms achieve roughly $O(n^{1/4+\\varepsilon})$ approximation for every fixed $\\varepsilon>0$. On the hardness side, unconditional NP-hardness is much weaker than this, while stronger ETH, Gap-ETH, average-case, and Sum-of-Squares lower bounds provide evidence for polynomial or near-polynomial hardness in certain regimes. The open problem is to determine the correct polynomial-time approximation threshold for worst-case DkS: improve the algorithm below $n^{1/4}$ in a meaningful asymptotic regime, or prove matching hardness under a standard and broadly accepted assumption.",
+  "background": "Densest $k$-Subgraph is a deceptively simple graph optimization problem with applications in community detection, fraud detection, biological network analysis, and data mining. Unlike ordinary densest subgraph, which is solvable in polynomial time by flow or peeling methods, fixing the cardinality makes the problem dramatically harder. The problem is also a central bridge between worst-case approximation and average-case inference: the same log-density heuristics that guide algorithms for DkS are tied to planted dense subgraph detection and statistical-computational gaps. This makes DkS an unusually important open problem. A better algorithm would reshape graph-mining and approximation techniques; a strong hardness theorem would validate a large body of conditional reasoning that currently relies on DkS hardness assumptions.",
+  "known_results": "Feige, Kortsarz, and Peleg gave early polynomial-factor approximations. Bhaskara, Charikar, Chlamtac, Feige, and Vijayaraghavan achieved the landmark $O(n^{1/4+\\varepsilon})$ approximation by exploiting log-density structure and tree-counting ideas. This remains the main worst-case algorithmic benchmark. On the hardness side, Khot ruled out a PTAS under stronger assumptions; Manurangsi proved almost-polynomial ratio ETH-hardness and stronger Gap-ETH consequences, but these still do not match the $n^{1/4}$ algorithmic threshold under standard polynomial-time assumptions. SDP and Sum-of-Squares lower bounds, including work by Bhaskara et al. and Jones, Potechin, Rajendran, and Xu, show that powerful hierarchies fail in regimes predicted by the log-density framework. The remaining gap is therefore not a lack of evidence, but a lack of a definitive algorithm or hardness theorem at the right polynomial scale.",
+  "where_posed": {
+    "text": "The algorithmic gap is stated in Bhaskara et al., 'Detecting High Log-Densities -- an O(n^1/4) Approximation for Densest k-Subgraph', STOC 2010, and reiterated in later SoS/hardness work.",
+    "url": "https://arxiv.org/abs/1001.2891",
+    "quote": "There is a significant gap between the best known upper and lower bounds for this problem.",
+    "location": "Abstract"
+  },
+  "source": {
+    "authors": "Aditya Bhaskara, Moses Charikar, Eden Chlamtac, Uriel Feige, Aravindan Vijayaraghavan",
+    "title": "Detecting High Log-Densities -- an O(n^1/4) Approximation for Densest k-Subgraph",
+    "year": 2010,
+    "venue": "STOC",
+    "url": "https://arxiv.org/abs/1001.2891"
+  },
+  "additional_refs": [
+    {
+      "authors": "Aditya Bhaskara, Moses Charikar, Venkatesan Guruswami, Aravindan Vijayaraghavan, Yuan Zhou",
+      "title": "Polynomial integrality gaps for strong SDP relaxations of Densest k-subgraph",
+      "year": 2012,
+      "venue": "SODA",
+      "url": "https://arxiv.org/abs/1110.1360"
+    },
+    {
+      "authors": "Pasin Manurangsi",
+      "title": "Almost-Polynomial Ratio ETH-Hardness of Approximating Densest k-Subgraph",
+      "year": 2017,
+      "venue": "STOC",
+      "url": "https://arxiv.org/abs/1611.05991"
+    },
+    {
+      "authors": "Chris Jones, Aaron Potechin, Goutham Rajendran, Jeff Xu",
+      "title": "Sum-of-Squares Lower Bounds for Densest k-Subgraph",
+      "year": 2023,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/2303.17506"
+    }
+  ],
+  "enabled": true,
+  "progress": {
+    "state": "partial",
+    "summary": "The best worst-case approximation remains around $n^{1/4}$, while hardness and SoS lower bounds give strong but nonmatching evidence. Average-case planted dense subgraph thresholds are related but do not settle the worst-case approximation ratio.",
+    "links": [
+      {
+        "title": "O(n^1/4) approximation",
+        "url": "https://arxiv.org/abs/1001.2891"
+      },
+      {
+        "title": "ETH hardness",
+        "url": "https://arxiv.org/abs/1611.05991"
+      },
+      {
+        "title": "SoS lower bounds",
+        "url": "https://arxiv.org/abs/2303.17506"
+      }
+    ]
+  },
+  "importance": 9,
+  "difficulty": 9,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Integrality gaps and lower-bound evidence often come from explicit graph distributions or finite instances. Candidate hard graphs for relaxations can be searched and certified computationally.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Search can generate graph families that fool relaxations or stress algorithms, and can compare exact optima against heuristic/LP/SDP values on small instances. Discovering a full algorithm or hardness proof remains theoretical.",
+  "literature": {
+    "synthesis": "DkS has resisted both approximation algorithms and hardness theory. The Bhaskara et al. algorithm is guided by log-density: when the host graph and the planted dense part have different density exponents, tree-counting statistics can recover a nontrivial approximation. This $n^{1/4}$ barrier has become the benchmark. Hardness has advanced through ETH and Gap-ETH reductions, but still does not yield a clean $n^c$ hardness matching the algorithm under standard assumptions. SDP and SoS lower bounds provide compelling evidence that broad convex hierarchies cannot beat the conjectured threshold in key regimes. The open problem is to turn this evidence into a theorem that either improves the algorithmic exponent or establishes a matching inapproximability theory.",
+    "reviewed": [
+      {
+        "ref": "Bhaskara et al., 'Detecting High Log-Densities', STOC 2010",
+        "result": "Gives the $O(n^{1/4+\\varepsilon})$ approximation algorithm.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1001.2891"
+      },
+      {
+        "ref": "Manurangsi, 'Almost-Polynomial Ratio ETH-Hardness of Approximating Densest k-Subgraph', STOC 2017",
+        "result": "Proves strong ETH and Gap-ETH hardness far beyond previous worst-case results.",
+        "relevance": "hardness",
+        "url": "https://arxiv.org/abs/1611.05991"
+      },
+      {
+        "ref": "Jones, Potechin, Rajendran, Xu, 'Sum-of-Squares Lower Bounds for Densest k-Subgraph', arXiv 2023",
+        "result": "Gives strong SoS lower bounds matching log-density predictions in important regimes.",
+        "relevance": "hardness",
+        "url": "https://arxiv.org/abs/2303.17506"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "For algorithmic progress, revisit log-density algorithms with higher-order subgraph counts, spectral statistics, or hybrid LP/SDP rounding. For hardness, study reductions that preserve perfect completeness and produce polynomial gaps. For computational exploration, search for graphs where exact DkS optima are high but standard relaxations or heuristics are misleading.",
+    "verification_notes": "A claimed approximation algorithm must specify the factor as a function of $n$ and $k$ and run in polynomial time for all graphs. A hardness result must state the complexity assumption and distinguish ETH, Gap-ETH, average-case assumptions, and ordinary NP-hardness. A verifier should not treat planted dense subgraph detection thresholds as a direct worst-case approximation lower bound unless an approximation-preserving reduction is given. For algorithmic claims, check whether the output has exactly $k$ vertices or at most $k$ vertices, and whether the guarantee is on edge count rather than average degree. For computational certificates, compare against exact IP optima on small graphs and report the relaxation or heuristic being stressed.",
+    "machine_checkable": true
+  },
+  "notes_for_maintainer": "This is distinct from the existing planted-structure computational-threshold record, which focuses on average-case detection/recovery rather than worst-case approximation."
+}

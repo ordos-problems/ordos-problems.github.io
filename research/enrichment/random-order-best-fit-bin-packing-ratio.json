@@ -1,0 +1,118 @@
+{
+  "id": "random-order-best-fit-bin-packing-ratio",
+  "title": "Exact random-order ratio of Best-Fit bin packing",
+  "collection": "Online Algorithms & Learning",
+  "area": "Online Algorithms",
+  "tags": [
+    "bin packing",
+    "random-order model",
+    "best-fit",
+    "competitive analysis",
+    "approximation algorithms"
+  ],
+  "status": "open",
+  "confidence": "high",
+  "short_statement": "In online bin packing under uniformly random arrival order, determine the exact asymptotic performance ratio of the classical Best-Fit algorithm.",
+  "full_statement": "Let $I=\\{s_1,\\ldots,s_n\\}$ be a multiset of item sizes in $(0,1]$. A uniformly random permutation of $I$ is revealed online. The algorithm sees each item size on arrival and must immediately and irrevocably place it into an open unit-capacity bin or open a new bin. The Best-Fit algorithm places an arriving item into a feasible open bin that leaves the smallest remaining capacity after insertion, opening a new bin only when no open bin can fit the item. Let $BF(\\pi(I))$ be the number of bins used by Best-Fit on random order $\\pi$, and let $OPT(I)$ be the minimum number of bins in an offline packing of $I$. The random-order ratio of Best-Fit is the least $\\rho$ such that $\\mathbb E_{\\pi}[BF(\\pi(I))]\\le \\rho\\,OPT(I)+o(OPT(I))$ for all item multisets $I$. Determine this constant $\\rho$. Kenyon historically conjectured a value near $1.15$; the published lower bound $1.15582656$ now rules out $1.15$ as an exact upper bound. The open problem is not to design a better algorithm, but to characterize the exact worst-case random-order behavior of one fixed, widely used heuristic. A complete solution would either prove a matching upper and lower bound, or identify the right extremal family showing that the conjectured value is wrong.",
+  "known_results": "Kenyon's SODA 1996 work established an upper bound of $1.5$ and a lower bound of $1.08$ for the random-order ratio of Best-Fit, and conjectured a value around $1.15$. Albers, Khan, and Ladewig improved the special case in which every item has size larger than $1/3$, giving a $1.25$ upper bound and a $1.1$ lower bound for that restricted regime. Ayyadevara, Dabas, Khan, and Sreenivas settled the iid stochastic model with a $(1+\\varepsilon)$-competitive meta-algorithm and made progress on random-order special cases, including items in $(1/4,1/2]$. Hebbar, Khan, and Sreenivas then gave the first general improvement over the $3/2$ barrier, proving an upper bound $1.5-\\varepsilon$ for a fixed positive constant $\\varepsilon$, and improved the lower bound to $1.144$, close to Kenyon's conjectured value. The exact constant remains open: the best known upper bound is still far from the lower bound, and no known structural theorem identifies the extremal random-order instances. Epstein and Levin (WADS 2025), Theorem 10, improve the asymptotic lower bound to $1.15582656$. Their separate absolute lower bound $1.5$ (Proposition 11) is not an asymptotic bound.",
+  "where_posed": {
+    "text": "The conjecture and remaining gap are discussed in Hebbar, Khan, Sreenivas, 'Bin Packing under Random-Order: Breaking the Barrier of 3/2', SODA 2024.",
+    "url": "https://arxiv.org/abs/2401.04714",
+    "quote": "Kenyon's seminal result established an upper bound of $1.5$ and a lower bound of $1.08$ on the random-order ratio of Best-Fit, and it was conjectured that the true ratio is $\\approx 1.15$.",
+    "location": "Abstract"
+  },
+  "source": {
+    "authors": "Anish Hebbar, Arindam Khan, K. V. N. Sreenivas",
+    "title": "Bin Packing under Random-Order: Breaking the Barrier of 3/2",
+    "year": 2024,
+    "venue": "SODA",
+    "url": "https://arxiv.org/abs/2401.04714"
+  },
+  "additional_refs": [
+    {
+      "authors": "Claire Kenyon",
+      "title": "Best-Fit Bin-Packing with Random Order",
+      "year": 1996,
+      "venue": "SODA",
+      "url": "https://dl.acm.org/doi/10.5555/313852.314069"
+    },
+    {
+      "authors": "Susanne Albers, Arindam Khan, Leon Ladewig",
+      "title": "Best Fit Bin Packing with Random Order Revisited",
+      "year": 2021,
+      "venue": "Algorithmica",
+      "url": "https://arxiv.org/abs/1907.06154"
+    },
+    {
+      "authors": "Nikhil Ayyadevara, Rajni Dabas, Arindam Khan, K. V. N. Sreenivas",
+      "title": "Near-optimal Algorithms for Stochastic Online Bin Packing",
+      "year": 2022,
+      "venue": "ICALP",
+      "url": "https://arxiv.org/abs/2205.03622"
+    },
+    {
+      "authors": "Leah Epstein, Asaf Levin",
+      "title": "Lower Bounds for Several Standard Bin Packing Algorithms in the Random Order Model",
+      "year": 2025,
+      "venue": "WADS",
+      "url": "https://doi.org/10.4230/LIPIcs.WADS.2025.26"
+    }
+  ],
+  "enabled": true,
+  "background": "Bin packing is one of the canonical models of resource allocation: items of different sizes must be assigned to the minimum number of unit-capacity bins. The online version models packing, memory allocation, scheduling, and admission decisions when future jobs are unknown. Worst-case online bin packing is deliberately pessimistic; adversarial order lets an input designer reveal items in a sequence that is much worse than a typical shuffled instance. Kenyon's random-order model keeps the multiset adversarial but randomizes the arrival order, creating a clean beyond-worst-case benchmark. Best-Fit is especially important because it is simple, deterministic, and used in practice. The random-order analysis asks whether the empirical robustness of Best-Fit has a theorem-level explanation. The problem is also technically attractive: it mixes online irrevocability, random permutations, and packing structure. The main difficulty is that Best-Fit creates state-dependent residual capacities; early random fluctuations determine which gaps remain for later items, and these dependencies are hard to summarize by a small set of statistics.",
+  "progress": {
+    "state": "partial",
+    "summary": "The asymptotic ratio lies between $1.15582656$ (Epstein-Levin 2025) and $1.5-\\varepsilon$ for a fixed positive constant (Hebbar-Khan-Sreenivas 2024). Its exact value remains open.",
+    "links": [
+      {
+        "title": "Hebbar-Khan-Sreenivas SODA 2024",
+        "url": "https://arxiv.org/abs/2401.04714"
+      },
+      {
+        "title": "Epstein and Levin, WADS 2025 lower bounds",
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol349-wads2025/html/LIPIcs.WADS.2025.26/LIPIcs.WADS.2025.26.html"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 8,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "Lower bounds are explicit adversarial multisets analyzed under random permutation. Automated search can look for finite item-size patterns whose Best-Fit random-order expectation exceeds known lower bounds.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "A search loop can generate candidate multisets, estimate Best-Fit behavior exactly or by simulation, and optimize lower-bound constructions. It can also search for state summaries suggesting sharper upper-bound potentials.",
+  "literature": {
+    "synthesis": "The literature has progressed by separating item-size regimes. Kenyon gave the baseline random-order framework and the original $1.5$ upper bound. Later work improved special intervals such as items larger than $1/3$ or in $(1/4,1/2]$, where the packing structure is much more constrained. Hebbar, Khan, and Sreenivas showed that the full problem is not stuck at $3/2$, but their improvement is deliberately small and technical. Epstein and Levin's 2025 lower bound exceeds $1.15$; the extremal asymptotic ratio remains undetermined. The remaining gap is a constant-factor structural gap for one fixed algorithm. Any upper-bound proof must control the distribution of residual bin capacities created by Best-Fit under a random permutation for arbitrary item multisets; any lower-bound proof must turn a finite pattern into an asymptotic family and rigorously compute its expected bin count.",
+    "reviewed": [
+      {
+        "ref": "Kenyon, 'Best-Fit Bin-Packing with Random Order', SODA 1996",
+        "result": "Introduced the random-order analysis and proved $1.5$ upper and $1.08$ lower bounds.",
+        "relevance": "partial-progress",
+        "url": "https://dl.acm.org/doi/10.5555/313852.314069"
+      },
+      {
+        "ref": "Albers, Khan, Ladewig, 'Best Fit Bin Packing with Random Order Revisited', Algorithmica 2021",
+        "result": "Improved bounds for item sizes above $1/3$.",
+        "relevance": "solves-special-case",
+        "url": "https://arxiv.org/abs/1907.06154"
+      },
+      {
+        "ref": "Hebbar, Khan, Sreenivas, 'Bin Packing under Random-Order: Breaking the Barrier of 3/2', SODA 2024",
+        "result": "First general upper bound below $1.5$ and lower bound $1.144$.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2401.04714"
+      },
+      {
+        "ref": "Epstein and Levin, Lower Bounds for Several Standard Bin Packing Algorithms in the Random Order Model, WADS 2025, Theorem 10",
+        "result": "Asymptotic random-order lower bound $1.15582656$; the absolute ratio is a different quantity.",
+        "relevance": "partial-progress",
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol349-wads2025/html/LIPIcs.WADS.2025.26/LIPIcs.WADS.2025.26.html"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "For lower bounds, search over rational item sizes with repeated types, compute or tightly estimate Best-Fit's expected number of bins under random order, and compare to an exact offline optimum. For upper bounds, try potential functions over residual-capacity intervals, martingale concentration over random permutations, or reductions to a finite set of troublesome size classes.",
+    "verification_notes": "A claimed lower bound must specify an infinite family of item multisets, prove the offline optimum asymptotically, and prove the expected Best-Fit bin count under random order. A claimed upper bound must hold for every multiset, not only iid inputs or fixed size classes. Simulation can suggest candidates but cannot by itself certify a new ratio. A referee should check whether all additive $o(OPT)$ terms are controlled, whether ties in Best-Fit are handled consistently or shown irrelevant, and whether the proof uses uniform random permutation rather than iid sampling with replacement.",
+    "machine_checkable": true
+  },
+  "notes_for_maintainer": "Primary source checked via arXiv on 2026-07-02. Status audit 2026-11-09: Theorem 10 and Proposition 11 read in proceedings full text."
+}

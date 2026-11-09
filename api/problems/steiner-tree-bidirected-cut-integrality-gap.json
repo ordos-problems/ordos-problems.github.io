@@ -14,12 +14,67 @@
   "LP relaxation"
  ],
  "short_statement": "For the Steiner tree problem, the integrality gap of the bidirected-cut relaxation is conjectured to be close to $1$; the best known lower bound is $6/5 = 1.2$ and the best upper bound is $1.9988$ (only shown below $2$ in 2024).",
- "open_problem": "Determine the exact integrality gap of the bidirected-cut relaxation for Steiner tree.",
- "full_statement": "In the Steiner tree problem you must connect a set of required terminals in a weighted graph as cheaply as possible, possibly using extra (Steiner) vertices. The bidirected-cut relaxation is a natural LP that points each edge in both directions. For the Steiner tree problem, let $\\gamma_{\\mathrm{BCR}}$ be the integrality gap of the bidirected-cut relaxation (the worst-case ratio of the optimal integral Steiner tree cost to the LP optimum). Known: $\\tfrac{6}{5} = 1.2 \\le \\gamma_{\\mathrm{BCR}} \\le 1.9988$. \\textbf{Determine $\\gamma_{\\mathrm{BCR}}$;} it is conjectured to be substantially below 2.",
- "known_results": "Lower bound $6/5$ = 1.2 (Vicari 2020), improving the older $36/31$. Upper bound 1.9988 (Byrka-Grandoni-Traub, FOCS 2024); before 2024 it was unknown whether the gap beat the trivial 2. A 2026 preprint claims ~1.898. Conjectured value much smaller.",
+ "open_problem": "Determine the exact integrality gap of the bidirected cut relaxation for graph Steiner tree.",
+ "background": "The bidirected cut relaxation is one of the most natural LP relaxations for graph Steiner tree. It orients every undirected edge both ways, selects a root terminal, and requires one unit of directed capacity across every cut separating another terminal from the root. The relaxation is compact and performs well computationally, but for decades its theoretical integrality gap was stuck at the trivial upper bound $2$, the same as the undirected cut relaxation. This changed only recently: Byrka, Grandoni, and Traub proved the first upper bound below $2$, and Paschmanns and Traub later improved it substantially. The lower bound, however, is only $6/5$. The question is now a clean LP-strength problem: how powerful is this canonical directed relaxation really?",
+ "full_statement": "In the graph Steiner tree problem, the input is an undirected graph $G=(V,E)$ with nonnegative edge costs $c_e$ and a terminal set $R\\subseteq V$. The goal is to find a minimum-cost connected subgraph containing all terminals; nonterminals may be used as Steiner vertices. The bidirected cut relaxation fixes a root terminal $r\\in R$, replaces every undirected edge $uv$ by arcs $(u,v)$ and $(v,u)$ of cost $c_{uv}$, and has variables $x_a\\ge0$ for arcs. For every cut $U\\subseteq V$ with $r\\notin U$ and $U\\cap R\\ne\\emptyset$, it imposes $x(\\delta^-(U))\\ge1$, so each terminal side of a root-separating cut has one unit of incoming directed capacity. The integer version chooses an arborescence-like directed connection from $r$ to all terminals and corresponds to a Steiner tree. The open problem asks for the supremum, over all finite Steiner tree instances, of $\\operatorname{OPT}_{ST}/\\operatorname{OPT}_{BCR}$.",
+ "known_results": "When all vertices are terminals, the relaxation reduces to Edmonds-style arborescence/spanning-tree structure and is integral. For proper Steiner instances it can be fractional. The classical general upper bound was $2$, matching standard undirected cut-relaxation reasoning and leaving open whether the directed formulation was theoretically stronger. Vicari constructed simplex-based instances showing gap at least $6/5$, improving the earlier $36/31$ lower bound. Byrka, Grandoni, and Traub proved the first nontrivial general upper bound below $2$, namely $1.9988$. Paschmanns and Traub later improved the upper bound to $1.898$. For the special case in which a terminal minimum spanning tree is an optimal Steiner tree, they prove an upper bound $12/7$ and show that a broad class of moat-growing algorithms cannot certify a bound below $12/7$. Thus the exact general gap remains open in the interval $[1.2,1.898]$, and current evidence suggests that closing it will require either stronger lower-bound gadgets or rounding methods beyond the known moat-growth framework.",
+ "progress": {
+  "state": "partial",
+  "summary": "The gap is now known to be below $2$ and at most $1.898$, while the best lower bound is $6/5$. Moat-growing methods alone appear limited.",
+  "links": [
+   {
+    "title": "Byrka, Grandoni, Traub, BCR gap below 2",
+    "url": "https://arxiv.org/abs/2407.19905"
+   },
+   {
+    "title": "Paschmanns, Traub, better BCR bounds and moat-growing limits",
+    "url": "https://arxiv.org/abs/2602.19879"
+   },
+   {
+    "title": "Vicari, simplex lower bounds",
+    "url": "https://arxiv.org/abs/2002.07912"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Lower bounds are explicit finite Steiner instances with a certified ratio between the integer optimum and LP optimum. They are directly checkable by integer programming and LP.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Search can generate candidate Steiner instances with large BCR gaps and test moat-growing certificates. New constructions may emerge from finite-instance optimization.",
+ "literature": {
+  "synthesis": "The old $2$ upper bound came from generic Steiner tree approximations and did not use enough structure of the directed relaxation. The new upper bounds use dual growth, terminal-moat structure, and refined accounting of how fractional directed cuts can be converted into an integral connecting subgraph. These methods prove that BCR is genuinely stronger than the undirected cut relaxation, but the improvement is still numerically modest compared with the best lower bound. Paschmanns and Traub's moat-growing barrier is especially informative: within a broad algorithmic template, one cannot certify a gap below $12/7$ even in an important special case. The remaining gap can therefore be attacked from two directions. Lower-bound work can search for terminal-rich or simplex-like gadgets with BCR value much smaller than the integral tree. Upper-bound work likely needs rounding ideas that use global structure not visible to moat growth, or comparisons to stronger relaxations such as the hypergraphic relaxation.",
+  "reviewed": [
+   {
+    "ref": "Robert Vicari, 'Simplex based Steiner tree instances yield large integrality gaps for the bidirected cut relaxation', arXiv 2020",
+    "result": "Constructs instances giving BCR integrality-gap lower bound at least $6/5$.",
+    "relevance": "hardness",
+    "url": "https://arxiv.org/abs/2002.07912"
+   },
+   {
+    "ref": "Jaroslaw Byrka, Fabrizio Grandoni, Vera Traub, 'The Bidirected Cut Relaxation for Steiner Tree has Integrality Gap Smaller than 2', FOCS 2024",
+    "result": "First proof that the BCR integrality gap is strictly below $2$, with upper bound $1.9988$.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2407.19905"
+   },
+   {
+    "ref": "Paul Paschmanns, Vera Traub, 'The Bidirected Cut Relaxation for Steiner Tree: Better Integrality Gap Bounds and the Limits of Moat Growing', arXiv 2026",
+    "result": "Improves the BCR upper bound to $1.898$ and proves limits of moat-growing algorithms.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2602.19879"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Use exact LP/IP search to find larger BCR gaps and analyze recurring gadget structure. For upper bounds, investigate rounding frameworks not captured by the known moat-growing barrier.",
+  "verification_notes": "A lower-bound claim must specify the undirected graph, terminal set, chosen root, edge costs, an integral Steiner tree optimum or lower certificate, and the exact BCR optimum or feasible fractional solution with matching dual certificate. Because BCR is root-independent in value but root-dependent in formulation, the proof should state how the root is handled. A computational lower bound should include enough rational data for the LP and integer optimum to be independently reproduced. An upper-bound proof must apply to all finite graph Steiner tree instances; a theorem only for terminal-MST instances, quasi-bipartite graphs, Steiner forest, directed Steiner tree, or the hypergraphic relaxation is partial progress unless an explicit reduction transfers the bound to general BCR. A claimed moat-growing improvement should be checked against the known $12/7$ barrier.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "The first sub-2 upper bound (and the open exact-value question) is in Byrka, Grandoni, Traub, 'The Bidirected Cut Relaxation for Steiner Tree has Integrality Gap Smaller than 2,' FOCS 2024; lower bound 6/5 from Vicari (2020).",
-  "url": "https://arxiv.org/abs/2407.19905"
+  "text": "Long-standing gap question highlighted and advanced in Byrka, Grandoni, and Traub, 'The Bidirected Cut Relaxation for Steiner Tree has Integrality Gap Smaller than 2'.",
+  "url": "https://arxiv.org/abs/2407.19905",
+  "quote": "For general instances, however, it was not even known whether the integrality gap of BCR is better than the integrality gap of the natural undirected relaxation, which is exactly 2.",
+  "location": "Abstract"
  },
  "source": {
   "authors": "Jaroslaw Byrka, Fabrizio Grandoni, Vera Traub",

@@ -1,0 +1,72 @@
+{
+  "id": "randomized-k-server-polylog-power",
+  "short_statement": "After the $O(\\log k)$ randomized $k$-server conjecture was refuted, determine whether the true randomized competitive ratio is $\\Theta(\\log^2 k)$ or requires additional dependence on the metric size.",
+  "full_statement": "In the randomized $k$-server problem, an online algorithm controls $k$ servers in a metric space $(M,d)$ and serves a request sequence by moving servers, paying total movement. The adversary is oblivious: it fixes the request sequence before seeing the algorithm's random choices, and the guarantee is on expected movement cost. Let $R(k,n)$ be the best worst-case expected competitive ratio over all $n$-point metric spaces. The old folklore conjecture predicted $R(k,n)=O(\\log k)$ for all nontrivial metrics. Bubeck, Coester, and Rabani refuted this by constructing $(k+1)$-point metrics with randomized ratio $\\Omega(\\log^2 k)$. The open problem is now to identify the correct asymptotic value of $R(k,n)$: is $\\Theta(\\log^2 k)$ achievable on all metrics, or is there an unavoidable extra dependence on $n$, aspect ratio, or other geometric parameters?",
+  "background": "Randomization can dramatically improve online algorithms, and paging already has logarithmic randomized guarantees. For decades it was natural to conjecture that randomized $k$-server on arbitrary metrics should also have an $O(\\log k)$ competitive ratio. The 2023 refutation changed the problem's shape: the task is no longer to prove the logarithmic conjecture, but to map the right polylogarithmic exponent. This is a clean example of a problem that should remain in the repository even though the original conjecture is false, because the refutation creates a sharper current open problem. It also connects to metrical task systems, HST embeddings, mirror descent, entropy regularization, and metric geometry.",
+  "known_results": "Bubeck, Cohen, Lee, Lee, and Madry gave an $O((\\log k)^2)$ randomized algorithm on hierarchically separated trees and, via embeddings, polylogarithmic guarantees for general metrics. Bubeck, Coester, and Rabani proved an $\\Omega(\\log^2 k)$ lower bound on some $(k+1)$-point metrics, refuting the $O(\\log k)$ conjecture, and also proved universal $\\Omega(\\log k)$ lower bounds. For metrical task systems they asymptotically settled the randomized ratio at $\\Theta(\\log^2 n)$, but the exact general-metric randomized $k$-server upper bound remains larger than the lower bound in the source-checked literature. HSTs therefore look tight, while arbitrary metrics still lose in the reduction or embedding step. The current target is to close the upper/lower gap around $\\log^2 k$.",
+  "open_problem": "Determine the optimal randomized competitive ratio for $k$-server on arbitrary finite metrics against an oblivious adversary, especially whether an $O(\\log^2 k)$ bound holds generally.",
+  "progress": {
+    "state": "partial",
+    "summary": "The old $O(\\log k)$ conjecture is resolved negatively. The best lower bound is $\\Omega(\\log^2 k)$ on some $(k+1)$-point metrics, while HSTs have matching $O(\\log^2 k)$ behavior and general metrics have broader polylogarithmic upper bounds.",
+    "links": [
+      {
+        "title": "Randomized k-server conjecture is false",
+        "url": "https://arxiv.org/abs/2211.05753"
+      },
+      {
+        "title": "Multiscale entropic regularization",
+        "url": "https://arxiv.org/abs/1711.01085"
+      }
+    ]
+  },
+  "importance": 9,
+  "difficulty": 9,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Lower-bound constructions are explicit metric families and request distributions, so computational exploration can help. However, proving optimality against all randomized algorithms typically requires minimax/Yao-style analysis.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Search may discover hard metric/request distributions or rounding strategies for HST-like algorithms. Full upper bounds require analytic control over arbitrary metrics and embeddings.",
+  "literature": {
+    "synthesis": "The modern randomized story has two pillars. On the algorithmic side, multiscale entropic regularization gives an $O((\\log k)^2)$ algorithm on HSTs and polylogarithmic reductions to general metrics. On the lower-bound side, Bubeck-Coester-Rabani prove that no $O(\\log k)$ theorem can hold in full generality, with a construction already on $(k+1)$-point metrics. Their paper also settles the analogous MTS randomized ratio, showing that the methods are sharp in a neighboring model. What remains is the precise general-metric upper bound for $k$-server: either improve embeddings/algorithms until they match $\\log^2 k$, or find new metric families forcing additional factors.",
+    "reviewed": [
+      {
+        "ref": "Sebastien Bubeck, Michael B. Cohen, James R. Lee, Yin Tat Lee, Aleksander Madry, 'k-server via multiscale entropic regularization', arXiv 2017",
+        "result": "Gives an $O((\\log k)^2)$ randomized algorithm on HSTs and polylogarithmic bounds for general metrics via embeddings.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1711.01085"
+      },
+      {
+        "ref": "Sebastien Bubeck, Christian Coester, Yuval Rabani, 'The Randomized k-Server Conjecture is False!', STOC 2023 / arXiv",
+        "result": "Proves $(k+1)$-point metrics with randomized ratio $\\Omega(\\log^2 k)$, refuting the old conjecture.",
+        "relevance": "hardness",
+        "url": "https://arxiv.org/abs/2211.05753"
+      },
+      {
+        "ref": "James R. Lee, 'Fusible HSTs and the randomized k-server conjecture', arXiv 2017",
+        "result": "Develops HST-based reductions and illustrates the route from tree metrics to general metrics.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/1711.01789"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "For lower bounds, search over small metrics and request distributions, then try to lift patterns to scalable Yao distributions. For upper bounds, investigate whether HST algorithms can be combined with sharper dynamic embeddings or whether specific metric decompositions avoid extra $n$ factors. Compare any claimed theorem against the Bubeck-Coester-Rabani lower-bound family.",
+    "verification_notes": "A claimed $O(\\log^2 k)$ upper bound must hold for every finite metric and every oblivious request sequence. A lower-bound claim must specify the adversary model and prove an expected-cost ratio against all randomized algorithms, usually via Yao's principle.",
+    "machine_checkable": true
+  },
+  "additional_refs": [
+    {
+      "authors": "Sebastien Bubeck, Michael B. Cohen, James R. Lee, Yin Tat Lee, Aleksander Madry",
+      "title": "k-server via multiscale entropic regularization",
+      "year": 2017,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/1711.01085"
+    },
+    {
+      "authors": "James R. Lee",
+      "title": "Fusible HSTs and the randomized k-server conjecture",
+      "year": 2017,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/1711.01789"
+    }
+  ]
+}

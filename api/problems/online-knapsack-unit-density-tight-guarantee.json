@@ -6,7 +6,7 @@
  "collection": "Online Resource Allocation (Ma notes)",
  "area": "Online Resource Allocation",
  "status": "open",
- "confidence": "high",
+ "confidence": "medium",
  "contributor": "Will Ma",
  "tags": [
   "online knapsack",
@@ -15,22 +15,69 @@
   "fluid relaxation",
   "competitive ratio",
   "will-ma-notes",
-  "permission-pending"
+  "contributed by Will Ma"
  ],
  "short_statement": "In online knapsack, items must be irrevocably accepted or rejected. For the unit-density (reward = size) and IID special cases, the best known guarantee relative to the fluid benchmark is $\\approx 0.355$ and no policy beats $\\approx 0.432$. The conjecture is that the tight guarantee equals $(1 - e^{-2})/2 \\approx 0.432$.",
  "open_problem": "Determine the tight competitive ratio for unit-density online stochastic knapsack; in particular, prove or refute the conjectured value $(1-e^{-2})/2$.",
- "full_statement": "In the online knapsack problem, items with sizes and rewards arrive and must be irrevocably accepted (consuming capacity) or rejected. For online knapsack with the fluid relaxation as benchmark, in the unit-density case ($r_j = s_j$, reward equals size) or the IID case, the best known guarantee is $0.355$ (Jiang-Ma-Zhang 2022) improving $0.321$ (Stein et al. 2020), with an upper bound of $(1-e^{-2})/2 \\approx 0.432$. \\textbf{Conjecture:} the tight guarantee equals $(1-e^{-2})/2$. Determine it.",
- "known_results": "For unit-density online knapsack, Stein, Truong, and Wang proved a $0.321$ guarantee, later improved to $0.355$ by Jiang, Ma, and Zhang. The known upper bound is $(1-e^{-2})/2\\approx 0.432$, and this value is the natural conjectured tight constant. For general rewards, no guarantee better than $1/(3+e^{-2})\\approx 0.319$ is known even under random order or IID assumptions. The open problem is to close the gap for unit-density knapsack, ideally proving or refuting the conjectured $(1-e^{-2})/2$ constant.",
+ "background": "Unit-density stochastic knapsack has reward equal to item size. Its standard ex-ante capacity LP is a stronger benchmark than expected offline packing, so constants relative to these benchmarks cannot be interchanged.",
+ "full_statement": "A capacity-one knapsack faces independent requests $S_t\\in[0,1]$ from known, possibly heterogeneous distributions in a fixed order. On observing $S_t$, a policy accepts or rejects it irrevocably, keeping total accepted size at most one. Reward equals accepted size. Define the standard ex-ante relaxation $$UP=\\sup_{0\\le x_t(s)\\le1}\\left\\{\\sum_t\\mathbb E[S_t x_t(S_t)]:\\sum_t\\mathbb E[S_t x_t(S_t)]\\le1\\right\\}.$$ For positive UP, determine the largest universal ratio of expected online reward to UP. The reviewed lower and upper bounds are $0.3557$ and $(1-e^{-2})/2$. This is not the ratio to the expected offline integral optimum.",
+ "known_results": "Jiang, Ma, and Zhang, arXiv:2107.02058v4, Section 5.2, give the $0.3557$ unit-density guarantee relative to the standard ex-ante LP. Proposition 3 bounds that LP-relative guarantee by $(1-e^{-2})/2$. Their Section 2.5 explicitly distinguishes a $1/2$ guarantee against offline packing for a single knapsack. Thus the quoted smaller constants concern LP rounding, not an IID-only model or the offline benchmark. The broader arbitrary reward/size model has the separate tight LP-relative constant $1/(3+e^{-2})$.",
+ "progress": {
+  "state": "partial",
+  "summary": "Benchmark and heterogeneous-arrival scope corrected. The reviewed source leaves the LP-relative interval unmatched.",
+  "links": [
+   {
+    "title": "Jiang, Ma, Zhang, multi-unit prophet and online stochastic knapsack",
+    "url": "https://arxiv.org/abs/2107.02058"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 7,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "Upper-bound instances are finite stochastic knapsack instances and can be searched, but proving a tight upper bound for all policies is harder than finding examples.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Automated search can optimize threshold/best-fit policies, discover potential invariants, and search for hard instances. The objective and benchmark are computable for discretized instances.",
+ "literature": {
+  "synthesis": "The stronger LP benchmark permits reductions to multiple resources; replacing it with the offline packing optimum changes the question and invalidates the stated upper-bound comparison.",
+  "reviewed": [
+   {
+    "ref": "Jiashuo Jiang, Will Ma, Jiawei Zhang, 'Tight Guarantees for Multi-unit Prophet Inequalities and Online Stochastic Knapsack', SODA 2022",
+    "result": "Section 5.2 and Proposition 3 give the unit-density LP-relative bounds; Section 2.5 distinguishes the offline benchmark.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2107.02058"
+   },
+   {
+    "ref": "Clifford Stein, Van-Anh Truong, Xinshang Wang, 'Advance Service Reservations with Heterogeneous Customers', Management Science 2020",
+    "result": "Studies a stochastic resource-allocation/appointment-scheduling model and obtains the earlier $0.321$-type guarantee for the unit-density setting.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1805.05554"
+   },
+   {
+    "ref": "Saeed Alaei, 'Bayesian Combinatorial Auctions: Expanding Single Buyer Mechanisms to Many Buyers', FOCS 2011",
+    "result": "Introduces influential multi-unit prophet-inequality techniques used as benchmarks for online allocation and stochastic knapsack.",
+    "relevance": "related-tool",
+    "url": "https://doi.org/10.1109/FOCS.2011.81"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Promising directions include improving the utilization invariant in Jiang-Ma-Zhang, designing policies that adapt more sharply to residual capacity, or solving factor-revealing programs for small discretized instances to infer a tight policy. For upper bounds, search for capacity profiles where all online policies either fill too early or leave too much slack.",
+  "verification_notes": "Use the explicit LP in the formal statement and fixed-order independent requests. Do not transfer offline-relative, IID-only, or simultaneous-multiple-resource results without a reduction.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "Posed in Will Ma's 'Online Resource Allocation' course notes, Remarks 7.3-7.4.",
-  "url": ""
+  "text": "Posed in Will Ma's Online Resource Allocation course notes, Remarks 7.3-7.4, and suggested again by Will Ma as a problem close to his research.",
+  "url": "",
+  "quote": "",
+  "location": "Remarks 7.3-7.4"
  },
  "source": {
-  "authors": "Will Ma",
-  "title": "Online Resource Allocation — Course Notes, Remarks 7.3–7.4",
-  "year": 2024,
-  "venue": "Lecture notes (uploaded)",
-  "url": ""
+  "authors": "Jiashuo Jiang, Will Ma, Jiawei Zhang",
+  "title": "Tight Guarantees for Multi-unit Prophet Inequalities and Online Stochastic Knapsack",
+  "year": 2022,
+  "venue": "SODA / arXiv:2107.02058",
+  "url": "https://arxiv.org/abs/2107.02058"
  },
  "additional_refs": [
   {
@@ -48,7 +95,7 @@
    "url": "https://arxiv.org/abs/2107.02058"
   }
  ],
- "bibtex": "@misc{Ma2024,\n  author = {Will Ma},\n  title = {Online Resource Allocation — Course Notes, Remarks 7.3–7.4},\n  year = {2024},\n  howpublished = {Lecture notes (uploaded)},\n  note = {Source of ORdős Problem ORDOS-067}\n}",
+ "bibtex": "@misc{Jiang2022,\n  author = {Jiashuo Jiang and Will Ma and Jiawei Zhang},\n  title = {Tight Guarantees for Multi-unit Prophet Inequalities and Online Stochastic Knapsack},\n  year = {2022},\n  howpublished = {SODA / arXiv:2107.02058},\n  url = {https://arxiv.org/abs/2107.02058},\n  note = {Source of ORdős Problem ORDOS-067}\n}",
  "urls": {
   "human": "https://ordos-problems.github.io/problems/online-knapsack-unit-density-tight-guarantee.html",
   "api": "https://ordos-problems.github.io/api/problems/online-knapsack-unit-density-tight-guarantee.json",

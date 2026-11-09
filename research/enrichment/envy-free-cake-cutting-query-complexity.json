@@ -1,0 +1,106 @@
+{
+  "id": "envy-free-cake-cutting-query-complexity",
+  "background": "Cake cutting is a canonical fair-division model for divisible heterogeneous resources. Existence of envy-free allocations is classical, but algorithmic access to valuations matters: protocols cannot inspect arbitrary value measures directly. The Robertson-Webb model formalizes access through cut and evaluation queries. For decades, a major open question asked whether a bounded finite envy-free protocol exists for every number of agents. Aziz and Mackenzie answered yes, with a historical tower-of-exponentials query bound, subsequently improved as recorded below. The resulting problem is not whether envy-free cake cutting is possible; it is to understand the true information complexity of finding such allocations under the standard query model.",
+  "short_statement": "Determine the deterministic worst-case query complexity of complete exact envy-free cake cutting; newer randomized expected bounds are a distinct result.",
+  "full_statement": "A cake is the interval $[0,1]$. Each of $n$ agents has a nonatomic additive valuation measure over subintervals. In the Robertson-Webb model, a protocol may ask evaluation queries $\\mathrm{Eval}_i(x,y)$, returning agent $i$'s value for $[x,y]$, and cut queries $\\mathrm{Cut}_i(x,\\alpha)$, returning a point $y$ such that agent $i$ values $[x,y]$ at $\\alpha$ when such a point exists. An allocation, possibly using disconnected pieces, is envy-free if every agent weakly prefers its own allocated piece to every other agent's piece. Let $Q(n)$ be the minimum worst-case number of Robertson-Webb queries required by a bounded deterministic protocol that always terminates and returns a complete exact envy-free allocation for every profile of nonatomic additive valuations. Determine the asymptotic growth of $Q(n)$, or give substantially tighter upper and lower bounds.",
+  "known_results": "Aziz and Mackenzie established bounded exact protocols, and Procaccia proved a quadratic query lower bound. Ye and Bai, 'Cutting Down the Tower: Single-Exponential Envy-Free Cake Cutting' (arXiv:2609.05191v1), give a deterministic $n^{O(1)}2^n$ upper bound for complete exact envy-freeness with disconnected shares. Mackenzie and Suzuki, 'Exact Envy-Free Cake Cutting with Polynomial Expected Queries' (arXiv:2610.28535v1), Theorem 1, report a Las Vegas protocol with $\\widetilde O(n^{30})$ expected Robertson-Webb queries, using independent uniform cake-point samples. It terminates almost surely and never outputs an incorrect allocation. Remark 1.1 extends the hungry-agent presentation to valuations with zero-valued intervals. This does not give a deterministic polynomial worst-case bound.",
+  "open_problem": "Give a substantially better upper bound, a superquadratic lower bound, or the true asymptotic query complexity for exact envy-free cake cutting.",
+  "where_posed": {
+    "text": "The bounded-protocol breakthrough and enormous upper bound appear in Aziz and Mackenzie, 'A Discrete and Bounded Envy-Free Cake Cutting Protocol for Any Number of Agents'.",
+    "url": "https://arxiv.org/abs/1604.03655",
+    "quote": "major open problem",
+    "location": "Abstract"
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The deterministic upper bound is single-exponential; a separate randomized expected-polynomial result is reported. The deterministic target is not resolved.",
+    "links": [
+      {
+        "title": "Aziz-Mackenzie bounded protocol",
+        "url": "https://arxiv.org/abs/1604.03655"
+      },
+      {
+        "title": "Query complexity of cake cutting",
+        "url": "https://arxiv.org/abs/1705.02946"
+      },
+      {
+        "title": "Cutting Down the Tower: Single-Exponential Envy-Free Cake Cutting",
+        "url": "https://arxiv.org/abs/2609.05191v1"
+      },
+      {
+        "title": "Exact Envy-Free Cake Cutting with Polynomial Expected Queries",
+        "url": "https://arxiv.org/abs/2610.28535"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 9,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Lower-bound adversaries can be finite query-answer constructions, but proving strong lower bounds requires adversarial valuation families rather than ordinary finite examples.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Search may help design smaller protocols or adversary strategies for small $n$, but asymptotic query lower bounds are proof-heavy.",
+  "literature": {
+    "synthesis": "Exactness, completeness, disconnected shares, expected query count, and deterministic worst-case count must be kept separate. The old tower is no longer the upper-bound frontier.",
+    "reviewed": [
+      {
+        "ref": "Haris Aziz, Simon Mackenzie, 'A Discrete and Bounded Envy-Free Cake Cutting Protocol for Any Number of Agents', FOCS 2016",
+        "result": "Gives a bounded protocol using at most $n^{n^{n^{n^{n^n}}}}$ queries.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1604.03655"
+      },
+      {
+        "ref": "Ariel D. Procaccia, 'Thou Shalt Covet Thy Neighbor's Cake', IJCAI 2009",
+        "result": "Proves an $\\Omega(n^2)$ Robertson-Webb lower bound.",
+        "relevance": "hardness",
+        "url": "https://www.cs.cmu.edu/~arielpro/papers/cake.pdf"
+      },
+      {
+        "ref": "Simina Branzei, Noam Nisan, 'The Query Complexity of Cake Cutting', arXiv 2018",
+        "result": "Studies query bounds for approximate envy-freeness and related cake-cutting objectives.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/1705.02946"
+      },
+      {
+        "ref": "Qilin Ye, Yannan Bai, 'Cutting Down the Tower: Single-Exponential Envy-Free Cake Cutting' (2026)",
+        "result": "Main result and model: improved deterministic complete-allocation query bound.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2609.05191v1"
+      },
+      {
+        "ref": "Simon Mackenzie, Mashbat Suzuki, 'Exact Envy-Free Cake Cutting with Polynomial Expected Queries' (2026)",
+        "result": "Theorem 1 and Remark 1.1: randomized expected-query guarantee, not deterministic worst-case.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2610.28535"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Study the updated deterministic protocol and distinguish derandomization from expected-complexity analysis. A worst-case query bound must hold for every valuation profile and execution.",
+    "verification_notes": "Protocols must use only Robertson-Webb queries and terminate after a bound depending on $n$ but independent of the particular valuation descriptions. The returned allocation must be exactly envy-free for arbitrary nonatomic additive valuations; approximate envy-freeness, free-disposal partial allocations, connected-piece relaxations, or special valuation classes do not solve this exact problem. A lower bound must be adversarial over valuation measures and query transcripts, not merely over a finite parametric family unless that family is rich enough to support the adversary argument.",
+    "machine_checkable": false
+  },
+  "additional_refs": [
+    {
+      "authors": "Ariel D. Procaccia",
+      "title": "Thou Shalt Covet Thy Neighbor's Cake",
+      "year": 2009,
+      "venue": "IJCAI",
+      "url": "https://www.cs.cmu.edu/~arielpro/papers/cake.pdf"
+    },
+    {
+      "authors": "Qilin Ye, Yannan Bai",
+      "title": "Cutting Down the Tower: Single-Exponential Envy-Free Cake Cutting",
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2609.05191v1"
+    },
+    {
+      "authors": "Simon Mackenzie, Mashbat Suzuki",
+      "title": "Exact Envy-Free Cake Cutting with Polynomial Expected Queries",
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2610.28535"
+    }
+  ],
+  "confidence": "medium"
+}

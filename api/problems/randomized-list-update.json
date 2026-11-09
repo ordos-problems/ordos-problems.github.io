@@ -11,15 +11,92 @@
   "list update",
   "competitive analysis",
   "randomized",
-  "data structures"
+  "data structures",
+  "online algorithms",
+  "self-organizing lists",
+  "oblivious adversary",
+  "projective algorithms"
  ],
  "short_statement": "Maintaining an unsorted linked list under access requests (access cost = position, accessed item may move toward the front for free), what is the optimal competitive ratio of a randomized algorithm against an oblivious adversary?",
  "open_problem": "Determine the optimal randomized competitive ratio for the list update problem against an oblivious adversary.",
+ "background": "The list update problem was introduced into the theory of online algorithms by Sleator and Tarjan in their seminal 1985 paper that also launched competitive analysis itself. It models a basic self-organizing data structure: an unsorted linked list (or array) that must serve a stream of access requests as cheaply as possible, with no knowledge of future requests. Its practical pedigree predates competitive analysis: McCabe studied essentially the same problem under distributional assumptions decades earlier in the context of sequential file maintenance, and heuristics like Move-to-Front (MTF), Transpose, and Frequency-Count were folklore tools for self-organizing search long before they were proven competitive. The problem's appeal lies in its combination of simplicity and depth: three one-line heuristics turn out to have sharply different competitive guarantees, and pinning down the best achievable guarantee (deterministic or randomized) has driven the development of core techniques in online algorithms, including potential-function arguments and Yao's minimax principle for randomized lower bounds. List update is also a proving ground for the broader theory: MTF's analysis via inversions became a template used throughout self-organizing data structure analysis, and the problem is tightly linked to paging/caching (both are instances of, or closely related to, the $k$-server-flavored family of problems, and BIT-style randomized list update ideas influenced randomized paging algorithms). Beyond theory, list update variants underlie real systems: move-to-front-style rules are used in data compression pipelines following the Burrows-Wheeler transform, in cache replacement heuristics, and in self-adjusting data structures more broadly. The gap between the best randomized upper and lower bounds has stood for roughly three decades, making it one of the most enduring concrete open problems in competitive analysis, and a natural test case for whether current techniques (potential functions, LP duality, game-tree lower bound constructions) have been exhausted or whether qualitatively new ideas are needed.",
  "full_statement": "In the list update problem, an algorithm maintains an unsorted linked list of items under a sequence of access requests. Accessing the item currently in position $i$ costs $i$; immediately after an access, the accessed item may be moved toward the front of the list for free (free transpositions of the accessed item), while other rearrangements cost per transposition (partial cost model). For deterministic algorithms the optimal competitive ratio is exactly $2$ (settled). Let $r^*$ be the optimal competitive ratio of a randomized online list-update algorithm against an oblivious adversary in the partial cost model. Determine $r^*$. Known: $1.50084 \\le r^* \\le 1.6$. Moreover, every 'projective' algorithm has ratio $\\ge 1.6$.",
- "known_results": "The deterministic version is completely understood: Sleator and Tarjan proved the tight competitive ratio is exactly $2$. For randomized algorithms against an oblivious adversary, the best upper bound remains the COMB algorithm of Albers, von Stengel, and Werchner with ratio $1.6$, while the best lower bound is $1.50084$. Known high-performing algorithms are projective, and projective algorithms cannot beat $1.6$. The open problem is to determine whether a non-projective randomized algorithm can improve on $1.6$, or whether the optimal randomized ratio is closer to the current lower bound.",
+ "known_results": "The deterministic case is fully settled: Sleator and Tarjan (1985) proved Move-to-Front is exactly $2$-competitive, and this is optimal for deterministic algorithms in both the partial and full cost models. For randomized algorithms against an oblivious adversary, the gap has not moved since the mid-1990s/early-2000s. The best known upper bound remains $1.6$, achieved by the COMB algorithm of Albers, von Stengel, and Werchner (1995), a randomized combination of the BIT and TIMESTAMP algorithms. The best known lower bound is $1.50084$, due to Ambühl, Gärtner, and von Stengel (\"A New Lower Bound for the List Update Problem in the Partial Cost Model,\" Theoretical Computer Science, 2001/2003), improving on Teia's earlier $1.5$ lower bound (1993) via a game-tree-with-incomplete-information construction. Ambühl, Gärtner, and von Stengel also showed (ICALP 2000; journal/arXiv version \"Optimal Lower Bounds for Projective List Update Algorithms,\" ACM TALG 2013 / arXiv:1002.2440) that every \"projective\" algorithm -- one whose behavior on any pair of list items depends only on that pair, a property shared by essentially all known good list-update algorithms including MTF, BIT, TIMESTAMP, and COMB -- has competitive ratio at least $1.6$, so COMB is the best possible projective algorithm. This means any improvement below $1.6$ must come from a genuinely non-projective algorithm, and no such algorithm is known. As of mid-2026, a thorough search finds no resolution or narrowing of this specific gap. Related but distinct lines of work have progressed recently: in the i.i.d./stochastic model (not the adversarial oblivious model of this problem), Christian Coester (\"Transposition is Nearly Optimal for IID List Update,\" arXiv:2603.10244, March 2026) proved the Transposition rule has expected cost at most $\\mathrm{OPT}+1$, confirming a 50-year-old conjecture of Rivest up to an additive constant; this built on and sharpened an ALT 2025 result of Indyk, Quaye, Rubinfeld, and Silwal for Zipfian access distributions. Azar, Lewkowicz, and Suriyanarayana (\"List Update with Prediction,\" AAAI 2025) gave learning-augmented algorithms with $(1+\\epsilon)$-consistency and bounded robustness, explicitly reaffirming in their abstract that the classical randomized ratio is known to lie in $[1.5, 1.6]$ and that no improvement beyond $1.6$ is known. None of these 2024-2026 results touch the classical worst-case oblivious-adversary competitive ratio itself, which remains exactly where it was two decades ago.",
+ "progress": {
+  "state": "none",
+  "summary": "No progress on the classical oblivious-adversary gap [1.50084, 1.6] has been found as of July 2026; it has been static since Ambühl-Gärtner-von Stengel's lower bound (2001) and the COMB upper bound (1995). Recent activity (2025-2026) instead resolves related but distinct questions in the i.i.d./stochastic access model: Christian Coester's 'Transposition is Nearly Optimal for IID List Update' (arXiv:2603.10244, March 2026) proves Transposition is nearly optimal (cost at most OPT+1) for i.i.d. requests, confirming a 50-year-old conjecture of Rivest, following an ALT 2025 paper by Indyk, Quaye, Rubinfeld, and Silwal on Zipfian accesses. Azar, Lewkowicz, and Suriyanarayana's 'List Update with Prediction' (AAAI 2025) gives learning-augmented algorithms but explicitly confirms the classical worst-case ratio is still only known to lie in [1.5, 1.6]. A March 2025 paper (arXiv:2503.17264) improves bounds for a different, uniform-swap-cost model, not the classical partial cost model addressed here.",
+  "links": [
+   {
+    "title": "Transposition is Nearly Optimal for IID List Update (Coester, arXiv:2603.10244, Mar 2026)",
+    "url": "https://arxiv.org/abs/2603.10244"
+   },
+   {
+    "title": "List Update with Prediction (Azar, Lewkowicz, Suriyanarayana, AAAI 2025)",
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33694"
+   },
+   {
+    "title": "A 3.3904-Competitive Online Algorithm for List Update with Uniform Costs (arXiv:2503.17264)",
+    "url": "https://arxiv.org/abs/2503.17264"
+   }
+  ]
+ },
+ "importance": 7,
+ "difficulty": 8,
+ "counterexample_suitability": "low",
+ "counterexample_rationale": "This is a two-sided optimization gap (best algorithm vs. best adversary lower-bound construction), not a yes/no conjecture refutable by a single counterexample; progress requires either a fundamentally new (likely non-projective) algorithm with a full competitive analysis, or a sharper adversarial lower-bound construction with a matching potential-function/LP-duality proof, both of which need genuine proof work beyond exhibiting an instance.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "An evolutionary/search loop could plausibly help on the lower-bound side by searching over small game-tree/adversary-strategy constructions (in the style of Ambühl-Gärtner-von Stengel) to find request sequences and randomization patterns that push the lower bound past 1.50084, since these constructions are finite, parametrized, and numerically checkable via LP or explicit expectation computations; it is less suited to discovering the algorithm side, since good algorithms need clean analyzable structure (e.g., a potential function) rather than just a numerically strong policy, and non-projective algorithms are combinatorially much harder to specify/search over than small finite adversary trees.",
+ "literature": {
+  "synthesis": "The state of the art has three pillars, all established between 1985 and 2001, and unmoved since. Sleator and Tarjan (1985) fully resolved the deterministic problem at ratio $2$ via a potential-function (inversion-counting) argument for Move-to-Front, a technique that became a template for the field. On the randomized side, Albers, von Stengel, and Werchner (1995) gave the COMB algorithm, a randomized mix of BIT and TIMESTAMP, achieving $1.6$; this remains the best known upper bound thirty years later. Ambühl, Gärtner, and von Stengel supplied both halves of the matching theory on the lower-bound side: a $1.50084$ lower bound via an incomplete-information game-tree construction (TCS, 2001, sharpening Teia's 1993 bound of $1.5$), and a structural barrier result showing every \\emph{projective} algorithm -- informally, one whose relative treatment of any two list items ignores all other items -- has ratio at least $1.6$ (ICALP 2000; ACM TALG 2013, arXiv:1002.2440). Since virtually every known list-update algorithm (MTF, BIT, TIMESTAMP, COMB, and their combinations) is projective, this pins the barrier precisely: closing the gap requires either a genuinely non-projective algorithm or a lower-bound construction exceeding $1.6$, and neither has appeared. Recent 2024-2026 work has been vigorous but orthogonal: it targets stochastic/i.i.d. access models (Indyk-Quaye-Rubinfeld-Silwal, ALT 2025; Coester, arXiv:2603.10244, resolving a 50-year Rivest conjecture on Transposition's near-optimality for i.i.d. inputs), learning-augmented/prediction models (Azar-Lewkowicz-Suriyanarayana, AAAI 2025), and alternative cost models (uniform swap costs, arXiv:2503.17264). None of these narrow the classical adversarial gap, suggesting either that a genuinely new algorithmic idea (breaking projectivity) or a substantially more intricate adversary construction is needed -- the same barrier that has held since the early 2000s.",
+  "reviewed": [
+   {
+    "ref": "Sleator, D. D. and Tarjan, R. E., 'Amortized Efficiency of List Update and Paging Rules', Communications of the ACM, 1985",
+    "result": "Introduces competitive analysis; proves Move-to-Front is exactly 2-competitive for deterministic list update, which is optimal.",
+    "relevance": "solves-special-case",
+    "url": "https://dl.acm.org/doi/10.1145/2786.2793"
+   },
+   {
+    "ref": "Albers, S., von Stengel, B., and Werchner, R., 'A Combined BIT and TIMESTAMP Algorithm for the List Update Problem', Information Processing Letters, 1995",
+    "result": "Gives the COMB algorithm, a randomized combination of BIT and TIMESTAMP, with competitive ratio 1.6 against an oblivious adversary; still the best known upper bound in 2026.",
+    "relevance": "partial-progress",
+    "url": "https://dblp.org/rec/journals/ipl/AlbersSW95.html"
+   },
+   {
+    "ref": "Ambühl, C., Gärtner, B., and von Stengel, B., 'A New Lower Bound for the List Update Problem in the Partial Cost Model', Theoretical Computer Science, 2001/2003",
+    "result": "Proves a 1.50084 lower bound on the competitive ratio of any randomized list-update algorithm in the partial cost model, via a game-tree construction, improving Teia's 1993 bound of 1.5.",
+    "relevance": "partial-progress",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0304397500002612"
+   },
+   {
+    "ref": "Ambühl, C., Gärtner, B., and von Stengel, B., 'Optimal Lower Bounds for Projective List Update Algorithms', ICALP 2000 / ACM Transactions on Algorithms 2013 (arXiv:1002.2440)",
+    "result": "Characterizes all projective list update algorithms and proves every one has competitive ratio at least 1.6, showing COMB is optimal among projective algorithms and any improvement needs a non-projective approach.",
+    "relevance": "hardness",
+    "url": "https://arxiv.org/abs/1002.2440"
+   },
+   {
+    "ref": "Azar, Y., Lewkowicz, S., and Suriyanarayana, V., 'List Update with Prediction', AAAI 2025",
+    "result": "Gives a (1+epsilon)-smooth randomized algorithm with robustness O(1/epsilon^4) in the learning-augmented model with ML-oracle predictions; explicitly reconfirms the classical ratio is known only to lie in [1.5, 1.6].",
+    "relevance": "related-tool",
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33694"
+   },
+   {
+    "ref": "Coester, C., 'Transposition is Nearly Optimal for IID List Update', arXiv:2603.10244, March 2026",
+    "result": "Proves the Transposition rule achieves expected cost at most OPT+1 in the i.i.d. request model, confirming a 50-year-old conjecture of Rivest up to an additive constant; addresses the stochastic model, distinct from the adversarial oblivious-adversary problem here.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/2603.10244"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "On the lower-bound side: extend the game-tree-with-incomplete-information construction of Ambühl-Gärtner-von Stengel, possibly via computer search (LP or exhaustive enumeration over larger finite list sizes and request sequences) to find a strategy for the oblivious adversary that forces ratio above 1.50084, verified either analytically or via a certified LP solution. On the algorithm side: the projective barrier at 1.6 means genuinely new algorithms must break projectivity (use information about three or more list items jointly, or maintain richer state), and would need a new potential-function or amortized-analysis argument tailored to the non-projective structure -- direct simulation/experimentation on small instances could suggest candidate rules before a proof is attempted.",
+  "verification_notes": "Any claimed improved lower bound must specify the exact oblivious adversary request sequence (or distribution over sequences) and prove, typically via an explicit potential function or direct expectation calculation (per Yao's principle, reduce to a distribution over inputs and lower-bound the expected cost of any deterministic algorithm), that the ratio exceeds 1.50084 in the partial cost model -- watch for a common failure mode of proving a bound in the full cost model or a different cost/adversary model and mis-porting it. Any claimed improved algorithm must give a complete competitive analysis (typically potential-function based) valid for lists of arbitrary length against an oblivious adversary in the partial cost model, and must be checked for projectivity, since 1.6 is a hard floor for any projective algorithm by the Ambühl-Gärtner-von Stengel theorem -- a claimed ratio below 1.6 from a projective-looking algorithm should be treated as suspect until the analysis is verified line by line. Small-instance numerics (simulating on lists of length 3-6) can suggest but never substitute for a general proof, since known constructions (e.g., the 1.50084 bound) rely on lists of only around five items yet the proof techniques must generalize.",
+  "machine_checkable": false
+ },
  "where_posed": {
-  "text": "Best known randomized algorithm (COMB) from Albers, von Stengel, Werchner, 'A Combined BIT and TIMESTAMP Algorithm for the List Update Problem', 1995, Information Processing Letters.",
-  "url": "https://dblp.org/rec/journals/ipl/AlbersSW95.html"
+  "text": "Stated as an explicitly open gap in Ambühl, Gärtner, von Stengel, 'Optimal Lower Bounds for Projective List Update Algorithms,' ACM Transactions on Algorithms, 2013 (arXiv:1002.2440); the same characterization appears in the original COMB paper by Albers, von Stengel, Werchner, 'A Combined BIT and TIMESTAMP Algorithm for the List Update Problem,' Information Processing Letters, 1995, and is reiterated as open in subsequent surveys and papers through 2025.",
+  "url": "https://arxiv.org/abs/1002.2440",
+  "quote": "The list update problem is a classical online problem, with an optimal competitive ratio that is still open, known to be somewhere between 1.5 and 1.6.",
+  "location": "Abstract"
  },
  "source": {
   "authors": "Susanne Albers, Bernhard von Stengel, Ralph Werchner",
@@ -42,6 +119,34 @@
    "year": 2013,
    "venue": "ACM Transactions on Algorithms",
    "url": "https://arxiv.org/abs/1002.2440"
+  },
+  {
+   "authors": "Christoph Ambuhl, Bernd Gartner, Bernhard von Stengel",
+   "title": "A New Lower Bound for the List Update Problem in the Partial Cost Model",
+   "year": 2001,
+   "venue": "Theoretical Computer Science",
+   "url": "https://www.sciencedirect.com/science/article/pii/S0304397500002612"
+  },
+  {
+   "authors": "Boris Teia",
+   "title": "A Lower Bound for Randomized List Update Algorithms",
+   "year": 1993,
+   "venue": "Information Processing Letters",
+   "url": "https://www.sciencedirect.com/science/article/abs/pii/0020019093901508"
+  },
+  {
+   "authors": "Yossi Azar, Shahar Lewkowicz, Varun Suriyanarayana",
+   "title": "List Update with Prediction",
+   "year": 2025,
+   "venue": "Proceedings of the AAAI Conference on Artificial Intelligence",
+   "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33694"
+  },
+  {
+   "authors": "Christian Coester",
+   "title": "Transposition is Nearly Optimal for IID List Update",
+   "year": 2026,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2603.10244"
   }
  ],
  "bibtex": "@misc{Albers1995,\n  author = {Susanne Albers and Bernhard von Stengel and Ralph Werchner},\n  title = {A Combined BIT and TIMESTAMP Algorithm for the List Update Problem},\n  year = {1995},\n  howpublished = {Information Processing Letters},\n  url = {https://dblp.org/rec/journals/ipl/AlbersSW95.html},\n  note = {Source of ORdős Problem ORDOS-013}\n}",

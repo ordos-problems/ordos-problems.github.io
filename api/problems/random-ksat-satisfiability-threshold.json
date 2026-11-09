@@ -12,15 +12,71 @@
   "random satisfiability",
   "optimization",
   "phase transitions",
-  "applied probability"
+  "applied probability",
+  "computer science"
  ],
- "short_statement": "For random $k$-SAT with $m=\\lfloor cn\\rfloor$ random clauses, determine the exact satisfiability threshold $c_k$, especially for small fixed $k$ such as $k=3$.",
- "open_problem": "Determine the exact satisfiability threshold $c_k$ for random $k$-SAT, including the small fixed values of $k$ not covered by large-$k$ threshold theorems.",
- "full_statement": "Let $F_{n,m}^{(k)}$ be a uniformly random $k$-SAT formula on $n$ variables with $m=\\lfloor cn\\rfloor$ clauses. The satisfiability-threshold conjecture asserts that there is a critical density $c_k$ such that $F_{n,\\lfloor cn\\rfloor}^{(k)}$ is satisfiable with high probability for $c<c_k$ and unsatisfiable with high probability for $c>c_k$. Friedgut proved sharp-threshold behavior in a non-explicit sense, and later work determined the threshold for all sufficiently large $k$. The clean open problem is to determine the exact threshold values, or exact limiting characterization, for the remaining fixed small $k$ cases, most notably random 3-SAT.",
- "known_results": "For $k=2$, the threshold is exactly $1$. Friedgut proved that random $k$-SAT has a sharp threshold, but his theorem does not identify a single explicit limiting value for every fixed $k$. Ding, Sly, and Sun determined the threshold for all sufficiently large $k$, matching the physics prediction in that regime. The remaining open problem is the classical small-$k$ threshold problem: give exact thresholds or a rigorous exact characterization for fixed $k$ such as $3$ and $4$.",
+ "short_statement": "Determine the exact satisfiability threshold for random $k$-SAT at small fixed $k$, especially $k=3$.",
+ "open_problem": "Prove the exact random $k$-SAT satisfiability threshold for fixed small $k$, in particular $k=3$. The open part is not sharpness of the transition in a qualitative sense, but the rigorous identification of the threshold value for these small $k$.",
+ "background": "Random $k$-SAT is a central model at the boundary of combinatorics, probability, statistical physics, and computational complexity. A formula on $n$ Boolean variables is formed by drawing $m=\\lfloor \\alpha n\\rfloor$ random clauses, each containing $k$ literals. For small clause density $\\alpha$, the formula is satisfiable with high probability; for large $\\alpha$, it is unsatisfiable with high probability. Physics predicts a detailed sequence of phase transitions, and the satisfiability threshold is the most basic one. For $k=2$, the exact threshold is $1$. For every fixed $k\\ge3$, Friedgut proved sharp-threshold behavior, but this theorem does not identify a clean limiting threshold value. Ding, Sly, and Sun proved the predicted threshold for all sufficiently large $k$, a major breakthrough. The historically famous remaining case is small fixed $k$, especially random 3-SAT, where rigorous upper and lower bounds are close numerically but the exact limiting threshold is still unknown.",
+ "full_statement": "Let $F_k(n,m)$ be a uniformly random $k$-CNF formula on variables $x_1,\\ldots,x_n$, formed by choosing $m=\\lfloor \\alpha n\\rfloor$ clauses independently and uniformly from the $2^k\\binom n k$ possible $k$-clauses with distinct variables. A satisfiability threshold value $\\alpha_k$ would satisfy the following: for every fixed $\\varepsilon>0$, $F_k(n,\\lfloor(\\alpha_k-\\varepsilon)n\\rfloor)$ is satisfiable with probability tending to one, while $F_k(n,\\lfloor(\\alpha_k+\\varepsilon)n\\rfloor)$ is unsatisfiable with probability tending to one. Friedgut's theorem gives sharp-threshold behavior but does not identify a limiting value for each small $k$. The open problem is to prove the exact threshold for fixed small $k\\ge3$, especially $k=3$, either as an explicit constant or as a rigorous variational characterization matching the statistical-physics prediction, and to establish both the satisfiable and unsatisfiable sides of the transition at that same value.",
+ "known_results": "The $k=2$ threshold is exactly $1$. Friedgut proved that random $k$-SAT has a sharp threshold for each fixed $k$, but the theorem allows the threshold location to vary with $n$ and does not identify the limiting constant. Achlioptas, Moore, Coja-Oghlan, Panagiotou, and others developed increasingly sharp rigorous upper and lower bounds and established the correct asymptotic order in $k$. Ding, Sly, and Sun proved the satisfiability conjecture for all sufficiently large $k$, matching the one-step replica-symmetry-breaking prediction. For small $k$, especially $k=3$, the best rigorous numerical bounds are close to the predicted value, but the exact threshold and the full finite-$k$ condensation/satisfiability analysis are still not proved.",
+ "progress": {
+  "state": "partial",
+  "summary": "The exact threshold is known for $k=2$ and for all sufficiently large $k$. The small fixed cases such as 3-SAT remain open despite extensive rigorous and physics-based work.",
+  "links": [
+   {
+    "title": "Proof of the satisfiability conjecture for large k",
+    "url": "https://arxiv.org/abs/1411.0650"
+   },
+   {
+    "title": "Friedgut sharp-threshold theorem",
+    "url": "https://doi.org/10.1090/S0894-0347-99-00305-7"
+   },
+   {
+    "title": "Achlioptas and Moore bounds",
+    "url": "https://doi.org/10.1109/SFCS.2002.1181941"
+   }
+  ]
+ },
+ "importance": 9,
+ "difficulty": 9,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "Finite formulas can test conjectured bounds or algorithms, but the threshold is an asymptotic probability statement. Search is more useful for finding obstructions to proof strategies than for a direct counterexample.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Computational search may identify finite-size structures, interpolation inequalities, or survey-propagation-inspired certificates. A resolution requires rigorous asymptotic control of the random formula distribution.",
+ "literature": {
+  "synthesis": "The qualitative transition picture is well established: below the threshold solutions exist with high probability and above it they do not. Friedgut's theorem supplies sharpness but not a usable formula for the threshold. The large-$k$ breakthrough of Ding, Sly, and Sun validates the physics prediction in a regime where the one-step replica-symmetry-breaking calculations can be made rigorous. Small $k$ is harder because error terms, local dependencies, and condensation effects cannot be hidden in asymptotic large-$k$ expansions. The concrete gap is to convert the physics prediction for $k=3$ and other small values into a rigorous threshold theorem.",
+  "reviewed": [
+   {
+    "ref": "Ehud Friedgut, 'Sharp thresholds of graph properties, and the k-SAT problem', Journal of the AMS 1999",
+    "result": "Proves sharp-threshold behavior for random $k$-SAT but does not determine an explicit limiting threshold.",
+    "relevance": "partial-progress",
+    "url": "https://doi.org/10.1090/S0894-0347-99-00305-7"
+   },
+   {
+    "ref": "Dimitris Achlioptas and Cristopher Moore, 'The asymptotic order of the random k-SAT threshold', FOCS 2002",
+    "result": "Develops rigorous bounds on the threshold scale for random $k$-SAT.",
+    "relevance": "partial-progress",
+    "url": "https://doi.org/10.1109/SFCS.2002.1181941"
+   },
+   {
+    "ref": "Jian Ding, Allan Sly, and Nike Sun, 'Proof of the satisfiability conjecture for large k', arXiv 2014",
+    "result": "Determines the satisfiability threshold for all sufficiently large $k$.",
+    "relevance": "solves-special-case",
+    "url": "https://arxiv.org/abs/1411.0650"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Plausible routes include rigorous cavity-method reductions, interpolation/moment methods with sharper finite-$k$ control, and certified computation of variational recursions. Search can help by probing finite-size formula cores and validating candidate inequalities.",
+  "verification_notes": "A correct solution must prove high-probability satisfiability and unsatisfiability on the two sides of the same threshold value, for the standard random formula model with fixed $k$ and $m=\\lfloor\\alpha n\\rfloor$. The verifier should check that the claimed value is not merely a sequence-dependent sharp threshold from Friedgut's theorem and that all error terms are uniform enough for the specific small $k$ under discussion. Numerical estimates, survey propagation, or finite-size simulations of random 3-SAT are useful evidence but do not resolve the problem without rigorous asymptotic probability bounds.",
+  "machine_checkable": false
+ },
  "where_posed": {
-  "text": "Satisfiability-threshold discussion in Coppersmith, Gamarnik, Hajiaghayi, and Sorkin, and in Bayati, Gamarnik, and Tetali's sparse-random-graph interpolation paper.",
-  "url": "https://arxiv.org/abs/0912.2444"
+  "text": "Classical random CSP open problem; highlighted by the gap between Friedgut's sharp-threshold theorem and Ding-Sly-Sun's large-$k$ theorem.",
+  "url": "https://arxiv.org/abs/1411.0650",
+  "quote": "",
+  "location": "Introduction and discussion of the satisfiability conjecture"
  },
  "source": {
   "authors": "Mohsen Bayati, David Gamarnik, Prasad Tetali",

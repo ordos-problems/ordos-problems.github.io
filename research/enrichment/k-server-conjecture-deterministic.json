@@ -1,0 +1,97 @@
+{
+  "id": "k-server-conjecture-deterministic",
+  "short_statement": "A 2026 preprint claims the deterministic k-server conjecture via the Work Function Algorithm.",
+  "full_statement": "Let $(M,d)$ be a metric space and let an online algorithm control $k$ servers located at points of $M$. A request sequence $\\sigma=(r_1,r_2,\\ldots)$ is revealed online. To serve request $r_t$, the algorithm must move one server to $r_t$ if none is already there, paying the distance moved. Let $ALG(\\sigma)$ be the total movement cost and $OPT(\\sigma)$ be the minimum offline cost with full knowledge of $\\sigma$. The historical deterministic $k$-server conjecture asks whether for every metric space with at least $k+1$ points there is a deterministic online algorithm with $ALG(\\sigma)\\le k\\,OPT(\\sigma)+O(1)$ for all request sequences. A matching lower bound of $k$ is known, and a matching upper bound is now claimed in the paper below.",
+  "background": "The k-server problem generalizes paging to metric spaces. Work-function analysis supplied the longstanding general upper bound and many exact special cases. The new claim below addresses arbitrary metrics.",
+  "known_results": "Coester, Koutsoupias, and Zbysinski, 'The k-server conjecture is true' (arXiv:2609.15979), Theorem 1.2, state that for every metric, initial configuration $C_0=\\{s_1,\\ldots,s_k\\}$ and finite request sequence $\\sigma$, $$\\mathrm{WFA}_{C_0}(\\sigma)\\le k\\,\\mathrm{OPT}_{C_0}(\\sigma)+\\sum_{i<j}d(s_i,s_j).$$ Together with the classical lower bound, this claims the sharp deterministic ratio, superseding the historical $2k-1$ upper bound.",
+  "open_problem": "Verify the claimed general-metric theorem rather than treating the original competitive-ratio gap as unchanged.",
+  "progress": {
+    "state": "solution-claimed",
+    "summary": "A full resolution is claimed in the September preprint; theorem/model and proof overview reviewed, not independently certified.",
+    "links": [
+      {
+        "title": "k-server-bench",
+        "url": "https://arxiv.org/abs/2604.07240"
+      },
+      {
+        "title": "3-server on a circle",
+        "url": "https://arxiv.org/abs/2205.08103"
+      },
+      {
+        "title": "The k-server conjecture is true",
+        "url": "https://arxiv.org/abs/2609.15979"
+      }
+    ]
+  },
+  "importance": 10,
+  "difficulty": 10,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "A lower bound above $k$ would likely require an explicit metric and adversarial request distribution, but proving it against all deterministic algorithms is hard. Small-case potential failures can be machine-checked but do not by themselves refute the conjecture.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Automated checks may help audit the claimed potential inequalities. Success on a finite benchmark is not a universal proof.",
+  "literature": {
+    "synthesis": "Older work-function bounds and potential-search benchmarks are historical precursors. The new claim concerns the original deterministic problem.",
+    "reviewed": [
+      {
+        "ref": "Mark S. Manasse, Lyle A. McGeoch, Daniel D. Sleator, 'Competitive Algorithms for Server Problems', STOC 1988 / Journal of Algorithms 1990",
+        "result": "Introduces the $k$-server problem and the $k$-server conjecture; proves foundational lower bounds and special cases.",
+        "relevance": "related-tool",
+        "url": "https://dl.acm.org/doi/10.1145/62212.62243"
+      },
+      {
+        "ref": "Elias Koutsoupias, Christos H. Papadimitriou, 'On the k-Server Conjecture', Journal of the ACM 1995",
+        "result": "Proves the Work Function Algorithm is $(2k-1)$-competitive.",
+        "relevance": "partial-progress",
+        "url": "https://www.cs.ox.ac.uk/people/elias.koutsoupias/Personal/Papers/paper-kp95.pdf"
+      },
+      {
+        "ref": "Zhiyi Huang, Hanwen Zhang, 'Deterministic 3-Server on a Circle and the Limitation of Canonical Potentials', arXiv 2022",
+        "result": "Proves WFA is $3$-competitive for $3$-server on circle metrics and identifies limitations of canonical potential frameworks.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2205.08103"
+      },
+      {
+        "ref": "Kirill Brilliantov, Etienne Bamas, Emmanuel Abbe, 'k-server-bench: Automating Potential Discovery for the k-Server Conjecture', arXiv 2026",
+        "result": "Provides a sound but incomplete computational benchmark for discovering potential functions in special $k$-server cases.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/2604.07240"
+      },
+      {
+        "ref": "Christian Coester, Elias Koutsoupias, Marek Zbysinski, 'The k-server conjecture is true' (2026)",
+        "result": "Theorem 1.2 is the claimed general resolution; see the What Is Known section.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2609.15979"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Audit the new work-function potential and its treatment of arbitrary metrics and initial configurations.",
+    "verification_notes": "A full solution must handle all metric spaces and all request sequences, or explicitly state and prove a new special case. Passing a finite benchmark is not a proof unless the benchmark is shown to imply the claimed competitive ratio for the target metric family.",
+    "machine_checkable": true
+  },
+  "additional_refs": [
+    {
+      "authors": "Zhiyi Huang, Hanwen Zhang",
+      "title": "Deterministic 3-Server on a Circle and the Limitation of Canonical Potentials",
+      "year": 2022,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/2205.08103"
+    },
+    {
+      "authors": "Kirill Brilliantov, Etienne Bamas, Emmanuel Abbe",
+      "title": "k-server-bench: Automating Potential Discovery for the k-Server Conjecture",
+      "year": 2026,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/2604.07240"
+    },
+    {
+      "authors": "Christian Coester, Elias Koutsoupias, Marek Zbysinski",
+      "title": "The k-server conjecture is true",
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2609.15979"
+    }
+  ],
+  "status": "solution claimed",
+  "confidence": "medium"
+}

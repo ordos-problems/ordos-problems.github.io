@@ -1,0 +1,1559 @@
+[
+  {
+    "id": "matroid-secretary-conjecture",
+    "record_number": 1,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "matroid secretary conjecture 2026 constant competitive arxiv"
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/html/2611.08869",
+        "authors": "Hamed Abdi, Kiarash Banihashem, MohammadTaghi Hajiaghayi, Zhiyi Huang, Danny Mittal, Sahil Singla",
+        "title": "As Easy as Rank One: Optimal Algorithms for Matroid Secretary and Single-Sample Matroid Prophet",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Theorem 1.1 / 6.1; introduction and model"
+      }
+    ],
+    "disposition": "corrected_enrichment",
+    "summary": "Sharp secretary resolution claimed; historical open/general-bound assertions replaced.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [
+      "research/enrichment/matroid-secretary-conjecture.json"
+    ],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "free-order-prophet-inequality",
+    "record_number": 2,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "order selection prophet inequality 2025 2026 0.7258",
+      "\"order selection\" \"prophet\" \"2026\""
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/html/2610.34892",
+        "authors": "Bo Peng, Zhihao Gavin Tang",
+        "title": "Order-selection Prophet Inequality (Almost) Goes I.I.D.",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Theorem 6.1, introduction, model and certificate discussion"
+      }
+    ],
+    "disposition": "corrected_enrichment",
+    "summary": "Improved order-selection guarantee; exact IID-equality gap remains.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [
+      "research/enrichment/free-order-prophet-inequality.json"
+    ],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "single-sample-matroid-prophet",
+    "record_number": 3,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "single sample matroid prophet inequality 2025 2026"
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/html/2611.08869",
+        "authors": "Hamed Abdi, Kiarash Banihashem, MohammadTaghi Hajiaghayi, Zhiyi Huang, Danny Mittal, Sahil Singla",
+        "title": "As Easy as Rank One: Optimal Algorithms for Matroid Secretary and Single-Sample Matroid Prophet",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Theorem 1.2 / 3.1; fixed oblivious order, one sample"
+      }
+    ],
+    "disposition": "corrected_enrichment",
+    "summary": "Single-sample resolution claimed for fixed oblivious order only.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [
+      "research/enrichment/single-sample-matroid-prophet.json"
+    ],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "online-matching-general-vertex-arrivals",
+    "record_number": 4,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "Optimal Competitive Ratio Two-sided Online Bipartite Matching 2602.18049"
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2602.18049",
+        "review_depth": "search_only",
+        "reviewed_sections": "Search result/abstract lead only; theorem/model not reviewed for this record."
+      }
+    ],
+    "disposition": "search_only_review_pending",
+    "summary": "Matching fractional result located; no theorem-level recheck of the existing enrichment.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "fully-online-matching",
+    "record_number": 5,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "fully online matching competitive ratio 2026 arxiv"
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/html/2607.23415",
+        "authors": "Zhiyi Huang, Zhihao Gavin Tang, Xiaowei Wu, Yuhao Zhang",
+        "title": "Fractional Fully Online Matching",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Theorems 1.1-1.4 and hardness discussion"
+      }
+    ],
+    "disposition": "corrected_enrichment",
+    "summary": "Updated fractional bounds; integral and bipartite/general graph guarantees separated.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [
+      "research/enrichment/fully-online-matching.json"
+    ],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "vertex-weighted-random-order-matching",
+    "record_number": 6,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "vertex weighted random order matching Ranking 2026 2025 competitive",
+      "\"vertex-weighted\" \"random\" \"Ranking\" 2026"
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/html/2608.12176",
+        "authors": "Bo Peng, Zhihao Gavin Tang",
+        "title": "Harmonic Ranking for Edge-Weighted Oblivious Matching",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Theorem 1.1 and Corollary 1.2; known arrival count"
+      }
+    ],
+    "disposition": "corrected_enrichment",
+    "summary": "Improved weighted random-arrival guarantee, with known horizon.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [
+      "research/enrichment/vertex-weighted-random-order-matching.json"
+    ],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "edge-weighted-matching-free-disposal",
+    "record_number": 7,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "edge weighted online matching free disposal 2026 2025 0.5368",
+      "\"free disposal\" \"matching\" \"2026\""
+    ],
+    "sources": [],
+    "disposition": "search_only_review_pending",
+    "summary": "No matching-model improvement verified; edge-arrival variants must not be transferred.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "adwords-general-bids",
+    "record_number": 8,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "AdWords general bids 2026 2025 competitive ratio",
+      "\"AdWords\" \"general bids\""
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2009.04114",
+        "review_depth": "search_only",
+        "reviewed_sections": "Search result/abstract lead only; theorem/model not reviewed for this record."
+      }
+    ],
+    "disposition": "search_only_review_pending",
+    "summary": "General-bid reference located; no newer bound verified.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "k-server-conjecture-deterministic",
+    "record_number": 9,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"k-server conjecture\" \"2026\""
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/html/2609.15979",
+        "authors": "Christian Coester, Elias Koutsoupias, Marek Zbysinski",
+        "title": "The k-server conjecture is true",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Theorem 1.2; model and proof overview"
+      }
+    ],
+    "disposition": "corrected_enrichment",
+    "summary": "General deterministic resolution claimed; proof not independently certified.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [
+      "research/enrichment/k-server-conjecture-deterministic.json"
+    ],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "randomized-k-server-polylog-power",
+    "record_number": 10,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"randomized\" \"k-server\" \"2026\"",
+      "\"Squared-logarithmic\" \"k-server\""
+    ],
+    "sources": [
+      {
+        "url": "https://github.com/openai/math/blob/main/preprints/Uniform-computation-of-the-squared-logarithmic-k-server-bound-September-24-2026/build/source/sections/01-introduction.tex",
+        "authors": "OpenAI",
+        "title": "Uniform computation of the squared-logarithmic k-server bound",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Introduction source and main theorem: finite rational metrics, oblivious inputs, unrestricted instance-dependent additive loss"
+      }
+    ],
+    "disposition": "correction_deferred_dependency_review",
+    "summary": "Companion finite-rational-metric theorem reviewed. Main arbitrary-metric paper not retrieved; enrichment update deferred for dependency/scope review.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "bin-packing-additive-integrality-gap",
+    "record_number": 11,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"bin packing\" \"additive\" \"2026\""
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/html/2611.09447",
+        "authors": "Ilan Doron-Arad",
+        "title": "Additive Omega(log* OPT) Gap for Bin Packing with Three Items per Bin",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Theorem 1.3; classical configuration-LP convention and proof overview"
+      }
+    ],
+    "disposition": "corrected_enrichment",
+    "summary": "Superconstant LP gap claimed; constant-gap question changes, exact growth remains undetermined.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [
+      "research/enrichment/bin-packing-additive-integrality-gap.json"
+    ],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "online-makespan-scheduling-gap",
+    "record_number": 12,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"online makespan\" \"2026\""
+    ],
+    "sources": [],
+    "disposition": "search_only_review_pending",
+    "summary": "Over-time/release-date scheduling hits do not establish progress in the list-arrival model.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "randomized-list-update",
+    "record_number": 13,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"randomized list update\" \"2026\""
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2603.10244",
+        "review_depth": "search_only",
+        "reviewed_sections": "Search result/abstract lead only; theorem/model not reviewed for this record."
+      }
+    ],
+    "disposition": "search_only_review_pending",
+    "summary": "Stochastic list-update hit is not the adversarial randomized ratio; no theorem-level review.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "k-taxi-deterministic-finiteness",
+    "record_number": 14,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"taxi\" \"deterministic\" \"2026\" competitive"
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/html/2611.06684",
+        "authors": "Christian Coester, Yichen Huang, Tze-Yang Poon",
+        "title": "The Online k-Taxi Problem Is Competitive on All Metrics",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Theorem 1.1, Corollary 1.2; hard travel costs and adaptive-online adversary"
+      }
+    ],
+    "disposition": "corrected_enrichment",
+    "summary": "Metric-independent deterministic finiteness claimed; optimal exponential base remains separate.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [
+      "research/enrichment/k-taxi-deterministic-finiteness.json"
+    ],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "general-convex-body-chasing",
+    "record_number": 15,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"convex body chasing\" \"2026\""
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/html/2610.32670v2",
+        "authors": "Nicolas Christianson",
+        "title": "A Linear Lower Bound for Convex Body Chasing in Every Norm",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Theorem 1; randomized expected-cost model and arbitrary-norm extension"
+      }
+    ],
+    "disposition": "corrected_enrichment",
+    "summary": "General dimension-only gap claimed closed; nested and bounded-horizon variants are separate.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [
+      "research/enrichment/general-convex-body-chasing.json"
+    ],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "submodular-bandit-cardinality-dependence",
+    "record_number": 16,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"submodular\" \"bandit\" \"cardinality\" \"2026\""
+    ],
+    "sources": [],
+    "disposition": "parent-owned",
+    "summary": "Parent reports this record audited. This agent performed one search before exclusion and made no enrichment edit; parent review is not counted as this agent's full-text coverage.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local search only before reassignment."
+  },
+  {
+    "id": "efx-existence-goods",
+    "record_number": 17,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"EFX\" \"additive\" \"2026\" existence"
+    ],
+    "sources": [],
+    "disposition": "search_only_review_pending",
+    "summary": "No full-text resolution or special-case claim checked; no open-status certification.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "efx-chores",
+    "record_number": 18,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"EFX\" \"chores\" \"2026\""
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2606.08872",
+        "review_depth": "search_only",
+        "reviewed_sections": "Search result/abstract lead only; theorem/model not reviewed for this record."
+      }
+    ],
+    "disposition": "search_only_review_pending",
+    "summary": "Local enrichment already contains a negative result. Its approximation definitions and latest proof require review; no overwrite.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "nash-social-welfare-approximation",
+    "record_number": 19,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"Nash social welfare\" \"2026\" approximation"
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/html/2607.13340",
+        "authors": "Vignesh Viswanathan",
+        "title": "A Better-than-e^{1/e} Approximation Algorithm for Nash Social Welfare under Additive Valuations",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Theorem 1.1; unweighted objective and configuration-LP distinction"
+      }
+    ],
+    "disposition": "corrected_enrichment",
+    "summary": "Improved unweighted additive approximation; weighted LP barrier no longer misapplied.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [
+      "research/enrichment/nash-social-welfare-approximation.json"
+    ],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "maximin-share-approximation",
+    "record_number": 20,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"maximin share\" \"2026\" approximation"
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/html/2511.13056v3",
+        "authors": "Xin Huang, Shengwei Zhou",
+        "title": "A Strongly Polynomial-Time 7/9-Approximation Algorithm for Maximin Share Allocations",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Introduction's statement of Theorem 8.1; nonnegative additive valuations"
+      },
+      {
+        "url": "https://arxiv.org/html/2609.15085v2",
+        "authors": "Tomer Ezra, Tamar Garbuz",
+        "title": "Improved Impossibility Bounds for Maximin Share Allocations",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Theorems 1-2; fixed-n versus universal constants"
+      }
+    ],
+    "disposition": "corrected_enrichment",
+    "summary": "Both bounds improved; universal and fixed-agent-count guarantees separated.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [
+      "research/enrichment/maximin-share-approximation.json"
+    ],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "competition-complexity-multi-item",
+    "record_number": 21,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"competition complexity\" \"2026\" multi item",
+      "\"competition complexity\" auctions arxiv"
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2506.09291",
+        "review_depth": "search_only",
+        "reviewed_sections": "Search result/abstract lead only; theorem/model not reviewed for this record."
+      },
+      {
+        "url": "https://arxiv.org/abs/2610.24973",
+        "review_depth": "search_only",
+        "reviewed_sections": "Search result/abstract lead only; theorem/model not reviewed for this record."
+      }
+    ],
+    "disposition": "search_only_review_pending",
+    "summary": "Regularity and item/bidder regimes need theorem-level reconciliation; no correction made.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "menu-complexity-multi-item",
+    "record_number": 22,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"menu complexity\" \"2026\"",
+      "\"menu complexity\" auction arxiv"
+    ],
+    "sources": [],
+    "disposition": "search_only_review_pending",
+    "summary": "No primary theorem reviewed; menu-size and approximation regimes not reconciled.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "price-of-anonymity-multi-unit",
+    "record_number": 23,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"price of anonymity\" \"multi\" auction"
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2102.07454",
+        "review_depth": "search_only",
+        "reviewed_sections": "Search result/abstract lead only; theorem/model not reviewed for this record."
+      }
+    ],
+    "disposition": "search_only_review_pending",
+    "summary": "Known multi-unit anonymity paper located; exact constants not reviewed.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "max-stable-matchings",
+    "record_number": 24,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"maximum\" \"number\" \"stable matchings\" \"2026\""
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/html/2611.06494",
+        "authors": "Ebrahim Ghorbani, Matthias Mnich",
+        "title": "A 2.81^n upper bound on the number of stable matchings",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Theorem 1; strict complete preferences"
+      }
+    ],
+    "disposition": "corrected_enrichment",
+    "summary": "Improved upper exponential base; exact growth remains undetermined.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [
+      "research/enrichment/max-stable-matchings.json"
+    ],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "stable-matching-couples-threshold",
+    "record_number": 25,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"stable matching\" \"couples\" threshold arxiv"
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2507.07501",
+        "review_depth": "search_only",
+        "reviewed_sections": "Search result/abstract lead only; theorem/model not reviewed for this record."
+      },
+      {
+        "url": "https://arxiv.org/abs/2507.07490",
+        "review_depth": "search_only",
+        "reviewed_sections": "Search result/abstract lead only; theorem/model not reviewed for this record."
+      },
+      {
+        "url": "https://arxiv.org/abs/2610.32793",
+        "review_depth": "search_only",
+        "reviewed_sections": "Search result/abstract lead only; theorem/model not reviewed for this record."
+      }
+    ],
+    "disposition": "search_only_review_pending",
+    "summary": "Preference-domain and capacity-modification papers do not verify a random-market couples threshold; formal random model requires clarification.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "prophet-secretary-tight-ratio",
+    "record_number": 26,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"prophet secretary\" \"2026\" ratio",
+      "\"prophet secretary\" competitive ratio arxiv",
+      "\"prophet secretary\" \"0.6902\""
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/html/2610.24711",
+        "authors": "Yilong Feng, Yaonan Jin, Xiaowei Wu, Xinyue Xiang",
+        "title": "Mean-only Prophet Inequalities",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Theorem 1.2, model and certificate discussion"
+      },
+      {
+        "url": "https://arxiv.org/html/2304.04024",
+        "authors": "Giordano Giambartolomei, Frederik Mallmann-Trenn, Raimundo Saona",
+        "title": "Prophet Inequalities: Separating Random Order from Order Selection",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Theorem 1.1; disclosed identity versus order known in advance"
+      }
+    ],
+    "disposition": "corrected_enrichment",
+    "summary": "Improved lower and upper bounds for order-unaware prophet secretary.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [
+      "research/enrichment/prophet-secretary-tight-ratio.json"
+    ],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "online-bipartite-matching-random-order",
+    "record_number": 27,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"online matching\" \"random order\" \"2026\" ratio"
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/html/2608.12176",
+        "authors": "Bo Peng, Zhihao Gavin Tang",
+        "title": "Harmonic Ranking for Edge-Weighted Oblivious Matching",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Corollary 1.2; unweighted specialization"
+      }
+    ],
+    "disposition": "corrected_enrichment",
+    "summary": "Improved lower bound and corrected minimax quantifiers; ordinary Ranking remains separate.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [
+      "research/enrichment/online-bipartite-matching-random-order.json"
+    ],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "ef1-po-polynomial-time",
+    "record_number": 28,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"EF1\" \"Pareto\" \"2026\" polynomial"
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2411.01810",
+        "review_depth": "search_only",
+        "reviewed_sections": "Search result/abstract lead only; theorem/model not reviewed for this record."
+      }
+    ],
+    "disposition": "search_only_review_pending",
+    "summary": "Fixed-agent-count result located; general polynomial-time question not verified.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "envy-free-cake-cutting-query-complexity",
+    "record_number": 29,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"envy-free\" \"cake\" \"2026\" query complexity"
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/html/2609.05191v1",
+        "authors": "Qilin Ye, Yannan Bai",
+        "title": "Cutting Down the Tower: Single-Exponential Envy-Free Cake Cutting",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Introduction, main result and complete-allocation model"
+      },
+      {
+        "url": "https://arxiv.org/pdf/2610.28535",
+        "authors": "Simon Mackenzie, Mashbat Suzuki",
+        "title": "Exact Envy-Free Cake Cutting with Polynomial Expected Queries",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Theorem 1, Proposition 2, Remark 1.1; exact queries and uniform-point randomness"
+      }
+    ],
+    "disposition": "corrected_enrichment",
+    "summary": "Improved deterministic bound and randomized expected-polynomial result; deterministic polynomial target not resolved.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [
+      "research/enrichment/envy-free-cake-cutting-query-complexity.json"
+    ],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "max-smti-approximation",
+    "record_number": 30,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"MAX-SMTI\" \"2026\""
+    ],
+    "sources": [],
+    "disposition": "search_only_review_pending",
+    "summary": "No matching-model theorem reviewed.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "subsidy-envy-freeness-monotone",
+    "record_number": 31,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"envy\" \"subsidy\" \"monotone\" \"2026\""
+    ],
+    "sources": [],
+    "disposition": "search_only_review_pending",
+    "summary": "No usable new primary theorem retained from search.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "kunit-prophet-iid-monotonicity-in-T",
+    "record_number": 58,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"multi-unit\" \"prophet\" monotonicity horizon"
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/html/2602.18756",
+        "authors": "Jieming Kong, Karthyek Murthy",
+        "title": "Multiunit I.I.D. Prophet Inequalities via Extreme Value Asymptotics",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Introduction/model only: instance-dependent large-horizon asymptotics, not a checked finite-horizon monotonicity theorem"
+      }
+    ],
+    "disposition": "related_model_reviewed_no_correction",
+    "summary": "Related asymptotic model reviewed. No theorem establishing the record's finite-T minimax monotonicity checked; no correction.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "kunit-prophet-onl-off-adversarial",
+    "record_number": 59,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"multi-unit\" \"prophet\" \"2026\""
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2107.02058",
+        "review_depth": "search_only",
+        "reviewed_sections": "Search result/abstract lead only; theorem/model not reviewed for this record."
+      }
+    ],
+    "disposition": "search_only_review_pending",
+    "summary": "LP-relative versus offline multi-unit guarantees require a targeted theorem review.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "kunit-prophet-correlation-gap-random-order",
+    "record_number": 60,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"prophet\" \"correlation gap\" \"2026\""
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2611.06891",
+        "review_depth": "search_only",
+        "reviewed_sections": "Search result/abstract lead only; theorem/model not reviewed for this record."
+      }
+    ],
+    "disposition": "search_only_review_pending",
+    "summary": "General-matroid random-order progress does not automatically improve the rank-k correlation-gap bound.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "arnosti-ma-stockout-threshold-conjecture",
+    "record_number": 61,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"stockout\" \"threshold\" \"conjecture\""
+    ],
+    "sources": [
+      {
+        "url": "https://www.columbia.edu/~wm2428/papers/prophet_secretary.pdf",
+        "review_depth": "search_only",
+        "reviewed_sections": "Search result/abstract lead only; theorem/model not reviewed for this record."
+      }
+    ],
+    "disposition": "search_only_review_pending",
+    "summary": "Stockout-threshold conjecture lead located; instance-optimal versus minimax-guarantee wording requires review.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "static-threshold-half-without-randomization-or-cardinal",
+    "record_number": 62,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"prophet\" \"ordinal\" \"deterministic\" threshold"
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2409.00559",
+        "review_depth": "search_only",
+        "reviewed_sections": "Search result/abstract lead only; theorem/model not reviewed for this record."
+      }
+    ],
+    "disposition": "search_only_review_pending",
+    "summary": "Sample/ordinal result located; deterministic static-threshold model not reconciled.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "random-order-vs-worst-case-known-order",
+    "record_number": 63,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"prophet\" \"random order\" \"worst\" \"known order\""
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2202.09215",
+        "review_depth": "search_only",
+        "reviewed_sections": "Search result/abstract lead only; theorem/model not reviewed for this record."
+      }
+    ],
+    "disposition": "search_only_review_pending",
+    "summary": "Order-competitive results are adjacent, not a checked answer to this comparison.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "ocrs-ex-ante-equivalence-oblivious-adversary",
+    "record_number": 64,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"OCRS\" \"equivalence\" \"oblivious\""
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/1806.09251",
+        "review_depth": "search_only",
+        "reviewed_sections": "Search result/abstract lead only; theorem/model not reviewed for this record."
+      }
+    ],
+    "disposition": "search_only_review_pending",
+    "summary": "Known-order/random-order equivalence reference located; unknown oblivious-order extension not checked.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "ocrs-rank1-almighty-adversary",
+    "record_number": 65,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"OCRS\" \"rank\" \"almighty\""
+    ],
+    "sources": [
+      {
+        "url": "https://proceedings.neurips.cc/paper_files/paper/2022/file/3f45a1768ed452c1706e0a3a272e3bbc-Paper-Conference.pdf",
+        "authors": "Vasilis Livanos",
+        "title": "Simple and Optimal Greedy Online Contention Resolution Schemes",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Theorems 1.1 and 1.3; greedy restriction and almighty adversary"
+      }
+    ],
+    "disposition": "corrected_enrichment",
+    "summary": "Greedy-class optimum added; general-rule adversary visibility remains underspecified.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [
+      "research/enrichment/ocrs-rank1-almighty-adversary.json"
+    ],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "explicit-kunit-ocrs-random-order",
+    "record_number": 66,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"uniform matroid\" \"random order\" \"contention\" 2026"
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/html/2611.08673",
+        "authors": "Shaddin Dughmi, Vasilis Livanos, Pranav Nuti",
+        "title": "Optimal Contention Resolution from Samples",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Algorithm 4, Theorem 4.1, Corollary 5.1, Appendix C.5; independent sample model"
+      }
+    ],
+    "disposition": "corrected_enrichment",
+    "summary": "Explicit optimal ROCRS construction claimed; known probabilities allow internal samples.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [
+      "research/enrichment/explicit-kunit-ocrs-random-order.json"
+    ],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "online-knapsack-unit-density-tight-guarantee",
+    "record_number": 67,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"knapsack\" \"unit-density\" prophet"
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/pdf/2107.02058",
+        "authors": "Jiashuo Jiang, Will Ma, Jiawei Zhang",
+        "title": "Tight Guarantees for Multi-unit Prophet Inequalities and Online Stochastic Knapsack",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Sections 2.5 and 5.2, Proposition 3; LP versus offline benchmark"
+      }
+    ],
+    "disposition": "corrected_enrichment",
+    "summary": "Corrected LP benchmark and heterogeneous independent arrival scope.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [
+      "research/enrichment/online-knapsack-unit-density-tight-guarantee.json"
+    ],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "L-sparse-nrm-interpolating-guarantee",
+    "record_number": 68,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"sparse\" \"network revenue management\" guarantee"
+    ],
+    "sources": [],
+    "disposition": "search_only_review_pending",
+    "summary": "No theorem-level check of sparse-NRM capacity interpolation.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "general-L-sparse-knapsack-guarantee",
+    "record_number": 69,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"sparse\" \"knapsack\" \"prophet\""
+    ],
+    "sources": [],
+    "disposition": "search_only_review_pending",
+    "summary": "No theorem-level check of general column-sparse knapsack guarantees.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "matroid-random-order-extends-to-resource-allocation",
+    "record_number": 70,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"abstract\" \"resource allocation\" \"prophet\" Ma"
+    ],
+    "sources": [],
+    "disposition": "search_only_review_pending",
+    "summary": "Resource-allocation feasibility and benchmark scope remain underspecified; no broad matroid transfer certified.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "adwords-unknown-budgets-optimal-ratio",
+    "record_number": 89,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"Adwords\" \"unknown budgets\" competitive"
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/pdf/2110.00504",
+        "authors": "Rajan Udwani",
+        "title": "Adwords with Unknown Budgets and Beyond",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "v5: model, Theorems 1-4, Corollary 1; truncated payment and bid-ratio dependence"
+      },
+      {
+        "url": "https://arxiv.org/html/2210.10370",
+        "authors": "Jingxun Liang, Zhihao Gavin Tang, Yixuan Even Xu, Yuhao Zhang, Renfei Zhou",
+        "title": "On the Perturbation Function of Ranking and Balance for Weighted Online Bipartite Matching",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Theorem 2 and Section 4; perturbation-family restrictions"
+      }
+    ],
+    "disposition": "corrected_enrichment",
+    "summary": "Corrected feedback, finite-bid factor, reference metadata, and framework-only upper bounds.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [
+      "research/enrichment/adwords-unknown-budgets-optimal-ratio.json"
+    ],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "known-iid-online-stochastic-matching-ratio",
+    "record_number": 103,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"known\" \"stochastic matching\" \"2026\""
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/html/2610.19866",
+        "authors": "Paul Duetting, Michal Feldman, Mathieu Molina",
+        "title": "Optimal Online Stochastic Matching",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Theorem 1.1, introduction's Section 5 transfer statement; unweighted expected-offline benchmark and non-polynomial policy"
+      }
+    ],
+    "disposition": "corrected_enrichment",
+    "summary": "Basic asymptotic ratio claimed tight; polynomial-time attainment and separate integral-rate comparison not certified.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [
+      "research/enrichment/known-iid-online-stochastic-matching-ratio.json"
+    ],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "samuels-conjecture-independent-nonnegative-sums",
+    "record_number": 109,
+    "cutoff_date": "2026-11-09",
+    "coverage": "full_text_reviewed",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"Samuels\" \"conjecture\" \"2026\""
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/html/2608.18392",
+        "authors": "Zhi Ling",
+        "title": "On Samuels' Conjecture",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "Theorem 1.1, extremal formulation and attainment"
+      },
+      {
+        "url": "https://arxiv.org/html/2608.22816",
+        "authors": "Yanjun Han, Zipei Nie",
+        "title": "A Sharp Refinement of Samuels' Inequality via Cap Moves",
+        "review_depth": "full_text_reviewed",
+        "reviewed_sections": "v2: Theorems 1.1-1.2; refinement and acknowledgment of Ling's proof"
+      }
+    ],
+    "disposition": "corrected_enrichment",
+    "summary": "Corrected infimum/formula and removed erroneous quote; general proof and refinement reported.",
+    "limitations": [
+      "Full-text reviewed means the specified sections, not a proof certification.",
+      "Searches are non-exhaustive through the requested cutoff; mathematical/computational certificates were not rerun."
+    ],
+    "changed_files": [
+      "research/enrichment/samuels-conjecture-independent-nonnegative-sums.json"
+    ],
+    "review_scope": "Selected primary-paper model/theorem sections only, not complete independent proof verification."
+  },
+  {
+    "id": "prophet-cancellation-costs-small-buyback",
+    "record_number": 110,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"prophet\" \"cancellation costs\""
+    ],
+    "sources": [
+      {
+        "url": "https://knowledge.uchicago.edu/record/12758/files/Prophet-Inequalities-with-Cancellation-Costs.pdf",
+        "review_depth": "search_only",
+        "reviewed_sections": "Search result/abstract lead only; theorem/model not reviewed for this record."
+      }
+    ],
+    "disposition": "search_only_review_pending",
+    "summary": "Cancellation-cost source located; small-buyback exact ratio not checked in full text.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "subadditive-combinatorial-auction-constructive-prophet",
+    "record_number": 112,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": false
+    },
+    "queries": [
+      "\"subadditive\" \"prophet\" \"2026\""
+    ],
+    "sources": [],
+    "disposition": "search_only_review_pending",
+    "summary": "No primary constant-factor constructive/nonconstructive theorem reviewed.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "gross-substitutes-constructive-description",
+    "record_number": 139,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"gross substitutes\" \"constructive\""
+    ],
+    "sources": [],
+    "disposition": "search_only_review_pending",
+    "summary": "Sparse local enrichment read; constructive-description classes not reconciled against primary theorems.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "optimal-dynamic-pricing-combinatorial-market-frontier",
+    "record_number": 140,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"dynamic pricing\" \"multi-demand\""
+    ],
+    "sources": [
+      {
+        "url": "https://uwspace.uwaterloo.ca/items/a0c700d6-302b-4076-83a0-92083aa2c5d7",
+        "review_depth": "search_only",
+        "reviewed_sections": "Search result/abstract lead only; theorem/model not reviewed for this record."
+      }
+    ],
+    "disposition": "search_only_review_pending",
+    "summary": "Related multi-demand pricing thesis located; full valuation-domain frontier not reviewed.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "generic-budget-ce-additive-goods",
+    "record_number": 146,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"competitive equilibrium\" \"almost all incomes\" additive"
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/1705.04212",
+        "review_depth": "search_only",
+        "reviewed_sections": "Search result/abstract lead only; theorem/model not reviewed for this record."
+      }
+    ],
+    "disposition": "search_only_review_pending",
+    "summary": "Almost-all-incomes source located; additive-model status not verified.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "stochastic-probing-subadditive-adaptivity-gap",
+    "record_number": 150,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"subadditive\" \"adaptivity gap\""
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2504.15547",
+        "review_depth": "search_only",
+        "reviewed_sections": "Search result/abstract lead only; theorem/model not reviewed for this record."
+      }
+    ],
+    "disposition": "search_only_review_pending",
+    "summary": "Potential Bernoulli versus multivalue probing mismatch needs theorem review; no bound transferred.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  },
+  {
+    "id": "truthful-submodular-combinatorial-auctions",
+    "record_number": 169,
+    "cutoff_date": "2026-11-09",
+    "coverage": "search_only",
+    "local_review": {
+      "source": true,
+      "enrichment": true
+    },
+    "queries": [
+      "\"truthful\" \"submodular\" \"2026\" constant",
+      "\"truthful\" \"submodular\" \"approximation\" \"2026\" arxiv"
+    ],
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2608.04337",
+        "review_depth": "search_only",
+        "reviewed_sections": "Search result/abstract lead only; theorem/model not reviewed for this record."
+      }
+    ],
+    "disposition": "search_only_review_pending",
+    "summary": "Budget-feasible procurement result is a different model from welfare-maximizing combinatorial auctions.",
+    "limitations": [
+      "Search coverage is not exhaustive; a negative search does not verify open status."
+    ],
+    "changed_files": [],
+    "review_scope": "Local source/enrichment read and web search; no primary-paper theorem review for this record."
+  }
+]

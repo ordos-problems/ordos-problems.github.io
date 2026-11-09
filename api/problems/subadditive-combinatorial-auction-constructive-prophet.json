@@ -1,0 +1,117 @@
+{
+ "number": 112,
+ "ref": "ORDOS-112",
+ "id": "subadditive-combinatorial-auction-constructive-prophet",
+ "title": "Constructive constant-factor prophet inequalities for subadditive combinatorial auctions",
+ "collection": "Market & Mechanism Design",
+ "area": "Prophet Inequalities and Auctions",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "prophet inequalities",
+  "subadditive valuations",
+  "combinatorial auctions",
+  "posted prices",
+  "mechanism design",
+  "online allocation"
+ ],
+ "short_statement": "For Bayesian combinatorial auctions with independent subadditive buyers, a constant-factor prophet inequality is now known nonconstructively. Is there a constructive constant-factor posted-price prophet inequality, and what is the tight factor?",
+ "open_problem": "Design a polynomial-time computable posted-price/order-online policy with a constant-factor prophet inequality for subadditive combinatorial auctions, or prove that no such constructive pricing guarantee exists.",
+ "background": "Subadditive combinatorial auctions are a central model for allocation without complementarities. There are $m$ items and buyers arrive online with independently drawn subadditive valuations over bundles. The offline benchmark is the welfare-maximizing allocation after seeing all valuations. A prophet inequality asks whether a sequential allocation rule, ideally implementable by posted item prices, can obtain a constant fraction of this offline welfare in expectation. This is exactly the online-allocation analogue of simple truthful mechanisms for rich valuation classes. For XOS valuations, constant posted-price prophet inequalities are known, but subadditive valuations are substantially harder because there may be no compact additive support representation. Dütting, Kesselheim, and Lucier improved the constructive guarantee from $O(\\log m)$ to $O(\\log\\log m)$ and explicitly conjectured that $O(1)$ should be possible with unequal-marginal dual prices. Later work resolved the existence of a constant-factor subadditive prophet inequality nonconstructively, but the survey by Saha and Parashar emphasizes that this approach cannot be implemented using prices. The remaining question is therefore clean: close the gap between existence and a constructive posted-price mechanism.",
+ "full_statement": "There is a set $M$ of $m$ indivisible items and buyers $i=1,\\ldots,n$ arrive sequentially in an arbitrary or fixed order. Buyer $i$ has a valuation function $v_i:2^M\\to\\mathbb{R}_{\\ge0}$ drawn independently from a known distribution over monotone subadditive valuations, meaning $v_i(S)+v_i(T)\\ge v_i(S\\cup T)$ for all $S,T\\subseteq M$. When buyer $i$ arrives, the mechanism observes $v_i$ and irrevocably allocates a subset of the remaining items to that buyer. Let $\\mathrm{OPT}$ be the expected welfare of the offline allocation maximizing $\\sum_i v_i(S_i)$ over disjoint item bundles after all valuations are known. Does there exist a polynomial-time computable posted-price or similarly constructive online policy, using standard value/demand-query access, whose expected welfare is at least $\\Omega(1)\\cdot\\mathrm{OPT}$ for all such instances? More sharply, determine the best possible constant factor and whether static anonymous item prices suffice.",
+ "known_results": "Feldman, Gravin, and Lucier gave an $O(\\log m)$ posted-price prophet inequality for subadditive valuations. Dütting, Kesselheim, and Lucier improved this to a constructive $O(\\log\\log m)$ guarantee using static anonymous item prices computable with demand-query access, and they prove their equal-marginal approach cannot beat $\\Omega(\\log\\log m)$. They conjecture that unequal-marginal dual prices can yield an $O(1)$ prophet inequality. Saha and Parashar's 2023 survey reports that later work resolves the central open problem of a constant-factor prophet inequality for subadditive valuations, but the known approach is nonconstructive and cannot be implemented using posted prices. Thus the constructive/pricing version and the tight constant remain open.",
+ "progress": {
+  "state": "partial",
+  "summary": "The constructive posted-price guarantee is $O(\\log\\log m)$. A constant-factor prophet inequality exists by later nonconstructive work, but this does not give computable posted prices or a simple mechanism.",
+  "links": [
+   {
+    "title": "Dütting, Kesselheim, Lucier, O(log log m) prophet inequality",
+    "url": "https://arxiv.org/abs/2004.09784"
+   },
+   {
+    "title": "Saha and Parashar survey on subadditive combinatorial auction prophet inequalities",
+    "url": "https://arxiv.org/abs/2305.12698"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "A lower bound against a class of posted prices may be witnessed by finite valuation profiles. A lower bound against all constructive online policies would require a more structural oracle or communication-complexity argument.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Automated search can test candidate price constructions and unequal-marginal distributions on finite subadditive valuation instances. Full progress likely needs LP duality, demand-query algorithms, and mechanism-design proof techniques.",
+ "literature": {
+  "synthesis": "The subadditive case exposes a gap between existential prophet inequalities and implementable posted-price mechanisms. Earlier balanced-price approaches give $O(\\log m)$ because subadditive valuations are too coarse to support the XOS-style item decomposition used for constants. Dütting-Kesselheim-Lucier's primal-dual approach improves this to $O(\\log\\log m)$ by considering equal item marginals over a logarithmic ladder of scales; their own lower bound shows that this equal-marginal framework is exhausted. The natural next proof idea is unequal marginals derived from dual solutions of allocation LPs. The later nonconstructive constant-factor existence result shows that the model itself does not require logarithmic loss, but it leaves open the algorithmic and mechanism-design question that matters for posted prices.",
+  "reviewed": [
+   {
+    "ref": "Paul Dütting, Thomas Kesselheim, Brendan Lucier, 'An O(log log m) Prophet Inequality for Subadditive Combinatorial Auctions', arXiv 2020",
+    "result": "Constructive $O(\\log\\log m)$ static anonymous item-price prophet inequality; proves equal-marginal approach cannot do better and poses the unequal-marginal constant conjecture.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2004.09784"
+   },
+   {
+    "ref": "Michal Feldman, Nick Gravin, Brendan Lucier, 'Combinatorial Auctions via Posted Prices', SODA 2015",
+    "result": "Gives the earlier $O(\\log m)$ posted-price prophet inequality for subadditive valuations and constant results for XOS.",
+    "relevance": "partial-progress",
+    "url": "https://doi.org/10.1137/1.9781611973730.9"
+   },
+   {
+    "ref": "Dwaipayan Saha, Ananya Parashar, 'Prophet Inequalities for Subadditive Combinatorial Auctions', arXiv 2023",
+    "result": "Surveys the $O(\\log m)$ and $O(\\log\\log m)$ constructive mechanisms and explains that a later constant-factor result is nonconstructive and not implementable using posted prices.",
+    "relevance": "survey",
+    "url": "https://arxiv.org/abs/2305.12698"
+   },
+   {
+    "ref": "Aviad Rubinstein, Sahil Singla, 'Combinatorial Prophet Inequalities', SODA 2017",
+    "result": "Develops broader combinatorial prophet inequalities, including logarithmic guarantees for subadditive objectives under downward-closed feasibility.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/1611.00665"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Focus on unequal-marginal distributions and dual prices for configuration or welfare LPs. Try to identify a distribution over target bundles whose item marginals avoid the Dütting-Kesselheim-Lucier lower bound, while preserving enough buyer utility after previous sales. Another route is an oracle lower bound for static anonymous prices, which would clarify whether dynamic or discriminatory prices are necessary.",
+  "verification_notes": "A positive result must be constructive: it should specify how prices or allocation rules are computed with standard query access and prove a constant approximation for all monotone subadditive valuation distributions. A nonconstructive existence theorem alone does not resolve this record.",
+  "machine_checkable": false
+ },
+ "where_posed": {
+  "text": "Conjectured as the next step in Dütting, Kesselheim, and Lucier, 'An O(log log m) Prophet Inequality for Subadditive Combinatorial Auctions'.",
+  "url": "https://arxiv.org/abs/2004.09784",
+  "quote": "we conjecture that an O(1)-approximate prophet inequality can be achieved using item prices that are dual to a distribution with unequal marginals. But we leave resolving this conjecture as an open problem.",
+  "location": "Section 1.1, 'Going Beyond O(log log m)'"
+ },
+ "source": {
+  "authors": "Paul Dütting, Thomas Kesselheim, Brendan Lucier",
+  "title": "An O(log log m) Prophet Inequality for Subadditive Combinatorial Auctions",
+  "year": 2020,
+  "venue": "arXiv:2004.09784",
+  "url": "https://arxiv.org/abs/2004.09784"
+ },
+ "additional_refs": [
+  {
+   "authors": "Dwaipayan Saha, Ananya Parashar",
+   "title": "Prophet Inequalities for Subadditive Combinatorial Auctions",
+   "year": 2023,
+   "venue": "arXiv:2305.12698",
+   "url": "https://arxiv.org/abs/2305.12698"
+  },
+  {
+   "authors": "Aviad Rubinstein, Sahil Singla",
+   "title": "Combinatorial Prophet Inequalities",
+   "year": 2017,
+   "venue": "SODA",
+   "url": "https://arxiv.org/abs/1611.00665"
+  }
+ ],
+ "bibtex": "@misc{Dtting2020,\n  author = {Paul Dütting and Thomas Kesselheim and Brendan Lucier},\n  title = {An O(log log m) Prophet Inequality for Subadditive Combinatorial Auctions},\n  year = {2020},\n  howpublished = {arXiv:2004.09784},\n  url = {https://arxiv.org/abs/2004.09784},\n  note = {Source of ORdős Problem ORDOS-112}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/subadditive-combinatorial-auction-constructive-prophet.html",
+  "api": "https://ordos-problems.github.io/api/problems/subadditive-combinatorial-auction-constructive-prophet.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

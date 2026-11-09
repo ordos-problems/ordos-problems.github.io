@@ -1,0 +1,42 @@
+{
+  "id": "greedy-dynamic-matching-heterogeneous-departures",
+  "background": "Dynamic matching with abandonment is a clean model for markets where compatibility is valuable but delay risks losing agents: kidney exchange pools, labor platforms, freight exchanges, rideshare pooling, and peer-to-peer barter markets all have this shape. A planner sees agents arrive over time, can match compatible agents currently in the system, and loses agents who depart unmatched. The fundamental tension is whether to match greedily or wait for market thickness. In full generality, the offline optimum is too strong because it knows future arrivals and departure times, but it is a useful benchmark for competitive analysis. The Arnosti-Simon paper is important because it asks a very sharp question inside this fixed stochastic model: can a deterministic greedy policy, chosen by an LP, always get the optimal possible $1/2$ of the omniscient benchmark? They prove this in equal-departure and certain bipartite settings, and no online policy can beat $1/2$ there. The missing theorem is exactly the kind this site should track: extend or refute the $1/2$ guarantee for heterogeneous departure rates.",
+  "open_problem": "Prove or refute that the Arnosti-Simon LP-selected greedy policy achieves at least $1/2$ of the omniscient benchmark for every finite dynamic matching instance with arbitrary heterogeneous exponential departure rates and rewards.",
+  "known_results": "Collina, Immorlica, Leyton-Brown, Lucier, and Newman proved a $1/8$-competitive algorithm for dynamic weighted matching with heterogeneous arrivals and departures. Aouad and Saritac developed an LP-based approach for dynamic stochastic matching under limited time in Operations Research. Arnosti and Simon introduce $LP^{ALG}$ to select a greedy policy and prove that its value lower-bounds the greedy policy in two main cases: equal departure rates for all types, and bipartite instances with equal departure rates on each side. They also prove $LP^{ALG}$ is at least half of the omniscient benchmark, yielding a tight $1/2$ guarantee in those settings, and show no online policy can do better than $1/2$. They prove the heterogeneous-departure conjecture for two types and report no computational counterexample, but the arbitrary heterogeneous-rate case remains open.",
+  "status": "conjecture",
+  "where_posed": {
+    "text": "Posed as the heterogeneous-departure extension in Arnosti and Simon, 'Greedy Dynamic Matching'.",
+    "url": "https://arxiv.org/abs/2507.04551",
+    "quote": "",
+    "location": "Conjecture/discussion around the general departure-rate case."
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "The 2025 Arnosti-Simon paper improves the general state of knowledge from a $1/8$ guarantee to a tight $1/2$ theorem in homogeneous-departure settings and proves the conjecture for two types. The heterogeneous many-type case is the remaining gap.",
+    "links": [
+      {"title": "Arnosti and Simon, Greedy Dynamic Matching", "url": "https://arxiv.org/abs/2507.04551"},
+      {"title": "Collina et al., Dynamic Weighted Matching with Heterogeneous Arrival and Departure Rates", "url": "https://arxiv.org/abs/2012.00689"},
+      {"title": "Aouad and Saritac, Dynamic Stochastic Matching Under Limited Time", "url": "https://doi.org/10.1287/opre.2021.2164"}
+    ]
+  },
+  "importance": 8,
+  "difficulty": 7,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "A counterexample, if it exists, should be expressible as a finite set of types with arrival rates, departure rates, and rewards. The relevant LPs and Markov reward rates can be computed or tightly approximated for small instances.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "This is a strong target for automated search: generate small heterogeneous-rate instances, solve $LP^{ALG}$, compute or simulate the greedy steady-state reward, and compare against upper bounds on the omniscient benchmark. Search may find the first obstruction or suggest the invariant needed for a proof.",
+  "literature": {
+    "synthesis": "Earlier dynamic matching theory established that greedy and patient policies can be dramatically different depending on information and market thickness, but heterogeneous weighted models resisted sharp guarantees. Collina et al. handled arbitrary heterogeneous arrival and departure rates with a $1/8$ competitive ratio against an omniscient benchmark. Aouad and Saritac gave an Operations Research LP framework for limited-time dynamic stochastic matching. Arnosti and Simon sharpen the model by studying deterministic greedy policies selected through $LP^{ALG}$ and prove the best possible $1/2$ ratio in homogeneous-departure cases. Their proof hinges on a lemma relating the probability that some agent in a set is present to the expected number of such agents. The open problem is whether an analogous inequality or replacement argument survives heterogeneous departure rates, where fast-departing and slow-departing types create asymmetric inventory effects.",
+    "reviewed": [
+      {"ref": "Collina, Immorlica, Leyton-Brown, Lucier, Newman, 'Dynamic Weighted Matching with Heterogeneous Arrival and Departure Rates', WINE 2020", "result": "Gives a $1/8$-competitive online algorithm for arbitrary weighted non-bipartite dynamic matching with heterogeneous rates.", "relevance": "partial-progress", "url": "https://arxiv.org/abs/2012.00689"},
+      {"ref": "Aouad and Saritac, 'Dynamic Stochastic Matching Under Limited Time', Operations Research 2022", "result": "Develops LP-guided policies and analysis for dynamic stochastic matching under limited time.", "relevance": "related-tool", "url": "https://doi.org/10.1287/opre.2021.2164"},
+      {"ref": "Arnosti and Simon, 'Greedy Dynamic Matching', arXiv 2025", "result": "Proves the tight $1/2$ guarantee for LP-selected greedy policies under homogeneous departures and same-side homogeneous bipartite departures; leaves the fully heterogeneous case open.", "relevance": "partial-progress", "url": "https://arxiv.org/abs/2507.04551"}
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Start with small-type exhaustive search and exact CTMC calculations to test the conjecture beyond simulations. For proof attempts, isolate the Arnosti-Simon presence-probability lemma and try to extend it using weighted departure-rate transforms, coupling, or a charging argument to the omniscient LP. Another route is to identify the strongest valid LP upper bound under heterogeneous departures.",
+    "verification_notes": "A counterexample must specify all rates and rewards, the LP-selected greedy policy, a rigorous value computation or certified numerical bound for its steady-state reward, and an upper/lower certificate showing the ratio is below $1/2$. A positive proof must handle arbitrary finite type sets and cannot assume common patience except as an explicit special case.",
+    "machine_checkable": true
+  },
+  "notes_for_maintainer": "This directly addresses the user's earlier request about Nick Arnosti's stochastic/greedy matching paper. The open part is narrow and well posed."
+}

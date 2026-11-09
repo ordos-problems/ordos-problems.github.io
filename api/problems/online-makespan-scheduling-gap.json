@@ -14,10 +14,59 @@
   "competitive analysis",
   "identical machines"
  ],
- "short_statement": "Jobs arrive one at a time and each must be placed irrevocably on one of $m$ identical machines, minimizing the makespan. What is the optimal competitive ratio of a deterministic online algorithm as $m$ grows large?",
- "open_problem": "Determine the exact asymptotic deterministic competitive ratio for online makespan scheduling on identical machines.",
- "full_statement": "In online makespan scheduling on identical machines ($P\\,|\\,online\\text{-}list\\,|\\,C_{\\max}$), jobs arrive one at a time and each must be assigned irrevocably to one of $m$ identical machines upon arrival. The objective is to minimize the makespan, i.e., the load (total processing time) of the busiest machine, compared against the optimal offline assignment. Graham's 1966 greedy (list scheduling) rule is $(2-1/m)$-competitive. Let $\\rho^*(m)$ be the optimal competitive ratio of a deterministic online algorithm on $m$ machines, and let $\\rho^*=\\lim_{m\\to\\infty}\\rho^*(m)$ be its asymptotic value. Determine $\\rho^*$. Known: $1.88\\le \\rho^* \\le 1.9201$.",
- "known_results": "Graham's list-scheduling algorithm is $(2-1/m)$-competitive, and this is optimal only for $m=2$ and $m=3$. For large $m$, Fleischer and Wahl gave the best known deterministic upper bound, about $1.9201$, while Rudin's lower-bound construction gives about $1.88$. The asymptotic interval $[1.88,1.9201]$ has been stable for many years. The open problem is to determine the exact asymptotic deterministic competitive ratio for online makespan scheduling on identical machines.",
+ "short_statement": "Close the long-standing gap between the $1.88$ deterministic lower bound and the $1.9201$ deterministic upper bound for online makespan minimization on identical machines.",
+ "open_problem": "Determine the optimal asymptotic deterministic competitive ratio for online makespan minimization on identical machines in the adversarial arrival model.",
+ "background": "This is one of the canonical problems in online algorithms and one of the oldest scheduling problems in competitive analysis. The model is deliberately austere: jobs are independent, machines are identical, there are no release dates beyond online arrival, and the algorithm's only decision is which current machine receives the current job. Graham's list scheduling rule dates to the 1960s and remains the first example many researchers see of an online scheduling guarantee. The difficulty is that irrevocability creates adversarial sequences in which every load-balancing choice can be punished later. The problem is also a useful reference point for variants with random arrival order, migration, restart, preemption, semi-online information, or resource augmentation, because improvements in those variants show exactly which additional powers help and which do not address the fully adversarial list model.",
+ "full_statement": "There are $m$ identical parallel machines. Jobs arrive online one by one, and job $j$ reveals a processing time $p_j>0$ when it arrives. A deterministic online algorithm must assign $j$ irrevocably to one of the $m$ machines before seeing future jobs. Its cost is the final makespan $C_{\\max}=\\max_i \\sum_{j\\text{ assigned to }i}p_j$. For a fixed $m$, let $\\rho_m$ be the infimum competitive ratio over deterministic online algorithms, meaning the smallest $\\rho$ for which $C_{\\max}^{ALG}(\\sigma)\\le \\rho C_{\\max}^{OPT}(\\sigma)+O(1)$ for every input sequence $\\sigma$. The open problem is to determine $\\limsup_{m\\to\\infty}\\rho_m$, or equivalently to close the current asymptotic interval between the best known lower and upper bounds. The core question is whether the optimal deterministic ratio is closer to $1.88$, to $1.9201$, or to a different explicit constant.",
+ "known_results": "Graham proved that list scheduling is $(2-1/m)$-competitive. For $m=2$ and $m=3$ this ratio is optimal, but for larger $m$ better algorithms exist. The best source-checked asymptotic deterministic upper bound remains about $1.9201$, attributed in the later literature to Fleischer and Wahl, while the best source-checked lower bound is $1.88$. Albers and Janke's 2020 random-order paper restates this adversarial-model interval while improving the random-order model to $1.8478$, illustrating that random arrival order is a genuinely easier variant. Albers and Hellwig settle a migration-allowed version at a much smaller constant, again showing that the unresolved gap belongs specifically to the no-migration, adversarial-order model. As of the 2026 check, I found no paper closing the $[1.88,1.9201]$ deterministic adversarial gap.",
+ "progress": {
+  "state": "partial",
+  "summary": "The deterministic adversarial gap remains $1.88$ versus $1.9201$ in recent source-checked summaries. Related models with migration or random order have seen stronger progress, but those results do not resolve the irrevocable adversarial-order problem.",
+  "links": [
+   {
+    "title": "Scheduling in the Random-Order Model",
+    "url": "https://arxiv.org/abs/2006.00386"
+   },
+   {
+    "title": "On the Value of Job Migration in Online Makespan Minimization",
+    "url": "https://arxiv.org/abs/1111.0773"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Lower bounds are explicit adversarial job sequences and can often be searched for with finite-state adversaries. Upper bounds require full proofs but candidate algorithms and adversarial sequences are computationally testable on bounded instances.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "This is a strong target for automated search: an agent can evolve online rules, adversarial sequence generators, and small linear programs certifying lower bounds. The final resolution still needs a general competitive-analysis proof.",
+ "literature": {
+  "synthesis": "The field has a stable hierarchy of results. Graham's greedy rule gives the baseline $(2-1/m)$. Subsequent algorithms lowered the asymptotic upper bound below $2$, with the best commonly cited deterministic value at $1.9201$. Lower-bound constructions rule out ratios below $1.88$. The modern literature has produced strong progress in nearby models: random-order arrival admits a $1.8478$ deterministic guarantee, and bounded migration changes the achievable constants dramatically. These papers are useful because they verify that the classic adversarial no-migration gap is not a formatting artifact; it remains a real open interval. A solution likely needs either a new adversarial lower-bound family above $1.88$ or a new algorithmic invariant improving on the current upper-bound machinery.",
+  "reviewed": [
+   {
+    "ref": "Ronald L. Graham, 'Bounds for Certain Multiprocessing Anomalies', Bell System Technical Journal 1966",
+    "result": "Introduces list scheduling and proves the $(2-1/m)$ guarantee for online assignment to identical machines.",
+    "relevance": "foundational",
+    "url": "https://onlinelibrary.wiley.com/doi/10.1002/j.1538-7305.1966.tb01709.x"
+   },
+   {
+    "ref": "Susanne Albers, Maximilian Janke, 'Scheduling in the Random-Order Model', arXiv 2020",
+    "result": "Restates the adversarial deterministic interval $[1.88,1.9201]$ and proves improved guarantees in the random-order model.",
+    "relevance": "status-check",
+    "url": "https://arxiv.org/abs/2006.00386"
+   },
+   {
+    "ref": "Susanne Albers, Matthias Hellwig, 'On the Value of Job Migration in Online Makespan Minimization', arXiv 2011",
+    "result": "Settles a migration-allowed variant and contrasts it with the no-migration deterministic gap.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/1111.0773"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Try two complementary tracks: synthesize better deterministic assignment rules and separately synthesize adversarial lower-bound sequences. For lower bounds, factor-revealing programs and finite adversary trees can help certify candidate constants. For upper bounds, identify load-profile invariants that dominate known algorithms and prove they survive every possible next job.",
+  "verification_notes": "A lower-bound submission must define a family of job sequences for unbounded $m$ or a limiting construction and prove that every deterministic algorithm incurs the claimed ratio. An upper-bound submission must cover all job sequences and all sufficiently large $m$; empirical performance or random-order analysis is not enough.",
+  "machine_checkable": true
+ },
  "where_posed": {
   "text": "Greedy rule and model originated in Graham, 'Bounds for Certain Multiprocessing Anomalies', 1966, Bell System Technical Journal.",
   "url": "https://onlinelibrary.wiley.com/doi/10.1002/j.1538-7305.1966.tb01709.x"
@@ -34,8 +83,8 @@
    "authors": "Rudolf Fleischer, Michaela Wahl",
    "title": "On-line Scheduling Revisited",
    "year": 2000,
-   "venue": "J. Scheduling / ESA",
-   "url": ""
+   "venue": "Journal of Scheduling",
+   "url": "https://link.springer.com/article/10.1023/A:1009638718159"
   },
   {
    "authors": "John F. Rudin III, R. Chandrasekaran",
@@ -43,6 +92,20 @@
    "year": 2003,
    "venue": "SIAM J. Computing",
    "url": "https://epubs.siam.org/doi/10.1137/S0097539702403438"
+  },
+  {
+   "authors": "Susanne Albers, Maximilian Janke",
+   "title": "Scheduling in the Random-Order Model",
+   "year": 2020,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2006.00386"
+  },
+  {
+   "authors": "Susanne Albers, Matthias Hellwig",
+   "title": "On the Value of Job Migration in Online Makespan Minimization",
+   "year": 2011,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/1111.0773"
   }
  ],
  "bibtex": "@misc{Graham1966,\n  author = {Ronald L. Graham},\n  title = {Bounds for Certain Multiprocessing Anomalies},\n  year = {1966},\n  howpublished = {Bell System Technical Journal},\n  url = {https://onlinelibrary.wiley.com/doi/10.1002/j.1538-7305.1966.tb01709.x},\n  note = {Source of ORdős Problem ORDOS-012}\n}",

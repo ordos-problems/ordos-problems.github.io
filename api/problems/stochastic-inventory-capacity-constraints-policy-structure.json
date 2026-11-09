@@ -1,0 +1,91 @@
+{
+ "number": 119,
+ "ref": "ORDOS-119",
+ "id": "stochastic-inventory-capacity-constraints-policy-structure",
+ "title": "Optimal policy structure for capacitated stochastic inventory with fixed ordering costs",
+ "collection": "Operations Management",
+ "area": "Inventory Theory",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "inventory",
+  "capacitated-ordering",
+  "dynamic-programming",
+  "policy-structure",
+  "operations-management"
+ ],
+ "short_statement": "In a single-item periodic-review inventory system with fixed ordering costs and an order-capacity constraint, the natural continuous-order-property conjecture is false. What is the correct exact structural description of the optimal policy?",
+ "open_problem": "Give an exact structural characterization of optimal policies for capacitated stochastic inventory with fixed ordering costs, or prove that no finite threshold-like policy class can represent all optimal policies.",
+ "background": "Fixed ordering costs and order-capacity constraints are both standard ingredients in inventory theory. Separately, they lead to fairly interpretable policies: fixed costs suggest $(s,S)$ rules, while capacity constraints create gradual replenishment behavior. Together they produce a surprisingly delicate dynamic program. The state is only one-dimensional, so this is not a vague modelling problem or a curse-of-dimensionality artifact. The hard part is structural: the Bellman operator can create disconnected ordering regions and invalidate the most natural conjectures about when an order should be placed. This makes the problem a useful benchmark for operations-management theory, because a complete answer would say whether the classical threshold-policy paradigm survives once capacity and fixed charges are both present. Rossi, Chen, and Tarim give a numerical counterexample to the continuous order property, showing that the most obvious clean structure is false. The remaining question is not whether practitioners can compute good heuristics; it is whether the exact optimal policy has any parsimonious theorem-level description.",
+ "full_statement": "Consider a periodic-review, single-item, single-location stochastic inventory system. At the beginning of period $t$, the state is inventory position $x_t$. The controller may order $q_t \\in [0,Q]$, where $Q$ is a fixed order-capacity bound. If $q_t>0$ a fixed ordering cost $K$ is incurred, in addition to any proportional ordering cost. Random demand $D_t$ is then realized, and the system incurs holding and backorder or lost-sales costs according to a specified standard convex one-period cost function. The objective is to minimize expected discounted cost or long-run average cost over an infinite horizon. Classical uncapacitated fixed-cost inventory models have $(s,S)$-type structure, while capacitated models may require multiple reorder regions. The open problem is to characterize the exact structure of an optimal stationary policy under the order-capacity constraint: after the continuous order property and modified multi-$(s,S)$ conjecture fail in general, is there a finite, checkable structural class that is always optimal, or can one prove that no comparably simple threshold description exists?",
+ "known_results": "Classical uncapacitated fixed-cost inventory models admit $(s,S)$-type optimal policies under standard assumptions. Capacitated variants have only partial structural characterizations. Rossi, Chen, and Tarim (2023) show that if the continuous order property held, the optimal policy would have a modified multi-$(s,S)$ form, but they also provide a numerical counterexample in which the continuous order property is violated. Their computations indicate that violations may be rare, and modified multi-$(s,S)$ policies perform extremely well in tested instances. The exact general optimal-policy structure remains open.",
+ "progress": {
+  "state": "partial",
+  "summary": "The continuous order property and the resulting modified multi-$(s,S)$ conjecture are known to fail in general, but computational evidence suggests that violations are rare and that the heuristic policy class is often nearly optimal.",
+  "links": [
+   {
+    "title": "Rossi, Chen, Tarim, 2023",
+    "url": "https://arxiv.org/abs/2307.00942"
+   }
+  ]
+ },
+ "importance": 7,
+ "difficulty": 7,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "Finite-support demand instances and finite inventory truncations can be searched to refute proposed structural conjectures. The 2023 counterexample already shows that computational search is relevant.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "An evolutionary search loop can generate small dynamic-programming instances with unusual optimal action regions, helping identify the right structural invariants or further counterexamples.",
+ "literature": {
+  "synthesis": "The literature around this model is a good example of a mature operations-management problem where the modelling is settled but the structural theorem is missing. Classical fixed-cost inventory control suggests reorder intervals and order-up-to levels. Capacity constraints complicate this by preventing large corrective orders, so the Bellman recursion may favor ordering over multiple separated state regions. Rossi, Chen, and Tarim isolate the continuous order property as the condition under which a modified multi-$(s,S)$ policy follows, then disprove that property by explicit numerical example. This leaves two possible directions: find a richer exact class that contains all optimal policies, or prove a negative result showing that no simple interval/threshold representation is possible without extra assumptions.",
+  "reviewed": [
+   {
+    "ref": "Roberto Rossi, Zhen Chen, S. Armagan Tarim, 'On the stochastic inventory problem under order capacity constraints', arXiv 2023",
+    "result": "Shows that the continuous order property implies a modified multi-$(s,S)$ structure, but gives a counterexample to the property.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2307.00942"
+   },
+   {
+    "ref": "Evan L. Porteus, 'Foundations of Stochastic Inventory Theory', Stanford University Press 2002",
+    "result": "Classical reference for $(s,S)$ and dynamic-programming structure in stochastic inventory.",
+    "relevance": "related-tool",
+    "url": "https://www.sup.org/books/title/?id=3702"
+   },
+   {
+    "ref": "Herbert Scarf, 'The optimality of (s,S) policies in the dynamic inventory problem', 1960",
+    "result": "Foundational structural theorem for fixed-cost inventory without the same capacity complication.",
+    "relevance": "solves-special-case",
+    "url": "https://doi.org/10.1515/9781400882015-013"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Compute exact finite-horizon or discounted infinite-horizon policies for small integer-demand instances and classify the geometry of ordering regions. Search for invariants based on $K$-convexity variants, discrete convexity, or monotone comparative statics that survive the known counterexample.",
+  "verification_notes": "A claimed positive structure must handle the known continuous-order-property counterexample. A claimed counterexample to a new conjecture should include the finite demand distribution, parameters, truncation/error certificate, and the Bellman values or policy table.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "Posed in Rossi, Chen, and Tarim, 'On the stochastic inventory problem under order capacity constraints', 2023.",
+  "url": "https://arxiv.org/abs/2307.00942",
+  "quote": "A long-standing problem is that of determining the structure of the optimal control policy when this system is subject to order quantity capacity constraints.",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Roberto Rossi, Zhen Chen, S. Armagan Tarim",
+  "title": "On the stochastic inventory problem under order capacity constraints",
+  "year": 2023,
+  "venue": "arXiv:2307.00942",
+  "url": "https://arxiv.org/abs/2307.00942"
+ },
+ "additional_refs": [],
+ "bibtex": "@misc{Rossi2023,\n  author = {Roberto Rossi and Zhen Chen and S. Armagan Tarim},\n  title = {On the stochastic inventory problem under order capacity constraints},\n  year = {2023},\n  howpublished = {arXiv:2307.00942},\n  url = {https://arxiv.org/abs/2307.00942},\n  note = {Source of ORdős Problem ORDOS-119}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/stochastic-inventory-capacity-constraints-policy-structure.html",
+  "api": "https://ordos-problems.github.io/api/problems/stochastic-inventory-capacity-constraints-policy-structure.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

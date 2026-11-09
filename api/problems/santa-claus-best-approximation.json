@@ -13,13 +13,74 @@
   "approximation ratio",
   "local search"
  ],
- "short_statement": "Separately from the integrality-gap question, the best polynomial-time approximation ratio for restricted max-min fair allocation is open: non-constructive arguments give $\\approx 3.8\\text{--}4$, but the best actual polynomial-time algorithm only guarantees $4 + \\delta$.",
- "open_problem": "Determine the best polynomial-time approximation ratio $\\rho$.",
- "full_statement": "Separately from the integrality-gap question, there is the algorithmic question: what is the best ratio achievable in polynomial time for restricted max-min fair allocation (restricted Santa Claus)? \\textbf{Determine the best polynomial-time approximation ratio $\\rho$.} Known: $\\rho \\le 4 + \\delta$ for any constant $\\delta > 0$ (Cheng-Mao). The configuration LP certifies that allocations within a factor $\\le 3.808$ of optimal exist (non-constructively), so closing the constructive vs. existential gap is open.",
- "known_results": "Cheng and Mao give the best polynomial-time approximation, with ratio $4+\\delta$ for any fixed $\\delta>0$, improving earlier guarantees of $6+\\delta$ and about $12.33$. Separately, the configuration-LP analysis proves that allocations within a factor about $3.808$ of optimum exist, but the proof does not yield a polynomial-time algorithm with that ratio. The open problem is to close this constructive-versus-existential gap, or to prove that polynomial-time algorithms face a larger barrier.",
+ "short_statement": "Restricted Santa Claus has a $4+\\delta$ polynomial-time algorithm and an existential configuration-LP bound $53/15$; close the constructive gap.",
+ "open_problem": "Determine the best polynomial-time approximation ratio for restricted max-min fair allocation, and in particular close the gap between the $4+\\delta$ algorithm and the $53/15$ configuration-LP existence bound.",
+ "background": "The restricted Santa Claus problem has two related but distinct open questions. One asks for the integrality gap of the configuration LP; the other asks for the best polynomial-time approximation algorithm. These are not the same because the strongest LP-gap proofs rely on local-search or hypergraph-matching arguments whose polynomial-time convergence is difficult. The best current polynomial-time guarantee is Cheng and Mao's $4+\\delta$ approximation. Their same work improved the LP integrality-gap upper bound to about $3.808$; Haxell and Szabo subsequently reached $53/15$, showing that better allocations exist relative to the LP than current efficient algorithms can necessarily find. The open problem is to close this constructive-versus-existential gap.",
+ "full_statement": "Given players $P$, resources $R$, resource values $v_r$, and desire sets $R_p\\subseteq R$, find a polynomial-time algorithm that allocates every resource to at most one player and maximizes, up to approximation, $\\min_{p\\in P}\\sum_{r\\in A_p\\cap R_p}v_r$. The restricted case means every acceptable resource has the same value $v_r$ for all players who desire it; unacceptable resources have value $0$. Let $OPT$ be the maximum possible minimum bundle value. Determine the infimum constant $\\alpha$ for which there is a polynomial-time $\\alpha$-approximation for all restricted instances. In particular, can one beat the current $4+\\delta$ polynomial-time guarantee, match the best known configuration-LP existence bound $53/15$, or prove that no polynomial-time algorithm below some larger threshold exists under standard complexity assumptions?",
+ "known_results": "Feige and Asadpour-Feige-Saberi established constant-factor existence results for restricted max-min allocation through configuration-LP and hypergraph-matching methods. Annamalai, Kalaitzis, and Svensson gave a polynomial-time $13$-approximation, introducing lazy updates and other devices to make local search terminate efficiently. Cheng and Mao subsequently improved polynomial-time guarantees, first to $6+\\delta$ and then to $4+\\delta$ for every fixed $\\delta>0$; their 2019 paper also proves the stronger existential configuration-LP integrality-gap upper bound $3+21/26\\approx3.808$. The lower-bound side includes the basic hardness barrier of factor $2$ for related max-min allocation formulations and the known configuration-LP lower bound of $2$. The remaining open problem is the constructive threshold: whether the $4+\\delta$ algorithm can be improved, whether the newer $53/15$ existence bound can be made algorithmic, or whether a new hardness or algorithmic barrier separates efficient algorithms from the LP gap. Haxell and Szabo (SODA 2023; Combinatorica 2025), Theorem 1.1, improve the restricted configuration-LP gap to $53/15$. This is existential, not a polynomial-time allocation algorithm.",
+ "progress": {
+  "state": "partial",
+  "summary": "The polynomial-time guarantee remains $4+\\delta$; the stronger existential LP-gap bound is $53/15$.",
+  "links": [
+   {
+    "title": "Cheng and Mao, $4+\\delta$ and $3.808$ LP gap",
+    "url": "https://arxiv.org/abs/1905.06084"
+   },
+   {
+    "title": "Annamalai, Kalaitzis, Svensson, $13$-approximation",
+    "url": "https://arxiv.org/abs/1409.0607"
+   },
+   {
+    "title": "Haxell and Szabo, Improved Integrality Gap in Max-Min Allocation, or, Topology at the North Pole, Combinatorica 45, 22 (2025)",
+    "url": "https://arxiv.org/pdf/2202.01143"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "Finite instances can expose failures of candidate local-search algorithms, but approximation lower bounds require reductions.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Search can stress local-search rules and identify slow-convergence or hard allocation hypergraphs. Algorithmic progress needs proof of polynomial convergence and approximation ratio.",
+ "literature": {
+  "synthesis": "The algorithmic history tracks the effort to make hypergraph-matching-style existence proofs efficient. Purely combinatorial local search brought the first usable polynomial constants, and Cheng-Mao's refinements reduced the ratio to $4+\\delta$. The remaining gap to the $53/15$ integrality bound may be an artifact of analysis, a real barrier for known local-search algorithms, or a sign that a different rounding method is needed. Any improvement must preserve polynomial running time, not just show that a good allocation exists.",
+  "reviewed": [
+   {
+    "ref": "Chidambaram Annamalai, Christos Kalaitzis, Ola Svensson, 'Combinatorial Algorithm for Restricted Max-Min Fair Allocation', TALG 2017",
+    "result": "Gives a polynomial-time $13$-approximation via local search.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1409.0607"
+   },
+   {
+    "ref": "Siu-Wing Cheng, Yuchen Mao, 'Restricted Max-Min Allocation: Approximation and Integrality Gap', Algorithmica 2022",
+    "result": "Gives a $4+\\delta$ polynomial-time approximation and improves the LP integrality-gap upper bound.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1905.06084"
+   },
+   {
+    "ref": "Arash Asadpour, Uriel Feige, Amin Saberi, 'Santa Claus Meets Hypergraph Matchings', TALG 2012",
+    "result": "Provides the hypergraph-matching/local-search basis for constant-gap configuration-LP results.",
+    "relevance": "related-tool",
+    "url": "https://www.wisdom.weizmann.ac.il/~feige/mypapers/santaclaus1.pdf"
+   },
+   {
+    "ref": "Haxell and Szabo, Improved Integrality Gap in Max-Min Allocation, or, Topology at the North Pole, Combinatorica 45, 22 (2025)",
+    "result": "Existential improvement only; does not supersede the $4+\\delta$ polynomial algorithm.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/pdf/2202.01143"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Study whether Cheng-Mao local search can be sharpened to match the $53/15$ existential LP bound, or whether alternative hypergraph matching algorithms yield better constructive ratios.",
+  "verification_notes": "Do not confuse an integrality-gap proof with a polynomial-time approximation algorithm. A claimed algorithmic improvement must output an actual allocation, run in time polynomial in the input size for every fixed accuracy parameter, and compare its value with the true optimum or a clearly stated LP upper bound. If the proof uses augmenting trees, hypergraph matchings, or blocker sequences, the referee should check both the approximation invariant and the polynomial bound on the number of local-search steps. A hardness claim must specify whether it is for restricted valuations and whether the threshold is relative to $OPT$ rather than to the configuration LP.",
+  "machine_checkable": false
+ },
  "where_posed": {
-  "text": "The best polynomial-time ratio 4 + delta is from Cheng & Mao, 'Restricted Max-Min Allocation: Integrality Gap and Approximation Algorithm,' Algorithmica (ICALP 2019); existential ~3.808 via the configuration LP. Closing the constructive-existential gap is open.",
-  "url": "https://arxiv.org/abs/1905.06084"
+  "text": "Constructive gap emphasized by Cheng and Mao, 'Restricted Max-Min Allocation: Approximation and Integrality Gap'.",
+  "url": "https://arxiv.org/abs/1905.06084",
+  "quote": "we narrow the gap significantly by proposing a $(4+\\delta)$-approximation algorithm",
+  "location": "Abstract"
  },
  "source": {
   "authors": "Siu-Wing Cheng, Yuchen Mao",
@@ -35,6 +96,13 @@
    "year": 2017,
    "venue": "ACM Transactions on Algorithms (SODA 2015)",
    "url": "https://arxiv.org/abs/1409.0607"
+  },
+  {
+   "authors": "Penny Haxell, Tibor Szabo",
+   "title": "Improved Integrality Gap in Max-Min Allocation: or Topology at the North Pole",
+   "year": 2025,
+   "venue": "Combinatorica 45, 22; SODA 2023",
+   "url": "https://arxiv.org/abs/2202.01143"
   }
  ],
  "bibtex": "@misc{Cheng2022,\n  author = {Siu-Wing Cheng and Yuchen Mao},\n  title = {Restricted Max-Min Allocation: Integrality Gap and Approximation Algorithm},\n  year = {2022},\n  howpublished = {Algorithmica (ICALP 2019)},\n  url = {https://arxiv.org/abs/1905.06084},\n  note = {Source of ORdős Problem ORDOS-057}\n}",

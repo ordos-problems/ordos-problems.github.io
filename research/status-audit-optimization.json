@@ -1,0 +1,1629 @@
+{
+  "audit_date": "2026-11-09",
+  "status": "finalized",
+  "scope": {
+    "source": "build/problems_source.json",
+    "record_numbering": "1-based local source array, not live catalogue",
+    "initial_assigned_count": 54,
+    "total_records": 55,
+    "override_directory": "research/enrichment",
+    "live_catalogue_not_used": true,
+    "parent_owned_records": [
+      113
+    ],
+    "owned_record_count": 54
+  },
+  "coverage_definitions": {
+    "not searched": "No title/model literature search performed.",
+    "search-only": "Search result screening only; no relevant source abstract/full text substantively reviewed.",
+    "abstract-only": "Primary abstract or metadata/version notice read; theorem text not reviewed.",
+    "theorem/full-text reviewed": "Relevant theorem/model passages read; does NOT mean the whole paper or proof was independently verified."
+  },
+  "query_log_note": "Representative title/model searches are recorded per ID. Early queries were reconstructed from session notes, not a complete exact search-engine transcript. Empty source lists mean no primary result was promoted from the search.",
+  "global_limits": [
+    "No independent proof certification, Lean execution, or reproduction of numerical certificates.",
+    "No-hit searches do not establish open status or exhaust the literature.",
+    "Publication status and theorem-review depth are separate; research-release and arXiv claims are not automatically established results.",
+    "Local source and existing enrichment overrides were read for the owned54 IDs. Record113 is parent-owned; its separate audit takes precedence.",
+    "Only enrichment overrides and this audit file are authorized writes; no merge/build/source/generated/template edits were performed."
+  ],
+  "coverage_counts": {
+    "not searched": 0,
+    "search-only": 30,
+    "abstract-only": 1,
+    "theorem/full-text reviewed": 23
+  },
+  "records": [
+    {
+      "record": 43,
+      "id": "metric-tsp-four-thirds-integrality-gap",
+      "queries": [
+        "metric TSP approximation integrality gap 2026 4/3 1.5"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2603.12995",
+          "title": "Cook, Hougardy and Petrich: small-instance TSP gap enumeration",
+          "access_level": "search-only",
+          "publication_status": "not-established",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "no-update-established",
+      "summary": "Local override already includes small-instance Held-Karp enumeration. No global 4/3 resolution verified; finite-size results are not a universal theorem.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/metric-tsp-four-thirds-integrality-gap.json"
+    },
+    {
+      "record": 44,
+      "id": "atsp-held-karp-integrality-gap",
+      "queries": [
+        "asymmetric TSP integrality gap 2026 22"
+      ],
+      "sources": [
+        {
+          "url": "https://www.or.uni-bonn.de/tspbook/book.pdf",
+          "title": "Traub-Vygen, Approximation Algorithms for Traveling Salesman Problems",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "published-book",
+          "sections_reviewed": "Theorem 8.25 and Corollary 8.26, printed p.181"
+        }
+      ],
+      "disposition": "bound-corrected",
+      "summary": "Published ATSP Held-Karp upper gap 17 supersedes 22; lower bound 2 unchanged.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/atsp-held-karp-integrality-gap.json",
+      "status_after": "open"
+    },
+    {
+      "record": 45,
+      "id": "steiner-tree-bidirected-cut-integrality-gap",
+      "queries": [
+        "Steiner tree bidirected cut integrality gap 2026 1.898"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2602.19879",
+          "title": "Steiner Tree bidirected-cut gap 1.898",
+          "access_level": "search-only",
+          "publication_status": "not-established",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "no-update-established",
+      "summary": "Local override already includes the 2026 1.898 BCR preprint. No newer general result verified; not a claim that the gap is tight.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/steiner-tree-bidirected-cut-integrality-gap.json"
+    },
+    {
+      "record": 46,
+      "id": "steiner-tree-approximation-ratio-gap",
+      "queries": [
+        "Steiner tree approximation hypergraphic 2026 ln 4"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/1005.1262",
+          "title": "Steiner Tree via iterative randomized rounding",
+          "access_level": "search-only",
+          "publication_status": "not-established",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "no-update-established",
+      "summary": "No improvement to the general Steiner Tree approximation threshold verified. Distinguish LP bounds and special graph classes.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/steiner-tree-approximation-ratio-gap.json"
+    },
+    {
+      "record": 47,
+      "id": "santa-claus-config-lp-integrality-gap",
+      "queries": [
+        "restricted Santa Claus configuration LP integrality gap 2025 2026"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/pdf/2202.01143",
+          "title": "Haxell-Szabo, Improved Integrality Gap in Max-Min Allocation, or, Topology at the North Pole",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "published-SODA-2023-Combinatorica-2025",
+          "sections_reviewed": "Theorem 1.1 and proof endpoint"
+        }
+      ],
+      "disposition": "bound-corrected",
+      "summary": "Existential restricted configuration-LP gap 53/15 supersedes 3.808; no polynomial algorithm inferred.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/santa-claus-config-lp-integrality-gap.json",
+      "status_after": "open"
+    },
+    {
+      "record": 48,
+      "id": "unrelated-machines-makespan-below-2",
+      "queries": [
+        "unrelated machines makespan approximation below 2 2026"
+      ],
+      "sources": [],
+      "disposition": "no-update-established",
+      "summary": "No polynomial-time below-2 algorithm for arbitrary unrelated-machine makespan verified.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/unrelated-machines-makespan-below-2.json"
+    },
+    {
+      "record": 49,
+      "id": "beck-fiala-conjecture",
+      "queries": [
+        "Beck Fiala Komlos 2026 Bansal Jiang"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2609.11189v1",
+          "title": "Guo-Fang-Lu, Vector Balancing via Directional Total Variation",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "preprint",
+          "sections_reviewed": "Theorem 1.1, Corollary 1.2, proof overview"
+        },
+        {
+          "url": "https://arxiv.org/html/2609.20979v1",
+          "title": "Karingula-Lovett, An elementary proof of the Komlos conjecture",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "preprint",
+          "sections_reviewed": "Theorem1.2"
+        }
+      ],
+      "disposition": "solution-claim-recorded",
+      "summary": "Full Beck-Fiala bound claimed as a consequence of Komlos; not independently proof-verified.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/beck-fiala-conjecture.json",
+      "status_after": "solution claimed"
+    },
+    {
+      "record": 50,
+      "id": "komlos-conjecture",
+      "queries": [
+        "Beck Fiala Komlos 2026 Bansal Jiang"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2609.11189v1",
+          "title": "Guo-Fang-Lu, Vector Balancing via Directional Total Variation",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "preprint",
+          "sections_reviewed": "Theorem 1.1 and proof overview"
+        },
+        {
+          "url": "https://arxiv.org/html/2609.20979v1",
+          "title": "Karingula-Lovett, An elementary proof of the Komlos conjecture",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "preprint",
+          "sections_reviewed": "Theorem1.2"
+        }
+      ],
+      "disposition": "solution-claim-recorded",
+      "summary": "Full Komlos constant claimed; subsequent Karingula-Lovett Theorem 1.2 also read. Parent reports independently checking those theorem statements; this is not full proof verification.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/komlos-conjecture.json",
+      "status_after": "solution claimed"
+    },
+    {
+      "record": 51,
+      "id": "matrix-spencer-conjecture",
+      "queries": [
+        "matrix Spencer conjecture 2026 2025"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2608.28816v1",
+          "title": "Akbas-Sra, A Proof of the Matrix Spencer Conjecture",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "preprint",
+          "sections_reviewed": "Theorem 1.2, hereditary small-ball framework"
+        }
+      ],
+      "disposition": "solution-claim-recorded",
+      "summary": "Full square Matrix Spencer claimed. Corrected statement to n matrices of dimension n, not unrestricted d.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/matrix-spencer-conjecture.json",
+      "status_after": "solution claimed"
+    },
+    {
+      "record": 52,
+      "id": "cvrp-unit-demand-approximability",
+      "queries": [
+        "metric CVRP unit demand approximation 2025 2026"
+      ],
+      "sources": [
+        {
+          "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol345-mfcs2025/html/LIPIcs.MFCS.2025.93/LIPIcs.MFCS.2025.93.html",
+          "title": "MFCS 2025 fixed-capacity CVRP approximation",
+          "access_level": "search-only",
+          "publication_status": "not-established",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "no-update-established",
+      "summary": "Located fixed-capacity CVRP refinements; capacity-dependent gains do not automatically improve the uniform arbitrary-capacity guarantee.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/cvrp-unit-demand-approximability.json"
+    },
+    {
+      "record": 53,
+      "id": "metric-facility-location-gap",
+      "queries": [
+        "metric facility location approximation 2026 1.488"
+      ],
+      "sources": [],
+      "disposition": "no-update-established",
+      "summary": "No newer general metric UFL bound verified in this limited search.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/metric-facility-location-gap.json"
+    },
+    {
+      "record": 54,
+      "id": "metric-k-median-gap",
+      "queries": [
+        "metric k median approximation 2026 2 epsilon"
+      ],
+      "sources": [
+        {
+          "url": "https://github.com/openai/math/blob/main/preprints/The-Approximation-Threshold-for-Metric-k-Median-September-24-2026/build/sections/introduction.tex",
+          "title": "OpenAI, The approximation threshold for metric k-median",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "research-release-unreviewed",
+          "sections_reviewed": "Model, main theorem, threshold corollary, proof overview in source text"
+        }
+      ],
+      "disposition": "solution-claim-recorded",
+      "summary": "Claims strict k and factor 1+2/e+epsilon for fixed epsilon, matching conditional infimum. Lean not run; release warns of varying verification.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/metric-k-median-gap.json",
+      "status_after": "solution claimed"
+    },
+    {
+      "record": 55,
+      "id": "graph-balancing-makespan",
+      "queries": [
+        "graph balancing makespan approximation 2025 2026 1.75"
+      ],
+      "sources": [],
+      "disposition": "no-update-established",
+      "summary": "No improvement superseding the local graph-balancing algorithm/existence distinction verified.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/graph-balancing-makespan.json"
+    },
+    {
+      "record": 56,
+      "id": "restricted-assignment-makespan",
+      "queries": [
+        "restricted assignment makespan approximation 2026"
+      ],
+      "sources": [],
+      "disposition": "no-update-established",
+      "summary": "No polynomial-time strict below-2 restricted-assignment result verified; LP and quasipolynomial bounds are separate.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/restricted-assignment-makespan.json"
+    },
+    {
+      "record": 57,
+      "id": "santa-claus-best-approximation",
+      "queries": [
+        "restricted Santa Claus configuration LP integrality gap 2025 2026"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/pdf/2202.01143",
+          "title": "Haxell-Szabo, Improved Integrality Gap in Max-Min Allocation, or, Topology at the North Pole",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "published-SODA-2023-Combinatorica-2025",
+          "sections_reviewed": "Theorem 1.1"
+        }
+      ],
+      "disposition": "bound-corrected",
+      "summary": "Existential gap 53/15 added without changing polynomial-time 4+delta benchmark.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/santa-claus-best-approximation.json",
+      "status_after": "open"
+    },
+    {
+      "record": 71,
+      "id": "strongly-polynomial-lp",
+      "queries": [
+        "strongly polynomial linear programming 2026 algorithm general"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2503.12041",
+          "title": "Awoniyi: general strongly-polynomial LP claim",
+          "access_level": "search-only",
+          "publication_status": "not-established",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "no-update-established",
+      "summary": "Located a general strongly-polynomial LP claim by Awoniyi and 2026 results for restricted LP classes. Neither theorem/proof reviewed; cannot declare the general claim valid or invalid.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/strongly-polynomial-lp.json"
+    },
+    {
+      "record": 72,
+      "id": "simplex-polynomial-pivot-rule",
+      "queries": [
+        "polynomial Hirsch simplex pivot rule 2026 diameter"
+      ],
+      "sources": [
+        {
+          "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol364-stacs2026/html/LIPIcs.STACS.2026.31/LIPIcs.STACS.2026.31.html",
+          "title": "STACS 2026 ranking-based pivot rules",
+          "access_level": "search-only",
+          "publication_status": "not-established",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "no-update-established",
+      "summary": "Located ranking-based pivot-rule lower bounds (STACS 2026). Restricted rule lower bounds do not settle existence of a polynomial pivot rule.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/simplex-polynomial-pivot-rule.json"
+    },
+    {
+      "record": 73,
+      "id": "polynomial-hirsch-conjecture",
+      "queries": [
+        "polynomial Hirsch simplex pivot rule 2026 diameter"
+      ],
+      "sources": [
+        {
+          "url": "https://link.springer.com/article/10.1007/s10107-026-02324-6",
+          "title": "2026 polytope diameter complexity",
+          "access_level": "search-only",
+          "publication_status": "not-established",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "no-update-established",
+      "summary": "Located 2026 polytope-diameter work; no polynomial Hirsch resolution verified.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/polynomial-hirsch-conjecture.json"
+    },
+    {
+      "record": 74,
+      "id": "strongly-polynomial-mdp",
+      "queries": [
+        "strongly polynomial Markov decision processes 2025 2026 stochastic discount"
+      ],
+      "sources": [
+        {
+          "url": "https://proceedings.mlr.press/v336/asadi26a.html",
+          "title": "2026 robust fixed-discount MDP algorithms",
+          "access_level": "search-only",
+          "publication_status": "not-established",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "no-update-established",
+      "summary": "Located fixed-discount/robust-MDP and restricted policy-iteration results; these do not by their titles establish strong polynomiality for unrestricted input discount factors.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/strongly-polynomial-mdp.json"
+    },
+    {
+      "record": 75,
+      "id": "bhh-tsp-constant",
+      "queries": [
+        "Beardwood Halton Hammersley constant bounds 2026 Gaudio Guan"
+      ],
+      "sources": [
+        {
+          "url": "https://doi.org/10.1016/j.orl.2026.107492",
+          "title": "Gaudio-Guan 2026 BHH bound",
+          "access_level": "search-only",
+          "publication_status": "not-established",
+          "sections_reviewed": ""
+        },
+        {
+          "url": "https://www.mefyi.com/papers/bhh-constant-bound/",
+          "title": "Self-published BHH lower-bound lead",
+          "access_level": "search-only",
+          "publication_status": "unreviewed",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "no-update-established",
+      "summary": "Located Gaudio-Guan 2026 publication and an additional self-published 0.6508 lower-bound claim. New claim not theorem-reviewed; no update promoted.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/bhh-tsp-constant.json"
+    },
+    {
+      "record": 76,
+      "id": "two-stage-stochastic-programming-complexity",
+      "queries": [
+        "two stage stochastic programming complexity fixed recourse 2025 2026 Hanasusanto"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2605.25028v1",
+          "title": "Buchheim, A note on the complexity of two-stage stochastic linear optimization with small second stage",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "preprint",
+          "sections_reviewed": "Model; Theorems 6-10 and proof passages"
+        }
+      ],
+      "disposition": "partial-progress-recorded",
+      "summary": "Fixed-recourse, affine uniform-box model: finer hardness/tractability classification; not a general FPRAS or SAA theorem.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/two-stage-stochastic-programming-complexity.json",
+      "status_after": "partially resolved"
+    },
+    {
+      "record": 113,
+      "id": "identical-machines-high-multiplicity-distinct-times-fpt",
+      "queries": [
+        "\"identical machines\" \"high multiplicity\" \"distinct\" \"FPT\" 2026 scheduling"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2609.16923v1",
+          "title": "Tomohiro Koana and Soh Kumabe, High-Multiplicity Bin Packing is FPT (2026)",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "preprint",
+          "sections_reviewed": "Binary input model, Theorem1, proof endpoint"
+        }
+      ],
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "disposition": "parent-owned-no-edit",
+      "summary": "Parent is performing the direct literature/full-text audit and will record this ID separately. A finalization screen here also located Koana-Kumabe's FPT preprint and read its binary-input theorem. No enrichment edit or status decision made here; defer to parent audit.",
+      "review_limits": "No independent proof verification. Excluded from this audit's owned coverage counts.",
+      "owner": "parent",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/identical-machines-high-multiplicity-distinct-times-fpt.json"
+    },
+    {
+      "record": 122,
+      "id": "exact-matching-derandomization",
+      "queries": [
+        "exact matching derandomization 2026 2025 arxiv"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2405.02829",
+          "title": "Parameterized exact matching",
+          "access_level": "search-only",
+          "publication_status": "not-established",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "no-update-established",
+      "summary": "Located parameterized exact-matching results. Did not verify general deterministic polynomial time for exact red-edge-count perfect matching.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/exact-matching-derandomization.json"
+    },
+    {
+      "record": 147,
+      "id": "online-steiner-forest-greedy-ratio",
+      "queries": [
+        "online Steiner forest greedy competitive ratio 2026 2025"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2610.40569v1",
+          "title": "Gholami et al., The Tight Competitive Ratio of Greedy for Online Steiner Forest",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "preprint",
+          "sections_reviewed": "Theorems 1-2, Corollary 1.1, lower-bound outline/end"
+        }
+      ],
+      "disposition": "solution-claim-recorded",
+      "summary": "Claims tight Theta(log k loglog k) for exact contracted-shortest-path greedy, with tie-independent lower bound.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/online-steiner-forest-greedy-ratio.json",
+      "status_after": "solution claimed"
+    },
+    {
+      "record": 148,
+      "id": "random-order-best-fit-bin-packing-ratio",
+      "queries": [
+        "Best Fit random order ratio 2026 2025 Hebbar"
+      ],
+      "sources": [
+        {
+          "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol349-wads2025/html/LIPIcs.WADS.2025.26/LIPIcs.WADS.2025.26.html",
+          "title": "Epstein-Levin, Lower Bounds for Several Standard Bin Packing Algorithms in the Random Order Model",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "published-WADS-2025",
+          "sections_reviewed": "Theorem 10, Proposition 11"
+        }
+      ],
+      "disposition": "bound-corrected",
+      "summary": "Asymptotic random-order BF lower bound 1.15582656; separate absolute bound 1.5 not conflated.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/random-order-best-fit-bin-packing-ratio.json",
+      "status_after": "open"
+    },
+    {
+      "record": 149,
+      "id": "steiner-forest-below-two",
+      "queries": [
+        "Steiner forest approximation below 2 2025 2026"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2511.18460v1",
+          "title": "Gupta-Traub, Steiner Forest: A Simplified Better-Than-2 Approximation",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "conference-result",
+          "sections_reviewed": "Model, Theorem 1.1 and introduction"
+        }
+      ],
+      "disposition": "resolved-target",
+      "summary": "Below-2 target resolved by Ahmadi et al. FOCS2025; Gupta-Traub 1.994 theorem read. General bidirected-cut gap below2 remains separate.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/steiner-forest-below-two.json",
+      "status_after": "resolved"
+    },
+    {
+      "record": 151,
+      "id": "submodular-facility-location-constant-approximation",
+      "queries": [
+        "submodular facility location constant approximation 2025 2026"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2610.18828v1",
+          "title": "Elmachtoub-Natura-Neuwohner, Settling the Approximability of Submodular Facility Location",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "preprint",
+          "sections_reviewed": "Homogeneous model; Theorem 2 and proof endpoint"
+        },
+        {
+          "url": "https://arxiv.org/pdf/2211.05474",
+          "title": "Abbasi et al., An O(loglog n)-Approximation for Submodular Facility Location",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "ICALP-2024",
+          "sections_reviewed": "Model; Theorems1.1,1.3,1.4"
+        }
+      ],
+      "disposition": "model-correction-and-solution-claim",
+      "summary": "Original arbitrary-g_f formulation was wrong for cited loglog bound. Common-g oracle threshold claimed Theta(loglog n); unrelated functions already contain Set Cover.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/submodular-facility-location-constant-approximation.json",
+      "status_after": "solution claimed"
+    },
+    {
+      "record": 152,
+      "id": "goemans-linial-sparsest-cut-gap",
+      "queries": [
+        "uniform nonuniform sparsest cut Goemans Linial gap 2026 Naor Young"
+      ],
+      "sources": [
+        {
+          "url": "https://web.math.princeton.edu/~naor/homepage%20files/GL-SDP-SQRT-LOG-CAMERA.pdf",
+          "title": "Naor-Young, Goemans-Linial integrality gap",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "published-STOC-2017",
+          "sections_reviewed": "Section 1.7.3 uniform versus nonuniform model and bounds"
+        },
+        {
+          "url": "https://github.com/openai/math/blob/main/preprints/Near-square-root-logarithmic-integrality-gaps-for-uniform-sparsest-cut-September-24-2026/Near-square-root-logarithmic-integrality-gaps-for-uniform-sparsest-cut-September-24-2026.pdf",
+          "title": "OpenAI uniform sparsest-cut SDP-gap claim",
+          "access_level": "search-only",
+          "publication_status": "research-release-unreviewed",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "follow-up-required",
+      "summary": "Verified historical model distinction; newer OpenAI near-sqrt-log uniform-gap claim located but not theorem-reviewed. Override unchanged; this is not current-bound certification.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/goemans-linial-sparsest-cut-gap.json"
+    },
+    {
+      "record": 153,
+      "id": "joint-replenishment-approximation-ratio",
+      "queries": [
+        "joint replenishment approximation waiting costs 2026 1.791"
+      ],
+      "sources": [
+        {
+          "url": "https://iuuk.mff.cuni.cz/~sgall/ps/jrp-apx.pdf",
+          "title": "Joint replenishment approximation",
+          "access_level": "search-only",
+          "publication_status": "not-established",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "no-update-established",
+      "summary": "Search found work supporting local 1.791 waiting-cost and 1.574 deadline benchmarks. No new threshold result verified.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/joint-replenishment-approximation-ratio.json"
+    },
+    {
+      "record": 154,
+      "id": "mean-payoff-games-polynomial-time",
+      "queries": [
+        "mean payoff parity simple stochastic games polynomial time 2026"
+      ],
+      "sources": [
+        {
+          "url": "https://github.com/openai/math/tree/main/preprints/Mean-payoff-parity-games-in-quasipolynomial-time-October-5-2026",
+          "title": "OpenAI mean-payoff parity games claim",
+          "access_level": "search-only",
+          "publication_status": "not-established",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "no-update-established",
+      "summary": "Located OpenAI quasipolynomial mean-payoff-game claims with binary weights. Manuscripts not theorem-reviewed; quasipolynomial time would not resolve polynomial-time target.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/mean-payoff-games-polynomial-time.json"
+    },
+    {
+      "record": 155,
+      "id": "capacitated-k-median-constant-approximation",
+      "queries": [
+        "capacitated k median constant approximation no violations 2026"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2610.23348v1",
+          "title": "Dai-Li, Simpler Algorithms for Capacitated k-Median with (1+epsilon)-Violations Using New Inequalities",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "preprint",
+          "sections_reviewed": "Section 1.1 guarantees and Table1"
+        }
+      ],
+      "disposition": "partial-progress-recorded",
+      "summary": "Hard-capacity bicriteria results preserve one constraint but violate the other; no resolution of no-violation target.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/capacitated-k-median-constant-approximation.json",
+      "status_after": "open"
+    },
+    {
+      "record": 156,
+      "id": "densest-k-subgraph-approximation",
+      "queries": [
+        "densest k subgraph approximation 2026 n 1/4"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2303.17506",
+          "title": "Densest k-Subgraph sum-of-squares work",
+          "access_level": "search-only",
+          "publication_status": "not-established",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "no-update-established",
+      "summary": "No improvement over general n^(1/4+epsilon) Densest k-Subgraph approximation verified. At-least-k and unconstrained density results are different models.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/densest-k-subgraph-approximation.json"
+    },
+    {
+      "record": 158,
+      "id": "flatness-constant-integer-programming",
+      "queries": [
+        "flatness constant 2026 linear n log n"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2610.29238v1",
+          "title": "Letwin-Reis-Rothvoss, Strongly Log-Concave Measures and Lattices",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "preprint",
+          "sections_reviewed": "Definition; Corollary 1.4; Section4.2"
+        },
+        {
+          "url": "https://arxiv.org/html/2607.29458v2",
+          "title": "Bizeul, Optimal MM* bounds for convex bodies",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "preprint",
+          "sections_reviewed": "Section3.4 equation54"
+        }
+      ],
+      "disposition": "partial-progress-recorded",
+      "summary": "New O(d sqrt(log d)) bound claimed for arbitrary convex bodies; O(d) remains unresolved.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/flatness-constant-integer-programming.json",
+      "status_after": "open"
+    },
+    {
+      "record": 159,
+      "id": "graph-shannon-capacity-odd-cycles",
+      "queries": [
+        "Shannon capacity odd cycles C7 2026 2025"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2608.30273v1",
+          "title": "Tandon, Strengthening Recursive Constructions for Zero-Error Shannon Capacity",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "preprint",
+          "sections_reviewed": "Theorem2, exact integer cardinality, proof endpoint, AppendixB"
+        },
+        {
+          "url": "https://arxiv.org/html/2607.29681v1",
+          "title": "Buys-Polak-Zuiddam, Lean-verified lower bounds for the Shannon capacity of odd cycles",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "preprint",
+          "sections_reviewed": "Theorem1; construction table"
+        }
+      ],
+      "disposition": "partial-progress-recorded",
+      "summary": "C7 lower bound 3.258832620353... from power500; no exact capacity result; certificates not executed.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/graph-shannon-capacity-odd-cycles.json",
+      "status_after": "open"
+    },
+    {
+      "record": 161,
+      "id": "pomdp-memoryless-policy-planning",
+      "queries": [
+        "POMDP memoryless policy planning approximation complexity 2026"
+      ],
+      "sources": [],
+      "disposition": "no-update-established",
+      "summary": "No general memoryless POMDP resolution verified. Follow-up needed on discounted versus average reward and whether the target is exact/global computation or efficient approximation.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/pomdp-memoryless-policy-planning.json"
+    },
+    {
+      "record": 162,
+      "id": "simple-stochastic-games-polynomial-time",
+      "queries": [
+        "mean payoff parity simple stochastic games polynomial time 2026"
+      ],
+      "sources": [
+        {
+          "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol334-icalp2025/html/LIPIcs.ICALP.2025.145/LIPIcs.ICALP.2025.145.html",
+          "title": "Stochastic games and SDP",
+          "access_level": "search-only",
+          "publication_status": "not-established",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "no-update-established",
+      "summary": "Located stochastic/mean-payoff quasipolynomial claims and 2025 SDP reductions; no polynomial-time simple-stochastic-games theorem verified.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/simple-stochastic-games-polynomial-time.json"
+    },
+    {
+      "record": 163,
+      "id": "correlation-clustering-complete-graph-threshold",
+      "queries": [
+        "correlation clustering complete graphs approximation 2026 1.437"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2607.27829v1",
+          "title": "Garcia-Soriano-Schohn correlation-clustering preprint",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "preprint",
+          "sections_reviewed": "Theorems1.1-1.2, Corollary1.3"
+        }
+      ],
+      "disposition": "partial-progress-recorded",
+      "summary": "Claims 1.3865+epsilon for unweighted complete signed MinDisagree; retained published1.437, corrected 4/3 to LP-gap lower bound.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/correlation-clustering-complete-graph-threshold.json",
+      "status_after": "open"
+    },
+    {
+      "record": 164,
+      "id": "euclidean-cvrp-ptas-arbitrary-capacity",
+      "queries": [
+        "Euclidean CVRP PTAS arbitrary capacity 2026 Sitters"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2507.15549",
+          "title": "Sitters: Euclidean CVRP QPTAS",
+          "access_level": "search-only",
+          "publication_status": "not-established",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "no-update-established",
+      "summary": "Local override already contains Sitters' QPTAS. Located further Euclidean CVRP approximation work; no arbitrary-capacity PTAS verified.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/euclidean-cvrp-ptas-arbitrary-capacity.json"
+    },
+    {
+      "record": 165,
+      "id": "tusnady-low-dimensional-box-discrepancy",
+      "queries": [
+        "Tusnady discrepancy Dutta 2026 2025 low dimensions"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/pdf/1701.05532",
+          "title": "Nikolov, Tighter Bounds for the Discrepancy of Boxes and Polytopes",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "established-result",
+          "sections_reviewed": "Theorem1, definitions, proof passages"
+        },
+        {
+          "url": "https://arxiv.org/abs/2109.05693",
+          "title": "Dutta, On Shallow Packings and Tusnady's Problem",
+          "access_level": "abstract-only",
+          "publication_status": "withdrawn",
+          "sections_reviewed": "arXiv withdrawal comment, v2 February10,2022"
+        }
+      ],
+      "disposition": "withdrawal-correction",
+      "summary": "Dutta2109.05693 withdrawn for unfixable Claim4.7. Removed its claimed bounds/high-dimensional settlement. Baseline Omega(log^(d-1)n) vs O(log^(d-1/2)n); not exhaustive 2026 consequence analysis.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/tusnady-low-dimensional-box-discrepancy.json",
+      "status_after": "open"
+    },
+    {
+      "record": 166,
+      "id": "capacitated-facility-location-relaxation-gap",
+      "queries": [
+        "capacitated facility location constant integrality gap relaxation 2026"
+      ],
+      "sources": [],
+      "disposition": "no-update-established",
+      "summary": "No constant-gap relaxation resolving the exact hard-capacitated facility-location target verified. Bicriteria results are not sufficient.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/capacitated-facility-location-relaxation-gap.json"
+    },
+    {
+      "record": 167,
+      "id": "minimum-feedback-arc-set-constant-approximation",
+      "queries": [
+        "directed feedback arc set constant approximation 2026"
+      ],
+      "sources": [
+        {
+          "url": "https://github.com/openai/math/tree/main/preprints/Constant-factor-hardness-of-directed-feedback-vertex-set-September-23-2026",
+          "title": "OpenAI directed feedback vertex set hardness claim",
+          "access_level": "search-only",
+          "publication_status": "not-established",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "no-update-established",
+      "summary": "Located OpenAI claim of NP-hardness for every constant-factor directed feedback vertex set approximation. Manuscript and transfer to this arc-set model not reviewed; do not promote to established negative resolution.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/minimum-feedback-arc-set-constant-approximation.json"
+    },
+    {
+      "record": 168,
+      "id": "parity-games-polynomial-time",
+      "queries": [
+        "mean payoff parity simple stochastic games polynomial time 2026"
+      ],
+      "sources": [
+        {
+          "url": "https://github.com/openai/math/tree/main/preprints/Mean-payoff-parity-games-in-quasipolynomial-time-October-5-2026",
+          "title": "OpenAI mean-payoff parity games claim",
+          "access_level": "search-only",
+          "publication_status": "not-established",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "no-update-established",
+      "summary": "Located quasipolynomial mean-payoff/parity extension claims; no polynomial-time parity-game resolution verified.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/parity-games-polynomial-time.json"
+    },
+    {
+      "record": 169,
+      "id": "truthful-submodular-combinatorial-auctions",
+      "queries": [
+        "truthful submodular combinatorial auctions approximation 2026 constant demand"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/pdf/2010.01420",
+          "title": "Assadi-Kesselheim-Singla, Improved Truthful Mechanisms for Subadditive Combinatorial Auctions: Breaking the Logarithmic Barrier",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "published-SODA-2021",
+          "sections_reviewed": "Theorem2; introduction comparison"
+        },
+        {
+          "url": "https://arxiv.org/html/2610.17517v1",
+          "title": "Rubinstein-Singla, Improved Combinatorial Auctions with and without Samples",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "preprint",
+          "sections_reviewed": "Theorems1.1-1.3; Section6.2 endpoint"
+        }
+      ],
+      "disposition": "bound-corrected-and-preprint-progress",
+      "summary": "Published submodular/XOS benchmark squared loglog, not cubed. Rubinstein-Singla2026 Theorem1.2 claims loglog random-order/offline; sampled constant theorem is a different model.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/truthful-submodular-combinatorial-auctions.json",
+      "status_after": "open"
+    },
+    {
+      "record": 170,
+      "id": "weighted-tree-augmentation-threshold",
+      "queries": [
+        "weighted tree augmentation 2026 approximation 1.49"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2603.29582",
+          "title": "Weighted tree augmentation below 1.49",
+          "access_level": "search-only",
+          "publication_status": "not-established",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "no-update-established",
+      "summary": "Local override already includes 2026 below-1.49 weighted tree augmentation progress. No stronger result verified.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/weighted-tree-augmentation-threshold.json"
+    },
+    {
+      "record": 171,
+      "id": "directed-steiner-tree-polylog-approximation",
+      "queries": [
+        "directed Steiner tree polylogarithmic polynomial time 2026"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2412.10744",
+          "title": "Directed Steiner Tree manuscript withdrawal/restricted revision",
+          "access_level": "abstract-only",
+          "publication_status": "not-established",
+          "sections_reviewed": "Abstract, version history and withdrawal comment"
+        }
+      ],
+      "disposition": "no-update-established",
+      "summary": "Read arXiv abstract/version notice: the earlier polylogarithmic DST claim was withdrawn, and later abstract has a relatively-integral LP condition. Local warning retained; no general resolution.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "abstract-only",
+      "review_limits": "Abstract/version notice only; no theorem/proof review.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/directed-steiner-tree-polylog-approximation.json"
+    },
+    {
+      "record": 172,
+      "id": "multiway-cut-approximation-threshold",
+      "queries": [
+        "multiway cut approximation 2026 1.2965 1.20016",
+        "2611.05511 multiway cut"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2603.28700v1",
+          "title": "Brakensiek-Huang-Potechin-Zwick, Improved Approximation Algorithms for Multiway Cut by Large Mixtures of New and Old Rounding Schemes",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "STOC-2026-full-version",
+          "sections_reviewed": "Theorem1.1; venue footnote"
+        },
+        {
+          "url": "https://arxiv.org/html/2611.05511v1",
+          "title": "Brakensiek et al., Improved lower bounds on the approximability of Multiway Cut using Sherali-Adams relaxations",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "preprint-November3-2026",
+          "sections_reviewed": "Theorem1.1; numerical-versus-analytic distinction"
+        }
+      ],
+      "disposition": "bound-and-assumption-corrected",
+      "summary": "Upper1.2787; November preprint analytic lower1.22232 conditional on UGC for hardness. Numerical1.23003 not a theorem.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/multiway-cut-approximation-threshold.json",
+      "status_after": "open"
+    },
+    {
+      "record": 173,
+      "id": "zero-extension-integrality-gap",
+      "queries": [
+        "zero extension integrality gap 2026 Schwartz Tur"
+      ],
+      "sources": [],
+      "disposition": "no-update-established",
+      "summary": "Targeted search did not establish a new 0-extension gap bound. Search was partly polluted by unrelated uses of 'zero extension'; deeper review remains.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/zero-extension-integrality-gap.json"
+    },
+    {
+      "record": 174,
+      "id": "forest-augmentation-approximation-threshold",
+      "queries": [
+        "forest augmentation approximation 2025 2026"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2505.15324v1",
+          "title": "Hommelsheim, Improved Approximation Algorithms for Path and Forest Augmentation via a Novel Relaxation",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "preprint",
+          "sections_reviewed": "Theorems1-2; FAP proof section"
+        }
+      ],
+      "disposition": "partial-progress-recorded",
+      "summary": "FAP1.9955 vs earlier1.9973; PAP1.9412 is different. Corrected spanning 2-edge-connectivity model.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/forest-augmentation-approximation-threshold.json",
+      "status_after": "open"
+    },
+    {
+      "record": 175,
+      "id": "metric-tsp-approximation-threshold",
+      "queries": [
+        "metric TSP approximation integrality gap 2026 4/3 1.5"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2603.12995",
+          "title": "Small-instance metric TSP enumeration",
+          "access_level": "search-only",
+          "publication_status": "not-established",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "enum-normalized-only",
+      "summary": "No stronger general metric-TSP approximation threshold verified. Integrality enumeration and restricted-support results do not resolve arbitrary metrics. Only invalid progress.state='open' was changed to 'partial'; mathematical coverage remains search-only.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/metric-tsp-approximation-threshold.json",
+      "status_after": "open"
+    },
+    {
+      "record": 176,
+      "id": "queueing-network-stability-clean-undecidability",
+      "queries": [
+        "Gamarnik Katz queueing stability undecidability infinite buffers positive service times 2026"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/0708.1034",
+          "title": "Gamarnik-Katz queueing-network undecidability",
+          "access_level": "search-only",
+          "publication_status": "not-established",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "no-update-established",
+      "summary": "Located Gamarnik-Katz undecidability baseline. Positive service times, infinite buffers and the stability definition need theorem-level matching; no clean-model resolution verified.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/queueing-network-stability-clean-undecidability.json"
+    },
+    {
+      "record": 177,
+      "id": "sparsest-cut-approximation-threshold",
+      "queries": [
+        "uniform nonuniform sparsest cut Goemans Linial gap 2026 Naor Young"
+      ],
+      "sources": [
+        {
+          "url": "https://web.math.princeton.edu/~naor/homepage%20files/GL-SDP-SQRT-LOG-CAMERA.pdf",
+          "title": "Naor-Young, Goemans-Linial integrality gap",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "published-STOC-2017",
+          "sections_reviewed": "Sections1.7.1 and1.7.3"
+        }
+      ],
+      "disposition": "model-correction",
+      "summary": "Nonuniform upper O(sqrt(log n)loglog n), lower Omega(sqrt(log n)); uniform ARV upper must not be paired with this lower as a matching gap. New research-release claims not reviewed.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/sparsest-cut-approximation-threshold.json",
+      "status_after": "open"
+    },
+    {
+      "record": 178,
+      "id": "bimatrix-approximate-nash-threshold",
+      "queries": [
+        "bimatrix Nash approximation 2026 1/3 0.333"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2610.05317v1",
+          "title": "Li Dongchen-Li Hanyu bimatrix Nash preprint",
+          "access_level": "theorem/full-text reviewed",
+          "publication_status": "preprint",
+          "sections_reviewed": "Theorem1 and arbitrary payoff model"
+        }
+      ],
+      "disposition": "partial-progress-recorded",
+      "summary": "Claims0.30954+delta general bimatrix additive Nash; not symmetric-only or well-supported equilibrium. Exact threshold remains unresolved.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "theorem/full-text reviewed",
+      "review_limits": "Relevant statements, models and specified passages reviewed, not the entire proof independently refereed. No Lean, code or numerical certificates executed.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/bimatrix-approximate-nash-threshold.json",
+      "status_after": "open"
+    },
+    {
+      "record": 180,
+      "id": "minor-free-flow-cut-gap-gnrs",
+      "queries": [
+        "GNRS conjecture minor free flow cut gap 2026"
+      ],
+      "sources": [],
+      "disposition": "enum-normalized-only",
+      "summary": "Located claims concerning planar/bounded-treewidth embeddings, not a verified all-minor-free GNRS theorem. Primary manuscripts not reviewed. Only invalid progress.state='open' was changed to 'partial'; mathematical coverage remains search-only.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": true,
+      "enrichment_file": "research/enrichment/minor-free-flow-cut-gap-gnrs.json",
+      "status_after": "conjecture"
+    },
+    {
+      "record": 181,
+      "id": "gilbert-pollak-steiner-ratio",
+      "queries": [
+        "Gilbert Pollak Steiner ratio 2026 0.8559"
+      ],
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2601.22365",
+          "title": "Steiner-ratio lower-bound preprint",
+          "access_level": "search-only",
+          "publication_status": "not-established",
+          "sections_reviewed": ""
+        },
+        {
+          "url": "https://www.beyond-plausible.com/steiner-ratio/",
+          "title": "Self-published0.860 Steiner-ratio claim",
+          "access_level": "search-only",
+          "publication_status": "unreviewed",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "no-update-established",
+      "summary": "Located 0.8559 preprint and a self-published 0.860 claim with proof-layer qualifications. No full-text validation or resolution of sqrt(3)/2 established; local 0.8559 wording requires follow-up.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/gilbert-pollak-steiner-ratio.json"
+    },
+    {
+      "record": 182,
+      "id": "square-root-sum-polynomial-time",
+      "queries": [
+        "square root sum polynomial time 2026"
+      ],
+      "sources": [
+        {
+          "url": "https://epubs.siam.org/doi/10.1137/1.9781611977936.15",
+          "title": "Unary square-root-sum in P/poly",
+          "access_level": "search-only",
+          "publication_status": "not-established",
+          "sections_reviewed": ""
+        }
+      ],
+      "disposition": "no-update-established",
+      "summary": "Located unary square-root-sum P/poly and fixed-radicand results; neither establishes uniform polynomial time for general binary input.",
+      "local_source_reviewed": true,
+      "local_enrichment_reviewed": true,
+      "coverage": "search-only",
+      "review_limits": "Search results only; no independent proof verification.",
+      "owner": "optimization-audit",
+      "enrichment_edited": false,
+      "enrichment_file": "research/enrichment/square-root-sum-polynomial-time.json"
+    }
+  ],
+  "enrichment_updates": [
+    {
+      "record": 44,
+      "file": "research/enrichment/atsp-held-karp-integrality-gap.json",
+      "status": "open",
+      "progress_state": "partial",
+      "change_type": "literature-or-model-correction"
+    },
+    {
+      "record": 47,
+      "file": "research/enrichment/santa-claus-config-lp-integrality-gap.json",
+      "status": "open",
+      "progress_state": "partial",
+      "change_type": "literature-or-model-correction"
+    },
+    {
+      "record": 49,
+      "file": "research/enrichment/beck-fiala-conjecture.json",
+      "status": "solution claimed",
+      "progress_state": "solution-claimed",
+      "change_type": "literature-or-model-correction"
+    },
+    {
+      "record": 50,
+      "file": "research/enrichment/komlos-conjecture.json",
+      "status": "solution claimed",
+      "progress_state": "solution-claimed",
+      "change_type": "literature-or-model-correction"
+    },
+    {
+      "record": 51,
+      "file": "research/enrichment/matrix-spencer-conjecture.json",
+      "status": "solution claimed",
+      "progress_state": "solution-claimed",
+      "change_type": "literature-or-model-correction"
+    },
+    {
+      "record": 54,
+      "file": "research/enrichment/metric-k-median-gap.json",
+      "status": "solution claimed",
+      "progress_state": "solution-claimed",
+      "change_type": "literature-or-model-correction"
+    },
+    {
+      "record": 57,
+      "file": "research/enrichment/santa-claus-best-approximation.json",
+      "status": "open",
+      "progress_state": "partial",
+      "change_type": "literature-or-model-correction"
+    },
+    {
+      "record": 76,
+      "file": "research/enrichment/two-stage-stochastic-programming-complexity.json",
+      "status": "partially resolved",
+      "progress_state": "partial",
+      "change_type": "literature-or-model-correction"
+    },
+    {
+      "record": 147,
+      "file": "research/enrichment/online-steiner-forest-greedy-ratio.json",
+      "status": "solution claimed",
+      "progress_state": "solution-claimed",
+      "change_type": "literature-or-model-correction"
+    },
+    {
+      "record": 148,
+      "file": "research/enrichment/random-order-best-fit-bin-packing-ratio.json",
+      "status": "open",
+      "progress_state": "partial",
+      "change_type": "literature-or-model-correction"
+    },
+    {
+      "record": 149,
+      "file": "research/enrichment/steiner-forest-below-two.json",
+      "status": "resolved",
+      "progress_state": "resolved",
+      "change_type": "literature-or-model-correction"
+    },
+    {
+      "record": 151,
+      "file": "research/enrichment/submodular-facility-location-constant-approximation.json",
+      "status": "solution claimed",
+      "progress_state": "solution-claimed",
+      "change_type": "literature-or-model-correction"
+    },
+    {
+      "record": 155,
+      "file": "research/enrichment/capacitated-k-median-constant-approximation.json",
+      "status": "open",
+      "progress_state": "partial",
+      "change_type": "literature-or-model-correction"
+    },
+    {
+      "record": 158,
+      "file": "research/enrichment/flatness-constant-integer-programming.json",
+      "status": "open",
+      "progress_state": "partial",
+      "change_type": "literature-or-model-correction"
+    },
+    {
+      "record": 159,
+      "file": "research/enrichment/graph-shannon-capacity-odd-cycles.json",
+      "status": "open",
+      "progress_state": "partial",
+      "change_type": "literature-or-model-correction"
+    },
+    {
+      "record": 163,
+      "file": "research/enrichment/correlation-clustering-complete-graph-threshold.json",
+      "status": "open",
+      "progress_state": "partial",
+      "change_type": "literature-or-model-correction"
+    },
+    {
+      "record": 165,
+      "file": "research/enrichment/tusnady-low-dimensional-box-discrepancy.json",
+      "status": "open",
+      "progress_state": "partial",
+      "change_type": "literature-or-model-correction"
+    },
+    {
+      "record": 169,
+      "file": "research/enrichment/truthful-submodular-combinatorial-auctions.json",
+      "status": "open",
+      "progress_state": "partial",
+      "change_type": "literature-or-model-correction"
+    },
+    {
+      "record": 172,
+      "file": "research/enrichment/multiway-cut-approximation-threshold.json",
+      "status": "open",
+      "progress_state": "partial",
+      "change_type": "literature-or-model-correction"
+    },
+    {
+      "record": 174,
+      "file": "research/enrichment/forest-augmentation-approximation-threshold.json",
+      "status": "open",
+      "progress_state": "partial",
+      "change_type": "literature-or-model-correction"
+    },
+    {
+      "record": 175,
+      "file": "research/enrichment/metric-tsp-approximation-threshold.json",
+      "status": "open",
+      "progress_state": "partial",
+      "change_type": "enum-normalization-only"
+    },
+    {
+      "record": 177,
+      "file": "research/enrichment/sparsest-cut-approximation-threshold.json",
+      "status": "open",
+      "progress_state": "partial",
+      "change_type": "literature-or-model-correction"
+    },
+    {
+      "record": 178,
+      "file": "research/enrichment/bimatrix-approximate-nash-threshold.json",
+      "status": "open",
+      "progress_state": "partial",
+      "change_type": "literature-or-model-correction"
+    },
+    {
+      "record": 180,
+      "file": "research/enrichment/minor-free-flow-cut-gap-gnrs.json",
+      "status": "conjecture",
+      "progress_state": "partial",
+      "change_type": "enum-normalization-only"
+    }
+  ],
+  "coverage_count_scope": "54 optimization-owned records; parent-owned113 listed separately and excluded.",
+  "validation": {
+    "json_parse": "Passed for all 24 edited enrichment files and this audit; 55 unique coverage records.",
+    "progress_enums": "Passed for all 24 edited enrichment files; no invalid progress.state values remain in these files.",
+    "bibliography": "Full authors/title/year/venue/url added for newly cited papers; inherited references retained.",
+    "source_and_generated_files": "Not written by this audit; parent integration/build is separate.",
+    "preexisting_enum_issues": "Outside the specifically requested edited entries, global preexisting enum issues not changed."
+  }
+}

@@ -12,15 +12,78 @@
   "spatial matching",
   "greedy algorithm",
   "applied probability",
-  "online platforms"
+  "online platforms",
+  "random geometric probability",
+  "dynamic-matching",
+  "spatial-matching",
+  "greedy-algorithm",
+  "random-geometric-probability",
+  "online-platforms"
  ],
- "short_statement": "Demand and supply points arrive i.i.d. uniform in $[0,1]^d$ and each demand is matched online to an available supply, minimizing expected average matched distance. The minimum achievable cost is known across dimensions; what is the expected cost of the natural greedy rule (match each arrival to its nearest available counterpart)?",
- "open_problem": "Open problem: characterize the expected average matching cost of the \\emph{standard greedy} algorithm - match each arriving demand unit to the nearest currently available supply unit (and vice versa in the fully dynamic model) - in the semi-dynamic and fully dynamic models, for each dimension $d$.",
- "full_statement": "Supply and demand units are located i.i.d. uniformly in $[0,1]^d$. Consider two online models: the \\emph{semi-dynamic} model (a pool of $N$ supply units is in place and $N$ demand units arrive sequentially, each matched on arrival to a still-available supply unit), and the \\emph{fully dynamic} model (both supply and demand units arrive over time and unmatched units wait in the system). The cost is the expected average Euclidean distance between matched pairs as a function of system size $N$ (and any excess supply $M$). The nearest-neighbor distance $\\Theta(N^{-1/d})$ is a lower bound. Kanoria (2021) determines the \\emph{minimum achievable} cost in essentially all regimes: $\\Theta(N^{-1/2})$ for $d=1$, $\\Theta(\\sqrt{\\log N}\\,/\\sqrt{N})$ for $d=2$, and $\\Theta(N^{-1/d})$ for $d\\ge 3$ (static / semi-dynamic), achieved by a Hierarchical Greedy algorithm. \\textbf{Open problem:} characterize the expected average matching cost of the \\emph{standard greedy} algorithm - match each arriving demand unit to the nearest currently available supply unit (and vice versa in the fully dynamic model) - in the semi-dynamic and fully dynamic models, for each dimension $d$. Is standard greedy within a constant (or polylogarithmic) factor of the minimum achievable cost, or is it strictly (polynomially) worse?",
- "known_results": "Kanoria (2021) gives tight bounds on the minimum achievable cost in essentially all regimes (via Hierarchical Greedy), and notes that 'a sharp analysis of the standard greedy algorithm is challenging even in the semi-dynamic setting, and analyzing greedy in the fully dynamic setting may be even harder.' For $d=1$ with excess supply $M=\\epsilon N$, an $O(\\log^3 N / N)$ upper bound on greedy's cost is known (Akbarpour, Alimohammadi, Li, Saberi 2021). The general behavior of standard greedy, especially in the fully dynamic model and for $d=2$, is open.",
+ "short_statement": "Determine the exact expected cost scaling of nearest-neighbor greedy in balanced dynamic spatial matching.",
+ "open_problem": "Characterize the scaling and, where possible, constants of standard nearest-neighbor greedy in semi-dynamic and fully dynamic random spatial matching, especially in balanced markets and in dimensions $d=1$ and $d=2$ where discrepancy effects are strongest.",
+ "background": "Dynamic spatial matching is a stripped-down model of platforms that match supply and demand in metric space: ride-hailing, delivery, labor platforms, and service dispatch all face the tension between immediate local matching and preserving future options. In random spatial models, supply and demand locations are iid in $[0,1]^d$, and static optimal matching already has dimension-dependent behavior governed by Ajtai-Komlos-Tusnady and Talagrand-type results. Kanoria showed that in many dynamic regimes the platform can achieve cost nearly as low as if future arrivals were known, using policies that deliberately preserve balance across spatial scales. Standard nearest-neighbor greedy is the more obvious operational rule, but it is myopic. It may consume nearby supply in a way that creates holes and causes later long matches. Excess supply can repair greedy in one-dimensional settings, but the balanced case and the fully dynamic case remain much less clear.",
+ "full_statement": "Supply and demand points are sampled independently in $[0,1]^d$, usually uniformly, and matching cost is Euclidean distance. In the semi-dynamic model, $N$ supply points are initially present and $N$ demand points arrive sequentially; each demand must be matched irrevocably to an unmatched supply point. In the fully dynamic model, supply and demand both arrive over time and unmatched agents may wait subject to the model's queue-size or market-thickness assumptions. The standard greedy policy matches each arriving agent to the nearest currently available compatible opposite-side agent. Kanoria characterizes near-optimal achievable cost scaling using hierarchical greedy policies, but the ordinary nearest-neighbor greedy policy is not sharply understood in balanced markets. The open problem is to determine the expected average cost of standard greedy as a function of $N$ and dimension $d$, including possible logarithmic factors and constants, and to compare this scaling with the optimal achievable cost.",
+ "known_results": "Kanoria determines the optimal achievable cost scaling in major static, semi-dynamic, and fully dynamic random spatial matching regimes and gives concrete hierarchical matching algorithms. In almost all cases, the optimal dynamic scaling is close to the static benchmark or nearest-neighbor distance; one explicit remaining gap in that paper is a logarithmic factor for $d=1$ in the fully dynamic model. Akbarpour, Alimohammadi, Li, and Saberi show that in one-dimensional spatial markets, a small amount of excess supply can make a simple greedy algorithm perform very well. These results do not give a sharp analysis of standard nearest-neighbor greedy under balanced supply and demand, nor do they determine whether greedy suffers avoidable logarithmic losses in the key low-dimensional dynamic regimes.",
+ "progress": {
+  "state": "partial",
+  "summary": "Optimal scaling is known via hierarchical greedy-style algorithms, and excess-supply one-dimensional results explain some greedy behavior. Balanced standard nearest-neighbor greedy remains poorly understood.",
+  "links": [
+   {
+    "title": "Dynamic Spatial Matching",
+    "url": "https://arxiv.org/abs/2105.07329"
+   },
+   {
+    "title": "The Value of Excess Supply in Spatial Matching Markets",
+    "url": "https://arxiv.org/abs/2104.03219"
+   }
+  ]
+ },
+ "importance": 8,
+ "difficulty": 8,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "Finite simulations can reveal bad greedy configurations and plausible exponents, but the question is asymptotic for random inputs. Constructed finite patterns may guide lower-bound proofs.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Automated simulation and search over arrival sequences can estimate exponents, identify bottleneck configurations, and test coupling hypotheses. Proof still needs probabilistic scaling arguments.",
+ "literature": {
+  "synthesis": "The optimal-cost story is substantially clearer than the greedy-cost story. Kanoria's hierarchical algorithms deliberately preserve spatial balance across scales, avoiding the local myopia of nearest-neighbor matching. Standard greedy lacks that multiscale control; it can consume nearby supply in ways that create later long matches. Excess supply can mitigate this problem in one dimension, as Akbarpour et al. show, but that does not settle balanced markets or fully dynamic arrivals. The remaining open problem is a sharp stochastic-process analysis of greedy's spatial imbalance over time, potentially requiring tools from discrepancy, random allocation, transport, and queueing.",
+  "reviewed": [
+   {
+    "ref": "Yash Kanoria, 'Dynamic Spatial Matching', Annals of Applied Probability 2023 / arXiv 2021",
+    "result": "Determines optimal achievable cost scaling in static, semi-dynamic, and fully dynamic random spatial matching models using hierarchical algorithms and identifies remaining low-dimensional logarithmic gaps.",
+    "relevance": "poses-problem",
+    "url": "https://arxiv.org/abs/2105.07329"
+   },
+   {
+    "ref": "Mohammad Akbarpour, Yeganeh Alimohammadi, Shengwu Li, and Amin Saberi, 'The Value of Excess Supply in Spatial Matching Markets', EC 2021",
+    "result": "Shows that excess supply can dramatically improve greedy performance in a one-dimensional spatial matching model.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2104.03219"
+   },
+   {
+    "ref": "Miklos Ajtai, Janos Komlos, and Gabor Tusnady, 'On optimal matchings', Combinatorica 1984",
+    "result": "Provides foundational static random matching asymptotics in low-dimensional Euclidean spaces.",
+    "relevance": "related-tool",
+    "url": "https://doi.org/10.1007/BF02579135"
+   },
+   {
+    "ref": "Michel Talagrand, 'Matching random samples in many dimensions', Annals of Applied Probability 1992",
+    "result": "Develops static random matching asymptotics and high-dimensional tools that form benchmarks for dynamic spatial matching.",
+    "relevance": "related-tool",
+    "url": "https://doi.org/10.1214/aoap/1177005578"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Use simulations to infer the exponent, but formulate conjectures in terms of discrepancy accumulated across dyadic cells. Try coupling greedy to random sequential adsorption, online allocation, or transport processes. Lower bounds may come from showing that greedy creates under-supplied intervals or boxes at multiple scales; upper bounds likely need a martingale or potential function tracking imbalance.",
+  "verification_notes": "A solution must state the exact model variant, dimension, arrival process, and whether excess supply is present. Empirical exponents should be treated as conjectural unless accompanied by concentration and finite-size error control. Claims about hierarchical greedy do not automatically apply to standard nearest-neighbor greedy, which is the policy targeted by this record.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "Kanoria, 'Dynamic Spatial Matching' - the difficulty of analyzing standard greedy is stated in the model/results discussion (Sections 3-4) and the open directions (Section 7).",
-  "url": "https://arxiv.org/abs/2105.07329"
+  "text": "Residual question around standard greedy after Kanoria's optimal-scaling results and later excess-supply analysis.",
+  "url": "https://arxiv.org/abs/2105.07329",
+  "quote": "",
+  "location": "Open directions and discussion of greedy/spatial balance"
  },
  "source": {
   "authors": "Yash Kanoria",

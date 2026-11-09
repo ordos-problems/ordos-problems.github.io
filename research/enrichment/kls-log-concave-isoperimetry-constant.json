@@ -1,0 +1,147 @@
+{
+  "id": "kls-log-concave-isoperimetry-constant",
+  "title": "Dimension-free KLS isoperimetry for log-concave measures",
+  "collection": "Applied Probability",
+  "area": "Convex Geometry and Sampling",
+  "tags": [
+    "KLS conjecture",
+    "log-concave measures",
+    "isoperimetry",
+    "sampling",
+    "convex geometry"
+  ],
+  "status": "solution claimed",
+  "confidence": "high",
+  "short_statement": "October 2026 preprints claim a dimension-free KLS bound for all isotropic log-concave measures; the full conjecture is no longer accurately described as having only Chen's near-constant bound.",
+  "full_statement": "Let $\\mu$ be an isotropic log-concave probability measure on $\\mathbb R^n$: its barycenter is $0$, its covariance matrix is the identity, and its density has the form $e^{-V(x)}$ for a convex function $V$. Define its Cheeger isoperimetric constant by $$h(\\mu)=\\inf_{A:0<\\mu(A)<1}\\frac{\\mu^+(A)}{\\min\\{\\mu(A),1-\\mu(A)\\}},$$ where $\\mu^+(A)$ is the usual boundary measure. Let $$\\psi_n=\\inf\\{h(\\mu):\\mu\\text{ is isotropic and log-concave on }\\mathbb R^n\\}.$$ The Kannan-Lovasz-Simonovits conjecture asks whether there is a universal constant $c>0$, independent of $n$, such that $\\psi_n\\ge c$ for every dimension. Equivalently, in the reciprocal convention often called the KLS constant, the conjecture asks for a universal upper bound. October 2026 preprints claim this dimension-free bound: Bizeul, Klartag, and Lehec, Theorem 1.1, and Song and Zhang, version 2, Theorem 1.1. Both state a universal Poincare bound for arbitrary isotropic log-concave measures, equivalent here to the requested isoperimetry. This entry records a solution claim, not an independent certification of the proofs. A solution should be stated for arbitrary log-concave measures, not only for uniform measures on centrally symmetric convex bodies or for special product/rotation-invariant classes.",
+  "open_problem": "Solution claimed for the full dimension-free conjecture; assess the October 2026 proofs before treating it as an unsolved research target.",
+  "background": "KLS has been one of the central problems at the interface of probability, convex geometry, and algorithms. The model is clean: isotropic log-concave distributions are the canonical high-dimensional convex distributions, and the question asks for a uniform bottleneck/isoperimetric lower bound. The conjecture matters to operations research and theoretical computer science because isoperimetry controls Markov-chain mixing for sampling from convex bodies and log-concave densities, which in turn underlies randomized algorithms for volume computation, integration, and convex optimization. It also sits in a tight web of asymptotic convex-geometry conjectures, including slicing, thin-shell, concentration for Lipschitz functions, and central limit behavior of random projections. The point of the problem is not to choose a better model of demand, service, or uncertainty; the model is already fixed and canonical. The October 2026 proof claims address precisely the dimension dependence.",
+  "known_results": "Earlier bounds progressed from polynomial losses (Lee and Vempala) to Chen's almost-constant bound, followed by logarithmic improvements. On 4 October 2026 Bizeul, Klartag, and Lehec posted 'Presenting a proof of the Kannan-Lovasz-Simonovits conjecture': Theorem 1.1 states $C_P(\\mu)\\le C$ for every isotropic log-concave measure in every dimension. Song and Zhang's 'An O(1) Bound for the KLS Constant', arXiv:2610.01447v2, also states the same general conclusion. Its version 1 only claimed $O(4^{\\log^* n})$ in reciprocal notation; version 2 is the relevant update. Bizeul, Klartag, and Lehec explicitly build on Song and Zhang's recent criterion involving high-order derivatives of tilt averages; these are not being represented as independent proofs. These are full-conjecture proof claims, not only slicing or thin-shell results. Refereed publication and complete proof verification were not established by this audit.",
+  "where_posed": {
+    "text": "The conjecture originates with Kannan, Lovasz, and Simonovits and is explicitly treated as the KLS conjecture in later stochastic-localization and sampling papers.",
+    "url": "https://arxiv.org/abs/2011.13661",
+    "quote": "almost constant lower bound",
+    "location": "Abstract"
+  },
+  "source": {
+    "authors": "Ravi Kannan, Laszlo Lovasz, Miklos Simonovits",
+    "title": "Isoperimetric problems for convex bodies and a localization lemma",
+    "year": 1995,
+    "venue": "Discrete & Computational Geometry",
+    "url": "https://doi.org/10.1007/BF02574061"
+  },
+  "additional_refs": [
+    {
+      "authors": "Yin Tat Lee, Santosh S. Vempala",
+      "title": "Eldan's Stochastic Localization and the KLS Hyperplane Conjecture: An Improved Lower Bound for Expansion",
+      "year": 2017,
+      "venue": "FOCS",
+      "url": "https://arxiv.org/abs/1612.01507"
+    },
+    {
+      "authors": "Yuansi Chen",
+      "title": "An Almost Constant Lower Bound of the Isoperimetric Coefficient in the KLS Conjecture",
+      "year": 2021,
+      "venue": "Geometric and Functional Analysis",
+      "url": "https://arxiv.org/abs/2011.13661"
+    },
+    {
+      "authors": "Haotian Jiang, Yin Tat Lee, Santosh S. Vempala",
+      "title": "A Generalized Central Limit Conjecture for Convex Bodies",
+      "year": 2020,
+      "venue": "Annals of Probability",
+      "url": "https://arxiv.org/abs/1909.13127"
+    },
+    {
+      "authors": "Yuansi Chen, Ronen Eldan",
+      "title": "Hit-and-run mixing via localization schemes",
+      "year": 2022,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/2212.00297"
+    },
+    {
+      "authors": "Pierre Bizeul, Boaz Klartag, Joseph Lehec",
+      "title": "Presenting a proof of the Kannan-Lovasz-Simonovits conjecture",
+      "year": 2026,
+      "venue": "arXiv:2610.05474v1, 4 October 2026",
+      "url": "https://arxiv.org/abs/2610.05474v1"
+    },
+    {
+      "authors": "Zhao Song, Xinzhi Zhang",
+      "title": "An O(1) Bound for the KLS Constant",
+      "year": 2026,
+      "venue": "arXiv:2610.01447v2, 4 October 2026",
+      "url": "https://arxiv.org/abs/2610.01447v2"
+    }
+  ],
+  "enabled": true,
+  "progress": {
+    "state": "solution-claimed",
+    "summary": "Two October 2026 preprints state dimension-free bounds under the record's full assumptions. This audit checked the theorem scope, not every proof step.",
+    "links": [
+      {
+        "title": "Chen almost constant KLS bound",
+        "url": "https://arxiv.org/abs/2011.13661"
+      },
+      {
+        "title": "Hit-and-run mixing and KLS",
+        "url": "https://arxiv.org/abs/2212.00297"
+      },
+      {
+        "title": "Bizeul, Klartag, Lehec (4 October 2026), Theorem 1.1",
+        "url": "https://arxiv.org/abs/2610.05474v1"
+      },
+      {
+        "title": "Song and Zhang, version 2 (4 October 2026)",
+        "url": "https://arxiv.org/abs/2610.01447v2"
+      }
+    ]
+  },
+  "importance": 10,
+  "difficulty": 10,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Any proposed asymptotic counterexample must now address the October 2026 proof claims, rather than merely the older dimension-dependent bounds.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Proof checking and stress-testing quantitative intermediate inequalities are more relevant than assuming the original conjecture is still wholly open.",
+  "literature": {
+    "synthesis": "The historical progression in dimension-dependent estimates is superseded as a research-status description by the October 2026 full proof claims. Both papers treat general log-concave measures. The key audit distinction is between verifying what a theorem asserts and independently validating its proof; only the former was completed here. Keep the record in solution-claimed status pending maintainer assessment. Bizeul-Klartag-Lehec explicitly relies on the Song-Zhang criterion; the two claims should not be counted as independent proof routes.",
+    "reviewed": [
+      {
+        "ref": "Kannan, Lovasz, Simonovits, 'Isoperimetric problems for convex bodies and a localization lemma', DCG 1995",
+        "result": "Introduces the localization framework and the conjectural dimension-free isoperimetric principle.",
+        "relevance": "related-tool",
+        "url": "https://doi.org/10.1007/BF02574061"
+      },
+      {
+        "ref": "Lee and Vempala, 'Eldan's Stochastic Localization and the KLS Hyperplane Conjecture', FOCS 2017",
+        "result": "Improves the general KLS dimension dependence to the $n^{1/4}$ scale in reciprocal notation.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/1612.01507"
+      },
+      {
+        "ref": "Chen, 'An Almost Constant Lower Bound...', GAFA 2021",
+        "result": "Proves $n^{-o(1)}$ lower bound for the isoperimetric coefficient, a historical improvement.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2011.13661"
+      },
+      {
+        "ref": "Pierre Bizeul, Boaz Klartag, Joseph Lehec, 'Presenting a proof of the Kannan-Lovasz-Simonovits conjecture', arXiv:2610.05474v1 (2026)",
+        "result": "Theorem 1.1 states a dimension-free Poincare bound; Sections 6-7 give the cumulant-bound and suspension route to the theorem.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2610.05474v1"
+      },
+      {
+        "ref": "Zhao Song, Xinzhi Zhang, 'An O(1) Bound for the KLS Constant', arXiv:2610.01447v2 (2026)",
+        "result": "Theorem 1.1 states universal Poincare and reciprocal-Cheeger bounds, including nonsmooth and bounded-support densities.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2610.01447v2"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Prioritize checking the new proofs and their general-measure reductions rather than treating the dimension-free bound as untouched. Separate applications and sharp-constant questions from the original conjecture.",
+    "verification_notes": "A proof must clearly specify the convention for the KLS constant and show a bound uniform over all dimensions and all isotropic log-concave probability measures. It is not enough to prove the statement for symmetric bodies, smooth densities, product measures, or bounded aspect-ratio bodies unless the reduction to the general case is included. A counterexample must give an explicit family, put it in isotropic position, and prove the Cheeger/isoperimetric constant tends to zero. For algorithmic consequences, verify whether the statement uses Cheeger, Poincare, or reciprocal KLS notation, since constants invert between conventions. For the 2026 claims, inspect the full approximation argument for nonsmooth/unbounded-support measures. Song-Zhang's psi notation is reciprocal to this record's psi_n.",
+    "machine_checkable": false
+  },
+  "notes_for_maintainer": "Audit 2026-11-09: theorem-level review of both full texts confirms an exact assumption match. Conservative status is solution claimed; no independent full-proof or peer-review certification. Historical references retained, stale frontier and no-proof assertions removed."
+}

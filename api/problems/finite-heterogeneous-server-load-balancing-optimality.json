@@ -1,0 +1,107 @@
+{
+ "number": 127,
+ "ref": "ORDOS-127",
+ "id": "finite-heterogeneous-server-load-balancing-optimality",
+ "title": "Optimal Load Balancing for Finite Heterogeneous Parallel-Server Queues",
+ "collection": "Operations Research",
+ "area": "Queueing and Service Systems",
+ "status": "open",
+ "confidence": "high",
+ "tags": [
+  "queueing",
+  "load balancing",
+  "heterogeneous servers",
+  "dispatching",
+  "JSQ",
+  "Halfin-Whitt"
+ ],
+ "short_statement": "For a finite system of parallel queues with heterogeneous service rates, characterize an optimal dispatching policy or prove structural optimality of a simple speed-aware rule.",
+ "open_problem": "In the heterogeneous case, the open problem is to characterize an optimal finite-system dispatching rule, or to prove/disprove optimality of a natural speed-aware index/JSQ rule.",
+ "background": "Load balancing is one of the basic controls in service systems, call centers, cloud computing, and data-center scheduling. The homogeneous-server model is classical: routing to the shortest queue has strong optimality properties because servers are exchangeable. Heterogeneous service rates remove that symmetry. A fast server with a longer queue may dominate a slow idle server, but the correct tradeoff depends on the whole queue vector and future arrivals. This makes the finite-system dynamic program natural but hard to understand structurally. The problem is well defined and not primarily about model choice: arrivals, exponential services, observable queues, and a standard holding-cost objective give a concrete continuous-time Markov decision process. The research gap is that the field has increasingly sharp asymptotic policies, while the exact finite-system decision rule remains unknown except in special cases.",
+ "full_statement": "Consider $m$ parallel single-server queues. Jobs arrive according to a Poisson process and must be routed immediately and irrevocably to one server. Server $i$ works at exponential rate $\\mu_i$, with possibly unequal service rates. A dispatching policy observes the queue-length vector $Q(t)=(Q_1(t),\\ldots,Q_m(t))$ and server speeds $\\mu_1,\\ldots,\\mu_m$, and chooses the destination server for each arrival. For a finite system with fixed $m$ and fixed rates, the objective may be to minimize steady-state mean response time, steady-state expected total queue length, or the discounted/average-cost Markov decision problem with holding cost $\\sum_i Q_i(t)$. In the homogeneous case $\\mu_i\\equiv\\mu$, Join-the-Shortest-Queue is optimal for standard objectives. In the heterogeneous case, the open problem is to characterize an optimal finite-system dispatching rule, or to prove/disprove optimality of a natural speed-aware index/JSQ rule. Recent work proves asymptotic optimality of speed-aware JSQ in large-system fluid and Halfin-Whitt regimes, but those limit theorems do not settle exact finite-system optimality.",
+ "known_results": "For identical servers, JSQ minimizes standard delay metrics. For heterogeneous systems, Bhambay and Mukhopadhyay prove fluid-limit delay optimality of Speed-Aware JSQ, and Bhambay, Buke, and Mukhopadhyay prove asymptotic optimality in the Halfin-Whitt regime, including steady-state diffusion-scaled optimality among policies using queue lengths and server speeds. Zhou, Shroff, and Wierman resolve a related delayed-information open problem in large heterogeneous systems through an asymptotically optimal local-estimation-driven framework. These results do not identify an exact optimal dispatching policy for a fixed finite heterogeneous system.",
+ "progress": {
+  "state": "partial",
+  "summary": "Large-system fluid and Halfin-Whitt optimality results support speed-aware JSQ-type policies. The exact finite Markov decision problem and its structural optimal policy remain open.",
+  "links": [
+   {
+    "title": "Halfin-Whitt SA-JSQ optimality",
+    "url": "https://arxiv.org/abs/2312.10497"
+   }
+  ]
+ },
+ "importance": 7,
+ "difficulty": 7,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "A small finite system with two or three heterogeneous servers can refute a proposed simple index rule. Exact dynamic-programming computation on truncated state spaces can generate candidate counterexamples, though proof requires bounding truncation or solving the MDP exactly.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Automated search can compare candidate dispatching rules against finite-state dynamic programs and discover threshold structures or counterexamples. This is a good target for code-assisted conjecture formation.",
+ "literature": {
+  "synthesis": "The finite homogeneous problem has strong monotonicity and exchangeability, making JSQ optimal. Heterogeneity breaks exchangeability and creates a speed-delay tradeoff that is easy to state but hard to solve. Recent papers take an asymptotic route: speed-aware JSQ is delay optimal in fluid limits and remains optimal in Halfin-Whitt heavy traffic, with steady-state interchange justified by Stein and Lyapunov arguments. Related work handles multiple dispatchers and delayed information in large systems. What remains is the finite-system structural problem: identify the exact optimal action regions in queue-length space, or prove that no simple index/threshold characterization can hold generally.",
+  "reviewed": [
+   {
+    "ref": "Sanidhay Bhambay, Burak Buke, Arpan Mukhopadhyay, 'Asymptotic Optimality of the Speed-Aware Join-the-Shortest-Queue in the Halfin-Whitt Regime for Heterogeneous Systems', arXiv 2024",
+    "result": "Proves Halfin-Whitt steady-state optimality of SA-JSQ and explicitly notes finite optimality remains open.",
+    "relevance": "poses-problem",
+    "url": "https://arxiv.org/abs/2312.10497"
+   },
+   {
+    "ref": "Sanidhay Bhambay, Arpan Mukhopadhyay, 'Asymptotic Optimality of Speed-Aware JSQ for Heterogeneous Systems', arXiv 2022",
+    "result": "Proves fluid-limit delay optimality of speed-aware JSQ in heterogeneous systems.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2203.01721"
+   },
+   {
+    "ref": "Xingyu Zhou, Ness Shroff, Adam Wierman, 'Asymptotically Optimal Load Balancing in Large-scale Heterogeneous Systems with Multiple Dispatchers', arXiv 2020",
+    "result": "Gives asymptotically optimal policies for heterogeneous systems with multiple dispatchers and delayed local estimates.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/2002.08908"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Analyze the continuous-time MDP for two heterogeneous servers first, looking for monotone switching curves. Use value iteration on truncated state spaces to formulate conjectures, then prove them through coupling, submodularity, or dynamic-programming inequalities.",
+  "verification_notes": "A claimed optimal policy must specify the objective and prove optimality for the untruncated infinite-state system. Numerical MDP evidence is useful only as conjecture support unless accompanied by rigorous truncation bounds.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "Stated in Bhambay, Buke, and Mukhopadhyay, 'Asymptotic Optimality of the Speed-Aware Join-the-Shortest-Queue in the Halfin-Whitt Regime for Heterogeneous Systems', arXiv 2023/2024.",
+  "url": "https://arxiv.org/abs/2312.10497",
+  "quote": "finding an optimal load balancing scheme remains an open problem",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Sanidhay Bhambay, Burak Buke, Arpan Mukhopadhyay",
+  "title": "Asymptotic Optimality of the Speed-Aware Join-the-Shortest-Queue in the Halfin-Whitt Regime for Heterogeneous Systems",
+  "year": 2024,
+  "venue": "arXiv",
+  "url": "https://arxiv.org/abs/2312.10497"
+ },
+ "additional_refs": [
+  {
+   "authors": "Sanidhay Bhambay, Arpan Mukhopadhyay",
+   "title": "Asymptotic Optimality of Speed-Aware JSQ for Heterogeneous Systems",
+   "year": 2022,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2203.01721"
+  },
+  {
+   "authors": "Xingyu Zhou, Ness Shroff, Adam Wierman",
+   "title": "Asymptotically Optimal Load Balancing in Large-scale Heterogeneous Systems with Multiple Dispatchers",
+   "year": 2020,
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2002.08908"
+  }
+ ],
+ "bibtex": "@misc{Bhambay2024,\n  author = {Sanidhay Bhambay and Burak Buke and Arpan Mukhopadhyay},\n  title = {Asymptotic Optimality of the Speed-Aware Join-the-Shortest-Queue in the Halfin-Whitt Regime for Heterogeneous Systems},\n  year = {2024},\n  howpublished = {arXiv},\n  url = {https://arxiv.org/abs/2312.10497},\n  note = {Source of ORdős Problem ORDOS-127}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/finite-heterogeneous-server-load-balancing-optimality.html",
+  "api": "https://ordos-problems.github.io/api/problems/finite-heterogeneous-server-load-balancing-optimality.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

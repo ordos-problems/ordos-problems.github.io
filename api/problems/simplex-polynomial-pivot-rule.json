@@ -11,15 +11,80 @@
   "simplex method",
   "pivot rule",
   "linear programming",
-  "Klee-Minty"
+  "Klee-Minty",
+  "polyhedral geometry",
+  "lower bounds"
  ],
- "short_statement": "Is there a pivot rule under which the simplex method always solves a linear program in a number of pivot steps bounded by a polynomial in the number of variables and constraints?",
- "open_problem": "does there exist a (deterministic or randomized) pivot rule for which the number of pivot steps is bounded by a polynomial in $m$ and $n$ for every linear program?",
- "full_statement": "The simplex method solves $\\max\\{c^\\top x : Ax\\le b,\\ x\\ge 0\\}$ by walking along edges of the feasible polyhedron from vertex to adjacent improving vertex; a \\emph{pivot rule} chooses, at each vertex, which improving edge to follow. Klee and Minty (1972) showed Dantzig's most-negative-reduced-cost rule can take $2^n-1$ steps on a deformed cube, and analogous exponential lower bounds are known for essentially every classical deterministic rule (Bland, steepest edge, greatest improvement, etc.). Question: does there exist a (deterministic or randomized) pivot rule for which the number of pivot steps is bounded by a polynomial in $m$ and $n$ for every linear program?",
- "known_results": "Best known are subexponential randomized rules: Random-Facet achieves $\\exp(O(\\sqrt{n\\log n}))$ pivots (Kalai 1992; Matoušek–Sharir–Welzl), later shown essentially tight for such rules (Friedmann–Hansen–Zwick). No polynomial pivot rule is known. The question is intimately tied to the polynomial Hirsch conjecture (a polynomial diameter bound is necessary for any polynomial pivot rule).",
+ "short_statement": "Is there a simplex pivot rule that always reaches an optimal LP vertex in polynomially many pivots?",
+ "open_problem": "Find a polynomial pivot rule for the simplex method, or prove that no rule in a well-defined broad class can have a polynomial worst-case pivot bound. The unresolved part is the existence of any efficiently computable rule with polynomial pivot count, not the polynomial-time solvability of LP by other methods.",
+ "background": "The simplex method is the workhorse algorithm of linear programming in practice. It moves along vertices of the feasible polyhedron, improving the objective at each pivot until an optimum is reached. Its practical speed contrasts sharply with worst-case examples: the Klee-Minty cubes show that natural pivot rules can take exponentially many steps. The open question is not whether LP is polynomial-time solvable, since ellipsoid and interior-point methods already establish that, but whether the simplex method itself has a pivot rule with a worst-case polynomial number of pivots. This sits between geometry and algorithms. A polynomial pivot rule would imply that every LP has a short efficiently navigable monotone path to optimality under that rule; conversely, lower bounds for many rules show that local improvement can be trapped by carefully constructed polyhedra. The problem is also tied to polytope diameter questions: small diameter is necessary but not sufficient, because the simplex path must be found by a rule using local information.",
+ "full_statement": "Consider a linear program $\\max\\{c^Tx:Ax=b,x\\ge0\\}$, or an equivalent inequality form, with $m$ constraints and $n$ variables. Assume first that the feasible polyhedron is nondegenerate, so every basic feasible solution is a vertex and every simplex pivot moves along one improving edge to an adjacent vertex. A pivot rule is an efficiently computable rule that, from the current basis/tableau and the input data, chooses an entering variable and a leaving variable whenever the current basis is not optimal. The question is whether there exists a deterministic pivot rule with worst-case pivot count $\\operatorname{poly}(m,n)$ for every linear program, or a randomized pivot rule with expected pivot count $\\operatorname{poly}(m,n)$ against an appropriate adversarial model. A complete answer must also handle degeneracy, either directly or through a perturbation/lexicographic rule whose bit complexity and pivot count remain polynomial. The open problem is about simplex paths and pivot rules, not about linear programming solvability by ellipsoid or interior-point methods.",
+ "known_results": "Klee and Minty showed exponential behavior for Dantzig's rule on deformed cubes, establishing that the practical success of simplex is not explained by the most classical worst-case rule. Bland's rule prevents cycling, but it is not polynomial and belongs to a family of rules for which exponential lower bounds are known. Random-Facet and the Kalai/Matousek-Sharir-Welzl line of randomized simplex algorithms achieve subexponential expected bounds, roughly of the form $\\exp(O(\\sqrt{n\\log n}))$, which is the strongest general positive evidence for pivoting but still far from polynomial. A long sequence of lower-bound constructions now covers many deterministic, randomized, and history-based rules, including Zadeh's least-entered rule and combinations of classical rules; some earlier claimed Random-Facet lower-bound transfers required errata, so the precise rule model matters. Santos disproved the original Hirsch conjecture, showing that linear diameter is false, but polynomial diameter and polynomial pivot-rule complexity are distinct questions. As of the source check, no efficiently computable pivot rule is known with a polynomial worst-case or expected number of pivots for all linear programs.",
+ "progress": {
+  "state": "partial",
+  "summary": "Many natural pivot rules have exponential or superpolynomial lower bounds, while randomized rules give subexponential upper bounds. These results narrow the plausible rule families but leave the central polynomial-pivot question open.",
+  "links": [
+   {
+    "title": "Random-Facet simplex algorithms on combinatorial cubes",
+    "url": "https://doi.org/10.1137/0406035"
+   },
+   {
+    "title": "An exponential lower bound for Zadeh's pivot rule",
+    "url": "https://arxiv.org/abs/1911.01074"
+   }
+  ]
+ },
+ "importance": 9,
+ "difficulty": 10,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "For any proposed concrete pivot rule, a finite family of LPs can refute a claimed polynomial bound. Search over small polytopal gadgets may help construct lower-bound instances for candidate rules.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Evolutionary search can explore LP/tableau gadgets that force long paths for a proposed rule, or discover potentials for new rules. It is especially useful for refuting candidate rules before attempting a proof.",
+ "literature": {
+  "synthesis": "The literature has two complementary strands. Lower-bound constructions start with Klee-Minty cubes and now cover many natural deterministic, randomized, and history-based pivoting strategies, showing that local improvement rules can be forced into very long monotone paths. Modern constructions often pass through unique-sink orientations, parity games, or policy-iteration gadgets before translating back to linear programs. Upper-bound work shows that randomization helps: Random-Facet and related algorithms obtain subexponential pivot counts, far better than exponential but still not polynomial. Geometric diameter results provide necessary background, but the simplex question is sharper because a pivot rule must identify a good monotone path using information available along the run. The remaining gap is not a missing polynomial-time LP algorithm; it is the absence of either a polynomial pivoting rule or a lower-bound theorem broad enough to explain why all efficiently computable simplex rules must fail.",
+  "reviewed": [
+   {
+    "ref": "Victor Klee and George J. Minty, 'How good is the simplex algorithm?', Inequalities III, 1972",
+    "result": "Constructs LP instances on which Dantzig's simplex pivot rule takes exponentially many pivots.",
+    "relevance": "hardness",
+    "url": "https://doi.org/10.1016/B978-0-12-387750-1.50016-5"
+   },
+   {
+    "ref": "Gil Kalai, 'A subexponential randomized simplex algorithm', STOC 1992",
+    "result": "Introduces a randomized simplex method with subexponential expected pivot complexity.",
+    "relevance": "partial-progress",
+    "url": "https://doi.org/10.1145/129712.129759"
+   },
+   {
+    "ref": "Yann Disser, Oliver Friedmann, Alexander V. Hopp, 'An Exponential Lower Bound for Zadeh's Pivot Rule', Mathematical Programming 2021",
+    "result": "Proves exponential worst-case behavior for Zadeh's least-entered pivot rule, formerly a prominent candidate for improved deterministic behavior.",
+    "relevance": "hardness",
+    "url": "https://arxiv.org/abs/1911.01074"
+   },
+   {
+    "ref": "Antonis Thomas, 'Exponential lower bounds for history-based simplex pivot rules on abstract cubes', arXiv 2017",
+    "result": "Gives exponential lower bounds for several history-based pivot rules on acyclic unique-sink orientations.",
+    "relevance": "hardness",
+    "url": "https://arxiv.org/abs/1706.09380"
+   },
+   {
+    "ref": "Francisco Santos, 'A counterexample to the Hirsch conjecture', Annals of Mathematics 2012",
+    "result": "Disproves the linear Hirsch diameter bound for polytopes, clarifying but not settling polynomial simplex complexity.",
+    "relevance": "related-tool",
+    "url": "https://arxiv.org/abs/1006.2814"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "For lower bounds, encode pivot dynamics as games or gadgets and search for compositions that force long paths. For positive work, look for nonlocal pivot rules with a potential that falls by an inverse-polynomial fraction per pivot, possibly borrowing interior-point geometry.",
+  "verification_notes": "A lower-bound submission must define the pivot rule exactly, specify whether the construction is an actual linear program, an oriented matroid, or an abstract unique-sink orientation, and prove the claimed path length on an infinite family. A lower bound for an abstract cube or for a restricted implementation of a rule should not be advertised as a lower bound for all LP pivot rules unless the reduction is explicit. A positive submission must prove that the rule is efficiently computable, that it chooses valid improving pivots, and that its pivot count is polynomial for all inputs. Degeneracy cannot be ignored: either prove the result for degenerate LPs or supply a perturbation/lexicographic implementation with controlled bit complexity and no hidden exponential sequence of degenerate pivots.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "A central open problem of linear optimization since Klee–Minty (1972); see Kalai (1992) and Todd's surveys.",
-  "url": "https://www.sciencedirect.com/science/article/pii/B9780125104302500190"
+  "text": "The modern problem traces to Klee-Minty worst-case examples and the subsequent simplex complexity literature; it is commonly posed as the question of a polynomial-time simplex variant.",
+  "url": "https://doi.org/10.1016/B978-0-12-387750-1.50016-5",
+  "quote": "",
+  "location": ""
  },
  "source": {
   "authors": "Victor Klee, George J. Minty",

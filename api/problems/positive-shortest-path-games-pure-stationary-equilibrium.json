@@ -1,0 +1,91 @@
+{
+ "number": 116,
+ "ref": "ORDOS-116",
+ "id": "positive-shortest-path-games-pure-stationary-equilibrium",
+ "title": "Terminal equilibria in two-person positive shortest-path games",
+ "collection": "Economics",
+ "area": "Algorithmic Game Theory",
+ "status": "partially resolved",
+ "confidence": "high",
+ "tags": [
+  "game-theory",
+  "shortest-path-games",
+  "nash-equilibrium",
+  "stationary-strategies",
+  "economics"
+ ],
+ "short_statement": "The pure stationary equilibrium question for two-person positive shortest-path games is solved; the remaining open problem asks when a terminal pure stationary equilibrium must exist.",
+ "open_problem": "In a finite two-person positive shortest-path game with a directed path from the initial state to a terminal, must there exist a terminal Nash equilibrium in pure stationary strategies?",
+ "background": "Shortest-path games are a clean deterministic model of strategic routing and dynamic decision-making. They sit at the boundary of combinatorial optimization and game theory: if one decision maker controls all vertices the problem is ordinary shortest path, while multiple controllers create equilibrium questions. Pure stationary equilibria are especially important because they are simple, memoryless, and algorithmically checkable. Boros, Franciosa, Gurvich, and Vyalyi prove a positive theorem for edge-symmetric games with positive lengths and show that related assumptions are essential in other directions. The remaining two-person non-edge-symmetric positive-length case is a crisp existence question: either construct a small counterexample or prove that positivity alone forces equilibrium.",
+ "full_statement": "A deterministic two-person shortest-path game is played on a directed graph with an initial state and terminal states. At each nonterminal state, one of the two players chooses the outgoing move. Each move has a positive length for each player, and each player seeks to minimize total accumulated length until a terminal is reached; if play cycles forever, the positive-length convention gives infinite cost. A pure stationary strategy profile chooses one outgoing move at every state controlled by each player. The old open question of whether every finite two-person positive shortest-path game has a Nash equilibrium in pure stationary strategies is now solved affirmatively. The remaining open problem is sharper: if there exists at least one directed path from the initial state to a terminal, must there be a pure stationary Nash equilibrium whose induced play reaches a terminal, rather than a cyclic equilibrium with infinite cost?",
+ "known_results": "Boros, Franciosa, Gurvich, and Vyalyi prove that deterministic $n$-person shortest-path games on edge-symmetric digraphs with positive move lengths always have Nash equilibria in pure stationary strategies, and they show that positivity and symmetry are meaningful hypotheses. A later paper by Boros, Elbassioni, Gurvich, and Vyalyi resolves the previously open two-person non-edge-symmetric positive case: every finite two-person positive shortest-path game has a Nash equilibrium in pure stationary strategies, computable in polynomial time. Their proof also covers graphs with finite out-degrees. However, the equilibrium produced may be cyclic, yielding infinite cost for both players. They prove a terminal Nash equilibrium exists if at least one player can force reaching a terminal, and they conjecture that a terminal equilibrium exists whenever there is some directed path from the initial state to a terminal. That terminal-equilibrium conjecture is the remaining open problem.",
+ "progress": {
+  "state": "partial",
+  "summary": "The old pure-stationary existence problem is solved for two-person positive shortest-path games. The residual open question is whether a terminal pure stationary equilibrium exists under the weaker assumption that a terminal is reachable.",
+  "links": [
+   {
+    "title": "Two-person positive shortest path games have Nash equilibria in pure stationary strategies",
+    "url": "https://arxiv.org/abs/2410.09257"
+   }
+  ]
+ },
+ "importance": 6,
+ "difficulty": 7,
+ "counterexample_suitability": "high",
+ "counterexample_rationale": "A negative answer would be a finite directed game graph with positive edge costs and a verifiable absence of pure stationary Nash equilibria.",
+ "alphaevolve_suitability": "high",
+ "alphaevolve_rationale": "Finite-game search can enumerate small graphs, cost vectors, and stationary strategy profiles to look for counterexamples or identify structural reasons none exist.",
+ "literature": {
+  "synthesis": "The 2024 result changes the status of this record. Positivity alone is now enough for existence of some pure stationary Nash equilibrium in the two-player case, so the original open problem should not be presented as unresolved. The remaining distinction is between cyclic equilibria, where both players incur infinite cost because play never reaches a terminal, and terminal equilibria, where the game reaches an absorbing terminal under equilibrium play. If at least one player can force termination, a terminal equilibrium exists. The conjectured boundary is weaker: mere reachability of a terminal from the initial state may already suffice. A proof would need convert a possibly cyclic equilibrium into a terminal one or construct a new equilibrium using reachability structure; a counterexample would need show that all pure stationary equilibria are necessarily cyclic despite terminal reachability.",
+  "reviewed": [
+   {
+    "ref": "Boros, Franciosa, Gurvich, Vyalyi, 'Deterministic n-person shortest path and terminal games on symmetric digraphs have Nash equilibria in pure stationary strategies', arXiv 2022",
+    "result": "Proves pure stationary equilibria for edge-symmetric positive shortest-path games and frames the non-symmetric two-player gap.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2202.11554"
+   },
+   {
+    "ref": "Boros, Elbassioni, Gurvich, Vyalyi, 'Two-person positive shortest path games have Nash equilibria in pure stationary strategies', arXiv 2024",
+    "result": "Solves pure stationary equilibrium existence for two-person positive shortest-path games and leaves the terminal-equilibrium reachability conjecture open.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2410.09257"
+   },
+   {
+    "ref": "Filar and Vrieze, 'Competitive Markov Decision Processes', Springer 1997",
+    "result": "Background on stochastic games, stationary equilibria, and shortest-path game formulations.",
+    "relevance": "related-tool",
+    "url": "https://doi.org/10.1007/978-1-4612-4054-9"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Search finite two-player positive shortest-path games where terminals are reachable but known algorithms return cyclic equilibria. For positive results, analyze the 2024 polynomial-time construction and look for a perturbation or potential argument that selects a terminal equilibrium when reachability holds.",
+  "verification_notes": "A submission must not claim to solve the already-resolved pure-stationary existence question. The remaining target is terminal equilibrium under mere terminal reachability from the initial state. A counterexample must list the directed game graph, controlling player at each state, terminal costs, positive move lengths for both players, and prove that every pure stationary Nash equilibrium is cyclic. A positive proof must rule out profitable deviations in pure stationary strategies and show terminal reachability under the equilibrium path.",
+  "machine_checkable": true
+ },
+ "where_posed": {
+  "text": "Stated in Boros, Franciosa, Gurvich, and Vyalyi, 'Deterministic n-person shortest path and terminal games on symmetric digraphs have Nash equilibria in pure stationary strategies', 2022.",
+  "url": "https://arxiv.org/abs/2202.11554",
+  "quote": "it remains an open problem whether there exists a NE-free 2-person non-edge-symmetric game with positive lengths.",
+  "location": "Abstract"
+ },
+ "source": {
+  "authors": "Endre Boros, Khaled Elbassioni, Vladimir Gurvich, Mikhail Vyalyi",
+  "title": "Two-person positive shortest path games have Nash equilibria in pure stationary strategies",
+  "year": 2024,
+  "venue": "arXiv:2410.09257",
+  "url": "https://arxiv.org/abs/2410.09257"
+ },
+ "additional_refs": [],
+ "bibtex": "@misc{Boros2024,\n  author = {Endre Boros and Khaled Elbassioni and Vladimir Gurvich and Mikhail Vyalyi},\n  title = {Two-person positive shortest path games have Nash equilibria in pure stationary strategies},\n  year = {2024},\n  howpublished = {arXiv:2410.09257},\n  url = {https://arxiv.org/abs/2410.09257},\n  note = {Source of ORdős Problem ORDOS-116}\n}",
+ "urls": {
+  "human": "https://ordos-problems.github.io/problems/positive-shortest-path-games-pure-stationary-equilibrium.html",
+  "api": "https://ordos-problems.github.io/api/problems/positive-shortest-path-games-pure-stationary-equilibrium.json",
+  "submit": "https://github.com/ordos-problems/ordos-problems.github.io/tree/main/solutions"
+ },
+ "submissions": {
+  "count": 0,
+  "by_type": {},
+  "by_status": {}
+ }
+}

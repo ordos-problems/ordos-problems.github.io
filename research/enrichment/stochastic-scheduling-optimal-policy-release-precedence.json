@@ -1,0 +1,43 @@
+{
+  "id": "stochastic-scheduling-optimal-policy-release-precedence",
+  "background": "Stochastic scheduling asks for nonanticipative policies when processing times are random but their distributions are known. In the cleanest single-machine setting with all jobs available at time zero and no precedence constraints, Rothkopf's stochastic analogue of Smith's rule, WSEPT, is optimal: sequence jobs by decreasing $w_j/\\mathbb{E}P_j$. Release dates and precedence constraints are the next natural modelling features, and they fundamentally change the problem. The controller must decide whether to process an available job now, wait for a future release, or respect precedence while learning processing completions. LP-based priority policies give constant-factor approximations, but they do not characterize the optimal nonanticipative policy. Recent hardness work for stochastic completion-time scheduling on parallel machines confirms that stochasticity itself creates computational difficulty, not just the deterministic special case.",
+  "open_problem": "Characterize the optimal nonanticipative policy, or the precise computational complexity, for stochastic single-machine weighted completion-time scheduling with release dates or precedence constraints.",
+  "known_results": "Rothkopf proves WSEPT optimal for independent stochastic processing times on a single machine when all jobs are initially available and there is no precedence. Möhring, Schulz, and Uetz show the power of LP-based priority policies and obtain constant-factor approximation guarantees for stochastic scheduling with release dates, precedence, and related constraints. Skutella, Sviridenko, and Uetz extend approximation results to unrelated machines under stochastic processing times. Moseley, Pruhs, Uetz, and Zhou prove in 2026 that minimizing expected completion times of stochastic jobs on parallel machines is #P-hard even for two-point processing-time distributions and unit weights, and even evaluating WSEPT can be #P-hard. The exact single-machine release-date and precedence policy structure remains open.",
+  "status": "open",
+  "where_posed": {
+    "text": "The solved WSEPT baseline is Rothkopf 1966; the release-date and precedence gap is implicit in the LP-priority approximation literature and sharpened by recent stochastic scheduling hardness results.",
+    "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.12.9.707",
+    "quote": "",
+    "location": "Rothkopf 1966 and Möhring-Schulz-Uetz 1999."
+  },
+  "progress": {
+    "state": "partial",
+    "summary": "Approximation algorithms are known, and recent #P-hardness results rule out naive optimism in broader machine environments. The exact single-machine stochastic release-date/precedence structure is still not characterized.",
+    "links": [
+      {"title": "Moseley et al., Minimizing Completion Times of Stochastic Jobs on Parallel Machines is Hard", "url": "https://arxiv.org/abs/2601.17425"},
+      {"title": "Möhring, Schulz, Uetz, Approximation in Stochastic Scheduling", "url": "https://dl.acm.org/doi/10.1145/331524.331530"},
+      {"title": "Rothkopf, Scheduling with Random Service Times", "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.12.9.707"}
+    ]
+  },
+  "importance": 7,
+  "difficulty": 8,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Small exponential or two-point instances can refute proposed index/list policies. Hardness or exact characterization requires reductions or structural dynamic-programming proofs.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Search can identify small instances where WSEPT-like, release-date-adjusted, or precedence-adjusted priority rules fail. It may also help infer candidate policies for restricted precedence classes.",
+  "literature": {
+    "synthesis": "Rothkopf's theorem gives a rare exact solution in stochastic scheduling: expected processing times are enough when all jobs are available and independent. LP-based priority-policy work shows that once release dates or precedence enter, exact optimality is elusive but good approximations remain possible. The 2026 hardness result demonstrates that stochastic scheduling has intrinsic computational complexity, including hardness of evaluating common greedy policies in broader settings. What remains unsettled for the single-machine release-date and precedence variants is whether there is hidden structure in the nonanticipative policy space, or whether even these clean special cases are computationally intractable in a way not yet formally captured.",
+    "reviewed": [
+      {"ref": "Rothkopf, 'Scheduling with Random Service Times', Management Science 1966", "result": "Proves WSEPT optimal for the basic single-machine stochastic model.", "relevance": "solves-special-case", "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.12.9.707"},
+      {"ref": "Möhring, Schulz, Uetz, 'Approximation in Stochastic Scheduling: The Power of LP-Based Priority Policies', JACM 1999", "result": "Gives LP-based priority policies with constant-factor approximation guarantees.", "relevance": "partial-progress", "url": "https://dl.acm.org/doi/10.1145/331524.331530"},
+      {"ref": "Skutella, Sviridenko, Uetz, 'Unrelated Machine Scheduling with Stochastic Processing Times', Mathematics of Operations Research 2016", "result": "Extends approximation theory for stochastic processing times to unrelated machines.", "relevance": "partial-progress", "url": "https://pubsonline.informs.org/doi/10.1287/moor.2015.0757"},
+      {"ref": "Moseley, Pruhs, Uetz, Zhou, 'Minimizing Completion Times of Stochastic Jobs on Parallel Machines is Hard', arXiv 2026", "result": "Shows #P-hardness for stochastic completion-time scheduling and evaluating WSEPT in broad settings.", "relevance": "hardness", "url": "https://arxiv.org/abs/2601.17425"}
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Study restricted cases: two release dates, interval orders, series-parallel precedence, exponential processing times, or two-point distributions. For policy-structure work, derive Bellman inequalities comparing available jobs and waiting. For hardness, look for reductions that preserve single-machine release dates or precedence.",
+    "verification_notes": "A claimed optimal policy must be nonanticipative and must handle random processing completions correctly. Approximation results should compare against the optimal adaptive policy, not a static list. Hardness claims should separate inherited deterministic hardness from stochastic evaluation hardness.",
+    "machine_checkable": true
+  },
+  "notes_for_maintainer": "The previous placeholder author list for arXiv:2601.17425 has been verified: Moseley, Pruhs, Uetz, Zhou."
+}

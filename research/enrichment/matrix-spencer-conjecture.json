@@ -1,0 +1,91 @@
+{
+  "id": "matrix-spencer-conjecture",
+  "full_statement": "Let $A_1,\\ldots,A_n$ be real symmetric $n\\times n$ matrices, and assume $\\|A_i\\|_{op}\\le 1$ for every $i$. Choose signs $x_i\\in\\{-1,+1\\}$ and measure the discrepancy of the signing by the spectral norm $\\|\\sum_{i=1}^n x_iA_i\\|_{op}$. The Matrix Spencer conjecture asks whether there is a universal constant $C$ such that, for every such family of $n$ matrices, some signing satisfies $\\|\\sum_i x_iA_i\\|_{op}\\le C\\sqrt n$. When the matrices are diagonal this is exactly the classical Spencer theorem for $n$ sets on $n$ elements, after encoding set incidence in the diagonal entries. The historically open problem is the noncommutative full-rank case: prove the $O(\\sqrt n)$ bound without assuming that the matrices commute, have low rank, or share an eigenbasis. The desired theorem is purely existential but algorithmic signings with the same guarantee would also resolve the record. Status at 2026-11-09: Akbas and Sra's August 2026 preprint claims the full square Matrix Spencer conjecture and an efficient signing algorithm (Theorem 1.2). This record flags a claimed resolution, pending verification.",
+  "background": "Historical context before the 2026 full-resolution claims: Spencer's theorem says that $n$ sets on $n$ elements can be signed with discrepancy $O(\\sqrt n)$. The Matrix Spencer conjecture asks for a noncommutative analogue: sign $n$ bounded symmetric matrices so that the spectral norm of the signed sum is $O(\\sqrt n)$. The diagonal case recovers Spencer, but general matrices do not commute, so scalar discrepancy arguments do not apply directly. This problem connects discrepancy theory, matrix concentration, free probability, and quantum information, where signed sums of observables and matrix-valued concentration inequalities naturally appear. Bansal, Jiang, and Meka proved the conjectured bound for matrices of rank at most $n/\\log^3 n$ using refined noncommutative Khintchine tools. The full-rank case was not settled by those earlier results. Status at 2026-11-09: Akbas and Sra's August 2026 preprint claims the full square Matrix Spencer conjecture and an efficient signing algorithm (Theorem 1.2).",
+  "open_problem": "Verify the claimed resolution of the original conjecture. Historical target: Prove or refute the full-rank Matrix Spencer conjecture: can $n$ bounded symmetric matrices always be signed to have spectral norm $O(\\sqrt n)$?",
+  "known_results": "Historical context before the 2026 full-resolution claims: The conjectured bound is $O(\\sqrt n)$ and is tight up to constants in the diagonal Spencer setting. Standard random signing plus matrix concentration gives dimension-dependent logarithmic behavior, which is not enough. Bansal, Jiang, and Meka prove the $O(\\sqrt n)$ bound for matrices of rank at most $n/\\log^3 n$, giving the strongest general partial result and an efficient algorithm in that regime. Their proof uses refinements of noncommutative Khintchine inequalities due to Bandeira, Boedihardjo, and van Handel. The low-rank theorem also has consequences for quantum random access codes. For arbitrary full-rank matrices, known matrix concentration and discrepancy tools did not remove extra logarithmic or rank-dependent losses. The case left by those earlier results was full rank with only operator-norm boundedness. Status at 2026-11-09: Akbas and Sra's August 2026 preprint claims the full square Matrix Spencer conjecture and an efficient signing algorithm (Theorem 1.2).",
+  "status": "solution claimed",
+  "where_posed": {
+    "text": "General conjecture stated and partially resolved in Bansal, Jiang, and Meka, 'Resolving Matrix Spencer Conjecture Up to Poly-logarithmic Rank'.",
+    "url": "https://arxiv.org/abs/2208.11286",
+    "quote": "",
+    "location": "Abstract and introduction"
+  },
+  "progress": {
+    "state": "solution-claimed",
+    "summary": "Akbas and Sra's August 2026 preprint claims the full square Matrix Spencer conjecture and an efficient signing algorithm (Theorem 1.2). Unreviewed here as a proof of resolution.",
+    "links": [
+      {
+        "title": "Bansal, Jiang, Meka, Matrix Spencer up to polylog rank",
+        "url": "https://arxiv.org/abs/2208.11286"
+      },
+      {
+        "title": "Bandeira, Boedihardjo, van Handel, matrix concentration and free probability",
+        "url": "https://arxiv.org/abs/2108.06312"
+      },
+      {
+        "title": "Akbas and Sra, A Proof of the Matrix Spencer Conjecture, arXiv:2608.28816 (2026)",
+        "url": "https://arxiv.org/html/2608.28816v1"
+      }
+    ]
+  },
+  "importance": 8,
+  "difficulty": 9,
+  "counterexample_suitability": "medium",
+  "counterexample_rationale": "Finite matrix instances can test candidate constants and algorithmic methods, but the conjecture is universal and likely needs proof rather than search alone.",
+  "alphaevolve_suitability": "medium",
+  "alphaevolve_rationale": "Search can find hard matrix families for signing heuristics and probe whether rank is genuinely obstructive. Proof progress likely needs noncommutative probability or discrepancy machinery.",
+  "literature": {
+    "synthesis": "Historical approaches before the 2026 claims: Matrix Spencer is difficult because signing must control all directions of the signed matrix sum simultaneously. Random signs give matrix concentration bounds with logarithmic dimension effects, while discrepancy seeks a deterministic or correlated signing that avoids those losses. The low-rank breakthrough suggests that refined free-probability estimates can capture enough dependence when matrices have limited spectral complexity. Extending this to full rank requires either a stronger noncommutative inequality or a new iterative signing method that controls spectral growth without rank assumptions. Current assessment: Akbas and Sra's August 2026 preprint claims the full square Matrix Spencer conjecture and an efficient signing algorithm (Theorem 1.2). The relevant theorem statements and proof framework were read, but this audit is not an independent proof verification; no peer-reviewed publication was established.",
+    "reviewed": [
+      {
+        "ref": "Nikhil Bansal, Haotian Jiang, Raghu Meka, 'Resolving Matrix Spencer Conjecture Up to Poly-logarithmic Rank', STOC 2023 / SICOMP 2024",
+        "result": "Proves Matrix Spencer for matrices of rank at most $n/\\log^3 n$.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2208.11286"
+      },
+      {
+        "ref": "Afonso S. Bandeira, March T. Boedihardjo, Ramon van Handel, 'Matrix concentration inequalities and free probability', Inventiones Mathematicae 2023",
+        "result": "Provides refined noncommutative Khintchine tools used in low-rank Matrix Spencer progress.",
+        "relevance": "related-tool",
+        "url": "https://arxiv.org/abs/2108.06312"
+      },
+      {
+        "ref": "Joel Spencer, 'Six standard deviations suffice', Transactions of the AMS 1985",
+        "result": "Classical scalar discrepancy theorem recovered by the diagonal special case.",
+        "relevance": "related-tool",
+        "url": "https://doi.org/10.1090/S0002-9947-1985-0784004-3"
+      },
+      {
+        "ref": "Akbas and Sra, A Proof of the Matrix Spencer Conjecture, arXiv:2608.28816 (2026)",
+        "result": "Preprint Theorem 1.2 claims the general square case, not just low rank; proof not certified by this audit.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/html/2608.28816v1"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "First verify the full-resolution preprint and its assumptions before attempting to solve the original target. Test whether full-rank matrices can be decomposed into low-rank pieces without accumulating too much error. Explore iterative spectral-barrier methods and compare against random matrix/free probability predictions.",
+    "verification_notes": "A solution must control spectral norm for arbitrary symmetric matrices with $\\|A_i\\|_{op}\\le1$ and no rank, commutativity, or joint-diagonalization assumption. A verifier should check whether constants are universal, whether the dimension dependence is truly absent, and whether the theorem handles the square full-rank regime. Low-rank, diagonal, or commuting cases are partial progress only. The relevant theorem statements and proof framework were read, but this audit is not an independent proof verification; no peer-reviewed publication was established.",
+    "machine_checkable": true
+  },
+  "confidence": "medium",
+  "short_statement": "For $n$ real symmetric $n\\times n$ matrices of operator norm at most one, the $O(\\sqrt n)$ signing conjecture has a full-resolution preprint. Status: solution claimed, not independently verified here.",
+  "notes_for_maintainer": "Status audit 2026-11-09: The relevant theorem statements and proof framework were read, but this audit is not an independent proof verification; no peer-reviewed publication was established.",
+  "additional_refs": [
+    {
+      "authors": "Afonso S. Bandeira, March T. Boedihardjo, Ramon van Handel",
+      "title": "Matrix concentration inequalities and free probability",
+      "year": 2023,
+      "venue": "Inventiones Mathematicae",
+      "url": "https://arxiv.org/abs/2108.06312"
+    },
+    {
+      "authors": "Emrullah Akbas, Suvrit Sra",
+      "title": "A Proof of the Matrix Spencer Conjecture",
+      "year": 2026,
+      "venue": "arXiv preprint; resolution claim not independently verified",
+      "url": "https://arxiv.org/abs/2608.28816"
+    }
+  ]
+}

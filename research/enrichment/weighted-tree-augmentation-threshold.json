@@ -1,0 +1,105 @@
+{
+  "id": "weighted-tree-augmentation-threshold",
+  "title": "Exact approximation threshold for weighted tree augmentation",
+  "collection": "Operations Research",
+  "area": "Network Design",
+  "tags": [
+    "tree augmentation",
+    "network design",
+    "approximation algorithms",
+    "linear programming",
+    "connectivity augmentation"
+  ],
+  "status": "open",
+  "confidence": "medium",
+  "short_statement": "Determine the true approximability and relaxation gap of weighted tree augmentation after the recent break below the factor-2 barrier.",
+  "full_statement": "In the weighted tree augmentation problem, the input is an undirected tree $T=(V,E_T)$ and a set $L$ of candidate links, where each link $\\ell\\in L$ joins two vertices of $T$ and has cost $c_\\ell\\ge0$. A feasible solution selects links $S\\subseteq L$ such that $T\\cup S$ is $2$-edge-connected, equivalently every tree edge $e\\in E_T$ lies on the unique tree path between the endpoints of at least one selected link. The objective is to minimize $\\sum_{\\ell\\in S}c_\\ell$. The unweighted version has approximation ratios below $1.5$, and the weighted version has recently moved from a long-standing factor-$2$ barrier to ratios near and below $1.5$. The open problem is to determine the exact approximation threshold for weighted tree augmentation, or at least close the current gap between lower-bound evidence such as the $1.5$ cut-LP gap and the best approximation algorithms below $1.5$. A parallel LP question asks for the right relaxation and integrality-gap constant.",
+  "open_problem": "What is the optimal polynomial-time approximation ratio, and the right LP/extended-relaxation gap, for weighted tree augmentation?",
+  "background": "Tree augmentation is one of the most elementary survivable-network-design problems. Starting from a tree, the goal is to buy extra links so that no single tree edge failure disconnects the network. This is a stylized but precise model for adding redundancy to communication, transportation, and infrastructure backbones. Its appeal is that the base graph is only a tree, so the connectivity requirement reduces to covering a laminar family of cuts. Despite this simplicity, weighted tree augmentation has driven a long line of approximation and LP-rounding work. The old open problem was to beat factor $2$ in the weighted case; that has now been solved. The current repository-worthy question is the next, sharper one: after local search and strong LP relaxations pushed the ratio to around $1.5$ and below, what is the actual barrier?",
+  "known_results": "The standard cut LP and several classical primal-dual or relative-greedy techniques give factor-$2$ guarantees, and for a long time no better approximation was known for weighted tree augmentation. Kortsarz and Nutov emphasized that weighted TAP was the simplest connectivity network-design problem for which a ratio better than $2$ was unknown, while the unweighted case had better guarantees. Traub and Zenklusen broke the weighted factor-$2$ barrier, first obtaining a $1+\\ln2+\\varepsilon$ approximation and then a $(1.5+\\varepsilon)$ local-search guarantee. Their work also connected weighted tree augmentation to broader weighted connectivity augmentation. In 2026, Cohen-Addad, Drygala, Klein, and Svensson proposed a strong LP relaxation with subset variables and a randomized rounding algorithm below $1.49$. The classical cut LP has gap at least $1.5$, so new relaxations are necessary for LP-based progress below that value. The exact approximation threshold, best possible relaxation gap, and matching hardness remain unknown.",
+  "where_posed": {
+    "text": "Earlier papers posed beating factor 2 as a major open problem; later work solved that and shifted the frontier to the exact threshold around the current $1.5$ barrier and stronger LP relaxations.",
+    "url": "https://arxiv.org/abs/2603.29582",
+    "quote": "achieving approximation factors significantly below 2 has proven challenging",
+    "location": "Abstract"
+  },
+  "source": {
+    "authors": "Vincent Cohen-Addad, Marina Drygala, Nathan Klein, Ola Svensson",
+    "title": "A Strong Linear Programming Relaxation for Weighted Tree Augmentation",
+    "year": 2026,
+    "venue": "arXiv",
+    "url": "https://arxiv.org/abs/2603.29582"
+  },
+  "additional_refs": [
+    {
+      "authors": "Vera Traub, Rico Zenklusen",
+      "title": "A Better-Than-2 Approximation for Weighted Tree Augmentation",
+      "year": 2021,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/2104.07114"
+    },
+    {
+      "authors": "Vera Traub, Rico Zenklusen",
+      "title": "Local Search for Weighted Tree Augmentation and Steiner Tree",
+      "year": 2021,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/2107.07403"
+    },
+    {
+      "authors": "Guy Kortsarz, Zeev Nutov",
+      "title": "A 1.75 LP approximation for the Tree Augmentation Problem",
+      "year": 2015,
+      "venue": "arXiv",
+      "url": "https://arxiv.org/abs/1507.03009"
+    }
+  ],
+  "enabled": true,
+  "progress": {
+    "state": "partial",
+    "summary": "The old factor-2 barrier has been broken. Current work gives algorithms at about $1.5+\\varepsilon$ and below $1.49$ with stronger LPs, while the exact threshold and matching hardness are unknown.",
+    "links": [
+      {
+        "title": "Strong LP relaxation below 1.49",
+        "url": "https://arxiv.org/abs/2603.29582"
+      },
+      {
+        "title": "Local search to 1.5+epsilon",
+        "url": "https://arxiv.org/abs/2107.07403"
+      }
+    ]
+  },
+  "importance": 7,
+  "difficulty": 8,
+  "counterexample_suitability": "high",
+  "counterexample_rationale": "LP-gap instances and bad examples for local-search neighborhoods are finite tree-link systems. They can be encoded and checked by exact integer and linear programming.",
+  "alphaevolve_suitability": "high",
+  "alphaevolve_rationale": "Automated search can evolve trees, link sets, and costs to maximize gaps for proposed relaxations or to find tight examples for local-search analyses.",
+  "literature": {
+    "synthesis": "The evolution of weighted tree augmentation is a useful warning against preserving stale open problems. Before 2021, the right headline was whether any algorithm could beat $2$ in the weighted setting. Traub and Zenklusen's local-search framework changed that landscape and brought the ratio to $1.5+\\varepsilon$. The 2026 strong-LP work pushes below the classical $1.5$ cut-LP barrier by enriching the relaxation with variables for subsets of tree edges and links covering them. This makes the current frontier a threshold problem rather than a qualitative existence problem. The main possibilities are: the true ratio is near $1.5$ and needs matching hardness or extension-complexity evidence; the strong LP can be sharpened toward a lower constant; or a different structural decomposition of link coverage can unify unweighted and weighted progress.",
+    "reviewed": [
+      {
+        "ref": "Traub and Zenklusen, 'A Better-Than-2 Approximation for Weighted Tree Augmentation', arXiv 2021",
+        "result": "First beats the long-standing factor-$2$ barrier for weighted tree augmentation.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2104.07114"
+      },
+      {
+        "ref": "Traub and Zenklusen, 'Local Search for Weighted Tree Augmentation and Steiner Tree', arXiv 2021",
+        "result": "Gives a $(1.5+\\varepsilon)$ approximation via non-oblivious local search.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2107.07403"
+      },
+      {
+        "ref": "Cohen-Addad, Drygala, Klein, Svensson, 'A Strong Linear Programming Relaxation for Weighted Tree Augmentation', arXiv 2026",
+        "result": "Gives a randomized approximation below $1.49$ using a stronger LP relaxation.",
+        "relevance": "partial-progress",
+        "url": "https://arxiv.org/abs/2603.29582"
+      }
+    ]
+  },
+  "agent_guidance": {
+    "suitable_approaches": "Search for tight LP-gap families for the strong relaxation, analyze local-search exchange systems on bounded-depth trees, and compare weighted examples against unweighted TAP constructions. Exact small-instance IP/LP enumeration may reveal candidate lower-bound gadgets.",
+    "verification_notes": "A claimed improvement must be for the weighted problem unless explicitly labeled unweighted, and must preserve polynomial running time. Verify whether the analysis is relative to the optimum integral solution, the cut LP, or a stronger relaxation. Check that links are allowed to connect arbitrary pairs of tree vertices and that the selected links cover every fundamental tree-edge cut. A lower-bound example should state the tree, links, costs, and exact optimum/LP values; for hardness, distinguish APX-hardness from a matching approximation threshold. If a proof uses local search, verify that improving moves can be found efficiently and that the termination bound is polynomial.",
+    "machine_checkable": true
+  }
+}

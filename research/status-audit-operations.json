@@ -1,0 +1,1959 @@
+{
+  "audit_date": "2026-11-09",
+  "status": "corrections-finalized-for-parent-remerge",
+  "scope": {
+    "numbering": "1-based positions in local build/problems_source.json (182 records); not live-site numbering (84 records).",
+    "original_assignment": "32-42,77-87,90-95,98-108 except 103,111,114-138 except 122,141-145,157,160,179",
+    "original_assigned_count": 71,
+    "active_assigned_count": 70,
+    "parent_owned_excluded": [
+      141
+    ],
+    "extra_not_assigned": [
+      113
+    ],
+    "parent_other_ids_not_touched": [
+      16,
+      88,
+      96,
+      97
+    ]
+  },
+  "methodology": {
+    "baseline": "Existing enrichment may be newer than source and takes precedence. Forward pass searched every formerly pending assigned ID but did not revalidate every local field. Number 113 is unassigned and not reviewed; 141 is parent-owned and excluded.",
+    "coverage_definitions": {
+      "pending": "No primary-source literature review completed; does not imply open or unchanged status.",
+      "search-only": "Search/indexed snippets or repository metadata inspected; no opened primary abstract/full theorem sufficient for status correction.",
+      "abstract-only": "Primary abstract opened/read, but formal theorem assumptions not verified in full text.",
+      "theorem/full-text reviewed": "Relevant formal model/theorem or full-text sections read; exact scope recorded. Does NOT mean every proof step was verified or all current literature exhausted.",
+      "excluded": "Parent/user-owned; deliberately skipped."
+    },
+    "query_log": "Exact executed queries recorded per ID. Forward pass: 64 queries in 16 calls of four queries each; all 52 formerly pending IDs covered. Some additional primary documents were opened directly for matching resolution leads; those sources have explicit reading depth. No-results searches never establish openness.",
+    "changes": "Twelve enrichment records edited in this audit, including the four explicitly authorized follow-up corrections (131,135,137,145). Original eight were not changed in this follow-up. No merge/build/source/generated writes; parent will remerge.",
+    "limitations": "All 70 active assigned IDs have at least search coverage, not all have theorem review. Search-only/abstract-only entries cannot certify openness. Selected model/theorem reading is not full proof certification. Four candidates are now integrated with explicit scope restrictions: 131 integer-time only, 135 related randomized class only, 137/145 preprint claims."
+  },
+  "counts": {
+    "active_assigned": 70,
+    "theorem_full_text_reviewed": 19,
+    "abstract_only": 2,
+    "search_only": 49,
+    "pending": 0,
+    "excluded_parent_owned": 1,
+    "extra_unassigned_not_reviewed": 1,
+    "edited_enrichments": 12
+  },
+  "edited_numbers": [
+    32,
+    95,
+    99,
+    102,
+    114,
+    124,
+    131,
+    133,
+    135,
+    137,
+    145,
+    160
+  ],
+  "pending_assigned_numbers": [],
+  "validation": {
+    "json_parse": "Earlier eight-record checks retained; follow-up validates the four updated effective records, all progress/relevance enums and complete additional_refs, plus all 72 audit entries. Not a claim of whole-repository validity.",
+    "relevance_enum": "Historical poses-problem/open-problem-source values normalized to related-tool only in edited records.",
+    "full_primary_references": "Added full bibliographic additional_refs for new corrective sources; KLS includes both version-specific preprints and acknowledges dependence.",
+    "preexisting_limitations": {
+      "progress_state_enum": [
+        "none",
+        "partial",
+        "solution-claimed",
+        "resolved"
+      ],
+      "disposition": "Not introduced by this audit's eight edits. Per user instruction, log rather than alter unrelated/preexisting enrichments during freeze.",
+      "records": [
+        {
+          "id": "single-machine-precedence-wct-lp-kernel",
+          "number": 143,
+          "observed_state": "open",
+          "also_invalid_relevance": [
+            "open-problem-source",
+            "background"
+          ]
+        },
+        {
+          "id": "single-machine-throughput-bounded-processing-times",
+          "number": 144,
+          "observed_state": "open",
+          "also_invalid_relevance": [
+            "open-problem-source",
+            "background"
+          ]
+        },
+        {
+          "id": "queueing-network-stability-clean-undecidability",
+          "observed_state": "open",
+          "also_invalid_relevance": [
+            "source-open-problem",
+            "foundational-tool",
+            "barrier-context"
+          ]
+        },
+        {
+          "id": "fpp-bigeodesics-nonexistence",
+          "observed_state": "open",
+          "also_invalid_relevance": [
+            "conditional-progress",
+            "geodesic-structure-progress",
+            "unconditional-partial-progress"
+          ]
+        }
+      ],
+      "scope": "These records are not among this audit's eight changed enrichments; observation does not attribute their authorship. No whole-repository schema-validity claim."
+    },
+    "forward_pass": {
+      "coverage": "All 52 formerly pending IDs have executed query logs and explicit source/access notes; no active assigned pending entries.",
+      "original_eight_hashes": "All eight enrichment SHA-256 hashes match the start of the forward pass.",
+      "hash_checks": [
+        {
+          "path": "research/enrichment/lost-sales-inventory-positive-lead-time-optimal-policy.json",
+          "unchanged": true
+        },
+        {
+          "path": "research/enrichment/random-growing-balls-cover-time.json",
+          "unchanged": true
+        },
+        {
+          "path": "research/enrichment/contextual-dynamic-pricing-heterogeneous-buyers-k-dependence.json",
+          "unchanged": true
+        },
+        {
+          "path": "research/enrichment/online-monotone-subsequence-second-order-gap.json",
+          "unchanged": true
+        },
+        {
+          "path": "research/enrichment/mg1-response-time-tail-optimal-scheduling.json",
+          "unchanged": true
+        },
+        {
+          "path": "research/enrichment/multi-server-job-queue-stability-region.json",
+          "unchanged": true
+        },
+        {
+          "path": "research/enrichment/greedy-server-circle-stability.json",
+          "unchanged": true
+        },
+        {
+          "path": "research/enrichment/kls-log-concave-isoperimetry-constant.json",
+          "unchanged": true
+        }
+      ]
+    },
+    "follow_up": "Passed: all four effective records parse; status, progress.state and literature relevance values match the API enums; all additional_refs contain authors/title/year/venue/url; audit has 72 entries, 70 assigned, 12 edited, and zero assigned pending. No new searches or merge/build/source/generated writes."
+  },
+  "coverage": [
+    {
+      "number": 32,
+      "id": "lost-sales-inventory-positive-lead-time-optimal-policy",
+      "queries": [
+        "\"lost sales\" \"capped base stock\" \"2.33\""
+      ],
+      "sources": [
+        {
+          "title": "Linwei Xin, Capped Base-Stock Policies: A 2.33-Approximation (2026)",
+          "url": "https://www.researchgate.net/publication/411104064_Capped_Base-Stock_Policies_A_233-Approximation",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Author-uploaded full manuscript, Sections 2, 4 Proposition 4, 5 Theorem 1",
+          "comparison": "Periodic review, iid nonnegative finite-mean demand, deterministic positive lead time, empty start, holding/lost-sales costs. Best CBS ratio at most 1+4L^2/((L+1)(3L-1)) <=7/3. Does not solve optimal policy structure."
+        },
+        {
+          "title": "Ming Hu, A 1.932 Guarantee for (r,Q) Policies in Continuous-Review Lost-Sales Inventory Systems (2026)",
+          "url": "https://arxiv.org/html/2610.34576v1",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Sections 3 and 4.1, Theorem 4.1",
+          "comparison": "Unit Poisson demand and continuous review, deterministic lead time: sqrt(2) zero-setup guarantee and 1.932 with setup. Not the periodic-review target."
+        },
+        {
+          "title": "Xin SSRN record",
+          "url": "https://doi.org/10.2139/ssrn.7134538",
+          "review_level": "search-only",
+          "locations": "Indexed author abstract and metadata; direct SSRN request returned 403",
+          "comparison": "Full-text evidence obtained from the author's uploaded manuscript, not the blocked SSRN fetch."
+        }
+      ],
+      "disposition": "corrected-partial-results",
+      "summary": "Added finite-parameter CBS bound, qualified prior asymptotic 1.79 result and distinguished continuous review; repaired timing and overbroad base-stock claims. Retained open structural target; preprints not independently proof-certified.",
+      "assigned": true,
+      "coverage_level": "theorem/full-text reviewed",
+      "local_comparison": "Read local source and existing enrichment overlay; existing enrichment may supersede source.",
+      "edited": true
+    },
+    {
+      "number": 33,
+      "id": "dual-sourcing-inventory-optimal-policy-structure",
+      "queries": [
+        "\"dual sourcing\" \"2025\" \"non-asymptotic\"",
+        "\"dual sourcing\" \"non-asymptotic\" inventory",
+        "\"dual-sourcing\" \"optimal\" \"2026\" inventory",
+        "\"dual sourcing\" \"optimal policy\" \"Federgruen\"",
+        "\"dual sourcing\" \"Federgruen\" optimal policies"
+      ],
+      "sources": [
+        {
+          "title": "Federgruen, Liu, Lu, dual-sourcing policy structure (2022)",
+          "url": "https://doi.org/10.1111/poms.13715",
+          "review_level": "search-only",
+          "locations": "Search-indexed abstract",
+          "comparison": "Finite horizon/capacity/salvage and consecutive-lead-time cases need full assumption comparison."
+        },
+        {
+          "title": "Dual Sourcing Under Internal and External Volatilities (2025)",
+          "url": "https://spiral.imperial.ac.uk/entities/publication/f2aa20d5-82e3-4181-b8f6-982b443d0f07",
+          "review_level": "search-only",
+          "locations": "Search-indexed institutional record",
+          "comparison": "Consecutive lead times are not the general gap-at-least-two target."
+        }
+      ],
+      "disposition": "unverified-leads-no-edit",
+      "summary": "No theorem review; cannot infer a current open status or resolution from the search.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Search leads only; no completed comparison with current staged enrichment.",
+      "edited": false
+    },
+    {
+      "number": 34,
+      "id": "optimal-policy-one-warehouse-multi-retailer",
+      "queries": [
+        "\"one warehouse\" \"multi retailer\" optimal policy 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "RA-SAC 2026 book of abstracts, hybrid RL inventory lead",
+          "url": "https://sme.cuhk.edu.cn/sites/default/files/2025-12/Book_of_Abstracts_12_25_v1.pdf",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "Deep reinforcement learning for OWMR inventory (2024)",
+          "url": "https://www.sciencedirect.com/science/article/pii/S0925527323003201",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located numerical/RL and network-design work; neither establishes the general exact OWMR control policy. No current open-status certification.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 35,
+      "id": "closed-form-optimal-policy-general-assembly-systems",
+      "queries": [
+        "\"assembly systems\" \"optimal\" \"imbalanced\" inventory",
+        "\"Optimal Policies for Assembly Systems\" \"Completing\""
+      ],
+      "sources": [
+        {
+          "title": "Optimal Policies for Assembly Systems: Completing Rosling's Characterization (2014)",
+          "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2475218",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located Chen-Muharremoglu's assembly-policy work and references to expediting/advance-demand variants; no theorem comparison for arbitrary imbalanced assembly systems.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 36,
+      "id": "weber-weiss-whittle-index-asymptotic-optimality",
+      "queries": [
+        "\"Whittle\" \"2026\" \"optimality\" \"attractor\"",
+        "\"Whittle\" \"2026\" \"global attractor\"",
+        "\"Whittle\" \"global attractor\" \"2025\" Hong",
+        "\"Whittle\" \"Hong\" \"2025\" \"aperiodicity\"",
+        "site.arxiv.org Whittle index global attractor necessary sufficient 2025 2026"
+      ],
+      "sources": [],
+      "disposition": "no-verified-correction",
+      "summary": "Staged enrichment already includes recent Hong-related work. Search results did not support a verified additional correction; no theorem from a new source read and no inference from absence of results.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Read local source and existing enrichment overlay; existing enrichment may supersede source.",
+      "edited": false
+    },
+    {
+      "number": 37,
+      "id": "bayesian-mab-switching-costs-optimal-policy",
+      "queries": [
+        "\"Bayesian\" \"bandit\" \"switching costs\" optimal policy 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Bayesian optimization with switching costs (2023)",
+          "url": "https://proceedings.mlr.press/v216/shi23b/shi23b.pdf",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "Traveling Bandit (2026)",
+          "url": "https://doi.org/10.1080/00401706.2025.2573228",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Bayesian optimization with switching/movement costs is not automatically the rested Bayesian MAB policy problem. No direct resolution verified.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 38,
+      "id": "stochastic-bandits-switching-cost-regret",
+      "queries": [
+        "\"bandits\" \"switching costs\" \"instance dependent\" 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Simple fixes accommodate switching costs (2025)",
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0377221724007203",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "unverified-leads-no-edit",
+      "summary": "Found a 2025 switching-cost bandit paper; its near-optimal regret claims require a theorem-level comparison with the exact instance-dependent target before changing bounds.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 39,
+      "id": "cmu-theta-rule-exact-optimality-abandonment",
+      "queries": [
+        "\"c mu theta\" abandonment exact optimality priority"
+      ],
+      "sources": [
+        {
+          "title": "Atar-Giat-Shimkin overloaded queues (2011)",
+          "url": "https://webee.technion.ac.il/shimkin/PAPERS/2011Atar-Giat-Shimkin.pdf",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "Kasikaralar dissertation (2026)",
+          "url": "https://knowledge.uchicago.edu/record/15757/files/Ebru_Kasikaralar_PhD_Dissertation.pdf",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "The overloaded-fluid c-mu-theta result does not establish Halfin-Whitt or finite-system exact optimality. A 2026 dissertation counterexample lead remains unverified.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 40,
+      "id": "optimal-routing-heterogeneous-parallel-servers",
+      "queries": [
+        "\"heterogeneous parallel servers\" \"optimal\" routing 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Ye, optimal routing in parallel servers in heavy traffic (2025)",
+          "url": "https://ira.lib.polyu.edu.hk/handle/10397/100936",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located heavy-traffic routing results, not a verified finite-system optimal routing characterization.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 41,
+      "id": "nrm-relaxation-gap-degenerate-and-choice",
+      "queries": [
+        "\"choice\" \"revenue management\" \"constant regret\" degeneracy"
+      ],
+      "sources": [
+        {
+          "title": "LP-control revenue-management analysis",
+          "url": "https://doi.org/10.1287/OPRE.2022.2358",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Found LP-based revenue-control analysis. LP benchmark, degeneracy, and choice-model assumptions have not been checked against this record.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 42,
+      "id": "stochastic-scheduling-optimal-policy-release-precedence",
+      "queries": [
+        "\"stochastic scheduling\" \"release dates\" \"precedence\" 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Stochastic parallel precedence scheduling",
+          "url": "https://epubs.siam.org/doi/abs/10.1137/S0097539702415007",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "Scheduling local search (2025)",
+          "url": "https://link.springer.com/article/10.1007/s10732-025-09562-5",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located parallel-machine precedence approximation and local-search papers. These do not by their indexed descriptions resolve the exact stochastic single-machine policy target.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 77,
+      "id": "generalized-cmu-exact-optimality",
+      "queries": [
+        "\"generalized c mu\" \"convex\" exact optimality 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Improving Upon the Generalized c-mu Rule: Whittle-index approach (MAMA 2025)",
+          "url": "https://www.cs.cmu.edu/~harchol/Papers/MAMA25.pdf",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "unverified-direct-lead-no-edit",
+      "summary": "Author manuscript claims improvements over generalized c-mu under Poisson/exponential jobs with convex age costs; indexed example is a potential counterexample lead. Full model and example must be checked before editing.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 78,
+      "id": "svf-appointment-sequencing",
+      "queries": [
+        "\"smallest variance first\" \"approximation\" appointment 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Optimal sequencing using a scheduling heuristic (2024)",
+          "url": "https://www.sciencedirect.com/science/article/pii/S0305054823002691",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "SVF appointment sequencing",
+          "url": "https://arxiv.org/abs/1812.01467",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Found heuristic-based optimal sequencing and known SVF approximation literature. Optimality within a scheduling heuristic is not global SVF optimality.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 79,
+      "id": "constrained-assortment-markov-chain",
+      "queries": [
+        "\"Markov chain\" \"constrained assortment\" approximation 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Constrained Markov-chain assortment manuscript",
+          "url": "https://www.columbia.edu/~vg2277/constrained_MC.pdf",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "Mixed-logit assortment work (2026)",
+          "url": "https://www.sciencedirect.com/science/article/pii/S0377221725008975",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Found the original constrained Markov-chain approximation and newer online-learning/mixed-logit work. The latter models do not directly settle the offline Markov-chain approximation frontier.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 80,
+      "id": "perishable-inventory-optimal-policy",
+      "queries": [
+        "\"perishable inventory\" \"asymptotic optimality\" fixed lifetime 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Serial perishable inventory transformation (2026)",
+          "url": "https://doi.org/10.1016/j.ejor.2026.05.024",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "Forecast-based perishable inventory (2026)",
+          "url": "https://doi.org/10.1016/j.ejor.2025.07.009",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "New perishable-inventory leads concern serial-system transformations or finite-horizon forecasts; no general optimal policy theorem verified.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 81,
+      "id": "dynamic-matching-thickness-optimal-policy",
+      "queries": [
+        "\"dynamic matching\" \"optimal\" heterogeneous departures 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Dynamic Matching with Abandonment (2026)",
+          "url": "https://arxiv.org/abs/2610.12991",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "Longest Queue Policies for Dynamic Matching (2026)",
+          "url": "https://arxiv.org/abs/2611.01431",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located static-priority half-approximation and high-volume longest-queue guarantees. Neither indexed claim is an exact optimal thickness policy for the general target. Cross-reference 82 for limited primary model reading.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 82,
+      "id": "greedy-dynamic-matching-heterogeneous-departures",
+      "queries": [
+        "\"Greedy Dynamic Matching\" Arnosti Simon heterogeneous 2026"
+      ],
+      "sources": [
+        {
+          "title": "Arnosti, Niazadeh, Nuti, Simon, Dynamic Matching with Abandonment: Optimal Guarantees via Static Priority Policies (2026)",
+          "url": "https://arxiv.org/html/2610.12991v1",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Introduction and formal model description; not a completed theorem/proof or old-policy identity review"
+        }
+      ],
+      "disposition": "direct-lead-scope-check-incomplete",
+      "summary": "Primary introduction/model matches finite types, independent Poisson arrivals, heterogeneous exponential abandonments, order-dependent rewards and long-run average reward. Paper states a polynomially computable static-priority half-approximation. Identity with the older specific LP-selected ALG has NOT been established; an existence theorem must not be called equivalent to that particular-policy conjecture. No enrichment edit.",
+      "assigned": true,
+      "coverage_level": "theorem/full-text reviewed",
+      "local_comparison": "Local source and enrichment read during forward pass; source alone not treated as current. Candidate findings are not integrated; remaining scope checks noted.",
+      "edited": false
+    },
+    {
+      "number": 83,
+      "id": "dynamic-barter-kidney-exchange-optimal-policy",
+      "queries": [
+        "\"kidney exchange\" \"dynamic\" \"optimal\" heterogeneous chains 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "GNN dynamic matching (2026)",
+          "url": "https://arxiv.org/abs/2607.28925",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "Sahin-Sili-Unver-Yilmaz bilateral exchange working-paper listing (2025)",
+          "url": "https://ideas.repec.org/p/boc/bocoec/1090.html",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "GNN dynamic matching and bilateral local-compatibility papers were found. Their models/heuristics do not establish optimal kidney-exchange policies with general cycles and chains.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 84,
+      "id": "dynamic-spatial-matching-greedy",
+      "queries": [
+        "\"dynamic spatial matching\" \"greedy\" 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Operations Research volume 74 issue 2 overview (2026)",
+          "url": "https://pubsonline.informs.org/doi/pdf/10.1287/opre.2026.inthisissue.v74.n2",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "Annals of Applied Probability 35(5), dynamic spatial matching (2025)",
+          "url": "https://www.imstat.org/publications/aap/aap_35_5/aap_35_5.pdf",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "unverified-direct-lead-no-edit",
+      "summary": "Publisher issue overview identifies Feature-Based Dynamic Matching and SOAR as resolving a spatial-matching scaling question. Primary theorem not retrieved; whether this settles optimal-policy scaling versus nearest-neighbor greedy must be distinguished.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 85,
+      "id": "throughput-scheduling-release-pmax",
+      "queries": [
+        "\"throughput scheduling\" \"maximum processing time\" \"hard\" 2025 2026",
+        "\"throughput\" \"p_max\" scheduling hardness",
+        "\"throughput maximization\" \"processing times\" \"parameterized\""
+      ],
+      "sources": [],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Three actual keyword queries completed. Returned preemptive/online or otherwise nonmatching throughput leads; no usable direct primary source identified. Empty sources is not evidence that the problem is open.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 86,
+      "id": "job-shop-makespan-fpt-as-machines",
+      "queries": [
+        "\"job shop\" \"FPT\" \"approximation scheme\" machines"
+      ],
+      "sources": [],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Keyword query completed. No usable direct primary source identified; self-site results were excluded. No current-status conclusion.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 87,
+      "id": "open-shop-setup-times-fpt-batches",
+      "queries": [
+        "\"open shop\" \"sequence dependent\" \"batches\" parameterized"
+      ],
+      "sources": [
+        {
+          "title": "Open-shop batch scheduling of identical jobs (2008)",
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S037722170600837X",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located batch open-shop work with different setup assumptions; no FPT-in-batches theorem comparison completed.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 90,
+      "id": "heterogeneous-data-driven-decision-efficient-robust-policies",
+      "queries": [
+        "\"Beyond IID\" \"heterogeneous\" \"robust\" decision 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Beyond IID: heterogeneous data-driven decision-making",
+          "url": "https://www.columbia.edu/~wm2428/papers/beyond_iid.pdf",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Found the revised Beyond IID manuscript (December 2024 / 2025 publication lead); no new general computational-efficiency theorem verified.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 91,
+      "id": "talagrand-empirical-process-decomposition",
+      "queries": [
+        "\"Talagrand\" \"empirical processes\" \"2026\" decomposition",
+        "\"Talagrand\" \"empirical\" \"decomposition\" conjecture 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Bednorz and Latala, On the boundedness of Bernoulli processes (2014)",
+          "url": "https://annals.math.princeton.edu/wp-content/uploads/annals-v180-n3-p08-p.pdf",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Pages 33-34, Conjecture 9.2",
+          "comparison": "Exact centered empirical-process gamma_1/gamma_2 decomposition matches the local formulation."
+        },
+        {
+          "title": "Hua, Song, Tudose (2026), Talagrand convexity problem",
+          "url": "https://arxiv.org/html/2605.10908v1",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Introduction and Problem 1",
+          "comparison": "Gaussian large-set/Minkowski-sum convexity question is different from empirical-process decomposition."
+        },
+        {
+          "title": "Liu and Zadik, A Bayesian Proof of the Bernoulli Theorem (2026)",
+          "url": "https://arxiv.org/abs/2608.11031v2",
+          "review_level": "abstract-only",
+          "locations": "Abstract only",
+          "comparison": "A new proof of the Bernoulli theorem is not a resolution of the full empirical-process conjecture."
+        }
+      ],
+      "disposition": "no-verified-correction",
+      "summary": "Rejected conflation with different Talagrand problems. Exact historical conjecture checked; not an exhaustive current-status certification.",
+      "assigned": true,
+      "coverage_level": "theorem/full-text reviewed",
+      "local_comparison": "Read local source and existing enrichment overlay; existing enrichment may supersede source.",
+      "edited": false
+    },
+    {
+      "number": 92,
+      "id": "correlated-random-graph-matching-efficient-threshold",
+      "queries": [
+        "\"correlated\" \"graph matching\" \"threshold\" polynomial 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Ding-Li graph matching (2025)",
+          "url": "https://doi.org/10.1287/moor.2024.0487",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "Near-quadratic graph matching above Otter threshold (2026)",
+          "url": "https://arxiv.org/abs/2611.02281",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "Almost-exact graph matching (2026)",
+          "url": "https://arxiv.org/abs/2607.09087",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "APPROX/RANDOM 2025 low-degree graph-matching result",
+          "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol353-approx-random2025/html/LIPIcs.APPROX-RANDOM.2025.30/LIPIcs.APPROX-RANDOM.2025.30.html",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located nonvanishing-correlation polynomial algorithms, near-quadratic above-Otter algorithms, and conditional low-degree barriers. Their density/correlation/almost-exact versus exact regimes need checking; no universal efficient-threshold resolution inferred.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 93,
+      "id": "planted-structure-computational-thresholds",
+      "queries": [
+        "\"planted dense subgraph\" \"submatrix\" \"computational threshold\" 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Dense subhypergraph low-degree work",
+          "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/rsa.21279",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "Algorithmic contiguity reduction lead (primary URL not opened)",
+          "url": "https://arxiv.org/abs/2604.17410",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Dense-subhypergraph low-degree work does not directly settle the full planted dense-subgraph/submatrix threshold. Algorithmic-contiguity reduction lead was only found through a secondary index, not checked.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 94,
+      "id": "critical-beta-splitting-ctcs-coalescent",
+      "queries": [
+        "\"CTCS\" \"coalescent\" \"2026\"",
+        "\"critical beta-splitting\" \"coalescent\""
+      ],
+      "sources": [
+        {
+          "title": "Aldous and Janson, critical beta-splitting Part II",
+          "url": "https://arxiv.org/html/2303.02529v3",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Section 6.4, Open Problem 19 and surrounding process comparison",
+          "comparison": "Tagged-leaf block-frequency process shares a distribution with the Beta(2,1) singleton-frequency process. This is not equality of finite-n genealogies; collision second-order terms differ."
+        }
+      ],
+      "disposition": "no-new-correction",
+      "summary": "Existing enrichment already incorporated later parts. Preserved distinction between exact marginal/process correspondences and full coalescent identification.",
+      "assigned": true,
+      "coverage_level": "theorem/full-text reviewed",
+      "local_comparison": "Read local source and existing enrichment overlay; existing enrichment may supersede source.",
+      "edited": false
+    },
+    {
+      "number": 95,
+      "id": "random-growing-balls-cover-time",
+      "queries": [
+        "\"growing balls\" cover time Penrose Higgs limit",
+        "\"growing balls\" \"cover\" \"Penrose\"",
+        "\"cover time\" \"Johnson-Mehl\" Penrose Higgs"
+      ],
+      "sources": [
+        {
+          "title": "Aldous, Covering a compact space by fixed-radius or growing random balls, ALEA (2022)",
+          "url": "https://alea.impa.br/articles/v19/19-29.pdf",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Section 3, equation (3.1), Proposition 3.1 and coupling proof",
+          "comparison": "Poisson births, iid centers, constant radial speed; not deterministic integer births/arbitrary growth."
+        },
+        {
+          "title": "Penrose and Higgs, Random coverage from within with variable radii, and Johnson-Mehl cover times, Extremes (2026)",
+          "url": "https://link.springer.com/article/10.1007/s10687-026-00529-8",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Model in introduction; Theorems 2.2-2.3; proofs reducing to random-radius coverage",
+          "comparison": "Restricted homogeneous Poisson seeds and unit growth. Sharp laws on planar polygons and C^2-boundary compact domains; does not directly solve deterministic births."
+        }
+      ],
+      "disposition": "corrected-model-attribution",
+      "summary": "Corrected false transfer of Aldous concentration; added sharp Poisson-model results as related-tool, not a resolution. Preserved formal target and required explicit scaling/finite-coverage assumptions.",
+      "assigned": true,
+      "coverage_level": "theorem/full-text reviewed",
+      "local_comparison": "Read local source and existing enrichment overlay; existing enrichment may supersede source.",
+      "edited": true
+    },
+    {
+      "number": 98,
+      "id": "two-sided-flexibility-random-graph-matching",
+      "queries": [],
+      "sources": [
+        {
+          "title": "Freund, Martin, Zhao, two-sided flexibility paper, v3 (2026)",
+          "url": "https://arxiv.org/html/2404.04709v3",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Introduction and Section 8 conclusion",
+          "comparison": "Conclusion distinguishes pairwise regime comparisons from proving an extremal maximizer of expected matching; isolation objective is not matching objective."
+        }
+      ],
+      "disposition": "no-new-correction",
+      "summary": "Direct cited-source check, not a keyword search. Existing partial status preserved; no verified full resolution.",
+      "assigned": true,
+      "coverage_level": "theorem/full-text reviewed",
+      "local_comparison": "Read local source and existing enrichment overlay; existing enrichment may supersede source.",
+      "edited": false
+    },
+    {
+      "number": 99,
+      "id": "contextual-dynamic-pricing-heterogeneous-buyers-k-dependence",
+      "queries": [
+        "\"contextual dynamic pricing\" \"heterogeneous\" Lykouris 2026"
+      ],
+      "sources": [
+        {
+          "title": "Lykouris, Nietert, Okoroafor, Podimata, Zimmert, Contextual Dynamic Pricing with Heterogeneous Buyers (2025)",
+          "url": "https://arxiv.org/html/2512.09513v1",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Theorem 3.8, Theorem 5.2, Section 6",
+          "comparison": "Binary feedback upper bound ~O(K sqrt(dT)); lower bound Omega(sqrt(KdT)), K>1 and T>=8dK^3 log(2d). Ex-post full-vector feedback is a separate model."
+        }
+      ],
+      "disposition": "corrected-inherited-bound",
+      "summary": "Staged known_results was already correct but inherited full_statement had extra sqrt(d). Corrected only that inconsistency and feedback caveat; type-dependence question remains.",
+      "assigned": true,
+      "coverage_level": "theorem/full-text reviewed",
+      "local_comparison": "Read local source and existing enrichment overlay; existing enrichment may supersede source.",
+      "edited": true
+    },
+    {
+      "number": 100,
+      "id": "new-product-exploration-heterogeneous-priors-assortment",
+      "queries": [],
+      "sources": [
+        {
+          "title": "Baek, Dinev, Lykouris, new-product exploration (2026)",
+          "url": "https://arxiv.org/html/2604.18800v2",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Section 6.1 Theorem 6.2; Section 6.2 Propositions 6.1-6.2 and concluding open direction",
+          "comparison": "Heterogeneous rewards theorem does not solve heterogeneous priors. Two entrants/two incumbents/capacity-two cases do not imply arbitrary prior indexability."
+        }
+      ],
+      "disposition": "no-new-correction",
+      "summary": "Direct cited-source check. Existing enrichment already separates the solved variants; no edit.",
+      "assigned": true,
+      "coverage_level": "theorem/full-text reviewed",
+      "local_comparison": "Read local source and existing enrichment overlay; existing enrichment may supersede source.",
+      "edited": false
+    },
+    {
+      "number": 101,
+      "id": "optimal-contest-design-gradient-patterns",
+      "queries": [],
+      "sources": [
+        {
+          "title": "Golrezaei, Hajiaghayi, Shin, Optimal Contest Design Beyond Convexity (2026)",
+          "url": "https://arxiv.org/html/2604.04844v1",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Lemma 19, Theorem 32 and Lemma 33",
+          "comparison": "Quasiconvex gradient structure and additive epsilon approximation with exact value oracle, polynomial in 1/epsilon for fixed beta. Not an unrestricted generic-objective FPTAS."
+        }
+      ],
+      "disposition": "scope-check-no-edit",
+      "summary": "Direct cited-source check. No new resolution established; follow-up should scrutinize generic FPTAS wording and fixed-beta/oracle assumptions before broadening claims.",
+      "assigned": true,
+      "coverage_level": "theorem/full-text reviewed",
+      "local_comparison": "Read local source and existing enrichment overlay; existing enrichment may supersede source.",
+      "edited": false
+    },
+    {
+      "number": 102,
+      "id": "online-monotone-subsequence-second-order-gap",
+      "queries": [
+        "\"online increasing subsequence\" \"Seksenbayev\" logarithmic"
+      ],
+      "sources": [
+        {
+          "title": "Seksenbayev, Asymptotic Expansions and Strategies in the Online Increasing Subsequence Problem (2021)",
+          "url": "https://link.springer.com/article/10.1007/s10440-021-00424-3",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Section 2.2 Theorem 1, equation (23), comparison equations (19)-(22); Section 2.3",
+          "comparison": "Fixed n online iid continuous observations: v_n=sqrt(2n)-(1/12)log(n)+O(1); not merely a Poissonized estimate."
+        }
+      ],
+      "disposition": "resolved",
+      "summary": "Published theorem closes the requested second-order gap and constant. Updated all dependent fields; did not invent a new higher-order open problem.",
+      "assigned": true,
+      "coverage_level": "theorem/full-text reviewed",
+      "local_comparison": "Read local source and existing enrichment overlay; existing enrichment may supersede source.",
+      "edited": true
+    },
+    {
+      "number": 104,
+      "id": "polling-gated-one-limited-pgf",
+      "queries": [
+        "\"polling\" \"gated\" \"one-limited\" solution"
+      ],
+      "sources": [
+        {
+          "title": "Original polling open-problem manuscript (2011)",
+          "url": "https://citeseerx.ist.psu.edu/document?doi=aa6d698be1de321b18a32aaf6929e1aec6b94ceb&repid=rep1&type=pdf",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located the original gated/one-limited polling source, not a verified later closed-form resolution.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 105,
+      "id": "polling-renewal-large-switchover-limit",
+      "queries": [
+        "\"polling\" \"renewal\" \"large switch-over\" limit"
+      ],
+      "sources": [
+        {
+          "title": "Renewal-input polling manuscript",
+          "url": "https://pure.tue.nl/ws/files/3298716/712124.pdf",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Dorsman-van der Mei-Winands manuscript discusses renewal-input exhaustive polling approximations and large switchovers. Exact limit theorem assumptions not reviewed.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 106,
+      "id": "adaptive-polling-limited-service-stability-region",
+      "queries": [
+        "\"adaptive\" \"polling\" \"stability\" Chernova Foss Kim 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Adaptive polling (2012), bibliographic record",
+          "url": "https://ideas.repec.org/a/spr/annopr/v198y2012i1p125-14410.1007-s10479-011-0963-7.html",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located the original 2012 adaptive limited-service polling article through a bibliographic index. No full-text stability-region update verified.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 107,
+      "id": "random-ksat-satisfiability-threshold",
+      "queries": [
+        "\"random 3 SAT\" \"threshold\" proof 2026"
+      ],
+      "sources": [
+        {
+          "title": "Gaia Carenini, A polynomial scaling window for random k-SAT and a proof of the satisfiability conjecture (ECCC TR26-229, 2026)",
+          "url": "https://eccc.weizmann.ac.il/report/2026/229/",
+          "review_level": "abstract-only",
+          "locations": "Primary ECCC abstract; full paper/theorem not read"
+        },
+        {
+          "title": "Computing the Random 3-SAT Threshold (2026), primary repository search lead",
+          "url": "https://github.com/openai/math/tree/main/preprints/Computing-the-Random-3-SAT-Threshold-September-27-2026",
+          "review_level": "search-only",
+          "locations": "Indexed repository lead; attempted parent preprints directory retrieval failed (cache miss)"
+        },
+        {
+          "title": "Vorobyev, random 3-SAT upper-bound claim (2026)",
+          "url": "https://arxiv.org/abs/2610.10599",
+          "review_level": "search-only",
+          "locations": "Search-indexed abstract only"
+        }
+      ],
+      "disposition": "direct-claim-abstract-only-no-edit",
+      "summary": "Opened Carenini's October 2026 ECCC abstract: claims a polynomial scaling window and threshold existence for every fixed k>=3. This is not an explicit physics-predicted threshold value. Computability and improved upper-bound leads remain search-only. No theorem verification or enrichment change.",
+      "assigned": true,
+      "coverage_level": "abstract-only",
+      "local_comparison": "Local source and enrichment read during forward pass; source alone not treated as current. Candidate findings are not integrated; remaining scope checks noted.",
+      "edited": false
+    },
+    {
+      "number": 108,
+      "id": "deletion-channel-small-deletion-capacity-expansion",
+      "queries": [
+        "\"deletion channel\" \"capacity\" \"higher order\" expansion 2025 2026",
+        "\"deletion channel\" \"small deletion\" capacity expansion 2026"
+      ],
+      "sources": [
+        {
+          "title": "Tegin-Duman insertion-channel capacity",
+          "url": "https://arxiv.org/abs/2411.14771",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Searches returned insertion-channel asymptotics; those are not deletion-channel capacity coefficients. No direct higher-order deletion result verified.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 111,
+      "id": "mgk-queue-exact-stationary-performance",
+      "queries": [
+        "\"M/G/k\" \"exact\" \"stationary\" 2025 2026",
+        "\"M/G/k\" stationary exact analysis"
+      ],
+      "sources": [
+        {
+          "title": "M/G/k lower-bound manuscript (2026)",
+          "url": "https://isaacg1.github.io/assets/mgk-lower.pdf",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "M/G/c operator solution manuscript",
+          "url": "https://www.kent.ac.uk/smsas/personal/lb209/files/mgc1.pdf",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Found M/G/k lower bounds and operator-based stationary expressions. Bounds or implicit operator representations are not automatically the requested tractable general exact performance characterization.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 113,
+      "id": "identical-machines-high-multiplicity-distinct-times-fpt",
+      "assigned": false,
+      "coverage_level": "pending",
+      "local_comparison": "Read source only to identify record after final user request; enrichment/literature not reviewed.",
+      "queries": [],
+      "sources": [],
+      "disposition": "not-reviewed-not-assigned",
+      "summary": "113 was outside the original assignment. Included explicitly at user's request; no status assessment or edits.",
+      "edited": false
+    },
+    {
+      "number": 114,
+      "id": "mg1-response-time-tail-optimal-scheduling",
+      "queries": [
+        "\"M/G/1\" \"strongly tail optimal\" Gittins Boost"
+      ],
+      "sources": [
+        {
+          "title": "Yu and Scully, Strongly Tail-Optimal Scheduling in the Light-Tailed M/G/1 (2024)",
+          "url": "https://arxiv.org/pdf/2404.08826",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Model and class-I assumption; Theorem 5.1, page 17",
+          "comparison": "Gamma-Boost achieves optimal asymptotic tail constant with known sizes, load<1, class-I size distributions. Not all light-tailed laws or finite-threshold optimum."
+        },
+        {
+          "title": "Harlev, Yu, Scully, A Gittins Policy for Optimizing Tail Latency (2025)",
+          "url": "https://amitharlev.com/assets/pdf/sigmetrics2025-harlev-gittins-tail-latency.pdf",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Sections 2-3; Section 2.1.1 and footnote 3; Theorem 3.13 page 15",
+          "comparison": "Continuous-time Poisson arrivals but discrete service-step Markov jobs and preemption at step boundaries. Strong tail optimality with unknown/partial sizes under that model; continuous-service extension not proved there."
+        }
+      ],
+      "disposition": "corrected-partial-resolution",
+      "summary": "Separated known-size and partial-information asymptotic optimality from unresolved fixed thresholds/finite quantiles and model extensions.",
+      "assigned": true,
+      "coverage_level": "theorem/full-text reviewed",
+      "local_comparison": "Read local source and existing enrichment overlay; existing enrichment may supersede source.",
+      "edited": true
+    },
+    {
+      "number": 115,
+      "id": "open-shop-throughput-machines-fpt",
+      "queries": [
+        "\"open shop\" \"throughput\" \"parameterized\" machines"
+      ],
+      "sources": [
+        {
+          "title": "Parameterized complexity of machine scheduling: 15 open problems",
+          "url": "https://www.sciencedirect.com/science/article/pii/S0305054818302041",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Original scheduling open-problem survey located; no newer parameterized open-shop throughput theorem verified. Historical posing does not establish present openness.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 116,
+      "id": "positive-shortest-path-games-pure-stationary-equilibrium",
+      "queries": [
+        "\"positive shortest path games\" \"terminal\" equilibrium 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Positive shortest path games",
+          "url": "https://arxiv.org/abs/2410.09257",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "2026 publication",
+          "url": "https://doi.org/10.1007/s13235-026-00699-x",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located the published 2026 positive-shortest-path-game result. Indexed description distinguishes stationary equilibrium from the stronger terminal equilibrium conjecture; no new terminal theorem read.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 117,
+      "id": "random-spatial-network-length-route-tradeoff",
+      "queries": [
+        "\"spatial networks\" \"route\" \"length\" \"tradeoff\" Aldous 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Aldous spatial route-efficiency manuscript",
+          "url": "https://www.stat.berkeley.edu/~aldous/Papers/me-spatial-1.pdf",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "Stretch-length tradeoff in geometric networks",
+          "url": "https://www.cambridge.org/core/journals/mathematical-proceedings-of-the-cambridge-philosophical-society/article/abs/stretchlength-tradeoff-in-geometric-networks-average-case-and-worst-case-study/A62C2A9630869750F4A7FCCA387F8CF2",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located original route-efficiency and stretch-length tradeoff work. Worst-case stretch and average-route criteria must not be conflated.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 118,
+      "id": "real-period-pinwheel-density-threshold",
+      "queries": [
+        "\"pinwheel\" \"real periods\" \"5/6\" 2026"
+      ],
+      "sources": [
+        {
+          "title": "Real-period pinwheel result, DMTCS (2026)",
+          "url": "https://dmtcs.episciences.org/en/articles/17657",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Found August 2026 publication covering three distinct real-period values at density 5/6. No unrestricted real-period theorem reviewed.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 119,
+      "id": "stochastic-inventory-capacity-constraints-policy-structure",
+      "queries": [
+        "\"stochastic inventory\" \"order capacity\" \"continuous order\" Rossi Chen Tarim 2026"
+      ],
+      "sources": [
+        {
+          "title": "Rossi-Chen-Tarim manuscript",
+          "url": "https://bura.brunel.ac.uk/bitstream/2438/29261/1/FullText.pdf",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "Limited-capacity discounted-order model (2026)",
+          "url": "https://doi.org/10.1016/j.ejor.2026.04.016",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located the known Rossi-Chen-Tarim counterexample and a discounted-order capacity variant. No new general capacity-constrained policy characterization verified.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 120,
+      "id": "total-weighted-tardiness-pmax-fpt",
+      "queries": [
+        "\"total weighted tardiness\" \"maximum processing time\" parameterized 2025 2026",
+        "\"total weighted tardiness\" \"parameterized\""
+      ],
+      "sources": [
+        {
+          "title": "Scheduling complexity dissertation",
+          "url": "https://macau.uni-kiel.de/servlets/MCRFileNodeServlet/macau_derivate_00006919/Dissertation.pdf",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located fine-grained tardiness complexity in a dissertation. Dependence on job count and numeric magnitudes does not by itself classify p_max-parameterized FPT.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 121,
+      "id": "unit-time-precedence-scheduling-width-fpt",
+      "queries": [
+        "\"unit\" \"precedence\" \"width\" \"W[1]\" scheduling 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "IPEC 2022 scheduling paper",
+          "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol249-ipec2022/LIPIcs.IPEC.2022.21/LIPIcs.IPEC.2022.21.pdf",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located a 2022 parameterized scheduling source discussing width. A historical open statement is not a current openness certificate; no later theorem verified.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 123,
+      "id": "input-queued-switch-maxweight-heavy-traffic-distribution",
+      "queries": [
+        "\"heavy traffic\" \"joint queue\" \"uniqueness\" switch Maguluri"
+      ],
+      "sources": [
+        {
+          "title": "Heavy-traffic joint queue-length transforms",
+          "url": "https://arxiv.org/abs/2206.06504",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "Published transform work (2024)",
+          "url": "https://doi.org/10.1145/3649477.3649487",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "Non-CRP queue manuscript (2024)",
+          "url": "https://pure.tue.nl/ws/portalfiles/portal/347457642/3656016.pdf",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Found the existing transform-uniqueness work and a different non-complete-resource-pooling queue model. No switch-specific uniqueness completion verified.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 124,
+      "id": "multi-server-job-queue-stability-region",
+      "queries": [
+        "\"multiserver job\" \"RESET\" \"MARC\""
+      ],
+      "sources": [
+        {
+          "title": "Grosof, Hong, Harchol-Balter, Scheller-Wolf, RESET and MARC (2023)",
+          "url": "https://arxiv.org/pdf/2310.01621",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Section 2.2 saturation rule; Section 3.1 model; Theorem 4.2; Appendix C equations C.1-C.2",
+          "comparison": "Poisson arrivals and iid joint server-needs/phase-type durations, allowing correlation within marks. Finite-state saturated throughput gives computable stability threshold; mean response characterized up to bounded additive heavy-traffic error."
+        }
+      ],
+      "disposition": "corrected-partial-resolution",
+      "summary": "Removed claim of no characterization beyond tiny classes. Finite-state computability is not polynomial primitive-input complexity; general renewal/service extensions not silently claimed.",
+      "assigned": true,
+      "coverage_level": "theorem/full-text reviewed",
+      "local_comparison": "Read local source and existing enrichment overlay; existing enrichment may supersede source.",
+      "edited": true
+    },
+    {
+      "number": 125,
+      "id": "sbp-queueing-network-bar-tight-matrix-condition",
+      "queries": [
+        "\"BAR\" \"tight matrix\" \"stability\" queueing 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Braverman-Dai-Miyazawa (2025)",
+          "url": "https://pubsonline.informs.org/doi/10.1287/stsy.2023.0011",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "Author manuscript",
+          "url": "https://www.rs.tus.ac.jp/miyazawa/pdf-file/BravDaiMiya2025-SSY.pdf",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Found the original BAR/tight-matrix publication and author manuscript. No theorem establishing the general desired implication was checked.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 126,
+      "id": "smooth-kernel-rgg-spectral-threshold-conjecture",
+      "queries": [
+        "\"smooth kernels\" \"spectral conjecture\" random geometric graphs 2026"
+      ],
+      "sources": [
+        {
+          "title": "Smooth-kernel random geometric graph work (2026)",
+          "url": "https://arxiv.org/abs/2602.14998",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located the 2026 smooth-kernel source itself. Its indexed result is not evidence that the general spectral conjecture stated there is settled.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 127,
+      "id": "finite-heterogeneous-server-load-balancing-optimality",
+      "queries": [
+        "\"finite\" \"heterogeneous\" \"load balancing\" optimal policy 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "SA-JSQ institutional record (2025)",
+          "url": "https://wrap.warwick.ac.uk/id/eprint/190683/",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "Learning adaptive SED (2026)",
+          "url": "https://arxiv.org/abs/2609.06881",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "SA-JSQ asymptotic optimality and adaptive-SED regret are different from finite-system MDP optimality; comparison to an SED oracle does not prove that oracle globally optimal.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 128,
+      "id": "minsum-single-machine-scheduling-lp-gap",
+      "queries": [
+        "\"min sum\" \"single machine\" \"integrality gap\" \"4\" scheduling"
+      ],
+      "sources": [
+        {
+          "title": "Min-sum scheduling LP gap",
+          "url": "https://arxiv.org/abs/1612.03339",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "Different Lasserre scheduling relaxation",
+          "url": "https://arxiv.org/abs/1511.08644",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located the known gap below 4 and a Lasserre gap for a different relaxation. No transfer of the latter to the target knapsack-strengthened LP is justified.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 129,
+      "id": "precedence-unit-jobs-three-machines-complexity",
+      "queries": [
+        "\"three machines\" \"unit\" \"precedence\" NP hard 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Secondary index: A polynomial-time algorithm for three-machine unit-job scheduling (2026)",
+          "url": "https://wcook04.github.io/plectis-atlas/papers/A-polynomial-time-algorithm-for-three-machine-unit-job-scheduling-September-24-2026.html",
+          "review_level": "search-only",
+          "locations": "Secondary search-indexed claim; attempted https://github.com/openai/math/tree/main/preprints failed with cache miss"
+        }
+      ],
+      "disposition": "unverified-direct-lead-no-edit",
+      "summary": "Secondary index reports a September 2026 polynomial-time three-machine unit-job scheduling claim. Primary repository directory retrieval failed; theorem/model and proof were not read. Do not change status based on this lead.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Local source and enrichment read during forward pass; source alone not treated as current. Candidate findings are not integrated; remaining scope checks noted.",
+      "edited": false
+    },
+    {
+      "number": 130,
+      "id": "scheduling-communication-delays-constant-approximation",
+      "queries": [
+        "\"scheduling\" \"communication delays\" \"constant factor\" 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Communication-delay scheduling (2026)",
+          "url": "https://arxiv.org/abs/2607.26590",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "Communication-delay scheduling (2021)",
+          "url": "https://arxiv.org/abs/2105.00111",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located hardness for nonuniform communication delays/unique-machine variants. Those do not directly settle constant approximation with uniform delays.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 131,
+      "id": "single-machine-forbidden-times-fpt",
+      "queries": [
+        "\"scheduling\" \"forbidden\" \"fixed parameter\" times",
+        "\"High-Multiplicity Scheduling\" \"Forbidden\" Gabay"
+      ],
+      "sources": [
+        {
+          "title": "Gabay, Rapine, Brauner, High-Multiplicity Scheduling on One Machine with Forbidden Start and Completion Times; Journal of Scheduling 19(5), 609-616 (2016), DOI 10.1007/s10951-016-0475-z; author manuscript hal-00850824v2",
+          "url": "https://www.researchgate.net/publication/281565107_High-Multiplicity_Scheduling_on_One_Machine_with_Forbidden_Start_and_Completion_Times",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Author-uploaded full manuscript, Section 1 integer-time model and Section 3 Theorem 3; not a complete proof audit"
+        },
+        {
+          "title": "Attempted primary manuscript mirror",
+          "url": "https://citeseerx.ist.psu.edu/document?doi=7d98c95da19e273af5b77f2b53e1dca50ef6e55f&repid=rep1&type=pdf",
+          "review_level": "search-only",
+          "locations": "Fetch failed: 403; not used as full-text evidence"
+        }
+      ],
+      "disposition": "corrected-integer-time-special-case",
+      "summary": "Corrected XP-only claim and erroneous authors/venue/DOI. Published Theorem 3 resolves the integer-time Fse interpretation, including high multiplicities. Original record omitted integer-time assumptions: retained target and marked partially resolved, not unconditionally resolved or a certified open real-time problem.",
+      "assigned": true,
+      "coverage_level": "theorem/full-text reviewed",
+      "local_comparison": "Reconciled latest local source plus existing overlay with primary model/theorem already reviewed; no further search. Original target retained with explicit scope caveats.",
+      "edited": true,
+      "resulting_status": "partially resolved"
+    },
+    {
+      "number": 132,
+      "id": "ggm-fcfs-stationary-ergodic-tv-convergence",
+      "queries": [
+        "\"stationary ergodic\" \"total variation\" \"queue\" Foss convergence"
+      ],
+      "sources": [
+        {
+          "title": "Foss original convergence problem",
+          "url": "https://tvims.nsu.ru/foss/Open_Erlang_Revised.pdf",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        },
+        {
+          "title": "Infinite-server recurrence (2026)",
+          "url": "https://link.springer.com/article/10.1007/s11134-026-09972-7",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located original Foss conjecture and an infinite-server recurrence paper; the latter does not establish finite-server total-variation convergence under the target assumptions.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 133,
+      "id": "greedy-server-circle-stability",
+      "queries": [
+        "\"greedy server\" \"circle\" stability Rolla Sidoravicius"
+      ],
+      "sources": [
+        {
+          "title": "Rolla and Sidoravicius, Stability of the Greedy Algorithm on the Circle, CPAM (2017)",
+          "url": "https://arxiv.org/pdf/1112.2389",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Model and Theorem 1.1 page 2; proof outline; DOI 10.1002/cpa.21712 publication record",
+          "comparison": "Uniform Poisson arrivals, deterministic unit service allowed, fixed positive speed, target unchanged while traveling. Finite mean empty-state regeneration time for lambda<1; not a bound uniform in speed/length."
+        }
+      ],
+      "disposition": "resolved",
+      "summary": "Exact match to Foss's greedy-circle question. All stale open-status fields corrected. Parent independently checked Theorem 1.1 model match.",
+      "assigned": true,
+      "coverage_level": "theorem/full-text reviewed",
+      "local_comparison": "Read local source and existing enrichment overlay; existing enrichment may supersede source.",
+      "edited": true
+    },
+    {
+      "number": 134,
+      "id": "jsq-stationary-ergodic-stability-regimes",
+      "queries": [
+        "\"join shortest queue\" \"stationary ergodic\" stability convergence",
+        "\"join-the-shortest-queue\" \"stationary ergodic\""
+      ],
+      "sources": [
+        {
+          "title": "Related Markovian/heavy-traffic queueing work",
+          "url": "https://pubsonline.informs.org/doi/10.1287/stsy.2022.0102",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Keyword and exact-phrase searches returned Markovian/heavy-traffic queueing work, not a verified stationary-ergodic JSQ convergence theorem.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 135,
+      "id": "multiaccess-success-feedback-stable-protocol",
+      "queries": [
+        "\"random access\" \"success\" \"non success\" \"stable\" protocol Foss",
+        "\"multiaccess\" \"success\" \"feedback\" stability Foss"
+      ],
+      "sources": [
+        {
+          "title": "S. G. Foss, B. Hajek, A. M. Turlikov, Doubly Randomized Protocols for a Random Multiple Access Channel with Success-Nonsuccess Feedback; Problems of Information Transmission 52(2), 151-160 (2016), DOI 10.1134/S0032946016020058",
+          "url": "https://hajek.ece.illinois.edu/Papers/FossTurlikovHajek15.pdf",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Sections 1-2, Definition 3 and main Theorem on printed page 154; Section 4 distinguishes further conjectures; not every proof step checked"
+        }
+      ],
+      "disposition": "corrected-related-progress-not-resolution",
+      "summary": "Added published doubly randomized theorem as related partial progress only. Original deterministic f(p,J) target retained with open status and partial progress. Extra shared coin, estimator state, and interval-dependent parameters prevent treating this theorem as a resolution.",
+      "assigned": true,
+      "coverage_level": "theorem/full-text reviewed",
+      "local_comparison": "Reconciled latest local source plus existing overlay with primary model/theorem already reviewed; no further search. Original target retained with explicit scope caveats.",
+      "edited": true,
+      "resulting_status": "open"
+    },
+    {
+      "number": 136,
+      "id": "local-global-nonlinear-completion-time-scheduling",
+      "queries": [
+        "\"local global conjecture\" \"scheduling\" nonlinear 2025 2026",
+        "\"local-global conjecture\" scheduling"
+      ],
+      "sources": [
+        {
+          "title": "Local-global scheduling source",
+          "url": "https://arxiv.org/abs/1304.6188",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located original local-global scheduling conjecture source; unrelated number-theory hits excluded. No later direct theorem verified.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 137,
+      "id": "weighted-k-server-uniform-randomized-ratio",
+      "queries": [
+        "\"weighted k server\" \"uniform\" \"randomized\" 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Junho Hwang, Tight Bounds for Randomized Generalized k-Server on Uniform Metrics; arXiv:2610.37192v1 (27 October 2026)",
+          "url": "https://arxiv.org/html/2610.37192v1",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Introduction model, Theorem 1.3 and Corollary 1.4 including reduction; no complete proof certification"
+        }
+      ],
+      "disposition": "recorded-direct-solution-claim",
+      "summary": "Added Hwang preprint, Theorem 1.3 and Corollary 1.4, as solution claimed for the exponent-order gap. Diagonal-request specialization matches ordinary weighted k-server; exact exponential base and full proof certification remain distinct.",
+      "assigned": true,
+      "coverage_level": "theorem/full-text reviewed",
+      "local_comparison": "Reconciled latest local source plus existing overlay with primary model/theorem already reviewed; no further search. Original target retained with explicit scope caveats.",
+      "edited": true,
+      "resulting_status": "solution claimed"
+    },
+    {
+      "number": 138,
+      "id": "supermarket-heavy-traffic-stationary-short-queue-profile",
+      "queries": [
+        "site.arxiv.org supermarket heavy traffic stationary Eschenfeldt Gamarnik fixed point 2025 2026",
+        "\"supermarket\" \"stationary\" \"heavy traffic\" \"fixed\" 2026"
+      ],
+      "sources": [
+        {
+          "title": "Eschenfeldt and Gamarnik, supermarket heavy traffic",
+          "url": "https://arxiv.org/abs/1610.03522v2",
+          "review_level": "abstract-only",
+          "locations": "Abstract only",
+          "comparison": "Transient linear ODE with fixed point conjectured for stationary heavy traffic. Growing-d results are not automatically fixed-d results."
+        }
+      ],
+      "disposition": "no-verified-correction",
+      "summary": "No stationary interchange theorem checked; no inference of continued openness from search absence.",
+      "assigned": true,
+      "coverage_level": "abstract-only",
+      "local_comparison": "Read local source and existing enrichment overlay; existing enrichment may supersede source.",
+      "edited": false
+    },
+    {
+      "number": 141,
+      "id": "contextual-bandit-model-selection-optimal-regret",
+      "queries": [],
+      "sources": [],
+      "disposition": "excluded-user-owned",
+      "summary": "Parent/user owns 141; no audit or edits here.",
+      "assigned": false,
+      "coverage_level": "excluded",
+      "local_comparison": "Skipped to avoid collision.",
+      "edited": false
+    },
+    {
+      "number": 142,
+      "id": "kernelized-bernoulli-bandits-tight-bounds",
+      "queries": [
+        "\"kernelized\" \"Bernoulli\" \"bandits\" tight bounds 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Generalized Kernelized Bandits: Self-Normalized bounds (2025)",
+          "url": "https://marcomussi.github.io/papers/gkb2025/paper.pdf",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Located generalized kernelized-bandit self-normalized bounds. A Bernoulli/exponential-family link model need not equal direct Bernoulli mean f; no exact-assumption comparison completed.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 143,
+      "id": "single-machine-precedence-wct-lp-kernel",
+      "queries": [
+        "\"precedence\" \"weighted completion\" \"polynomial kernel\" LP",
+        "\"scheduling\" \"above\" \"LP\" \"kernel\" precedence weighted completion"
+      ],
+      "sources": [
+        {
+          "title": "ESA 2022 configuration-LP scheduling paper",
+          "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol244-esa2022/LIPIcs.ESA.2022.73/LIPIcs.ESA.2022.73.pdf",
+          "review_level": "search-only",
+          "locations": "Search-indexed title/abstract/snippet only; full theorem not reviewed"
+        }
+      ],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Found configuration-LP scheduling kernel work with different parameters. No polynomial kernel above this precedence-WCT LP bound verified. Existing invalid progress.state and relevance enums are logged separately, not introduced or changed by this audit.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 144,
+      "id": "single-machine-throughput-bounded-processing-times",
+      "queries": [
+        "\"throughput scheduling\" \"bounded processing times\" complexity 2025 2026",
+        "\"single machine\" \"bounded processing times\" \"tardy\""
+      ],
+      "sources": [],
+      "disposition": "searched-no-verified-correction",
+      "summary": "Both requested keyword variants completed; no usable direct primary result identified. No current openness or hardness conclusion. Existing invalid progress.state and relevance enums are logged separately, not introduced or changed by this audit.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Title/keyword triage only unless primary reading is explicitly recorded; no complete re-review of all effective enrichment fields.",
+      "edited": false
+    },
+    {
+      "number": 145,
+      "id": "uniform-decision-tree-constant-approximation",
+      "queries": [
+        "\"uniform decision tree\" \"constant\" approximation 2025 2026"
+      ],
+      "sources": [
+        {
+          "title": "Michal Szyfelbein, Constant-Factor Approximation for the Uniform Decision Tree; arXiv:2604.12036v1 (2026)",
+          "url": "https://arxiv.org/html/2604.12036v1",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Introduction assumptions/results, Section 5 Theorem 8 and beginning of proof; not a complete proof audit"
+        }
+      ],
+      "disposition": "recorded-direct-solution-claim",
+      "summary": "Added Szyfelbein preprint Theorem 8 as solution claimed. Uniform priors with arbitrary costs/outcomes include unit-cost target. Retained original existence question and historical references; full proof not independently certified.",
+      "assigned": true,
+      "coverage_level": "theorem/full-text reviewed",
+      "local_comparison": "Reconciled latest local source plus existing overlay with primary model/theorem already reviewed; no further search. Original target retained with explicit scope caveats.",
+      "edited": true,
+      "resulting_status": "solution claimed"
+    },
+    {
+      "number": 157,
+      "id": "first-passage-percolation-variance-exponent",
+      "queries": [
+        "\"first passage percolation\" \"variance\" 2026 polynomial lattice"
+      ],
+      "sources": [
+        {
+          "title": "Armstrong and Bou-Rabee, Fluctuation bounds for rotationally invariant first-passage percolation (2026)",
+          "url": "https://arxiv.org/html/2610.42124v1",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Introduction, Theorems 1.1-1.2 and model assumptions; lattice caveat",
+          "comparison": "Rotationally invariant continuum random metrics obtain polynomial sublinear variance. Introduction explicitly distinguishes unresolved general iid lattice question; lattice companion requires curvature/smoothness assumptions."
+        },
+        {
+          "title": "Armstrong and Bou-Rabee, Curvature and variance in lattice first-passage percolation",
+          "url": "https://github.com/nitromannitol/FPP-variance",
+          "review_level": "search-only",
+          "locations": "Repository README and file listing only; PDF not read",
+          "comparison": "Lead for conditional lattice result, not theorem-verified in this audit."
+        }
+      ],
+      "disposition": "related-progress-not-resolution-no-edit",
+      "summary": "Existing enrichment already distinguishes continuum from lattice. New continuum theorem is not a resolution of the stated iid lattice target; companion full-text review remains pending.",
+      "assigned": true,
+      "coverage_level": "theorem/full-text reviewed",
+      "local_comparison": "Read local source and existing enrichment overlay; existing enrichment may supersede source.",
+      "edited": false
+    },
+    {
+      "number": 160,
+      "id": "kls-log-concave-isoperimetry-constant",
+      "queries": [
+        "\"KLS\" \"Song\" \"Bizeul\" 2026"
+      ],
+      "sources": [
+        {
+          "title": "Bizeul, Klartag, Lehec, Presenting a proof of the Kannan-Lovasz-Simonovits conjecture (2026)",
+          "url": "https://arxiv.org/html/2610.05474v1",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Theorem 1.1, selected Sections 6-7/general-measure reduction; abstract checked",
+          "comparison": "All isotropic log-concave measures, dimension-free Poincare bound. Abstract explicitly credits reliance on Song-Zhang criterion; no independence claim."
+        },
+        {
+          "title": "Song and Zhang, An O(1) Bound for the KLS Constant (2026)",
+          "url": "https://arxiv.org/html/2610.01447v2",
+          "review_level": "theorem/full-text reviewed",
+          "locations": "Theorem 1.1 and general-density scope; v1/v2 abstract/history comparison",
+          "comparison": "v2 states full constant bound, including nonsmooth/bounded-support cases; v1 had iterated-log dimension dependence. Reciprocal psi convention differs from record."
+        }
+      ],
+      "disposition": "solution-claimed",
+      "summary": "Full conjecture claimed by two related preprints; theorem scope checked, not all proof steps or peer review. Full additional_refs added and unsupported independence wording removed.",
+      "assigned": true,
+      "coverage_level": "theorem/full-text reviewed",
+      "local_comparison": "Read local source and existing enrichment overlay; existing enrichment may supersede source.",
+      "edited": true
+    },
+    {
+      "number": 179,
+      "id": "fpp-bigeodesics-nonexistence",
+      "queries": [
+        "\"bigeodesics\" \"2026\" nonexistence",
+        "\"bigeodesics\" \"2026\" site:arxiv.org",
+        "site:arxiv.org \"bigeodesics\" \"curvature\" 2026"
+      ],
+      "sources": [
+        {
+          "title": "Damron and Hanson, Bigeodesics in first-passage percolation",
+          "url": "https://arxiv.org/abs/1512.00804",
+          "review_level": "search-only",
+          "locations": "Search result only",
+          "comparison": "Conditional nonexistence results need exact curvature/differentiability assumptions checked before extending to all iid weights."
+        }
+      ],
+      "disposition": "no-verified-correction",
+      "summary": "No new theorem checked. An October conditional-extension lead was not verified; no resolution or negative literature claim.",
+      "assigned": true,
+      "coverage_level": "search-only",
+      "local_comparison": "Read local source and existing enrichment overlay; existing enrichment may supersede source.",
+      "edited": false
+    }
+  ],
+  "forward_search_pass": {
+    "date": "2026-11-09",
+    "formerly_pending_assigned_count": 52,
+    "query_count": 64,
+    "search_calls": 16,
+    "queries_per_call": 4,
+    "unique_assigned_ids_searched": 52,
+    "depth_counts": {
+      "search_only": 46,
+      "abstract_only": 1,
+      "theorem_full_text_reviewed": 5
+    },
+    "enrichment_edits": 4,
+    "freeze": "Initial freeze superseded by explicit authorization to integrate 131,135,137,145. No additional searches; no other enrichment edits in this follow-up.",
+    "direct_theorem_candidates_not_integrated": [],
+    "scope_check_incomplete": [
+      82
+    ],
+    "abstract_claim_not_integrated": [
+      107
+    ],
+    "additional_search_leads": [
+      77,
+      84,
+      129
+    ],
+    "integrated_candidates": [
+      131,
+      135,
+      137,
+      145
+    ]
+  },
+  "follow_up_integration": {
+    "date": "2026-11-09",
+    "new_searches": 0,
+    "numbers": [
+      131,
+      135,
+      137,
+      145
+    ],
+    "statuses": {
+      "131": {
+        "status": "partially resolved",
+        "progress_state": "partial",
+        "scope": "Integer data and integer schedules are covered; unspecified real-time interpretation is not silently replaced."
+      },
+      "135": {
+        "status": "open",
+        "progress_state": "partial",
+        "scope": "Deterministic f(p,J) retained; extra common randomization theorem is related progress only."
+      },
+      "137": {
+        "status": "solution claimed",
+        "progress_state": "solution-claimed",
+        "scope": "Exponent-order gap claim, not exact optimal base or proof certification."
+      },
+      "145": {
+        "status": "solution claimed",
+        "progress_state": "solution-claimed",
+        "scope": "Direct uniform-prior arbitrary-test claim includes unit costs; no proof certification."
+      }
+    },
+    "writes": "Only four enrichment overlays and this audit; parent performs merge/build."
+  }
+}

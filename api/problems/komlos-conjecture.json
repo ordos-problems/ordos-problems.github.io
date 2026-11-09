@@ -5,21 +5,122 @@
  "title": "Komlos Conjecture (O(1) Discrepancy of Unit-Norm Vectors)",
  "collection": "Approximation & Discrepancy",
  "area": "Discrepancy",
- "status": "open",
- "confidence": "high",
+ "status": "solution claimed",
+ "confidence": "medium",
  "tags": [
   "discrepancy",
   "Komlos",
   "vector balancing",
   "combinatorial discrepancy"
  ],
- "short_statement": "Given any vectors of Euclidean length at most $1$, the Komlos conjecture says one can sign them so every coordinate of the signed sum stays bounded by a universal constant, independent of dimension or count. It generalizes the Beck-Fiala conjecture.",
- "open_problem": "Prove or refute the Komlos conjecture that unit Euclidean norm vectors can always be signed to have $O(1)$ discrepancy in every coordinate.",
- "full_statement": "Given any collection of vectors each of Euclidean length at most 1, the Komlos conjecture says you can attach a $+$ or $-$ sign to each so that every coordinate of the signed sum stays bounded by a universal constant — no matter how many vectors there are or what dimension they live in. \\textbf{Conjecture (Komlos):} there is a universal constant $K$ such that for any vectors $v_1,\\dots,v_n \\in \\mathbb{R}^m$ with $\\|v_i\\|_2 \\le 1$, there exist signs $\\varepsilon_i \\in \\{\\pm 1\\}$ with $\\big\\|\\sum_i \\varepsilon_i v_i\\big\\|_\\infty \\le K = O(1)$, independent of $m$ and $n$. This generalizes the Beck-Fiala conjecture.",
- "known_results": "The conjecture predicts a universal $O(1)$ bound, independent of both the dimension and the number of vectors. Banaszczyk's theorem gives the best classical general bound, $O(\\sqrt{\\log n})$, and Bansal, Dadush, and Garg made this algorithmic. Bansal and Jiang recently improved the dependence to $O((\\log n)^{1/4})$. The best known lower bound on the universal constant is about $2.414$, and a proof of Komlos would imply the Beck-Fiala conjecture.",
+ "short_statement": "The dimension-free constant Komlos bound is claimed in September 2026 preprints. Status: solution claimed, not independently verified here.",
+ "open_problem": "Verify the claimed resolution of the original conjecture. Historical target: Prove or refute the Komlos conjecture: unit Euclidean norm vectors can be signed to have $O(1)$ discrepancy in every coordinate.",
+ "background": "Historical context before the 2026 full-resolution claims: The Komlos conjecture is a central vector-balancing problem. Given vectors of Euclidean norm at most one, choose signs so that every coordinate of the signed sum is bounded by a universal constant. It generalizes Beck-Fiala because the incidence columns of a degree-$t$ set system can be scaled to unit length, and a constant Komlos bound would imply $O(\\sqrt t)$ Beck-Fiala discrepancy. The conjecture is also a benchmark for algorithmic discrepancy, convex geometry, and rounding. Banaszczyk's theorem gives the best classical asymptotic bound $O(\\sqrt{\\log n})$, and recent work of Bansal and Jiang improves this to roughly $\\widetilde O(\\log^{1/4} n)$, but the desired dimension-free constant was not settled by those earlier results. Status at 2026-11-09: Guo, Fang, and Lu's September 2026 preprint claims the full Komlos conjecture (Theorem 1.1); Karingula and Lovett give a subsequent elementary-proof preprint.",
+ "full_statement": "Let $v_1,\\ldots,v_n\\in\\mathbb R^m$ be vectors with Euclidean norms $\\|v_j\\|_2\\le 1$. Equivalently, let $A\\in\\mathbb R^{m\\times n}$ be a real matrix whose columns have $\\ell_2$ norm at most $1$. A signing $x\\in\\{-1,+1\\}^n$ has discrepancy $\\|Ax\\|_\\infty$, the largest absolute coordinate of the signed vector sum. The Komlos conjecture asks whether there is a universal constant $K$ such that every such matrix admits a signing with $\\|Ax\\|_\\infty\\le K$, independent of the number of rows $m$ and columns $n$. The conjecture implies Beck-Fiala after scaling each degree-$t$ incidence column by $1/\\sqrt t$: a constant Komlos bound would give $O(\\sqrt t)$ discrepancy for degree-$t$ set systems. The historically open problem is the full dimension-free constant bound for arbitrary real unit-column matrices, with no distributional, smoothed-input, bounded-rank, or sparsity assumption. An algorithmic solution would additionally find the signing in polynomial time. Status at 2026-11-09: Guo, Fang, and Lu's September 2026 preprint claims the full Komlos conjecture (Theorem 1.1); Karingula and Lovett give a subsequent elementary-proof preprint. This record flags a claimed resolution, pending verification.",
+ "known_results": "Historical context before the 2026 full-resolution claims: Banaszczyk proved that unit-column matrices admit discrepancy $O(\\sqrt{\\log n})$, and Bansal, Dadush, and Garg gave an efficient algorithm matching that bound. The conjectured answer is $O(1)$. Bansal, Jiang, Meka, Singla, and Sinha proved Komlos in a smoothed-analysis setting when the input vectors are perturbed and sufficiently numerous relative to the dimension. Bansal and Jiang recently improved the pre-September-2026 worst-case general dependence to $\\widetilde O(\\log^{1/4}n)$ using affine spectral-independence constraints in an SDP-guided random walk. They also obtain improved Beck-Fiala consequences. Lower bounds show that the optimal universal constant, if the conjecture holds, cannot be too small, but no superconstant lower bound is known. The pre-September-2026 gap was between constant and about a fourth-root logarithm. Status at 2026-11-09: Guo, Fang, and Lu's September 2026 preprint claims the full Komlos conjecture (Theorem 1.1); Karingula and Lovett give a subsequent elementary-proof preprint.\n\nAlgorithmic follow-up: Guo, Fang, and Lu, arXiv:2609.23540v2, Theorem 1.1, report a deterministic polynomial-time real-RAM algorithm with discrepancy at most $8272$. Xiaoyu Li, arXiv:2609.30044v1, Theorem 1.1, reduces this to below $99$ and proves polynomial bit complexity for rational inputs. Emile Anand and Peter Chen, arXiv:2610.20995v1, Theorem 1.1, report the same discrepancy in $\\widetilde O(L_{\\mathrm{in}}+n^\\omega)$ expected bit operations. Thus algorithmic constant discrepancy is also addressed by current preprints, not left wholly unresolved. These statements were checked, not their full proofs.",
+ "progress": {
+  "state": "solution-claimed",
+  "summary": "Full-resolution preprints are accompanied by deterministic algorithmic results. This entry is retained for verification and historical context, not treated as an untouched conjecture.",
+  "links": [
+   {
+    "title": "Bansal, Dadush, Garg, algorithmic Banaszczyk",
+    "url": "https://arxiv.org/abs/1605.02882"
+   },
+   {
+    "title": "Bansal and Jiang, Komlos beyond Banaszczyk",
+    "url": "https://arxiv.org/abs/2508.03961"
+   },
+   {
+    "title": "Guo, Fang, and Lu, Vector Balancing via Directional Total Variation, arXiv:2609.11189 (2026)",
+    "url": "https://arxiv.org/html/2609.11189v1"
+   },
+   {
+    "title": "Karingula and Lovett, An elementary proof of the Komlos conjecture, arXiv:2609.20979 (2026)",
+    "url": "https://arxiv.org/html/2609.20979v2"
+   },
+   {
+    "title": "Vector Balancing in Polynomial Time",
+    "url": "https://arxiv.org/abs/2609.23540v2"
+   },
+   {
+    "title": "Fast Spectral Signing for Vector Balancing",
+    "url": "https://arxiv.org/abs/2609.30044v1"
+   },
+   {
+    "title": "The Komlos Problem in Matrix-Multiplication Time",
+    "url": "https://arxiv.org/abs/2610.20995v1"
+   }
+  ]
+ },
+ "importance": 9,
+ "difficulty": 10,
+ "counterexample_suitability": "medium",
+ "counterexample_rationale": "Finite vector systems can test constants and refute stronger claims, but the main conjecture is believed true and likely needs a general rounding theorem.",
+ "alphaevolve_suitability": "medium",
+ "alphaevolve_rationale": "Search can discover hard vector configurations for current algorithms and guide conjectures about extremal constants. Full progress requires proof techniques from convex geometry or discrepancy random walks.",
+ "literature": {
+  "synthesis": "The original dimension-free target has reported full solutions, with subsequent algorithmic results described in What Is Known. Historical logarithmic losses should not be presented as the current existential or algorithmic frontier. Sharp constants and implementation complexity are distinct follow-up questions, not substitutes for this historical target.",
+  "reviewed": [
+   {
+    "ref": "Wojciech Banaszczyk, 'Balancing vectors and Gaussian measures of n-dimensional convex bodies', Random Structures & Algorithms 1998",
+    "result": "Gives $O(\\sqrt{\\log n})$ discrepancy for unit-column matrices.",
+    "relevance": "partial-progress",
+    "url": "https://doi.org/10.1002/(SICI)1098-2418(199807)12:4<351::AID-RSA3>3.0.CO;2-S"
+   },
+   {
+    "ref": "Nikhil Bansal, Daniel Dadush, Shashwat Garg, 'An Algorithm for Komlos Conjecture Matching Banaszczyk's Bound', FOCS/SICOMP 2019",
+    "result": "Gives an efficient algorithm matching Banaszczyk's $O(\\sqrt{\\log n})$ bound.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/1605.02882"
+   },
+   {
+    "ref": "Nikhil Bansal, Haotian Jiang, 'Decoupling via Affine Spectral-Independence', arXiv 2025",
+    "result": "Improves Komlos to $\\widetilde O(\\log^{1/4}n)$ and gives related Beck-Fiala improvements.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2508.03961"
+   },
+   {
+    "ref": "Guo, Fang, and Lu, Vector Balancing via Directional Total Variation, arXiv:2609.11189 (2026)",
+    "result": "Theorem 1.1 claims discrepancy below $3\\sqrt{2\\pi}$ for arbitrary real unit-column matrices; the proof is existential.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/html/2609.11189v1"
+   },
+   {
+    "ref": "Karingula and Lovett, An elementary proof of the Komlos conjecture, arXiv:2609.20979 (2026)",
+    "result": "Theorem 1.2 claims constant $36$ for arbitrary real unit-column matrices. Subsequent preprint, not independent certification by this audit.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/html/2609.20979v2"
+   },
+   {
+    "ref": "Shengtao Guo, Ethan X. Fang, Junwei Lu, Vector Balancing in Polynomial Time (arXiv:2609.23540v2)",
+    "result": "Algorithmic follow-up; see the computational models and guarantees in What Is Known.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2609.23540v2"
+   },
+   {
+    "ref": "Xiaoyu Li, Fast Spectral Signing for Vector Balancing (arXiv:2609.30044v1)",
+    "result": "Algorithmic follow-up; see the computational models and guarantees in What Is Known.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2609.30044v1"
+   },
+   {
+    "ref": "Emile Anand, Peter Chen, The Komlos Problem in Matrix-Multiplication Time (arXiv:2610.20995v1)",
+    "result": "Algorithmic follow-up; see the computational models and guarantees in What Is Known.",
+    "relevance": "partial-progress",
+    "url": "https://arxiv.org/abs/2610.20995v1"
+   }
+  ]
+ },
+ "agent_guidance": {
+  "suitable_approaches": "Check the cited full-resolution and algorithmic theorems, including precision and computational-model assumptions. Treat any new target about sharp constants as a separate question.",
+  "verification_notes": "A claimed proof must handle arbitrary real matrices with column Euclidean norms at most one and must produce a numerical bound independent of $m,n$, rank, sparsity, and coefficient precision. The proof should output or certify a full signing of all columns; partial-coloring arguments must include an iteration analysis showing that no logarithmic factor is accumulated. A verifier should reject arguments that only prove Beck-Fiala, random or smoothed input cases, bounded-rank or bounded-row-norm cases, vector systems in special position, or $\\widetilde O(\\log^{1/4}n)$-type bounds unless they are explicitly presented as partial progress. A counterexample would need a family of unit-column matrices with discrepancy tending to infinity, not just examples that defeat Banaszczyk-style algorithms. The relevant theorem statements and proof framework were read, but this audit is not an independent proof verification; no peer-reviewed publication was established.",
+  "machine_checkable": true
+ },
  "where_posed": {
-  "text": "A classical conjecture in discrepancy theory; stated in Nikolov's Prague Summer School lecture notes on Discrepancy Theory (2018).",
-  "url": "https://www.cs.toronto.edu/~anikolov/Prague18/Lectures/lect3.pdf"
+  "text": "Classical Komlos vector-balancing conjecture, stated in modern discrepancy surveys such as Nikolov's lecture notes.",
+  "url": "https://www.cs.toronto.edu/~anikolov/Prague18/Lectures/lect3.pdf",
+  "quote": "",
+  "location": "Vector balancing / Komlos conjecture discussion"
  },
  "source": {
   "authors": "Aleksandar Nikolov",
@@ -35,6 +136,41 @@
    "year": 2019,
    "venue": "SIAM J. Computing (FOCS 2016)",
    "url": "https://arxiv.org/abs/1605.02882"
+  },
+  {
+   "authors": "Shengtao Guo, Ethan X. Fang, Junwei Lu",
+   "title": "Vector Balancing via Directional Total Variation",
+   "year": 2026,
+   "venue": "arXiv preprint; resolution claim not independently verified",
+   "url": "https://arxiv.org/abs/2609.11189"
+  },
+  {
+   "authors": "Sankeerth Rao Karingula, Shachar Lovett",
+   "title": "An elementary proof of the Komlos conjecture",
+   "year": 2026,
+   "venue": "arXiv preprint; resolution claim not independently verified",
+   "url": "https://arxiv.org/abs/2609.20979"
+  },
+  {
+   "authors": "Shengtao Guo, Ethan X. Fang, Junwei Lu",
+   "title": "Vector Balancing in Polynomial Time",
+   "year": 2026,
+   "venue": "arXiv:2609.23540v2",
+   "url": "https://arxiv.org/abs/2609.23540v2"
+  },
+  {
+   "authors": "Xiaoyu Li",
+   "title": "Fast Spectral Signing for Vector Balancing",
+   "year": 2026,
+   "venue": "arXiv:2609.30044v1",
+   "url": "https://arxiv.org/abs/2609.30044v1"
+  },
+  {
+   "authors": "Emile Anand, Peter Chen",
+   "title": "The Komlos Problem in Matrix-Multiplication Time",
+   "year": 2026,
+   "venue": "arXiv:2610.20995v1",
+   "url": "https://arxiv.org/abs/2610.20995v1"
   }
  ],
  "bibtex": "@misc{Nikolov2018,\n  author = {Aleksandar Nikolov},\n  title = {Prague Summer School: Discrepancy Theory (Lecture notes)},\n  year = {2018},\n  howpublished = {Lecture notes (survey)},\n  url = {https://www.cs.toronto.edu/~anikolov/Prague18/Lectures/lect3.pdf},\n  note = {Source of ORdős Problem ORDOS-050}\n}",
